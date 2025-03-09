@@ -1,0 +1,223 @@
+------------------------------------------------------Gravekeeper Skill Checks
+[FormulaGlobal] ID=ari_gravekeeper_skill_check;
+formula=t:ari_gravekeeper_soul_collector + t:ari_gravekeeper_masterblood + t:ari_gravekeeper_undead_legion + t:ari_gravekeeper_foot_grave + t:ari_gravekeeper_unholy_pact_sacrifices + tsa:ari_gravekeeper_exhume + tsa:ari_gravekeeper_lichdom;
+
+------------------------------------------------------Empty the Crypts modulo for correct skeleton type spawn at rank 3
+[FormulaGlobal] ID=ari_skeletons_fielded_rank3;
+formula=actorsOfType:summoned_undead_skeleton % 3;
+
+[FormulaGlobal] ID=ari_skeletons_fielded_commander_rank3;
+formula=actorsOfType:summoned_undead_skeleton_commander_version % 3;
+
+[FormulaGlobal] ID=ari_skeletonmelee_commander_fielded_rank3;
+formula=is:3:c:rank * lessThan:2:d:ari_skeletons_fielded_commander_rank3 * 100 - 101 * m:targetExists;
+
+[FormulaGlobal] ID=ari_skeletonbow_commander_fielded_rank3;
+formula=is:3:c:rank * moreThan:1:d:ari_skeletons_fielded_commander_rank3 * 100 - 101 * m:targetExists;
+------------------------------------------------------Empty the Crypts modulo for correct skeleton type spawn at rank 4
+[FormulaGlobal] ID=ari_skeletons_fielded_rank4;
+formula=actorsOfType:summoned_undead_skeleton % 4;
+
+[FormulaGlobal] ID=ari_skeletons_fielded_commander_rank4;
+formula=actorsOfType:summoned_undead_skeleton_commander_version % 4;
+
+[FormulaGlobal] ID=ari_skeletonmelee_commander_fielded_rank4;
+formula=is:4:c:rank * lessThan:2:d:ari_skeletons_fielded_commander_rank4 * 100 - 101 * m:targetExists;
+
+[FormulaGlobal] ID=ari_skeletonbow_commander_fielded_rank4;
+formula=is:4:c:rank * is:2:d:ari_skeletons_fielded_commander_rank4 * 100 - 101 * m:targetExists;
+
+[FormulaGlobal] ID=ari_skeletonknight_commander_fielded_rank4;
+formula=is:4:c:rank * is:3:d:ari_skeletons_fielded_commander_rank4 * 100 - 101 * m:targetExists;
+------------------------------------------------------Empty the Crypts HP sacrifice checks
+[FormulaGlobal] ID=ari_legion_sacrificedhp_base;
+formula=c:rank * 2 / 100;
+
+[FormulaGlobal] ID=ari_legion_sacrificed_hp_calc;
+formula=0.12 - d:ari_legion_sacrificedhp_base;
+
+[FormulaGlobal] ID=ari_legion_sacrificed_hp_calc_minimum;
+formula=min:0.05:d:ari_legion_sacrificed_hp_calc;
+
+[FormulaGlobal] ID=ari_legion_sacrificed_hp_tooltip;
+formula=12 - c:rank * 2;
+------------------------------------------------------One Foot in the Grave HP requirement checks
+[FormulaGlobal] ID=ari_foot_grave_healthremaining;
+formula=t:HP / t:HPMax;
+
+[FormulaGlobal] ID=ari_foot_grave_healthremaining_scaled;
+formula=d:ari_foot_grave_healthremaining * 100;
+
+[FormulaGlobal] ID=ari_foot_grave_healthrequired;
+formula=c:ari_gravekeeper_foot_grave * 5;
+
+[FormulaGlobal] ID=ari_foot_grave_healthrequired_scaled;
+formula=45 + d:ari_foot_grave_healthrequired;
+
+[FormulaGlobal] ID=ari_foot_grave_healthcheck;
+formula=d:ari_foot_grave_healthrequired_scaled - d:ari_foot_grave_healthremaining_scaled;
+------------------------------------------------------Max minion limit checks
+[FormulaGlobal] ID=ari_minions_fielded;
+formula=actorsOfType:summoned_undead_skeleton + actorsOfType:summoned_undead_zombie + actorsOfType:summoned_undead_abomination + actorsOfType:summoned_undead_skeleton_commander_version + actorsOfType:summoned_undead_zombie_commander_version + actorsOfType:summoned_undead_skeleton_mage_type + actorsOfType:summoned_undead_skeleton_commander_version_mage;
+
+[FormulaGlobal] ID=ari_minions_fielded1;
+formula=3 * d:ari_minions_fielded / 100;
+
+[FormulaGlobal] ID=ari_total_lich_minions_fielded0;
+formula=d:ari_minions_fielded + d:ari_total_mindless_fielded;
+
+[FormulaGlobal] ID=ari_total_lich_minions_fielded1;
+formula=d:ari_total_lich_minions_fielded0 / 100;
+
+[FormulaGlobal] ID=ari_total_zombies_fielded;
+formula=actorsOfType:summoned_undead_zombie + actorsOfType:summoned_undead_zombie_commander_version;
+
+[FormulaGlobal] ID=ari_total_skeletons_fielded;
+formula=actorsOfType:summoned_undead_skeleton + actorsOfType:summoned_undead_skeleton_commander_version;
+
+[FormulaGlobal] ID=ari_total_skeleton_mages_fielded;
+formula=actorsOfType:summoned_undead_skeleton_mage_type + actorsOfType:summoned_undead_skeleton_commander_version_mage;
+
+[FormulaGlobal] ID=ari_total_abominations_fielded;
+formula=actorsOfType:summoned_undead_abomination;
+
+[FormulaGlobal] ID=ari_total_mindless_fielded;
+formula=actorsOfType:mindless_undead_skeleton + actorsOfType:mindless_undead_zombie;
+
+[FormulaGlobal] ID=ari_maximum_skeletons_1;
+formula=c:ari_gravekeeper_undead_legion * 2;
+
+[FormulaGlobal] ID=ari_maximum_skeletons_2;
+formula=min:3:d:ari_maximum_skeletons_1;
+
+[FormulaGlobal] ID=ari_maximum_skeletons_maxcheck;
+formula=t:ari_summoned_skeleton_maxlimit * 2;
+
+[FormulaGlobal] ID=ari_maximum_skeletons_maxcheck_2;
+formula=min:3:d:ari_maximum_skeletons_maxcheck;
+
+[FormulaGlobal] ID=ari_maximum_skeleton_check;
+formula=d:ari_maximum_skeletons_maxcheck_2 - d:ari_total_skeletons_fielded;
+
+------------------------------------------------------Reaper Overheal amount
+[FormulaGlobal] ID=ari_reaper_overheal_amount;
+formula=d:ruinDmg20Scale(8) - t:HP;
+------------------------------------------------------Soul Pact Mausoleum summon checker
+[FormulaGlobal] ID=ari_soulpact_mausoleum_summon_check;
+formula=t:ari_summoned_wisp_AV + t:ari_summoned_wraith_AV + t:ari_summoned_ghost_AV;
+------------------------------------------------------
+[FormulaGlobal] ID=ari_minions_to_sacrifice;
+formula=c:rank - 1;
+
+[FormulaGlobal] ID=ari_ten_percent_ruinskill;
+formula=c:skill_Ruin * 0.1;
+[FormulaGlobal] ID=ari_ten_percent_ruinskill_damage;
+formula=c:skill_Ruin * -0.1;
+[FormulaGlobal] ID=ari_twenty_percent_ruinskill;
+formula=c:skill_Ruin * 0.2;
+
+[FormulaGlobal] ID=ari_boneshard_targets;
+formula=c:skill_Ruin * 0.3;
+
+------------------------------------------------------Abomination buff effect based on sacrifices
+[FormulaGlobal] ID=ari_abomination_sacrifices_fielded;
+formula=1 + actorsOfType:ari_sacrificial_soul;
+
+[FormulaGlobal] ID=ari_liturgy_base_rank2;
+formula=moreThan:1:c:ari_gravekeeper_unholy_pact_sacrifices * 33 - 101 * csa:ari_gravekeeper_undead_commander;
+[FormulaGlobal] ID=ari_liturgy_base_rank2cap;
+formula=moreThan:1:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * csa:ari_gravekeeper_undead_commander;
+
+------------------------------------------------------Grimoire Weapon damage and heals
+[FormulaGlobal] ID=grimoireDmg0;
+formula=-w:Power - c:MagAtk - c:skill_Ruin - m:isItThisDayOfWeek(5) + t:MagDef;
+
+[FormulaGlobal] ID=grimoireScaledDamage_tier1;
+formula=0.8 * d:grimoireDmg0;
+
+[FormulaGlobal] ID=grimoireActualDamage_tier1;
+formula=d:magDefPercent * d:supportAbilMagDmgMult * dMaxNeg1:grimoireScaledDamage_tier1;
+
+[FormulaGlobal] ID=grimoireHeal0_tier1;
+formula=0.1 * d:grimoireActualDamage_tier1;
+
+[FormulaGlobal] ID=grimoireConvertedHeal_tier1;
+formula=-1 * d:grimoireHeal0_tier1;
+
+[FormulaGlobal] ID=grimoireActualHeal_tier1;
+formula=min:1:d:grimoireConvertedHeal_tier1;
+
+[FormulaGlobal] ID=grimoireHeal0_tier2;
+formula=0.2 * d:grimoireActualDamage_tier1;
+
+[FormulaGlobal] ID=grimoireConvertedHeal_tier2;
+formula=-1 * d:grimoireHeal0_tier2;
+
+[FormulaGlobal] ID=grimoireActualHeal_tier2;
+formula=min:1:d:grimoireConvertedHeal_tier2;
+
+[FormulaGlobal] ID=grimoireHeal0_tier3;
+formula=0.4 * d:grimoireActualDamage_tier1;
+
+[FormulaGlobal] ID=grimoireConvertedHeal_tier3;
+formula=-1 * d:grimoireHeal0_tier3;
+
+[FormulaGlobal] ID=grimoireActualHeal_tier3;
+formula=min:1:d:grimoireConvertedHeal_tier3;
+
+[FormulaGlobal] ID=grimoireConvertedHeal_tier4;
+formula=-0.75 * d:grimoireActualDamage_tier1;
+
+[FormulaGlobal] ID=grimoireActualHeal_tier4;
+formula=min:1:d:grimoireConvertedHeal_tier4;
+
+
+[FormulaGlobal] ID=ruinCastDmg0;
+formula=-c:MagAtk - c:skill_Ruin - m:isItThisDayOfWeek(5) + t:MagDef;
+
+
+
+
+
+
+
+
+
+[FormulaGlobal] ID=ari_full_health_check;
+formula=c:HP - c:HPMax;
+
+
+
+------------------------------------------------------Summoner's Spellbook buff counter
+[FormulaGlobal] ID=ari_vesper_prophet_fielded;
+formula=max:1:actorsOfType:snv_summoned_prophet;
+[FormulaGlobal] ID=ari_vesper_priestess_fielded;
+formula=max:1:actorsOfType:snv_summoned_priestess;
+[FormulaGlobal] ID=ari_vesper_summons_fielded;
+formula=d:ari_vesper_prophet_fielded + d:ari_vesper_priestess_fielded;
+
+[FormulaGlobal] ID=ari_BoneCount;
+formula=partyItem:skull + partyItem:skull2 + partyItem:skull_elephant1 + partyItem:skull_elephant2 + partyItem:skull_dog1 + partyItem:skull_dog2;
+
+
+
+
+
+----------------------Manuscript of Divinity entire Life damage swap
+[FormulaGlobal] ID=grimoireDivinityDmg0;
+formula=-w:Power - c:MagAtk - c:skill_Life - m:isItThisDayOfWeek(4) + t:MagDef;
+
+[FormulaGlobal] ID=grimoireDivinityScaledDamage_tier1;
+formula=0.8 * d:grimoireDivinityDmg0;
+
+[FormulaGlobal] ID=grimoireDivinityActualDamage_tier1;
+formula=d:magDefPercent * d:supportAbilMagDmgMult * dMaxNeg1:grimoireDivinityScaledDamage_tier1;
+
+[FormulaGlobal] ID=grimoireDivinityHeal0_tier1;
+formula=0.1 * d:grimoireDivinityActualDamage_tier1;
+
+[FormulaGlobal] ID=grimoireDivinityConvertedHeal_tier1;
+formula=-1 * d:grimoireDivinityHeal0_tier1;
+
+[FormulaGlobal] ID=grimoireDivinityActualHeal_tier1;
+formula=min:1:d:grimoireDivinityConvertedHeal_tier1;

@@ -1,0 +1,346 @@
+[Zone]  ID=ari_gravekeeper_lichlair; dark=True; timeUntilNewDay=24; showFogOfWar=True; fogOfWar=True; minimapEnabled=True; allowCameraPastZoneEdges=False; cantAct=False; cantGameOver=False; alwaysKeepWeaponsUnsheathed=False; peaceful=False; overseerMode=False; rollingPinStyle=False; drawSky=False; drawSky_overrideYpos=-1; boatZone=False; wind=False; overworld=False; canDropItems=True; 
+ travelSong=23_quest; travelSongVolume=1; travelSongPitch=0; combatSong=; combatSongVolume=1; combatSongPitch=0; combatSongDelay=0; 
+darkR=0; darkG=0; darkB=0; 
+ screenWaveFreq=0; screenDarkWaveFreq=0; screenWaveAmp=0.01; screenDarkWaveAmp=0.01; screenWaveSpeed=0.2; screenWaveAmp_reflect=0.0014; 
+ bgTerrainTypeID=; bgFXID=; bgFX_sineWave=0; darkenedTileTexture=darkenedTile; bgScale=1; bgParallaxRatio=1; bgMoveSpeedX=0; bgMoveSpeedY=0; 
+paletteOverride=; zoneDirtPalette=pDirt; zoneGrassPalette=pGreen; zoneGrassDarkPalette=pGreen2; zoneStonePalette=pGreyD; zoneStoneDarkPalette=pGreyD2; zoneStoneLightPalette=pGreyD; zoneWaterPalette=pBlue; zoneDirtDarkPalette=pDirt; zoneWoodPalette=pWood; zoneWoodDarkPalette=pWoodDark; zoneMisc1Palette=pWoodDark; zoneMisc2Palette=pWoodDark; zoneMisc3Palette=pRed; zoneMisc4Palette=pBlue; zoneMisc5Palette=pGreen; zoneMisc6Palette=pOrange; zoneMisc7Palette=pYellow; zoneMisc8Palette=pPurple; 
+
+combatMode=False; 
+
+[Item] ID=bonePileDark; q=1; r=270; x=12; y=16;
+[Item] ID=bones1; q=1; r=180; x=12; y=24;
+[Item] ID=sunbeam; q=1; x=12; y=28;
+[Item] ID=skull2; q=1; x=13; y=12;
+[Item] ID=bonePileDark; q=1; r=-270; x=13; y=12;
+[Item] ID=bonePileDark; q=1; r=270; x=13; y=17;
+[Item] ID=bonePileDark; q=1; r=-180; x=13; y=17;
+[Item] ID=bonePileDark; q=1; r=90; x=13; y=20;
+[Item] ID=skull; q=1; x=13; y=23;
+[Item] ID=skull; q=1; r=90; x=13; y=23;
+[Item] ID=bonePileDark; q=1; r=180; x=13; y=24;
+[Item] ID=ribs1; q=1; x=14; y=12;
+[Item] ID=bonePileDark; q=1; x=14; y=16;
+[Item] ID=bonePileDark; q=1; r=90; x=14; y=16;
+[Item] ID=bonePileDark; q=1; r=180; x=14; y=18;
+[Item] ID=bone; q=1; x=14; y=19;
+[Item] ID=bonePileDark; q=1; x=14; y=22;
+[Item] ID=ribs2; q=1; r=180; x=14; y=23;
+[Item] ID=bonePileDark; q=1; r=180; x=14; y=24;
+[Item] ID=skull_elephant2; q=1; r=270; x=14; y=24;
+[Item] ID=staircase_up_zStone; q=1; x=14; y=34;
+[Item] ID=bonePileDark; q=1; r=-270; x=15; y=17;
+[Item] ID=bonePileDark; q=1; r=270; x=15; y=18;
+[Item] ID=bonePileDark; q=1; r=90; x=15; y=23;
+[Item] ID=sunbeam_circle_small_dull; q=1; x=15; y=35;
+[Item] ID=debris; q=1; x=16; y=12;
+[Item] ID=loot_bone_junk; q=1; bu=True; x=16; y=12;
+[Item] ID=bonePileDark; q=1; r=180; x=16; y=13;
+[Item] ID=bones2; q=1; x=16; y=13;
+[Item] ID=tusk; q=1; x=16; y=15;
+[Item] ID=bonePileDark; q=1; x=16; y=17;
+[Item] ID=skull_elephant1; q=1; r=90; x=16; y=18;
+[Item] ID=bonePileDark; q=1; r=180; x=16; y=19;
+[Item] ID=loot_bone_junk; q=1; r=90; x=16; y=20;
+[Item] ID=bone_dust; q=1; x=16; y=22;
+[Item] ID=bonePileDark; q=1; r=270; x=16; y=23;
+[Item] ID=travelPoint_0; q=1; r=360; x=16; y=35;
+[Item] ID=bonePileDark; q=1; r=90; x=17; y=12;
+[Item] ID=bonePileDark; q=1; x=17; y=17;
+[Item] ID=skull2; q=1; r=180; x=17; y=18;
+[Item] ID=bonePileDark; q=1; r=180; x=17; y=19;
+[Item] ID=loot_bone_junk; q=1; x=17; y=20;
+[Item] ID=bonePileDark; q=1; x=17; y=22;
+[Item] ID=bonePileDark; q=1; r=270; x=17; y=22;
+[Item] ID=bonePileDark; q=1; r=180; x=17; y=24;
+[Item] ID=bonePileDark; q=1; x=17; y=26;
+[Item] ID=skull; q=1; x=17; y=27;
+[Item] ID=skull; q=1; r=180; x=17; y=27;
+[Item] ID=skull; q=1; r=270; x=17; y=27;
+[Item] ID=skull; q=1; r=90; x=17; y=27;
+[Item] ID=skull; q=1; x=17; y=27;
+[Item] ID=bonePileDark; q=1; r=-180; x=17; y=28;
+[Item] ID=sunbeam; q=1; x=18; y=5;
+[Item] ID=bonePileDark; q=1; r=180; x=18; y=11;
+[Item] ID=bonePileDark; q=1; r=-90; x=18; y=11;
+[Item] ID=bonePileDark; q=1; r=270; x=18; y=13;
+[Item] ID=bonePileDark; q=1; r=270; x=18; y=14;
+[Item] ID=bonePileDark; q=1; r=90; x=18; y=18;
+[Item] ID=bonePileDark; q=1; x=18; y=21;
+[Item] ID=skull2; q=1; x=18; y=22;
+[Item] ID=bonePileDark; q=1; r=90; x=18; y=23;
+[Item] ID=bonePileDark; q=1; r=180; x=18; y=23;
+[Item] ID=bonePileDark; q=1; r=-270; x=18; y=27;
+[Item] ID=bone_spine; q=1; r=90; x=19; y=11;
+[Item] ID=bonePileDark; q=1; r=360; x=19; y=12;
+[Item] ID=bonePileDark; q=1; r=-180; x=19; y=12;
+[Item] ID=ribs2; q=1; x=19; y=14;
+[Item] ID=bonePileDark; q=1; r=180; x=19; y=15;
+[Item] ID=ribs2; q=1; r=180; x=19; y=17;
+[Item] ID=ari_phylactery_lair_both; q=1; x=19; y=21;
+[Item] ID=bonePileDark; q=1; r=90; x=19; y=22;
+[Item] ID=bonePileDark; q=1; x=20; y=12;
+[Item] ID=bonePileDark; q=1; r=270; x=20; y=12;
+[Item] ID=bones1; q=1; r=90; x=20; y=13;
+[Item] ID=bonePileDark; q=1; r=180; x=20; y=14;
+[Item] ID=bonePileDark; q=1; r=90; x=20; y=14;
+[Item] ID=skull_dog2; q=1; x=20; y=17;
+[Item] ID=skull; q=1; r=90; x=20; y=17;
+[Item] ID=bones2; q=1; r=180; x=21; y=9;
+[Item] ID=skull_elephant2; q=1; x=21; y=10;
+[Item] ID=bonePileDark; q=1; x=21; y=11;
+[Item] ID=bonePileDark; q=1; r=-180; x=21; y=14;
+[Item] ID=sunbeam_circle_big_dull; q=1; x=21; y=14;
+[Item] ID=ari_phylactery_lair1; q=1; x=21; y=14;
+[Item] ID=bonePileDark; q=1; r=-90; x=21; y=17;
+[Item] ID=skull_elephant1; q=1; r=90; x=21; y=19;
+[Item] ID=bonePileDark; q=1; r=270; x=21; y=21;
+[Item] ID=bonePileDark; q=1; x=22; y=12;
+[Item] ID=bonePileDark; q=1; r=90; x=22; y=12;
+[Item] ID=bonePileDark; q=1; r=180; x=22; y=14;
+[Item] ID=ari_phylactery_lair2; q=1; x=22; y=14;
+[Item] ID=bonePileDark; q=1; x=22; y=16;
+[Item] ID=bonePileDark; q=1; r=-180; x=22; y=18;
+[Item] ID=bonePileDark; q=1; x=22; y=20;
+[Item] ID=debris; q=1; x=22; y=21;
+[Item] ID=loot_bone_junk; q=1; bu=True; x=22; y=21;
+[Item] ID=bonePileDark; q=1; r=180; x=22; y=22;
+[Item] ID=bonePileDark; q=1; r=-360; x=23; y=12;
+[Item] ID=bonePileDark; q=1; r=-180; x=23; y=14;
+[Item] ID=bonePileDark; q=1; r=-90; x=23; y=14;
+[Item] ID=bonePileDark; q=1; r=270; x=23; y=15;
+[Item] ID=bonePileDark; q=1; r=270; x=23; y=16;
+[Item] ID=bonePileDark; q=1; r=90; x=23; y=17;
+[Item] ID=bonePileDark; q=1; r=-270; x=23; y=21;
+[Item] ID=bonePileDark; q=1; r=-360; x=24; y=12;
+[Item] ID=debris; q=1; x=24; y=13;
+[Item] ID=loot_bone_junk; q=1; bu=True; x=24; y=13;
+[Item] ID=skull; q=1; r=180; x=24; y=15;
+[Item] ID=ribs1; q=1; x=24; y=15;
+[Item] ID=bones2; q=1; r=270; x=24; y=16;
+[Item] ID=bonePileDark; q=1; r=180; x=24; y=17;
+[Item] ID=bonePileDark; q=1; r=-90; x=24; y=19;
+[Item] ID=bonePileDark; q=1; r=270; x=24; y=20;
+[Item] ID=bonePileDark; q=1; r=-180; x=25; y=10;
+[Item] ID=bonePileDark; q=1; r=90; x=25; y=13;
+[Item] ID=bonePileDark; q=1; r=-270; x=25; y=14;
+[Item] ID=bonePileDark; q=1; r=90; x=25; y=15;
+[Item] ID=bonePileDark; q=1; r=90; x=25; y=16;
+[Item] ID=bonePileDark; q=1; x=25; y=18;
+[Item] ID=loot_bone_junk; q=1; x=25; y=18;
+[Item] ID=bonePileDark; q=1; r=180; x=25; y=21;
+[Item] ID=bonePileDark; q=1; r=270; x=25; y=24;
+[Item] ID=bonePileDark; q=1; r=270; x=26; y=16;
+[Item] ID=loot_bone_junk; q=1; x=26; y=18;
+[Item] ID=bonePileDark; q=1; x=26; y=19;
+[Item] ID=bonePileDark; q=1; r=90; x=26; y=19;
+[Item] ID=bonePileDark; q=1; r=-180; x=26; y=21;
+[Item] ID=bonePileDark; q=1; x=26; y=23;
+[Item] ID=loot_bone_junk; q=1; r=360; x=26; y=23;
+[Item] ID=bonePileDark; q=1; r=180; x=26; y=25;
+[Item] ID=skull_dog1; q=1; x=27; y=14;
+[Item] ID=sunbeam_circle_small_dull; q=1; x=27; y=14;
+[Item] ID=bonePileDark; q=1; x=27; y=15;
+[Item] ID=bonePileDark; q=1; r=180; x=27; y=17;
+[Item] ID=bonePileDark; q=1; r=-270; x=27; y=20;
+[Item] ID=loot_bone_junk; q=1; r=90; x=27; y=23;
+[Item] ID=bonePileDark; q=1; r=90; x=27; y=24;
+[Item] ID=bonePileDark; q=1; r=-270; x=28; y=16;
+[Item] ID=sunbeam_flipped; q=1; r=180; x=29; y=7;
+[Item] ID=bonePileDark; q=1; r=-90; x=29; y=18;
+[Item] ID=debris; q=1; x=30; y=11;
+[Item] ID=loot_bone_junk; q=1; bu=True; x=30; y=11;
+[Item] ID=bonePileDark; q=1; r=180; x=30; y=12;
+[Item] ID=bonePileDark; q=1; r=180; x=30; y=19;
+[Item] ID=bonePileDark; q=1; r=270; x=30; y=19;
+
+
+[Actor]ID=summoned_undead_lich_enemy_ari_gravekeeper_lichlair_; name=Risen Lich;
+actorTypeID=summoned_undead_lich_actor_enemy; sprite=; actorClass=ari_lich_class_enemy; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=3; position=21,16; destination=-1,-1; facingRot=1170; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=False; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=p17; skinPalette=pCorpryst; armorPalette=pGreen; unarmoredPalette=pGreen; aiScript=wander_leash5_slow; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=False; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.6; bravery=1; intelligence=0.5; honor=0.4; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
+ headSprite=lich_head; faceSprite=lich_face; legsSprite=lich_legs; armLSprite=dadzioskeleton_arm1; armRSprite=dadzioskeleton_arm1; torsoSprite=lich_torso; shoulderLSprite=; shoulderRSprite=; backSprite=;
+partSpritesThatTakePriorityOverClass=torso; 
+
+ supportAbilities=ari_enemy_lich_soul_heal;  supportAbilities=ari_enemy_lich_death_aura;  supportAbilities=; skill_Ruin=5; sailor_XP_stars=0; warrior_XP_stars=0; ari_lich_fetid_field=1; ari_lich_class_XP=0; ari_lich_class_XP_stars=0; ari_enemy_lich_finger_death=1; ari_enemy_lich_chill_touch=1; ari_enemy_lich_summon_zombie=1; 
+numRanksBought=ari_enemy_lich_finger_death=1; 
+numRanksBought=ari_lich_fetid_field=1; 
+numRanksBought=ari_enemy_lich_chill_touch=1; 
+numRanksBought=ari_enemy_lich_summon_zombie=1; 
+numRanksBought=skill_Ruin=5; 
+
+[ActorState]
+canSwap=False;
+
+
+[ActorInventory]
+style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
+ 
+
+[ActorItem] ID=ari_grimoire_rot; cSlot=0; containerID=0;
+
+
+[Actor]ID=summoned_undead_skeletonmage_enemy_ari_gravekeeper_lichlair_0; name=Risen Skeleton Mage;
+actorTypeID=summoned_undead_skeleton_mage_type_enemy; sprite=; actorClass=ari_skeletonmage_class_enemy; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=2; position=27,19; destination=-1,-1; facingRot=1170; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=False; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pGreen; skinPalette=pCorpryst; armorPalette=pIron; unarmoredPalette=pUnarmored; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=False; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.5; bravery=0.4; intelligence=0.6; honor=0.1; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
+ headSprite=ari_dadzioskeleton_head1; faceSprite=; legsSprite=dadzioskeleton_legs1; armLSprite=dadzioskeleton_arm1; armRSprite=dadzioskeleton_arm1; torsoSprite=dadzioskeleton_torso1; shoulderLSprite=; shoulderRSprite=; backSprite=;
+partSpritesThatTakePriorityOverClass=torso; 
+
+ supportAbilities=ari_enemy_resurrection_passive1;  supportAbilities=;  supportAbilities=; MP=15; MPMax=15; TrueMPMax=15; skill_Ruin=3; sailor_XP_stars=0; warrior_XP_stars=0; ari_skeleton_mage_essencerupture=1; ari_enemy_skeleton_mage_bombard_stage1=1; 
+numRanksBought=ari_skeleton_mage_essencerupture=1; 
+numRanksBought=ari_enemy_skeleton_mage_bombard_stage1=1; 
+numRanksBought=skill_Ruin=3; 
+
+[ActorState]
+canSwap=False;
+
+[ActorEffect]
+ actorValue=skill_Ruin; sourceAVAffecter=ari_skeletonmage_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=6; duration=-1;
+
+[ActorInventory]
+style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
+ 
+
+[ActorItem] ID=ari_grimoire_forbidden; cSlot=0; containerID=0;
+
+
+[Actor]ID=summoned_undead_skeletonmage_enemy_ari_gravekeeper_lichlair_; name=Risen Skeleton Mage;
+actorTypeID=summoned_undead_skeleton_mage_type_enemy; sprite=; actorClass=ari_skeletonmage_class_enemy; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=2; position=18,16; destination=-1,-1; facingRot=1170; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=False; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pGreen; skinPalette=pCorpryst; armorPalette=pIron; unarmoredPalette=pUnarmored; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=False; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.5; bravery=0.4; intelligence=0.6; honor=0.1; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
+ headSprite=ari_dadzioskeleton_head1; faceSprite=; legsSprite=dadzioskeleton_legs1; armLSprite=dadzioskeleton_arm1; armRSprite=dadzioskeleton_arm1; torsoSprite=dadzioskeleton_torso1; shoulderLSprite=; shoulderRSprite=; backSprite=;
+partSpritesThatTakePriorityOverClass=torso; 
+
+ supportAbilities=ari_enemy_resurrection_passive1;  supportAbilities=;  supportAbilities=; MP=15; MPMax=15; TrueMPMax=15; skill_Ruin=3; sailor_XP_stars=0; warrior_XP_stars=0; ari_skeleton_mage_essencerupture=1; ari_enemy_skeleton_mage_bombard_stage1=1; 
+numRanksBought=ari_skeleton_mage_essencerupture=1; 
+numRanksBought=ari_enemy_skeleton_mage_bombard_stage1=1; 
+numRanksBought=skill_Ruin=3; 
+
+[ActorState]
+canSwap=False;
+
+[ActorEffect]
+ actorValue=skill_Ruin; sourceAVAffecter=ari_skeletonmage_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=6; duration=-1;
+
+[ActorInventory]
+style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
+ 
+
+[ActorItem] ID=ari_grimoire_forbidden; cSlot=0; containerID=0;
+
+
+[Actor]ID=summoned_undead_zombie_minion_enemy_ari_gravekeeper_lichlair_0; name=Risen Zombie;
+actorTypeID=summoned_undead_zombie_enemy; sprite=; actorClass=ari_zombie_class; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=2; position=19,19; destination=-1,-1; facingRot=1170; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=False; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pHuman12; skinPalette=p18; armorPalette=pBloodyMess_slow; unarmoredPalette=pBloodyMess_slow; aiScript=wander_leash1_slow; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=False; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.8; bravery=0.5; intelligence=0.3; honor=0.2; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
+ headSprite=zombie_head; faceSprite=; legsSprite=zombie_legs; armLSprite=zombie_arm; armRSprite=zombie_arm; torsoSprite=zombie_body; shoulderLSprite=; shoulderRSprite=; backSprite=;
+partSpritesThatTakePriorityOverClass=torso; 
+
+ supportAbilities=ari_enemy_resurrection_passive2;  supportAbilities=;  supportAbilities=; sailor_XP_stars=0; warrior_XP_stars=0; 
+
+[ActorState]
+canSwap=False;
+
+[ActorEffect]
+ actorValue=priority; sourceAVAffecter=ari_zombie_class; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=-0.5; duration=-1;
+
+[ActorInventory]
+style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
+ 
+
+
+
+[Actor]ID=summoned_undead_zombie_minion_enemy_ari_gravekeeper_lichlair_1; name=Risen Zombie;
+actorTypeID=summoned_undead_zombie_enemy; sprite=; actorClass=ari_zombie_class; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=2; position=23,18; destination=-1,-1; facingRot=1170; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=False; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pHuman12; skinPalette=p18; armorPalette=pBloodyMess_slow; unarmoredPalette=pBloodyMess_slow; aiScript=wander_leash1_slow; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=False; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.8; bravery=0.5; intelligence=0.3; honor=0.2; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
+ headSprite=zombie_head; faceSprite=; legsSprite=zombie_legs; armLSprite=zombie_arm; armRSprite=zombie_arm; torsoSprite=zombie_body; shoulderLSprite=; shoulderRSprite=; backSprite=;
+partSpritesThatTakePriorityOverClass=torso; 
+
+ supportAbilities=ari_enemy_resurrection_passive2;  supportAbilities=;  supportAbilities=; sailor_XP_stars=0; warrior_XP_stars=0; 
+
+[ActorState]
+canSwap=False;
+
+[ActorEffect]
+ actorValue=priority; sourceAVAffecter=ari_zombie_class; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=-0.5; duration=-1;
+
+[ActorInventory]
+style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
+ 
+
+
+
+[Actor]ID=summoned_undead_zombie_minion_enemy_ari_gravekeeper_lichlair_2; name=Risen Zombie;
+actorTypeID=summoned_undead_zombie_enemy; sprite=; actorClass=ari_zombie_class; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=2; position=26,15; destination=-1,-1; facingRot=1170; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=False; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pHuman12; skinPalette=p18; armorPalette=pBloodyMess_slow; unarmoredPalette=pBloodyMess_slow; aiScript=wander_leash1_slow; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=False; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.8; bravery=0.5; intelligence=0.3; honor=0.2; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
+ headSprite=zombie_head; faceSprite=; legsSprite=zombie_legs; armLSprite=zombie_arm; armRSprite=zombie_arm; torsoSprite=zombie_body; shoulderLSprite=; shoulderRSprite=; backSprite=;
+partSpritesThatTakePriorityOverClass=torso; 
+
+ supportAbilities=ari_enemy_resurrection_passive2;  supportAbilities=;  supportAbilities=; sailor_XP_stars=0; warrior_XP_stars=0; 
+
+[ActorState]
+canSwap=False;
+
+[ActorEffect]
+ actorValue=priority; sourceAVAffecter=ari_zombie_class; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=-0.5; duration=-1;
+
+[ActorInventory]
+style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
+ 
+
+
+
+[Actor]ID=summoned_undead_zombie_minion_enemy_ari_gravekeeper_lichlair_; name=Risen Zombie;
+actorTypeID=summoned_undead_zombie_enemy; sprite=; actorClass=ari_zombie_class; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=2; position=16,16; destination=-1,-1; facingRot=1170; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=False; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pHuman12; skinPalette=p18; armorPalette=pBloodyMess_slow; unarmoredPalette=pBloodyMess_slow; aiScript=wander_leash1_slow; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=False; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.8; bravery=0.5; intelligence=0.3; honor=0.2; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
+ headSprite=zombie_head; faceSprite=; legsSprite=zombie_legs; armLSprite=zombie_arm; armRSprite=zombie_arm; torsoSprite=zombie_body; shoulderLSprite=; shoulderRSprite=; backSprite=;
+partSpritesThatTakePriorityOverClass=torso; 
+
+ supportAbilities=ari_enemy_resurrection_passive2;  supportAbilities=;  supportAbilities=; sailor_XP_stars=0; warrior_XP_stars=0; 
+
+[ActorState]
+canSwap=False;
+
+[ActorEffect]
+ actorValue=priority; sourceAVAffecter=ari_zombie_class; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=-0.5; duration=-1;
+
+[ActorInventory]
+style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
+ 
+
+
+
+
+[Trigger] numID=0; aliasID=LeaveLichLair;
+topX=13;topY=33;btmX=15;btmY=35;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[TriggerEffect] numID=0; effectID=travel_point; sValue=ari_gravekeeper_mausoleum1; sValue2=; bValue1=False; bValue2=False; fValue=1; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+
+
+[Trigger] numID=1; aliasID=GrimoireVendor;
+topX=19;topY=12;btmX=24;btmY=16;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=True; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=g:grimoire_unlock;
+[TriggerEffect] numID=1; effectID=talk; sValue=; sValue2=ari_gravekeeper_phylactery_greeting; bValue1=True; bValue2=False; fValue=0; delay=0; fReq=is:1:g:grimoire_unlock; taskString=; xValue=-1; yValue=-1;
+[TriggerEffect] numID=1; effectID=talk; sValue=; sValue2=ari_gravekeeper_phylactery_greeting1; bValue1=True; bValue2=False; fValue=0; delay=0; fReq=is:2:g:grimoire_unlock; taskString=; xValue=-1; yValue=-1;
+[TriggerEffect] numID=1; effectID=talk; sValue=; sValue2=ari_gravekeeper_phylactery_greeting2; bValue1=True; bValue2=False; fValue=0; delay=0; fReq=is:3:g:grimoire_unlock; taskString=; xValue=-1; yValue=-1;
+[TriggerEffect] numID=1; effectID=talk; sValue=; sValue2=ari_gravekeeper_phylactery_greeting3; bValue1=True; bValue2=False; fValue=0; delay=0; fReq=is:4:g:grimoire_unlock; taskString=; xValue=-1; yValue=-1;
+
+
+
+[Trigger] numID=2; aliasID=ari_spawn_necronomicon;
+topX=20;topY=26;btmX=23;btmY=29;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=g:grimoire_necronomicon_spawn;
+[TriggerEffect] numID=2; effectID=spawnItem; sValue=debris; sValue2=; bValue1=False; bValue2=False; fValue=1; delay=0; fReq=1; taskString=; xValue=17; yValue=9;
+[TriggerEffect] numID=2; effectID=spawnItem; sValue=ari_grimoire_necronomicon; sValue2=; bValue1=False; bValue2=False; fValue=1; delay=0; fReq=1; taskString=; xValue=17; yValue=9;
+[TriggerEffect] numID=2; effectID=buryAllItemsOfType; sValue=ari_grimoire_necronomicon; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+
+
+[Trigger] numID=3; aliasID=ari_lichlair_removecrew;
+topX=8;topY=34;btmX=9;btmY=34;
+triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[TriggerEffect] numID=3; effectID=removeExcessLandingPartyActors; sValue=; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+
+
+[Trigger] numID=4; aliasID=ari_gk_destroy_lich_altar;
+topX=18;topY=11;btmX=25;btmY=17;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=is:3:g:arianna_gravekeeper_phylactery_quest;
+[TriggerEffect] numID=4; effectID=removeItem; sValue=ari_phylactery_lair1; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=21; yValue=14;
+[TriggerEffect] numID=4; effectID=spawnItem; sValue=ari_phylactery_lair1_empty; sValue2=; bValue1=False; bValue2=False; fValue=1; delay=0; fReq=1; taskString=; xValue=21; yValue=14;
+[TriggerEffect] numID=4; effectID=removeItem; sValue=ari_phylactery_lair2; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=22; yValue=14;
+[TriggerEffect] numID=4; effectID=spawnItem; sValue=ari_phylactery_lair2_empty; sValue2=; bValue1=False; bValue2=False; fValue=1; delay=0; fReq=1; taskString=; xValue=22; yValue=14;
+[TriggerEffect] numID=4; effectID=spawnItem; sValue=ari_broken_phylactery_trinket; sValue2=; bValue1=False; bValue2=False; fValue=1; delay=0; fReq=1; taskString=; xValue=22; yValue=13;
+
+
+

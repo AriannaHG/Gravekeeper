@@ -1,0 +1,88 @@
+[Location] ID=ari_gravekeeper_port; name=Port Barrow;
+x=247; y=373;
+port=true;
+discovered=false;
+namePopup_texture=tbg_port;
+minimapIcon=ui_map_notable;
+showNameAsAPopupOnEntering=True;
+useWorldtimeZoneDarkness=True;
+zoneThisLocationIsIn=eral;
+zoneDescTitle=Port;
+discoveryFameMod=1;
+externalSong=PM-Resort2;
+locationItem=port_bighouses5;
+
+wealthLevel=30;
+
+--Here's where I'm putting the cargo I've chosen, and the cafe food.
+tradeGood_itemTypeID=cargo_gemstone;
+cafeFood_itemTypeID=food_basic1;
+
+--These icons are what show up on the map.
+tooltipIcons=sign_icon_cup;
+tooltipIcons=sign_icon_book;
+tooltipIcons=sign_icon_bag;
+tooltipIcons=sign_icon_boat;
+
+--This is where the ship weapons go.
+--itemType_quantity=cannon_falconet=-2;
+--itemType_quantity=gear_boarding=-2;
+--itemType_quantity=cannon_culverin=-2;
+
+--Here are some basic items available at the merchant.
+itemType_quantity=reviveDust=-2;
+itemType_quantity=bandage=-2;
+itemType_quantity=splint=-2;
+--itemType_quantity=lifeshard=-2;
+itemType_quantity=bottle_beer=-2;
+--itemType_quantity=dart=-2;
+
+--Here are the ships available by default.
+shipwright_boatTypes=sailboat;
+
+--Unlockables.
+--itemType_quantity_unlockable=cannon_harpoon=-2;
+--itemType_formula_unlockable=cannon_harpoon=m:locWealth(70);
+--itemType_quantity_unlockable=gear_extraCache=-2;
+--itemType_formula_unlockable=gear_extraCache=m:locWealth(80);
+--itemType_quantity_unlockable=cannon_cannon=-2;
+--itemType_formula_unlockable=cannon_cannon=m:locWealth(90);
+--itemType_quantity_unlockable=gear_boarding_hook=1;
+--itemType_formula_unlockable=gear_boarding_hook=m:locWealth(100);
+
+--itemType_quantity_unlockable=mythril_chunk=1;
+--itemType_formula_unlockable=mythril_chunk=m:locWealth(65);
+itemType_quantity_unlockable=xpGem=3;
+itemType_formula_unlockable=xpGem=m:locWealth(65);
+--itemType_quantity_unlockable=xpGemMed=2;
+--itemType_formula_unlockable=xpGemMed=m:locWealth(75);
+--itemType_quantity_unlockable=fish_mag=1;
+--itemType_formula_unlockable=fish_mag=m:locWealth(75);
+--itemType_quantity_unlockable=cloak_kingfur=1;
+--itemType_formula_unlockable=cloak_kingfur=m:locWealth(75);
+--itemType_quantity_unlockable=ghost_grub=1;
+--itemType_formula_unlockable=ghost_grub=m:locWealth(90);
+--itemType_quantity_unlockable=ironice_chunk=1;
+--itemType_formula_unlockable=ironice_chunk=m:locWealth(90);
+--itemType_quantity_unlockable=abilityCrest=1;
+--itemType_formula_unlockable=abilityCrest=m:locWealth(100);
+
+--itemType_quantity_unlockable=necklace_lifebead=1;
+--itemType_formula_unlockable=necklace_lifebead=m:locWealth(70);
+--itemType_quantity_unlockable=band_fire_elec=1;
+--itemType_formula_unlockable=band_fire_elec=m:locWealth(80);
+--itemType_quantity_unlockable=armor_shellworm=1;
+--itemType_formula_unlockable=armor_shellworm=m:locWealth(90);
+--itemType_quantity_unlockable=guideexample_armor_golden_mail=1;
+--itemType_formula_unlockable=guideexample_armor_golden_mail=m:locWealth(100);
+
+--itemType_quantity_unlockable=fullrigged=-2;
+--itemType_formula_unlockable=fullrigged=m:locWealth(100);
+
+--This tells the game which crew to spawn at the cafe. Assuming it works...
+auto_spawnDataID=hire_human;
+
+--This determines starting favor.
+faction_favor=seartial=0;
+faction_favor=jasce=20;
+faction_favor=rumane=0;

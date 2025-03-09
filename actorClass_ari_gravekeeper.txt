@@ -1,0 +1,523 @@
+[ActorClass] name=Gravekeeper;
+ID=ari_gravekeeper;
+selectableClass=true;
+icon=classIcon_ari_gravekeeper;
+journalID=ari_journal_gravekeeper;
+
+description=A vile caster that summons forth legions of the undead.;
+paletteUI=pPurple;
+
+actions=ari_gravekeeper_undead_legion;
+actions=ari_gravekeeper_masterblood;
+actions=ari_gravekeeper_foot_grave;
+actions=ari_gravekeeper_soul_collector;
+actions=ari_gravekeeper_unholy_pact_sacrifices;
+
+supportAbilities=ari_gravekeeper_exhume;
+supportAbilities=ari_gravekeeper_foul_corpses;
+supportAbilities=ari_gravekeeper_undead_commander;
+supportAbilities=ari_gravekeeper_vampiric_minions;
+supportAbilities=ari_gravekeeper_lichdom;
+
+ruinModeSupportAbility=;
+
+------------------------------------------------------Star purchases
+relevantStats=TrueHPMax;
+relevantStats=TrueMPMax;
+relevantStats=skill_Ruin;
+
+------------------------------------------------------Class requirements
+fReq=g:class_gravekeeper;
+requiredStat=scholar_XP_total;
+requiredAmt=500;
+requiredStat=sage_XP_total;
+requiredAmt=200;
+requiredStat=unmaker_XP_total;
+requiredAmt=400;
+
+------------------------------------------------------Class appearance
+bodyPart1=armR;
+bodyPartSprite1=enchanter_arm;
+bodyPart2=armL;
+bodyPartSprite2=enchanter_arm;
+bodyPart3=torso;
+bodyPartSprite3=unmaker_torso;
+bodyPart4=shoulderR;
+bodyPartSprite4=unmaker_shoulder;
+bodyPart5=shoulderL;
+bodyPartSprite5=unmaker_shoulder;
+
+------------------------------------------------------Attributes applied when class is in primary slot
+[ActorClassEffect]  ID=ari_gravekeeper; actorValue=TrueHPMax; magnitude=5; duration=-1;
+[ActorClassEffect]  ID=ari_gravekeeper; actorValue=TrueMPMax; magnitude=5; duration=-1;
+[ActorClassEffect]  ID=ari_gravekeeper; actorValue=skill_Ruin; magnitude=2; duration=-1;
+
+------------------------------------------------------Attach soul collector AV to everyone so that souls can be collected on actors with soul pact learned
+[ActorValueReaction] ID=TrueHPMax; element=combatStart; action=ari_gravekeeper_soul_attach;
+[ActorValueReaction] ID=TrueHPMax; element=combatEnd; action=ari_gravekeeper_soul_detach;
+
+[Action] ID=ari_gravekeeper_soul_attach; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+
+[ActionAoE] 
+	ID=ari_gravekeeper_soul_attach; 
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_soul_attach; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=ari_gravekeeper_soulcollector_av;
+	magnitude=1;
+	duration=-2;
+	chance=100;
+	visibleMiss=false;
+	FXOnTile=delay_tiny;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_attach;
+	fReq=t:ari_gravekeeper_soul_collector;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_soul_attach; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=ari_gravekeeper_class_check;
+	magnitude=1;
+	duration=-2;
+	chance=100;
+	visibleMiss=false;
+	FXOnTile=delay_tiny;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_attach;
+	fReq=moreThan:0:d:ari_gravekeeper_skill_check;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	
+[Action] ID=ari_gravekeeper_soul_detach; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+
+[ActionAoE] 
+	ID=ari_gravekeeper_soul_detach; 
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_soul_detach; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=ari_gravekeeper_soul_amount;
+	magnitude=-10;
+	duration=-2;
+	chance=100;
+	visibleMiss=false;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_detach;
+	fReq=t:ari_gravekeeper_soul_collector;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_soul_detach; 
+	visibleEvaluations=false;
+	harmful=true;
+	actorValue=ari_gravekeeper_soulcollector_av;
+	magnitude=-10;
+	duration=-2;
+	chance=100;
+	visibleMiss=false;
+	FXOnTile=delay_tiny;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_detach;
+	fReq=t:ari_gravekeeper_soul_collector;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+
+
+
+------------------------------------------------------Actual Gravekeeper journal entry
+[JournalEntry]
+ID=ari_journal_gravekeeper;
+category=actorClass; halfPage=true; rarity=1;
+title=Gravekeeper;
+text=<icon=classIcon_ari_gravekeeper><title=Gravekeeper><brAdj=>Mages have long sought to harness the power of Ruin and channel it into a form of necromancy. Gravekeepers have mastered the necromantic elements and are able to raise armies of the Undead to do their bidding, but the death of a Gravekeeper will rupture the necromantic energies and send the Undead back to their graves.;
+
+
+----------------------------------------------------------------Risen Minion Classes----------------------------------------------------------------
+[ActorClass] name=Risen Minion;
+ID=ari_risenminion_class;
+selectableClass=false;
+icon=icon_gravekeeper_risen;
+journalID=ari_journal_risenminion_class;
+
+description=A minion brought back by a Gravekeeper.;
+paletteUI=pPurple;
+
+actions=ari_abomination_consume;
+actions=ari_abomination_corpse_slam;
+actions=ari_abomination_amalgamated_limb;
+actions=ari_abomination_hurl_zombie;
+actions=ari_abomination_fetid_consumption;
+
+supportAbilities=ari_abomination_rot_cloud;
+supportAbilities=ari_abomination_blood_nova;
+supportAbilities=ari_abomination_horrific_presence;
+supportAbilities=ari_abomination_bone_cloak;
+
+ruinModeSupportAbility=;
+
+requiredStat=sailor_XP_total;
+requiredAmt=0;
+
+[JournalEntry]
+ID=ari_journal_risenminion_class;
+category=actorClass; halfPage=true; rarity=0;
+title=Risen Minion;
+text=<icon=icon_gravekeeper_risen><title=Risen Minion><brAdj=>A minion brought back by a Gravekeeper.;
+----------------------------------------------------------------Skeleton Knight
+[ActorClass] name=Skeleton Knight;
+ID=ari_skeletonknight_class;
+selectableClass=false;
+icon=icon_skeleton_knight_minion;
+journalID=ari_journal_skeletonknight_class;
+
+description=A long-dead Knight brought back to help command the armies of the undead.;
+paletteUI=pPurple;
+
+actions=ari_skeleton_knight_gravestrike;
+actions=ari_skeleton_knight_command_speed;
+actions=ari_skeleton_knight_command_enrage;
+actions=ari_skeleton_warrior_charge;
+actions=ari_skeleton_knight_command_undeath;
+
+ruinModeSupportAbility=;
+
+requiredStat=sailor_XP_total;
+requiredAmt=0;
+
+[JournalEntry]
+ID=ari_journal_skeletonknight_class;
+category=actorClass; halfPage=true; rarity=0;
+title=Skeleton Knight;
+text=<icon=icon_skeleton_knight_minion><title=Skeleton Knight><brAdj=>A long-dead Knight brought back to help command the armies of the undead.;
+
+[ActorClassEffect]  ID=ari_skeletonknight_class; actorValue=priority; magnitude=-0.5; duration=-1;
+
+----------------------------------------------------------------Skeleton Footman
+[ActorClass] name=Skeleton Footman;
+ID=ari_skeletonwarrior_class;
+selectableClass=false;
+icon=icon_skeleton_footman_minion;
+journalID=ari_journal_skeletonwarrior_class;
+
+description=A long-dead footman brought back at its master's whim.;
+paletteUI=pPurple;
+
+actions=ari_skeleton_warrior_charge;
+actions=ari_skeleton_warrior_bonearmor;
+actions=ari_skeleton_warrior_boneshield;
+
+ruinModeSupportAbility=;
+
+[JournalEntry]
+ID=ari_journal_skeletonwarrior_class;
+category=actorClass; halfPage=true; rarity=0;
+title=Skeleton Footman;
+text=<icon=icon_skeleton_footman_minion><title=Skeleton Footman><brAdj=>A long-dead footman brought back at its master's whim.;
+
+[ActorClassEffect]  ID=ari_skeletonwarrior_class; actorValue=priority; magnitude=-0.5; duration=-1;
+
+----------------------------------------------------------------Skeleton Archer
+[ActorClass] name=Skeleton Archer;
+ID=ari_skeletonarcher_class;
+selectableClass=false;
+icon=icon_skeleton_archer_minion;
+journalID=ari_journal_skeletonarcher_class;
+
+description=A long-dead archer brought back to rain arrows from above on its enemies.;
+paletteUI=pPurple;
+
+actions=ari_skeleton_archer_bonespear;
+actions=ari_skeleton_archer_bone_shards;
+
+ruinModeSupportAbility=;
+
+[JournalEntry]
+ID=ari_journal_skeletonarcher_class;
+category=actorClass; halfPage=true; rarity=0;
+title=Skeleton Archer;
+text=<icon=icon_skeleton_archer_minion><title=Skeleton Archer><brAdj=>A long-dead archer brought back to rain arrows from above on its enemies.;
+
+[ActorClassEffect]  ID=ari_skeletonarcher_class; actorValue=priority; magnitude=-0.5; duration=-1;
+
+----------------------------------------------------------------Skeleton Mage
+[ActorClass] name=Skeleton Mage;
+ID=ari_skeletonmage_class;
+selectableClass=false;
+icon=icon_skeleton_mage_minion;
+journalID=ari_journal_skeletonmage_class;
+
+description=A long-dead sorcerer brought back to blast its enemies with ruinous magic.;
+paletteUI=pPurple;
+
+actions=ari_skeleton_mage_bombard_stage1;
+actions=ari_skeleton_mage_detonatedead;
+actions=ari_skeleton_mage_essencerupture;
+
+ruinModeSupportAbility=;
+
+[JournalEntry]
+ID=ari_journal_skeletonmage_class;
+category=actorClass; halfPage=true; rarity=0;
+title=Skeleton Mage;
+text=<icon=icon_skeleton_mage_minion><title=Skeleton Mage><brAdj=>A long-dead sorcerer brought back to blast its enemies with ruinous magic.;
+
+[ActorClassEffect]  ID=ari_skeletonmage_class; actorValue=priority; magnitude=-0.5; duration=-1;
+
+----------------------------------------------------------------Zombie
+[ActorClass] name=Zombie;
+ID=ari_zombie_class;
+selectableClass=false;
+icon=icon_zombie_minion;
+journalID=ari_zombie_class;
+
+description=A foul, walking corpse imbued with dark magics.;
+paletteUI=pPurple;
+
+actions=ari_zombie_infectious_bile;
+actions=ari_zombie_corpse_expulsion;
+
+ruinModeSupportAbility=;
+
+[JournalEntry]
+ID=ari_zombie_class;
+category=actorClass; halfPage=true; rarity=0;
+title=Zombie;
+text=<icon=icon_zombie_minion><title=Zombie><brAdj=>A foul, walking corpse imbued with dark magics.;
+
+[ActorClassEffect]  ID=ari_zombie_class; actorValue=priority; magnitude=-0.5; duration=-1;
+
+----------------------------------------------------------------Abomination
+[ActorClass] name=Abomination;
+ID=ari_abomination_class;
+selectableClass=false;
+icon=icon_abomination_minion;
+journalID=ari_abomination_class_journal;
+
+description=A disgusting amalgamation of corpses, blood and bone.;
+paletteUI=pPurple;
+
+actions=ari_abomination_charge;
+actions=ari_abomination_bonespear;
+actions=ari_abomination_gravestrike;
+actions=ari_abomination_infectious_bile;
+actions=ari_abomination_corpse_expulsion;
+
+ruinModeSupportAbility=;
+
+[JournalEntry]
+ID=ari_abomination_class_journal;
+category=actorClass; halfPage=true; rarity=0;
+title=Abomination;
+text=<icon=icon_abomination_minion><title=Abomination><brAdj=>A disgusting amalgamation of corpses, blood and bone.;
+
+----------------------------------------------------------------Lich
+[ActorClass] name=Lich;
+ID=ari_lich_class;
+selectableClass=false;
+icon=icon_risen_lich_minion;
+journalID=ari_lich_class_journal;
+
+description=In a dark ritual, the caster has risen once again as a powerful revenant.;
+paletteUI=pPurple;
+
+actions=ari_lich_rotbeam;
+actions=ari_lich_fetid_field;
+actions=ari_lich_disintegrate;
+actions=ari_lich_death_curse;
+
+supportAbilities=ari_lich_overseer;
+
+ruinModeSupportAbility=;
+
+[JournalEntry]
+ID=ari_lich_class_journal;
+category=actorClass; halfPage=true; rarity=0;
+title=Lich;
+text=<icon=icon_risen_lich_minion><title=Lich><brAdj=>In a dark ritual, the caster has risen once again as a powerful revenant.;
+
+----------------------------------------------------------------Ethereal Spirit
+[ActorClass] name=Ethereal Spirit;
+ID=ari_spirit_class;
+selectableClass=false;
+icon=icon_gravekeeper_ethereal_spirit;
+journalID=ari_spirit_class;
+
+description=An ethereal spirit from beyond the veil, forcibly brought back to this plane of existence by a Gravekeeper.;
+paletteUI=pPurple;
+
+actions=ari_spirit_spook;
+actions=ari_phantom_horror;
+actions=ari_wisp_souldrain;
+actions=ari_ghost_spiritcreep;
+actions=ari_wraith_soul_tear;
+
+ruinModeSupportAbility=;
+
+[JournalEntry]
+ID=ari_spirit_class;
+category=actorClass; halfPage=true; rarity=0;
+title=Ethereal Spirit;
+text=<icon=icon_gravekeeper_ethereal_spirit><title=Ethereal Spirit><brAdj=>An ethereal spirit from beyond the veil, forcibly brought back to this plane of existence by a Gravekeeper.;
+
+----------------------------------------------------------------Mausoleum
+[ActorClass] name=Mausoleum;
+ID=ari_mausoleum_class;
+selectableClass=false;
+icon=icon_gravekeeper_ethereal_spirit;
+journalID=ari_mausoleum_class_journal;
+
+description=A Graveyard housing long-dead spirits and souls.;
+paletteUI=pPurple;
+
+
+actions=ari_mausoleum_summon_spirits;
+actions=ari_mausoleum_haunting;
+--actions=ari_graveyard_summon_wraith;
+
+ruinModeSupportAbility=;
+
+[JournalEntry]
+ID=ari_mausoleum_class_journal;
+category=actorClass; halfPage=true; rarity=0;
+title=Graveyard;
+text=<icon=icon_gravekeeper_ethereal_spirit><title=Graveyard><brAdj=>A Graveyard housing long-dead spirits and souls.;
+
+
+
+----------------------------------------------------------------
+---------------------Enemy Classes------------------------------
+----------------------------------------------------------------
+-----------------------------------------Enemy zombie
+[ActorClass] name=Zombie;
+ID=ari_zombie_class_enemy;
+selectableClass=false;
+icon=icon_zombie_minion;
+journalID=ari_zombie_class;
+
+description=A foul, walking corpse imbued with dark magics.;
+paletteUI=pPurple;
+
+actions=ari_zombie_infectious_bile_enemy;
+actions=ari_enemy_zombie_corpse_expulsion;
+
+[ActorClassEffect]  ID=ari_zombie_class_enemy; actorValue=skill_Fist; magnitude=2; duration=-1;
+[ActorClassEffect]  ID=ari_zombie_class_enemy; actorValue=skill_Ruin; magnitude=3; duration=-1;
+-----------------------------------------Enemy Skeleton mage
+[ActorClass] name=Skeleton Mage;
+ID=ari_skeletonmage_class_enemy;
+selectableClass=false;
+icon=icon_skeleton_mage_minion;
+journalID=ari_journal_skeletonmage_class;
+
+description=A long-dead sorcerer brought back to blast its enemies with ruinous magic.;
+paletteUI=pPurple;
+
+actions=ari_enemy_skeleton_mage_bombard_stage1;
+actions=ari_skeleton_mage_essencerupture;
+
+ruinModeSupportAbility=;
+
+[ActorClassEffect]  ID=ari_skeletonmage_class_enemy; actorValue=skill_Ruin; magnitude=6; duration=-1;
+
+-----------------------------------------Enemy Lich class
+[ActorClass] name=Lich;
+ID=ari_lich_class_enemy;
+selectableClass=false;
+icon=icon_risen_lich_minion;
+journalID=ari_lich_class_journal;
+
+description=In a dark ritual, the caster has risen once again as a powerful revenant.;
+paletteUI=pPurple;
+
+actions=ari_enemy_lich_finger_death;
+actions=ari_lich_fetid_field_enemy;
+actions=ari_enemy_lich_chill_touch;
+actions=ari_enemy_lich_summon_zombie;
+
+supportAbilities=ari_enemy_lich_soul_heal;
+supportAbilities=ari_enemy_lich_death_aura;
+
+ruinModeSupportAbility=;
+
+-----------------------------------------Enemy Skeleton Footman
+[ActorClass] name=Skeleton Footman;
+ID=ari_skeletonwarrior_class_enemy;
+selectableClass=false;
+icon=icon_skeleton_footman_minion;
+journalID=ari_journal_skeletonwarrior_class;
+
+description=A long-dead footman brought back at its master's whim.;
+paletteUI=pPurple;
+
+actions=ari_skeleton_warrior_charge_enemy;
+--actions=ari_skeleton_warrior_bonearmor;
+--actions=ari_skeleton_warrior_boneshield;
+
+ruinModeSupportAbility=;
+
+bodyPart1=armR;
+bodyPartSprite1=knight_arm;
+bodyPart2=armL;
+bodyPartSprite2=knight_arm;
+bodyPart3=torso;
+bodyPartSprite3=guardian_torso;
+bodyPart4=shoulderR;
+bodyPartSprite4=guardian_shoulder;
+bodyPart5=shoulderL;
+bodyPartSprite5=guardian_shoulder;
+
+[ActorClassEffect]  ID=ari_skeletonwarrior_class_enemy; actorValue=TrueHPMax; magnitude=5; duration=-1;
+[ActorClassEffect]  ID=ari_skeletonwarrior_class_enemy; actorValue=skill_Sword; magnitude=3; duration=-1;
+[ActorClassEffect]  ID=ari_skeletonwarrior_class_enemy; actorValue=skill_Shield; magnitude=3; duration=-1;
+[ActorClassEffect]  ID=ari_skeletonwarrior_class_enemy; actorValue=skill_Ruin; magnitude=5; duration=-1;
+-----------------------------------------Enemy Skeleton archer
+[ActorClass] name=Skeleton Archer;
+ID=ari_skeletonarcher_class_enemy;
+cloneFrom=ari_skeletonarcher_class;
+
+bodyPart1=armR;
+bodyPartSprite1=knight_arm;
+bodyPart4=shoulderR;
+bodyPartSprite4=guardian_shoulder;
+
+[ActorClassEffect]  ID=ari_skeletonarcher_class_enemy; actorValue=skill_Aim; magnitude=4; duration=-1;
+[ActorClassEffect]  ID=ari_skeletonarcher_class_enemy; actorValue=skill_Shield; magnitude=2; duration=-1;
+[ActorClassEffect]  ID=ari_skeletonarcher_class_enemy; actorValue=skill_Ruin; magnitude=5; duration=-1;
+-----------------------------------------Enemy Abomination
+[ActorClass] name=Hulking Abomination;
+ID=ari_abomination_class_enemy;
+selectableClass=false;
+icon=icon_abomination_minion;
+journalID=ari_abomination_class_journal;
+
+description=A disgusting amalgamation of corpses, blood and bone.;
+paletteUI=pPurple;
+
+actions=ari_enemy_abomination_hurl_zombie;
+actions=ari_enemy_abomination_amalgamated_limb;
+actions=ari_enemy_abomination_corpse_slam;
+
+ruinModeSupportAbility=;
+
+[ActorClassEffect]  ID=ari_abomination_class_enemy; actorValue=skill_Fist; magnitude=8; duration=-1;
+[ActorClassEffect]  ID=ari_abomination_class_enemy; actorValue=skill_Ruin; magnitude=6; duration=-1;

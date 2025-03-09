@@ -1,0 +1,870 @@
+[DialogNode] ID=ari_dialog_taidonchatter;
+animations=;
+statements=<rand=Hey, did you notice anything sticking out of the ground near Arianna's house?/This place is pretty creepy at night.>;
+nodeToConnectTo=;
+
+[DialogNode] ID=ari_dialog_zombchatter;
+animations=stern;
+statements=<rand=Be careful at night around here./Don't stray too close to the graveyard up north./We don't normally get visitors here...>;
+nodeToConnectTo=;
+
+
+[DialogNode] ID=ari_gravekeeper_arianna_greeting;
+animations=;
+statements=Well hello. We don't get many visitors around here and those we do get tend not stay after their first night.;
+specialEffect=incDefaultNode;
+[DialogOption] text=What happens on their first night?;
+nodeToConnectTo=ari_gravekeeper_arianna_firstnight;
+[DialogOption] text=OK, bye.;
+nextNodeID=;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_arianna_greeting1;
+animations=sly;
+statements=Still around, eh? How's the night been treating you?;
+[DialogOption] text=And what goes on at night around here?;
+formulaReq=;
+nodeToConnectTo=ari_gravekeeper_arianna_graveyardinfest;
+[DialogOption] text=Goodbye.;
+nextNodeID=;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_arianna_firstnight;
+animations=sigh;
+statements=Well, it's not so much their first night as what goes on at night around here.;
+[DialogOption] text=And what goes on at night around here?;
+nodeToConnectTo=ari_gravekeeper_arianna_graveyardinfest;
+[DialogOption] text=Oh OK, bye.;
+nextNodeID=;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_arianna_graveyardinfest;
+animations=sigh;
+animations=;
+statements=I'm not quite sure what's been causing it myself, but our graveyard tends to become a bit unruly at night.;
+statements=We typically lock it off for good measure, but you're free to take this key and open the gate if you'd like.;
+[DialogOption] text=I'd be happy to investigate.;
+nodeToConnectTo=ari_gravekeeper_arianna_graveyardkey;
+[DialogOption] text=I don't do well with that kind of stuff, thanks.;
+nextNodeID=;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_arianna_graveyardkey;
+animations=angry;
+animations=sly;
+statements=Alright, feel free to grab the key from inside my house right here. But don't say that I didn't warn you.;
+statements=Would you do me a favor and come see me if you manage to find out what's going on?;
+specialEffect=incDefaultNode;
+nextNodeID=ari_gravekeeper_arianna_getkey;
+
+[DialogNode] ID=ari_gravekeeper_arianna_getkey;
+specialEffect=setGlobalVar,ari_graveyard_key,1;
+nextNodeID=;
+
+
+[DialogNode] ID=ari_gravekeeper_arianna_greeting2;
+animations=sly;
+statements=Did you find anything?;
+[DialogOption] text=I managed to fend off a hulking Abomination. <n=>It looked like it might have been ordering those Undead around.;
+formulaReq=g:ari_dead_abomination;
+nodeToConnectTo=ari_gravekeeper_arianna_graveyardabominationdead;
+[DialogOption] text=Nothing yet.;
+nodeToConnectTo=;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_arianna_graveyardabominationdead;
+animations=sly;
+animations=;
+animations=;
+animations=sigh;
+animations=;
+animations=sigh;
+statements=A *what*?;
+statements=What did it look like?!;
+statements=How was it ordering Undead around?;
+statements=What was it made ou- No, that isn't what matters right now.;
+statements=If there was an Abomination around then we need to figure out what brought it about.;
+statements=I have a request, visitor. <n=>I know this is asking for quite a bit, and I apologize. <n=>Could you go back and see if you can figure out how the Abomination got there?;
+[DialogOption] text=It felt like I had some unresolved business back down<n=> there. I'll go take a look.;
+nodeToConnectTo=ari_gravekeeper_arianna_graveyardlich_quest_accept0;
+[DialogOption] text=Sorry, but that's asking for too much.;
+nodeToConnectTo=ari_gravekeeper_arianna_graveyardlich_quest_decline0;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_arianna_graveyardlich_quest_accept0;
+animations=happy;
+animations=stern;
+statements=Much thanks, visitor.;
+statements=Just promise me that you won't try to replicate what you've been seeing here. <n=>This kind of magic is cursed.;
+specialEffect=incDefaultNode;
+[DialogOption] text=Unlock <iconBig=classIcon_ari_gravekeeper> Gravekeeper.;
+nodeToConnectTo=ari_gravekeeper_arianna_gravekeeper_accept_learn;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_arianna_graveyardlich_quest_decline0;
+animations=sigh;
+animations=stern;
+statements=I understand. But visitor, what you've seen here...;
+statements=Don't go trying to replicate this kind of magic. It's some cursed stuff.;
+specialEffect=incDefaultNode;
+[DialogOption] text=Unlock <iconBig=classIcon_ari_gravekeeper> Gravekeeper.;
+nodeToConnectTo=ari_gravekeeper_arianna_gravekeeper_decline_learn;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_arianna_gravekeeper_accept_learn;
+specialEffect=setGlobalVar,class_gravekeeper,1;
+specialEffect=tTextOverlayPopup_classUnlocked;
+specialEffect=incDefaultNode;
+nextNodeID=;
+
+[DialogNode] ID=ari_gravekeeper_arianna_gravekeeper_decline_learn;
+specialEffect=setGlobalVar,class_gravekeeper,1;
+specialEffect=tTextOverlayPopup_classUnlocked;
+nextNodeID=;
+
+[DialogNode] ID=ari_gravekeeper_arianna_greeting3;
+animations=;
+statements=Hey visitor, have you come back to tell me you'll take a look at where that Abomination came from?
+[DialogOption] text=Alright, I'll go take a look.;
+nodeToConnectTo=ari_gravekeeper_arianna_graveyardlich_quest_accept1;
+[DialogOption] text=Sorry, but no.;
+nodeToConnectTo=;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_arianna_graveyardlich_quest_accept1;
+animations=happy;
+animations=stern;
+statements=Much thanks, visitor.;
+statements=Just remember- Don't try to recreate anything you've been seeing around here.;
+specialEffect=incDefaultNode;
+[DialogOption] text=Bye.;
+nodeToConnectTo=;
+bottomOption=true;
+
+
+[DialogNode] ID=ari_gravekeeper_arianna_greeting4;
+animations=sly;
+statements=Did you figure out where that Abomination came from?;
+[DialogOption] text=There was a Lich down there!;
+formulaReq=g:ari_dead_lich;
+nodeToConnectTo=ari_gravekeeper_arianna_graveyardlichdead;
+[DialogOption] text=Not yet.;
+nodeToConnectTo=;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_arianna_graveyardlichdead;
+animations=happy;
+animations=sly;
+animations=sly;
+animations=angry;
+animations=sigh;
+animations=sigh;
+animations=;
+animations=sly;
+statements=Wow! A *Lich*?!;
+statements=What did it look like?!;
+statements=Was it strong?;
+statements=How did you make it out alive?!;
+statements=Did you bring back any curs- Sorry, I nearly lost myself there.;
+statements=If you took out a Lich, that should have been the commander.<n=>I doubt we'll run into any major trouble from here on out.;
+statements=You did destroy its Phylactery, right?;
+[DialogOption] text=You sure know quite a bit about this.;
+nodeToConnectTo=ari_gravekeeper_arianna_graveyardlich_accusation;
+--[DialogOption] text=Phylactery?;
+--newLineOfOptions=true;
+--nodeToConnectTo=ari_gravekeeper_arianna_graveyard_phylactery;
+[DialogOption] text=I think my work here is done.;
+nodeToConnectTo=ari_gravekeeper_arianna_quest_complete;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_arianna_graveyardlich_accusation;
+animations=angry;
+animations=stern;
+animations=;
+statements=No, I- What? No-;
+statements=I just have a mild interest in commanding legions of devoted followers that would throw themselves at your enemies for you.;
+statements=That's all. But who wouldn't be interested in something like that?;
+--[DialogOption] text=Phylactery?;
+--nodeToConnectTo=ari_gravekeeper_arianna_graveyard_phylactery;
+[DialogOption] text=I think my work here is done.;
+nodeToConnectTo=ari_gravekeeper_arianna_quest_complete;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_arianna_graveyard_phylactery;
+animations=;
+animations=sigh;
+animations=;
+statements=That's right, a Lich's Phylactery houses their soul.;
+statements=Without destroying the source of a Lich's soul, it will end up returning at some point in the future and we'll be back to square one.;
+statements=However, I'm not sure we have the capacity to destroy such an object right now. Maybe we can come up with a solution.;
+[DialogOption] text=You sure know quite a bit about this.;
+nodeToConnectTo=ari_gravekeeper_arianna_graveyardlich_accusation;
+[DialogOption] text=Is there anything that can destroy it?;
+nodeToConnectTo=ari_gravekeeper_arianna_phylactery_quest_prompt;
+[DialogOption] text=Thanks for the information.;
+nodeToConnectTo=ari_gravekeeper_arianna_quest_complete;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_arianna_quest_complete;
+animations=happy;
+animations=happy;
+statements=It's a good thing you ran across this little Port, visitor. We're few, but we truly appreciate your efforts in resolving this!;
+statements=And for that, thank you!;
+specialEffect=incDefaultNode;
+[DialogOption] text=Unlock <iconBig=icon_gravekeeper_lichdom_elite>Lichdom Elite passive.;
+nodeToConnectTo=ari_gravekeeper_arianna_lichdom_learn;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_arianna_lichdom_learn;
+specialEffect=setGlobalVar,class_gravekeeper_lichdom,1;
+specialEffect=setGlobalVar,grimoire_unlock,1;
+nextNodeID=;
+
+[DialogNode] ID=ari_gravekeeper_arianna_greeting5;
+animations=happy;
+animations=sly;
+statements=Hey visitor, glad to see you around!;
+statements=Did I mention that Phylactery to you?;
+[DialogOption] text=Phylactery?;
+nodeToConnectTo=ari_gravekeeper_arianna_graveyard_phylactery_post;
+[DialogOption] text=Bye.;
+nodeToConnectTo=;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_arianna_graveyard_phylactery_post;
+animations=;
+animations=sigh;
+animations=;
+statements=Right, a Phylactery is an object that houses a soul.;
+statements=Without destroying the source of a Lich's soul, it will end up returning at some point in the future and we'll be back to square one.;
+statements=But I'm not sure we have the capacity to destroy such an object right now.;
+[DialogOption] text=Is there anything that can destroy it?;
+nodeToConnectTo=ari_gravekeeper_arianna_phylactery_quest_prompt;
+[DialogOption] text=Thanks for the information.;
+nodeToConnectTo=;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_arianna_phylactery_quest_prompt;
+animations=stern;
+statements=Hmmm... Nothing in Port Barrow, but...;
+[DialogOption] text=So there is a way to destroy the Lich for good?;
+nodeToConnectTo=ari_gravekeeper_arianna_phylactery_quest_start;
+[DialogOption] text=Well, that's okay then. Maybe some other time.;
+nodeToConnectTo=;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_arianna_phylactery_quest_start;
+animations=stern;
+animations=stern;
+animations=;
+animations=stern;
+statements=I think so. Yes. You may have seen a gate in the Barrow Graveyard. That leads to the city of Barrow proper.;
+statements=The city once housed an immaculate church and within it, a relic of Life, overflowing with Life energy.;
+statements=In fact, that's probably why the Lich targeted our little town of Barrow. If it was able to corrupt such a source...;
+statements=That relic would allow us to destroy the Phylactery and banish the Lich for all of eternity.;
+[DialogOption] text=Interesting. I'll get this relic for you.;
+nodeToConnectTo=ari_gravekeeper_arianna_phylactery_quest;
+[DialogOption] text=That sounds like a lot of work.<n=> Maybe some other time.;
+nodeToConnectTo=;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_arianna_phylactery_quest;
+animations=happy;
+animations=;
+animations=stern;
+statements=You would do that, traveler?;
+statements=Please, take this key then. It will give you access to the city of Barrow.;
+statements=But please, be careful.;
+specialEffect=incDefaultNode;
+[DialogOption] text=Take <itemBig=ari_barrow_key> Key to the City of Barrow.;
+nodeToConnectTo=ari_gravekeeper_arianna_phylactery_quest_city_key;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_arianna_phylactery_quest_city_key;
+--Spawn Barrow key
+specialEffect=giveItem,ari_barrow_key,1;
+specialEffect=setGlobalVar,ari_barrow_key_spawn,1;
+nextNodeID=;
+
+[DialogNode] ID=ari_gravekeeper_arianna_greeting6;
+animations=happy;
+statements=Hey traveler, happy to see you! How goes your quest?;
+[DialogOption] text=Can you tell me more about Barrow?;
+nodeToConnectTo=ari_gravekeeper_arianna_barrow_past;
+[DialogOption] text=Why haven't you left?;
+nodeToConnectTo=ari_gravekeeper_arianna_leave_inquiry;
+[DialogOption] text=Why do you know so much about what's going on?;
+nodeToConnectTo=ari_gravekeeper_arianna_knowledge_inquiry;
+[DialogOption] text=I found something in the church. What is this book?;
+formulaReq=moreThan:0:partyItem:shana_deadbook;
+nodeToConnectTo=ari_gravekeeper_arianna_phylactery_quest_corrupt_book;
+[DialogOption] text=Bye.;
+nodeToConnectTo=;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_arianna_greeting6_intermedium;
+animations=happy;
+statements=Is there anything else you'd like to chat about?;
+[DialogOption] text=Can you tell me more about Barrow?;
+nodeToConnectTo=ari_gravekeeper_arianna_barrow_past;
+[DialogOption] text=Why haven't you left?;
+nodeToConnectTo=ari_gravekeeper_arianna_leave_inquiry;
+[DialogOption] text=Why do you know so much about what's going on?;
+nodeToConnectTo=ari_gravekeeper_arianna_knowledge_inquiry;
+[DialogOption] text=I found something in the church. What is this book?;
+formulaReq=moreThan:0:partyItem:shana_deadbook;
+nodeToConnectTo=ari_gravekeeper_arianna_phylactery_quest_corrupt_book;
+[DialogOption] text=That's all, bye.;
+nodeToConnectTo=;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_arianna_barrow_past;
+animations=happy;
+animations=happy;
+animations=stern;
+animations=stern;
+animations=stern;
+animations=stern;
+animations=sad;
+statements=Certainly, but there isn't too much to tell.;
+statements=I actually grew up in Barrow. It was in idyllic little city, bright and joyous. Its citizens were content.;
+statements=...Until recently, that is. Not too long we had strange stirrings at night, and people would start to go missing.;
+statements=Many began to flee, fearing that they would be next. And then they came.;
+statements=A horde of undead swept through the city. We didn't know where they came from, or why.;
+statements=But we didn't have the means to defend, and so those lucky enough to survive fled.;
+statements=I fear I don't know the current state of the city, not having dared go back. I simply stay in the port now, free from the undead menace.;
+[DialogOption] text=I see, thank you for telling me.;
+nodeToConnectTo=ari_gravekeeper_arianna_greeting6_intermedium;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_arianna_leave_inquiry;
+animations=sad;
+animations=sad;
+animations=sad;
+animations=happy;
+statements=Well, you see, I have nowhere else to go.;
+statements=I grew up in Barrow and lost my home.;
+statements=The others are in the same predicament. We're simply lost right now.;
+statements=But we try to make do with what we have, right?
+[DialogOption] text=I see, thank you for telling me.;
+nodeToConnectTo=ari_gravekeeper_arianna_greeting6_intermedium;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_arianna_knowledge_inquiry;
+animations=sad;
+animations=sad;
+animations=;
+statements=It's a fascination I have.;
+statements=With Barrow having been such a joyous, Life-filled place, I tended to look for something a bit... Different.;
+statements=And that led me to my current knowledge. I swear it's nothing nefarious.;
+[DialogOption] text=I see, thank you for telling me.;
+nodeToConnectTo=ari_gravekeeper_arianna_greeting6_intermedium;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_arianna_phylactery_quest_corrupt_book;
+animations=scared;
+animations=scared;
+animations=stern;
+statements=Oh! This... This looks like...;
+statements=This looks like the relic we housed in Barrow.;
+statements=But it looks to have been corrupted. I've never seen something like this before.;
+[DialogOption] text=Is there anything I can do with it?;
+nodeToConnectTo=ari_gravekeeper_arianna_phylactery_quest_corrupt_book_purge_start;
+[DialogOption] text=I see, thank you for your information. Bye.;
+nodeToConnectTo=;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_arianna_phylactery_quest_corrupt_book_purge_start;
+animations=stern;
+animations=;
+statements=I'm not sure. Well, there's nothing you can do about it in Barrow, that's for sure.;
+statements=Hmmm... Perhaps in one of the bigger ports? Maybe there's someone there that could help?;
+specialEffect=incDefaultNode;
+[DialogOption] text=Thanks, I'll search around the next time I moor.;
+nodeToConnectTo=ari_gravekeeper_arianna_phylactery_quest_corrupt_book_purge_start_receipt;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_arianna_phylactery_quest_corrupt_book_purge_start_receipt;
+specialEffect=setGlobalVar,arianna_gravekeeper_phylactery_quest,1;
+nextNodeID=;
+
+
+-----------------------------Inject dialogue into NPC in a town
+[DialogOption] ID=pastor;
+fReq=loc:port8;
+text=I'm looking for help with this... Relic.;
+formulaReq=moreThan:0:partyItem:shana_deadbook * is:1:g:arianna_gravekeeper_phylactery_quest;
+newLineOfOptions=true;
+nodeToConnectTo=ari_gravekeeper_rotmanuscript_cleanse_1;
+
+[DialogNode] ID=ari_gravekeeper_rotmanuscript_cleanse_1;
+animations=stern;
+animations=;
+animations=stern;
+animations=stern;
+animations=stern;
+animations=;
+statements=Yeah, I can certainly feel something nasty coming off of you.;
+statements=I'd be happy to help, but it won't exactly come cheap.;
+statements=Purging something as foul as this is quite taxing, you know.;
+statements=If you can part with $10000 as compensation, I'd be happy to help.;
+statements=And remember- once purged, that's it. This disgusting tome will be no more.;
+statements=Although you'll have a nice new shiny tome in its place... Probably.;
+[DialogOption] text=Alright, fine.;
+formulaReq=moreThan:0:partyItem:shana_deadbook * moreThan:9999:m:money;
+nodeToConnectTo=ari_gravekeeper_rotmanuscript_cleanse_10000_accept;
+[DialogOption] text=10000 gold? You're insane. It's for a good cause.;
+formulaReq=moreThan:0:partyItem:shana_deadbook;
+nodeToConnectTo=ari_gravekeeper_rotmanuscript_cleanse_haggle_half_attempt;
+[DialogOption] text=I can't afford that, sorry.;
+formulaReq=moreThan:0:partyItem:shana_deadbook * lessThan:10000:m:money;
+nodeToConnectTo=ari_gravekeeper_rotmanuscript_cleanse_poor;
+[DialogOption] text=Nevermind. Bye.;
+nodeToConnectTo=;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_rotmanuscript_cleanse_haggle_half_attempt;
+nextNodeID=ari_gravekeeper_rotmanuscript_cleanse_haggle_half_fail;
+nextNodeID_fReq=mIs0:rand(1);
+nextNodeID=ari_gravekeeper_rotmanuscript_cleanse_haggle_half;
+
+[DialogNode] ID=ari_gravekeeper_rotmanuscript_cleanse_haggle_half_fail;
+animations=stern;
+statements=No can do. Pay up or find someone else.;
+[DialogOption] text=Alright, fine. Here's your $10000.;
+formulaReq=moreThan:0:partyItem:shana_deadbook * moreThan:9999:m:money;
+nodeToConnectTo=ari_gravekeeper_rotmanuscript_cleanse_10000_accept;
+[DialogOption] text=Nevermind. Bye.;
+nodeToConnectTo=;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_rotmanuscript_cleanse_10000_accept;
+specialEffect=gp,-10000;
+nextNodeID=ari_gravekeeper_rotmanuscript_cleansing;
+
+[DialogNode] ID=ari_gravekeeper_rotmanuscript_cleanse_haggle_half;
+animations=stern;
+statements=Fine. 5000 gold. Since it's for a good cause.;
+[DialogOption] text=Alright, here's your 5000 gold.;
+formulaReq=moreThan:0:partyItem:shana_deadbook * moreThan:4999:m:money;
+nodeToConnectTo=ari_gravekeeper_rotmanuscript_cleanse_5000_accept;
+[DialogOption] text=5000 gold is still ridiculous. Lower it or forget it.;
+formulaReq=moreThan:0:partyItem:shana_deadbook;
+nodeToConnectTo=ari_gravekeeper_rotmanuscript_cleanse_haggle_quarter_attempt;
+[DialogOption] text=Nevermind, I can't afford this.;
+formulaReq=moreThan:0:partyItem:shana_deadbook * lessThan:5000:m:money;
+nodeToConnectTo=;
+[DialogOption] text=Nevermind. Bye.;
+nodeToConnectTo=;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_rotmanuscript_cleanse_haggle_quarter_attempt;
+nextNodeID=ari_gravekeeper_rotmanuscript_cleanse_haggle_quarter_fail;
+nextNodeID_fReq=mIs0:rand(1);
+nextNodeID=ari_gravekeeper_rotmanuscript_cleanse_haggle_quarter;
+
+[DialogNode] ID=ari_gravekeeper_rotmanuscript_cleanse_haggle_quarter_fail;
+animations=stern;
+statements=No can do. Pay up or find someone else.;
+[DialogOption] text=Alright, fine. Here's your 5000 gold.;
+formulaReq=moreThan:0:partyItem:shana_deadbook * moreThan:4999:m:money;
+nodeToConnectTo=ari_gravekeeper_rotmanuscript_cleanse_5000_accept;
+[DialogOption] text=Forget it. Bye.;
+nodeToConnectTo=;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_rotmanuscript_cleanse_5000_accept;
+specialEffect=gp,-5000;
+nextNodeID=ari_gravekeeper_rotmanuscript_cleansing;
+
+[DialogNode] ID=ari_gravekeeper_rotmanuscript_cleanse_haggle_quarter;
+animations=angry;
+animations=stern;
+statements=Look, if I go any lower it won't be worth it.;
+statements=2500. That's it. Take it or leave it.;
+[DialogOption] text=Alright, here's your 2500 gold.;
+formulaReq=moreThan:0:partyItem:shana_deadbook * moreThan:2499:m:money;
+nodeToConnectTo=ari_gravekeeper_rotmanuscript_cleanse_2500_accept;
+[DialogOption] text=Nevermind, I can't afford this.;
+formulaReq=moreThan:0:partyItem:shana_deadbook * lessThan:2500:m:money;
+nodeToConnectTo=;
+[DialogOption] text=Nevermind. Bye.;
+nodeToConnectTo=;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_rotmanuscript_cleanse_2500_accept;
+specialEffect=gp,-2500;
+nextNodeID=ari_gravekeeper_rotmanuscript_cleansing;
+
+[DialogNode] ID=ari_gravekeeper_rotmanuscript_cleanse_poor;
+animations=stern;
+animations=sigh;
+statements=Hrmmm... I wouldn't want this kind of foul magic to walk out of here...;
+statements=Fine. Are you able to compensate 1000 gold?;
+[DialogOption] text=Sure, I can do 1000 gold.;
+formulaReq=moreThan:0:partyItem:shana_deadbook * moreThan:999:m:money;
+nodeToConnectTo=ari_gravekeeper_rotmanuscript_cleanse_1000_accept;
+[DialogOption] text=I can't afford that either, sorry.;
+formulaReq=moreThan:0:partyItem:shana_deadbook * lessThan:1000:m:money;
+nodeToConnectTo=ari_gravekeeper_rotmanuscript_cleanse_super_poor;
+[DialogOption] text=Nevermind. Bye.;
+nodeToConnectTo=;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_rotmanuscript_cleanse_1000_accept;
+specialEffect=gp,-1000;
+nextNodeID=ari_gravekeeper_rotmanuscript_cleansing;
+
+[DialogNode] ID=ari_gravekeeper_rotmanuscript_cleanse_super_poor;
+animations=sigh;
+animations=angry;
+animations=stern;
+statements=Urgh. Alright, alright. Fine.;
+statements=I'll cleanse it for you, but I won't be happy about it.;
+statements=Just remember next time when you go running off asking for favors that almost nothing in life is free.;
+[DialogOption] text=Thank you!;
+nodeToConnectTo=ari_gravekeeper_rotmanuscript_cleansing;
+
+[DialogNode] ID=ari_gravekeeper_rotmanuscript_cleansing;
+specialEffect=removeItemFromParty,shana_deadbook,1;
+specialEffect=giveItem,ari_grimoire_divinity,1;
+specialEffect=giveItem,ari_gk_foul_remnant,1;
+specialEffect=setGlobalVar,arianna_gravekeeper_phylactery_quest,2;
+--specialEffect=PlayFX;
+--specialEffect=delay;
+nextNodeID=ari_gravekeeper_rotmanuscript_post_cleansing;
+
+[DialogNode] ID=ari_gravekeeper_rotmanuscript_post_cleansing;
+animations=sigh;
+animations=stern;
+animations=;
+animations=stern;
+animations=stern;
+animations=sigh;
+statements=Ugh. That was worse than I expected.;
+statements=It should be okay now, just... Be careful. Throw it away if you notice it acting up at all.;
+statements=I'm not sure where exactly you got that thing from, but that was some bad corruption.;
+statements=The corruption was even more powerful than I had anticipated. It looks like there are some remnants left.;
+statements=Go ahead and take those remnants with you. I refuse to keep or house something like that.;
+statements=Now if you'll excuse me, I'm going to go rest...;
+--nodeToConnectTo=;
+
+
+
+
+[DialogNode] ID=ari_gravekeeper_arianna_greeting7;
+animations=happy;
+statements=<finalTextIf=Hey there, friend!=moreThan:2:g:arianna_gravekeeper_phylactery_quest>Hey there traveler, have you found anything on that relic yet?;
+[DialogOption] text=Can you tell me more about Barrow?;
+nodeToConnectTo=ari_gravekeeper_arianna_barrow_past;
+[DialogOption] text=Why haven't you left?;
+nodeToConnectTo=ari_gravekeeper_arianna_leave_inquiry;
+[DialogOption] text=Why do you know so much about what's going on?;
+nodeToConnectTo=ari_gravekeeper_arianna_knowledge_inquiry;
+[DialogOption] text=I did, and they cleansed the tome for me. Can we destroy the Lich with this?;
+formulaReq=moreThan:0:partyItem:ari_grimoire_divinity * is:2:g:arianna_gravekeeper_phylactery_quest;
+nodeToConnectTo=ari_gravekeeper_arianna_phylactery_quest_cleansed_book;
+[DialogOption] text=Bye.;
+nodeToConnectTo=;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_arianna_phylactery_quest_cleansed_book;
+animations=;
+animations=stern;
+animations=;
+animations=stern;
+statements=That relic is indeed the one that was safeguarded in the Barrow church.;
+statements=If it's truly been cleansed, it should be powerful enough to banish the Lich once and for all.;
+statements=But be absolutely certain before you use it-;
+statements=Once the Lich is banished, there's no way that it'll ever return.;
+[DialogOption] text=Thank you for the information. I'll be careful in how I handle this.;
+nodeToConnectTo=;
+bottomOption=true;
+
+
+
+
+--Requires grimoire_unlock 1
+[DialogNode] ID=ari_gravekeeper_phylactery_greeting;
+animations=;
+animations=happy;
+statements=And look at who it is. Come back to finish the job, eh?;
+statements=Lucky for me that you don't have what it takes to be rid of me forever!;
+[DialogOption] text=What?! How can you communicate?;
+nodeToConnectTo=ari_gravekeeper_arianna_phylactery_communicate;
+[DialogOption] text=And why shouldn't I just throw this little Phylactery<n=>into the ocean?;
+newLineOfOptions=true;
+nodeToConnectTo=ari_gravekeeper_arianna_phylactery_threaten;
+[DialogOption] text=Actually, I think I have exactly what I need to be rid<n=> of you for good.;
+formulaReq=moreThan:0:partyItem:ari_grimoire_divinity * moreThan:1:g:arianna_gravekeeper_phylactery_quest;
+newLineOfOptions=true;
+nodeToConnectTo=ari_gravekeeper_arianna_phylactery_destroy;
+[DialogOption] text=I don't have time for this, bye.;
+nextNodeID=;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_arianna_phylactery_communicate;
+animations=angry;
+animations=sly;
+animations=stern;
+statements=Of course I can communicate you dolt.<n=>I'm a mighty Lich!;
+statements=All you've managed to do is delay the inevitable, but I'll be back.;
+statements=Not in your lifetime, but I'll certainly be back.;
+[DialogOption] text=And why shouldn't I just throw this little Phylactery<n=> into the ocean?;
+nodeToConnectTo=ari_gravekeeper_arianna_phylactery_threaten;
+[DialogOption] text=Yeah, but this relic should be able to get rid of<n=> you for good.;
+formulaReq=moreThan:0:partyItem:ari_grimoire_divinity * moreThan:1:g:arianna_gravekeeper_phylactery_quest;
+newLineOfOptions=true;
+nodeToConnectTo=ari_gravekeeper_arianna_phylactery_destroy;
+[DialogOption] text=I have no desire to deal with you, bye.;
+nextNodeID=;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_arianna_phylactery_threaten;
+animations=angry;
+animations=sly;
+statements=Whoa, whoa, whoa. Now that won't do anyone any good.<n=>I certainly won't die even if resurrected at the bottom of an ocean, but it most definitely won't be pleasant.;
+statements=Look, what say we come to a compromise here?;
+[DialogOption] text=A compromise?;
+nodeToConnectTo=ari_gravekeeper_arianna_phylactery_compromise;
+[DialogOption] text=I don't need to compromise, and this relic should be<n=> enough to be rid of you for good.;
+formulaReq=moreThan:0:partyItem:ari_grimoire_divinity * moreThan:1:g:arianna_gravekeeper_phylactery_quest;
+newLineOfOptions=true;
+nodeToConnectTo=ari_gravekeeper_arianna_phylactery_destroy;
+[DialogOption] text=I don't deal with ilk of your nature.;
+nextNodeID=;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_arianna_phylactery_compromise;
+animations=sly;
+statements=That's right. A compromise.<n=>You fetch me some material and I'll give you a way to harness some powerful dark magic.;
+--specialEffect=incDefaultNode;
+specialEffect=setGlobalVar,grimoire_unlock,2;
+[DialogOption] text=Go on...;
+nodeToConnectTo=ari_gravekeeper_arianna_phylactery_grimoire_introduction;
+[DialogOption] text=No, I won't submit to your whim, Lich. This relic will<n=> get rid of you for good.;
+formulaReq=moreThan:0:partyItem:ari_grimoire_divinity * moreThan:1:g:arianna_gravekeeper_phylactery_quest;
+newLineOfOptions=true;
+nodeToConnectTo=ari_gravekeeper_arianna_phylactery_destroy;
+[DialogOption] text=Absolutely not. Goodbye.;
+nextNodeID=;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_arianna_phylactery_compromise_return;
+animations=sly;
+statements=That's right. A compromise.<n=>You fetch me some material and I'll give you a way to harness some powerful dark magic.;
+[DialogOption] text=Go on...;
+nodeToConnectTo=ari_gravekeeper_arianna_phylactery_grimoire_introduction;
+[DialogOption] text=No, I won't submit to your whim, Lich. This relic will<n=> get rid of you for good.;
+formulaReq=moreThan:0:partyItem:ari_grimoire_divinity * moreThan:1:g:arianna_gravekeeper_phylactery_quest;
+newLineOfOptions=true;
+nodeToConnectTo=ari_gravekeeper_arianna_phylactery_destroy;
+[DialogOption] text=Absolutely not. Goodbye.;
+nextNodeID=;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_arianna_phylactery_grimoire_introduction;
+animations=sly;
+statements=If you bring me, say, 150 skulls, I'll give you a means to manipulate Ruin.;
+[DialogOption] text=Something like these 150 skulls?;
+formulaReq=moreThan:149:d:ari_BoneCount;
+nodeToConnectTo=ari_gravekeeper_arianna_phylactery_grimoire_purchase;
+[DialogOption] text=I'm interested. I'll get you your bones, Lich.;
+newLineOfOptions=true;
+nodeToConnectTo=ari_gravekeeper_arianna_phylactery_grimoire_accept;
+[DialogOption] text=What kind of skulls?;
+newLineOfOptions=true;
+nodeToConnectTo=ari_gravekeeper_arianna_bone_type;
+[DialogOption] text=No, I won't submit to your whim, Lich. This relic will<n=> get rid of you for good.;
+formulaReq=moreThan:0:partyItem:ari_grimoire_divinity * moreThan:1:g:arianna_gravekeeper_phylactery_quest;
+newLineOfOptions=true;
+nodeToConnectTo=ari_gravekeeper_arianna_phylactery_destroy;
+[DialogOption] text=I don't think so. Goodbye.;
+nextNodeID=;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_arianna_bone_type;
+animations=stern;
+statements=Skulls. Skulls! Any kind of skulls will do. Even damaged ones. Broken skulls work juuuuust fine.;
+[DialogOption] text=Something like these 150 skulls?;
+formulaReq=moreThan:149:d:ari_BoneCount;
+nodeToConnectTo=ari_gravekeeper_arianna_phylactery_grimoire_purchase;
+[DialogOption] text=Alright. I'll get you your bones, Lich.;
+newLineOfOptions=true;
+nodeToConnectTo=ari_gravekeeper_arianna_phylactery_grimoire_accept;
+[DialogOption] text=No, I won't submit to your whim, Lich. This relic will<n=> get rid of you for good.;
+formulaReq=moreThan:0:partyItem:ari_grimoire_divinity * moreThan:1:g:arianna_gravekeeper_phylactery_quest;
+newLineOfOptions=true;
+nodeToConnectTo=ari_gravekeeper_arianna_phylactery_destroy;
+[DialogOption] text=I don't think so. Goodbye.;
+nextNodeID=;
+bottomOption=true;
+
+--Requires grimoire_unlock 2
+[DialogNode] ID=ari_gravekeeper_phylactery_greeting1;
+animations=;
+statements=Ehehehe. Look at who's back. Have you come to make a compromise?;
+[DialogOption] text=A compromise?;
+nodeToConnectTo=ari_gravekeeper_arianna_phylactery_compromise_return;
+[DialogOption] text=No, I've come to destroy you for good with this relic.;
+formulaReq=moreThan:0:partyItem:ari_grimoire_divinity * moreThan:1:g:arianna_gravekeeper_phylactery_quest;
+newLineOfOptions=true;
+nodeToConnectTo=ari_gravekeeper_arianna_phylactery_destroy;
+[DialogOption] text=Absolutely not. Goodbye.;
+nextNodeID=;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_arianna_phylactery_grimoire_accept;
+--specialEffect=incDefaultNode;
+specialEffect=setGlobalVar,grimoire_unlock,3;
+nextNodeID=;
+
+[DialogNode] ID=ari_gravekeeper_phylactery_greeting2;
+animations=;
+statements=Ehehehe. You got any skulls for me?;
+[DialogOption] text=I have 150 skulls for you.;
+formulaReq=moreThan:149:d:ari_BoneCount;
+nodeToConnectTo=ari_gravekeeper_arianna_phylactery_grimoire_purchase;
+[DialogOption] text=What kind of skulls were you looking for?;
+newLineOfOptions=true;
+nodeToConnectTo=ari_gravekeeper_arianna_bone_type_accepted;
+[DialogOption] text=Not this time, Lich. I've come to destroy you for good<n=> with this relic.;
+formulaReq=moreThan:0:partyItem:ari_grimoire_divinity * moreThan:1:g:arianna_gravekeeper_phylactery_quest;
+newLineOfOptions=true;
+nodeToConnectTo=ari_gravekeeper_arianna_phylactery_destroy;
+[DialogOption] text=I have nothing for you, Lich.;
+nextNodeID=;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_arianna_bone_type_accepted;
+animations=stern;
+statements=Skulls. Skulls! Any kind of skull will do. Even damaged ones. Broken skulls work juuuuust fine.;
+[DialogOption] text=Will these 150 skulls work?;
+formulaReq=moreThan:149:d:ari_BoneCount;
+nodeToConnectTo=ari_gravekeeper_arianna_phylactery_grimoire_purchase;
+[DialogOption] text=I don't have them yet.;
+nextNodeID=;
+bottomOption=true;
+[DialogOption] text=No, I won't submit to your whim, Lich. This relic will<n=> get rid of you for good.;
+formulaReq=moreThan:0:partyItem:ari_grimoire_divinity * moreThan:1:g:arianna_gravekeeper_phylactery_quest;
+newLineOfOptions=true;
+nodeToConnectTo=ari_gravekeeper_arianna_phylactery_destroy;
+[DialogOption] text=I have nothing for you, Lich.;
+nextNodeID=;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_arianna_phylactery_grimoire_purchase;
+animations=;
+animations=stern;
+statements=Ehehehe. These are perfect. <n=>Here's a little something to help you unleash a bit of that power you've got.;
+statements=Now get lost.;
+specialEffect=setGlobalVar,grimoire_unlock,4;
+[DialogOption] text=Take <itemBig=ari_craft_grimoire> Grimoire Crafting Kit.;
+nodeToConnectTo=ari_gravekeeper_arianna_phylactery_grimoire_receipt;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_arianna_phylactery_grimoire_receipt;
+--Spawn grimoire kit
+specialEffect=giveItem,ari_craft_grimoire,1;
+specialEffect=removeItemFromParty,skull,150;
+specialEffect=setGlobalVar,grimoire_necronomicon_spawn,1;
+nextNodeID=;
+
+[DialogNode] ID=ari_gravekeeper_phylactery_greeting3;
+animations=;
+statements=Leave me alone, damn it. I need to bide time until my recovery and you serve no more purpose.;
+[DialogOption] text=Your recovery?;
+newLineOfOptions=true;
+nodeToConnectTo=ari_gravekeeper_arianna_lich_recovery_question;
+[DialogOption] text=You won't recover, Lich. This time, I've come to destroy<n=> you for good with this relic.;
+formulaReq=moreThan:0:partyItem:ari_grimoire_divinity * moreThan:1:g:arianna_gravekeeper_phylactery_quest;
+newLineOfOptions=true;
+nodeToConnectTo=ari_gravekeeper_arianna_phylactery_destroy;
+[DialogOption] text=Goodbye.;
+nextNodeID=;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_arianna_lich_recovery_question;
+animations=;
+animations=;
+animations=;
+animations=;
+animations=;
+statements=Ehehehe. You supplied me with everything I could ever need for my recovery.;
+statements=What else did you think I was going to do with that pile of skulls you brought me?;
+statements=Your foolish ambitions have doomed Eral.;
+statements=Perhaps luckily for you, you won't be around to see what comes next!;
+statements=Now scoot along, my little puppet. You've served your purpose for me.;
+[DialogOption] text=You won't recover, Lich. This time, I've come to destroy<n=> you for good with this relic.;
+formulaReq=moreThan:0:partyItem:ari_grimoire_divinity * moreThan:1:g:arianna_gravekeeper_phylactery_quest;
+newLineOfOptions=true;
+nodeToConnectTo=ari_gravekeeper_arianna_phylactery_destroy;
+[DialogOption] text=What have I done?;
+nextNodeID=;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_arianna_phylactery_destroy;
+animations=;
+animations=;
+statements=What? WHAT?! No! How did you get that? That relic should have been unsalvageable!;
+statements=You couldn't have gotten in! You couldn't have! You'll ruin it... You'll ruin everything! Give that back!;
+[DialogOption] text=Goodbye, Lich. This time, for good.;
+newLineOfOptions=true;
+nodeToConnectTo=ari_gravekeeper_arianna_lich_end_dialogue;
+[DialogOption] text=I'll spare you... For now.;
+nextNodeID=;
+bottomOption=true;
+
+[DialogNode] ID=ari_gravekeeper_arianna_lich_end_dialogue;
+animations=;
+statements=No! No no no no! NOOOOO-;
+nextNodeID=ari_gravekeeper_arianna_lich_end;
+
+[DialogNode] ID=ari_gravekeeper_arianna_lich_end;
+--specialEffect=incDefaultNode;
+specialEffect=setGlobalVar,grimoire_unlock,5;
+specialEffect=setGlobalVar,arianna_gravekeeper_phylactery_quest,3;
+specialEffect=trigger,ari_gk_destroy_lich_altar;
+nextNodeID=;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---sets gVar as 1 when triggered by actorreaction death
+[GlobalTrigger] numID=0; aliasID=ari_dead_abomination_trigger;
+topX=0;topY=0;btmX=0;btmY=0;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[GlobalTriggerEffect] ID=ari_dead_abomination_trigger; effectID=setGlobalVar; sValue=ari_dead_abomination; sValue2=; bValue1=False; bValue2=False; fValue=1; delay=0; xValue=0; yValue=0;
+
+[GlobalTrigger] numID=1; aliasID=ari_dead_lich_trigger;
+topX=0;topY=0;btmX=0;btmY=0;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[GlobalTriggerEffect] ID=ari_dead_lich_trigger; effectID=setGlobalVar; sValue=ari_dead_lich; sValue2=; bValue1=False; bValue2=False; fValue=1; delay=0; xValue=0; yValue=0;
+
+[GlobalTrigger] numID=0; aliasID=ari_dead_ascetic_trigger;
+topX=0;topY=0;btmX=0;btmY=0;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[GlobalTriggerEffect] ID=ari_dead_ascetic_trigger; effectID=setGlobalVar; sValue=ari_dead_ascetic; sValue2=; bValue1=False; bValue2=False; fValue=1; delay=0; xValue=0; yValue=0;

@@ -1,0 +1,449 @@
+[Zone]  ID=ari_graveyard1; dark=True; timeUntilNewDay=1; showFogOfWar=True; fogOfWar=True; minimapEnabled=True; allowCameraPastZoneEdges=False; cantAct=False; cantGameOver=False; alwaysKeepWeaponsUnsheathed=False; peaceful=False; overseerMode=False; rollingPinStyle=False; drawSky=False; drawSky_overrideYpos=-1; boatZone=False; wind=False; overworld=False; canDropItems=True; 
+ travelSong=King's Field OST - East Village; travelSongVolume=0.8; travelSongPitch=0; combatSong=west-shore; combatSongVolume=1; combatSongPitch=0; combatSongDelay=0; 
+darkR=65; darkG=65; darkB=145; 
+ screenWaveFreq=0; screenDarkWaveFreq=0; screenWaveAmp=0.01; screenDarkWaveAmp=0.01; screenWaveSpeed=0.2; screenWaveAmp_reflect=0.0014; 
+ bgTerrainTypeID=; bgFXID=; bgFX_sineWave=0; darkenedTileTexture=darkenedTile; bgScale=1; bgParallaxRatio=1; bgMoveSpeedX=0; bgMoveSpeedY=0; 
+paletteOverride=; zoneDirtPalette=pDirt; zoneGrassPalette=pGreen; zoneGrassDarkPalette=pGreen2; zoneStonePalette=pGreyD; zoneStoneDarkPalette=pGreyD2; zoneStoneLightPalette=pGreyD; zoneWaterPalette=pBlue; zoneDirtDarkPalette=pDirt; zoneWoodPalette=pWood; zoneWoodDarkPalette=pWoodDark; zoneMisc1Palette=p96; zoneMisc2Palette=pWoodDark; zoneMisc3Palette=pRed; zoneMisc4Palette=pBlue; zoneMisc5Palette=pGreen; zoneMisc6Palette=pOrange; zoneMisc7Palette=pYellow; zoneMisc8Palette=pPurple; 
+
+combatMode=False; 
+
+[Item] ID=rubble; q=1; x=0; y=3;
+[Item] ID=grass_tall1; q=1; x=0; y=20;
+[Item] ID=sunbeam_circle_big_dull; q=1; x=0; y=23;
+[Item] ID=sunbeam_circle_huge; q=1; x=0; y=32;
+[Item] ID=pebbles1; q=1; x=1; y=5;
+[Item] ID=shovel; q=1; x=1; y=5;
+[Item] ID=rubble; q=1; r=90; x=1; y=6;
+[Item] ID=rubble; q=1; r=270; x=1; y=7;
+[Item] ID=pebbles1; q=1; r=90; x=1; y=12;
+[Item] ID=rocks1; q=1; r=90; x=1; y=12;
+[Item] ID=grass_tall1; q=1; x=1; y=19;
+[Item] ID=grass_mid1; q=1; x=1; y=20;
+[Item] ID=rubble; q=1; x=2; y=0;
+[Item] ID=gravestone2; q=1; x=2; y=5;
+[Item] ID=bones1; q=1; r=180; x=2; y=8;
+[Item] ID=grass_mid1; q=1; x=2; y=18;
+[Item] ID=grass_mid1; q=1; x=2; y=19;
+[Item] ID=grass_tall1; q=1; x=2; y=21;
+[Item] ID=pebbles2; q=1; x=3; y=1;
+[Item] ID=bone; q=1; r=180; x=3; y=6;
+[Item] ID=bones1; q=1; r=270; x=3; y=6;
+[Item] ID=bone; q=1; r=90; x=3; y=7;
+[Item] ID=pebbles2; q=1; x=3; y=14;
+[Item] ID=fence_metal_btm_corner; q=1; x=5; y=2;
+[Item] ID=gravestone2; q=1; x=5; y=5;
+[Item] ID=gravestone4; q=1; x=5; y=9;
+[Item] ID=grass_edge1; q=1; r=270; x=6; y=1;
+[Item] ID=fence_metal; q=1; x=6; y=2;
+[Item] ID=rubble; q=1; r=90; x=6; y=10;
+[Item] ID=fence_metal_btm_corner; q=1; r=-360; x=7; y=2;
+[Item] ID=skull; q=1; x=7; y=11;
+[Item] ID=bones1; q=1; r=270; x=7; y=15;
+[Item] ID=grass_tall1; q=1; x=7; y=27;
+[Item] ID=fence_metal_NS_top; q=1; x=8; y=2;
+[Item] ID=fence_metal_NS_btm; q=1; x=8; y=3;
+[Item] ID=fence_metal_btm_corner; q=1; x=8; y=3;
+[Item] ID=gravestone2; q=1; x=8; y=5;
+[Item] ID=gravestone2; q=1; x=8; y=9;
+[Item] ID=gravestone3; q=1; x=8; y=13;
+[Item] ID=bones1; q=1; x=8; y=16;
+[Item] ID=grass_mid1; q=1; x=8; y=27;
+[Item] ID=sunbeam_circle_med_dull; q=1; x=8; y=32;
+[Item] ID=fence_metal; q=1; x=9; y=3;
+[Item] ID=bone; q=1; r=90; x=9; y=6;
+[Item] ID=bone; q=1; x=9; y=12;
+[Item] ID=rubble; q=1; r=90; x=9; y=14;
+[Item] ID=debris; q=1; x=9; y=14;
+[Item] ID=sack; q=1; bu=True; x=9; y=14; containerID=0;
+[Item] ID=loot_gp3; q=1; containedIn=0; cSlot=0;
+[Item] ID=loot_gp3; q=1; containedIn=0; cSlot=1;
+[Item] ID=debris; q=1; containedIn=0; cSlot=2;
+[Item] ID=debris; q=1; containedIn=0; cSlot=3;
+[Item] ID=rubble; q=1; r=270; x=9; y=15;
+[Item] ID=ari_closed_barrow_gate; q=1; x=10; y=3;
+[Item] ID=travelPoint_2; q=1; r=90; x=10; y=4;
+[Item] ID=grass_tall1; q=1; x=10; y=31;
+[Item] ID=grass_mid1; q=1; x=10; y=32;
+[Item] ID=fence_metal; q=1; x=11; y=3;
+[Item] ID=gravestone1; q=1; x=11; y=5;
+[Item] ID=gravestone4; q=1; x=11; y=9;
+[Item] ID=gravestone2; q=1; x=11; y=13;
+[Item] ID=grass_mid1; q=1; x=11; y=31;
+[Item] ID=fade_s2; q=1; r=180; x=12; y=0;
+[Item] ID=fence_metal_top_corner; q=1; r=-360; x=12; y=3;
+[Item] ID=sunbeam_circle_med; q=1; x=12; y=32;
+[Item] ID=fade_s1; q=1; x=13; y=0;
+[Item] ID=fence_metal_NS_top; q=1; x=13; y=2;
+[Item] ID=fence_metal_top_corner; q=1; x=13; y=2;
+[Item] ID=fence_metal_NS_btm; q=1; x=13; y=3;
+[Item] ID=bone; q=1; x=13; y=7;
+[Item] ID=bone; q=1; r=270; x=13; y=7;
+[Item] ID=skull; q=1; x=13; y=7;
+[Item] ID=fence_metal_btm_corner; q=1; x=13; y=18;
+[Item] ID=fade_s1; q=1; x=14; y=0;
+[Item] ID=fade_s2; q=1; r=180; x=14; y=1;
+[Item] ID=fence_metal; q=1; x=14; y=2;
+[Item] ID=gravestone2; q=1; x=14; y=5;
+[Item] ID=gravestone4; q=1; x=14; y=9;
+[Item] ID=gravestone1; q=1; x=14; y=13;
+[Item] ID=fence_metal; q=1; x=14; y=18;
+[Item] ID=grass_mid1; q=1; x=14; y=32;
+[Item] ID=fade_s1; q=1; x=15; y=0;
+[Item] ID=fade_s1; q=1; x=15; y=1;
+[Item] ID=fade_s2; q=1; r=180; x=15; y=2;
+[Item] ID=fence_metal_top_corner; q=1; r=-360; x=15; y=2;
+[Item] ID=fence_metal_NS_btm; q=1; r=-360; x=15; y=3;
+[Item] ID=bone; q=1; x=15; y=10;
+[Item] ID=bone; q=1; r=90; x=15; y=11;
+[Item] ID=bone; q=1; x=15; y=11;
+[Item] ID=bone; q=1; r=270; x=15; y=11;
+[Item] ID=fence_metal_btm_corner; q=1; r=-360; x=15; y=18;
+[Item] ID=grass_mid1; q=1; x=15; y=28;
+[Item] ID=grass_tall1; q=1; x=15; y=31;
+[Item] ID=sunbeam_circle_med_dull; q=1; x=15; y=32;
+[Item] ID=fade_s1; q=1; x=16; y=0;
+[Item] ID=fade_s1; q=1; x=16; y=1;
+[Item] ID=fade_s1; q=1; x=16; y=2;
+[Item] ID=fade_s1; q=1; x=16; y=3;
+[Item] ID=fence_metal_btm_corner; q=1; x=16; y=3;
+[Item] ID=fade_s1; q=1; x=16; y=4;
+[Item] ID=fade_s1; q=1; x=16; y=5;
+[Item] ID=fade_s1; q=1; x=16; y=6;
+[Item] ID=fade_s2; q=1; r=180; x=16; y=7;
+[Item] ID=fence_metal_NS_top; q=1; x=16; y=18;
+[Item] ID=fence_metal_btm_corner; q=1; r=360; x=16; y=19;
+[Item] ID=fade_s1; q=1; x=17; y=0;
+[Item] ID=roof2_damaged3; q=1; r=360; x=17; y=0;
+[Item] ID=fade_s1; q=1; x=17; y=1;
+[Item] ID=roof2_gableL2; q=1; x=17; y=1;
+[Item] ID=fade_s1; q=1; x=17; y=2;
+[Item] ID=roof2_gableL3_nice; q=1; x=17; y=2;
+[Item] ID=fade_s1; q=1; x=17; y=3;
+[Item] ID=fence_metal_btm_corner; q=1; r=-360; x=17; y=3;
+[Item] ID=fade_s1; q=1; x=17; y=4;
+[Item] ID=gravestone1; q=1; x=17; y=5;
+[Item] ID=fade_s1; q=1; x=17; y=5;
+[Item] ID=fade_s1; q=1; x=17; y=6;
+[Item] ID=fade_s1; q=1; x=17; y=7;
+[Item] ID=fade_s2; q=1; r=180; x=17; y=8;
+[Item] ID=gravestone2; q=1; x=17; y=13;
+[Item] ID=fence_metal; q=1; x=17; y=19;
+[Item] ID=fade_s1; q=1; x=18; y=0;
+[Item] ID=roof2_gableL2; q=1; x=18; y=0;
+[Item] ID=fade_s1; q=1; x=18; y=1;
+[Item] ID=roof2_gableL3; q=1; x=18; y=1;
+[Item] ID=fade_s1; q=1; x=18; y=2;
+[Item] ID=fade_s1; q=1; x=18; y=3;
+[Item] ID=fade_s1; q=1; x=18; y=4;
+[Item] ID=fade_s1; q=1; x=18; y=5;
+[Item] ID=fade_s1; q=1; x=18; y=6;
+[Item] ID=fade_s1; q=1; x=18; y=7;
+[Item] ID=fade_s1; q=1; x=18; y=8;
+[Item] ID=ari_eternal_light1; q=1; x=18; y=18;
+[Item] ID=fence_metal_btm_corner; q=1; r=-360; x=18; y=19;
+[Item] ID=fade_s1; q=1; x=19; y=0;
+[Item] ID=roof2_gableL3; q=1; x=19; y=0;
+[Item] ID=fade_s1; q=1; x=19; y=1;
+[Item] ID=fade_s1; q=1; x=19; y=2;
+[Item] ID=fade_s1; q=1; x=19; y=3;
+[Item] ID=fade_s1; q=1; x=19; y=4;
+[Item] ID=fade_s1; q=1; x=19; y=5;
+[Item] ID=fade_s1; q=1; x=19; y=6;
+[Item] ID=fade_s1; q=1; x=19; y=7;
+[Item] ID=fade_s1; q=1; x=19; y=8;
+[Item] ID=dirt_sandy1; q=2; x=19; y=10;
+[Item] ID=dirt_sandy1; q=1; x=19; y=11;
+[Item] ID=dirt_sandy2; q=1; r=270; x=19; y=12;
+[Item] ID=dirt_sandy2; q=1; r=90; x=19; y=14;
+[Item] ID=dirt_sandy2; q=2; x=19; y=15;
+[Item] ID=dirt_sandy2; q=3; r=90; x=19; y=18;
+[Item] ID=dirt_sandy2; q=4; r=270; x=19; y=19;
+[Item] ID=dirt_sandy1; q=2; x=19; y=21;
+[Item] ID=dirt_sandy2; q=1; x=19; y=23;
+[Item] ID=fade_s1; q=1; x=20; y=0;
+[Item] ID=fade_s1; q=1; x=20; y=1;
+[Item] ID=fade_s1; q=1; x=20; y=2;
+[Item] ID=fade_s1; q=1; x=20; y=3;
+[Item] ID=fade_s1; q=1; x=20; y=4;
+[Item] ID=fade_s1; q=1; x=20; y=5;
+[Item] ID=fade_s1; q=1; x=20; y=6;
+[Item] ID=door_open_stone; q=1; x=20; y=7;
+[Item] ID=fade_s1; q=1; x=20; y=8;
+[Item] ID=travelPoint_1; q=1; r=90; x=20; y=9;
+[Item] ID=dirt_sandy2; q=2; r=360; x=20; y=13;
+[Item] ID=dirt_sandy2; q=3; r=90; x=20; y=21;
+[Item] ID=travelPoint_0; q=1; r=270; x=20; y=27;
+[Item] ID=sunbeam_circle_med; q=1; x=20; y=32;
+[Item] ID=fade_s1; q=1; x=21; y=0;
+[Item] ID=roof2_gableL3; q=1; r=90; x=21; y=0;
+[Item] ID=fade_s1; q=1; x=21; y=1;
+[Item] ID=fade_s1; q=1; x=21; y=2;
+[Item] ID=fade_s1; q=1; x=21; y=3;
+[Item] ID=fade_s1; q=1; x=21; y=4;
+[Item] ID=fade_s1; q=1; x=21; y=5;
+[Item] ID=fade_s1; q=1; x=21; y=6;
+[Item] ID=fade_s1; q=1; x=21; y=7;
+[Item] ID=fade_s1; q=1; x=21; y=8;
+[Item] ID=dirt_sandy1; q=1; r=180; x=21; y=15;
+[Item] ID=dirt_sandy1; q=1; r=180; x=21; y=17;
+[Item] ID=dirt_sandy2; q=1; r=360; x=21; y=20;
+[Item] ID=dirt_sandy2; q=2; r=180; x=21; y=23;
+[Item] ID=fade_s1; q=1; x=22; y=0;
+[Item] ID=roof2_gableL2; q=1; r=90; x=22; y=0;
+[Item] ID=fade_s1; q=1; x=22; y=1;
+[Item] ID=roof2_gableL3; q=1; r=90; x=22; y=1;
+[Item] ID=fade_s1; q=1; x=22; y=2;
+[Item] ID=fade_s1; q=1; x=22; y=3;
+[Item] ID=fade_s1; q=1; x=22; y=4;
+[Item] ID=fade_s1; q=1; x=22; y=5;
+[Item] ID=fade_s1; q=1; x=22; y=6;
+[Item] ID=fade_s1; q=1; x=22; y=7;
+[Item] ID=fade_s1; q=1; x=22; y=8;
+[Item] ID=skull_dog2; q=1; x=22; y=14;
+[Item] ID=bones2; q=1; x=22; y=15;
+[Item] ID=bone; q=1; x=22; y=15;
+[Item] ID=fence_metal_NS_top; q=1; x=22; y=17;
+[Item] ID=fence_metal_btm_corner; q=1; r=360; x=22; y=18;
+[Item] ID=ari_eternal_light1; q=1; x=22; y=28;
+[Item] ID=fade_s1; q=1; x=23; y=0;
+[Item] ID=roof2_damaged3; q=1; r=90; x=23; y=0;
+[Item] ID=fade_s1; q=1; x=23; y=1;
+[Item] ID=roof2_gableL2; q=1; r=90; x=23; y=1;
+[Item] ID=fade_s1; q=1; x=23; y=2;
+[Item] ID=roof2_gableL3; q=1; r=90; x=23; y=2;
+[Item] ID=fade_s1; q=1; x=23; y=3;
+[Item] ID=fence_metal_btm_corner; q=1; x=23; y=3;
+[Item] ID=fade_s1; q=1; x=23; y=4;
+[Item] ID=gravestone3; q=1; x=23; y=5;
+[Item] ID=fade_s1; q=1; x=23; y=5;
+[Item] ID=fade_s1; q=1; x=23; y=6;
+[Item] ID=fade_s1; q=1; x=23; y=7;
+[Item] ID=fade_s2_below; q=1; r=90; x=23; y=8;
+[Item] ID=gravestone2; q=1; x=23; y=9;
+[Item] ID=gravestone4; q=1; x=23; y=13;
+[Item] ID=fence_metal; q=1; x=23; y=18;
+[Item] ID=fade_s1; q=1; x=24; y=0;
+[Item] ID=fade_s1; q=1; x=24; y=1;
+[Item] ID=fade_s1; q=1; x=24; y=2;
+[Item] ID=fade_s1; q=1; x=24; y=3;
+[Item] ID=fence_metal; q=1; x=24; y=3;
+[Item] ID=fade_s1; q=1; x=24; y=4;
+[Item] ID=fade_s1; q=1; x=24; y=5;
+[Item] ID=fade_s1; q=1; x=24; y=6;
+[Item] ID=fade_s2; q=1; r=90; x=24; y=7;
+[Item] ID=skull_elephant2; q=1; r=90; x=24; y=10;
+[Item] ID=rubble; q=1; r=270; x=24; y=11;
+[Item] ID=bones1; q=1; x=24; y=14;
+[Item] ID=fence_metal; q=1; x=24; y=18;
+[Item] ID=sunbeam_circle_small; q=1; x=24; y=32;
+[Item] ID=fade_s1; q=1; x=25; y=0;
+[Item] ID=fade_s2; q=1; r=90; x=25; y=1;
+[Item] ID=fence_metal; q=1; x=25; y=3;
+[Item] ID=fence_metal; q=1; x=25; y=18;
+[Item] ID=pebbles2; q=1; x=25; y=24;
+[Item] ID=fade_s2; q=1; r=90; x=26; y=0;
+[Item] ID=fence_metal; q=1; x=26; y=3;
+[Item] ID=gravestone4; q=1; x=26; y=5;
+[Item] ID=gravestone4; q=1; x=26; y=9;
+[Item] ID=gravestone4; q=1; x=26; y=13;
+[Item] ID=fence_metal_btm_corner; q=1; r=-360; x=26; y=18;
+[Item] ID=ribs1; q=1; r=360; x=26; y=21;
+[Item] ID=bones1; q=1; r=360; x=26; y=21;
+[Item] ID=skull; q=1; x=26; y=21;
+[Item] ID=fence_metal; q=1; x=27; y=3;
+[Item] ID=fence_metal_btm_corner; q=1; r=360; x=27; y=17;
+[Item] ID=fence_metal_NS_btm; q=1; x=27; y=18;
+[Item] ID=sunbeam_circle_med; q=1; x=27; y=32;
+[Item] ID=fence_metal; q=1; x=28; y=3;
+[Item] ID=fence_metal; q=1; x=28; y=17;
+[Item] ID=fence_metal; q=1; x=29; y=3;
+[Item] ID=gravestone2; q=1; x=29; y=5;
+[Item] ID=rocks1; q=1; x=29; y=6;
+[Item] ID=pebbles1; q=1; x=29; y=6;
+[Item] ID=gravestone2; q=1; x=29; y=13;
+[Item] ID=fence_metal; q=1; x=29; y=17;
+[Item] ID=dirt_sandy2; q=1; r=180; x=30; y=0;
+[Item] ID=fence_metal; q=1; x=30; y=3;
+[Item] ID=fence_metal; q=1; x=30; y=17;
+[Item] ID=grass_mid1; q=1; x=30; y=32;
+[Item] ID=fence_metal; q=1; x=31; y=3;
+[Item] ID=bones1; q=1; r=90; x=31; y=7;
+[Item] ID=skull_dog1; q=1; r=270; x=31; y=7;
+[Item] ID=fence_metal_btm_corner; q=1; r=-360; x=31; y=17;
+[Item] ID=tusk; q=1; x=31; y=18;
+[Item] ID=sunbeam_circle_med_dull; q=1; x=31; y=30;
+[Item] ID=grass_tall1; q=1; x=31; y=32;
+[Item] ID=fence_metal; q=1; x=32; y=3;
+[Item] ID=gravestone2; q=1; x=32; y=5;
+[Item] ID=bone_spine; q=1; r=360; x=32; y=8;
+[Item] ID=gravestone3; q=1; x=32; y=13;
+[Item] ID=fence_metal_btm_corner; q=1; r=360; x=32; y=16;
+[Item] ID=fence_metal_NS_btm; q=1; x=32; y=17;
+[Item] ID=grass_tall1; q=1; x=32; y=32;
+[Item] ID=pebbles2; q=1; x=33; y=3;
+[Item] ID=fence_metal; q=1; x=33; y=3;
+[Item] ID=rubble; q=1; r=90; x=33; y=6;
+[Item] ID=debris; q=1; x=33; y=6;
+[Item] ID=trigger_ice; q=1; bu=True; x=33; y=6;
+[Item] ID=fence_metal; q=1; x=33; y=16;
+[Item] ID=grass_tall1; q=1; x=33; y=30;
+[Item] ID=grass_mid1; q=1; x=33; y=31;
+[Item] ID=dirt_sandy2; q=1; r=180; x=34; y=1;
+[Item] ID=fence_metal_btm_corner; q=1; r=-360; x=34; y=3;
+[Item] ID=rubble; q=1; r=270; x=34; y=10;
+[Item] ID=fence_metal; q=1; x=34; y=16;
+[Item] ID=pebbles2; q=1; r=360; x=34; y=21;
+[Item] ID=grass_mid1; q=1; x=34; y=32;
+[Item] ID=rubble; q=1; x=35; y=0;
+[Item] ID=rubble; q=1; x=35; y=1;
+[Item] ID=gravestone1; q=1; x=35; y=5;
+[Item] ID=gravestone2; q=1; x=35; y=9;
+[Item] ID=fence_metal_btm_corner; q=1; r=-360; x=35; y=16;
+[Item] ID=pebbles1; q=1; x=35; y=20;
+[Item] ID=grass_mid1; q=1; x=35; y=31;
+[Item] ID=pebbles2; q=1; x=36; y=0;
+[Item] ID=dirt_sandy2; q=1; x=36; y=1;
+[Item] ID=dirt_sandy2; q=2; r=180; x=36; y=2;
+[Item] ID=dirt_sandy2; q=2; r=180; x=37; y=3;
+[Item] ID=rubble; q=1; r=270; x=37; y=7;
+[Item] ID=pebbles2; q=1; x=37; y=9;
+[Item] ID=grass_tall1; q=1; x=37; y=25;
+[Item] ID=grass_mid1; q=1; x=37; y=26;
+[Item] ID=grass_tall1; q=1; x=37; y=30;
+[Item] ID=dirt_sandy2; q=2; r=180; x=38; y=1;
+[Item] ID=rubble; q=1; x=38; y=3;
+[Item] ID=gravestone2; q=1; x=38; y=5;
+[Item] ID=grass_mid1; q=1; x=38; y=25;
+[Item] ID=grass_tall1; q=1; x=38; y=30;
+[Item] ID=sunbeam_circle_big; q=1; x=38; y=31;
+[Item] ID=sunbeam_circle_med_dull; q=1; x=39; y=25;
+[Item] ID=grass_mid1; q=1; x=39; y=30;
+
+
+
+[Trigger] numID=0; aliasID=Leave_GraveyardTrigger;
+topX=17;topY=29;btmX=23;btmY=31;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[TriggerEffect] numID=0; effectID=travel_point; sValue=ari_gravekeeper_port; sValue2=; bValue1=False; bValue2=False; fValue=1; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+
+
+[Trigger] numID=2; aliasID=EnterTomb;
+topX=20;topY=7;btmX=20;btmY=7;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[TriggerEffect] numID=2; effectID=travel_point; sValue=ari_gravekeeper_mausoleum1; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+
+
+[Trigger] numID=3; aliasID=ari_ZombieSpawn1;
+topX=26;topY=7;btmX=33;btmY=12;
+triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=g:class_gravekeeper*m:rand(100)-60;
+[TriggerEffect] numID=3; effectID=spawn; sValue=gravekeeper_zombie2; sValue2=z9; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+
+
+[Trigger] numID=4; aliasID=ari_ZombieSpawn2;
+topX=10;topY=9;btmX=17;btmY=13;
+triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=g:class_gravekeeper*m:rand(100)-60;
+[TriggerEffect] numID=4; effectID=spawn; sValue=gravekeeper_zombie1; sValue2=z8; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+
+
+[Trigger] numID=5; aliasID=ari_graveyard_removecrew;
+topX=12;topY=30;btmX=13;btmY=30;
+triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[TriggerEffect] numID=5; effectID=removeExcessLandingPartyActors; sValue=; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+
+
+[Trigger] numID=6; aliasID=skeleton_enemy1;
+topX=30;topY=18;btmX=31;btmY=19;
+triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[TriggerEffect] numID=6; effectID=spawn; sValue=ari_gravekeeper_single_skelwarr1; sValue2=sw5; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+
+
+[Trigger] numID=7; aliasID=;
+topX=22;topY=10;btmX=23;btmY=11;
+triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[TriggerEffect] numID=7; effectID=spawn; sValue=ari_gravekeeper_single_skelwarr1; sValue2=sw4; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+
+
+[Trigger] numID=8; aliasID=skeleton_enemy3;
+topX=3;topY=6;btmX=4;btmY=7;
+triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[TriggerEffect] numID=8; effectID=spawn; sValue=ari_gravekeeper_single_skelwarr1; sValue2=sw2; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+
+
+[Trigger] numID=9; aliasID=skeleton_enemy4;
+topX=4;topY=12;btmX=5;btmY=13;
+triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[TriggerEffect] numID=9; effectID=spawn; sValue=ari_gravekeeper_single_skelwarr1; sValue2=sw3; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+
+
+[Trigger] numID=10; aliasID=skeleton_enemy5;
+topX=9;topY=9;btmX=10;btmY=10;
+triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[TriggerEffect] numID=10; effectID=spawn; sValue=ari_gravekeeper_single_skelwarr1; sValue2=sw1; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+
+
+[Trigger] numID=11; aliasID=zombie_enemy1;
+topX=24;topY=15;btmX=25;btmY=16;
+triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[TriggerEffect] numID=11; effectID=spawn; sValue=ari_gravekeeper_single_zombie1; sValue2=z4; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+
+
+[Trigger] numID=12; aliasID=zombie_enemy2;
+topX=34;topY=12;btmX=35;btmY=13;
+triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[TriggerEffect] numID=12; effectID=spawn; sValue=ari_gravekeeper_single_zombie1; sValue2=z7; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+
+
+[Trigger] numID=13; aliasID=zombie_enemy4;
+topX=34;topY=7;btmX=35;btmY=8;
+triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[TriggerEffect] numID=13; effectID=spawn; sValue=ari_gravekeeper_single_zombie1; sValue2=z6; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+
+
+[Trigger] numID=14; aliasID=zombie_enemy5;
+topX=24;topY=5;btmX=25;btmY=6;
+triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[TriggerEffect] numID=14; effectID=spawn; sValue=ari_gravekeeper_single_zombie1; sValue2=z5; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+
+
+[Trigger] numID=15; aliasID=zombie_enemy6;
+topX=9;topY=6;btmX=10;btmY=7;
+triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[TriggerEffect] numID=15; effectID=spawn; sValue=ari_gravekeeper_single_zombie1; sValue2=z1; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+
+
+[Trigger] numID=16; aliasID=zombie_enemy7;
+topX=6;topY=13;btmX=7;btmY=14;
+triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[TriggerEffect] numID=16; effectID=spawn; sValue=ari_gravekeeper_single_zombie1; sValue2=z2; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+
+
+[Trigger] numID=17; aliasID=skeleton_archer_1;
+topX=25;topY=7;btmX=26;btmY=8;
+triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[TriggerEffect] numID=17; effectID=spawn; sValue=ari_gravekeeper_single_skelarcher1; sValue2=sa1; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+
+
+[Trigger] numID=1; aliasID=Barrow_Proper_Path;
+topX=6;topY=0;btmX=14;btmY=1;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[TriggerEffect] numID=1; effectID=travel_point; sValue=ari_gravekeeper_city_path; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+
+

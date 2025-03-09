@@ -1,0 +1,869 @@
+[Action] ID=ari_grimoire_necronomicon_buff; 
+icon=classIcon_ari_gravekeeper;
+	harmful=false;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+[ActionAoE]
+	ID=ari_grimoire_necronomicon_buff;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_grimoire_necronomicon_buff; 
+	harmful=false;
+	actorValue=skill_Ruin;
+	magnitude=d:ari_minions_fielded * 0.5;
+	duration=-4;
+	chance=100;
+	visibleMiss=false;
+	affectIntangible=true;
+	FXOnHit=upwardLinesFast;
+	FXOnHitColor=DeepPink;
+	FXOnHit=upwardLines;
+	FXOnHitColor=Purple;
+[AvAffecterAoE]
+	ID=ari_grimoire_necronomicon_buff;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+	
+	
+[Action] ID=ari_grimoire_summoner_buff; 
+icon=classIcon_ari_gravekeeper;
+	harmful=false;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+[ActionAoE]
+	ID=ari_grimoire_summoner_buff;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_grimoire_summoner_buff; 
+	harmful=false;
+	actorValue=MagAtk;
+	magnitude=4;
+	duration=-4;
+	chance=moreThan:1:d:ari_vesper_summons_fielded * 100;
+	visibleMiss=false;
+	affectIntangible=true;
+	FXOnHit=upwardLines;
+	FXOnHitColor=Blue;
+	FXOnHit=upwardLines;
+	FXOnHitColor=White;
+[AvAffecterAoE]
+	ID=ari_grimoire_summoner_buff;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+
+
+----------------------------------------------------------------Grimoire Attacks
+--Necronomicon attack
+[Action] ID=ari_grimoireAttack_necronomicon; 
+	special=requiresCasting;
+	special=redoMovementAnalysis;
+	applyWeaponBuffs=true;
+	chargeTime=3 * d:chargeTimeMult + d:chargeTimeMod;
+	casterAnimation=spellcast;
+	casterAnimationDependsOnWeaponHand=false;
+	FXChangesWithWeaponHand=false;
+	FXOnCaster=sfx_highThwum_loud;
+	FXOnCasterColor=Black;
+	FXOnCaster=ping_noOverlap;
+	FXOnCasterColor=Black;
+	FXOnTarget=downwardLinesQuick;
+	FXOnTargetColor=Black;
+[ActionAoE] 
+	ID=ari_grimoireAttack_necronomicon;
+	cloneFrom=adjacent+3;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=true;
+	canSelectActors=true;
+[AvAffecter]
+	ID=ari_grimoireAttack_necronomicon;
+	harmful=true;
+	actorValue=HP;
+	magnitude=1;
+	duration=-2;
+	chance=d:ruinAcc;
+	element=ranged;
+	element=magic;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_grimoireAttack_necronomicon;
+	cloneFrom=oneTile;
+	
+--Grimoire of Sacrifice attack
+[Action] ID=ari_grimoireAttack_sacrifice; 
+	special=requiresCasting;
+	special=redoMovementAnalysis;
+	applyWeaponBuffs=true;
+	chargeTime=3 * d:chargeTimeMult + d:chargeTimeMod;
+	casterAnimation=spellcast;
+	casterAnimationDependsOnWeaponHand=false;
+	FXChangesWithWeaponHand=false;
+	FXOnCaster=sfx_highThwum_loud;
+	FXOnCasterColor=Black;
+	FXOnCaster=ping_noOverlap;
+	FXOnCasterColor=Black;
+	FXOnCaster=manySplatters;
+	FXOnCasterColor=Red;
+	FXOnCaster=manySplatters;
+	FXOnCasterColor=DarkMagenta;
+	FXOnCaster=ari_energyShotSummon_Dark;
+[ActionAoE] 
+	ID=ari_grimoireAttack_sacrifice;
+	cloneFrom=adjacent+3;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=true;
+	canSelectActors=true;
+[AvAffecter]
+	ID=ari_grimoireAttack_sacrifice;
+	harmful=true;
+	actorValue=HP;
+	magnitude=d:grimoireActualDamage_tier1;
+	duration=-2;
+	chance=d:ruinAcc;
+	element=ranged;
+	element=magic;
+	element=ruin;
+	FXOnTile=ari_energyShot_Green;
+[AvAffecterAoE]
+	ID=ari_grimoireAttack_sacrifice;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_grimoireAttack_sacrifice;
+	harmful=true;
+	actorValue=HP;
+	magnitude=c:TrueHPMax * -0.1;
+	duration=-2;
+	chance=d:ruinAcc;
+	element=ranged;
+	element=magic;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_grimoireAttack_sacrifice;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_grimoireAttack_sacrifice;
+	harmful=true;
+	actorValue=HP;
+	magnitude=c:TrueHPMax * -0.1;
+	duration=-2;
+	chance=d:ruinAcc;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_grimoireAttack_sacrifice;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+	
+--Grimoire of Rot
+[Action] ID=ari_grimoireAttack_rot; 
+	special=requiresCasting;
+	special=redoMovementAnalysis;
+	applyWeaponBuffs=true;
+	chargeTime=3 * d:chargeTimeMult + d:chargeTimeMod;
+	casterAnimation=spellcast;
+	casterAnimationDependsOnWeaponHand=false;
+	FXChangesWithWeaponHand=false;
+	FXOnCaster=sfx_highThwum_loud;
+	FXOnCasterColor=DarkGreen;
+	FXOnCaster=ping_noOverlap;
+	FXOnCasterColor=DarkGreen;
+	FXOnCaster=ari_energyShotSummon_Dark;
+[ActionAoE] 
+	ID=ari_grimoireAttack_rot;
+	cloneFrom=adjacent+3;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=true;
+	canSelectActors=true;
+[AvAffecter]
+	ID=ari_grimoireAttack_rot; 
+	actorValue=ari_rot_status;
+	magnitude=3 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status;
+	duration=40;
+	chance=d:ruinAcc;
+	FXOnTile=ari_energyShot_Rot;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=ari_grimoireAttack_rot;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_grimoireAttack_rot;
+	harmful=true;
+	actorValue=HP;
+	magnitude=m:targetExists * d:grimoireActualDamage_tier1;
+	duration=-2;
+	chance=d:ruinAcc;
+	element=ranged;
+	element=magic;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_grimoireAttack_rot;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_grimoireAttack_rot;
+	harmful=false;
+	actorValue=HP;
+	magnitude=m:previousAVChanceYes * d:grimoireActualHeal_tier1;
+	duration=-2;
+	chance=m:previousAVChanceYes * d:ruinAcc;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_grimoireAttack_rot;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+	
+--Book of Souls attack
+[Action] ID=ari_grimoireAttack_booksouls; 
+	special=requiresCasting;
+	special=redoMovementAnalysis;
+	applyWeaponBuffs=true;
+	chargeTime=3 * d:chargeTimeMult + d:chargeTimeMod;
+	casterAnimation=spellcast;
+	casterAnimationDependsOnWeaponHand=false;
+	FXChangesWithWeaponHand=false;
+	FXOnCaster=sfx_highThwum_loud;
+	FXOnCasterColor=White;
+	FXOnCaster=ping_noOverlap;
+	FXOnCasterColor=White;
+	FXOnCaster=ari_energyShotSummon_Souls;
+[ActionAoE] 
+	ID=ari_grimoireAttack_booksouls;
+	cloneFrom=adjacent+3;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=true;
+	canSelectActors=true;
+[AvAffecter]
+	ID=ari_grimoireAttack_booksouls;
+	harmful=true;
+	actorValue=HP;
+	magnitude=d:grimoireActualDamage_tier1;
+	duration=-2;
+	chance=d:ruinAcc;
+	element=ranged;
+	element=magic;
+	element=ruin;
+	FXOnTile=ari_energyShot_Souls;
+[AvAffecterAoE]
+	ID=ari_grimoireAttack_booksouls;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_grimoireAttack_booksouls;
+	harmful=false;
+	actorValue=ari_ruptured_soul_status;
+	magnitude=1;
+	duration=40;
+	chance=d:ruinAcc;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_grimoireAttack_booksouls;
+	cloneFrom=oneTile;
+
+	
+--Basic Grimoire
+[Action] ID=ari_grimoireAttack_basic; 
+	special=requiresCasting;
+	special=redoMovementAnalysis;
+	applyWeaponBuffs=true;
+	chargeTime=3 * d:chargeTimeMult + d:chargeTimeMod;
+	casterAnimation=spellcast;
+	casterAnimationDependsOnWeaponHand=false;
+	FXChangesWithWeaponHand=false;
+	FXOnCaster=sfx_highThwum_loud;
+	FXOnCasterColor=DarkGreen;
+	FXOnCaster=ping_noOverlap;
+	FXOnCasterColor=DarkGreen;
+	FXOnCaster=ari_energyShotSummon_Dark;
+[ActionAoE] 
+	ID=ari_grimoireAttack_basic;
+	cloneFrom=adjacent+3;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=true;
+	canSelectActors=true;
+[AvAffecter]
+	ID=ari_grimoireAttack_basic;
+	harmful=true;
+	actorValue=HP;
+	magnitude=d:grimoireActualDamage_tier1;
+	duration=-2;
+	chance=d:ruinAcc;
+	element=ranged;
+	element=magic;
+	element=ruin;
+	FXOnTile=ari_energyShot_Green;
+[AvAffecterAoE]
+	ID=ari_grimoireAttack_basic;
+	cloneFrom=oneTile;
+
+	
+--Normal Grimoire
+[Action] ID=ari_grimoireAttack_lowheal;
+	special=requiresCasting;
+	special=redoMovementAnalysis;
+	applyWeaponBuffs=true;
+	chargeTime=3 * d:chargeTimeMult + d:chargeTimeMod;
+	casterAnimation=spellcast;
+	casterAnimationDependsOnWeaponHand=false;
+	FXChangesWithWeaponHand=false;
+	FXOnCaster=sfx_highThwum_loud;
+	FXOnCasterColor=DarkGreen;
+	FXOnCaster=ping_noOverlap;
+	FXOnCasterColor=DarkGreen;
+	FXOnCaster=ari_energyShotSummon_Dark;
+[ActionAoE] 
+	ID=ari_grimoireAttack_lowheal;
+	cloneFrom=adjacent+3;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=true;
+	canSelectActors=true;
+[AvAffecter]
+	ID=ari_grimoireAttack_lowheal;
+	harmful=true;
+	actorValue=HP;
+	magnitude=d:grimoireActualDamage_tier1;
+	duration=-2;
+	chance=m:targetExists * d:ruinAcc;
+	element=ranged;
+	element=magic;
+	element=ruin;
+	FXOnTile=ari_energyShot_Green;
+[AvAffecterAoE]
+	ID=ari_grimoireAttack_lowheal;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_grimoireAttack_lowheal;
+	harmful=false;
+	actorValue=HP;
+	magnitude=d:grimoireActualHeal_tier1;
+	duration=-2;
+	chance=100 * m:previousAVChanceYes;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_grimoireAttack_lowheal;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+	
+--Intermediate Grimoire
+[Action] ID=ari_grimoireAttack_midheal; 
+	special=requiresCasting;
+	special=redoMovementAnalysis;
+	applyWeaponBuffs=true;
+	chargeTime=3 * d:chargeTimeMult + d:chargeTimeMod;
+	casterAnimation=spellcast;
+	casterAnimationDependsOnWeaponHand=false;
+	FXChangesWithWeaponHand=false;
+	FXOnCaster=sfx_highThwum_loud;
+	FXOnCasterColor=DarkGreen;
+	FXOnCaster=ping_noOverlap;
+	FXOnCasterColor=DarkGreen;
+	FXOnCaster=ari_energyShotSummon_Dark;
+[ActionAoE] 
+	ID=ari_grimoireAttack_midheal;
+	cloneFrom=adjacent+3;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=true;
+	canSelectActors=true;
+[AvAffecter]
+	ID=ari_grimoireAttack_midheal;
+	harmful=true;
+	actorValue=HP;
+	magnitude=d:grimoireActualDamage_tier1;
+	duration=-2;
+	chance=m:targetExists * d:ruinAcc;
+	element=ranged;
+	element=magic;
+	element=ruin;
+	FXOnTile=ari_energyShot_Green;
+[AvAffecterAoE]
+	ID=ari_grimoireAttack_midheal;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_grimoireAttack_midheal;
+	harmful=false;
+	actorValue=HP;
+	magnitude=d:grimoireActualHeal_tier2;
+	duration=-2;
+	chance=100 * m:previousAVChanceYes;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_grimoireAttack_midheal;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+	
+--High heal Grimoire
+[Action] ID=ari_grimoireAttack_highheal; 
+	special=requiresCasting;
+	special=redoMovementAnalysis;
+	applyWeaponBuffs=true;
+	chargeTime=3 * d:chargeTimeMult + d:chargeTimeMod;
+	casterAnimation=spellcast;
+	casterAnimationDependsOnWeaponHand=false;
+	FXChangesWithWeaponHand=false;
+	FXOnCaster=sfx_highThwum_loud;
+	FXOnCasterColor=DarkGreen;
+	FXOnCaster=ping_noOverlap;
+	FXOnCasterColor=DarkGreen;
+	FXOnCaster=ari_energyShotSummon_Dark;
+[ActionAoE] 
+	ID=ari_grimoireAttack_highheal;
+	cloneFrom=adjacent+3;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=true;
+	canSelectActors=true;
+[AvAffecter]
+	ID=ari_grimoireAttack_highheal;
+	harmful=true;
+	actorValue=HP;
+	magnitude=d:grimoireActualDamage_tier1;
+	duration=-2;
+	chance=m:targetExists * d:ruinAcc;
+	element=ranged;
+	element=magic;
+	element=ruin;
+	FXOnTile=ari_energyShot_Green;
+[AvAffecterAoE]
+	ID=ari_grimoireAttack_highheal;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_grimoireAttack_highheal;
+	harmful=false;
+	actorValue=HP;
+	magnitude=d:grimoireActualHeal_tier3;
+	duration=-2;
+	chance=100 * m:previousAVChanceYes;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_grimoireAttack_highheal;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+	
+--All heal Grimoire
+[Action] ID=ari_grimoireAttack_allheal; 
+	special=requiresCasting;
+	special=redoMovementAnalysis;
+	applyWeaponBuffs=true;
+	chargeTime=3 * d:chargeTimeMult + d:chargeTimeMod;
+	casterAnimation=spellcast;
+	casterAnimationDependsOnWeaponHand=false;
+	FXChangesWithWeaponHand=false;
+	FXOnCaster=sfx_highThwum_loud;
+	FXOnCasterColor=DarkGreen;
+	FXOnCaster=ping_noOverlap;
+	FXOnCasterColor=DarkGreen;
+	FXOnCaster=ari_energyShotSummon_Dark;
+[ActionAoE] 
+	ID=ari_grimoireAttack_allheal;
+	cloneFrom=adjacent+3;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=true;
+	canSelectActors=true;
+[AvAffecter]
+	ID=ari_grimoireAttack_allheal;
+	harmful=true;
+	actorValue=HP;
+	magnitude=d:grimoireActualDamage_tier1;
+	duration=-2;
+	chance=m:targetExists * d:ruinAcc;
+	element=ranged;
+	element=magic;
+	element=ruin;
+	FXOnTile=ari_energyShot_Green;
+[AvAffecterAoE]
+	ID=ari_grimoireAttack_allheal;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_grimoireAttack_allheal;
+	harmful=false;
+	actorValue=HP;
+	magnitude=d:grimoireActualHeal_tier4;
+	duration=-2;
+	chance=100 * m:previousAVChanceYes;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_grimoireAttack_allheal;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+	
+	
+--Heal high lightning Grimoire
+[Action] ID=ari_grimoireAttack_highheal_lightning; 
+	special=requiresCasting;
+	special=redoMovementAnalysis;
+	applyWeaponBuffs=true;
+	chargeTime=3 * d:chargeTimeMult + d:chargeTimeMod;
+	casterAnimation=spellcast;
+	casterAnimationDependsOnWeaponHand=false;
+	FXChangesWithWeaponHand=false;
+	FXOnCaster=sfx_highThwum_loud;
+	FXOnCasterColor=Yellow;
+	FXOnCaster=ping_noOverlap;
+	FXOnCasterColor=Yellow;
+	FXOnCaster=ari_energyShotSummon_lightning;
+[ActionAoE] 
+	ID=ari_grimoireAttack_highheal_lightning;
+	cloneFrom=adjacent+3;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=true;
+	canSelectActors=true;
+[AvAffecter]
+	ID=ari_grimoireAttack_highheal_lightning; 
+	actorValue=stun;
+	magnitude=1;
+	duration=5;
+	chance=d:ruinAcc - 40;
+	element=lightning;
+[AvAffecterAoE]
+	ID=ari_grimoireAttack_highheal_lightning;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_grimoireAttack_highheal_lightning;
+	harmful=true;
+	actorValue=HP;
+	magnitude=d:grimoireActualDamage_tier1;
+	duration=-2;
+	chance=m:targetExists * d:ruinAcc;
+	element=ranged;
+	element=magic;
+	element=lightning;
+	FXOnTile=ari_energyShot_lightning;
+	FXOnTile=horizSpark_many;
+[AvAffecterAoE]
+	ID=ari_grimoireAttack_highheal_lightning;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_grimoireAttack_highheal_lightning;
+	harmful=false;
+	actorValue=HP;
+	magnitude=d:grimoireActualHeal_tier3;
+	duration=-2;
+	chance=100 * m:previousAVChanceYes;
+	element=lightning;
+[AvAffecterAoE]
+	ID=ari_grimoireAttack_highheal_lightning;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+
+--Heal high wind Grimoire
+[Action] ID=ari_grimoireAttack_highheal_wind; 
+	special=requiresCasting;
+	special=redoMovementAnalysis;
+	applyWeaponBuffs=true;
+	chargeTime=3 * d:chargeTimeMult + d:chargeTimeMod;
+	casterAnimation=spellcast;
+	casterAnimationDependsOnWeaponHand=false;
+	FXChangesWithWeaponHand=false;
+	FXOnCaster=sfx_highThwum_loud;
+	FXOnCasterColor=White;
+	FXOnCaster=ping_noOverlap;
+	FXOnCasterColor=White;
+	FXOnCaster=ari_energyShotSummon_wind;
+[ActionAoE] 
+	ID=ari_grimoireAttack_highheal_wind;
+	cloneFrom=adjacent+3;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=true;
+	canSelectActors=true;
+[AvAffecter]
+	ID=ari_grimoireAttack_highheal_wind; 
+	actorValue=push;
+	magnitude=1;
+	duration=-2;
+	chance=d:ruinAcc - 25;
+	element=wind;
+	FXOnTile=ari_energyShot_wind;
+	FXOnHit=gustyBlast;
+[AvAffecterAoE]
+	ID=ari_grimoireAttack_highheal_wind;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_grimoireAttack_highheal_wind;
+	harmful=true;
+	actorValue=HP;
+	magnitude=d:grimoireActualDamage_tier1;
+	duration=-2;
+	chance=m:targetExists * d:ruinAcc;
+	element=ranged;
+	element=magic;
+	element=wind;
+[AvAffecterAoE]
+	ID=ari_grimoireAttack_highheal_wind;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_grimoireAttack_highheal_wind;
+	harmful=false;
+	actorValue=HP;
+	magnitude=d:grimoireActualHeal_tier3;
+	duration=-2;
+	chance=100 * m:previousAVChanceYes;
+	element=wind;
+[AvAffecterAoE]
+	ID=ari_grimoireAttack_highheal_wind;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+	
+--Grimoire of Yore
+[Action] ID=ari_grimoireAttack_lowheal_yore;
+	special=requiresCasting;
+	special=redoMovementAnalysis;
+	applyWeaponBuffs=true;
+	chargeTime=3 * d:chargeTimeMult + d:chargeTimeMod;
+	casterAnimation=spellcast;
+	casterAnimationDependsOnWeaponHand=false;
+	FXChangesWithWeaponHand=false;
+	FXOnCaster=sfx_highThwum_loud;
+	FXOnCasterColor=DarkGreen;
+	FXOnCaster=ping_noOverlap;
+	FXOnCasterColor=DarkGreen;
+	FXOnCaster=ari_energyShotSummon_Dark;
+[ActionAoE] 
+	ID=ari_grimoireAttack_lowheal_yore;
+	cloneFrom=adjacent+3;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=true;
+	canSelectActors=true;
+[AvAffecter]
+	ID=ari_grimoireAttack_lowheal_yore;
+	harmful=true;
+	actorValue=HP;
+	magnitude=d:grimoireActualDamage_tier1;
+	duration=-2;
+	chance=m:targetExists * d:ruinAcc;
+	element=ranged;
+	element=magic;
+	element=ruin;
+	FXOnTile=ari_energyShot_Green;
+[AvAffecterAoE]
+	ID=ari_grimoireAttack_lowheal_yore;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_grimoireAttack_lowheal_yore;
+	harmful=false;
+	actorValue=HP;
+	magnitude=d:grimoireActualHeal_tier1;
+	duration=-2;
+	chance=100 * m:previousAVChanceYes;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_grimoireAttack_lowheal_yore;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+[AvAffecter]
+	ID=ari_grimoireAttack_lowheal_yore; 
+	visibleEvaluations=true;
+	harmful=true;
+	actorValue=actTimer;
+	magnitude=-3;
+	chance=m:targetExists * d:ruinAcc;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_grimoireAttack_lowheal_yore;
+	cloneFrom=oneTile;
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------Rot book action, inflicting creeping death AV on enemies in sight for 99t. 
+[Action] ID=shana_deadbookact; 
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+[ActionAoE] 
+	ID=shana_deadbookact;
+	cloneFrom=oneTile; 
+[AvAffecter]
+	ID=shana_deadbookact; 
+	actorValue=shana_creepingdeath_status;
+	magnitude=1;
+	chance=100;
+	duration=99;
+	element=ruin;
+	visibleMiss=false;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=shana_deadbookact; shape=7;
+	needsLoS=true;
+	needsLoE=false;
+	arc=true;
+	airborne=true;
+	occupyAll=true;
+	bypassAll=true;
+	canSelectAllies=false;
+	minRange=1;
+	maxRange=22;
+
+---------------------------------------------------------------------Rot book action for ENEMY, inflicting creeping death AV on enemies in sight for 99t. 
+[Action] ID=shana_deadbookact_enemy; 
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+[ActionAoE] 
+	ID=shana_deadbookact_enemy;
+	cloneFrom=oneTile; 
+[AvAffecter]
+	ID=shana_deadbookact_enemy; 
+	actorValue=shana_creepingdeath_status_enemy;
+	magnitude=1;
+	chance=100;
+	duration=99;
+	element=ruin;
+	visibleMiss=false;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=shana_deadbookact_enemy; shape=7;
+	needsLoS=true;
+	needsLoE=false;
+	arc=true;
+	airborne=true;
+	occupyAll=true;
+	bypassAll=true;
+	canSelectAllies=false;
+	minRange=1;
+	maxRange=22;
+
+
+---------------------------------------------------------------------manuscript of divinity, heals all allies in radius 
+[Action] ID=ari_grimoire_divinity_heal; 
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+[ActionAoE] 
+	ID=ari_grimoire_divinity_heal;
+	cloneFrom=oneTile; 
+[AvAffecter]
+	ID=ari_grimoire_divinity_heal; 
+	actorValue=HP;
+	magnitude=2 + c:skill_Life * 0.5;
+	chance=100;
+	duration=-2;
+	element=life;
+	visibleMiss=false;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=White;
+	FXOnHit=upwardLinesFast;
+	FXOnHitColor=Red;
+[AvAffecterAoE]
+	ID=ari_grimoire_divinity_heal; shape=17;
+	needsLoS=true;
+	needsLoE=false;
+	arc=true;
+	airborne=true;
+	occupyAll=true;
+	bypassAll=true;
+	canSelectEnemies=false;
+	maxRange=9;
+
+--Manuscript of Divinity
+[Action] ID=ari_grimoire_divinity_attack;
+	special=requiresCasting;
+	special=redoMovementAnalysis;
+	applyWeaponBuffs=true;
+	chargeTime=3 * d:chargeTimeMult + d:chargeTimeMod;
+	casterAnimation=spellcast;
+	casterAnimationDependsOnWeaponHand=false;
+	FXChangesWithWeaponHand=false;
+	FXOnCaster=sfx_highThwum_loud;
+	FXOnCasterColor=Yellow;
+	FXOnCaster=ping_noOverlap;
+	FXOnCasterColor=White;
+	FXOnCaster=ari_energyShotSummon_divinity;
+[ActionAoE] 
+	ID=ari_grimoire_divinity_attack;
+	cloneFrom=adjacent+3;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=true;
+	canSelectActors=true;
+[AvAffecter]
+	ID=ari_grimoire_divinity_attack;
+	visibleMiss=true;
+	harmful=true;
+	actorValue=HP;
+	magnitude=d:grimoireDivinityActualDamage_tier1;
+	duration=-2;
+	chance=m:targetExists * d:ruinAcc * m:diffHostile;
+	element=ranged;
+	element=magic;
+	element=life;
+	FXOnTile=ari_energyShot_divinity;
+[AvAffecterAoE]
+	ID=ari_grimoire_divinity_attack;
+	canSelectAllies=false;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_grimoire_divinity_attack;
+	harmful=false;
+	actorValue=HP;
+	magnitude=d:grimoireDivinityActualHeal_tier1;
+	duration=-2;
+	chance=100 * m:previousAVChanceYes;
+	element=life;
+[AvAffecterAoE]
+	ID=ari_grimoire_divinity_attack;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+[AvAffecter]
+	ID=ari_grimoire_divinity_attack;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=HP;
+	magnitude=3 + c:skill_Life;
+	duration=-2;
+	chance=100 * m:targetExists * m:sameHostile;
+	element=ranged;
+	element=magic;
+	element=life;
+	FXOnTile=ari_energyShot_divinity;
+[AvAffecterAoE]
+	ID=ari_grimoire_divinity_attack;
+	canSelectAllies=true;
+	canSelectEnemies=false;
+	cloneFrom=oneTile;

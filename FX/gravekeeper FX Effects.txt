@@ -1,0 +1,72 @@
+[FXData]
+ID=ari_energyShot_Green; cloneFrom=energyShot;
+pR=p80;
+pG=;
+pB=;
+
+[FXData]
+ID=ari_energyShot_Rot; cloneFrom=energyShot;
+pR=pGreen2;
+pG=;
+pB=;
+
+[FXData]
+ID=ari_energyShotSummon_Dark; cloneFrom=summonEnergyShot;
+pR=p80;
+pG=;
+pB=;
+
+
+
+
+
+[FXData]
+ID=ari_energyShot_Souls; cloneFrom=energyShot;
+pR=pGrey4;
+pG=;
+pB=;
+
+[FXData]
+ID=ari_energyShotSummon_Souls; cloneFrom=summonEnergyShot;
+pR=p10;
+pG=;
+pB=;
+
+
+[FXData]
+ID=ari_energyShot_lightning; cloneFrom=energyShot;
+pR=pGold;
+pG=;
+pB=;
+
+[FXData]
+ID=ari_energyShotSummon_lightning; cloneFrom=summonEnergyShot;
+pR=pYellow;
+pG=;
+pB=;
+
+
+[FXData]
+ID=ari_energyShot_wind; cloneFrom=energyShot;
+pR=overworld11;
+pG=;
+pB=;
+
+[FXData]
+ID=ari_energyShotSummon_wind; cloneFrom=summonEnergyShot;
+pR=pWhite;
+pG=;
+pB=;
+
+
+[FXData]
+ID=ari_energyShot_divinity; cloneFrom=energyShot;
+pR=pHoneyglow;
+pG=;
+pB=;
+
+[FXData]
+ID=ari_energyShotSummon_divinity; cloneFrom=summonEnergyShot;
+pR=pHoneyglow;
+pG=;
+pB=;

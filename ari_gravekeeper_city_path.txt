@@ -1,0 +1,453 @@
+[Zone]  ID=ari_gravekeeper_city_path; dark=True; timeUntilNewDay=1; showFogOfWar=True; fogOfWar=True; minimapEnabled=True; allowCameraPastZoneEdges=False; cantAct=False; cantGameOver=False; alwaysKeepWeaponsUnsheathed=False; peaceful=False; overseerMode=False; rollingPinStyle=False; drawSky=False; drawSky_overrideYpos=-1; boatZone=False; wind=False; overworld=False; canDropItems=True; 
+ travelSong=King's Field OST - East Village; travelSongVolume=0.8; travelSongPitch=0; combatSong=west-shore; combatSongVolume=1; combatSongPitch=0; combatSongDelay=0; 
+darkR=65; darkG=65; darkB=145; 
+ screenWaveFreq=0; screenDarkWaveFreq=0; screenWaveAmp=0.01; screenDarkWaveAmp=0.01; screenWaveSpeed=0.2; screenWaveAmp_reflect=0.0014; 
+ bgTerrainTypeID=; bgFXID=; bgFX_sineWave=0; darkenedTileTexture=darkenedTile; bgScale=1; bgParallaxRatio=1; bgMoveSpeedX=0; bgMoveSpeedY=0; 
+paletteOverride=; zoneDirtPalette=pDirt; zoneGrassPalette=pGreen; zoneGrassDarkPalette=pGreen2; zoneStonePalette=pGreyD; zoneStoneDarkPalette=pGreyD2; zoneStoneLightPalette=pGreyD; zoneWaterPalette=pBlue; zoneDirtDarkPalette=pDirt; zoneWoodPalette=pWood; zoneWoodDarkPalette=pWoodDark; zoneMisc1Palette=p96; zoneMisc2Palette=pWoodDark; zoneMisc3Palette=pRed; zoneMisc4Palette=pBlue; zoneMisc5Palette=pGreen; zoneMisc6Palette=pOrange; zoneMisc7Palette=pYellow; zoneMisc8Palette=pPurple; 
+
+combatMode=False; 
+
+[Item] ID=rocks1; q=3; x=0; y=12;
+[Item] ID=rocks1; q=2; x=0; y=13;
+[Item] ID=rubble; q=1; x=0; y=33;
+[Item] ID=rubble; q=1; x=1; y=7;
+[Item] ID=rocks1; q=1; x=1; y=13;
+[Item] ID=rubble; q=1; x=1; y=37;
+[Item] ID=rocks1; q=2; x=2; y=21;
+[Item] ID=pebbles1; q=1; x=2; y=22;
+[Item] ID=rocks1; q=1; x=3; y=1;
+[Item] ID=rubble; q=1; x=3; y=13;
+[Item] ID=gp; q=6; bu=True; x=3; y=13;
+[Item] ID=rubble; q=1; x=3; y=28;
+[Item] ID=rubble; q=1; x=3; y=32;
+[Item] ID=rubble; q=1; x=3; y=44;
+[Item] ID=pebbles1; q=1; r=360; x=4; y=6;
+[Item] ID=rubble; q=1; x=4; y=7;
+[Item] ID=rocks1; q=1; x=4; y=14;
+[Item] ID=rubble; q=1; x=4; y=17;
+[Item] ID=rubble; q=1; x=4; y=30;
+[Item] ID=rubble; q=1; x=4; y=42;
+[Item] ID=rubble; q=1; x=5; y=6;
+[Item] ID=rubble; q=1; x=5; y=7;
+[Item] ID=pebbles1; q=1; r=360; x=5; y=8;
+[Item] ID=pebbles1; q=1; x=5; y=19;
+[Item] ID=rubble; q=1; x=5; y=20;
+[Item] ID=rocks1; q=1; x=5; y=21;
+[Item] ID=rubble; q=1; x=5; y=29;
+[Item] ID=rubble; q=1; x=6; y=0;
+[Item] ID=rocks1; q=2; x=6; y=6;
+[Item] ID=rocks1; q=2; x=6; y=20;
+[Item] ID=pebbles1; q=1; x=6; y=28;
+[Item] ID=rocks1; q=2; x=6; y=31;
+[Item] ID=rubble; q=1; x=6; y=36;
+[Item] ID=rubble; q=1; x=7; y=4;
+[Item] ID=bonePileDark; q=1; r=-90; x=7; y=6;
+[Item] ID=rubble; q=1; x=7; y=25;
+[Item] ID=rubble; q=1; x=7; y=26;
+[Item] ID=rocks1; q=4; x=7; y=34;
+[Item] ID=pebbles1; q=1; r=360; x=8; y=3;
+[Item] ID=bonePileDark; q=1; x=8; y=5;
+[Item] ID=bonePileDark; q=1; r=-90; x=8; y=7;
+[Item] ID=bonePileDark; q=1; r=-180; x=8; y=7;
+[Item] ID=pebbles1; q=1; x=8; y=27;
+[Item] ID=rubble; q=1; x=8; y=28;
+[Item] ID=rocks1; q=1; x=8; y=33;
+[Item] ID=rocks1; q=2; x=8; y=35;
+[Item] ID=loot_bone_junk; q=1; r=-360; x=9; y=6;
+[Item] ID=bonePileDark; q=1; x=9; y=6;
+[Item] ID=bonePileDark; q=1; r=-270; x=9; y=6;
+[Item] ID=loot_bone_junk; q=1; x=9; y=7;
+[Item] ID=loot_bone_junk; q=1; x=9; y=7;
+[Item] ID=bonePileDark; q=1; r=-180; x=9; y=8;
+[Item] ID=loot_bone_junk; q=1; r=360; x=9; y=37;
+[Item] ID=loot_bone_junk; q=1; r=-360; x=10; y=5;
+[Item] ID=loot_bone_junk; q=1; r=-360; x=10; y=7;
+[Item] ID=loot_bone_junk; q=1; r=360; x=10; y=7;
+[Item] ID=bonePileDark; q=1; r=-270; x=10; y=7;
+[Item] ID=rubble; q=1; x=10; y=17;
+[Item] ID=loot_bone_junk; q=1; r=-360; x=10; y=36;
+[Item] ID=bonePileDark; q=1; r=-90; x=11; y=4;
+[Item] ID=bugsMass_small; q=1; x=11; y=7;
+[Item] ID=bonePileDark; q=1; x=12; y=3;
+[Item] ID=bonePileDark; q=1; r=-180; x=12; y=5;
+[Item] ID=bugs12_small; q=1; r=360; x=12; y=25;
+[Item] ID=bugs5_small; q=1; x=12; y=30;
+[Item] ID=loot_bone_junk; q=1; r=-360; x=12; y=39;
+[Item] ID=loot_bone_junk; q=1; r=-360; x=12; y=39;
+[Item] ID=loot_bone_junk; q=1; r=360; x=12; y=39;
+[Item] ID=loot_bone_junk; q=1; r=90; x=12; y=39;
+[Item] ID=loot_bone_junk; q=1; r=270; x=12; y=39;
+[Item] ID=loot_bone_junk; q=1; r=-360; x=13; y=4;
+[Item] ID=loot_bone_junk; q=1; r=360; x=13; y=4;
+[Item] ID=bonePileDark; q=1; r=-270; x=13; y=4;
+[Item] ID=pebbles1; q=1; r=360; x=13; y=5;
+[Item] ID=bugs5_small; q=1; r=-360; x=13; y=28;
+[Item] ID=pebbles1; q=1; x=14; y=8;
+[Item] ID=pebbles1; q=1; x=14; y=16;
+[Item] ID=ari_eternal_light1; q=1; r=-360; x=15; y=6;
+[Item] ID=bugs5_small; q=1; r=-360; x=15; y=17;
+[Item] ID=loot_bone_junk; q=1; x=15; y=31;
+[Item] ID=pebbles2; q=1; x=15; y=32;
+[Item] ID=pebbles2; q=1; x=16; y=3;
+[Item] ID=ari_eternal_light1; q=1; x=16; y=17;
+[Item] ID=bugs5_small; q=1; r=360; x=16; y=18;
+[Item] ID=bugs12_small; q=1; r=360; x=16; y=24;
+[Item] ID=loot_bone_junk; q=1; r=-360; x=16; y=33;
+[Item] ID=pebbles2; q=1; r=-360; x=17; y=23;
+[Item] ID=loot_bone_junk; q=1; r=-360; x=17; y=32;
+[Item] ID=loot_bone_junk; q=1; r=360; x=17; y=32;
+[Item] ID=pebbles2; q=1; x=17; y=33;
+[Item] ID=pebbles1; q=1; r=-360; x=17; y=36;
+[Item] ID=pebbles2; q=1; r=-360; x=17; y=41;
+[Item] ID=pebbles2; q=1; r=-360; x=18; y=0;
+[Item] ID=bonePileDark; q=1; r=-90; x=18; y=6;
+[Item] ID=bonePileDark; q=1; r=-90; x=18; y=7;
+[Item] ID=pebbles1; q=1; r=360; x=18; y=14;
+[Item] ID=pebbles2; q=1; r=-360; x=18; y=17;
+[Item] ID=pebbles1; q=1; r=-360; x=18; y=33;
+[Item] ID=pebbles2; q=1; x=18; y=41;
+[Item] ID=travelPoint_1; q=1; r=90; x=19; y=4;
+[Item] ID=bonePileDark; q=1; r=-360; x=19; y=5;
+[Item] ID=loot_bone_junk; q=1; r=90; x=19; y=6;
+[Item] ID=loot_bone_junk; q=1; r=180; x=19; y=7;
+[Item] ID=loot_bone_junk; q=1; r=-180; x=19; y=7;
+[Item] ID=bonePileDark; q=1; r=-180; x=19; y=8;
+[Item] ID=pebbles2; q=1; r=-360; x=19; y=22;
+[Item] ID=ari_eternal_light1; q=1; x=19; y=35;
+[Item] ID=travelPoint_0; q=1; r=270; x=19; y=39;
+[Item] ID=pebbles2; q=1; x=19; y=40;
+[Item] ID=pebbles1; q=1; x=19; y=41;
+[Item] ID=pebbles1; q=1; r=360; x=20; y=0;
+[Item] ID=pebbles2; q=1; x=20; y=2;
+[Item] ID=pebbles1; q=1; r=-360; x=20; y=4;
+[Item] ID=bugs12_small; q=1; x=20; y=5;
+[Item] ID=bonePileDark; q=1; r=-270; x=20; y=6;
+[Item] ID=bonePileDark; q=1; r=90; x=20; y=7;
+[Item] ID=bugsMass_small; q=1; r=-360; x=20; y=8;
+[Item] ID=pebbles1; q=1; x=20; y=23;
+[Item] ID=pebbles1; q=1; x=20; y=25;
+[Item] ID=pebbles2; q=1; x=20; y=41;
+[Item] ID=loot_bone_junk; q=1; r=360; x=21; y=24;
+[Item] ID=loot_bone_junk; q=1; r=360; x=23; y=13;
+[Item] ID=bonePileDark; q=1; r=270; x=23; y=13;
+[Item] ID=bugs12_small; q=1; r=-360; x=23; y=23;
+[Item] ID=loot_bone_junk; q=1; r=360; x=24; y=0;
+[Item] ID=bonePileDark; q=1; r=-90; x=24; y=0;
+[Item] ID=loot_bone_junk; q=1; r=360; x=24; y=12;
+[Item] ID=loot_bone_junk; q=1; r=-360; x=24; y=12;
+[Item] ID=bonePileDark; q=1; r=-360; x=24; y=12;
+[Item] ID=bonePileDark; q=1; r=-180; x=24; y=14;
+[Item] ID=bonePileDark; q=1; r=-90; x=24; y=23;
+[Item] ID=bonePileDark; q=1; r=-180; x=25; y=1;
+[Item] ID=loot_bone_junk; q=1; r=360; x=25; y=5;
+[Item] ID=bugs5_small; q=1; r=360; x=25; y=6;
+[Item] ID=loot_bone_junk; q=1; r=-360; x=25; y=13;
+[Item] ID=bonePileDark; q=1; r=-270; x=25; y=13;
+[Item] ID=bugs12_small; q=1; r=-360; x=25; y=14;
+[Item] ID=bonePileDark; q=1; r=-360; x=25; y=22;
+[Item] ID=loot_bone_junk; q=1; r=360; x=25; y=23;
+[Item] ID=loot_bone_junk; q=1; r=-360; x=25; y=24;
+[Item] ID=loot_bone_junk; q=1; r=90; x=25; y=24;
+[Item] ID=bonePileDark; q=1; r=-180; x=25; y=24;
+[Item] ID=loot_bone_junk; q=1; r=360; x=26; y=0;
+[Item] ID=bonePileDark; q=1; r=90; x=26; y=0;
+[Item] ID=bonePileDark; q=1; r=-90; x=26; y=3;
+[Item] ID=loot_bone_junk; q=1; r=-360; x=26; y=4;
+[Item] ID=bonePileDark; q=1; r=90; x=26; y=23;
+[Item] ID=bugs5_small; q=1; r=-360; x=26; y=24;
+[Item] ID=loot_bone_junk; q=1; r=360; x=26; y=30;
+[Item] ID=fade_s2; q=1; r=270; x=26; y=40;
+[Item] ID=fade_s1; q=1; x=26; y=41;
+[Item] ID=fade_s1; q=1; x=26; y=42;
+[Item] ID=fade_s1; q=1; x=26; y=43;
+[Item] ID=fade_s1; q=1; x=26; y=44;
+[Item] ID=bonePileDark; q=1; x=27; y=2;
+[Item] ID=loot_bone_junk; q=1; r=-360; x=27; y=3;
+[Item] ID=rocks1; q=1; x=27; y=4;
+[Item] ID=bonePileDark; q=1; r=180; x=27; y=4;
+[Item] ID=loot_bone_junk; q=1; r=360; x=27; y=5;
+[Item] ID=loot_bone_junk; q=1; x=27; y=23;
+[Item] ID=loot_bone_junk; q=1; r=360; x=27; y=31;
+[Item] ID=fade_s2; q=1; r=270; x=27; y=39;
+[Item] ID=fade_s1; q=1; x=27; y=40;
+[Item] ID=fade_s1; q=1; x=27; y=41;
+[Item] ID=fade_s1; q=1; x=27; y=42;
+[Item] ID=fade_s1; q=1; x=27; y=43;
+[Item] ID=fade_s1; q=1; x=27; y=44;
+[Item] ID=bonePileDark; q=1; r=90; x=28; y=3;
+[Item] ID=rocks1; q=2; x=28; y=4;
+[Item] ID=rocks1; q=4; x=28; y=5;
+[Item] ID=loot_bone_junk; q=1; r=180; x=28; y=22;
+[Item] ID=loot_bone_junk; q=1; r=360; x=28; y=22;
+[Item] ID=loot_bone_junk; q=1; x=28; y=23;
+[Item] ID=loot_bone_junk; q=1; r=360; x=28; y=29;
+[Item] ID=loot_bone_junk; q=1; r=-360; x=28; y=30;
+[Item] ID=fade_s2; q=1; r=270; x=28; y=38;
+[Item] ID=fade_s1; q=1; x=28; y=39;
+[Item] ID=roof2_top_point2; q=1; x=28; y=39;
+[Item] ID=fade_s1; q=1; x=28; y=40;
+[Item] ID=roof2_gableL2; q=1; x=28; y=40;
+[Item] ID=fade_s1; q=1; x=28; y=41;
+[Item] ID=roof2_gableL2; q=1; x=28; y=41;
+[Item] ID=roof2_gableL2; q=1; x=28; y=42;
+[Item] ID=fade_s1; q=1; x=28; y=42;
+[Item] ID=roof2_gableL3; q=1; x=28; y=43;
+[Item] ID=fade_s1; q=1; x=28; y=43;
+[Item] ID=fade_s1; q=1; x=28; y=44;
+[Item] ID=pebbles1; q=1; r=-360; x=29; y=6;
+[Item] ID=loot_bone_junk; q=1; r=360; x=29; y=30;
+[Item] ID=fade_s2; q=1; r=270; x=29; y=37;
+[Item] ID=fade_s1; q=1; x=29; y=38;
+[Item] ID=roof2_damaged3; q=1; x=29; y=38;
+[Item] ID=fade_s1; q=1; x=29; y=39;
+[Item] ID=roof2_gableL2; q=1; x=29; y=39;
+[Item] ID=roof2_damaged3; q=1; x=29; y=39;
+[Item] ID=fade_s1; q=1; x=29; y=40;
+[Item] ID=roof2_gableL2; q=1; x=29; y=40;
+[Item] ID=roof2_gableL2; q=1; x=29; y=41;
+[Item] ID=fade_s1; q=1; x=29; y=41;
+[Item] ID=roof2_gableL3; q=1; x=29; y=42;
+[Item] ID=fade_s1; q=1; x=29; y=42;
+[Item] ID=fade_s1; q=1; x=29; y=43;
+[Item] ID=fade_s1; q=1; x=29; y=44;
+[Item] ID=fade_s2; q=1; r=270; x=30; y=36;
+[Item] ID=fade_s1; q=1; x=30; y=37;
+[Item] ID=roof2_top_point2; q=1; x=30; y=37;
+[Item] ID=fade_s1; q=1; x=30; y=38;
+[Item] ID=roof2_gableL2; q=1; x=30; y=38;
+[Item] ID=roof2_gableL2; q=1; x=30; y=39;
+[Item] ID=fade_s1; q=1; x=30; y=39;
+[Item] ID=roof2_gableL2; q=1; x=30; y=40;
+[Item] ID=fade_s1; q=1; x=30; y=40;
+[Item] ID=roof2_gableL3; q=1; x=30; y=41;
+[Item] ID=fade_s1; q=1; x=30; y=41;
+[Item] ID=fade_s1; q=1; x=30; y=42;
+[Item] ID=fade_s1; q=1; x=30; y=43;
+[Item] ID=fade_s1; q=1; x=30; y=44;
+[Item] ID=roof2_top_point2; q=1; x=31; y=36;
+[Item] ID=fade_s1; q=1; x=31; y=36;
+[Item] ID=roof2_gableL2; q=1; x=31; y=37;
+[Item] ID=fade_s1; q=1; x=31; y=37;
+[Item] ID=fade_s1; q=1; x=31; y=38;
+[Item] ID=roof2_gableL2; q=1; x=31; y=38;
+[Item] ID=roof2_gableL2; q=1; x=31; y=39;
+[Item] ID=fade_s1; q=1; x=31; y=39;
+[Item] ID=roof2_gableL3; q=1; x=31; y=40;
+[Item] ID=fade_s1; q=1; x=31; y=40;
+[Item] ID=fade_s1; q=1; x=31; y=41;
+[Item] ID=fade_s1; q=1; x=31; y=42;
+[Item] ID=fade_s1; q=1; x=31; y=43;
+[Item] ID=fade_s2; q=1; r=90; x=31; y=44;
+[Item] ID=rubble; q=1; x=32; y=7;
+[Item] ID=pebbles1; q=1; x=32; y=27;
+[Item] ID=rocks1; q=3; x=32; y=28;
+[Item] ID=rocks1; q=6; r=-360; x=32; y=31;
+[Item] ID=roof2_top_point2; q=1; x=32; y=35;
+[Item] ID=rocks1; q=1; x=32; y=35;
+[Item] ID=roof2_gableL2; q=1; x=32; y=36;
+[Item] ID=fade_s1; q=1; x=32; y=36;
+[Item] ID=roof2_gableL2; q=1; x=32; y=37;
+[Item] ID=fade_s1; q=1; x=32; y=37;
+[Item] ID=roof2_gableL2; q=1; x=32; y=38;
+[Item] ID=fade_s1; q=1; x=32; y=38;
+[Item] ID=roof2_gableL3; q=1; x=32; y=39;
+[Item] ID=fade_s1; q=1; x=32; y=39;
+[Item] ID=fade_s1; q=1; x=32; y=40;
+[Item] ID=roof2_top_point2; q=1; x=32; y=41;
+[Item] ID=fade_s1; q=1; x=32; y=41;
+[Item] ID=roof2_gableL2; q=1; x=32; y=42;
+[Item] ID=fade_s1; q=1; x=32; y=42;
+[Item] ID=roof2_gableL2; q=1; x=32; y=43;
+[Item] ID=fade_s1; q=1; x=32; y=43;
+[Item] ID=roof2_gableL3; q=1; x=32; y=44;
+[Item] ID=fade_s1; q=1; x=32; y=44;
+[Item] ID=rocks1; q=1; x=33; y=1;
+[Item] ID=rocks1; q=4; x=33; y=8;
+[Item] ID=rocks1; q=1; x=33; y=9;
+[Item] ID=rubble; q=1; x=33; y=10;
+[Item] ID=rocks1; q=1; x=33; y=32;
+[Item] ID=rocks1; q=3; r=-360; x=33; y=33;
+[Item] ID=rocks1; q=2; r=-360; x=33; y=34;
+[Item] ID=roof2; q=1; x=33; y=35;
+[Item] ID=roof2; q=1; x=33; y=36;
+[Item] ID=roof2_gableL1; q=1; x=33; y=36;
+[Item] ID=fade_s1; q=1; x=33; y=36;
+[Item] ID=roof2_gableL2; q=1; x=33; y=37;
+[Item] ID=fade_s1; q=1; x=33; y=37;
+[Item] ID=roof2_gableL3; q=1; x=33; y=38;
+[Item] ID=fade_s1; q=1; x=33; y=38;
+[Item] ID=fade_s1; q=1; x=33; y=39;
+[Item] ID=roof2_top_point2; q=1; x=33; y=40;
+[Item] ID=fade_s1; q=1; x=33; y=40;
+[Item] ID=roof2_gableL2; q=1; x=33; y=41;
+[Item] ID=fade_s1; q=1; x=33; y=41;
+[Item] ID=roof2_gableL2; q=1; x=33; y=42;
+[Item] ID=fade_s1; q=1; x=33; y=42;
+[Item] ID=roof2_gableL3; q=1; x=33; y=43;
+[Item] ID=fade_s1; q=1; x=33; y=43;
+[Item] ID=fade_s2; q=1; r=90; x=33; y=44;
+[Item] ID=rubble; q=1; x=34; y=0;
+[Item] ID=rubble; q=1; x=34; y=2;
+[Item] ID=pebbles1; q=1; r=-360; x=34; y=20;
+[Item] ID=rubble; q=1; x=34; y=21;
+[Item] ID=rocks1; q=2; x=34; y=33;
+[Item] ID=rocks1; q=5; x=34; y=34;
+[Item] ID=roof2; q=1; x=34; y=35;
+[Item] ID=roof2; q=1; x=34; y=36;
+[Item] ID=fade_s1; q=1; x=34; y=36;
+[Item] ID=roof2; q=1; x=34; y=37;
+[Item] ID=fade_s1; q=1; x=34; y=37;
+[Item] ID=fade_s1; q=1; x=34; y=38;
+[Item] ID=roof2_damaged3; q=1; x=34; y=39;
+[Item] ID=fade_s1; q=1; x=34; y=39;
+[Item] ID=roof2_gableL2; q=1; x=34; y=40;
+[Item] ID=fade_s1; q=1; x=34; y=40;
+[Item] ID=fade_s1; q=1; x=34; y=40;
+[Item] ID=roof2_gableL2; q=1; x=34; y=41;
+[Item] ID=fade_s1; q=1; x=34; y=41;
+[Item] ID=roof2_gableL3; q=1; x=34; y=42;
+[Item] ID=fade_s1; q=1; x=34; y=42;
+[Item] ID=fade_s2; q=1; r=90; x=34; y=43;
+
+
+
+[Trigger] numID=0; aliasID=leave_to_graveyard;
+topX=8;topY=41;btmX=28;btmY=42;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[TriggerEffect] numID=0; effectID=travel_point; sValue=ari_graveyard1; sValue2=; bValue1=False; bValue2=False; fValue=2; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+
+
+[Trigger] numID=1; aliasID=leave_to_barrow_city;
+topX=9;topY=1;btmX=30;btmY=2;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[TriggerEffect] numID=1; effectID=travel_point; sValue=ari_graveyard_city_outskirts; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+
+
+[Trigger] numID=2; aliasID=ari_path_mage_1;
+topX=7;topY=6;btmX=8;btmY=7;
+triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[TriggerEffect] numID=2; effectID=spawn; sValue=ari_gravekeeper_single_skelmage1; sValue2=sm1_gk_path; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+
+
+[Trigger] numID=3; aliasID=ari_path_mage_2;
+topX=19;topY=7;btmX=20;btmY=8;
+triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[TriggerEffect] numID=3; effectID=spawn; sValue=ari_gravekeeper_single_skelmage1; sValue2=sm2_gk_path; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+
+
+[Trigger] numID=4; aliasID=ari_path_warrior_1;
+topX=11;topY=8;btmX=12;btmY=9;
+triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[TriggerEffect] numID=4; effectID=spawn; sValue=ari_gravekeeper_single_skelwarr1; sValue2=sw1_gk_path; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+
+
+[Trigger] numID=5; aliasID=ari_path_warrior_2;
+topX=17;topY=8;btmX=18;btmY=9;
+triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[TriggerEffect] numID=5; effectID=spawn; sValue=ari_gravekeeper_single_skelwarr1; sValue2=sw2_gk_path; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+
+
+[Trigger] numID=6; aliasID=ari_path_zombie_1;
+topX=7;topY=22;btmX=8;btmY=23;
+triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[TriggerEffect] numID=6; effectID=spawn; sValue=ari_gravekeeper_single_zombie1; sValue2=z1_gk_path; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+
+
+[Trigger] numID=7; aliasID=ari_path_zombie_2;
+topX=11;topY=25;btmX=12;btmY=26;
+triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[TriggerEffect] numID=7; effectID=spawn; sValue=ari_gravekeeper_single_zombie1; sValue2=z2_gk_path; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+
+
+[Trigger] numID=8; aliasID=ari_path_zombie_3;
+topX=15;topY=22;btmX=16;btmY=23;
+triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[TriggerEffect] numID=8; effectID=spawn; sValue=ari_gravekeeper_single_zombie1; sValue2=z3_gk_path; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+
+
+[Trigger] numID=9; aliasID=ari_path_warrior_3;
+topX=17;topY=23;btmX=18;btmY=24;
+triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[TriggerEffect] numID=9; effectID=spawn; sValue=ari_gravekeeper_single_skelwarr1; sValue2=sw3_gk_path; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+
+
+[Trigger] numID=10; aliasID=ari_path_archer_1;
+topX=24;topY=24;btmX=25;btmY=25;
+triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[TriggerEffect] numID=10; effectID=spawn; sValue=ari_gravekeeper_single_skelarcher1; sValue2=sa1_gk_path; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+
+
+[Trigger] numID=11; aliasID=ari_path_zombie_5;
+topX=9;topY=33;btmX=10;btmY=34;
+triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[TriggerEffect] numID=11; effectID=spawn; sValue=ari_gravekeeper_single_zombie1; sValue2=z5_gk_path; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+
+
+[Trigger] numID=12; aliasID=ari_path_zobmie_4;
+topX=7;topY=35;btmX=8;btmY=36;
+triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[TriggerEffect] numID=12; effectID=spawn; sValue=ari_gravekeeper_single_zombie1; sValue2=z4_gk_path; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+
+
+[Trigger] numID=13; aliasID=ari_path_mage_3;
+topX=22;topY=23;btmX=23;btmY=24;
+triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[TriggerEffect] numID=13; effectID=spawn; sValue=ari_gravekeeper_single_skelmage1; sValue2=sm3_gk_path; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+
+
+[Trigger] numID=14; aliasID=ari_path_zombie_6;
+topX=24;topY=22;btmX=25;btmY=23;
+triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[TriggerEffect] numID=14; effectID=spawn; sValue=ari_gravekeeper_single_zombie1; sValue2=z6_gk_path; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+
+
+[Trigger] numID=15; aliasID=ari_path_archer_3;
+topX=12;topY=6;btmX=13;btmY=7;
+triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[TriggerEffect] numID=15; effectID=spawn; sValue=ari_gravekeeper_single_skelarcher1; sValue2=sa3_gk_path; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+
+
+[Trigger] numID=16; aliasID=ari_path_mage_4;
+topX=24;topY=6;btmX=25;btmY=7;
+triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[TriggerEffect] numID=16; effectID=spawn; sValue=ari_gravekeeper_single_skelmage1; sValue2=sm4_gk_path; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+
+
+[Trigger] numID=17; aliasID=ari_path_zombie_7;
+topX=10;topY=5;btmX=11;btmY=6;
+triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[TriggerEffect] numID=17; effectID=spawn; sValue=ari_gravekeeper_single_zombie1; sValue2=z7_gk_path; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+
+
+[Trigger] numID=18; aliasID=ari_path_zombie_9;
+topX=9;topY=7;btmX=10;btmY=8;
+triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[TriggerEffect] numID=18; effectID=spawn; sValue=ari_gravekeeper_single_zombie1; sValue2=z9_gk_path; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+
+
+[Trigger] numID=19; aliasID=ari_path_zombie_8;
+topX=13;topY=8;btmX=14;btmY=9;
+triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[TriggerEffect] numID=19; effectID=spawn; sValue=ari_gravekeeper_single_zombie1; sValue2=z8_gk_path; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+
+

@@ -1,0 +1,179 @@
+[ItemType]  name=Brazier;
+ID=ari_brazier_lair; sprite=71;
+itemCategory=furnishing;
+texture=gkart;
+weight=200;
+special=big; special=cannotBePickedUp;
+blockWalking=true; blockJumping=true;
+pR=pGreyD; pG=pFadeDarker; pB=pB;
+
+[ItemType]  name=Phylacteral Podium;
+itemCategory=furnishing;
+texture=gkart;
+ID=ari_phylactery_lair1; sprite=72;
+weight=5000;
+journalID=ari_journal_phylacteral_podium;
+pR=pGreyD; pG=pFadeDarker; pB=pDecay;
+special=big; special=cannotBePickedUp;
+blockWalking=true; blockJumping=true;
+depthMod=1050;
+
+[ItemType]  name=Phylacteral Podium;
+itemCategory=furnishing;
+ID=ari_phylactery_lair2; sprite=73;
+texture=gkart;
+cloneFrom=ari_phylactery_lair1;
+
+[ItemType]  name=Phylacteral Podium;
+itemCategory=furnishing;
+ID=ari_phylactery_lair_both; sprite=72; special=sprite2xWidth;
+texture=gkart;
+cloneFrom=ari_phylactery_lair1;
+
+[JournalEntry]
+ID=ari_journal_phylacteral_podium;
+category=artifact; halfPage=true; rarity=2;
+title=Lich's Phylactery;
+text=<itemBig=ari_phylactery_lair_both><title=Lich's Phylactery><brAdj=>A depraved idol housing a myriad of spirits torn from their original owners. It seems to house the essence of a Lich and should likely be destroyed. But perhaps it holds another use...;
+
+[ItemType]  name=Empty Phylacteral Podium;
+itemCategory=furnishing;
+texture=gkart;
+ID=ari_phylactery_lair1_empty; sprite=82;
+weight=5000;
+journalID=ari_journal_phylacteral_podium_empty;
+pR=pGreyD; pG=pFadeDarker; pB=pDecay;
+special=big; special=cannotBePickedUp;
+blockWalking=true; blockJumping=true;
+depthMod=1050;
+
+[ItemType]  name=Empty Phylacteral Podium;
+itemCategory=furnishing;
+ID=ari_phylactery_lair2_empty; sprite=83;
+texture=gkart;
+cloneFrom=ari_phylactery_lair1_empty;
+
+[ItemType]  name=Empty Phylacteral Podium;
+itemCategory=furnishing;
+ID=ari_phylactery_lair_both_empty; sprite=82; special=sprite2xWidth;
+texture=gkart;
+cloneFrom=ari_phylactery_lair1_empty;
+
+[JournalEntry]
+ID=ari_journal_phylacteral_podium_empty;
+category=artifact; halfPage=true; rarity=1;
+title=Phylactery Podium;
+text=<itemBig=ari_phylactery_lair_both_empty><title=Phylactery Podium><brAdj=>A depraved idol that once housed the essence of a Lich.;
+
+
+
+[ItemType]  name=Metal Gate;
+itemCategory=mech;
+  ID=ari_closed_graveyard_gate; sprite=74; special=sprite2xWidth;
+journalID=journal_door;
+texture=gkart;
+  weight=500; 
+  special=huge; special=cannotBePickedUp;
+	blockLoS=false; blockLoE=true; blockWalking=true; blockJumping=true;
+	pR=zoneStoneDark; pG=pFadeDarker;
+combineWith=ari_graveyard_key; toMake=ari_open_graveyard_gate; consumeOnCombine=true;
+
+[ItemType]  name=Open Metal Gate;
+itemCategory=mech;
+  ID=ari_open_graveyard_gate; sprite=76; special=sprite2xWidth;
+journalID=journal_door;
+texture=gkart;
+  weight=500;
+  special=huge; special=cannotBePickedUp;
+	pR=zoneStoneDark; pG=pFadeDarker;
+
+
+[ItemType]  name=Port Barrow's Graveyard Gate Key;
+ID=ari_graveyard_key; sprite=78;
+itemCategory=mech;
+texture=gkart;
+weight=0; volume=0;
+description=A rusted, somewhat fragile key that will unlock a gate.;
+pR=pBrown;
+
+[ItemType]  name=Street Light;
+ID=ari_eternal_light1; sprite=11;
+texture=items_building;
+description=Lantern mounted on a post.; itemCategory=hazard;
+journalID=journal_streetlight; element=fire;
+special=cannotBePickedUp; special=sprite2xHeight;
+special=animated; special=adjustSpriteYUp8; special=adjustSpriteYUp2;
+blockWalking=true; blockJumping=true;
+pR=zoneStone; pB=pGold; pG=pFadeDarker;
+depthMod=1050;
+[ItemLight]
+ ID=ari_eternal_light1; red=1; blue=0.76; green=0.93; alpha=1; size=1.55; flicker=0.01; texture=krypton; Y=-0.9;
+
+
+
+
+
+[ItemType]  name=Metal Gate;
+itemCategory=mech;
+  ID=ari_closed_barrow_gate; sprite=74; special=sprite2xWidth;
+journalID=journal_door;
+texture=gkart;
+  weight=500; 
+  special=huge; special=cannotBePickedUp;
+	blockLoS=false; blockLoE=true; blockWalking=true; blockJumping=true;
+	pR=zoneStoneDark; pG=pFadeDarker;
+combineWith=ari_barrow_key; toMake=ari_open_barrow_gate; consumeOnCombine=true;
+
+[ItemType]  name=Open Metal Gate;
+itemCategory=mech;
+  ID=ari_open_barrow_gate; sprite=76; special=sprite2xWidth;
+journalID=journal_door;
+texture=gkart;
+  weight=500;
+  special=huge; special=cannotBePickedUp;
+	pR=zoneStoneDark; pG=pFadeDarker;
+
+
+[ItemType]  name=Key to the City of Barrow;
+ID=ari_barrow_key; sprite=78;
+itemCategory=mech;
+texture=gkart;
+weight=0; volume=0;
+description=A metal key that will unlock a gate.;
+pR=pBrown;
+
+[ItemType]  name=Broken Phylactery;
+ID=ari_broken_phylactery_trinket; sprite=10;
+journalID=ari_broken_phylactery_trinket_journal;
+description=A broken Phylactery that once housed the soul of a Lich. .;
+texture=gkart;
+weight=0; volume=1; value=50;
+itemCategory=4; 
+pB=p84;
+
+[ItemEffect]  
+ID=ari_broken_phylactery_trinket; actorValue=skill_Ruin; magnitude=2; duration=-1;
+
+[ItemReaction] 
+ID=ari_broken_phylactery_trinket; actorValues=wet; actorValues=chilled; actorValues=frozen; damageMultiplier=0.5;
+
+[JournalEntry]
+ID=ari_broken_phylactery_trinket_journal;
+category=equipment; halfPage=true; rarity=3;
+title=Broken Phylactery;
+text=<itemBig=ari_broken_phylactery_trinket><title=Broken Phylactery><brAdj=>Once adorning the top of a depraved idol, this remnant of power appears to be broken and powerless. But once in a while, the wearer can hear the faint whisper of spirits of the dead.;
+
+[ItemType]  name=Foul Remnant;
+ID=ari_gk_foul_remnant; sprite=11; texture=gkart; stackable=false;
+weight=3; volume=5; value=10; itemCategory=1;
+pR=p93; pG=pG; pB=p25;
+requiredForCombining=; combineSound=stomp;
+combineWith=ari_grimoire_dusty; toMake=shana_deadbook; consumeOnCombine=true;
+
+description=A disgusting remnant of corruption. Perhaps it can be used for something.;
+ 
+[JournalEntry]
+ID=item_ari_gk_foul_remnant;
+category=item; halfPage=true; rarity=3;
+title=Foul Remnant;
+text=<itemBig=ari_gk_foul_remnant><title=Foul Remnant><brAdj=>An overwhelming remnant of corruption left over from purging a relic of Life. While useless on its own, it seems like its tendrils flicker with power when held near an old, Dusty Book.;
