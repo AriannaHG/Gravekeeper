@@ -157,6 +157,39 @@ ID=ari_broken_phylactery_trinket; actorValue=skill_Ruin; magnitude=2; duration=-
 [ItemReaction] 
 ID=ari_broken_phylactery_trinket; actorValues=wet; actorValues=chilled; actorValues=frozen; damageMultiplier=0.5;
 
+[ItemReaction]
+ID=ari_broken_phylactery_trinket; element=endTurn; action=ari_grimoire_divinity_heal;
+
+[Action] ID=ari_grimoire_divinity_heal; 
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+[ActionAoE] 
+	ID=ari_grimoire_divinity_heal;
+	cloneFrom=oneTile; 
+[AvAffecter]
+	ID=ari_grimoire_divinity_heal; 
+	actorValue=HP;
+	magnitude=2 + c:skill_Life * 0.5;
+	chance=100;
+	duration=-2;
+	element=life;
+	visibleMiss=false;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=White;
+	FXOnHit=upwardLinesFast;
+	FXOnHitColor=Red;
+[AvAffecterAoE]
+	ID=ari_grimoire_divinity_heal; shape=17;
+	needsLoS=true;
+	needsLoE=false;
+	arc=true;
+	airborne=true;
+	occupyAll=true;
+	bypassAll=true;
+	canSelectEnemies=false;
+	maxRange=9;
+
 [JournalEntry]
 ID=ari_broken_phylactery_trinket_journal;
 category=equipment; halfPage=true; rarity=3;
