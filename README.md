@@ -17,7 +17,7 @@ Grimoires can strike a single target up to 4 tiles away, dealing damage based on
 - **New Weapon Type:** Grimoire
 - **New Status Effect:** *Rot* — take stacking damage that can spread. If the infected dies, raises a Zombie.
 - **New Status Effect:** *Ruptured Soul* — take damage whenever something dies.
-- **New Port City** *(Located at X 247, Y 373)*
+- <details><summary>New Port City</summary> (Located at X 247, Y 373)</details>
 - **New Adventure Zone**
 - **New Enemies**
 
@@ -36,7 +36,7 @@ Grimoires can strike a single target up to 4 tiles away, dealing damage based on
 - **Fetid Corpses**: Your minions spew forth miasma and will explode upon death.
 - **Risen Commander**: Forgo your defenses in lieu of supporting your allies. Additionally, take direct control of your Skeletons and Zombies.
 - **Vampiric Aura**: Crew members and minions alike siphon life from their targets, healing in the process.
-- **Lichdom** *(Elite)*: Rise once more upon death, becoming a powerful Lich.
+- <details><summary>Lichdom (Elite Passive):</summary> Rise once more upon death, becoming a powerful Lich.</details>
 
 ## Cross-Mod Support
 Grimoires can be crafted from [Gossamer](https://steamcommunity.com/sharedfiles/filedetails/?id=2975431040) *(Also requires [The Summoners of New Vesper](https://steamcommunity.com/sharedfiles/filedetails/?id=2864331568))*, [Heartwood](https://steamcommunity.com/sharedfiles/filedetails/?id=2667588820), and [Bloodstone](https://steamcommunity.com/sharedfiles/filedetails/?id=2870452778), and the Gravekeeper offers its own unique [Elite passive](https://steamcommunity.com/sharedfiles/filedetails/?id=3044437113).
