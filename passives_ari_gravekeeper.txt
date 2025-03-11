@@ -1,0 +1,1094 @@
+----------------------------------------------------------------Exhume, ability to get plentiful amounts of weaker zombie minions out quickly
+[SupportAbility]
+ID=ari_gravekeeper_exhume;
+name=Exhume;
+icon=icon_exhume;
+tooltip=At the start of your turn, raise Zombies<icon=icon_zombie_minion><icon=icon_gravekeeper_risen> on all adjacent tiles containing <icon=icon_bone> and you may exhume up <icon=icon_bone>in a random area near you. Zombies<icon=icon_zombie_minion><icon=icon_gravekeeper_risen> will rapidly decay after each turn.<n=>Max. 5. Current: <math=d:ari_total_zombies_fielded>.;
+XPCostUnlock=425;
+canBeGivenToAI=false;
+fxEvery4Frames=;
+emitFxWhileMoving=false;
+supportAbilsToReplace=;
+
+[SupportAbilityReaction]
+ID=ari_gravekeeper_exhume; element=timerUp; action=ari_gravekeeper_exhume_raise;
+--[SupportAbilityReaction]
+--ID=ari_gravekeeper_exhume; element=endTurn; action=ari_gravekeeper_exhume_raisebuff; --Failsafe for if the buff doesn't occur after the initial summon
+[SupportAbilityReaction]
+ID=ari_gravekeeper_exhume; element=timerUp; action=ari_gravekeeper_exhume_bonespawn;
+
+[Action] ID=ari_gravekeeper_exhume_raise;
+	name=Shambling Zombie;
+	icon=icon_exhume;
+	harmful=false;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+	
+	casterAnimation=handsup;
+	
+	FXOnCaster=chargeBurst;
+	FXOnCaster=darken_minor;
+	FXOnCaster=sfx_rustle_short;
+
+	FXOnTarget=blackCloud;
+	FXOnTile=sidewardLines;
+	FXOnTileColor=Black;
+	FXOnTarget=blackCloud;
+	FXOnTargetColor=DarkGreen;
+	FXOnTarget=shroudExplode;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=Black;
+	FXOnTarget=downwardLines;
+	FXOnTargetColor=Black;
+	FXOnTarget=downwardLines;
+	FXOnTargetColor=Black;
+
+--	queueAnotherAction=ari_gravekeeper_unholy_pact_test;
+	
+--Check for bones on nearby tiles and spawn zombies
+[ActionAoE] 
+	ID=ari_gravekeeper_exhume_raise;
+	cloneFrom=oneTile;
+--	aoeCasterAsOrigin=true;
+--non risen commander version
+[AvAffecter]
+	ID=ari_gravekeeper_exhume_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	magnitude=summoned_undead_zombie_minion;
+	chance=100 - 101 * csa:ari_gravekeeper_undead_commander;
+	duration=-2;
+	FXOnTile=viralShroud;
+	FXOnTileColor=DarkGreen;
+	FXOnTile=tinyShakeHoriz;
+	FXOnTile=delay_tiny;
+	FXOnTile=delay_tiny;
+	FXOnTarget=medExplosion;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_exhume_raise;
+	fReq=numRxnsTile:bonemeld;
+	cloneFrom=adjacent;
+	needsLoS=false;
+	needsLoE=false;
+	airborne=true;
+	occupyAll=true;
+	bypassAll=true;
+	canSelectAllies=false;
+	canSelectEnemies=false;
+	maxRange=1;
+	
+--spawn zombies, risen commander version
+[AvAffecter]
+	ID=ari_gravekeeper_exhume_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	magnitude=summoned_undead_zombie_commander;
+	chance=100 * csa:ari_gravekeeper_undead_commander;
+	duration=-2;
+	FXOnTile=tinyShakeHoriz;
+	FXOnTile=delay_tiny;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_exhume_raise;
+	fReq=numRxnsTile:bonemeld;
+	cloneFrom=adjacent;
+	needsLoS=false;
+	needsLoE=false;
+	airborne=true;
+	occupyAll=true;
+	bypassAll=true;
+	canSelectAllies=false;
+	canSelectEnemies=false;
+	maxRange=1;
+
+--Actually buff minions, non-failsafe version that should fire right after the summon
+--Grant max HP
+[AvAffecter]
+	ID=ari_gravekeeper_exhume_raise; 
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=TrueHPMax;
+	magnitude=c:skill_Ruin * 1.0;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_exhume_raise; 
+	fReq=numRxnsTile:bonemeld;
+    cloneFrom=adjacent;
+    needsLoS=false;
+    needsLoE=false;
+    airborne=true;
+    occupyAll=true;
+    bypassAll=true;
+    maxRange=1;
+--Set HP to Max HP
+[AvAffecter]
+	ID=ari_gravekeeper_exhume_raise; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=HP;
+	magnitude=c:skill_Ruin * 1.0;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+	--FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_exhume_raise; 
+	fReq=numRxnsTile:bonemeld;
+    cloneFrom=adjacent;
+    needsLoS=false;
+    needsLoE=false;
+    airborne=true;
+    occupyAll=true;
+    bypassAll=true;
+    maxRange=1;
+--Give zombie minions physical attack
+[AvAffecter]
+	ID=ari_gravekeeper_exhume_raise; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=PhysAtk;
+	magnitude=c:skill_Ruin * 0.3;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_exhume_raise; 
+	fReq=numRxnsTile:bonemeld;
+    cloneFrom=adjacent;
+    needsLoS=false;
+    needsLoE=false;
+    airborne=true;
+    occupyAll=true;
+    bypassAll=true;
+    maxRange=1;
+--Give zombie minions physical defense
+[AvAffecter]
+	ID=ari_gravekeeper_exhume_raise; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=PhysDef;
+	magnitude=c:skill_Ruin * 0.1;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_exhume_raise; 
+	fReq=numRxnsTile:bonemeld;
+    cloneFrom=adjacent;
+    needsLoS=false;
+    needsLoE=false;
+    airborne=true;
+    occupyAll=true;
+    bypassAll=true;
+    maxRange=1;
+--Give zombie minions magic defense
+[AvAffecter]
+	ID=ari_gravekeeper_exhume_raise; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=MagDef;
+	magnitude=c:skill_Ruin * 0.2;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_exhume_raise; 
+	fReq=numRxnsTile:bonemeld;
+    cloneFrom=adjacent;
+    needsLoS=false;
+    needsLoE=false;
+    airborne=true;
+    occupyAll=true;
+    bypassAll=true;
+    maxRange=1;
+--Give minions our Ruin skill for added effects
+[AvAffecter]
+	ID=ari_gravekeeper_exhume_raise; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=skill_Ruin;
+	magnitude=c:skill_Ruin * 1.0;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_exhume_raise; 
+	fReq=numRxnsTile:bonemeld;
+    cloneFrom=adjacent;
+    needsLoS=false;
+    needsLoE=false;
+    airborne=true;
+    occupyAll=true;
+    bypassAll=true;
+    maxRange=1;
+--Grant the Corpse Explosion fuse AV to summons if passive is taken
+[AvAffecter]
+	ID=ari_gravekeeper_exhume_raise; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=ari_foul_corpses_fuse;
+	magnitude=1;
+	chance=100 * csa:ari_gravekeeper_foul_corpses * t:ari_summoned_undead_AV * isNot:1:t:ari_summoned_ethereal_spirit_AV * isNot:1:t:ari_summoned_mindless_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_exhume_raise; 
+	fReq=numRxnsTile:bonemeld;
+    cloneFrom=adjacent;
+    needsLoS=false;
+    needsLoE=false;
+    airborne=true;
+    occupyAll=true;
+    bypassAll=true;
+    maxRange=1;
+--Give the zombies time so that they act faster
+[AvAffecter]
+	ID=ari_gravekeeper_exhume_raise; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=actTimer;
+	magnitude=m:rand(10);
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_exhume_raise; 
+	fReq=numRxnsTile:bonemeld;
+    cloneFrom=adjacent;
+    needsLoS=false;
+    needsLoE=false;
+    airborne=true;
+    occupyAll=true;
+    bypassAll=true;
+    maxRange=1;
+--Remove the summoned undead AV so we don't keep buffing the same minions
+[AvAffecter]
+    ID=ari_gravekeeper_exhume_raise;
+	visibleEvaluations=false;
+    actorValue=ari_summoned_undead_AV;
+    harmful=false;
+    visibleMiss=false;
+    magnitude=-1;
+    duration=-2;
+    chance=100*t:ari_summoned_undead_AV;
+	element=18301;
+    FXOnHit=sparkles;
+    FXOnHitColor=Black;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_exhume_raise; 
+
+    cloneFrom=adjacent;
+    needsLoS=false;
+    needsLoE=false;
+    airborne=true;
+    occupyAll=true;
+    bypassAll=true;
+    maxRange=1;
+
+
+--[Action] ID=ari_gravekeeper_unholy_pact_test;
+--	name=Shambling Zombie;
+--	icon=icon_exhume;
+--	harmful=false;
+--	special=usableEvenWhenCantAct;
+--	special=usableEvenWhenReacting;
+--	special=usableEvenWhenYourTurn;
+	
+--	casterAnimation=handsup;
+	
+--	FXOnCaster=chargeBurst;
+--	FXOnCaster=darken_minor;
+--	FXOnCaster=sfx_rustle_short;
+
+--	FXOnTarget=blackCloud;
+--	FXOnTile=sidewardLines;
+--	FXOnTileColor=Black;
+--	FXOnTarget=blackCloud;
+--	FXOnTargetColor=DarkGreen;
+--	FXOnTarget=shroudExplode;
+--	FXOnTarget=upwardLines;
+--	FXOnTargetColor=Black;
+--	FXOnTarget=downwardLines;
+--	FXOnTargetColor=Black;
+--	FXOnTarget=downwardLines;
+--	FXOnTargetColor=Black;
+
+	
+--Check for bones on nearby tiles and spawn zombies
+--[ActionAoE] 
+--	ID=ari_gravekeeper_unholy_pact_test;
+--	cloneFrom=oneTile;
+--	--aoeCasterAsOrigin=true;
+--[AvAffecter]
+--	ID=ari_gravekeeper_unholy_pact_test; 
+--	visibleEvaluations=true;
+--	visibleMiss=true;
+--	harmful=false;
+--	actorValue=TrueHPMax;
+--	magnitude=c:skill_Ruin * 3.0;
+--	chance=100*t:ari_summoned_undead_AV;
+--	duration=-2;
+--	FXOnTile=delay_tiny;
+--[AvAffecterAoE]
+--	ID=ari_gravekeeper_unholy_pact_test;
+--	cloneFrom=adjacent;
+--	needsLoS=false;
+--	needsLoE=false;
+--	airborne=true;
+
+--	canSelectAllies=true;
+--	maxRange=1;
+
+
+--Actually buff the minions on spawn --Failsafe version
+[Action] ID=ari_gravekeeper_exhume_raisebuff;
+	icon=icon_gravekeeper_undead_minion;
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=false;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+	
+	casterAnimation=handsup;
+	
+	FXOnTile=delay_tiny;
+	FXOnTile=delay_tiny;
+
+[ActionAoE] 
+	ID=ari_gravekeeper_exhume_raisebuff;
+	cloneFrom=oneTile;
+--Give them max HP
+[AvAffecter]
+	ID=ari_gravekeeper_exhume_raisebuff; 
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=TrueHPMax;
+	magnitude=c:skill_Ruin * 1.0;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_exhume_raisebuff; shape=7;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+
+--Set HP to Max HP
+[AvAffecter]
+	ID=ari_gravekeeper_exhume_raisebuff; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=HP;
+	magnitude=c:skill_Ruin * 1.0;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+	--FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_exhume_raisebuff; shape=7;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+
+--Give zombie minions physical attack
+[AvAffecter]
+	ID=ari_gravekeeper_exhume_raisebuff; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=PhysAtk;
+	magnitude=c:skill_Ruin * 0.3;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_exhume_raisebuff; shape=7;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+
+--Give zombie minions physical defense
+[AvAffecter]
+	ID=ari_gravekeeper_exhume_raisebuff; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=PhysDef;
+	magnitude=c:skill_Ruin * 0.1;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_exhume_raisebuff; shape=7;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+
+--Give zombie minions magic defense
+[AvAffecter]
+	ID=ari_gravekeeper_exhume_raisebuff; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=MagDef;
+	magnitude=c:skill_Ruin * 0.2;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_exhume_raisebuff; shape=7;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+
+--Give minions our Ruin skill for added effects
+[AvAffecter]
+	ID=ari_gravekeeper_exhume_raisebuff; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=skill_Ruin;
+	magnitude=c:skill_Ruin * 1.0;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_exhume_raisebuff; shape=7;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	
+--Grant the Corpse Explosion fuse AV to summons if passive is taken
+[AvAffecter]
+	ID=ari_gravekeeper_exhume_raisebuff; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=ari_foul_corpses_fuse;
+	magnitude=1;
+	chance=100 * csa:ari_gravekeeper_foul_corpses * t:ari_summoned_undead_AV * isNot:1:t:ari_summoned_ethereal_spirit_AV * isNot:1:t:ari_summoned_mindless_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_exhume_raisebuff; shape=7;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+
+--Give the zombies time so that they act faster
+[AvAffecter]
+	ID=ari_gravekeeper_exhume_raisebuff; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=actTimer;
+	magnitude=m:rand(10);
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_exhume_raisebuff; shape=7;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+
+--Remove the summoned undead AV so we don't keep buffing the same minions
+[AvAffecter]
+    ID=ari_gravekeeper_exhume_raisebuff;
+	visibleEvaluations=false;
+    actorValue=ari_summoned_undead_AV;
+    harmful=false;
+    visibleMiss=false;
+    magnitude=-1;
+    duration=-2;
+    chance=100*t:ari_summoned_undead_AV;
+    FXOnHit=sparkles;
+    FXOnHitColor=Black;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_exhume_raisebuff; shape=7;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	
+
+----------------------------------------------------------------Spawn Skulls
+[Action] ID=ari_gravekeeper_exhume_bonespawn;
+	icon=icon_gravekeeper_undead_minion;
+	harmful=false;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+	FXOnTile=sidewardLines;
+	FXOnTarget=blackCloud;
+	FXOnTargetColor=DarkGreen;
+	FXOnTarget=shroudExplode;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=Black;
+	FXOnTarget=downwardLines;
+	FXOnTargetColor=Black;
+	FXOnTarget=downwardLines;
+	FXOnTargetColor=Black;
+[ActionAoE]
+	ID=ari_gravekeeper_exhume_bonespawn;
+	cloneFrom=adjacent+3;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=false;
+	canSelectEnemies=false;
+	aoeCasterAsOrigin=true;
+	minRange = 3;
+	maxRange = 5;
+[AvAffecter]
+	ID=ari_gravekeeper_exhume_bonespawn; 
+	weaponAvAffecter=false;
+	actorValue=summonItem;
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=false;
+	magnitude=skull;
+	duration=1;
+	chance=c:skill_Ruin * 1.0 + 5;
+	FXOnHit=chargeFast_overlap;
+	FXOnHitColor=DarkGreen;
+	FXOnHit=chargeFast_overlap;
+	FXOnHitColor=Black;
+	FXOnHit=chargeFast_overlap;
+	FXOnHitColor=Black;
+	FXOnHit=chargeFast_overlap;
+	FXOnHitColor=Black;
+	FXOnHit=Thwummm;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_exhume_bonespawn;
+	cloneFrom=adjacent+3;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	occupyAll=false;
+	bypassAll=true;
+	canSelectAllies=false;
+	canSelectEnemies=false;
+	aoeCasterAsOrigin=true;
+	minRange = 3;
+	maxRange = 5;
+	
+
+
+----------------------------------------------------------------Fetid Corpses, causes risen minions to do damage on turn start in adjacent tiles, and deal aoe damage whenever they die
+[SupportAbility]
+ID=ari_gravekeeper_foul_corpses;
+name=Fetid Corpses;
+icon=icon_foul_corpses;
+tooltip=Your Minions<icon=icon_gravekeeper_risen> are imbued with horrid, repulsive magics.<n=>At the start of their turn, they deal damage to enemies adjacent to them and upon death will explode, dealing greater damage to all enemies around them.;
+XPCostUnlock=400;
+canBeGivenToAI=false;
+fxEvery4Frames=;
+emitFxWhileMoving=false;
+supportAbilsToReplace=;
+
+[SupportAbilityReaction]
+ID=ari_gravekeeper_foul_corpses; element=timerUp; action=ari_gravekeeper_corpse_explosion_grantbuff;
+
+--Always grant all minions on the map except spirits the corpse explosion fuse AV when turn begins just in case they somehow don't have it
+[Action] ID=ari_gravekeeper_corpse_explosion_grantbuff;
+	icon=icon_gravekeeper_undead_minion;
+	harmful=false;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+	numTargets=1;
+[AvAffecter]
+	ID=ari_gravekeeper_corpse_explosion_grantbuff; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=ari_foul_corpses_fuse;
+	magnitude=1;
+	chance=100 * tsa:ari_summoned * isNot:1:t:ari_summoned_ethereal_spirit_AV * isNot:1:t:ari_summoned_mindless_AV;
+	duration=-2;
+	FXOnTile=delay_tiny;
+	--FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_corpse_explosion_grantbuff; shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	
+----------------------------------------------------------------Lichdom, turns you into a lich when you die
+[SupportAbility]
+ID=ari_gravekeeper_lichdom;
+name=Lichdom;
+icon=icon_gravekeeper_lichdom_elite;
+tooltip=<textIf=(Inproficient) =1 - g:class_gravekeeper_lichdom><color=Gold>Elite. Return from death as a Risen Lich<icon=icon_gravekeeper_risen> for <icon=time>100. You may not be Revived during this time.;
+XPCostUnlock=2000;
+canBeGivenToAI=false;
+fxEvery4Frames=;
+emitFxWhileMoving=false;
+supportAbilsToReplace=prom_balancer_the_balance;
+supportAbilsToReplace=prom_bathandler_winged_champion;
+supportAbilsToReplace=prom_berserker_into_the_fray;
+supportAbilsToReplace=prom_blade_manifold_strike;
+supportAbilsToReplace=prom_bombardier_bomb_rush;
+supportAbilsToReplace=prom_brawler_drunken_master;
+supportAbilsToReplace=prom_breaker_break_spirit;
+supportAbilsToReplace=prom_defiler_plague_passage;
+supportAbilsToReplace=prom_elementalist_elemental_conduit;
+supportAbilsToReplace=prom_enchanter_enchanted_armor;
+supportAbilsToReplace=prom_gatekeeper_gate_betwixt;
+supportAbilsToReplace=prom_gatewarder_gate_bounty;
+supportAbilsToReplace=prom_gladiator_victory_or_death;
+supportAbilsToReplace=prom_guardian_phalanx;
+supportAbilsToReplace=prom_ignisKnight_pyroclasm;
+supportAbilsToReplace=prom_krakenslayer_vanquishers_reward;
+supportAbilsToReplace=prom_mechanist_power_sequence;
+supportAbilsToReplace=prom_minstrel_succor;
+supportAbilsToReplace=prom_ranger_enduring_preparation;
+supportAbilsToReplace=prom_ravager_seismic_surge;
+supportAbilsToReplace=prom_rogue_from_the_shadows;
+supportAbilsToReplace=prom_sage_return_to_me;
+supportAbilsToReplace=prom_sailor_pirates_ploy;
+supportAbilsToReplace=prom_scholar_prognosis;
+supportAbilsToReplace=prom_scourge_bondage;
+supportAbilsToReplace=prom_scout_nowhere_to_hide;
+supportAbilsToReplace=prom_sharpshooter_expertise;
+supportAbilsToReplace=prom_shiftcloak_uncanny_dodge;
+supportAbilsToReplace=prom_sorcerer_magic_adept;
+supportAbilsToReplace=prom_spell_archon_hex_shot;
+supportAbilsToReplace=prom_stormshot_eye_of_the_storm;
+supportAbilsToReplace=prom_swashbuckler_battle_dance;
+supportAbilsToReplace=prom_tactician_noblesse_oblige;
+supportAbilsToReplace=prom_unmaker_zombify;
+supportAbilsToReplace=prom_warden_citadel;
+supportAbilsToReplace=prom_warpblade_gate_vortex;
+supportAbilsToReplace=prom_warrior_second_wind;
+supportAbilsToReplace=prom_assassin_mark_of_death;
+supportAbilsToReplace=prom_dervish_extend_enchantments;
+supportAbilsToReplace=prom_gatemaster_ace_of_blades;
+supportAbilsToReplace=prom_mesmer_blackout;
+supportAbilsToReplace=prom_monk_seed_of_life;
+supportAbilsToReplace=prom_necromancer_tainted_flesh;
+supportAbilsToReplace=prom_spy_wetwork;
+supportAbilsToReplace=prom_dancer_changement;
+supportAbilsToReplace=prom_outsider_bonecharms;
+supportAbilsToReplace=prom_zealot_fervor;
+supportAbilsToReplace=prom_graveknight_cold_is_the_grave;
+supportAbilsToReplace=prom_revenant_unburial;
+supportAbilsToReplace=prom_oracle_pacifism;
+supportAbilsToReplace=prom_summoner_essence_wall;
+supportAbilsToReplace=prom_forgewright_flame_of_chaos;
+supportAbilsToReplace=prom_channeler_stormlost_rebuke;
+supportAbilsToReplace=prom_shadow_carnivore;
+supportAbilsToReplace=prom_desperado_bloodstone_ammo;
+supportAbilsToReplace=prom_chevalier_hold_fast;
+supportAbilsToReplace=prom_druid_thorncage;
+supportAbilsToReplace=prom_thaumaturge_crown_of_chaos;
+supportAbilsToReplace=prom_drifter_wanderlust;
+supportAbilsToReplace=prom_siren_seetheweed_salve;
+supportAbilsToReplace=prom_confessor_sacrament;
+supportAbilsToReplace=prom_inquisitor_auto_adapt;
+supportAbilsToReplace=prom_samurai_loyalty;
+supportAbilsToReplace=prom_anchorite_anchorhold;
+supportAbilsToReplace=prom_medium_haunting;
+--supportAbilsToReplace=ari_gravekeeper_lichdom;
+supportAbilsToReplace=prom_armiger_divert_defenses;
+supportAbilsToReplace=prom_dayblade_grand_radiance;
+supportAbilsToReplace=prom_nightmagister_hypnotic_gaze;
+canBeGivenToAI=false;
+
+[SupportAbilityReaction]
+ID=ari_gravekeeper_lichdom; element=incapacitated; action=ari_gravekeeper_lich_transform;
+
+[Action] ID=ari_gravekeeper_lich_transform;
+fReq=g:class_gravekeeper_lichdom;
+	name=Lichdom;
+	icon=icon_gravekeeper_lichdom_elite;
+	harmful=false;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=redoMovementAnalysis;
+	special=dontDelayOtherActions;
+	
+	--casterAnimation=handsup;
+
+	--numTargets=1;
+	--maxDistanceBetweenTargets=1;
+	
+	FXOnCaster=chargeBurst;
+	FXOnCaster=darken_minor;
+	FXOnCaster=sfx_rustle_short;
+
+	FXOnTarget=blackCloud;
+	FXOnTile=sidewardLines;
+	FXOnTileColor=Black;
+	FXOnTarget=blackCloud;
+	FXOnTargetColor=DarkGreen;
+	FXOnTarget=shroudExplode;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=Black;
+	FXOnTarget=downwardLines;
+	FXOnTargetColor=Black;
+	FXOnTarget=downwardLines;
+	FXOnTargetColor=Black;
+
+	
+[ActionAoE] 
+	ID=ari_gravekeeper_lich_transform; 
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_lich_transform; 
+	visibleEvaluations=true;
+	harmful=false;
+	actorValue=ari_phylacteral_corpse;
+	magnitude=1;
+	duration=101;
+	chance=100 * tsa:ari_gravekeeper_lichdom;
+	visibleMiss=false;
+	FXOnTile=delay_tiny;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_lich_transform;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+	
+--[ActionAoE] 
+--	ID=ari_gravekeeper_lich_transform; 
+--	cloneFrom=oneTile;
+--[AvAffecter]
+--	ID=ari_gravekeeper_lich_transform; 
+--	visibleEvaluations=false;
+--	harmful=false;
+--	actorValue=removeActor;
+--	magnitude=1;
+--	duration=-2;
+--	chance=100 * tsa:ari_gravekeeper_lichdom;
+--	visibleMiss=false;
+--	FXOnTile=delay_tiny;
+--	FXOnTile=delay_tiny;
+--[AvAffecterAoE]
+--	ID=ari_gravekeeper_lich_transform;
+--	cloneFrom=oneTile;
+--	aoeCasterAsOrigin=true;
+	
+[AvAffecter]
+	ID=ari_gravekeeper_lich_transform; 
+	visibleEvaluations=true;
+	visibleMiss=true;
+	harmful=false;
+	actorValue=summonActor_temp;
+	magnitude=summoned_undead_lich;
+	chance=100;
+	duration=-2;
+	element=ruin;
+	FXOnTile=tinyShakeHoriz;
+	FXOnTile=smokeCloud;
+	FXOnTile=delay_tiny;
+	--FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_lich_transform;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+	needsLoS = false;
+	needsLoE = false;
+	bypassAll=true;
+	occupyAll=true;
+	
+--Grant max HP
+[AvAffecter]
+	ID=ari_gravekeeper_lich_transform; 
+	visibleEvaluations=false;
+	visibleMiss=true;
+	harmful=false;
+	actorValue=TrueHPMax;
+	magnitude=c:skill_Ruin * 1.0;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_lich_transform;
+    cloneFrom=adjacent;
+    needsLoS=false;
+    needsLoE=false;
+    airborne=true;
+    occupyAll=true;
+    bypassAll=true;
+    maxRange=2;
+	
+[AvAffecter]
+	ID=ari_gravekeeper_lich_transform; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=actTimer;
+	magnitude=m:rand(20);
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_lich_transform;
+	cloneFrom=adjacent;
+    needsLoS=false;
+    needsLoE=false;
+    airborne=true;
+    occupyAll=true;
+    bypassAll=true;
+    maxRange=2;
+	
+[AvAffecter]
+	ID=ari_gravekeeper_lich_transform; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=removeTimer;
+	magnitude=1;
+	chance=100 * t:ari_summoned_undead_AV;
+	duration=100;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_lich_transform; shape=7;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+	
+--Remove the summoned undead AV so we don't keep buffing the same minions
+[AvAffecter]
+    ID=ari_gravekeeper_lich_transform;
+	visibleEvaluations=false;
+    actorValue=ari_summoned_undead_AV;
+    harmful=false;
+    visibleMiss=false;
+    magnitude=-1;
+    duration=-2;
+    chance=100*t:ari_summoned_undead_AV;
+    FXOnHit=sparkles;
+    FXOnHitColor=Black;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_lich_transform; shape=7;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+
+--[ActionAoE] 
+--	ID=ari_gravekeeper_lich_transform; 
+--	cloneFrom=oneTile;
+--[AvAffecter]
+--	ID=ari_gravekeeper_lich_transform; 
+--	visibleEvaluations=false;
+--	actorValue=relocate;
+--	magnitude=1;
+--	duration=-2;
+--	chance=100;
+--	FXOnTile= delay_mid; 
+--	FXOnTile=delay_tiny;
+--	FXOnTile=delay_tiny;
+--[AvAffecterAoE]
+--	ID=ari_gravekeeper_lich_transform;
+--	cloneFrom=oneTile;
+--	aoeCasterAsOrigin=true;
+--	needsLoE=false;
+--	occupyAll=true;
+	
+
+----------------------------------------------------------------Risen Commander that allows you to control and use the abilities of minions, minions gain access to new abilities
+[SupportAbility]
+ID=ari_gravekeeper_undead_commander;
+name=Risen Commander;
+icon=icon_gravekeeper_undead_commander;
+tooltip=At the start of your turn, sacrifice half of your <icon=PhysDef> to give the sacrificed amount to allies near you for a turn.<n=>You now also directly control your Skeletons<icon=icon_skeleton_minion><icon=icon_gravekeeper_risen> and Zombies<icon=icon_zombie_minion><icon=icon_gravekeeper_risen> and they have a variety of new abilities.;
+XPCostUnlock=900;
+canBeGivenToAI=false;
+fxEvery4Frames=;
+emitFxWhileMoving=false;
+supportAbilsToReplace=;
+
+[SupportAbilityReaction]
+ID=ari_gravekeeper_undead_commander; element=timerUp; action=ari_gravekeeper_commander_armor;
+
+[Action] ID=ari_gravekeeper_commander_armor;
+	name=Commander's Armor;
+	icon=icon_gravekeeper_undead_commander;
+
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+	
+	FXOnCaster=chargeBurst;
+	FXOnCaster=darken_minor;
+	FXOnCaster=sfx_rustle_short;
+	
+[ActionAoE] 
+	ID=ari_gravekeeper_commander_armor;
+	cloneFrom=adjacent+1;
+	
+[AvAffecter]
+	ID=ari_gravekeeper_commander_armor; 
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=PhysDef;
+	magnitude=c:PhysDef * 0.5;
+	chance=100;
+	duration=-4;
+	FXOnHit=upwardLines;
+	FXOnHitColor=Black;
+	FXOnTile=delay_tiny;
+
+[AvAffecterAoE]
+	ID=ari_gravekeeper_commander_armor;
+	cloneFrom=adjacent+1;
+	minRange=1;
+	maxRange=2;
+	canSelectAllies=true;
+	canSelectEnemies=false;
+
+[AvAffecter]
+	ID=ari_gravekeeper_commander_armor;
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=true;
+	actorValue=PhysDef;
+	magnitude=c:PhysDef * -0.5;
+	chance=100 * moreThan:1:m:numAlliesWithin(2);
+	duration=-3;
+	FXOnHit=downwardLines;
+	FXOnHitColor=Black;
+	FXOnTile=delay_tiny;
+
+[AvAffecterAoE]
+	ID=ari_gravekeeper_commander_armor;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+
+
+----------------------------------------------------------------Vampiric aura, heals for a bit when you or minions act
+[SupportAbility]
+ID=ari_gravekeeper_vampiric_minions;
+name=Vampiric Aura;
+icon=icon_gravekeeper_vampirism;
+--tooltip=You gain <math=1 + c:skill_Ruin * 0.1><icon=HP> when you or your Risen Minions<icon=icon_gravekeeper_risen> act.;
+tooltip=At the start of your turn you pulse with necrotic energy, imbuing crew members and yourself with dark power. Imbued targets will gain 1<icon=HP> when they act.<n=>Your Minions<icon=icon_gravekeeper_risen> are imparted with additional power and will heal you for 1<icon=HP> or 2<icon=HP> when they act.;
+XPCostUnlock=650;
+canBeGivenToAI=false;
+fxEvery4Frames=;
+emitFxWhileMoving=false;
+supportAbilsToReplace=;
+
+[SupportAbilityReaction]
+ID=ari_gravekeeper_vampiric_minions; element=actionTaken; action=ari_gravekeeper_vampiric_embrace;
+
+[SupportAbilityReaction]
+ID=ari_gravekeeper_vampiric_minions; element=timerUp; action=ari_gravekeeper_vampiric_pulse;
+
+[Action] ID=ari_gravekeeper_vampiric_embrace;
+	name=Vampirism;
+	icon=icon_gravekeeper_vampirism;
+	harmful=false;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+	
+	FXOnCaster=chargeBurst;
+	FXOnCaster=darken_minor;
+	FXOnCaster=sfx_rustle_short;
+	
+[ActionAoE] 
+	ID=ari_gravekeeper_vampiric_embrace;
+	cloneFrom=oneTile;
+	
+[AvAffecter]
+	ID=ari_gravekeeper_vampiric_embrace; 
+	harmful=false;
+	actorValue=HP;
+	--magnitude=1 + c:skill_Ruin * 0.1;
+	magnitude=1;
+	chance=100;
+	duration=-2;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=pBloodyMess_slow;
+	FXOnTile=delay_tiny;
+
+[AvAffecterAoE]
+	ID=ari_gravekeeper_vampiric_embrace;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	
+[Action] ID=ari_gravekeeper_vampiric_pulse;
+	name=Vampiric Aura;
+	icon=icon_gravekeeper_vampirism;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+	
+	FXOnCaster=chargeBurst;
+	FXOnCaster=darken_minor;
+	FXOnCaster=sfx_rustle_short;
+	
+[ActionAoE] 
+	ID=ari_gravekeeper_vampiric_pulse;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_vampiric_pulse;
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=ari_vampiric_aura;
+	magnitude=1;
+	duration=-4;
+	chance=100 - 101 * tsa:ari_summoned;
+	FXOnHit=sparkles;
+	FXOnHitColor=Purple;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_vampiric_pulse; shape=6;
+	cloneFrom=adjacentAndSelf;
+	minRange=1;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=false;

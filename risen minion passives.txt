@@ -1,0 +1,1825 @@
+
+
+-----------------------------------------Core Risen Minion passive effects
+
+[SupportAbility]
+ID=ari_summoned;
+name=Risen Minion;
+icon=icon_gravekeeper_risen;
+tooltip=This unit was raised by a Gravekeeper<icon=classIcon_ari_gravekeeper>.;
+
+--[ActorValueEffect]
+--ID=ari_summoned; actorValue=priority; magnitude=0.5; duration=-1;
+
+[SupportAbilityReaction]
+ID=ari_summoned; 
+element=incapacitated; 
+--element=dispel; 
+action=ari_summoned_act;
+
+[SupportAbilityReaction]
+ID=ari_summoned; 
+element=combatEnd;
+action=ari_summoned_endofcombat_removal;
+
+[SupportAbilityReaction]
+ID=ari_summoned; 
+element=timerUp;
+action=ari_summoned_maxlimit;
+
+[SupportAbilityReaction]
+ID=ari_summoned;
+element=actionTaken;
+action=ari_summoned_vampirism;
+
+[SupportAbilityReaction]
+ID=ari_summoned;
+element=actionTaken;
+action=ari_skeleton_commanderfolly;
+
+[SupportAbilityReaction]
+ID=ari_summoned; 
+element=endTurn;
+action=ari_summoned_decay;
+
+-----------------------------------------Remove minions when they die so that there is no corpse
+[Action] ID=ari_summoned_act; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+	special=repositionIfCasterIsPushed;
+	
+	FXOnTarget=blackCloud;
+	--FXOnTargetColor=Black;
+	--FXOnTarget=downwardLinesQuick;
+	--FXOnTargetColor=DarkGreen;
+	--FXOnTarget=medShakeHoriz;
+[ActionAoE] 	--Won't work with pushes because it targets the wrong tile. Maybe change to affect all incapacitated targets and removeActor on anyone with ari_summoned?
+	ID=ari_summoned_act; 
+	cloneFrom=oneTile;
+[AvAffecter]	--Cancel anything the actor is currently doing
+	ID=ari_summoned_act; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=cancel;
+	magnitude=1;
+	duration=-2;
+	chance=100 * tsa:ari_summoned;
+	visibleMiss=false;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_summoned_act;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+--Remove the actor
+[AvAffecter]
+	ID=ari_summoned_act; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=removeActor;
+	magnitude=1;
+	duration=-2;
+	chance=100 * tsa:ari_summoned * isNot:1:c:ari_commanded_undeath * isNot:1:c:ari_undying;
+	visibleMiss=false;
+	--FXOnTile=delay_tiny;
+	--FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_summoned_act;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+
+--Deal damage to Gravekeeper when skeletons die
+--[AvAffecter]
+--	ID=ari_summoned_act; 
+--	visibleEvaluations=true;
+--	harmful=false;
+--	actorValue=HP;
+--	magnitude=c:TrueHPMax * -0.05;
+--	duration=-2;
+--	chance=100 * csa:ari_summoned * c:ari_summoned_undead_skeleton * isNot:1:c:ari_summoned_mindless_AV * isNot:1:c:ari_commanded_undeath * isNot:1:c:ari_undying * t:ari_gravekeeper_undead_legion * moreThan:2:t:ari_gravekeeper_soul_collector * m:combat;
+--	visibleMiss=false;
+--	--FXOnTile=delay_tiny;
+--	--FXOnTile=delay_tiny;
+--[AvAffecterAoE]
+--	ID=ari_summoned_act; shape=17;
+--	cloneFrom=adjacentAndSelf;
+--	maxRange=30;
+--	arc=true;
+--	airborne=true;
+--	needsLoE=false;
+--	needsLoS=false;
+--	bypassAll=true;
+--	canSelectAllies=true;
+--	canSelectEnemies=true;
+
+--Resurrect at 20% health if killed with Undeath
+--Revival
+[AvAffecter]
+	ID=ari_summoned_act; 
+	visibleEvaluations=true;
+	visibleMiss=true;
+	harmful=false;
+	actorValue=revive;
+	magnitude=1;
+	chance=100 * tsa:ari_summoned * c:ari_commanded_undeath;
+	duration=-2;
+	element=ruin;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_summoned_act;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+--Heal 20%
+[AvAffecter]
+	ID=ari_summoned_act; 
+	visibleEvaluations=true;
+	visibleMiss=true;
+	harmful=false;
+	actorValue=HP;
+	magnitude=c:TrueHPMax * 0.2;
+	chance=100 * tsa:ari_summoned * c:ari_commanded_undeath;
+	duration=-2;
+	element=ruin;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_summoned_act;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+--Remove Undeath
+[AvAffecter]
+	ID=ari_summoned_act; 
+	visibleEvaluations=true;
+	visibleMiss=true;
+	harmful=false;
+	actorValue=ari_commanded_undeath;
+	magnitude=-1;
+	chance=100 * tsa:ari_summoned * c:ari_commanded_undeath;
+	duration=-2;
+	element=ruin;
+
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_summoned_act;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+	
+--Spawn zombie on death if they have Death Shield AV
+[AvAffecter]
+	ID=ari_summoned_act; 
+	visibleEvaluations=true;
+	visibleMiss=true;
+	harmful=false;
+	actorValue=summonActor_temp;
+	magnitude=summoned_undead_zombie_minion;
+	chance=100 * c:ari_summoned_deathshield;
+	duration=-2;
+	element=ruin;
+
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_summoned_act;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+	
+[AvAffecter]
+	ID=ari_summoned_act; 
+	visibleEvaluations=true;
+	visibleMiss=true;
+	harmful=false;
+	actorValue=summonActor_temp;
+	magnitude=summoned_undead_zombie_commander;
+	chance=100 * c:ari_summoned_deathshield;
+	duration=-2;
+	element=ruin;
+
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_summoned_act;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+	
+[AvAffecter]
+	ID=ari_summoned_act; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=TrueHPMax;
+	magnitude=c:skill_Ruin * 1.0;
+	chance=100 * c:ari_summoned_deathshield;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_summoned_act;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+
+--Set HP to Max HP
+[AvAffecter]
+	ID=ari_summoned_act; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=HP;
+	magnitude=c:skill_Ruin * 1.0;
+	chance=100 * c:ari_summoned_deathshield;
+	duration=-2;
+	--FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_summoned_act;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+
+--Give zombie minions physical attack
+[AvAffecter]
+	ID=ari_summoned_act; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=PhysAtk;
+	magnitude=c:skill_Ruin * 0.3;
+	chance=100 * c:ari_summoned_deathshield;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_summoned_act;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+
+--Give zombie minions physical defense
+[AvAffecter]
+	ID=ari_summoned_act; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=PhysDef;
+	magnitude=c:skill_Ruin * 0.3;
+	chance=100 * c:ari_summoned_deathshield;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_summoned_act;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+
+--Give zombie minions magic defense
+[AvAffecter]
+	ID=ari_summoned_act; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=MagDef;
+	magnitude=c:skill_Ruin * 0.4;
+	chance=100 * c:ari_summoned_deathshield;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_summoned_act;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+
+--Give minions Ruin skill for added effects
+[AvAffecter]
+	ID=ari_summoned_act; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=skill_Ruin;
+	magnitude=c:skill_Ruin * 1.0;
+	chance=100 * c:ari_summoned_deathshield;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_summoned_act;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+	
+--Grant the Corpse Explosion fuse AV to summons if they already have the fuse because the passive is taken
+[AvAffecter]
+	ID=ari_summoned_act; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=ari_foul_corpses_fuse;
+	magnitude=1;
+	chance=100 * c:ari_foul_corpses_fuse * c:ari_summoned_deathshield;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_summoned_act;
+	cloneFrom=oneTile;
+	
+--Remove the summoned undead AV so we don't keep buffing the same minions
+[AvAffecter]
+    ID=ari_summoned_act;
+	visibleEvaluations=false;
+    actorValue=ari_summoned_undead_AV;
+    harmful=false;
+    visibleMiss=false;
+    magnitude=-1;
+    duration=-2;
+    chance=100 * t:ari_summoned_undead_AV;
+    FXOnHit=sparkles;
+    FXOnHitColor=Black;
+[AvAffecterAoE]
+	ID=ari_summoned_act;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+
+-----------------------------------------Remove minons at the end of combat by murdering them
+[Action] ID=ari_summoned_endofcombat_removal; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+	
+	FXOnTarget=blackCloud;
+
+--Remove death shield first
+[ActionAoE] 
+	ID=ari_summoned_endofcombat_removal; 
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_summoned_endofcombat_removal;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=true;
+	actorValue=ari_summoned_deathshield;
+	magnitude=-1;
+	duration=-2;
+	chance=100 * tsa:ari_summoned;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_summoned_endofcombat_removal;
+	cloneFrom=oneTile;
+--Remove Undeath so that they don't revive
+[AvAffecter]
+	ID=ari_summoned_endofcombat_removal;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=true;
+	actorValue=ari_commanded_undeath;
+	magnitude=-1;
+	duration=-2;
+	chance=100 * tsa:ari_summoned;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_summoned_endofcombat_removal;
+	cloneFrom=oneTile;
+--Kill them
+[AvAffecter]
+	ID=ari_summoned_endofcombat_removal; 
+	visibleEvaluations=false;
+	harmful=true;
+	actorValue=HP;
+	magnitude=c:TrueHPMax * -1 - 1;
+	duration=-2;
+	chance=100 * tsa:ari_summoned;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_summoned_endofcombat_removal;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;	
+--Remove the actor
+[AvAffecter]
+	ID=ari_summoned_endofcombat_removal; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=removeActor;
+	magnitude=1;
+	duration=-2;
+	chance=100 * tsa:ari_summoned;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_summoned_endofcombat_removal;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+
+-----------------------------------------Max fielded minion limit check
+[Action] ID=ari_summoned_maxlimit; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+	
+[ActionAoE] 
+	ID=ari_summoned_maxlimit; 
+	cloneFrom=oneTile;
+--------------------------------Skeleton check
+[AvAffecter]
+	ID=ari_summoned_maxlimit; 
+	visibleEvaluations=false;
+	harmful=true;
+	actorValue=ari_commanded_undeath;
+	magnitude=-1;
+	duration=-2;
+	chance=lessThan:0:d:ari_maximum_skeleton_check * 100 * tsa:ari_summoned * t:ari_summoned_undead_skeleton * isNot:1:t:ari_summoned_undead_skeleton_mage_AV * isNot:1:t:ari_summoned_mindless_AV;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_summoned_maxlimit;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+[AvAffecter]
+	ID=ari_summoned_maxlimit; 
+	visibleEvaluations=false;
+	harmful=true;
+	actorValue=HP;
+	magnitude=c:TrueHPMax * -1 - 1;
+	duration=-2;
+	chance=lessThan:0:d:ari_maximum_skeleton_check * 100 * tsa:ari_summoned * t:ari_summoned_undead_skeleton * isNot:1:t:ari_summoned_undead_skeleton_mage_AV * isNot:1:t:ari_summoned_mindless_AV;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_summoned_maxlimit;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+--------------------------------Skeleton mage check
+[AvAffecter]
+	ID=ari_summoned_maxlimit; 
+	visibleEvaluations=false;
+	harmful=true;
+	actorValue=ari_commanded_undeath;
+	magnitude=-1;
+	duration=-2;
+	chance=moreThan:2:d:ari_total_skeleton_mages_fielded * 100 * tsa:ari_summoned * t:ari_summoned_undead_skeleton_mage_AV * isNot:1:t:ari_summoned_mindless_AV;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_summoned_maxlimit;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+[AvAffecter]
+	ID=ari_summoned_maxlimit; 
+	visibleEvaluations=false;
+	harmful=true;
+	actorValue=HP;
+	magnitude=c:TrueHPMax * -1 - 1;
+	duration=-2;
+	chance=moreThan:2:d:ari_total_skeleton_mages_fielded * 100 * tsa:ari_summoned * t:ari_summoned_undead_skeleton_mage_AV * isNot:1:t:ari_summoned_mindless_AV;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_summoned_maxlimit;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+--------------------------------Zombie check
+[AvAffecter]
+	ID=ari_summoned_maxlimit; 
+	visibleEvaluations=false;
+	harmful=true;
+	actorValue=ari_commanded_undeath;
+	magnitude=-1;
+	duration=-2;
+	chance=moreThan:5:d:ari_total_zombies_fielded * 100 * tsa:ari_summoned * t:ari_summoned_undead_zombie * isNot:1:t:ari_summoned_mindless_AV;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_summoned_maxlimit;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+[AvAffecter]
+	ID=ari_summoned_maxlimit; 
+	visibleEvaluations=false;
+	harmful=true;
+	actorValue=HP;
+	magnitude=c:TrueHPMax * -1 - 1;
+	duration=-2;
+	chance=moreThan:5:d:ari_total_zombies_fielded * 100 * tsa:ari_summoned * t:ari_summoned_undead_zombie * isNot:1:t:ari_summoned_mindless_AV;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_summoned_maxlimit;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+--------------------------------Abomination check
+[AvAffecter]
+	ID=ari_summoned_maxlimit; 
+	visibleEvaluations=false;
+	harmful=true;
+	actorValue=ari_commanded_undeath;
+	magnitude=-1;
+	duration=-2;
+	chance=moreThan:1:d:ari_total_abominations_fielded * 100 * tsa:ari_summoned * t:ari_summoned_undead_abomination;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_summoned_maxlimit;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+[AvAffecter]
+	ID=ari_summoned_maxlimit; 
+	visibleEvaluations=false;
+	harmful=true;
+	actorValue=HP;
+	magnitude=c:TrueHPMax * -1 - 1;
+	duration=-2;
+	chance=moreThan:1:d:ari_total_abominations_fielded * 100 * tsa:ari_summoned * t:ari_summoned_undead_abomination;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_summoned_maxlimit;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+--------------------------------Mindless check
+[AvAffecter]
+	ID=ari_summoned_maxlimit; 
+	visibleEvaluations=false;
+	harmful=true;
+	actorValue=ari_commanded_undeath;
+	magnitude=-1;
+	duration=-2;
+	chance=moreThan:3:d:ari_total_mindless_fielded * 100 * tsa:ari_summoned * t:ari_summoned_mindless_AV;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_summoned_maxlimit;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+[AvAffecter]
+	ID=ari_summoned_maxlimit; 
+	visibleEvaluations=false;
+	harmful=true;
+	actorValue=HP;
+	magnitude=c:TrueHPMax * -1 - 1;
+	duration=-2;
+	chance=moreThan:3:d:ari_total_mindless_fielded * 100 * tsa:ari_summoned * t:ari_summoned_mindless_AV;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_summoned_maxlimit;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+	
+-----------------------------------------Gravekeeper Vampirism passive heal on act
+[Action] ID=ari_summoned_vampirism; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+	
+[ActionAoE] 
+	ID=ari_summoned_vampirism; 
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_summoned_vampirism; 
+	visibleEvaluations=true;
+	harmful=false;
+	actorValue=HP;
+	--magnitude=1 + c:skill_Ruin * 0.1;
+	magnitude=m:rand(1) + 1;
+	duration=-2;
+	chance=100 * tsa:ari_gravekeeper_vampiric_minions;
+	visibleMiss=false;
+	FXOnTile=delay_tiny;
+	FXOnHit=upwardLinesQuick;
+	FXOnHitColor=Red;
+	FXOnHit=upwardLines;
+	FXOnHitColor=pBloodyMess_slow;
+[AvAffecterAoE]
+	ID=ari_summoned_vampirism; shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=false;
+	
+-----------------------------------------Skeletons cause Gravekeepers to have higher AI target priority, simulating going for the commander
+[Action] ID=ari_skeleton_commanderfolly; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+	
+[ActionAoE] 
+	ID=ari_skeleton_commanderfolly; 
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_skeleton_commanderfolly; 
+	visibleEvaluations=true;
+	harmful=false;
+	actorValue=priority;
+	magnitude=0.07 * d:ari_minions_fielded;
+	--0.3;
+	duration=-4;
+	chance=100 * c:ari_summoned_undead_skeleton;
+	visibleMiss=true;
+[AvAffecterAoE]
+	ID=ari_skeleton_commanderfolly; 
+	fReq=moreThan:0:d:ari_gravekeeper_skill_check;
+	shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=false;
+
+-----------------------------------------------Decay on turn end, per minion type
+[Action] ID=ari_summoned_decay; 
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+
+
+[ActionAoE] 
+	ID=ari_summoned_decay; 
+	cloneFrom=oneTile;
+------------------------Lich decay
+[AvAffecter]
+	ID=ari_summoned_decay; 
+	visibleEvaluations=false;
+	actorValue=HP;
+	magnitude=t:TrueHPMax * -0.15;
+	duration=-2;
+	chance=100 * tsa:ari_summoned * t:ari_summoned_undead_lich - 101 * t:ari_summoned_decayshield;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_summoned_decay;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+------------------------Skeleton normal decay
+[AvAffecter]
+	ID=ari_summoned_decay; 
+	visibleEvaluations=false;
+	actorValue=HP;
+	magnitude=t:TrueHPMax * -0.2;
+	duration=-2;
+	chance=100 * tsa:ari_summoned * t:ari_summoned_undead_skeleton - 101 * t:ari_summoned_decayshield - 101 * t:ari_halve_decay;
+	visibleMiss=false;
+	FXOnHit=splatter;
+	FXOnHitColor=Red;
+	FXOnHit=downwardLines;
+	FXOnHitColor=Red;
+[AvAffecterAoE]
+	ID=ari_summoned_decay;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+------------------------Zombie normal decay
+[AvAffecter]
+	ID=ari_summoned_decay; 
+	visibleEvaluations=false;
+	actorValue=HP;
+	magnitude=t:TrueHPMax * -0.25;
+	duration=-2;
+	chance=100 * tsa:ari_summoned * t:ari_summoned_undead_zombie - 101 * t:ari_summoned_decayshield - 101 * t:ari_halve_decay;
+	visibleMiss=false;
+	FXOnHit=splatter;
+	FXOnHitColor=Red;
+	FXOnHit=downwardLines;
+	FXOnHitColor=Red;
+[AvAffecterAoE]
+	ID=ari_summoned_decay;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+------------------------Abomination normal decay
+[AvAffecter]
+	ID=ari_summoned_decay; 
+	visibleEvaluations=false;
+	actorValue=HP;
+	magnitude=t:TrueHPMax * -0.2;
+	duration=-2;
+	chance=100 * tsa:ari_summoned * t:ari_summoned_undead_abomination - 101 * t:ari_summoned_decayshield - 101 * t:ari_halve_decay;
+	visibleMiss=false;
+	FXOnHit=splatter;
+	FXOnHitColor=Red;
+	FXOnHit=downwardLines;
+	FXOnHitColor=Red;
+[AvAffecterAoE]
+	ID=ari_summoned_decay;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+	
+-----------------------------------------------Lich Halved Decay
+------------------------Skeleton halved decay
+[AvAffecter]
+	ID=ari_summoned_decay; 
+	visibleEvaluations=false;
+	actorValue=HP;
+	magnitude=t:TrueHPMax * -0.1;
+	duration=-2;
+	chance=100 * tsa:ari_summoned * t:ari_summoned_undead_skeleton * t:ari_halve_decay - 101 * t:ari_summoned_decayshield;
+	visibleMiss=false;
+	FXOnHit=splatter;
+	FXOnHitColor=Red;
+	FXOnHit=downwardLines;
+	FXOnHitColor=Red;
+[AvAffecterAoE]
+	ID=ari_summoned_decay;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+------------------------Zombie halved decay
+[AvAffecter]
+	ID=ari_summoned_decay; 
+	visibleEvaluations=false;
+	actorValue=HP;
+	magnitude=t:TrueHPMax * -0.12;
+	duration=-2;
+	chance=100 * tsa:ari_summoned * t:ari_summoned_undead_zombie * t:ari_halve_decay - 101 * t:ari_summoned_decayshield;
+	visibleMiss=false;
+	FXOnHit=splatter;
+	FXOnHitColor=Red;
+	FXOnHit=downwardLines;
+	FXOnHitColor=Red;
+[AvAffecterAoE]
+	ID=ari_summoned_decay;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+------------------------Abomination halved decay
+[AvAffecter]
+	ID=ari_summoned_decay; 
+	visibleEvaluations=false;
+	actorValue=HP;
+	magnitude=t:TrueHPMax * -0.1;
+	duration=-2;
+	chance=100 * tsa:ari_summoned * t:ari_summoned_undead_abomination * t:ari_halve_decay - 101 * t:ari_summoned_decayshield;
+	visibleMiss=false;
+	FXOnHit=splatter;
+	FXOnHitColor=Red;
+	FXOnHit=downwardLines;
+	FXOnHitColor=Red;
+[AvAffecterAoE]
+	ID=ari_summoned_decay;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+------------------------End of Lich Halved Decay
+------------------------Reaper instant death decay
+[AvAffecter]
+	ID=ari_summoned_decay; 
+	visibleEvaluations=false;
+	actorValue=HP;
+	magnitude=t:TrueHPMax * -1;
+	duration=-2;
+	chance=100 * tsa:ari_summoned * t:ari_summoned_undead_reaper - 101 * t:ari_summoned_decayshield;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_summoned_decay;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+------------------------Mausoleum normal decay, does not get cut with Lich
+[AvAffecter]
+	ID=ari_summoned_decay; 
+	visibleEvaluations=false;
+	actorValue=HP;
+	magnitude=t:TrueHPMax * -0.2;
+	duration=-2;
+	chance=100 * tsa:ari_summoned * t:ari_summoned_graveyard_AV;
+	visibleMiss=false;
+	FXOnHit=splatter;
+	FXOnHitColor=Red;
+	FXOnHit=downwardLines;
+	FXOnHitColor=Red;
+[AvAffecterAoE]
+	ID=ari_summoned_decay;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+
+
+[ActorValueReaction]
+ID=ari_summoned_ethereal_spirit_AV; element=timerUp; action=ari_summoned_spirit_decay;
+[ActorValueReaction]
+ID=ari_summoned_ethereal_spirit_AV; element=endTurn; action=ari_summoned_spirit_decay_dissipate;
+
+
+[Action] ID=ari_summoned_spirit_decay; 
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+
+[ActionAoE] 
+	ID=ari_summoned_spirit_decay; 
+	cloneFrom=oneTile;
+------------------------Spirit variants normal decay, does not get cut with Lich
+[AvAffecter]
+	ID=ari_summoned_spirit_decay; 
+	visibleEvaluations=false;
+	actorValue=MP;
+	magnitude=t:TrueMPMax * -0.33;
+	duration=-2;
+	chance=100 * tsa:ari_summoned * t:ari_summoned_phantom_AV;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_summoned_spirit_decay;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+
+[AvAffecter]
+	ID=ari_summoned_spirit_decay; 
+	visibleEvaluations=false;
+	actorValue=MP;
+	magnitude=t:TrueMPMax * -0.33;
+	duration=-2;
+	chance=100 * tsa:ari_summoned * t:ari_summoned_ghost_AV;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_summoned_spirit_decay;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+	
+[AvAffecter]
+	ID=ari_summoned_spirit_decay; 
+	visibleEvaluations=false;
+	actorValue=MP;
+	magnitude=t:TrueMPMax * -0.33;
+	duration=-2;
+	chance=100 * tsa:ari_summoned * t:ari_summoned_wraith_AV;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_summoned_spirit_decay;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+
+[AvAffecter]
+	ID=ari_summoned_spirit_decay; 
+	visibleEvaluations=false;
+	actorValue=MP;
+	magnitude=t:TrueMPMax * -0.33;
+	duration=-2;
+	chance=100 * tsa:ari_summoned * t:ari_summoned_wisp_AV;
+	visibleMiss=false;
+	FXOnHit=splatter;
+	FXOnHitColor=Red;
+	FXOnHit=downwardLines;
+	FXOnHitColor=Red;
+[AvAffecterAoE]
+	ID=ari_summoned_spirit_decay;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+
+------------------------Spirit variants actual dissipation if no mana left
+[Action] ID=ari_summoned_spirit_decay_dissipate; 
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+	
+[ActionAoE] 
+	ID=ari_summoned_spirit_decay_dissipate; 
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_summoned_spirit_decay_dissipate; 
+	visibleEvaluations=false;
+	actorValue=HP;
+	magnitude=t:TrueHPMax * -1;
+	duration=-2;
+	chance=100 * tsa:ari_summoned * t:ari_summoned_ethereal_spirit_AV * lessThan:1:t:MP;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_summoned_spirit_decay_dissipate;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+	canSelectAllies=true;
+
+[ActorTypeReaction]
+ID=ari_mausoleum;
+element=incapacitated; action=ari_summoned_spirit_removal;
+
+------------------------Additionally remove spirits when the Mausoleum is destroyed/killed
+[Action] ID=ari_summoned_spirit_removal; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+
+--Remove death shield first
+[ActionAoE] 
+	ID=ari_summoned_spirit_removal; 
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_summoned_spirit_removal;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=true;
+	actorValue=ari_summoned_deathshield;
+	magnitude=-1;
+	duration=-2;
+	chance=100 * tsa:ari_summoned * d:ari_soulpact_mausoleum_summon_check;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_summoned_spirit_removal; shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=true;
+--Remove Undeath so that they don't revive
+[AvAffecter]
+	ID=ari_summoned_spirit_removal;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=true;
+	actorValue=ari_commanded_undeath;
+	magnitude=-1;
+	duration=-2;
+	chance=100 * tsa:ari_summoned * d:ari_soulpact_mausoleum_summon_check;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_summoned_spirit_removal; shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=true;
+--Kill them
+[AvAffecter]
+	ID=ari_summoned_spirit_removal; 
+	visibleEvaluations=false;
+	harmful=true;
+	actorValue=HP;
+	magnitude=c:TrueHPMax * -1 - 1;
+	duration=-2;
+	chance=100 * tsa:ari_summoned * d:ari_soulpact_mausoleum_summon_check;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_summoned_spirit_removal; shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=true;
+
+-----------------------------------------Spirit passive to grant random ActTime on end of turn to make them feel less tied to the plane
+[SupportAbility]
+ID=ari_ethereal_ties;
+name=Ethereal Ties;
+icon=icon_gravekeeper_beyond_the_veil;
+tooltip=Spirits<icon=icon_gravekeeper_ethereal_spirit> have a weakened tie to the plane of the living.;
+
+[SupportAbilityReaction]
+ID=ari_ethereal_ties; 
+element=endTurn;
+action=ari_spirit_act;
+
+-----------------------------------------Grant random act time
+[Action] ID=ari_spirit_act; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+
+[ActionAoE] 	
+	ID=ari_spirit_act; 
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_spirit_act; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=actTimer;
+	magnitude=6+m:rand(14);
+	duration=-2;
+	chance=100 * tsa:ari_summoned * c:ari_summoned_ethereal_spirit_AV;
+	visibleMiss=false;
+	FXOnHit=sparkles;
+    FXOnHitColor=Blue;
+[AvAffecterAoE]
+	ID=ari_spirit_act;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+
+	
+-----------------------------------------Fetid Corpses passive
+[ActorValueReaction]
+ID=ari_foul_corpses_fuse; element=incapacitated; action=ari_corpse_explosion_act;
+[ActorValueReaction]
+ID=ari_foul_corpses_fuse; element=timerUp; action=ari_foul_corpse_act;
+-----------------------------------------Fetid Corpses miasma
+[Action] ID=ari_foul_corpse_act; 
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+[ActionAoE] 
+	ID=ari_foul_corpse_act; 
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+[AvAffecter]
+	ID=ari_foul_corpse_act; 
+	actorValue=HP;
+	magnitude=c:skill_Ruin * -0.2;
+	duration=-2;
+	chance=100 * c:ari_foul_corpses_fuse;
+	FXOnTile=shroudExplode;
+	FXOnTileColor=DarkGreen;
+	FXOnTarget=downwardLinesQuick;
+	FXOnTargetColor=Green;
+[AvAffecterAoE]
+	ID=ari_foul_corpse_act;
+	needsLoE=true;
+	arc=true;
+	airborne=true;
+	occupyAll=true;
+	bypassAll=true;
+	aoeCasterAsOrigin=true;
+    canSelectEnemies=true;
+	canSelectAllies=false;
+	minRange = 1;
+	maxRange = 1;
+
+-----------------------------------------Fetid Corpses explosion on death
+[Action] ID=ari_corpse_explosion_act;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+	FXOnCaster=ping;
+	FXOnCasterColor=DarkGreen;
+[ActionAoE] 
+	ID=ari_corpse_explosion_act;
+	cloneFrom=oneTile;
+    aoeCasterAsOrigin=true;
+[AvAffecter]
+	ID=ari_corpse_explosion_act;
+	actorValue=HP;
+	magnitude=c:TrueHPMax * -0.15 + c:skill_Ruin * -0.2;
+	duration=-2;
+	chance=100 * c:ari_foul_corpses_fuse;
+	FXOnTarget=shroudExplode;
+	FXOnTargetColor=DarkGreen;
+	FXOnTile=viralShroud_quiet;
+	FXOnTileColor=DarkGreen;
+	FXOnTarget=downwardLinesQuick;
+	FXOnTargetColor=Green;
+[AvAffecterAoE]
+	ID=ari_corpse_explosion_act;
+	needsLoE=true;
+	arc=true;
+	airborne=true;
+	occupyAll=true;
+	bypassAll=true;
+	aoeCasterAsOrigin=true;
+    canSelectEnemies=true;
+	canSelectAllies=false;
+	minRange = 0;
+	maxRange = 1.5;
+	
+-----------------------------------------Abomination Cloud of Rot
+[SupportAbility]
+ID=ari_abomination_rot_cloud;
+name=Cloud of Rot;
+icon=icon_gravekeeper_abomination_rot_cloud;
+tooltip=A cloud of Rot follows you, having a chance to erupt and infect nearby foes at the start and end of your turn.;
+
+[SupportAbilityReaction]
+ID=ari_abomination_rot_cloud; 
+element=timerUp;
+action=ari_abomination_rot_cloud_act;
+[SupportAbilityReaction]
+ID=ari_abomination_rot_cloud; 
+element=endTurn;
+action=ari_abomination_rot_cloud_act;
+
+[Action] ID=ari_abomination_rot_cloud_act;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+[ActionAoE] 
+	ID=ari_abomination_rot_cloud_act;
+	cloneFrom=oneTile;
+    aoeCasterAsOrigin=true;
+[AvAffecter]
+	ID=ari_abomination_rot_cloud_act;
+	visibleMiss=false;
+	actorValue=ari_rot_status;
+	magnitude=t:ari_rot_status + 1;
+	duration=40;
+	chance=50;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=ari_abomination_rot_cloud_act;
+	needsLoE=true;
+	arc=true;
+	airborne=true;
+	occupyAll=true;
+	bypassAll=true;
+	aoeCasterAsOrigin=true;
+    canSelectEnemies=true;
+	canSelectAllies=false;
+	minRange = 1;
+	maxRange = 1.5;
+	
+-----------------------------------------Abomination Blood Nova
+[SupportAbility]
+ID=ari_abomination_blood_nova;
+name=Blood Nova;
+icon=icon_gravekeeper_abomination_blood_nova;
+tooltip=When taking damage from a physical attack, a gout of blood erupts around you, damaging enemies and healing yourself.;
+
+[SupportAbilityReaction]
+ID=ari_abomination_blood_nova; 
+element=physical;
+element=magical;
+action=ari_abomination_blood_nova_act;
+
+[Action] ID=ari_abomination_blood_nova_act;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+	special=canReactMultipleTimesPerTurn;
+[ActionAoE] 
+	ID=ari_abomination_blood_nova_act;
+	cloneFrom=oneTile;
+    aoeCasterAsOrigin=true;
+[AvAffecter]
+	ID=ari_abomination_blood_nova_act;
+	actorValue=HP;
+	magnitude=c:skill_Ruin * -0.1 - 1;
+	duration=-2;
+	chance=100;
+	FXOnTarget=shroudExplode;
+	FXOnTargetColor=Red;
+	FXOnHit=ping;
+	FXOnHitColor=Red;
+	FXOnHit=splatter;
+	FXOnHitColor=Red;
+[AvAffecterAoE]
+	ID=ari_abomination_blood_nova_act;
+	needsLoE=true;
+	arc=true;
+	airborne=true;
+	occupyAll=true;
+	bypassAll=true;
+	aoeCasterAsOrigin=true;
+    canSelectEnemies=true;
+	canSelectAllies=false;
+	minRange = 1;
+	maxRange = 2;
+[AvAffecter]
+	ID=ari_abomination_blood_nova_act;
+	harmful=false; 
+	actorValue=HP;
+	visibleMiss=false;
+	magnitude=c:skill_Ruin * 0.1 + 1 * m:numEnemiesWithinX(2);
+	duration=-2;
+	chance=100;
+	FXOnHit=manySplatter_overlap; 
+	FXOnHitColor=Red; 
+[AvAffecterAoE]
+	ID=ari_abomination_blood_nova_act;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+	
+-----------------------------------------Abomination Horrific Presence
+[SupportAbility]
+ID=ari_abomination_horrific_presence;
+name=Horrific Presence;
+icon=icon_gravekeeper_abomination_horrific_presence;
+tooltip=Strike fear into the hearts of those that see you, reducing their <icon=PhysAtk> by 1 and <icon=MagAtk> by 1.;
+
+[SupportAbilityReaction]
+ID=ari_abomination_horrific_presence; 
+element=timerUp;
+action=ari_abomination_horrifice_presence_act;
+
+[Action] ID=ari_abomination_horrifice_presence_act;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+[ActionAoE] 
+	ID=ari_abomination_horrifice_presence_act;
+	cloneFrom=oneTile;
+    aoeCasterAsOrigin=true;
+[AvAffecter]
+	ID=ari_abomination_horrifice_presence_act;
+	actorValue=PhysAtk;
+	magnitude=-1;
+	duration=-4;
+	chance=100;
+	FXOnTile=blackCloud;
+	FXOnTarget=downwardLinesQuick;
+	FXOnTargetColor=Green;
+[AvAffecterAoE]
+	ID=ari_abomination_horrifice_presence_act;
+	needsLoE=true;
+	arc=true;
+	airborne=true;
+	occupyAll=true;
+	bypassAll=true;
+	aoeCasterAsOrigin=true;
+    canSelectEnemies=true;
+	canSelectAllies=false;
+	minRange = 1;
+	maxRange = 3;
+[AvAffecter]
+	ID=ari_abomination_horrifice_presence_act;
+	actorValue=MagAtk;
+	magnitude=-1;
+	duration=-4;
+	chance=100;
+[AvAffecterAoE]
+	ID=ari_abomination_horrifice_presence_act;
+	needsLoE=true;
+	arc=true;
+	airborne=true;
+	occupyAll=true;
+	bypassAll=true;
+	aoeCasterAsOrigin=true;
+    canSelectEnemies=true;
+	canSelectAllies=false;
+	minRange = 1;
+	maxRange = 3;
+	
+-----------------------------------------Abomination Cloak of Bone
+[SupportAbility]
+ID=ari_abomination_bone_cloak;
+name=Cloak of Bone;
+icon=icon_gravekeeper_abomination_bone_cloak;
+tooltip=Enemies attacking the Abomination have a 50% chance of dislodging a mindless Skeleton Warrior <icon=icon_skeleton_minion> from its unholy cadaver.;
+
+[SupportAbilityReaction]
+ID=ari_abomination_bone_cloak; 
+element=physical;
+element=magical;
+action=ari_abomination_bone_cloak_act;
+
+[Action] ID=ari_abomination_bone_cloak_act;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+	special=canReactMultipleTimesPerTurn;
+[ActionAoE] 
+	ID=ari_abomination_bone_cloak_act; 
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_abomination_bone_cloak_act; 
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=true;
+	actorValue=summonActor_temp;
+	magnitude=summoned_undead_mindless_skeletonmelee;
+	chance=50;
+	duration=-2;
+	element=ruin;
+	FXOnCaster=shroudExplode;
+	FXOnCasterColor=White;
+	FXOnHit=tinyShakeHoriz;
+	FXOnHit=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_abomination_bone_cloak_act;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+	needsLoS = false;
+	needsLoE = false;
+	bypassAll=true;
+	occupyAll=true;
+	
+	
+	
+-----------------------------------------Risen Lich Soulless Overseer
+[SupportAbility]
+ID=ari_lich_overseer;
+name=Soulless Overseer;
+icon=icon_gravekeeper_lich_overseer;
+tooltip=Minions decay at half of their normal rate and at the start of every other turn, all fielded Minions are granted Undeath until the end of their turn.<n=>At the start of your turn, siphon health from all Minions if not at maximum<icon=HP>.;
+
+[SupportAbilityReaction]
+ID=ari_lich_overseer; element=timerUp; action=ari_lich_overseer_grant_undeath;
+[SupportAbilityReaction]
+ID=ari_lich_overseer; element=endTurn; action=ari_lich_overseer_halvedecay;
+
+[Action] ID=ari_lich_overseer_grant_undeath;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+[ActionAoE] 
+	ID=ari_lich_overseer_grant_undeath; 
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_lich_overseer_grant_undeath; 
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=ari_commanded_undeath;
+	magnitude=1;
+	chance=100 * tsa:ari_summoned * isNot:1:t:ari_summoned_ethereal_spirit_AV - 101 * c:lich_anti_undeath_AV;
+	duration=-4;
+	FXOnHit=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_lich_overseer_grant_undeath;
+	shape=17;
+	cloneFrom=adjacentAndSelf;
+	minRange=1;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=false;
+[AvAffecter]
+	ID=ari_lich_overseer_grant_undeath; 
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=lich_anti_undeath_AV;
+	magnitude=1;
+	chance=100 - 101 * c:lich_anti_undeath_AV;
+	duration=-5;
+	FXOnHit=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_lich_overseer_grant_undeath;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+	needsLoS = false;
+	needsLoE = false;
+	bypassAll=true;
+	occupyAll=true;
+[AvAffecter]
+	ID=ari_lich_overseer_grant_undeath; 
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=HP;
+	magnitude=-1;
+	chance=100 * tsa:ari_summoned * isNot:1:t:ari_summoned_ethereal_spirit_AV * lessThan:0:d:ari_full_health_check;
+	duration=-2;
+	FXOnHit=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_lich_overseer_grant_undeath;
+	shape=17;
+	cloneFrom=adjacentAndSelf;
+	minRange=1;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+[AvAffecter]
+	ID=ari_lich_overseer_grant_undeath; 
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=HP;
+	magnitude=c:TrueHPMax * d:ari_total_lich_minions_fielded1 * 2;
+	chance=100 * lessThan:0:d:ari_full_health_check;
+	duration=-2;
+	FXOnHit=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_lich_overseer_grant_undeath;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+	needsLoS = false;
+	needsLoE = false;
+	bypassAll=true;
+	occupyAll=true;
+
+
+
+[Action] ID=ari_lich_overseer_halvedecay;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+[ActionAoE] 
+	ID=ari_lich_overseer_halvedecay; 
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_lich_overseer_halvedecay; 
+	visibleEvaluations=true;
+	visibleMiss=true;
+	harmful=false;
+	actorValue=ari_halve_decay;
+	magnitude=1;
+	chance=100 * tsa:ari_summoned;
+	duration=-5;
+	FXOnHit=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_lich_overseer_halvedecay;
+	shape=17;
+	cloneFrom=adjacentAndSelf;
+	minRange=1;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=false;
+	
+
+
+
+----------------------------------------------------------------
+---------------------Enemy Actor Passives-----------------------
+----------------------------------------------------------------
+
+
+-----------------------------------------passive to indicate enemy will rise from the dead
+[SupportAbility]
+ID=ari_enemy_resurrection_passive1;
+name=Undead Fortitude;
+icon=icon_gravekeeper_undead_fortitude;
+tooltip=When killed, there is a chance of resurrecting with 40%<icon=HP>.;
+
+[SupportAbilityReaction]
+ID=ari_enemy_resurrection_passive1; 
+element=incapacitated; 
+--element=dispel; 
+action=ari_undead_enemy_act1;
+
+[SupportAbilityReaction]
+ID=ari_enemy_resurrection_passive1; 
+element=combatEnd;
+action=ari_enemy_endofcombat_removal;
+
+[Action] ID=ari_enemy_endofcombat_removal; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+	FXOnTarget=blackCloud;
+[ActionAoE] 
+	ID=ari_enemy_endofcombat_removal; 
+	cloneFrom=oneTile;
+--Remove the actor
+[AvAffecter]
+	ID=ari_enemy_endofcombat_removal; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=removeActor;
+	magnitude=1;
+	duration=-2;
+	chance=100 * m:casterIsTarget * tsa:ari_enemy_resurrection_passive1;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_enemy_endofcombat_removal;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+
+[Action] ID=ari_undead_enemy_act1; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+[ActionAoE] 
+	ID=ari_undead_enemy_act1; 
+	cloneFrom=oneTile;
+--Revival
+[AvAffecter]
+	ID=ari_undead_enemy_act1; 
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=revive;
+	magnitude=1;
+	chance=45 * csa:ari_enemy_resurrection_passive1 * c:ari_undead_enemy_resurrection * lessThan:3:c:ari_undead_enemy_resurrection_counter;
+	duration=-2;
+	element=ruin;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_undead_enemy_act1;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+--Heal 40%
+[AvAffecter]
+	ID=ari_undead_enemy_act1; 
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=HP;
+	magnitude=c:TrueHPMax * 0.4;
+	chance=45 * csa:ari_enemy_resurrection_passive1 * c:ari_undead_enemy_resurrection * lessThan:3:c:ari_undead_enemy_resurrection_counter;
+	duration=-2;
+	element=ruin;
+	FXOnTile=delay_tiny;
+	FXOnHit=shroudExplode;
+	FXOnHitColor=DarkGreen;
+[AvAffecterAoE]
+	ID=ari_undead_enemy_act1;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+	
+[AvAffecter]
+	ID=ari_undead_enemy_act1; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=removeActor;
+	magnitude=1;
+	duration=-2;
+	chance=100 * m:casterIsTarget - 101 * thisPreviousAVHit:ari_undead_enemy_act1;
+	visibleMiss=false;
+	FXOnTile=delay_tiny;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_undead_enemy_act1;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+	canSelectAllies=true;
+	
+[AvAffecter] --heal lich when finally dying
+	ID=ari_undead_enemy_act1; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=HP;
+	magnitude=t:TrueHPMax * 0.2;
+	duration=-2;
+	chance=100 * tsa:ari_enemy_lich_soul_heal * thisPreviousAVHit:ari_undead_enemy_act1;
+	visibleMiss=false;
+	FXOnTile=delay_tiny;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_undead_enemy_act1; shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=true;
+
+[AvAffecter]
+	ID=ari_undead_enemy_act1;
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=ari_undead_enemy_resurrection_counter;
+	magnitude=1;
+	duration=-2;
+	chance=100;
+[AvAffecterAoE]
+	ID=ari_undead_enemy_act1; 
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+	canSelectAllies=true;
+
+-----------------------------------------passive to indicate enemy will rise from the dead
+[SupportAbility]
+ID=ari_enemy_resurrection_passive2;
+name=Undead Resilience;
+icon=icon_gravekeeper_undead_resilience;
+tooltip=When killed, there is a high chance of resurrecting with 40%<icon=HP>.;
+
+[SupportAbilityReaction]
+ID=ari_enemy_resurrection_passive2; 
+element=incapacitated; 
+--element=dispel; 
+action=ari_undead_enemy_act2;
+
+[SupportAbilityReaction]
+ID=ari_enemy_resurrection_passive2; 
+element=combatEnd;
+action=ari_enemy_endofcombat_removal2;
+
+[Action] ID=ari_enemy_endofcombat_removal2; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+	
+	FXOnTarget=blackCloud;
+
+[ActionAoE] 
+	ID=ari_enemy_endofcombat_removal2; 
+	cloneFrom=oneTile;
+--Remove the actor
+[AvAffecter]
+	ID=ari_enemy_endofcombat_removal2; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=removeActor;
+	magnitude=1;
+	duration=-2;
+	chance=100 * m:casterIsTarget * tsa:ari_enemy_resurrection_passive2;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_enemy_endofcombat_removal2;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+
+
+
+
+[Action] ID=ari_undead_enemy_act2; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+
+[ActionAoE] 
+	ID=ari_undead_enemy_act2; 
+	cloneFrom=oneTile;
+
+--Revival
+[AvAffecter]
+	ID=ari_undead_enemy_act2; 
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=revive;
+	magnitude=1;
+	chance=65 * csa:ari_enemy_resurrection_passive2 * c:ari_undead_enemy_resurrection * lessThan:5:c:ari_undead_enemy_resurrection_counter;
+	duration=-2;
+	element=ruin;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_undead_enemy_act2;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+--Heal 40%
+[AvAffecter]
+	ID=ari_undead_enemy_act2; 
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=HP;
+	magnitude=c:TrueHPMax * 0.4;
+	chance=65 * csa:ari_enemy_resurrection_passive2 * c:ari_undead_enemy_resurrection * lessThan:5:c:ari_undead_enemy_resurrection_counter;
+	duration=-2;
+	element=ruin;
+	FXOnTile=delay_tiny;
+	FXOnHit=shroudExplode;
+	FXOnHitColor=DarkGreen;
+[AvAffecterAoE]
+	ID=ari_undead_enemy_act2;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+	
+[AvAffecter]
+	ID=ari_undead_enemy_act2; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=removeActor;
+	magnitude=1;
+	duration=-2;
+	chance=100 * m:casterIsTarget - 101 * thisPreviousAVHit:ari_undead_enemy_act2;
+	visibleMiss=false;
+	FXOnTile=delay_tiny;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_undead_enemy_act2;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+	canSelectAllies=true;
+	
+[AvAffecter] --heal lich when finally dying
+	ID=ari_undead_enemy_act2; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=HP;
+	magnitude=t:TrueHPMax * 0.2;
+	duration=-2;
+	chance=100 * tsa:ari_enemy_lich_soul_heal * thisPreviousAVHit:ari_undead_enemy_act2;
+	visibleMiss=false;
+	FXOnTile=delay_tiny;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_undead_enemy_act2; shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=true;
+
+[AvAffecter]
+	ID=ari_undead_enemy_act2;
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=ari_undead_enemy_resurrection_counter;
+	magnitude=1;
+	duration=-2;
+	chance=100;
+[AvAffecterAoE]
+	ID=ari_undead_enemy_act2; 
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+	canSelectAllies=true;
+
+-----------------------------------------enemy Lich Soul heal on minion death
+[SupportAbility]
+ID=ari_enemy_lich_soul_heal;
+name=Devour Souls;
+icon=icon_gravekeeper_lich_soul_devourer;
+tooltip=When an allied Undead is finally laid to rest, devour their soul and heal yourself for 20%<icon=HP>.;
+
+-----------------------------------------enemy Lich aura of death causing death after 200
+[SupportAbility]
+ID=ari_enemy_lich_death_aura;
+name=Aura of Death;
+icon=icon_gravekeeper_lich_death_aura;
+tooltip=At the start of combat, the Lich will cast a powerful curse that will result in death after <icon=time>200.;
+
+[SupportAbilityReaction]
+ID=ari_enemy_lich_death_aura; 
+element=combatStart;
+action=ari_enemy_lich_death_aura_act;
+
+[Action] ID=ari_enemy_lich_death_aura_act;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+[ActionAoE] 
+	ID=ari_enemy_lich_death_aura_act;
+	cloneFrom=oneTile;
+    aoeCasterAsOrigin=true;
+
+[AvAffecter]
+	ID=ari_enemy_lich_death_aura_act;
+	actorValue=summonItem;
+	magnitude=ari_death_aura_item;
+	duration=1;
+	chance=100;
+	FXOnHit=sparkles;
+	FXOnHitColor=Black;
+[AvAffecterAoE]
+	ID=ari_enemy_lich_death_aura_act;
+	cloneFrom=oneTile;
+    aoeCasterAsOrigin=true;
+	
+
+
+	
+	
+--enemy Lich Aura of Death workaround
+[ItemType]  name=Aura of Death;
+ID=ari_death_aura_item; itemCategory=hazard;
+journalID=journal_ari_death_aura; 
+texture=gkart;
+sprite=52;
+pR=pCorpryst; pG=pBuralk; pB=p29;
+
+special=cannotBePickedUp; special=randomFlipWhenPlaced;
+special=big;
+special=transparent; 
+special=alwaysBelowOtherItems;
+special=invisible;
+--special=noTooltips;
+
+special=timer; special=timer_advanceOnScreenOnly; 
+--special=hideTimer;
+timer=200;
+
+-- At the end of duration, explode
+[ItemReaction] 
+ID=ari_death_aura_item; element=timerUp; action=ari_death_aura_item_unleash; newID=X;
+
+
+[JournalEntry]
+ID=journal_ari_death_aura;
+category=item; halfPage=true; rarity=0;
+title=Aura of Death;
+text=<itemBig=ari_death_aura_item><title=Aura of Death><brAdj=>At the start of combat, the Lich will cast a powerful curse that will result in death after <icon=time>200.;
+	
+[Action] ID=ari_death_aura_item_unleash; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+	
+[ActionAoE] 
+	ID=ari_death_aura_item_unleash; 
+	cloneFrom=oneTile;
+
+[AvAffecter]
+	ID=ari_death_aura_item_unleash; 
+	visibleEvaluations=true;
+	harmful=true;
+	actorValue=HP;
+	magnitude=t:TrueHPMax * -1;
+	duration=-2;
+	chance=100;
+	--chance=100 * t:ari_death_aura_status;
+	visibleMiss=false;
+	element=magic;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_death_aura_item_unleash;
+	fReq=m:combat;
+	shape=6;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=true;

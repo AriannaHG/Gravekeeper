@@ -1,0 +1,3058 @@
+----------------------------------------------------------------Empty the Crypts, core ability to summon skeletons
+[Action] ID=ari_gravekeeper_undead_legion; 
+	name=Empty the Crypts;
+	icon=icon_empty_the_crypts;
+	mpCost=0 * d:mpCostMult + d:mpCostMod;
+	tooltip=Raise <math=min:1:c:rank> Skeleton<textIf= s=c:rank-1><icon=icon_skeleton_minion><icon=icon_gravekeeper_risen> that will decay after each turn.<n=>Sacrifice <math=min:5:d:ari_legion_sacrificed_hp_tooltip>% maximum <icon=HP> to raise each Skeleton<icon=icon_skeleton_minion><icon=icon_gravekeeper_risen>.<n=>Max: <math=d:ari_maximum_skeletons_2>. Current: <math=d:ari_total_skeletons_fielded>.;
+	--<n=><n=>The expiration of a Skeleton<icon=icon_skeleton_minion><icon=icon_gravekeeper_risen> causes a violent rift of necromantic energies, disrupting Gravekeeper concentration and causing them to take damage equal to 5% of the Skeleton's<icon=icon_skeleton_minion><icon=icon_gravekeeper_risen> maximum <icon=HP>.;
+	rankUpTooltip=Each rank raises one additional Skeleton<icon=icon_skeleton_minion><icon=icon_gravekeeper_risen> and reduces the amount of sacrificed <icon=HP>.<n=>Later ranks raise a different variety of Skeletons<icon=icon_skeleton_minion><icon=icon_gravekeeper_risen>.;
+	tooltipTopRight=<icon=icon_risen_minion><icon=skill_Ruin_small>;
+	harmful=false;
+	--chargeTime=6 * d:chargeTimeMult + d:chargeTimeMod;
+	tooltipIcons=<icon=HP><math=c:TrueHPMax * d:ari_legion_sacrificed_hp_calc_minimum> per <icon=icon_skeleton_minion>;
+	
+	XPCost=150;
+	XPCost=700;
+	XPCost=950;
+	
+	numTargets=c:rank;
+	maxDistanceBetweenTargets=2;
+
+	special=cantUseInTravel;
+	special=redoMovementAnalysis;
+	
+	special=requiresCasting;
+	
+	casterAnimation=spellcast;
+	
+	maxRank=3;
+	canExceedMaxRankBy=1;
+	
+	FXOnCaster=chargeBurst;
+	FXOnCaster=darken_minor;
+	
+	FXOnTarget=blackCloud;
+	FXOnTargetColor=DarkGreen;
+	
+	
+	FXOnTarget=shroudExplode;
+	FXOnTargetColor=DarkGreen;
+
+--Target near you only
+[ActionAoE] 
+	ID=ari_gravekeeper_undead_legion;
+	cloneFrom=adjacent+2;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	canSelectActors=false;
+	bypassAll=false;
+    occupyAll=false;
+	
+----------Actual summon, different units depending on rank and also depending on whether the risen commander passive is taken
+----------Rank 1 and 2 summon melee skeletons, this is for no risen commander
+[AvAffecter]
+	ID=ari_gravekeeper_undead_legion; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	magnitude=summoned_undead_skeletonmelee;
+	chance=lessThan:3:c:rank * 100 - 101 * csa:ari_gravekeeper_undead_commander;
+	duration=-2;
+	element=ruin;
+	FXOnTile=tinyShakeHoriz;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_undead_legion;
+	cloneFrom=oneTile;
+
+----------Rank 3 summons an archer every third skeleton on the field
+----------Summon ranged if formula more than 1
+[AvAffecter]
+	ID=ari_gravekeeper_undead_legion; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	magnitude=summoned_undead_skeletonbow;
+	chance=is:3:c:rank * moreThan:1:d:ari_skeletons_fielded_rank3 * 100 - 101 * m:targetExists - 101 * csa:ari_gravekeeper_undead_commander;
+	duration=-2;
+	element=ruin;
+	FXOnTile=tinyShakeHoriz;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_undead_legion;
+	cloneFrom=oneTile;
+----------Otherwise summon melee
+[AvAffecter]
+	ID=ari_gravekeeper_undead_legion; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	magnitude=summoned_undead_skeletonmelee;
+	chance=is:3:c:rank * lessThan:2:d:ari_skeletons_fielded_rank3 * 100 - 101 * m:targetExists - 101 * csa:ari_gravekeeper_undead_commander;
+	duration=-2;
+	element=ruin;
+	FXOnTile=tinyShakeHoriz;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_undead_legion;
+	cloneFrom=oneTile;
+	
+----------Rank 4 summons an archer every third skeleton and a knight every fourth skeleton on the field
+----------Summon Knight if formula is more than 2
+[AvAffecter]
+	ID=ari_gravekeeper_undead_legion; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	magnitude=summoned_undead_skeletonknight;
+	chance=is:4:c:rank * moreThan:2:d:ari_skeletons_fielded_rank4 * 100 - 101 * m:targetExists - 101 * csa:ari_gravekeeper_undead_commander;
+	duration=-2;
+	element=ruin;
+	FXOnTile=tinyShakeHoriz;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_undead_legion;
+	cloneFrom=oneTile;
+----------Summon ranged if formula is 2
+[AvAffecter]
+	ID=ari_gravekeeper_undead_legion; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	magnitude=summoned_undead_skeletonbow;
+	chance=is:4:c:rank * is:2:d:ari_skeletons_fielded_rank4 * 100 - 101 * m:targetExists - 101 * csa:ari_gravekeeper_undead_commander;
+	duration=-2;
+	element=ruin;
+	FXOnTile=tinyShakeHoriz;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_undead_legion;
+	cloneFrom=oneTile;
+----------Summon melee if less than 2
+[AvAffecter]
+	ID=ari_gravekeeper_undead_legion; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	magnitude=summoned_undead_skeletonmelee;
+	chance=is:4:c:rank * lessThan:2:d:ari_skeletons_fielded_rank4 * 100 - 101 * m:targetExists - 101 * csa:ari_gravekeeper_undead_commander;
+	duration=-2;
+	element=ruin;
+	FXOnTile=tinyShakeHoriz;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_undead_legion;
+	cloneFrom=oneTile;
+
+----------Risen Commander version
+----------Rank 1 and 2 summon melee skeletons ---------- Commander version
+[AvAffecter]
+	ID=ari_gravekeeper_undead_legion; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	magnitude=summoned_undead_skeletonmelee_commander;
+	chance=lessThan:3:c:rank * 100 * csa:ari_gravekeeper_undead_commander;
+	duration=-2;
+	element=ruin;
+	FXOnTile=tinyShakeHoriz;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_undead_legion;
+	cloneFrom=oneTile;
+
+----------Rank 3 summons an archer every third skeleton on the field ---------- Commander version
+----------Summon ranged if formula more than 1 ---------- Commander version
+[AvAffecter]
+	ID=ari_gravekeeper_undead_legion; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	magnitude=summoned_undead_skeletonbow_commander;
+	chance=d:ari_skeletonbow_commander_fielded_rank3 * csa:ari_gravekeeper_undead_commander;
+	duration=-2;
+	element=ruin;
+	FXOnTile=tinyShakeHoriz;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_undead_legion;
+	cloneFrom=oneTile;
+----------Otherwise summon melee  ---------- Commander version
+[AvAffecter]
+	ID=ari_gravekeeper_undead_legion; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	magnitude=summoned_undead_skeletonmelee_commander;
+	chance=d:ari_skeletonmelee_commander_fielded_rank3 * csa:ari_gravekeeper_undead_commander;
+	duration=-2;
+	element=ruin;
+	FXOnTile=tinyShakeHoriz;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_undead_legion;
+	cloneFrom=oneTile;
+	
+----------Rank 4 summons an archer every third skeleton and a knight every fourth skeleton on the field ---------- Commander version
+----------Summon Knight if formula is more than 2 ---------- Commander version
+[AvAffecter]
+	ID=ari_gravekeeper_undead_legion; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	magnitude=summoned_undead_skeletonknight_commander;
+	chance=d:ari_skeletonknight_commander_fielded_rank4 * csa:ari_gravekeeper_undead_commander;
+	duration=-2;
+	element=ruin;
+	FXOnTile=tinyShakeHoriz;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_undead_legion;
+	cloneFrom=oneTile;	
+----------Summon ranged if formula is 2 ---------- Commander version
+[AvAffecter]
+	ID=ari_gravekeeper_undead_legion; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	magnitude=summoned_undead_skeletonbow_commander;
+	chance=d:ari_skeletonbow_commander_fielded_rank4 * csa:ari_gravekeeper_undead_commander;
+	duration=-2;
+	element=ruin;
+	FXOnTile=tinyShakeHoriz;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_undead_legion;
+	cloneFrom=oneTile;
+----------Summon melee if less than 2 ---------- Commander version
+[AvAffecter]
+	ID=ari_gravekeeper_undead_legion; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	magnitude=summoned_undead_skeletonmelee_commander;
+	chance=d:ari_skeletonmelee_commander_fielded_rank4 * csa:ari_gravekeeper_undead_commander;
+	duration=-2;
+	element=ruin;
+	FXOnTile=tinyShakeHoriz;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_undead_legion;
+	cloneFrom=oneTile;
+
+----------Buff spawned skeletons
+----------Give skeletons random timer to make it a bit dynamic
+[AvAffecter]
+	ID=ari_gravekeeper_undead_legion; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=actTimer;
+	magnitude=m:rand(2);
+	chance=100;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_undead_legion;
+	cloneFrom=oneTile;
+----------Set skeleton max health
+[AvAffecter]
+	ID=ari_gravekeeper_undead_legion; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=TrueHPMax;
+	magnitude=c:skill_Ruin * 1.3 + 2;
+	chance=100;
+	duration=-2;
+	FXOnTile=delay_tiny;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_undead_legion;
+	cloneFrom=oneTile;
+----------Set skeleton current health to max
+[AvAffecter]
+	ID=ari_gravekeeper_undead_legion; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=HP;
+	magnitude=c:skill_Ruin * 1.3 + 2;
+	chance=100;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_undead_legion;
+	cloneFrom=oneTile;
+----------Give skeletons phys attack
+[AvAffecter]
+	ID=ari_gravekeeper_undead_legion; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=PhysAtk;
+	magnitude=c:skill_Ruin * 0.4 + 1;
+	chance=100;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_undead_legion;
+	cloneFrom=oneTile;
+----------Give skeletons phys defense
+[AvAffecter]
+	ID=ari_gravekeeper_undead_legion; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=PhysDef;
+	magnitude=c:skill_Ruin * 0.2;
+	chance=100;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_undead_legion;
+	cloneFrom=oneTile;
+	
+----------Set summon's own Ruin skill for multiple purposes, including foul corpse damage
+[AvAffecter]
+	ID=ari_gravekeeper_undead_legion; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=skill_Ruin;
+	magnitude=c:skill_Ruin * 1.0;
+	chance=100;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_undead_legion;
+	cloneFrom=oneTile;
+	
+----------Give Skeletons the rank of the skill for skeleton limit check
+[AvAffecter]
+	ID=ari_gravekeeper_undead_legion; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=ari_summoned_skeleton_maxlimit;
+	magnitude=c:rank;
+	chance=100;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_undead_legion;
+	cloneFrom=oneTile;
+
+----------Grant the Foul Corpse fuse AV to summons if passive is taken
+[AvAffecter]
+	ID=ari_gravekeeper_undead_legion; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=ari_foul_corpses_fuse;
+	magnitude=1;
+	chance=100 * csa:ari_gravekeeper_foul_corpses * tsa:ari_summoned;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_undead_legion;
+	cloneFrom=oneTile;
+
+----------Remove caster's HP, iterates for each cast or rank
+[AvAffecter]
+	ID=ari_gravekeeper_undead_legion;
+	harmful=true; 
+	actorValue=HP;
+	visibleMiss=false;
+	magnitude=-1 * max:125:c:TrueHPMax * d:ari_legion_sacrificed_hp_calc_minimum;
+	duration=-2;
+	chance=100;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_undead_legion;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+	
+	
+----------------------------------------------------------------Blood of the Master, sacrifice a bunch of health for a small ally heal for when no minions are around, and a larger heal for minions as well as additional buffs depending on rank
+[Action] ID=ari_gravekeeper_masterblood; 
+	name=Blood of the Master;
+	icon=icon_gravekeeper_blood_of_the_master;
+	
+	mpCost=6 * d:mpCostMult + d:mpCostMod;
+	
+	tooltip=Sacrifice 5% maximum <icon=HP> to heal crew members near you for <math=2 + c:rank><icon=HP>.<n=>Sacrifice an additional 3% maximum <icon=HP> for each Minion<icon=icon_gravekeeper_risen>, healing them for <math=c:skill_Ruin * 0.5 + c:rank + 2><icon=HP>.
+	<finalTextIf==2 - c:rank><n=><n=>Empower Minions<icon=icon_gravekeeper_risen> healed.
+    <finalTextIf==3 - c:rank><n=><n=>Apply Decay Shield<icon=icon_decayshield> to Minions<icon=icon_gravekeeper_risen> healed.
+    <finalTextIf==4 - c:rank><n=><n=>Apply Lifelink<icon=icon_gravekeeper_lifelink>, siphoning health from Minions<icon=icon_gravekeeper_risen> when taking damage.;
+	rankUpTooltip=Each rank bolsters your Minions<icon=icon_gravekeeper_risen> with additional effects.;
+	tooltipTopRight=<icon=icon_HP_small><icon=skill_Ruin_small>;
+	
+	tooltipIcons=<icon=HP><math=c:TrueHPMax * 0.05 + c:TrueHPMax * 0.03 * d:ari_minions_fielded>;
+	
+	XPCost=100;
+	XPCost=400;
+	XPCost=800;
+	
+	numTargets=1;
+	
+	maxRank=3;
+	canExceedMaxRankBy=1;
+	casterAnimation=spellcast;
+	
+	FXOnCaster=manySplatters;
+	FXOnCasterColor=Red;
+	FXOnCaster=darken_minor;
+	FXOnTarget=darken_minor;
+	
+[ActionAoE]
+	ID=ari_gravekeeper_masterblood;
+	--canSelectAllies=true;
+	cloneFrom=oneTile;
+	minRange=0;
+	maxRange=0;
+	
+----------Grant decay shield to NON SPIRIT NON MINDLESS minions at rank 3 or higher
+[AvAffecter]
+	ID=ari_gravekeeper_masterblood;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=ari_summoned_decayshield;
+	magnitude=1;
+	duration=20 + 15 * c:rank;
+	chance=100 * tsa:ari_summoned * moreThan:2:c:rank * isNot:1:t:ari_summoned_ethereal_spirit_AV * isNot:1:t:ari_summoned_mindless_AV;
+	FXOnHit=upwardLines;
+	FXOnHitColor=Black;
+	FXOnHit=upwardLinesQuick;
+	FXOnHitColor=Black;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_masterblood; shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=false;
+----------Grant death shield to NON SPIRIT NON MINDLESS minions to summon zombies on minion death at rank 4 or higher --change this to life link
+--[AvAffecter]
+--	ID=ari_gravekeeper_masterblood;
+--	visibleEvaluations=false;
+--	visibleMiss=false;
+--	harmful=false;
+--	actorValue=ari_summoned_deathshield;
+--	magnitude=1;
+--	duration=5 + 12 * c:rank;
+--	chance=100 * tsa:ari_summoned * moreThan:3:c:rank * isNot:1:t:ari_summoned_ethereal_spirit_AV * isNot:1:t:ari_summoned_mindless_AV;
+--	FXOnHit=upwardLines;
+--	FXOnHitColor=Green;
+--	FXOnHit=upwardLinesQuick;
+--	FXOnHitColor=Black;
+--	FXOnHit=upwardLinesQuick;
+--	FXOnHitColor=Green;
+--[AvAffecterAoE]
+--	ID=ari_gravekeeper_masterblood; shape=17;
+--	cloneFrom=adjacentAndSelf;
+--	maxRange=30;
+--	arc=true;
+--	airborne=true;
+--	needsLoE=false;
+--	needsLoS=false;
+--	bypassAll=true;
+--	canSelectAllies=true;
+--	canSelectEnemies=false;
+
+[AvAffecter]
+	ID=ari_gravekeeper_masterblood;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=ari_blood_lifelink;
+	magnitude=1;
+	duration=20 + 15 * c:rank;
+	chance=100 * moreThan:3:c:rank;
+	FXOnHit=upwardLines;
+	FXOnHitColor=Green;
+	FXOnHit=upwardLinesQuick;
+	FXOnHitColor=Black;
+	FXOnHit=upwardLinesQuick;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_masterblood;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+	
+----------Grant generic buffs to NON SPIRIT NON MINDLESS minions at rank 2 or higher
+----------Give Ruin skill buff
+[AvAffecter]
+	ID=ari_gravekeeper_masterblood;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=skill_Ruin;
+	magnitude=1;
+	duration=20 + 15 * c:rank;
+	chance=100 * tsa:ari_summoned * moreThan:1:c:rank * isNot:1:t:ari_summoned_ethereal_spirit_AV * isNot:1:t:ari_summoned_mindless_AV;
+	FXOnHit=upwardLines;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_masterblood; shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=false;
+----------Give Phys Def buff
+[AvAffecter]
+	ID=ari_gravekeeper_masterblood;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=PhysDef;
+	magnitude=m:rand(1);
+	duration=20 + 15 * c:rank;
+	chance=100 * tsa:ari_summoned * moreThan:1:c:rank * isNot:1:t:ari_summoned_ethereal_spirit_AV * isNot:1:t:ari_summoned_mindless_AV;
+	FXOnHit=upwardLines;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_masterblood; shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=false;
+----------Give Mag Def buff
+[AvAffecter]
+	ID=ari_gravekeeper_masterblood;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=MagDef;
+	magnitude=m:rand(1);
+	duration=20 + 15 * c:rank;
+	chance=100 * tsa:ari_summoned * moreThan:1:c:rank * isNot:1:t:ari_summoned_ethereal_spirit_AV * isNot:1:t:ari_summoned_mindless_AV;
+	FXOnHit=upwardLines;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_masterblood; shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=false;
+----------Give Phys Atk buff
+[AvAffecter]
+	ID=ari_gravekeeper_masterblood;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=PhysAtk;
+	magnitude=1;
+	duration=20 + 15 * c:rank;
+	chance=100 * tsa:ari_summoned * moreThan:1:c:rank * isNot:1:t:ari_summoned_ethereal_spirit_AV * isNot:1:t:ari_summoned_mindless_AV;
+	FXOnHit=upwardLines;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_masterblood; shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=false;
+----------Give Mag Atk buff
+[AvAffecter]
+	ID=ari_gravekeeper_masterblood;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=MagAtk;
+	magnitude=1;
+	duration=20 + 15 * c:rank;
+	chance=100 * tsa:ari_summoned * moreThan:1:c:rank * isNot:1:t:ari_summoned_ethereal_spirit_AV * isNot:1:t:ari_summoned_mindless_AV;
+	FXOnHit=upwardLines;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_masterblood; shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=false;
+	
+----------Heal all NON SPIRIT NON MINDLESS minions in play
+[AvAffecter]
+	ID=ari_gravekeeper_masterblood;
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=HP;
+	magnitude=0.5 * c:skill_Ruin + c:rank + 2;
+	duration=-2;
+	chance=100 * tsa:ari_summoned * isNot:1:t:ari_summoned_ethereal_spirit_AV * isNot:1:t:ari_summoned_mindless_AV;
+	FXOnHit=sparkles;
+	FXOnHitColor=Purple;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_masterblood; shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=false;
+
+----------Minor heal all nearby allies that are not minions
+[AvAffecter]
+	ID=ari_gravekeeper_masterblood;
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=HP;
+	magnitude=2 + c:rank;
+	duration=-2;
+	chance=100 - 101 * tsa:ari_summoned;
+	FXOnHit=sparkles;
+	FXOnHitColor=Purple;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_masterblood; shape=17;
+	cloneFrom=adjacentAndSelf;
+	minRange=1;
+	maxRange=4;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=false;
+	
+----------Remove caster's HP depending on minion count
+[AvAffecter]
+	ID=ari_gravekeeper_masterblood;
+	visibleEvaluations=true;
+	harmful=true; 
+	actorValue=HP;
+	visibleMiss=false;
+	magnitude=-1 * max:125:c:TrueHPMax * 0.05 - max:125:c:TrueHPMax * 0.03 * d:ari_minions_fielded;
+	duration=-2;
+	chance=100;
+	FXOnHit=downwardLines;
+	FXOnHitColor=Red;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_masterblood;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+	
+----------------------------------------------------------------Soul Collector
+[Action] ID=ari_gravekeeper_soul_collector; 
+	name=Soul Pact;
+	icon=icon_gravekeeper_soul_collector;
+	
+	mpCost=0 * d:mpCostMult + d:mpCostMod;
+	
+	tooltip=Use Souls<icon=soul_collected> collected from the deceased and certain <n=>Minions<icon=icon_gravekeeper_risen> to fuel a variety of dark arts. Empower yourself or allies, and raise Spirits<icon=icon_gravekeeper_ethereal_spirit> and Minions<icon=icon_gravekeeper_risen> to do your bidding.<n=>Expend Souls<icon=soul_collected> up to Tier <math=c:rank>.
+	<br=>
+--	Tier 1: 1<icon=soul_collected>: Grant a Minion<icon=icon_gravekeeper_risen> Decay Shield<icon=icon_decayshield> for <icon=time><math=20 + 5 * c:rank>. <n=>Otherwise, raise a Zombie<icon=icon_zombie_minion><icon=icon_gravekeeper_risen> from the ground.<n=>Max: 5. Current: <math=d:ari_total_zombies_fielded>.
+--	<n=><n=>Tier 2: 4<icon=soul_collected>: Replenish <math=5 + c:rank><icon=MP>MP for an ally. <n=>Otherwise, call forth a Phantom<icon=icon_gravekeeper_ethereal_spirit> from the other side.
+--	<n=><n=>Tier 3: 7<icon=soul_collected>: Grant an ally +3<icon=skill_Ruin> for <icon=time><math=20 * c:rank>. <n=>Otherwise, raise a Skeleton Mage<icon=icon_skeleton_mage_minion><icon=icon_gravekeeper_risen> to serve you.<n=>Max: 2. Current: <math=d:ari_total_skeleton_mages_fielded>.
+--	<n=><n=>Tier 4: 10<icon=soul_collected>: Grant an ally Undying<icon=icon_undeath> for <icon=time>120, pulsing Undeath<icon=icon_undeath> to nearby Minions<icon=icon_gravekeeper_risen> at the end of their turn. <n=>Otherwise, construct a Mausoleum on tile that connects the world of the dead with that of the living, beckoning forth waves of Spirits<icon=icon_gravekeeper_ethereal_spirit>.;
+	--summons random 3 specters, 2 ghosts or 1 wraith per turn
+	
+	<finalTextIf==1 - c:ari_gravekeeper_soul_amount>Tier 1: 1<icon=soul_collected>: Grant a Minion<icon=icon_gravekeeper_risen> Decay Shield<icon=icon_decayshield> for <icon=time><math=20 + 5 * c:rank>. <n=>Otherwise, raise a Zombie<icon=icon_zombie_minion><icon=icon_gravekeeper_risen> from the ground.<n=>Max: 5. Current: <math=d:ari_total_zombies_fielded>.
+    <finalTextIf==4 - c:ari_gravekeeper_soul_amount * moreThan:1:c:rank> <n=>Tier 2: 4<icon=soul_collected>: Replenish <math=5 + c:rank><icon=MP>MP for an ally. <n=>Otherwise, call forth a Phantom<icon=icon_gravekeeper_ethereal_spirit> from the other side.
+    <finalTextIf==7 - c:ari_gravekeeper_soul_amount * moreThan:2:c:rank> <n=>Tier 3: 7<icon=soul_collected>: Grant an ally +3<icon=skill_Ruin> for <icon=time><math=20 * c:rank>. <n=>Otherwise, raise a Skeleton Mage<icon=icon_skeleton_mage_minion><icon=icon_gravekeeper_risen> to serve you.<n=>Max: 2. Current: <math=d:ari_total_skeleton_mages_fielded>.
+    <finalTextIf==10 - c:ari_gravekeeper_soul_amount * moreThan:3:c:rank> <n=>Tier 4: 10<icon=soul_collected>: Grant an ally Undying<icon=icon_undeath> for <icon=time>120, pulsing Undeath<icon=icon_undeath> to nearby Minions<icon=icon_gravekeeper_risen> at the end of their turn. <n=>Otherwise, construct a Mausoleum on tile that connects the world of the dead with that of the living, beckoning forth waves of Spirits<icon=icon_gravekeeper_ethereal_spirit>.;
+	
+	rankUpTooltip=Each rank unlocks additional Tiers of Soul<icon=soul_collected> expenditure.;
+	tooltipTopRight=<icon=icon_souls><icon=icon_risen_minion><icon=skill_Ruin_small>;
+	
+	tooltipIcons=Up to <icon=soul_collected><math=3 * c:rank - 2>;
+	
+	XPCost=300;
+	XPCost=600;
+	XPCost=1200;
+	
+	special=cantUseInTravel;
+	
+	numTargets=1;
+	
+	maxRank=3;
+	canExceedMaxRankBy=1;
+	casterAnimation=spellcast;
+	
+	FXOnCaster=splatter;
+	FXOnCasterColor=Red;
+	FXOnCaster=darken_minor;
+	FXOnTarget=darken_minor;
+	
+	fReq=c:ari_gravekeeper_soul_amount;
+	
+[ActionAoE] 
+	ID=ari_gravekeeper_soul_collector;
+	cloneFrom=oneTile;
+	maxRange=4;
+	arc=true;
+	airborne=true;
+	needsLoE=true;
+	needsLoS=true;
+	bypassAll=false;
+	canSelectEnemies=false;
+	canSelectAllies=true;
+	fReq=c:ari_gravekeeper_soul_amount;
+
+----------Apply Decay Shield on Tier 1, Rank 1
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=ari_summoned_decayshield;
+	magnitude=1;
+	chance=100 * is:1:c:rank * m:targetExists * tsa:ari_summoned * isNot:1:t:ari_summoned_ethereal_spirit_AV;
+	duration=20 + 5 * c:rank;
+	FXOnTile=delay_tiny;
+	FXOnTile= WetSquish; 
+	FXOnTileColor= Purple; 
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+	cloneFrom=oneTile;
+----------Apply Decay Shield on Tier 1, Rank greater than 1
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=ari_summoned_decayshield;
+	magnitude=1;
+	chance=100 * moreThan:1:c:rank * lessThan:4:c:ari_gravekeeper_soul_amount * m:targetExists * tsa:ari_summoned * isNot:1:t:ari_summoned_ethereal_spirit_AV;
+	duration=20 + 5 * c:rank;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+	cloneFrom=oneTile;
+----------Grant MP back on Tier 2, Rank 2	
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=MP;
+	magnitude=5 + c:rank;
+	chance=100 * is:2:c:rank * moreThan:3:c:ari_gravekeeper_soul_amount * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+	cloneFrom=oneTile;
+----------Grant MP back on Tier 2, Rank greater than 2
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=MP;
+	magnitude=5 + c:rank;
+	chance=100 * moreThan:2:c:rank * lessThan:7:c:ari_gravekeeper_soul_amount * moreThan:3:c:ari_gravekeeper_soul_amount * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+	cloneFrom=oneTile;
+----------Give Ruin skill on Tier 3, Rank 3
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=skill_Ruin;
+	magnitude=3;
+	chance=100 * is:3:c:rank * moreThan:6:c:ari_gravekeeper_soul_amount * m:targetExists;
+	duration=20 * c:rank;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+	cloneFrom=oneTile;
+----------Give Ruin skill on Tier 3, Rank greater than 3
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=skill_Ruin;
+	magnitude=3;
+	chance=100 * moreThan:3:c:rank * lessThan:10:c:ari_gravekeeper_soul_amount * moreThan:6:c:ari_gravekeeper_soul_amount * m:targetExists;
+	duration=20 * c:rank;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+	cloneFrom=oneTile;
+----------Give Undying buff on Tier 4, resurrects target on death and pulses Undeath to minions on turn end, Rank 4
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=ari_conduit_damned;
+	magnitude=1;
+	chance=100 * moreThan:3:c:rank * moreThan:9:c:ari_gravekeeper_soul_amount * m:targetExists * t:ari_summoned_mausoleum_AV;
+	duration=120;
+	--15 * c:rank;
+	element=ruin;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=HP;
+	magnitude=t:TrueHPMax;
+	chance=100 * moreThan:3:c:rank * moreThan:9:c:ari_gravekeeper_soul_amount * m:targetExists * t:ari_summoned_mausoleum_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+    cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=actTimer;
+	magnitude=30;
+	chance=100 * moreThan:3:c:rank * moreThan:9:c:ari_gravekeeper_soul_amount * m:targetExists * t:ari_summoned_mausoleum_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+    cloneFrom=oneTile;
+----------Give Undying buff on Tier 4, resurrects target on death and pulses Undeath to minions on turn end, Rank 4
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=ari_undying;
+	magnitude=1;
+	chance=100 * moreThan:3:c:rank * moreThan:9:c:ari_gravekeeper_soul_amount * m:targetExists * isNot:1:t:ari_summoned_mausoleum_AV;
+	duration=120;
+	--15 * c:rank;
+	element=ruin;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+	cloneFrom=oneTile;
+
+----------Summon portion on tile
+----------Summon non commander Zombie at Tier 1, Rank greater than 1
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=summonActor_temp;
+	magnitude=summoned_undead_zombie_minion;
+	chance=100 * moreThan:1:c:rank * lessThan:4:c:ari_gravekeeper_soul_amount - 101 * m:targetExists - 101 * csa:ari_gravekeeper_undead_commander;
+	duration=-2;
+	element=ruin;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+	cloneFrom=oneTile;
+----------Summon non commander Zombie at Tier 1, Rank 1
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=summonActor_temp;
+	magnitude=summoned_undead_zombie_minion;
+	chance=100 * is:1:c:rank - 101 * m:targetExists - 101 * csa:ari_gravekeeper_undead_commander;
+	duration=-2;
+	element=ruin;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+	cloneFrom=oneTile;
+----------Summon commander Zombie at Tier 1, Rank greater than 1
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=summonActor_temp;
+	magnitude=summoned_undead_zombie_commander;
+	chance=100 * csa:ari_gravekeeper_undead_commander * moreThan:1:c:rank * lessThan:4:c:ari_gravekeeper_soul_amount - 101 * m:targetExists;
+	duration=-2;
+	element=ruin;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+	cloneFrom=oneTile;
+----------Summon commander Zombie at Tier 1, Rank 1
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=summonActor_temp;
+	magnitude=summoned_undead_zombie_commander;
+	chance=100 * csa:ari_gravekeeper_undead_commander * is:1:c:rank - 101 * m:targetExists;
+	duration=-2;
+	element=ruin;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+	cloneFrom=oneTile;
+----------Actually buff summoned Zombie
+----------Grant max HP
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=TrueHPMax;
+	magnitude=c:skill_Ruin * 1.0;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+    cloneFrom=oneTile;
+----------Set HP to Max HP
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=HP;
+	magnitude=c:skill_Ruin * 1.0;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+    cloneFrom=oneTile;
+----------Give zombie minions physical attack
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=PhysAtk;
+	magnitude=c:skill_Ruin * 0.3;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+    cloneFrom=oneTile;
+----------Give zombie minions physical defense
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=PhysDef;
+	magnitude=c:skill_Ruin * 0.1;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+    cloneFrom=oneTile;
+----------Give zombie minions magic defense
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=MagDef;
+	magnitude=c:skill_Ruin * 0.2;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+    cloneFrom=oneTile;
+----------Give minions our Ruin skill for added effects
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=skill_Ruin;
+	magnitude=c:skill_Ruin * 1.0;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+    cloneFrom=oneTile;
+----------Grant the Corpse Explosion fuse AV to summons if passive is taken
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=ari_foul_corpses_fuse;
+	magnitude=1;
+	chance=100 * csa:ari_gravekeeper_foul_corpses * t:ari_summoned_undead_AV * isNot:1:t:ari_summoned_ethereal_spirit_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+    cloneFrom=oneTile;
+----------Give the zombies dynamic time so that they might act faster
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=actTimer;
+	magnitude=m:rand(2);
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+    cloneFrom=oneTile;
+----------Remove the summoned undead AV so we don't keep buffing the same minions
+[AvAffecter]
+    ID=ari_gravekeeper_soul_collector;
+	visibleEvaluations=false;
+    actorValue=ari_summoned_undead_AV;
+    harmful=false;
+    visibleMiss=false;
+    magnitude=-1;
+    duration=-2;
+    chance=100*t:ari_summoned_undead_AV;
+    FXOnHit=sparkles;
+    FXOnHitColor=Black;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+    cloneFrom=oneTile;
+	
+----------Next summons for Tier 2+
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=summonActor_temp;
+	magnitude=ari_spirit_phantom;
+	chance=100 * moreThan:2:c:rank * lessThan:7:c:ari_gravekeeper_soul_amount * moreThan:3:c:ari_gravekeeper_soul_amount - 101 * m:targetExists;
+	duration=-2;
+	element=ruin;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+	cloneFrom=oneTile;
+	
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=summonActor_temp;
+	magnitude=ari_spirit_phantom;
+	chance=100 * is:2:c:rank * moreThan:3:c:ari_gravekeeper_soul_amount - 101 * m:targetExists;
+	duration=-2;
+	element=ruin;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+	cloneFrom=oneTile;
+----------Actually buff summoned Phantom
+----------Grant max HP
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=TrueHPMax;
+	magnitude=c:skill_Ruin * 0.5;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+    cloneFrom=oneTile;
+----------Set HP to Max HP
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=HP;
+	magnitude=c:skill_Ruin * 0.5;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+    cloneFrom=oneTile;
+----------Give mage minions magical attack
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=MagAtk;
+	magnitude=c:skill_Ruin * 0.3 + 1;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+    cloneFrom=oneTile;
+----------Give mage minions magic defense
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=MagDef;
+	magnitude=c:skill_Ruin * 0.1;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+    cloneFrom=oneTile;
+----------Give minions our Ruin skill for added effects
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=skill_Ruin;
+	magnitude=c:skill_Ruin * 1.0;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+    cloneFrom=oneTile;
+----------Give the mage dynamic time so that they might act faster
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=actTimer;
+	magnitude=m:rand(2);
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+    cloneFrom=oneTile;
+----------Remove the summoned undead AV so we don't keep buffing the same minions
+[AvAffecter]
+    ID=ari_gravekeeper_soul_collector;
+	visibleEvaluations=false;
+    actorValue=ari_summoned_undead_AV;
+    harmful=false;
+    visibleMiss=false;
+    magnitude=-1;
+    duration=-2;
+    chance=100*t:ari_summoned_undead_AV;
+    FXOnHit=sparkles;
+    FXOnHitColor=Black;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+    cloneFrom=oneTile;
+	
+	
+----------Skeleton Mage summon
+----------Non commander version
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=summonActor_temp;
+	magnitude=summoned_undead_skeletonmage;
+	chance=100 * moreThan:3:c:rank * lessThan:10:c:ari_gravekeeper_soul_amount * moreThan:6:c:ari_gravekeeper_soul_amount - 101 * m:targetExists - 101 * csa:ari_gravekeeper_undead_commander;
+	duration=-2;
+	element=ruin;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+	cloneFrom=oneTile;
+	
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=summonActor_temp;
+	magnitude=summoned_undead_skeletonmage;
+	chance=100 * is:3:c:rank * moreThan:6:c:ari_gravekeeper_soul_amount - 101 * m:targetExists - 101 * csa:ari_gravekeeper_undead_commander;
+	duration=-2;
+	element=ruin;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+	cloneFrom=oneTile;
+	
+----------Commander version
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=summonActor_temp;
+	magnitude=summoned_undead_skeletonmage_commander;
+	chance=100 * csa:ari_gravekeeper_undead_commander * moreThan:3:c:rank * lessThan:10:c:ari_gravekeeper_soul_amount * moreThan:6:c:ari_gravekeeper_soul_amount - 101 * m:targetExists;
+	duration=-2;
+	element=ruin;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+	cloneFrom=oneTile;
+	
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=summonActor_temp;
+	magnitude=summoned_undead_skeletonmage_commander;
+	chance=100 * csa:ari_gravekeeper_undead_commander * is:3:c:rank * moreThan:6:c:ari_gravekeeper_soul_amount - 101 * m:targetExists;
+	duration=-2;
+	element=ruin;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+	cloneFrom=oneTile;
+	
+----------Actually buff summoned Mage
+----------Grant max HP
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=TrueHPMax;
+	magnitude=c:skill_Ruin * 1.5 + 5;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+    cloneFrom=oneTile;
+----------Set HP to Max HP
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=HP;
+	magnitude=c:skill_Ruin * 1.5 + 5;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+    cloneFrom=oneTile;
+----------Give mage minions magical attack
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=MagAtk;
+	magnitude=c:skill_Ruin * 0.2 + 2;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+    cloneFrom=oneTile;
+----------Give mage minions magic defense
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=MagDef;
+	magnitude=c:skill_Ruin * 0.3 + 1;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+    cloneFrom=oneTile;
+----------Give minions our Ruin skill for added effects
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=skill_Ruin;
+	magnitude=c:skill_Ruin * 1.0;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+    cloneFrom=oneTile;
+----------Grant the Corpse Explosion fuse AV to summons if passive is taken
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=ari_foul_corpses_fuse;
+	magnitude=1;
+	chance=100 * csa:ari_gravekeeper_foul_corpses * t:ari_summoned_undead_AV * isNot:1:t:ari_summoned_ethereal_spirit_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+    cloneFrom=oneTile;
+----------Give the mage dynamic time so that they might act faster
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=actTimer;
+	magnitude=15;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+    cloneFrom=oneTile;
+----------Remove the summoned undead AV so we don't keep buffing the same minions
+[AvAffecter]
+    ID=ari_gravekeeper_soul_collector;
+	visibleEvaluations=false;
+    actorValue=ari_summoned_undead_AV;
+    harmful=false;
+    visibleMiss=false;
+    magnitude=-1;
+    duration=-2;
+    chance=100*t:ari_summoned_undead_AV;
+    FXOnHit=sparkles;
+    FXOnHitColor=Black;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+    cloneFrom=oneTile;
+	
+	
+----------Graveyard summon
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=summonActor_temp;
+	magnitude=ari_mausoleum_summon;
+	chance=100 * moreThan:3:c:rank * moreThan:9:c:ari_gravekeeper_soul_amount - 101 * m:targetExists;
+	duration=-2;
+	element=ruin;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+	cloneFrom=oneTile;
+	
+--Set Ghost, Wraith and Graveyard max hp
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=TrueHPMax;
+	magnitude=c:skill_Ruin * 1.1;
+	chance=100 * tsa:ari_summoned * t:ari_summoned_undead_AV;
+	duration=-2;
+	FXOnTile=delay_tiny;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+	cloneFrom=oneTile;
+
+--Set Ghost, Wraith and Graveyard current hp to max
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=HP;
+	magnitude=c:skill_Ruin * 1.1;
+	chance=100 * tsa:ari_summoned * t:ari_summoned_undead_AV;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+	cloneFrom=oneTile;
+	
+--Give Ghost, Wraith and Graveyard magic defense
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=MagDef;
+	magnitude=c:skill_Ruin * 0.5;
+	chance=100 * tsa:ari_summoned * t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+	cloneFrom=oneTile;
+
+--Give Ghost, Wraith and Graveyard magic attack
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=MagAtk;
+	magnitude=c:skill_Ruin * 0.6;
+	chance=100 * tsa:ari_summoned * t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+	cloneFrom=oneTile;
+	
+--Set summon's own Ruin skill
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=skill_Ruin;
+	magnitude=c:skill_Ruin * 1.0;
+	chance=100 * tsa:ari_summoned * t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+	cloneFrom=oneTile;
+
+--Remove AV to not re-buff the same minions later
+[AvAffecter]
+    ID=ari_gravekeeper_soul_collector;
+	visibleEvaluations=false;
+    actorValue=ari_summoned_undead_AV;
+    harmful=false;
+    visibleMiss=false;
+    magnitude=-1;
+    duration=-2;
+    chance=100*t:ari_summoned_undead_AV;
+    FXOnHit=sparkles;
+    FXOnHitColor=Black;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+	cloneFrom=oneTile;
+	
+--Grant the Corpse Explosion fuse AV to summons if passive is taken -- don't give to spirits?
+--[AvAffecter]
+--	ID=ari_gravekeeper_soul_collector; 
+--	visibleEvaluations=false;
+--	harmful=false;
+--	actorValue=ari_foul_corpses_fuse;
+--	magnitude=1;
+--	chance=100 * csa:ari_gravekeeper_foul_corpses * tsa:ari_summoned - 101 * m:targetExists;
+--	duration=-2;
+--	FXOnTile=delay_tiny;
+--	FXOnTile=delay_tiny;
+--[AvAffecterAoE]
+--	ID=ari_gravekeeper_soul_collector;
+--	cloneFrom=oneTile;
+
+----------Remove spirit resource depending on which tier used
+----------Rank 1 exclusive removal
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=ari_gravekeeper_soul_amount;
+	magnitude=-1;
+	chance=100 * is:1:c:rank;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+----------Tier 1 but Rank greater than 1 removal	
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=ari_gravekeeper_soul_amount;
+	magnitude=-1;
+	chance=100 * moreThan:1:c:rank * lessThan:4:c:ari_gravekeeper_soul_amount;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+----------Rank 2 exclusive removal
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=ari_gravekeeper_soul_amount;
+	magnitude=-4;
+	chance=100 * is:2:c:rank * moreThan:3:c:ari_gravekeeper_soul_amount;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+----------Tier 2 but Rank greater than 2 removal	
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=ari_gravekeeper_soul_amount;
+	magnitude=-4;
+	chance=100 * moreThan:2:c:rank * lessThan:7:c:ari_gravekeeper_soul_amount * moreThan:3:c:ari_gravekeeper_soul_amount;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+----------Rank 3 exclusive removal
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=ari_gravekeeper_soul_amount;
+	magnitude=-7;
+	chance=100 * is:3:c:rank * moreThan:6:c:ari_gravekeeper_soul_amount;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+----------Tier 3 but Rank greater than 3 removal	
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=ari_gravekeeper_soul_amount;
+	magnitude=-7;
+	chance=100 * moreThan:3:c:rank * lessThan:10:c:ari_gravekeeper_soul_amount * moreThan:6:c:ari_gravekeeper_soul_amount;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+----------Rank 4 exclusive removal
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collector; 
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=ari_gravekeeper_soul_amount;
+	magnitude=-10;
+	chance=100 * moreThan:3:c:rank * moreThan:9:c:ari_gravekeeper_soul_amount;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collector;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+
+
+	
+
+----------------------------------------------------------------One Foot in the Grave
+[Action] ID=ari_gravekeeper_foot_grave; 
+	name=One Foot in the Grave;
+	icon=icon_gravekeeper_onefoot_grave;
+	
+	mpCost=10 * d:mpCostMult + d:mpCostMod;
+	cooldown=50 - c:rank * 5;
+	
+	tooltip=Raise an uncontrollable<n=>Reaper<icon=icon_reaper_minion> that delivers a devastating attack and then immediately dies.<n=>If an enemy is killed by the Reaper<icon=icon_reaper_minion>, you will receive twice as many Souls<icon=soul_collected>.<n=><n=>Must be used on a target with less than <math=45+c:rank*5>% <icon=HP> remaining.
+	<finalTextIf==5 - c:rank><n=><n=>If the Reaper<icon=icon_reaper_minion> kills its target, it will also heal all allies for 10% of the overkill damage it dealt.;
+	rankUpTooltip=Each rank improves the Reaper<icon=icon_reaper_minion> and allows it to act upon a target 5% sooner.;
+	tooltipTopRight=<icon=icon_risen_minion><icon=skill_Ruin_small>;
+	
+	XPCost=150;
+	XPCost=400;
+	XPCost=700;
+	XPCost=1025;
+	
+	numTargets=1;
+	
+	special=cantUseInTravel;
+	special=redoMovementAnalysis;
+	
+	maxRank=4;
+	canExceedMaxRankBy=1;
+	casterAnimation=spellcast;
+	
+	FXOnCaster=darken_minor;
+	FXOnTarget=darken_minor;
+	
+	FXOnTarget=blackCloud;
+	FXOnTargetColor=Black;
+	FXOnTile=viralShroud;
+	FXOnTileColor=Black;
+	--FXOnTile=viralShroud_quiet;
+	--FXOnTileColor=DarkGreen;
+	
+	----------Queue step to summon placeholder souls to act as a buff based on the number of sacrifices
+	queueAnotherAction=ari_gravekeeper_foot_grave_buffs;
+
+----------Check target HP to make sure it's below threshold
+[ActionAoE] 
+	ID=ari_gravekeeper_foot_grave;
+	shape=17;
+	cloneFrom=oneTile;
+	maxRange=8;
+	arc=true;
+	airborne=true;
+	needsLoE=true;
+	needsLoS=true;
+	bypassAll=true;
+	canSelectAllies=false;
+	fReq=moreThan:0:d:ari_foot_grave_healthcheck;
+	
+--[AvAffecter]
+--	ID=ari_gravekeeper_foot_grave; 
+--	harmful=false;
+--	actorValue=priority;
+--	magnitude=3;
+--	chance=100;
+--	duration=40;
+	--element=ruin;
+	--FXOnTile=tinyShakeHoriz;
+	--FXOnTile=blackCloud;
+--	FXOnTile=delay_tiny;
+--[AvAffecterAoE]
+--	ID=ari_gravekeeper_foot_grave;
+--	cloneFrom=oneTile
+	
+[AvAffecter]
+	ID=ari_gravekeeper_foot_grave; 
+	harmful=false;
+	actorValue=ari_gravekeeper_deathmark;
+	magnitude=1;
+	chance=100;
+	--duration=40;
+	duration=2;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	FXOnTile=tinyShakeHoriz;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_foot_grave;
+	cloneFrom=oneTile
+[AvAffecter]
+    ID=ari_gravekeeper_foot_grave; 
+    visibleMiss=false; visibleEvaluations=false;
+    actorValue=task;
+    magnitude=setGlobalVar,reaper_target_hp,t:HP;
+    duration=1;
+    chance=100; 
+[AvAffecterAoE]
+    ID=ari_gravekeeper_foot_grave;
+    cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_foot_grave; 
+	harmful=false;
+	actorValue=ari_gravekeeper_reaper_rank;
+	magnitude=1;
+	chance=100 * is:5:c:rank;
+	duration=1;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_foot_grave;
+	cloneFrom=oneTile
+----------Grant everything on the board +1 actTimer so that when the Reaper spawns it can act immediately as a damage spell
+[AvAffecter]
+	ID=ari_gravekeeper_foot_grave; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=actTimer;
+	magnitude=-1;
+	chance=100 * thisPreviousAVHit:ari_gravekeeper_foot_grave;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_foot_grave;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=true;
+----------Summon Reaper
+[AvAffecter]
+	ID=ari_gravekeeper_foot_grave; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	magnitude=summoned_undead_reaper;
+	chance=100 * lessThan:1:actorsOfType:risen_reaper;
+	duration=-2;
+	FXOnHit=blackCloud;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_foot_grave;
+	cloneFrom=adjacent+3;
+	minRange = 3;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	occupyAll=false;
+
+----------Reaper buff step
+[Action] ID=ari_gravekeeper_foot_grave_buffs; 
+	name=One Foot in the Grave;
+	icon=icon_gravekeeper_onefoot_grave;
+
+	casterAnimationSpeed=2.0;
+	--casterAnimation=spellcast;
+	
+----------Grant Reaper 150 actTimer so it can immediately move, as it will be the highest timer since everyone has at least 1 from the previous step
+[AvAffecter]
+	ID=ari_gravekeeper_foot_grave_buffs; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=actTimer;
+	magnitude=150;
+	chance=100 * tsa:ari_summoned * t:ari_summoned_undead_reaper * t:ari_summoned_undead_AV_Reaper;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_foot_grave_buffs; shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+----------Tiny HP buff for no reason
+[AvAffecter]
+	ID=ari_gravekeeper_foot_grave_buffs; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=TrueHPMax;
+	magnitude=c:skill_Ruin * 0.05;
+	chance=100 * tsa:ari_summoned * t:ari_summoned_undead_reaper * t:ari_summoned_undead_AV_Reaper;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_foot_grave_buffs; shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+----------Set HP to max HP
+[AvAffecter]
+	ID=ari_gravekeeper_foot_grave_buffs; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=HP;
+	magnitude=c:skill_Ruin * 0.05;
+	chance=100 * tsa:ari_summoned * t:ari_summoned_undead_reaper * t:ari_summoned_undead_AV_Reaper;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_foot_grave_buffs; shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+----------Grant Ruin skill to use for Reaper's damage
+[AvAffecter]
+	ID=ari_gravekeeper_foot_grave_buffs; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=skill_Ruin;
+	magnitude=0.8 * c:skill_Ruin * c:ari_gravekeeper_foot_grave;
+	chance=100 * tsa:ari_summoned * t:ari_summoned_undead_reaper * t:ari_summoned_undead_AV_Reaper;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_foot_grave_buffs; shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+
+	
+----------Grant the Corpse Explosion fuse AV to summons if passive is taken
+[AvAffecter]
+	ID=ari_gravekeeper_foot_grave_buffs; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=ari_foul_corpses_fuse;
+	magnitude=1;
+	chance=100 * tsa:ari_summoned * t:ari_summoned_undead_reaper * csa:ari_gravekeeper_foul_corpses * t:ari_summoned_undead_AV_Reaper;
+	duration=-2;
+	FXOnTile=delay_tiny;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_foot_grave_buffs; shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+
+--Remove the summoned undead AV so we don't keep buffing the same minions
+[AvAffecter]
+    ID=ari_gravekeeper_foot_grave_buffs;
+	visibleEvaluations=false;
+    actorValue=ari_summoned_undead_AV_Reaper;
+    harmful=false;
+    visibleMiss=false;
+    magnitude=-1;
+    duration=-2;
+    chance=100 * tsa:ari_summoned * t:ari_summoned_undead_reaper * t:ari_summoned_undead_AV_Reaper;
+    FXOnHit=sparkles;
+    FXOnHitColor=Black;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_foot_grave_buffs; shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+
+
+
+	
+	
+	----------------------------------------------------------------Foul Liturgy, sacrifice minions for Abomination
+[Action] ID=ari_gravekeeper_unholy_pact_sacrifices; 
+	name=Foul Liturgy;
+	icon=icon_gravekeeper_abomination;
+	
+	mpCost=15 * d:mpCostMult + d:mpCostMod;
+	cooldown=200;
+	--chargeTime=10 * d:chargeTimeMult + d:chargeTimeMod;
+	tooltip=Sacrifice up to <math=max:3:min:2:d:ari_minions_to_sacrifice> of your Minions<icon=icon_gravekeeper_risen> to construct and control a grotesque Abomination<icon=icon_abomination_minion><icon=icon_gravekeeper_risen>. It becomes more powerful with each sacrifice and will decay after each turn.<n=>Max. 1. Current: <math=d:ari_total_abominations_fielded>.;
+	rankUpTooltip=Each rank improves the Abomination<icon=icon_abomination_minion><icon=icon_gravekeeper_risen>, and may increase the allowable Minion<icon=icon_gravekeeper_risen> sacrifices to a maximum of 3.;
+	tooltipTopRight=<icon=icon_risen_minion><icon=skill_Ruin_small>;
+	
+	tooltipIcons=Up to <icon=icon_gravekeeper_risen><math=max:3:min:2:d:ari_minions_to_sacrifice>;
+	
+	XPCost=400;
+	XPCost=750;
+	XPCost=1025;
+	XPCost=1275;
+	
+	special=cantUseInTravel;
+	
+	numTargets=max:3:min:2:d:ari_minions_to_sacrifice;
+	maxDistanceBetweenTargets=3;
+	
+	maxRank=4;
+	canExceedMaxRankBy=1;
+	casterAnimation=spellcast;
+	
+	FXOnCaster=magicCharge;
+	FXOnCasterColor=Green;
+	FXOnCaster=darken_minor;
+	
+----------Queue step to summon placeholder souls to act as a buff based on the number of sacrifices
+	queueAnotherAction=ari_gravekeeper_unholy_pact_sacrifice_offerings;
+	
+----------Risen minions needs to be fairly close to each other for sacrifice
+[ActionAoE] 
+	ID=ari_gravekeeper_unholy_pact_sacrifices;
+	shape=17;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 1;
+	maxRange = 3;
+	airborne=true;
+	arc=true;
+	bypassAll=true;
+	occupyAll=true;
+	canSelectEnemies=false;
+	fReq=tsa:ari_summoned * isNot:1:t:ari_summoned_ethereal_spirit_AV;
+	
+----------Remove deathshield if it exists so we don't summon a zombie AND abomination
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_sacrifices;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=true;
+	actorValue=ari_summoned_deathshield;
+	magnitude=-1;
+	duration=-2;
+	chance=100 * tsa:ari_summoned;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_sacrifices;
+	cloneFrom=oneTile;
+----------Remove undeath if it exists so we can actually kill and clear space for abomination
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_sacrifices;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=true;
+	actorValue=ari_commanded_undeath;
+	magnitude=-1;
+	duration=-2;
+	chance=100 * tsa:ari_summoned;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_sacrifices;
+	cloneFrom=oneTile;
+----------Also remove undying if it exists (Soul Pact T4 buff) so we can actually kill and clear space for abomination
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_sacrifices;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=true;
+	actorValue=ari_undying;
+	magnitude=-1;
+	duration=-2;
+	chance=100 * tsa:ari_summoned;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_sacrifices;
+	cloneFrom=oneTile;
+
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_sacrifices; 
+	chance=100 * t:ari_summoned_undead_skeleton_warrior_AV;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_sacrifices;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+	
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_sacrifices; 
+	harmful=false;
+	actorValue=ari_consumed_warrior;
+	magnitude=1;
+	chance=100 * thisPreviousAVHit:ari_gravekeeper_unholy_pact_sacrifices;
+	duration=-2;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_sacrifices;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+	
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_sacrifices; 
+	chance=100 * t:ari_summoned_undead_skeleton_archer_AV;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_sacrifices;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+	
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_sacrifices; 
+	harmful=false;
+	actorValue=ari_consumed_archer;
+	magnitude=1;
+	chance=100 * thisPreviousAVHit:ari_gravekeeper_unholy_pact_sacrifices;
+	duration=-2;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_sacrifices;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+	
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_sacrifices; 
+	chance=100 * t:ari_summoned_undead_skeleton_knight_AV;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_sacrifices;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+	
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_sacrifices; 
+	harmful=false;
+	actorValue=ari_consumed_knight;
+	magnitude=1;
+	chance=100 * thisPreviousAVHit:ari_gravekeeper_unholy_pact_sacrifices;
+	duration=-2;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_sacrifices;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+	
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_sacrifices; 
+	chance=100 * t:ari_summoned_undead_zombie;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_sacrifices;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+	
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_sacrifices; 
+	harmful=false;
+	actorValue=ari_consumed_zombie;
+	magnitude=1;
+	chance=100 * thisPreviousAVHit:ari_gravekeeper_unholy_pact_sacrifices;
+	duration=-2;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_sacrifices;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_sacrifices; 
+	chance=100 * t:ari_summoned_undead_skeleton_mage_AV;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	FXOnHit=blackCloud;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_sacrifices;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+	
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_sacrifices; 
+	harmful=false;
+	actorValue=ari_consumed_mage;
+	magnitude=1;
+	chance=100 * thisPreviousAVHit:ari_gravekeeper_unholy_pact_sacrifices;
+	duration=-2;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_sacrifices;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+
+
+
+----------Outright kill the risen minion as a sacrifice
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_sacrifices;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=HP;
+	magnitude=t:TrueHPMax * -1 - 1;
+	duration=-2;
+	chance=100 * tsa:ari_summoned;
+	FXOnHit=splatter;
+	FXOnHitColor=Red;
+	FXOnHit=splatter;
+	FXOnHitColor=pBloodyMess_slow;
+	FXOnTargetColor=pBloodyMess_slow;
+	FXOnHit=sparkles;
+	FXOnHitColor=Blue;
+	FXOnHit=upwardLinesQuick;
+	FXOnHitColor=White;
+	FXOnHit=whiteExplosionSmall_rand_overlap;
+	FXOnTile=delay_tiny;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_sacrifices;
+	cloneFrom=oneTile;
+
+----------Second step of Foul Liturgy, create placeholder souls to act as sacrifice buffs
+[Action] ID=ari_gravekeeper_unholy_pact_sacrifice_offerings; 
+	name=Unholy Pact;
+	icon=icon_gravekeeper_abomination;
+
+	casterAnimationSpeed=1.5;
+	casterAnimation=spellcast;
+	
+----------Queue up next step to remove the first soul to make space for Abomination
+	queueAnotherAction=ari_gravekeeper_unholy_pact_first_soul;
+	
+----------Create sacrifice minions to check Abomination power
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_sacrifice_offerings; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	magnitude=ari_sacrificial_soul;
+	chance=100;
+	duration=-2;
+	FXOnTile=tinyShakeHoriz;
+	FXOnTile=smokeCloud;
+	FXOnTile=delay_tiny;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_sacrifice_offerings;
+	cloneFrom=oneTile;
+	
+----------Third step of Foul Liturgy, kill off the initial sacrificed soul to make room for abomination and make animation ritual-esque
+[Action] ID=ari_gravekeeper_unholy_pact_first_soul; 
+	name=Unholy Pact;
+	icon=icon_gravekeeper_abomination;
+
+	numTargets=1;
+	
+	special=onlyAffectFirstTarget;
+
+	casterAnimationSpeed=1.5;
+	casterAnimation=spellcast;
+	
+----------Queue up final actual Abomination summon
+	queueAnotherAction=ari_gravekeeper_unholy_pact_raise;
+	
+[ActionAoE] 
+	ID=ari_gravekeeper_unholy_pact_first_soul;
+	shape=17;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 1;
+	maxRange = 3;
+	airborne=true;
+	arc=true;
+	bypassAll=true;
+	occupyAll=true;
+	canSelectEnemies=false;
+	
+--Remove the first previously created sacrifice to make room for Abomination
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_first_soul;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=HP;
+	magnitude=t:TrueHPMax * -1 - 1;
+	duration=-2;
+	chance=100 * tsa:ari_summoned;
+	FXOnHit=splatter;
+	FXOnHitColor=Red;
+	FXOnHit=splatter;
+	FXOnHitColor=pBloodyMess_slow;
+	FXOnHit=whiteExplosionSmall_rand_overlap;
+	FXOnTile=delay_tiny;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_first_soul;
+	cloneFrom=oneTile;
+	
+----------Final step of Foul Liturgy, actual Abomination summon so that we don't summon one for each sacrifice
+[Action] ID=ari_gravekeeper_unholy_pact_raise; 
+	name=Unholy Pact;
+	icon=icon_gravekeeper_abomination;
+	
+	numTargets=1;
+	
+	special=onlyAffectFirstTarget;
+
+	casterAnimationSpeed=1.5;
+	casterAnimation=spellcast;
+	
+	FXOnCaster=magicCharge;
+	FXOnCasterColor=Black;
+	FXOnCaster=magicCharge;
+	FXOnCasterColor=Red;
+	FXOnCaster=darken_minor;
+	FXOnTarget=darken_minor;
+	
+[ActionAoE] 
+	ID=ari_gravekeeper_unholy_pact_raise;
+	shape=17;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 1;
+	maxRange = 3;
+	airborne=true;
+	arc=true;
+	bypassAll=true;
+	occupyAll=true;
+	canSelectEnemies=false;
+
+--Summon the abomination, always controllable
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	magnitude=summoned_undead_abomination_commander;
+	chance=lessThan:2:c:ari_gravekeeper_unholy_pact_sacrifices * 100;
+	duration=-2;
+	FXOnTile=tinyShakeHoriz;
+	FXOnTile=smokeCloud;
+	FXOnTile=delay_tiny;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	cloneFrom=oneTile;
+	
+--Rank 2 adds an ability
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_hurl;
+	chance=is:2:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-75;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_slam;
+	chance=is:2:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-75;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_shards;
+	chance=is:2:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-75;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_limbs;
+	chance=is:2:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	cloneFrom=oneTile;
+	
+--Rank 3 adds a passive and has two abilities
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_slam_hurl_nova;
+	chance=is:3:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-87;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_slam_limb_nova;
+	chance=is:3:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-87;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_shards_limb_nova;
+	chance=is:3:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-87;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_shards_slam_nova;
+	chance=is:3:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-87;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_hurl_limb_nova;
+	chance=is:3:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-87;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_shard_hurl_nova;
+	chance=is:3:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-87;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_shard_slam_cloud;
+	chance=is:3:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-87;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_shard_limb_cloud;
+	chance=is:3:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-87;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_shard_hurl_cloud;
+	chance=is:3:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-87;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_slam_limb_cloud;
+	chance=is:3:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-87;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_slam_hurl_cloud;
+	chance=is:3:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-87;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_limb_hurl_cloud;
+	chance=is:3:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-87;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_shard_slam_presence;
+	chance=is:3:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-87;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_shard_limb_presence;
+	chance=is:3:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-87;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_shard_hurl_presence;
+	chance=is:3:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-87;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_slam_limb_presence;
+	chance=is:3:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-87;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_slam_hurl_presence;
+	chance=is:3:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-87;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_limb_hurl_presence;
+	chance=is:3:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-87;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_shard_slam_cloak;
+	chance=is:3:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-87;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_shard_limb_cloak;
+	chance=is:3:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-87;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_shard_hurl_cloak;
+	chance=is:3:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-87;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_slam_limb_cloak;
+	chance=is:3:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-87;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_slam_hurl_cloak;
+	chance=is:3:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-87;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_limb_hurl_cloak;
+	chance=is:3:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	cloneFrom=oneTile;
+
+
+--Rank 4 has THREE abilities and TWO passives
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_less_hurl_nova_cloud;
+	chance=is:4:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-86;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_less_limb_nova_cloud;
+	chance=is:4:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-86;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_less_slam_nova_cloud;
+	chance=is:4:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-86;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_less_shard_nova_cloud;
+	chance=is:4:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-86;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_less_hurl_presence_cloud;
+	chance=is:4:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-86;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_less_limb_presence_cloud;
+	chance=is:4:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-86;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_less_slam_presence_cloud;
+	chance=is:4:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-86;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_less_shard_presence_cloud;
+	chance=is:4:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-86;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_less_hurl_presence_nova;
+	chance=is:4:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-86;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_less_limb_presence_nova;
+	chance=is:4:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-86;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_less_slam_presence_nova;
+	chance=is:4:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-86;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_less_shard_presence_nova;
+	chance=is:4:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-86;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_less_hurl_cloak_cloud;
+	chance=is:4:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-86;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_less_slam_cloak_cloud;
+	chance=is:4:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-86;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_less_shard_cloak_cloud;
+	chance=is:4:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-86;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_less_hurl_cloak_nova;
+	chance=is:4:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-86;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_less_limb_cloak_nova;
+	chance=is:4:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-86;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_less_slam_cloak_nova;
+	chance=is:4:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-86;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_less_shard_cloak_nova;
+	chance=is:4:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-86;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_less_limb_cloak_presence;
+	chance=is:4:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-86;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_less_slam_cloak_presence;
+	chance=is:4:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-86;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_less_shard_cloak_presence;
+	chance=is:4:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-86;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_less_hurl_cloak_presence;
+	chance=is:4:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	cloneFrom=oneTile;
+	
+--Rank 5 has ALL abilities and 3 passives
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_all_less_nova;
+	chance=moreThan:4:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-75;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_all_less_cloak;
+	chance=moreThan:4:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-75;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_all_less_presence;
+	chance=moreThan:4:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	fReq=m:rand(100)-75;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	useSeparateChanceRoll=true;
+	magnitude=summoned_undead_abomination_commander_all_less_cloud;
+	chance=moreThan:4:c:ari_gravekeeper_unholy_pact_sacrifices * 100 - 101 * m:targetExists;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	cloneFrom=oneTile;
+
+--Give act timer so the abomination acts faster
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=actTimer;
+	magnitude=20;
+	chance=100 * tsa:ari_summoned;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	cloneFrom=oneTile;
+
+--Set abomination max hp
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=TrueHPMax;
+	magnitude=c:skill_Ruin * 1.6 + d:ari_abomination_sacrifices_fielded * 12;
+	chance=100 * tsa:ari_summoned;
+	duration=-2;
+	FXOnTile=delay_tiny;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	cloneFrom=oneTile;
+	
+--Set abomination current hp to max
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=HP;
+	magnitude=c:skill_Ruin * 1.6 + d:ari_abomination_sacrifices_fielded * 12;
+	chance=100 * tsa:ari_summoned;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	cloneFrom=oneTile;
+
+--Give phys attack to abomination
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=PhysAtk;
+	magnitude=2 * d:ari_abomination_sacrifices_fielded + c:skill_Ruin * 0.6;
+	chance=100 * tsa:ari_summoned;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	cloneFrom=oneTile;
+
+--Give phys defense to abomination
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=PhysDef;
+	magnitude=c:skill_Ruin * 0.2 + d:ari_abomination_sacrifices_fielded;
+	chance=100 * tsa:ari_summoned;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	cloneFrom=oneTile;
+
+--Give magic defense to abomination
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=MagDef;
+	magnitude=c:skill_Ruin * 0.2 + d:ari_abomination_sacrifices_fielded;
+	chance=100 * tsa:ari_summoned;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	cloneFrom=oneTile;
+	
+--Set summon's own Ruin skill
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=skill_Ruin;
+	magnitude=c:skill_Ruin * 1.0;
+	chance=100;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	cloneFrom=oneTile;
+	
+--Grant the Corpse Explosion fuse AV to abomination if passive is taken
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=ari_foul_corpses_fuse;
+	magnitude=1;
+	chance=100 * csa:ari_gravekeeper_foul_corpses * tsa:ari_summoned;
+	duration=-2;
+	FXOnTile=delay_tiny;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	cloneFrom=oneTile;
+	
+--Remove the sacrifice minions
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=HP;
+	magnitude=t:TrueHPMax * -1 - 1;
+	duration=-2;
+	chance=100 * t:ari_sacrificed_soul_AV;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise; shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=false;
+
+
+--Grant AV that will force buff Abomination with sacrificed minion abilities
+[AvAffecter]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	harmful=false;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	actorValue=ari_foul_liturgy_cast;
+	magnitude=1;
+	duration=-2;
+	chance=100;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_unholy_pact_raise;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;

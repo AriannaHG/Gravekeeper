@@ -1,0 +1,603 @@
+[ItemType]  name=Grimoire Crafting Kit;
+ID=ari_craft_grimoire; sprite=4; texture=gkart; 
+weight=0; volume=1; value=1500; itemCategory=tool;
+description=Combine this with raw material to create a grimoire.;
+journalID=journal_craft_item;
+pR=p38; pG=overworld4; pB=pCorpryst;
+special=setGlobalVarWhenConverted;
+
+[JournalEntry]
+ID=ari_journal_grimoire;
+category=equipment; halfPage=true; rarity=1; rewardMod=50;
+title=Grimoire;
+text=<itemBig=ari_grimoire_skulls><title=Grimoire><brAdj=>A book containing spells and incantations sought after by those seeking to become proficient in the more depraved arts. Grimoires are books typically infused with the power of ruin.<br=>Strikes a single target up to 4 tiles away and may provide supplementary effects.;
+
+
+
+[JournalEntry]
+ID=ari_journal_grimoire_summoner;
+category=equipment; halfPage=true;
+title=Summoner's Spellbook;
+text=<itemBig=ari_grimoire_summoner_spellbook><title=Summoner's Spellbook><brAdj=>Contrary to most grimoires, this book focuses on tactics and advanced setups utilizing team members. This especially includes those summoned from other planes of existence.<n=>If both a Prophet<icon=icon_gravekeeper_copy_summoner_the_prophet> and a Priestess<icon=icon_gravekeeper_copy_summoner_the_priestess> are on the field, the wielder of the Summoner's Spellbook gains 4<icon=MagAtk>.;
+
+[JournalEntry]
+ID=ari_journal_grimoire_necronomicon;
+category=equipment; halfPage=true;
+title=Necronomicon;
+text=<itemBig=ari_grimoire_necronomicon><title=Necronomicon><brAdj=>A tome containing the ultimate knowledge when it comes to raising the dead.<n=>This grimoire does insignificant amounts of damage when attacking an enemy and instead grants the wielder some <icon=skill_Ruin> for each risen Gravekeeper<icon=classIcon_ari_gravekeeper> Minion<icon=icon_gravekeeper_risen>.;
+
+	
+	
+
+[ItemType]  name=Dusty Book;
+texture=gkart; 
+ID=ari_grimoire_dusty; pR=p5; pG=pG; pB=overworld6;
+description=A tome containing illegible text on the nefarious dark arts.<n=>Charge time of <icon=time>3.;
+journalID=ari_journal_grimoire;
+sprite=1; spriteWhenHeld=0; itemCategory=weapon;
+element=ruin;
+weight=5; volume=10; value=10;
+power=3;
+ action=ari_grimoireAttack_basic;
+combineWith=furnace_lit; toMake=bones1; 
+combineWith=furnace2_lit; toMake=bones1; 
+combineWith=furnace_everlit1; toMake=bones1; 
+combineWith=furnace_everlit2; toMake=bones1;
+
+[ItemType]  name=Forbidden Book;
+texture=gkart; 
+ID=ari_grimoire_forbidden; pR=p36; pG=pG; pB=p104;
+description=A tome containing novice instruction on the nefarious dark arts.<n=>Charge time of <icon=time>3.;
+journalID=ari_journal_grimoire;
+sprite=1; spriteWhenHeld=0; itemCategory=weapon;
+element=ruin;
+weight=5; volume=10; value=40;
+power=5;
+ action=ari_grimoireAttack_basic;
+combineWith=furnace_lit; toMake=bones1; 
+combineWith=furnace2_lit; toMake=bones1; 
+combineWith=furnace_everlit1; toMake=bones1; 
+combineWith=furnace_everlit2; toMake=bones1;
+
+[ItemType]  name=Book of Skulls;
+texture=gkart; 
+ID=ari_grimoire_skulls; pR=p5; pG=pG; pB=overworld6;
+description=A tome containing novice instruction on the nefarious dark arts.<n=>This grimoire will heal you for a small amount of the damage dealt.<n=>Charge time of <icon=time>3.;
+journalID=ari_journal_grimoire;
+sprite=1; spriteWhenHeld=0; itemCategory=weapon;
+element=ruin;
+weight=5; volume=10; value=5;
+power=4;
+ action=ari_grimoireAttack_lowheal;
+combineWith=furnace_lit; toMake=bones1; 
+combineWith=furnace2_lit; toMake=bones1; 
+combineWith=furnace_everlit1; toMake=bones1; 
+combineWith=furnace_everlit2; toMake=bones1;
+
+[ItemType]  name=Grim Lexicon;
+texture=gkart; 
+ID=ari_grimoire_grim_lexicon; pR=p3; pG=pG; pB=pHuman3;
+description=A tome containing intermediate instruction on the nefarious dark arts.<n=>This grimoire will heal you for a small amount of the damage dealt.<n=>Charge time of <icon=time>3.;
+journalID=ari_journal_grimoire;
+sprite=1; spriteWhenHeld=0; itemCategory=weapon;
+element=ruin;
+weight=5; volume=10; value=225;
+power=5;
+ action=ari_grimoireAttack_lowheal;
+combineWith=furnace_lit; toMake=bones1; 
+combineWith=furnace2_lit; toMake=bones1; 
+combineWith=furnace_everlit1; toMake=bones1; 
+combineWith=furnace_everlit2; toMake=bones1;
+
+[ItemType]  name=Grimoire of Rot;
+texture=gkart; 
+ID=ari_grimoire_rot; pR=p3; pG=pG; pB=p1;
+description=A tome containing intermediate instruction on the nefarious dark arts.<n=>This grimoire will heal you for a small amount of the damage dealt and inflict 3 stacks of Rot<icon=icon_gravekeeper_rot> for <icon=time>40.<n=>Charge time of <icon=time>3.;
+journalID=ari_journal_grimoire;
+sprite=1; spriteWhenHeld=0; itemCategory=weapon;
+element=ruin;
+weight=5; volume=10; value=1250;
+power=3;
+ action=ari_grimoireAttack_rot;
+combineWith=furnace_lit; toMake=bones1; 
+combineWith=furnace2_lit; toMake=bones1; 
+combineWith=furnace_everlit1; toMake=bones1; 
+combineWith=furnace_everlit2; toMake=bones1;
+
+[ItemType]  name=Dark Lexicon;
+texture=gkart; 
+ID=ari_grimoire_dark_lexicon; pR=overworld10; pG=pG; pB=p38;
+description=A tome containing intermediate instruction on the nefarious dark arts.<n=>This grimoire will heal you for some of the damage dealt.<n=>Charge time of <icon=time>3.;
+journalID=ari_journal_grimoire;
+sprite=1; spriteWhenHeld=0; itemCategory=weapon;
+element=ruin;
+weight=5; volume=10; value=1000;
+power=5;
+ action=ari_grimoireAttack_midheal;
+combineWith=furnace_lit; toMake=bones1; 
+combineWith=furnace2_lit; toMake=bones1; 
+combineWith=furnace_everlit1; toMake=bones1; 
+combineWith=furnace_everlit2; toMake=bones1;
+
+
+[ItemType]  name=Black Bible;
+texture=gkart; 
+ID=ari_grimoire_black_bible; pR=p64; pG=pG; pB=p38;
+description=A grimoire that adapts to augments. It contains intermediate instruction on the nefarious dark arts.<n=>This grimoire will heal you for a small amount of the damage dealt.<n=>Charge time of <icon=time>3.;
+journalID=ari_journal_grimoire;
+sprite=1; spriteWhenHeld=0; itemCategory=weapon;  special=enhanceSlots_2;
+element=ruin;
+weight=5; volume=10; value=950;
+power=6;
+ action=ari_grimoireAttack_lowheal;
+combineWith=furnace_lit; toMake=volskarn_chunk; 
+combineWith=furnace2_lit; toMake=volskarn_chunk; 
+combineWith=furnace_everlit1; toMake=volskarn_chunk; 
+combineWith=furnace_everlit2; toMake=volskarn_chunk;
+
+
+[ItemType]  name=Black Tome;
+texture=gkart; 
+ID=ari_grimoire_black_tome; pR=p105; pG=pG; pB=pCorpryst;
+description=A tome containing intermediate instruction on the nefarious dark arts.<n=>This grimoire will heal you for a modest amount of the damage dealt.<n=>Charge time of <icon=time>3.;
+journalID=ari_journal_grimoire;
+sprite=1; spriteWhenHeld=0; itemCategory=weapon;
+element=ruin;
+weight=5; volume=10; value=1250;
+power=5;
+ action=ari_grimoireAttack_highheal;
+combineWith=furnace_lit; toMake=coral; 
+combineWith=furnace2_lit; toMake=coral; 
+combineWith=furnace_everlit1; toMake=coral; 
+combineWith=furnace_everlit2; toMake=coral;
+
+[ItemType]  name=Grimoire of Sacrifice;
+texture=gkart; 
+ID=ari_grimoire_sacrifice; pR=p29; pG=pG; pB=pCorpryst;
+description=A foul tome containing warped and distorted ideas.<n=>This grimoire sacrifices 10% of the wielder's maximum <icon=HP> to deal that much additional damage.<n=>Charge time of <icon=time>3.;
+journalID=ari_journal_grimoire;
+sprite=1; spriteWhenHeld=0; itemCategory=weapon;
+element=ruin;
+weight=5; volume=10; value=1050;
+power=6;
+ action=ari_grimoireAttack_sacrifice;
+combineWith=furnace_lit; toMake=corpryst; 
+combineWith=furnace2_lit; toMake=corpryst; 
+combineWith=furnace_everlit1; toMake=corpryst; 
+combineWith=furnace_everlit2; toMake=corpryst;
+
+[ItemType]  name=Tome of the Occult;
+texture=gkart; 
+ID=ari_grimoire_occult_tome; pR=p37; pG=pG; pB=p1;
+description=A tome containing advanced instruction on the nefarious dark arts.<n=>This grimoire will heal you for a modest amount of the damage dealt.<n=>Charge time of <icon=time>3.;
+journalID=ari_journal_grimoire;
+sprite=1; spriteWhenHeld=0; itemCategory=weapon;
+element=ruin;
+weight=5; volume=10; value=5000;
+power=7;
+ action=ari_grimoireAttack_highheal;
+combineWith=furnace_lit; toMake=ironice_chunk; 
+combineWith=furnace2_lit; toMake=ironice_chunk; 
+combineWith=furnace_everlit1; toMake=ironice_chunk; 
+combineWith=furnace_everlit2; toMake=ironice_chunk;
+
+[ItemType]  name=Tome of Storms;
+texture=gkart; 
+ID=ari_grimoire_storm_tome; pR=p73; pG=pG; pB=overworld5;
+description=A tome whose pages seem to cling together with static. It contains advanced instruction on the nefarious dark arts.<n=>This grimoire will heal you for a modest amount of the damage dealt and will occasionally stun foes.<n=>Charge time of <icon=time>3.;
+journalID=ari_journal_grimoire;
+sprite=3; spriteWhenHeld=2; itemCategory=weapon;
+element=ruin;
+weight=5; volume=10; value=5000;
+power=6;
+ action=ari_grimoireAttack_highheal_lightning;
+combineWith=furnace_lit; toMake=shock_chunk; 
+combineWith=furnace2_lit; toMake=shock_chunk; 
+combineWith=furnace_everlit1; toMake=shock_chunk; 
+combineWith=furnace_everlit2; toMake=shock_chunk;
+
+[ItemType]  name=Grimoire of Gales;
+texture=gkart; 
+ID=ari_grimoire_gale; pR=p14; pG=pG; pB=p84;
+description=A tome whose pages flutter open. It contains advanced instruction on the nefarious dark arts.<n=>This grimoire will heal you for a modest amount of the damage dealt and will occasionally push foes back 1 tile.<n=>Charge time of <icon=time>3.;
+journalID=ari_journal_grimoire;
+sprite=3; spriteWhenHeld=2; itemCategory=weapon;
+element=ruin;
+weight=5; volume=10; value=5000;
+power=6;
+ action=ari_grimoireAttack_highheal_wind;
+combineWith=furnace_lit; toMake=whistle_chunk; 
+combineWith=furnace2_lit; toMake=whistle_chunk; 
+combineWith=furnace_everlit1; toMake=whistle_chunk; 
+combineWith=furnace_everlit2; toMake=whistle_chunk;
+
+ 
+ 
+
+[ItemType]  name=Necronomicon;
+texture=gkart; 
+ID=ari_grimoire_necronomicon; pR=p42; pG=pG; pB=pYellow6;
+description=A tome containing master class instruction on the nefarious dark arts.<n=>The wielder of the Necronomicon does not dirty their hands, and instead opts to use armies of the undead to lay waste to their foes.;
+journalID=ari_journal_grimoire_necronomicon;
+sprite=1; spriteWhenHeld=0; itemCategory=weapon; 
+element=ruin;
+weight=5; volume=10; value=3000;
+power=0;
+ action=ari_grimoireAttack_necronomicon;
+combineWith=furnace_lit; toMake=bones1; 
+combineWith=furnace2_lit; toMake=bones1; 
+combineWith=furnace_everlit1; toMake=bones1; 
+combineWith=furnace_everlit2; toMake=bones1;
+[ItemReaction] 
+ID=ari_grimoire_necronomicon; element=timerUp; action=ari_grimoire_necronomicon_buff;
+
+
+
+
+ 
+[ItemType]  name=Summoner's Spellbook;
+texture=gkart; 
+ID=ari_grimoire_summoner_spellbook; pR=pBlue; pG=pG; pB=pBone;
+description=A book containing advanced tactics when utilizing numbers against a foe.<n=>This grimoire will heal you for a small amount of the damage dealt and will grant you power when having both a Prophet<icon=icon_gravekeeper_copy_summoner_the_prophet> and Priestess<icon=icon_gravekeeper_copy_summoner_the_priestess> on the field.;
+journalID=ari_journal_grimoire_summoner;
+sprite=3; spriteWhenHeld=2; itemCategory=weapon; 
+element=ruin;
+weight=5; volume=10; value=3000;
+power=4;
+ action=ari_grimoireAttack_lowheal;
+combineWith=furnace_lit; toMake=pg_gossamer_chunk; 
+combineWith=furnace2_lit; toMake=pg_gossamer_chunk; 
+combineWith=furnace_everlit1; toMake=pg_gossamer_chunk; 
+combineWith=furnace_everlit2; toMake=pg_gossamer_chunk;
+[ItemReaction] 
+ID=ari_grimoire_summoner_spellbook; element=timerUp; action=ari_grimoire_summoner_buff;
+[ItemLight]
+ID=ari_grimoire_summoner_spellbook; red=0.8; blue=1; green=0.5; alpha=1; size=0.9; flicker=0.02; texture=krypton;
+
+[ItemType]  name=Tome of Blood;
+texture=gkart; 
+ID=ari_grimoire_blood_tome; pR=p29; pG=pG; pB=pMeat;
+description=A tome containing intermediate instruction on the nefarious dark arts.<n=>This grimoire will heal you for most of the damage dealt.<n=>Charge time of <icon=time>3.;
+journalID=ari_journal_grimoire;
+sprite=1; spriteWhenHeld=0; itemCategory=weapon;
+element=ruin;
+weight=5; volume=10; value=5000;
+power=4;
+ action=ari_grimoireAttack_allheal;
+combineWith=furnace_lit; toMake=prom_bloodstone_chunk; 
+combineWith=furnace2_lit; toMake=prom_bloodstone_chunk; 
+combineWith=furnace_everlit1; toMake=prom_bloodstone_chunk; 
+combineWith=furnace_everlit2; toMake=prom_bloodstone_chunk;
+
+[ItemType]  name=Book of Souls;
+texture=gkart; 
+ID=ari_grimoire_soul_book; pR=pBlue; pG=pG; pB=pBone;
+description=A tome containing intermediate instruction on the nefarious dark arts.<n=>This grimoire inflicts Ruptured Soul<icon=icon_gravekeeper_beyond_the_veil> for <icon=time>40 on the target.<n=>Charge time of <icon=time>3.;
+journalID=ari_journal_grimoire;
+sprite=1; spriteWhenHeld=0; itemCategory=weapon; 
+element=ruin;
+weight=5; volume=10; value=3000;
+power=5;
+ action=ari_grimoireAttack_booksouls;
+combineWith=furnace_lit; toMake=ww_heartwoodPlank; 
+combineWith=furnace2_lit; toMake=ww_heartwoodPlank; 
+combineWith=furnace_everlit1; toMake=ww_heartwoodPlank; 
+combineWith=furnace_everlit2; toMake=ww_heartwoodPlank;
+
+[ItemType]  name=Grimoire of Yore;
+texture=gkart; 
+ID=ari_grimoire_yore_book; pR=p93; pG=pG; pB=p33;
+description=A tome containing a warped, perverse power of Yore.<n=>This grimoire will stall time for those it is cast upon, and will heal you for a small amount of the damage dealt.<n=>Charge time of <icon=time>3.;
+journalID=ari_journal_grimoire;
+sprite=1; spriteWhenHeld=0; itemCategory=weapon;  special=enhanceSlots_2;
+element=ruin;
+weight=5; volume=10; value=8500;
+power=5;
+ action=ari_grimoireAttack_lowheal_yore;
+combineWith=furnace_lit; toMake=yore_chunk; 
+combineWith=furnace2_lit; toMake=yore_chunk; 
+combineWith=furnace_everlit1; toMake=yore_chunk; 
+combineWith=furnace_everlit2; toMake=yore_chunk;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[ItemType] ID=iron_chunk;
+cloneFrom=iron_chunk;
+combineWith=ari_craft_grimoire; toMake=ari_grimoire_forbidden;
+
+[ItemType] ID=steel_bar;
+cloneFrom=steel_bar;
+combineWith=ari_craft_grimoire; toMake=ari_grimoire_grim_lexicon;
+
+[ItemType] ID=mythril_chunk;
+cloneFrom=mythril_chunk;
+combineWith=ari_craft_grimoire; toMake=ari_grimoire_dark_lexicon;
+
+[ItemType] ID=ironice_chunk;
+cloneFrom=ironice_chunk;
+combineWith=ari_craft_grimoire; toMake=ari_grimoire_occult_tome;
+
+--[ItemType] ID=laser_chunk;
+--cloneFrom=laser_chunk;
+--combineWith=ari_craft_grimoire; toMake=prom_crozier_laser;
+
+[ItemType] ID=whistle_chunk;
+cloneFrom=whistle_chunk;
+combineWith=ari_craft_grimoire; toMake=ari_grimoire_gale;
+
+[ItemType] ID=shock_chunk;
+cloneFrom=shock_chunk;
+combineWith=ari_craft_grimoire; toMake=ari_grimoire_storm_tome;
+
+[ItemType] ID=fang_spidest;
+cloneFrom=fang_spidest;
+combineWith=ari_craft_grimoire; toMake=ari_grimoire_rot;
+
+[ItemType] ID=corpryst;
+cloneFrom=corpryst;
+combineWith=ari_craft_grimoire; toMake=ari_grimoire_sacrifice;
+
+[ItemType] ID=coral;
+cloneFrom=coral;
+combineWith=ari_craft_grimoire; toMake=ari_grimoire_black_tome;
+
+[ItemType] ID=volskarn_chunk;
+cloneFrom=volskarn_chunk;
+combineWith=ari_craft_grimoire; toMake=ari_grimoire_black_bible;
+
+
+--PROMINENCE CRAFTING MATERIALS
+
+[ItemType] ID=pg_gossamer_chunk;
+cloneFrom=pg_gossamer_chunk;
+combineWith=ari_craft_grimoire; toMake=ari_grimoire_summoner_spellbook;
+
+[ItemType] ID=prom_bloodstone_chunk;
+cloneFrom=prom_bloodstone_chunk;
+combineWith=ari_craft_grimoire; toMake=ari_grimoire_blood_tome;
+
+[ItemType] ID=ww_heartwoodPlank;
+cloneFrom=ww_heartwoodPlank;
+combineWith=ari_craft_grimoire; toMake=ari_grimoire_soul_book;
+
+[ItemType] ID=yore_chunk;
+cloneFrom=yore_chunk;
+combineWith=ari_craft_grimoire; toMake=ari_grimoire_yore_book;
+
+
+
+[ItemReaction] 
+ID=ari_grimoire_necronomicon; element=timerUp; action=ari_necronomicon_hungry;
+[ItemReaction] 
+ID=ari_grimoire_necronomicon; element=combatEnd; action=ari_necronomicon_reset;
+[ItemReaction] 
+ID=ari_grimoire_necronomicon; element=incapacitated; action=ari_necronomicon_reset;
+
+[Action] ID=ari_necronomicon_reset;
+	name=The Necronomicon;
+	icon=icon_exhume;
+	harmful=true;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+[ActionAoE] 
+	ID=ari_necronomicon_reset;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_necronomicon_reset;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=ari_gravekeeper_hungry_necronomicon;
+	magnitude=0;
+	chance=100;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_necronomicon_reset;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+	canSelectAllies=true;
+
+[Action] ID=ari_necronomicon_hungry;
+	name=The Necronomicon;
+	icon=icon_exhume;
+	harmful=true;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+	
+	--casterAnimation=handsup;
+	
+	--FXOnCaster=chargeBurst;
+	FXOnCaster=darken_minor;
+	--FXOnCaster=sfx_rustle_short;
+	
+	queueAnotherAction=ari_necronomicon_hungry_talk;
+
+[ActionAoE] 
+	ID=ari_necronomicon_hungry;
+	cloneFrom=oneTile;
+
+[AvAffecter]
+	ID=ari_necronomicon_hungry;
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=true;
+	actorValue=HP;
+	magnitude=c:TrueHPMax * -0.33;
+	chance=100 * c:ari_gravekeeper_hungry_necronomicon;
+	duration=-2;
+	element=ruin;
+	FXOnTile=viralShroud;
+	FXOnTileColor=Red;
+	FXOnTile=tinyShakeHoriz;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_necronomicon_hungry;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+	canSelectAllies=true;
+	
+[AvAffecter]
+	ID=ari_necronomicon_hungry;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=ari_gravekeeper_hungry_necronomicon;
+	magnitude=-1;
+	chance=100;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_necronomicon_hungry;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+	canSelectAllies=true;
+
+[AvAffecter]
+	ID=ari_necronomicon_hungry;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=ari_gravekeeper_hungry_necronomicon;
+	magnitude=1;
+	chance=33;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_necronomicon_hungry;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+	canSelectAllies=true;
+
+[DialogNode] ID=ari_necronomicon_hungry_talk_node;
+speakerOverride=<color=DarkCyan><itemBig_low=ari_grimoire_necronomicon> The Necronomicon;
+portraitIcon=ui_itemQslotBorder_btm;
+statements=<rand=The Necronomicon hungers.../The Necronomicon is insatiable./The Necronomicon requires sustenance.>;
+
+[ItemReaction] 
+ID=ari_grimoire_necronomicon; element=endTurn; action=ari_necronomicon_hungry_talk;
+
+[Action] ID=ari_necronomicon_hungry_talk;
+	name=The Necronomicon;
+	icon=icon_exhume;
+	harmful=false;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+[ActionAoE] 
+	ID=ari_necronomicon_hungry_talk;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+	canSelectAllies=true;
+[AvAffecter]
+	ID=ari_necronomicon_hungry_talk; 
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=task;
+	magnitude=talk,False,False,,ari_necronomicon_hungry_talk_node;
+	chance=100 * c:ari_gravekeeper_hungry_necronomicon;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_necronomicon_hungry_talk;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+	canSelectAllies=true;
+
+
+
+
+[ItemType]  name=Rotbound Manuscript;
+ID=shana_deadbook;sprite=5; spriteWhenHeld=6; itemCategory=weapon; element=hammer;
+texture=gkart;
+description=A pestilent tome.<n=>Within its profaned pages lies a virulent plague that infects targets with Rot<icon=icon_gravekeeper_rot>, but enfeebles its wielder.;
+journalID=shana_journal_deadbook;
+weight=1; volume=0; value=666; power=1;
+ action=hammerAttack;
+special=unbreakable;
+special=enhanceDoesntAlterPalettes;
+
+[ItemEffect]  
+ID=shana_deadbook; actorValue=PhysAtk; magnitude=-5; duration=-1;
+[ItemEffect]  
+ID=shana_deadbook; actorValue=skill_Life; magnitude=-5; duration=-1;
+[ItemEffect]  
+ID=shana_deadbook; actorValue=skill_Ruin; magnitude=2; duration=-1;
+[ItemReaction]
+ID=shana_deadbook; element=combatStart; action=shana_deadbookact;
+[ItemReaction]
+ID=shana_deadbook; element=timerUp; action=shana_deadbookact;
+
+[ItemType]  name=Rotbound Manuscript;
+ID=shana_deadbook_enemy;sprite=5; spriteWhenHeld=6; itemCategory=weapon; element=hammer;
+texture=gkart;
+description=A pestilent tome.<n=>Within its profaned pages lies a virulent plague that infects targets with Rot<icon=icon_gravekeeper_rot>, but enfeebles its wielder.;
+journalID=shana_journal_deadbook;
+weight=1; volume=0; value=666; power=7;
+ action=hammerAttack;
+special=unbreakable;
+special=enhanceDoesntAlterPalettes;
+
+[ItemEffect]  
+ID=shana_deadbook_enemy; actorValue=skill_Life; magnitude=-5; duration=-1;
+[ItemEffect]  
+ID=shana_deadbook_enemy; actorValue=skill_Ruin; magnitude=2; duration=-1;
+[ItemReaction]
+ID=shana_deadbook_enemy; element=combatStart; action=shana_deadbookact_enemy;
+[ItemReaction]
+ID=shana_deadbook_enemy; element=timerUp; action=shana_deadbookact_enemy;
+
+[JournalEntry]
+ID=shana_journal_deadbook;
+category=equipment; halfPage=false; rarity=4;
+title=Rotbound Manuscript;
+text=<itemBig=shana_deadbook><title=Rotbound Manuscript><brAdj=>A bitter requiem writ in flesh.<n=>     Once a sacred text bound in the unchanging remains of a martyred healer, the tome was stolen by a disgraced nun intent on unraveling the boundary between life and death. Banished from her order and stricken by a consuming sickness, she enacted one final, spiteful act: with her last breath, she desecrated the tome with the rot within, twisting the blessed flesh into a source of unending corruption.<n=>     When monks were later sent to recover the tome after her death, they too succumbed to the rot - each one falling to the spreading blight that emanated from its cursed pages.;
+
+
+
+[ItemType]  name=Manuscript of Divinity;
+ID=ari_grimoire_divinity; sprite=8; spriteWhenHeld=7;  pR=overworld11; pG=pBone; pB=pGold;
+itemCategory=weapon; element=life;
+texture=gkart;
+description=A tome restored to its former glory. It will heal the caster and their allies at the start of their turn.;
+journalID=ari_journal_grimoire_divinity;
+weight=1; volume=0; value=999; power=7;
+ action=ari_grimoire_divinity_attack;
+special=unbreakable;
+special=enhanceDoesntAlterPalettes;
+
+[ItemEffect]  
+ID=ari_grimoire_divinity; actorValue=skill_Life; magnitude=2; duration=-1;
+[ItemEffect]  
+ID=ari_grimoire_divinity; actorValue=skill_Ruin; magnitude=-5; duration=-1;
+[ItemReaction]
+ID=ari_grimoire_divinity; element=endTurn; action=ari_grimoire_divinity_heal;
+
+[JournalEntry]
+ID=ari_journal_grimoire_divinity;
+category=equipment; halfPage=false; rarity=4;
+title=Manuscript of Divinity;
+text=<itemBig=ari_grimoire_divinity><title=Manuscript of Divinity><brAdj=>A tome restored to its rightful glory. A pristine tome containing scriptures and hymns of praise and reverence, this tome had been carried into battles to protect and defend the citizens of Barrow.;

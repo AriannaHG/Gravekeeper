@@ -1,0 +1,6937 @@
+[JournalEntry]
+ID=help_status_ari_rot;
+category=help; halfPage=false; rarity=-1;
+title=Rot;
+text=<iconBig=icon_rot><icon=icon_gravekeeper_rot> <title=Rot><brAdj=>        This status will deal damage equal to its stack size when the infected actor ends their turn.       
+	<br=> Has a chance dependent on stack size to infect adjacent allies with one stack when it deals damage
+	<br=> If an actor dies with Rot affecting them, they will spawn a Mindless Zombie on an adjacent tile;
+[GlobalTriggerEffect]
+ID=tLoadGame; effectID=learnJournalEntry; sValue=help_status_ari_rot; bValue2=True;
+
+----------------------------------------------------------------Weapons
+----------------------------------------------------------------Skeleton Warrior Sword
+[ItemType]  name=Corroded Sword;
+texture=items_weapons; 
+ID=ari_summoned_sword; pR=p5; pG=pCBlack; pB=p5;
+description=A sword rusted with time. It has a chance to infect the target with a stack of Rot<icon=icon_gravekeeper_rot> to the target for <icon=time>40.;
+journalID=journal_sword;
+weight=3; volume=10; value=0;
+power=2;
+sprite=187; spriteWhenHeld=207; itemCategory=weapon; 
+element=sword;
+depthMod=900;
+ action=skeletonswordAttack;
+
+[Action] ID=skeletonswordAttack; 
+	applyWeaponBuffs=true;
+	
+	casterAnimation=swing;
+	casterAnimationDependsOnWeaponHand=true;
+[ActionAoE] 
+	ID=skeletonswordAttack;
+	cloneFrom=adjacent;
+[AvAffecter]
+	ID=skeletonswordAttack; 
+	actorValue=HP;
+	magnitude= d:swordDmg;
+	duration=-2;
+	chance=d:swordAcc;
+	element=melee;
+	element=physical;
+	element=slash;
+	FXOnTile=cut;
+[AvAffecterAoE]
+	ID=skeletonswordAttack;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=skeletonswordAttack; 
+	actorValue=ari_rot_status;
+	magnitude=1 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status + moreThan:13:t:ari_rot_status;
+	duration=40;
+	chance=d:swordAcc;
+	element=ruin;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=skeletonswordAttack;
+	fReq=m:rand(100)-50;
+	cloneFrom=oneTile;
+
+----------------------------------------------------------------Skeleton Warrior Shield
+[ItemType]  name=Rusted Shield;
+texture=items_weapons; 
+ID=ari_summoned_shield; pR=p5; pG=pCBlack; pB=p5;
+description=An unreliable shield rusted with time.;
+journalID=journal_shield;
+sprite=179; spriteWhenHeld=211; itemCategory=weapon; element=shield;
+weight=5; volume=5; value=0;
+power=1;
+action=shieldAttack;
+[ItemEffect]  
+ID=ari_summoned_shield; actorValue=PhysEva; magnitude=6; duration=-1;
+[ItemEffect]  
+ID=ari_summoned_shield; actorValue=PhysDef; magnitude=1; duration=-1;
+
+----------------------------------------------------------------Skeleton Ranger Crossbow
+[ItemType]  name=Corroded Crossbow;
+texture=items_weapons; 
+ID=ari_summoned_crossbow; pR=p5; pG=pCBlack; pB=p5;
+description=A rusted crossbow.;
+journalID=journal_xbow;
+sprite=184; spriteWhenHeld=215; itemCategory=weapon; element=aim;
+weight=5; volume=5; value=0;
+power=7;
+action=crossbowAttack_Rot;
+[ItemReaction] 
+ID=ari_summoned_crossbow; element=actionUsed; newID=ari_summoned_crossbow_unloaded;
+
+[Action] ID=crossbowAttack_Rot; 
+	cloneFrom=crossbowAttack;
+[AvAffecter]
+	ID=crossbowAttack_Rot; 
+	actorValue=ari_rot_status;
+	magnitude=1 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status + moreThan:13:t:ari_rot_status;
+	duration=40;
+	chance=d:aimAcc;
+	element=ruin;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=crossbowAttack_Rot;
+	fReq=m:rand(100)-75;
+	cloneFrom=oneTile;
+
+[ItemType]  name=Corroded Crossbow (Unloaded);
+texture=items_weapons; 
+ID=ari_summoned_crossbow_unloaded; pR=pSteel; pB=pSteelHilt;
+description=A rusted crossbow. Needs to be reloaded.; 
+journalID=journal_xbow;
+sprite=184; spriteWhenHeld=216; itemCategory=weapon; 
+weight=5; volume=5; value=0;
+power=7;
+ action=crossbowReload;
+[ItemReaction] 
+ID=ari_summoned_crossbow_unloaded; element=actionUsed; element=reload; newID=ari_summoned_crossbow;
+
+----------------------------------------------------------------Skeleton Knight Greatsword
+[ItemType]  name=Corroded Greatsword;
+texture=items_weapons; 
+ID=ari_summoned_greatsword; pR=p5; pG=pCBlack; pB=p5;
+description=A mildly useful greatsword, if a bit rusted.;
+journalID=journal_sword;
+weight=10; volume=2; value=0;
+power=6;
+sprite=188; spriteWhenHeld=220; itemCategory=weapon; 
+special=sprite2xWidth; special=twoHanded;
+element=greatsword;
+depthMod=900;
+ action=ari_skeletongreatswordAttack;
+ 
+[Action] ID=ari_skeletongreatswordAttack; 
+	applyWeaponBuffs=true;
+	
+	casterAnimation=broadswing;
+	casterAnimationDependsOnWeaponHand=true;
+	FXChangesWithWeaponHand=true;
+	FXOnTarget=swipe;
+[ActionAoE] 
+	ID=ari_skeletongreatswordAttack;
+	cloneFrom=adjacent;
+[AvAffecter]
+	ID=ari_skeletongreatswordAttack; 
+	actorValue=HP;
+	magnitude= d:gswordDmg + d:ruinDmgWpnPower(1) * 0.1;
+	duration=-2;
+	chance=d:gswordAcc;
+	element=melee;
+	element=physical;
+	element=slash;
+	element=heavySlash;
+[AvAffecterAoE]
+	ID=ari_skeletongreatswordAttack;
+	aoeCasterAsOrigin=true;
+	maxRange = 1.5;
+	coneAngle=90;
+[AvAffecter]
+	ID=ari_skeletongreatswordAttack; 
+	actorValue=ari_rot_status;
+	magnitude=1 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status + moreThan:13:t:ari_rot_status;
+	duration=40;
+	chance=d:gswordAcc;
+	element=ruin;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=ari_skeletongreatswordAttack;
+	fReq=m:rand(100)-50;
+	aoeCasterAsOrigin=true;
+	maxRange = 1.5;
+	coneAngle=90;
+
+----------------------------------------------------------------Spectral Scythe
+--Spectral Scythe attack
+[Action] ID=ari_scytheAttack; 
+	applyWeaponBuffs=true;
+	
+	casterAnimation=broadswing;
+	casterAnimationDependsOnWeaponHand=true;
+	FXChangesWithWeaponHand=true;
+	FXOnTarget=swipe;
+[ActionAoE] 
+	ID=ari_scytheAttack;
+	cloneFrom=adjacent;
+[AvAffecter]
+	ID=ari_scytheAttack;
+	harmful=true;
+	actorValue=HP;
+	magnitude=d:ruinDmg20Scale(8);
+--	c:skill_Ruin * -0.8 - 6;
+	duration=-2;
+	chance=d:ruinAcc;
+	element=melee;
+	element=physical;
+	element=ruin;
+	element=heavySlash;
+	FXOnHit=whirlSlash;
+[AvAffecterAoE]
+	ID=ari_scytheAttack;
+	aoeCasterAsOrigin=true;
+	maxRange = 1.5;
+	coneAngle=90;
+[AvAffecter]
+	ID=ari_scytheAttack; 
+	visibleMiss=false;
+	actorValue=moveDistance;
+	magnitude= - 1;
+	duration=8 + c:skill_Ruin;
+	chance=d:ruinAcc;
+	FXOnHit=downwardLines_quick;
+[AvAffecterAoE]
+	ID=ari_scytheAttack;
+	aoeCasterAsOrigin=true;
+	maxRange = 1.5;
+	coneAngle=90;
+
+[AvAffecter]
+	ID=ari_scytheAttack; 
+	actorValue=ari_rot_status;
+	magnitude=2 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status;
+	duration=40;
+	chance=d:ruinAcc;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=ari_scytheAttack;
+	aoeCasterAsOrigin=true;
+	maxRange = 1.5;
+	coneAngle=90;
+	
+[ItemType]  name=Spectral Scythe;
+texture=gkart; 
+ID=ari_summoned_scythe; pR=pIron; pB=pIronHilt;
+description=Farming tool turned weapon of war. Requires both hands to wield.;
+journalID=md_journal_scythe;
+sprite=20; spriteWhenHeld=30; itemCategory=weapon;  special=enhanceSlots_2;
+special=sprite2xWidth; special=twoHanded; element=axe;
+weight=5; volume=10; value=0;
+power=10;
+ action=ari_scytheAttack;
+
+----------------------------------------------------------------Infection
+[Action] ID=ari_infectPunch; 
+	applyWeaponBuffs=true;
+	tooltip=A mundane punch that has a high chance to infect the target with a stack of Rot<icon=icon_gravekeeper_rot> for <icon=time>40.;
+	casterAnimation=punch;
+	casterAnimationDependsOnWeaponHand=true;
+	requiredWeaponElement=fist;
+	icon=skill_Fist;
+[ActionAoE] 
+	ID=ari_infectPunch;
+	cloneFrom=adjacent;
+[AvAffecter]
+	ID=ari_infectPunch; 
+	actorValue=HP;
+	magnitude=d:fistDmg;
+	duration=-2;
+	chance=d:fistAcc - 2;
+	element=physical;
+	element=melee;
+	FXOnTile=pop;
+[AvAffecterAoE]
+	ID=ari_infectPunch;
+	cloneFrom=oneTile;
+	
+[AvAffecter]
+	ID=ari_infectPunch; 
+	actorValue=ari_rot_status;
+	magnitude=1 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status + moreThan:13:t:ari_rot_status;
+	duration=40;
+	chance=d:fistAcc - 2;
+	element=ruin;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=ari_infectPunch;
+	fReq=m:rand(100)-15;
+	cloneFrom=oneTile;
+
+----------------------------------------------------------------Skeleton Warrior Normal abilities
+----------------------------------------------------------------Charge, also Knight ability
+[Action] ID=ari_skeleton_warrior_charge; 
+	name=Skeletal Charge;
+	icon=icon_gravekeeper_skeletal_charge;
+	mpCost=0 * d:mpCostMult + d:mpCostMod;
+	cooldown=60;
+	tooltip=Recklessly charge forward to strike a distant foe with your weapon for 50% damage. It has a high chance to infect the target with a stack of Rot<icon=icon_gravekeeper_rot> for <icon=time>40.;
+	tooltipIcons=<icon=noRanged>;
+	tooltipTopRight=<icon=PhysAtk_small><icon=melee_small>;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	casterAnimation=weapon;
+	maxRank=3;
+	canExceedMaxRankBy=1;
+	special=moveCasterNextToTarget;
+	requiredWeaponElement=melee;
+	
+	FXOnTarget=weaponFX;
+	FXOnCaster=sidewardLines;
+	FXOnCasterColor=Red;
+	FXOnCaster=woosh;
+[ActionAoE]
+	ID=ari_skeleton_warrior_charge; shape=2; 
+	needsLoS = false;
+	needsLoE = true;
+	minRange = 2;
+	maxRange = 1;
+	maxRangeBonus=3;
+	airborne=false;
+	bypassAll=false;
+	occupyAll=true;
+	canSelectActors=true;
+	fReq=1 - m:actorInTheWayOfMoveToTarget;
+[AvAffecter]
+	ID=ari_skeleton_warrior_charge; 
+	weaponAvAffecter=true;
+	magnitude=w:magnitude * 0.5;
+	chance=w:chance;
+	duration=-2;
+	element=melee;
+	element=physical;
+	element=slash;
+[AvAffecterAoE]
+	ID=ari_skeleton_warrior_charge;
+	cloneFrom=oneTile;
+
+[AvAffecter]
+	ID=ari_skeleton_warrior_charge; 
+	actorValue=ari_rot_status;
+	magnitude=1 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status + moreThan:13:t:ari_rot_status;
+	duration=40;
+	chance=100;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=ari_skeleton_warrior_charge;
+	fReq=m:rand(100)-20;
+	cloneFrom=oneTile;
+	
+----------------------------------------------------------------Skeleton Warrior Commander abilities
+----------------------------------------------------------------Bone Armor, applies guard
+[Action] ID=ari_skeleton_warrior_bonearmor; 
+	name=Bone Armor;
+	icon=icon_gravekeeper_warrior_bonearmor;
+	mpCost=0 * d:mpCostMult + d:mpCostMod;
+	cooldown=90;
+	harmful=false;
+	attractAttention=false;
+	tooltip=Construct a shield around an ally using parts of your body, sacrificing 20% maximum <icon=HP> to apply Guard for <icon=time>25.;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	numTargets=1;
+	
+	attractAttention=false;
+	
+	casterAnimation=handsup;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=largePing;
+	FXOnTarget=tinyShakeHoriz;
+	
+[ActionAoE] 
+	ID=ari_skeleton_warrior_bonearmor;
+	cloneFrom=adjacentAndSelf+2;
+	arc=true;
+	airborne=true;
+	needsLoS=true;
+	needsLoE=true;
+	canSelectEnemies=false;
+	canSelectAllies=true;
+[AvAffecter]
+	ID=ari_skeleton_warrior_bonearmor;
+	visibleMiss=false;
+	actorValue=guard;
+	harmful=false;
+	magnitude=1;
+	duration=25;
+	chance=100;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=White;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=Green;
+	FXOnHit=ward;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=ari_skeleton_warrior_bonearmor;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_skeleton_warrior_bonearmor; 
+	actorValue=HP;
+	harmful=true;
+	magnitude=c:TrueHPMax * -0.2;
+	duration=-2;
+	chance=100;
+[AvAffecterAoE]
+	ID=ari_skeleton_warrior_bonearmor;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+
+----------------------------------------------------------------Soul Armor, applies ward
+[Action] ID=ari_skeleton_warrior_boneshield; 
+	name=Soul Armor;
+	icon=icon_gravekeeper_warrior_boneshield;
+	mpCost=2 * d:mpCostMult + d:mpCostMod;
+	cooldown=90;
+	harmful=false;
+	attractAttention=false;
+	tooltip=Construct a barrier around an ally using remnants of your decaying soul, sacrificing 30% maximum <icon=HP> to apply Ward for <icon=time>25.;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	attractAttention=false;
+	
+	casterAnimation=handsup;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=largePing;
+	FXOnTarget=tinyShakeHoriz;
+	
+[ActionAoE] 
+	ID=ari_skeleton_warrior_boneshield;
+	cloneFrom=adjacentAndSelf+2;
+	arc=true;
+	airborne=true;
+	needsLoS=true;
+	needsLoE=true;
+	canSelectEnemies=false;
+	canSelectAllies=true;
+[AvAffecter]
+	ID=ari_skeleton_warrior_boneshield;
+	visibleMiss=false;
+	actorValue=ward;
+	harmful=false;
+	magnitude=1;
+	duration=25;
+	chance=100;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=White;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=Green;
+	FXOnHit=ward;
+	FXOnHitColor=Purple;
+[AvAffecterAoE]
+	ID=ari_skeleton_warrior_boneshield;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_skeleton_warrior_boneshield; 
+	actorValue=HP;
+	harmful=true;
+	magnitude=c:TrueHPMax * -0.3;
+	duration=-2;
+	chance=100;
+[AvAffecterAoE]
+	ID=ari_skeleton_warrior_boneshield;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+
+----------------------------------------------------------------Skeleton Knight normal abilities
+----------------------------------------------------------------Command: Onwards, movement speed buff for minions
+[Action] ID=ari_skeleton_knight_command_speed; 
+	name=Command: Onwards;
+	icon=icon_gravekeeper_command_onwards;
+	mpCost=2 * d:mpCostMult + d:mpCostMod;
+	cooldown=60;
+	harmful=false;
+	attractAttention=false;
+	tooltip=Order other Minions<icon=icon_gravekeeper_risen> near you to shamble forwards relentlessly, causing them to act 10<icon=time> faster and increasing their <icon=moveDistance> by 2 until the end of their next turn.;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	attractAttention=false;
+	
+	casterAnimation=handsup;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=largePing;
+	FXOnTarget=tinyShakeHoriz;
+	
+[ActionAoE] 
+	ID=ari_skeleton_knight_command_speed;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_skeleton_knight_command_speed;
+	visibleMiss=false;
+	actorValue=moveDistance;
+	harmful=false;
+	magnitude=2;
+	duration=-4;
+	chance=100 * tsa:ari_summoned * isNot:1:t:ari_summoned_ethereal_spirit_AV * isNot:1:t:ari_summoned_mindless_AV;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=White;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=Green;
+	FXOnHit=ping;
+	FXOnHitColor=Purple;
+	element=physical;
+[AvAffecterAoE]
+	ID=ari_skeleton_knight_command_speed;
+	cloneFrom=adjacent+2;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 0;
+	maxRange = 4;
+	airborne=true;
+	arc=true;
+	bypassAll=true;
+	occupyAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=false;
+[AvAffecter]
+	ID=ari_skeleton_knight_command_speed;
+	visibleMiss=false;
+	actorValue=actTimer;
+	harmful=false;
+	magnitude=5;
+	duration=-2;
+	chance=100 * tsa:ari_summoned * isNot:1:t:ari_summoned_ethereal_spirit_AV * isNot:1:t:ari_summoned_mindless_AV;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=White;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=Green;
+	FXOnHit=ping;
+	FXOnHitColor=Purple;
+	element=physical;
+[AvAffecterAoE]
+	ID=ari_skeleton_knight_command_speed;
+	cloneFrom=adjacent+2;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 0;
+	maxRange = 4;
+	airborne=true;
+	arc=true;
+	bypassAll=true;
+	occupyAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=false;
+[AvAffecter]
+	ID=ari_skeleton_knight_command_speed;
+	visibleMiss=false;
+	actorValue=actTime;
+	harmful=false;
+	magnitude=-10;
+	duration=-5;
+	chance=100 * tsa:ari_summoned * isNot:1:t:ari_summoned_ethereal_spirit_AV * isNot:1:t:ari_summoned_mindless_AV;
+[AvAffecterAoE]
+	ID=ari_skeleton_knight_command_speed;
+	cloneFrom=adjacent+2;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 0;
+	maxRange = 4;
+	airborne=true;
+	arc=true;
+	bypassAll=true;
+	occupyAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=false;
+	
+----------------------------------------------------------------Command: Enrage
+[Action] ID=ari_skeleton_knight_command_enrage; 
+	name=Command: Enrage;
+	icon=icon_gravekeeper_command_enrage;
+	mpCost=2 * d:mpCostMult + d:mpCostMod;
+	cooldown=90;
+	harmful=false;
+	attractAttention=false;
+	tooltip=Imbue yourself and Minions<icon=icon_gravekeeper_risen> near you with necrotic energy. Those affected gain 2 <icon=PhysAtk> and <icon=MagAtk> until the end of the next turn.;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	attractAttention=false;
+	
+	casterAnimation=handsup;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=largePing;
+	FXOnTarget=tinyShakeHoriz;
+	
+[ActionAoE] 
+	ID=ari_skeleton_knight_command_enrage;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_skeleton_knight_command_enrage;
+	visibleMiss=false;
+	actorValue=PhysAtk;
+	harmful=false;
+	magnitude=2;
+	duration=-4;
+	chance=100 * tsa:ari_summoned * isNot:1:t:ari_summoned_ethereal_spirit_AV * isNot:1:t:ari_summoned_mindless_AV;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=Purple;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=Black;
+	FXOnHit=ping;
+	FXOnHitColor=Black;
+	element=physical;
+[AvAffecterAoE]
+	ID=ari_skeleton_knight_command_enrage;
+	cloneFrom=adjacentAndSelf+2;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 1;
+	maxRange = 4;
+	airborne=true;
+	arc=true;
+	bypassAll=true;
+	occupyAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=false;
+[AvAffecter]
+	ID=ari_skeleton_knight_command_enrage;
+	visibleMiss=false;
+	actorValue=MagAtk;
+	harmful=false;
+	magnitude=2;
+	duration=-4;
+	chance=100 * tsa:ari_summoned * isNot:1:t:ari_summoned_ethereal_spirit_AV * isNot:1:t:ari_summoned_mindless_AV;
+	element=physical;
+[AvAffecterAoE]
+	ID=ari_skeleton_knight_command_enrage;
+	cloneFrom=adjacentAndSelf+2;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 1;
+	maxRange = 4;
+	airborne=true;
+	arc=true;
+	bypassAll=true;
+	occupyAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=false;
+
+--For self
+[AvAffecter]
+	ID=ari_skeleton_knight_command_enrage;
+	visibleMiss=false;
+	actorValue=PhysAtk;
+	harmful=false;
+	magnitude=2;
+	duration=-5;
+	chance=100 * tsa:ari_summoned;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=Purple;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=Black;
+	FXOnHit=ping;
+	FXOnHitColor=Black;
+	element=physical;
+[AvAffecterAoE]
+	ID=ari_skeleton_knight_command_enrage;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+[AvAffecter]
+	ID=ari_skeleton_knight_command_enrage;
+	visibleMiss=false;
+	actorValue=MagAtk;
+	harmful=false;
+	magnitude=2;
+	duration=-5;
+	chance=100 * tsa:ari_summoned;
+	element=physical;
+[AvAffecterAoE]
+	ID=ari_skeleton_knight_command_enrage;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+
+----------------------------------------------------------------Gravestrike, skeleton knight ability
+[Action] ID=ari_skeleton_knight_gravestrike; 
+	name=Sow Rot;
+	icon=icon_gravekeeper_gravestrike;
+	mpCost=0 * d:mpCostMult + d:mpCostMod;
+	harmful=false;
+	attractAttention=false;
+	tooltip=Cleave enemies in front of you with your foul, rusted greatsword for <icon=HP><math=-d:gswordDmg - d:ruinDmgWpnPower(1) * 0.1>. Inflict two stacks of Rot<icon=icon_gravekeeper_rot> to enemies for <icon=time>40.<n=>After the first strike, begin charging a powerful stabbing attack that consumes up to five stacks of Rot<icon=icon_gravekeeper_rot> to deal additional damage.;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	attractAttention=false;
+	
+	casterAnimation=broadswing;
+	casterAnimationDependsOnWeaponHand=true;
+	FXChangesWithWeaponHand=true;
+	FXOnTarget=swipe;
+	
+	queueAnotherAction=ari_skeleton_knight_gravestrike_second;
+	
+[ActionAoE] 
+	ID=ari_skeleton_knight_gravestrike;
+	cloneFrom=adjacent;
+[AvAffecter]
+	ID=ari_skeleton_knight_gravestrike; 
+	actorValue=HP;
+	magnitude= d:gswordDmg + d:ruinDmgWpnPower(1) * 0.1;
+	duration=-2;
+	chance=d:gswordAcc;
+	element=melee;
+	element=physical;
+	element=slash;
+	element=heavySlash;
+[AvAffecterAoE]
+	ID=ari_skeleton_knight_gravestrike;
+	aoeCasterAsOrigin=true;
+	maxRange = 1.5;
+	coneAngle=90;
+[AvAffecter]
+	ID=ari_skeleton_knight_gravestrike; 
+	actorValue=ari_rot_status;
+	magnitude=2 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status;
+	duration=40;
+	chance=d:gswordAcc;
+	element=ruin;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=ari_skeleton_knight_gravestrike;
+	aoeCasterAsOrigin=true;
+	maxRange = 1.5;
+	coneAngle=90;
+
+
+	
+[Action] ID=ari_skeleton_knight_gravestrike_second; 
+	name=Reap;
+	icon=icon_gravekeeper_gravestrike;
+	mpCost=0 * d:mpCostMult + d:mpCostMod;
+	harmful=false;
+	attractAttention=false;
+	tooltip=Stab at your target for <math=-d:gswordDmg + c:skill_Ruin * 0.2><icon=HP>, consuming up to five stacks of Rot<icon=icon_gravekeeper_rot> to deal additional damage.;
+	chargeTime=9 * d:chargeTimeMult * d:chargeTimeMult_onlyWithMP + d:chargeTimeMod;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	attractAttention=false;
+	
+	special=requiresCharging;
+	special=cancelChargingOnMove;
+	
+	casterAnimation=handsup;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=largePing;
+	FXOnTarget=tinyShakeHoriz;
+	
+[ActionAoE] 
+	ID=ari_skeleton_knight_gravestrike_second;
+	cloneFrom=adjacent;
+
+[AvAffecter]
+	ID=ari_skeleton_knight_gravestrike_second; 
+	actorValue=HP;
+	magnitude= d:gswordDmg + d:ruinDmgWpnPower(1) * 0.4;
+	duration=-2;
+	chance=d:gswordAcc;
+	element=melee;
+	element=physical;
+	element=slash;
+	element=heavySlash;
+[AvAffecterAoE]
+	ID=ari_skeleton_knight_gravestrike_second;
+	aoeCasterAsOrigin=true;
+	maxRange = 1;
+	coneAngle=90;
+[AvAffecter]
+	ID=ari_skeleton_knight_gravestrike_second;
+	visibleMiss=false;
+	actorValue=HP;
+	harmful=true;
+	magnitude=max:5:t:ari_rot_status * -2;
+	duration=-2;
+	chance=100;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_skeleton_knight_gravestrike_second;
+	aoeCasterAsOrigin=true;
+	maxRange = 1;
+	coneAngle=90;
+[AvAffecter]
+	ID=ari_skeleton_knight_gravestrike_second;
+	visibleMiss=false;
+	actorValue=ari_rot_status;
+	harmful=false;
+	magnitude=0;
+	duration=-2;
+	chance=100 * lessThan:6:t:ari_rot_status;
+[AvAffecterAoE]
+	ID=ari_skeleton_knight_gravestrike_second;
+	aoeCasterAsOrigin=true;
+	maxRange = 1;
+	coneAngle=90;
+[AvAffecter]
+	ID=ari_skeleton_knight_gravestrike_second;
+	visibleMiss=false;
+	actorValue=ari_rot_status;
+	harmful=false;
+	magnitude=moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status + moreThan:13:t:ari_rot_status + moreThan:14:t:ari_rot_status - 5;
+	duration=40;
+	chance=100 * moreThan:5:t:ari_rot_status;
+[AvAffecterAoE]
+	ID=ari_skeleton_knight_gravestrike_second;
+	aoeCasterAsOrigin=true;
+	maxRange = 1;
+	coneAngle=90;
+	
+
+----------------------------------------------------------------Skeleton Knight Commander abilities
+----------------------------------------------------------------Command: Undeath
+[Action] ID=ari_skeleton_knight_command_undeath; 
+	name=Command: Undeath;
+	icon=icon_gravekeeper_command_undeath;
+	mpCost=2 * d:mpCostMult + d:mpCostMod;
+	cooldown=90;
+	harmful=false;
+	attractAttention=false;
+	tooltip=Command all Minions<icon=icon_gravekeeper_risen> near you to rise once more upon their undoing, granting them Undeath<icon=icon_undeath> for <icon=time>40.;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	attractAttention=false;
+	
+	casterAnimation=handsup;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=largePing;
+	FXOnTarget=tinyShakeHoriz;
+	
+[ActionAoE] 
+	ID=ari_skeleton_knight_command_undeath;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_skeleton_knight_command_undeath;
+	visibleMiss=false;
+	actorValue=ari_commanded_undeath;
+	harmful=false;
+	magnitude=1;
+	duration=40;
+	chance=100 * tsa:ari_summoned * isNot:1:t:ari_summoned_ethereal_spirit_AV * isNot:1:t:ari_summoned_mindless_AV;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=Purple;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=Black;
+	FXOnHit=ping;
+	FXOnHitColor=Black;
+	element=physical;
+[AvAffecterAoE]
+	ID=ari_skeleton_knight_command_undeath;
+	cloneFrom=adjacentAndSelf+2;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 0;
+	maxRange = 4;
+	airborne=true;
+	arc=true;
+	bypassAll=true;
+	occupyAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=false;
+
+
+
+
+
+----------------------------------------------------------------Skeleton Archer Bone Shards
+
+[Action] ID=ari_skeleton_archer_bone_shards; 
+	name=Bone Shards;
+	icon=icon_gravekeeper_abomination_bone_shards;
+	mpCost=0 * d:mpCostMult + d:mpCostMod;
+	cooldown=50;
+	--harmful=false;
+	attractAttention=false;
+	tooltip=Use pieces of loose bone to shower your foes with razor sharp shrapnel, shredding them for <math=d:ruinDmg20LessScaleDisplay(3)> damage but harming yourself for 1<icon=HP> in the process. Targets hit are infected with a stack of Rot<icon=icon_gravekeeper_rot> for <icon=time>40.;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	numTargets=max:3:min:2:d:ari_boneshard_targets;
+	maxDistanceBetweenTargets=3;
+	
+	attractAttention=false;
+	
+	casterAnimation=spellcast;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=Ping;
+	FXOnTargetColor=White;
+	FXOnTarget=tinyShakeHoriz;
+	
+[ActionAoE] 
+	ID=ari_skeleton_archer_bone_shards;
+	cloneFrom=adjacent+3;
+	minRange = 1;
+	maxRange = 4;
+	arc=true;
+	airborne=true;
+	needsLoE=true;
+	needsLoS=true;
+	occupyAll=true;
+	canSelectEnemies=true;
+	
+[AvAffecter]
+	ID=ari_skeleton_archer_bone_shards;
+	visibleMiss=false;
+	actorValue=HP;
+	harmful=false;
+	magnitude=d:ruinDmg20LessScale(3);
+	--c:skill_Ruin * -0.2 - 3;
+	duration=-2;
+	chance=d:ruinProjectileAcc;
+	FXOnHit=ping;
+	FXOnHitColor=Purple;
+	element=ranged;
+	element=physical;
+	element=slash;
+[AvAffecterAoE]
+	ID=ari_skeleton_archer_bone_shards;
+	cloneFrom=oneTile;
+
+[AvAffecter]
+	ID=ari_skeleton_archer_bone_shards; 
+	actorValue=ari_rot_status;
+	magnitude=1 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status + moreThan:13:t:ari_rot_status;
+	duration=40;
+	chance=d:ruinProjectileAcc;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=ari_skeleton_archer_bone_shards;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_skeleton_archer_bone_shards;
+	harmful=true; 
+	actorValue=HP;
+	visibleMiss=false;
+	magnitude=-1;
+	duration=-2;
+	chance=100;
+[AvAffecterAoE]
+	ID=ari_skeleton_archer_bone_shards;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+[AvAffecter] --Trick AI into using ability
+	ID=ari_skeleton_archer_bone_shards;
+	visibleEvaluations=false;
+	harmful=false; 
+	actorValue=ari_ai_skill_useage_multi;
+	visibleMiss=false;
+	magnitude=1;
+	duration=10;
+	chance=100;
+[AvAffecterAoE]
+	ID=ari_skeleton_archer_bone_shards;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+	
+----------------------------------------------------------------Skeleton Archer Commander abilities
+[Action] ID=ari_skeleton_archer_bonespear; 
+	name=Bone Spear;
+	icon=icon_gravekeeper_bone_spear;
+	mpCost=1 * d:mpCostMult + d:mpCostMod;
+	cooldown=60;
+	harmful=true;
+	attractAttention=false;
+	tooltip=Sacrifice 10% maximum <icon=HP> to forcefully eject a foul barrage of bone from your body, dealing <icon=skill_Ruin><math=c:skill_Ruin * 0.5 + 3> to all targets in the line of fire. Targets struck have up to three stacks of Rot<icon=icon_gravekeeper_rot> violently expunged from them, causing damage in an area around them.;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	--special=doesNotConsumeCombatAction;
+	
+	attractAttention=false;
+	
+	casterAnimation=handsup;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=largePing;
+	FXOnTarget=tinyShakeHoriz;
+	
+[ActionAoE] 
+	ID=ari_skeleton_archer_bonespear;
+	--shape=2;
+	needsLoS = true;
+	needsLoE = true;
+	airborne = true;
+	arc = true;
+	--minRange = 1;
+	--maxRange = 1;
+	--bypassAll=false;
+	--occupyAll=true;
+	cloneFrom=adjacent;
+[AvAffecter]
+	ID=ari_skeleton_archer_bonespear;
+	visibleMiss=false;
+	actorValue=HP;
+	harmful=true;
+	magnitude=d:ruinDmg(3);
+	--c:skill_Ruin * -0.5 - 3;
+	duration=-2;
+	chance=d:ruinProjectileAcc;
+	FXOnTile=line;
+	FXOnTile=whiteExplosionVerySmall;
+	FXOnTileColor=DarkGreen;
+	FXOnHit=ThudShot;
+	FXOnHit=smallShakeHoriz;
+	element=ranged;
+	element=physical;
+	element=slash;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_skeleton_archer_bonespear;
+	shape=2;
+	coneAngle=1;
+	needsLoS = true;
+	needsLoE = true;
+	airborne = true;
+	arc = true;
+	minRange = 1;
+	maxRange = 5;
+	bypassAll=false;
+	occupyAll=true;
+	aoeCasterAsOrigin=true;
+	
+[AvAffecter]
+	ID=ari_skeleton_archer_bonespear;
+	actorValue=summonItem;
+	magnitude=ari_bonespear_explosion_3;
+	duration=1;
+	chance=100 * moreThan:2:t:ari_rot_status;
+[AvAffecterAoE]
+	ID=ari_skeleton_archer_bonespear;
+	shape=2;
+	coneAngle=1;
+	needsLoS = true;
+	needsLoE = true;
+	airborne = true;
+	arc = true;
+	minRange = 1;
+	maxRange = 5;
+	bypassAll=true;
+	aoeCasterAsOrigin=false;
+[AvAffecter]
+	ID=ari_skeleton_archer_bonespear;
+	actorValue=summonItem;
+	magnitude=ari_bonespear_explosion_2;
+	duration=1;
+	chance=100 * is:2:t:ari_rot_status;
+[AvAffecterAoE]
+	ID=ari_skeleton_archer_bonespear;
+	shape=2;
+	coneAngle=1;
+	needsLoS = true;
+	needsLoE = true;
+	airborne = true;
+	arc = true;
+	minRange = 1;
+	maxRange = 5;
+	bypassAll=true;
+	aoeCasterAsOrigin=false;
+[AvAffecter]
+	ID=ari_skeleton_archer_bonespear;
+	actorValue=summonItem;
+	magnitude=ari_bonespear_explosion_1;
+	duration=1;
+	chance=100 * is:1:t:ari_rot_status;
+[AvAffecterAoE]
+	ID=ari_skeleton_archer_bonespear;
+	shape=2;
+	coneAngle=1;
+	needsLoS = true;
+	needsLoE = true;
+	airborne = true;
+	arc = true;
+	minRange = 1;
+	maxRange = 5;
+	bypassAll=true;
+	aoeCasterAsOrigin=false;
+
+[AvAffecter]
+	ID=ari_skeleton_archer_bonespear;
+	visibleMiss=false;
+	actorValue=HP;
+	harmful=true;
+	magnitude=max:3:t:ari_rot_status * -2;
+	duration=-2;
+	chance=100;
+	element=ruin;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_skeleton_archer_bonespear;
+	shape=2;
+	coneAngle=1;
+	needsLoS = true;
+	needsLoE = true;
+	airborne = true;
+	arc = true;
+	minRange = 1;
+	maxRange = 5;
+	bypassAll=true;
+	aoeCasterAsOrigin=false;
+[AvAffecter]
+	ID=ari_skeleton_archer_bonespear;
+	visibleMiss=false;
+	actorValue=ari_rot_status;
+	harmful=false;
+	magnitude=0;
+	duration=-2;
+	chance=100 * lessThan:4:t:ari_rot_status;
+[AvAffecterAoE]
+	ID=ari_skeleton_archer_bonespear;
+	shape=2;
+	coneAngle=1;
+	needsLoS = true;
+	needsLoE = true;
+	airborne = true;
+	arc = true;
+	minRange = 1;
+	maxRange = 5;
+	bypassAll=true;
+	aoeCasterAsOrigin=false;
+[AvAffecter]
+	ID=ari_skeleton_archer_bonespear;
+	visibleMiss=false;
+	actorValue=ari_rot_status;
+	harmful=false;
+	magnitude=moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status + moreThan:13:t:ari_rot_status + moreThan:14:t:ari_rot_status - 3;
+	duration=40;
+	chance=100 * moreThan:3:t:ari_rot_status;
+[AvAffecterAoE]
+	ID=ari_skeleton_archer_bonespear;
+	shape=2;
+	coneAngle=1;
+	needsLoS = true;
+	needsLoE = true;
+	airborne = true;
+	arc = true;
+	minRange = 1;
+	maxRange = 5;
+	bypassAll=true;
+	aoeCasterAsOrigin=false;
+
+[AvAffecter]
+	ID=ari_skeleton_archer_bonespear; 
+	actorValue=HP;
+	harmful=true;
+	magnitude=c:TrueHPMax * -0.1;
+	duration=-2;
+	chance=100;
+[AvAffecterAoE]
+	ID=ari_skeleton_archer_bonespear;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+	
+	
+----------------------------------------------------------------Skeleton Mage Normal abilities
+----------------------------------------------------------------Skeleton Mage Detonate Dead
+[Action] ID=ari_skeleton_mage_detonatedead; 
+	name=Detonate Dead;
+	icon=icon_gravekeeper_detonate_corpse;
+	mpCost=3 * d:mpCostMult + d:mpCostMod;
+	cooldown=20;
+	harmful=true;
+	attractAttention=false;
+	tooltip=Overload an incapacitated target or a Minion<icon=icon_gravekeeper_risen> with necrotic powers, detonating the corpse from within and dealing <thinnerIcon=skill_Fire><math=d:ruinDmgDisplay(10)> to surrounding targets. Cannot detonate the same corpse more than once. This skill deals damage based on the caster's <icon=skill_Ruin>.;
+	--<math=d:ruinCastDmg0 * -0.5 + 4> to surrounding targets. Cannot detonate the same corpse more than once.;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	attractAttention=false;
+	
+	casterAnimation=handsup;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=largePing;
+	FXOnTarget=tinyShakeHoriz;
+	
+[ActionAoE] 
+	ID=ari_skeleton_mage_detonatedead;
+	cloneFrom=oneTile;
+	needsLoS = true;
+	needsLoE = true;
+	airborne = true;
+	arc = true;
+	maxRange = 6;
+	bypassAll=false;
+	occupyAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=true;
+	fReq=isNot:1:t:ari_depleted_corpse * m:incapped + tsa:ari_summoned * isNot:1:t:ari_summoned_ethereal_spirit_AV;
+[AvAffecter]
+	ID=ari_skeleton_mage_detonatedead;
+	visibleMiss=false;
+	actorValue=HP;
+	harmful=true;
+	magnitude=d:ruinDmgHalfDef(10);
+	--magnitude=d:ruinCastDmg0 * 0.5 - 4;
+	duration=-2;
+	chance=d:ruinAcc;
+	FXOnTarget=medExplosion;
+	FXOnTarget=whiteExplosionSmall_rand_many_more;
+	FXOnHit=ping;
+	FXOnHitColor=Black;
+	element=ranged;
+	element=physical;
+	element=fire;
+[AvAffecterAoE]
+	ID=ari_skeleton_mage_detonatedead;
+	needsLoS = true;
+	needsLoE = true;
+	airborne = true;
+	arc = true;
+	minRange = 1;
+	maxRange = 3;
+	bypassAll=false;
+	occupyAll=true;
+	canSelectAllies=false;
+	canSelectEnemies=true;
+[AvAffecter]
+	ID=ari_skeleton_mage_detonatedead;
+	visibleMiss=false;
+	actorValue=HP;
+	harmful=false;
+	magnitude=t:TrueHPMax * -1 - 1;
+	duration=-2;
+	chance=100 * tsa:ari_summoned;
+	FXOnHit=ping;
+	FXOnHitColor=Black;
+[AvAffecterAoE]
+	ID=ari_skeleton_mage_detonatedead;
+	cloneFrom=oneTile;
+
+[AvAffecter]
+	ID=ari_skeleton_mage_detonatedead;
+	visibleMiss=false;
+	actorValue=ari_depleted_corpse;
+	harmful=false;
+	magnitude=1;
+	duration=-2;
+	chance=100 * m:incapped;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=Purple;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=Black;
+	FXOnHit=ping;
+	FXOnHitColor=Black;
+[AvAffecterAoE]
+	ID=ari_skeleton_mage_detonatedead;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+	canSelectEnemies=true;
+[AvAffecter] --Trick AI into using ability
+	ID=ari_skeleton_mage_detonatedead;
+	visibleEvaluations=false;
+	harmful=false; 
+	actorValue=ari_ai_skill_useage_multi;
+	visibleMiss=false;
+	magnitude=2;
+	duration=10;
+	chance=100;
+[AvAffecterAoE]
+	ID=ari_skeleton_mage_detonatedead;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+	
+----------------------------------------------------------------Skeleton Mage Essence Rupture
+[Action] ID=ari_skeleton_mage_essencerupture; 
+	name=Essence Rupture;
+	icon=icon_gravekeeper_beyond_the_veil;
+	mpCost=4 * d:mpCostMult + d:mpCostMod;
+	harmful=true;
+	attractAttention=false;
+	tooltip=Rupture the target's soul for <icon=time>90, dealing <icon=skill_Ruin><math=d:ruinDmgDisplay(4)> and causing them to take <icon=skill_Ruin><math=3> whenever something dies.;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	attractAttention=false;
+	
+	casterAnimation=handsup;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=largePing;
+	FXOnTarget=tinyShakeHoriz;
+	
+[ActionAoE] 
+	ID=ari_skeleton_mage_essencerupture;
+	cloneFrom=oneTile;
+	needsLoS = true;
+	needsLoE = true;
+	airborne = true;
+	arc = true;
+	maxRange = 5;
+	bypassAll=false;
+	occupyAll=true;
+	canSelectAllies=false;
+	canSelectEnemies=true;
+[AvAffecter]
+	ID=ari_skeleton_mage_essencerupture;
+	visibleMiss=false;
+	actorValue=HP;
+	harmful=true;
+	magnitude=d:ruinDmg(9);
+	duration=-2;
+	chance=d:ruinAcc;
+	element=ranged;
+	element=magic;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_skeleton_mage_essencerupture;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_skeleton_mage_essencerupture;
+	visibleMiss=false;
+	visibleEvaluations=false;
+	actorValue=ari_ruptured_soul_status;
+	harmful=true;
+	magnitude=1;
+	duration=90;
+	chance=d:ruinAcc;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=Purple;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=Black;
+	FXOnHit=ping;
+	FXOnHitColor=Black;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_skeleton_mage_essencerupture;
+	cloneFrom=oneTile;
+	
+----------------------------------------------------------------Soul Bombardment Stage 1
+[Action] ID=ari_skeleton_mage_bombard_stage1; 
+	name=Soul Bombardment;
+	icon=icon_gravekeeper_soul_tear;
+	mpCost=5 * d:mpCostMult + d:mpCostMod;
+	cooldown=60;
+	harmful=true;
+	attractAttention=false;
+	tooltip=Summon forth a catastrophic bombardment of necrotic energy, dealing <icon=skill_Ruin><math=d:ruinCastDmg0 * -0.3 + 4 + d:ruinCastDmg0 * -0.5 + 4 + d:ruinCastDmg0 * -0.7 + 7> to all targets in an area. This bombardment happens in multiple waves.;
+	chargeTime=5 * d:chargeTimeMult * d:chargeTimeMult_onlyWithMP + d:chargeTimeMod;
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	attractAttention=false;
+	
+	casterAnimation=handsup;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=largePing;
+	FXOnTarget=tinyShakeHoriz;
+	
+	queueAnotherAction=ari_skeleton_mage_bombard_stage2;
+	
+[ActionAoE] 
+	ID=ari_skeleton_mage_bombard_stage1;
+	needsLoS = true;
+	needsLoE = true;
+	airborne = true;
+	arc = true;
+	minRange = 3;
+	maxRange = 9;
+	bypassAll=false;
+	occupyAll=true;
+[AvAffecter]
+	ID=ari_skeleton_mage_bombard_stage1;
+	visibleMiss=false;
+	actorValue=HP;
+	harmful=true;
+	magnitude=d:ruinCastDmg0 * 0.3 - 4;
+	duration=-2;
+	chance=d:ruinAcc;
+	FXOnTile=smallShockwave_moving;
+	element=ranged;
+	element=magic;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_skeleton_mage_bombard_stage1;
+	cloneFrom=oneTile;
+	
+--Stage 2
+[Action] ID=ari_skeleton_mage_bombard_stage2; 
+	name=Soul Bombardment;
+	icon=icon_gravekeeper_soul_bombard2;
+	harmful=true;
+	attractAttention=false;
+	tooltip=The second wave of Soul Bombardment, dealing <icon=skill_Ruin><math=d:ruinCastDmg0 * -0.5 + 4>.;
+	chargeTime=8 * d:chargeTimeMult * d:chargeTimeMult_onlyWithMP + d:chargeTimeMod;
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	attractAttention=false;
+	
+	casterAnimation=handsup;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=largePing;
+	FXOnTarget=tinyShakeHoriz;
+	
+	queueAnotherAction=ari_skeleton_mage_bombard_stage3;
+	
+[ActionAoE] 
+	ID=ari_skeleton_mage_bombard_stage2;
+	needsLoS = true;
+	needsLoE = true;
+	airborne = true;
+	arc = true;
+	minRange = 3;
+	maxRange = 9;
+	bypassAll=false;
+	occupyAll=true;
+[AvAffecter]
+	ID=ari_skeleton_mage_bombard_stage2;
+	visibleMiss=false;
+	actorValue=HP;
+	harmful=true;
+	magnitude=d:ruinCastDmg0 * 0.5 - 4;
+	duration=-2;
+	chance=d:ruinAcc;
+	FXOnTile=smallShockwave_moving;
+	element=ranged;
+	element=magic;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_skeleton_mage_bombard_stage2;
+	cloneFrom=oneTile;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 0;
+	maxRange = 2;
+	airborne=true;
+	arc=true;
+	bypassAll=true;
+	occupyAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=true;
+	
+--Stage 3
+[Action] ID=ari_skeleton_mage_bombard_stage3; 
+	name=Soul Bombardment;
+	icon=icon_gravekeeper_soul_bombard3;
+	harmful=true;
+	attractAttention=false;
+	tooltip=The third and final wave of Soul Bombardment, dealing <icon=skill_Ruin><math=d:ruinCastDmg0 * -0.7 + 7>.;
+	chargeTime=15 * d:chargeTimeMult * d:chargeTimeMult_onlyWithMP + d:chargeTimeMod;
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	attractAttention=false;
+	
+	casterAnimation=handsup;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=largePing;
+	FXOnTarget=tinyShakeHoriz;
+	
+[ActionAoE] 
+	ID=ari_skeleton_mage_bombard_stage3;
+	needsLoS = true;
+	needsLoE = true;
+	airborne = true;
+	arc = true;
+	minRange = 3;
+	maxRange = 9;
+	bypassAll=false;
+	occupyAll=true;
+[AvAffecter]
+	ID=ari_skeleton_mage_bombard_stage3;
+	visibleMiss=false;
+	actorValue=HP;
+	harmful=true;
+	magnitude=d:ruinCastDmg0 * 0.7 - 7;
+	duration=-2;
+	chance=d:ruinAcc;
+	FXOnTile=smallShockwave_moving;
+	element=ranged;
+	element=magic;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_skeleton_mage_bombard_stage3;
+	cloneFrom=oneTile;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 0;
+	maxRange = 3;
+	airborne=true;
+	arc=true;
+	bypassAll=true;
+	occupyAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=true;
+	
+
+
+
+	
+----------------------------------------------------------------Zombie Commander abilities
+----------------------------------------------------------------Infectious Bile, cone shape Rot generator
+[Action] ID=ari_zombie_infectious_bile; 
+	name=Infectious Bile;
+	icon=icon_gravekeeper_zombie_bile;
+	mpCost=1 * d:mpCostMult + d:mpCostMod;
+	cooldown=60;
+	harmful=false;
+	attractAttention=false;
+	tooltip=Spew disgusting bile from your decaying innards, dealing <icon=skill_Ruin><math=c:skill_Ruin * 0.2 + 1> damage to enemies in a cone in front of you and infecting targets with three stacks of Rot<icon=icon_gravekeeper_rot> for <icon=time>40.;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	attractAttention=false;
+	
+	casterAnimation=handsup;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=largePing;
+	FXOnTarget=tinyShakeHoriz;
+	
+[ActionAoE] 
+	ID=ari_zombie_infectious_bile;
+	cloneFrom=adjacent;
+[AvAffecter]
+	ID=ari_zombie_infectious_bile; 
+	actorValue=HP;
+	harmful=true;
+	magnitude=d:ruinDmg20LessScale(1);
+	--c:skill_Ruin * -0.2 - 1;
+	duration=-2;
+	chance=d:ruinAcc;
+	FXOnTile=chargeBurst;
+	FXOnTileColor=Green;
+	FXOnHit=chargeSpiralFast_big;
+	FXOnHitColor=Green;
+	FXOnHit=sidewardLines;
+	FXOnHitColor=Green;
+	FXOnHit=splatter;
+	FXOnHitColor=Green;
+	element=melee;
+	element=physical;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_zombie_infectious_bile;
+	aoeCasterAsOrigin=true;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 1;
+	maxRange = 2.5;
+	coneAngle= 60;
+	bypassAll=true;
+	occupyAll=true;
+
+[AvAffecter]
+	ID=ari_zombie_infectious_bile; 
+	actorValue=ari_rot_status;
+	magnitude=3 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status;
+	duration=40;
+	chance=d:ruinAcc;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=ari_zombie_infectious_bile;
+	aoeCasterAsOrigin=true;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 1;
+	maxRange = 2.5;
+	coneAngle= 60;
+	bypassAll=true;
+	occupyAll=true;
+
+----------------------------------------------------------------Corpse Expulsion, AoE suicide ability
+[Action] ID=ari_zombie_corpse_expulsion; 
+	name=Corpse Expulsion;
+	icon=icon_gravekeeper_corpse_expulsion;
+	mpCost=0 * d:mpCostMult + d:mpCostMod;
+	cooldown=120;
+	harmful=false;
+	attractAttention=false;
+	tooltip=Sacrifice 30% maximum<icon=HP> to expel nearly all of your bodily fluids and douse nearby targets in disease, dealing <icon=skill_Ruin><math=c:skill_Ruin * 0.3 + 5>, reducing to <icon=skill_Ruin><math=c:skill_Ruin * 0.2 + 2> against targets further away from you. Infects closer targets with two stacks of Rot<icon=icon_gravekeeper_rot> for <icon=time>40.;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	attractAttention=false;
+	
+	casterAnimation=handsup;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=largePing;
+	FXOnTarget=tinyShakeHoriz;
+	
+[ActionAoE] 
+	ID=ari_zombie_corpse_expulsion;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_zombie_corpse_expulsion; 
+	actorValue=HP;
+	harmful=true;
+	magnitude=d:ruinDmg(5);
+	--c:skill_Ruin * -0.3 - 5;
+	duration=-2;
+	chance=d:ruinAcc;
+	FXOnTile=chargeBurst;
+	FXOnTileColor=Green;
+	FXOnHit=chargeSpiralFast_big;
+	FXOnHitColor=Green;
+	FXOnHit=sidewardLines;
+	FXOnHitColor=Green;
+	FXOnHit=splatter;
+	FXOnHitColor=Green;
+	element=melee;
+	element=physical;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_zombie_corpse_expulsion;
+	cloneFrom=adjacentAndSelf+2;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 1;
+	maxRange = 1.5;
+	airborne=true;
+	arc=true;
+	bypassAll=true;
+	occupyAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=true;
+
+[AvAffecter]
+	ID=ari_zombie_corpse_expulsion; 
+	actorValue=ari_rot_status;
+	magnitude=2 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status;
+	duration=40;
+	chance=d:ruinAcc;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=ari_zombie_corpse_expulsion;
+	cloneFrom=adjacentAndSelf+2;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 1;
+	maxRange = 1.5;
+	airborne=true;
+	arc=true;
+	bypassAll=true;
+	occupyAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=true;
+
+[AvAffecter]
+	ID=ari_zombie_corpse_expulsion; 
+	actorValue=HP;
+	harmful=true;
+	magnitude=d:ruinDmg20LessScale(2);
+	--c:skill_Ruin * -0.2 - 2;
+	duration=-2;
+	chance=d:ruinAcc;
+	FXOnHit=chargeSpiralFast_big;
+	FXOnHitColor=Green;
+	FXOnHit=sidewardLines;
+	FXOnHitColor=Green;
+	element=melee;
+	element=physical;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_zombie_corpse_expulsion;
+	cloneFrom=adjacentAndSelf+2;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 2;
+	maxRange = 2.5;
+	airborne=true;
+	arc=true;
+	bypassAll=true;
+	occupyAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=true;
+	
+[AvAffecter]
+	ID=ari_zombie_corpse_expulsion; 
+	actorValue=HP;
+	harmful=true;
+	magnitude=c:TrueHPMax * -0.3;
+	duration=-2;
+	chance=100;
+[AvAffecterAoE]
+	ID=ari_zombie_corpse_expulsion;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+	
+	
+
+
+----------------------------------------------------------------Abomination normal Abilities
+----------------------------------------------------------------Hurl Zombie
+[Action] ID=ari_abomination_hurl_zombie; 
+	name=Hurl Zombie;
+	icon=icon_gravekeeper_abomination_hurl_zombie;
+	mpCost=1 * d:mpCostMult + d:mpCostMod;
+	cooldown=35;
+	--harmful=false;
+	attractAttention=false;
+	tooltip=Hurl a mindless Zombie<icon=icon_zombie_minion> corpse at the target, dealing <math=c:PhysAtk * 0.4 + 3> damage and spawning a mindless Zombie<icon=icon_zombie_minion>.;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	numTargets=1;
+	
+	attractAttention=false;
+	
+	casterAnimation=spellcast;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=Ping;
+	FXOnTargetColor=White;
+	FXOnTarget=tinyShakeHoriz;
+	
+[ActionAoE] 
+	ID=ari_abomination_hurl_zombie;
+	cloneFrom=adjacent+3;
+	minRange = 1;
+	maxRange = 5;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	occupyAll=false;
+	canSelectEnemies=true;
+
+[AvAffecter]
+	ID=ari_abomination_hurl_zombie; 
+	harmful=false;
+	actorValue=HP;
+	magnitude=c:PhysAtk * -0.4 - 3;
+	chance=d:ruinProjectileAcc;
+	duration=-2;
+	element=ranged;
+	element=physical;
+	element=ruin;
+	FXOnTile=tinyShakeHoriz;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_abomination_hurl_zombie;
+	cloneFrom=oneTile;
+	
+[AvAffecter]
+	ID=ari_abomination_hurl_zombie; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	magnitude=summoned_undead_rot_zombie_minion;
+	chance=100;
+	duration=-2;
+	FXOnTile=tinyShakeHoriz;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_abomination_hurl_zombie;
+	cloneFrom=oneTile;
+
+	
+----------------------------------------------------------------Amalgamated Limbs
+[Action] ID=ari_abomination_amalgamated_limb; 
+	name=Amalgamated Limb;
+	icon=icon_gravekeeper_abomination_amalgamated_limb;
+	mpCost=0 * d:mpCostMult + d:mpCostMod;
+	cooldown=50;
+	harmful=false;
+	attractAttention=false;
+	tooltip=As if having their own mind, your appendages flail about and strike a target near you, dealing <math=c:PhysAtk * 0.3 + 1> damage and pulling them one tile towards you. The appendages infect the target with a stack of Rot <icon=icon_gravekeeper_rot> for <icon=time>40. <n=>This does not consume an action in combat.;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	numTargets=1;
+	
+	attractAttention=false;
+	special=doesNotConsumeCombatAction;
+	
+	casterAnimation=spellcast;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=Ping;
+	FXOnTargetColor=White;
+	FXOnTarget=tinyShakeHoriz;
+	
+[ActionAoE]
+	ID=ari_abomination_amalgamated_limb;
+	cloneFrom=adjacent+2;
+	
+[AvAffecter]
+	ID=ari_abomination_amalgamated_limb; 
+	actorValue=HP;
+	magnitude=c:PhysAtk * -0.3 - 1;
+	chance=d:fistAcc;
+	duration=-2;
+	element=melee;
+	element=physical;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_abomination_amalgamated_limb;
+	cloneFrom=oneTile;
+
+[AvAffecter]
+	ID=ari_abomination_amalgamated_limb; 
+	actorValue=ari_rot_status;
+	magnitude=1 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status + moreThan:13:t:ari_rot_status;
+	duration=40;
+	chance=d:fistAcc;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=ari_abomination_amalgamated_limb;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_abomination_amalgamated_limb; 
+	actorValue=pull;
+	magnitude=1;
+	duration=-2;
+	chance=d:fistAcc;
+	FXOnHit=largePing;
+	FXOnHit=click;
+[AvAffecterAoE]
+	ID=ari_abomination_amalgamated_limb;
+	cloneFrom=oneTile;
+	
+----------------------------------------------------------------Corpse Slam
+--Change this, not sure to what
+[Action] ID=ari_abomination_corpse_slam; 
+	name=Corpse Slam;
+	icon=icon_gravekeeper_abomination_corpse_slam;
+	mpCost=0 * d:mpCostMult + d:mpCostMod;
+	cooldown=25;
+	harmful=false;
+	attractAttention=false;
+	tooltip=Slam down a hulking fist with vile, serrated splinters protruding from it in front of you, dealing <math=c:skill_Ruin * 0.4 + 5> damage to everything in an area.<n=>Infects the target with a stack of Rot<icon=icon_gravekeeper_rot> for <icon=time>40, and if a target has more than four stacks of Rot<icon=icon_gravekeeper_rot>, Corpse Slam reduces the target's defenses.;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	attractAttention=false;
+	
+	casterAnimation=spellcast;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=Ping;
+	FXOnTargetColor=White;
+	FXOnTarget=tinyShakeHoriz;
+	
+[ActionAoE] 
+	ID=ari_abomination_corpse_slam;
+	cloneFrom=adjacent;
+[AvAffecter]
+	ID=ari_abomination_corpse_slam;
+	visibleMiss=false;
+	actorValue=HP;
+	harmful=true;
+	magnitude=c:skill_Ruin * -0.4 - 5;
+	duration=-2;
+	chance=d:fistAcc;
+	FXOnHit=ping;
+	FXOnHitColor=Purple;
+	element=melee;
+	element=physical;
+	element=smash;
+[AvAffecterAoE]
+	ID=ari_abomination_corpse_slam;
+	aoeCasterAsOrigin=true;
+	maxRange = 2.5;
+	coneAngle=90;
+[AvAffecter]
+	ID=ari_abomination_corpse_slam;
+	visibleMiss=false;
+	actorValue=PhysDef;
+	harmful=true;
+	magnitude=-3;
+	duration=40;
+	chance=d:fistAcc * moreThan:4:t:ari_rot_status;
+	element=melee;
+	element=physical;
+	element=smash;
+[AvAffecterAoE]
+	ID=ari_abomination_corpse_slam;
+	aoeCasterAsOrigin=true;
+	maxRange = 2.5;
+	coneAngle=90;
+[AvAffecter]
+	ID=ari_abomination_corpse_slam;
+	visibleMiss=false;
+	actorValue=MagDef;
+	harmful=true;
+	magnitude=-3;
+	duration=40;
+	chance=d:fistAcc * moreThan:4:t:ari_rot_status;
+	element=melee;
+	element=physical;
+	element=smash;
+[AvAffecterAoE]
+	ID=ari_abomination_corpse_slam;
+	aoeCasterAsOrigin=true;
+	maxRange = 2.5;
+	coneAngle=90;
+[AvAffecter]
+	ID=ari_abomination_corpse_slam; 
+	actorValue=ari_rot_status;
+	magnitude=1 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status + moreThan:13:t:ari_rot_status;
+	duration=40;
+	chance=d:fistAcc;
+	element=ruin;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=ari_abomination_corpse_slam;
+	aoeCasterAsOrigin=true;
+	maxRange = 2.5;
+	coneAngle=90;
+
+
+[GlobalAoE] ID=ari_fetid_consumption_hitTarget; 
+cloneFrom=adjacentAndSelf; arc=true; maxRange=24; 
+needsLoS = false; needsLoE = false; shape=7;
+	
+----------------------------------------------------------------Fetid Consumption
+[Action] ID=ari_abomination_fetid_consumption; 
+	name=Fetid Consumption;
+	icon=icon_gravekeeper_abomination_fetid_consumption;
+	mpCost=0 * d:mpCostMult + d:mpCostMod;
+	cooldown=90;
+	--harmful=false;
+	attractAttention=false;
+	tooltip=Devour the vile essence of targets in range, siphoning off all stacks of Rot<icon=icon_gravekeeper_rot> to damage targets and heal yourself in the process.;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	--numTargets=max:5:min:2:d:ari_boneshard_targets;
+	--maxDistanceBetweenTargets=3;
+	
+	queueAnotherAction=ari_abomination_fetid_consumption_heal;
+	attractAttention=false;
+	
+	casterAnimation=spellcast;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=Ping;
+	FXOnTargetColor=White;
+	FXOnTarget=tinyShakeHoriz;
+	
+[ActionAoE] 
+	ID=ari_abomination_fetid_consumption;
+	cloneFrom=adjacent;
+	
+[AvAffecter]
+	ID=ari_abomination_fetid_consumption;
+	visibleMiss=false;
+	actorValue=HP;
+	harmful=false;
+	magnitude=c:skill_Ruin * -0.1 - 1;
+	duration=-2;
+	chance=100;
+	FXOnHit=ping;
+	FXOnHitColor=Purple;
+	element=magic;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_abomination_fetid_consumption;
+	aoeCasterAsOrigin=true;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 1;
+	maxRange = 2.5;
+	coneAngle= 60;
+	bypassAll=true;
+	occupyAll=true;
+
+[AvAffecter]
+	ID=ari_abomination_fetid_consumption;
+	visibleMiss=false;
+	actorValue=HP;
+	harmful=false;
+	magnitude=t:ari_rot_status * -2;
+	duration=-2;
+	chance=100 * moreThan:0:t:ari_rot_status;
+	FXOnHit=ping;
+	FXOnHitColor=Purple;
+	element=magic;
+	element=ruin;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_abomination_fetid_consumption;
+	aoeCasterAsOrigin=true;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 1;
+	maxRange = 2.5;
+	coneAngle= 60;
+	bypassAll=true;
+	occupyAll=true;
+
+
+
+
+
+
+
+[AvAffecter]
+	ID=ari_abomination_fetid_consumption;
+	visibleMiss=false;
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=ari_filler_AV1;
+	magnitude=1;
+	duration=1;
+	chance=100 * is:1:t:ari_rot_status;
+	element=ruin;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_abomination_fetid_consumption;
+	aoeCasterAsOrigin=true;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 1;
+	maxRange = 2.5;
+	coneAngle= 60;
+	bypassAll=true;
+	occupyAll=true;
+[AvAffecter]
+	ID=ari_abomination_fetid_consumption;
+	visibleMiss=false;
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=ari_filler_AV2;
+	magnitude=1;
+	duration=1;
+	chance=100 * is:2:t:ari_rot_status;
+	element=ruin;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_abomination_fetid_consumption;
+	aoeCasterAsOrigin=true;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 1;
+	maxRange = 2.5;
+	coneAngle= 60;
+	bypassAll=true;
+	occupyAll=true;
+[AvAffecter]
+	ID=ari_abomination_fetid_consumption;
+	visibleMiss=false;
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=ari_filler_AV3;
+	magnitude=1;
+	duration=1;
+	chance=100 * is:3:t:ari_rot_status;
+	element=ruin;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_abomination_fetid_consumption;
+	aoeCasterAsOrigin=true;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 1;
+	maxRange = 2.5;
+	coneAngle= 60;
+	bypassAll=true;
+	occupyAll=true;
+[AvAffecter]
+	ID=ari_abomination_fetid_consumption;
+	visibleMiss=false;
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=ari_filler_AV4;
+	magnitude=1;
+	duration=1;
+	chance=100 * is:4:t:ari_rot_status;
+	element=ruin;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_abomination_fetid_consumption;
+	aoeCasterAsOrigin=true;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 1;
+	maxRange = 2.5;
+	coneAngle= 60;
+	bypassAll=true;
+	occupyAll=true;
+[AvAffecter]
+	ID=ari_abomination_fetid_consumption;
+	visibleMiss=false;
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=ari_filler_AV5;
+	magnitude=1;
+	duration=1;
+	chance=100 * is:5:t:ari_rot_status;
+	element=ruin;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_abomination_fetid_consumption;
+	aoeCasterAsOrigin=true;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 1;
+	maxRange = 2.5;
+	coneAngle= 60;
+	bypassAll=true;
+	occupyAll=true;
+[AvAffecter]
+	ID=ari_abomination_fetid_consumption;
+	visibleMiss=false;
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=ari_filler_AV6;
+	magnitude=1;
+	duration=1;
+	chance=100 * is:6:t:ari_rot_status;
+	element=ruin;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_abomination_fetid_consumption;
+	aoeCasterAsOrigin=true;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 1;
+	maxRange = 2.5;
+	coneAngle= 60;
+	bypassAll=true;
+	occupyAll=true;
+[AvAffecter]
+	ID=ari_abomination_fetid_consumption;
+	visibleMiss=false;
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=ari_filler_AV7;
+	magnitude=1;
+	duration=1;
+	chance=100 * is:7:t:ari_rot_status;
+	element=ruin;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_abomination_fetid_consumption;
+	aoeCasterAsOrigin=true;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 1;
+	maxRange = 2.5;
+	coneAngle= 60;
+	bypassAll=true;
+	occupyAll=true;
+[AvAffecter]
+	ID=ari_abomination_fetid_consumption;
+	visibleMiss=false;
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=ari_filler_AV8;
+	magnitude=1;
+	duration=1;
+	chance=100 * is:8:t:ari_rot_status;
+	element=ruin;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_abomination_fetid_consumption;
+	aoeCasterAsOrigin=true;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 1;
+	maxRange = 2.5;
+	coneAngle= 60;
+	bypassAll=true;
+	occupyAll=true;
+[AvAffecter]
+	ID=ari_abomination_fetid_consumption;
+	visibleMiss=false;
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=ari_filler_AV9;
+	magnitude=1;
+	duration=1;
+	chance=100 * is:9:t:ari_rot_status;
+	element=ruin;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_abomination_fetid_consumption;
+	aoeCasterAsOrigin=true;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 1;
+	maxRange = 2.5;
+	coneAngle= 60;
+	bypassAll=true;
+	occupyAll=true;
+[AvAffecter]
+	ID=ari_abomination_fetid_consumption;
+	visibleMiss=false;
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=ari_filler_AV10;
+	magnitude=1;
+	duration=1;
+	chance=100 * is:10:t:ari_rot_status;
+	element=ruin;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_abomination_fetid_consumption;
+	aoeCasterAsOrigin=true;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 1;
+	maxRange = 2.5;
+	coneAngle= 60;
+	bypassAll=true;
+	occupyAll=true;
+[AvAffecter]
+	ID=ari_abomination_fetid_consumption;
+	visibleMiss=false;
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=ari_filler_AV11;
+	magnitude=1;
+	duration=1;
+	chance=100 * is:11:t:ari_rot_status;
+	element=ruin;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_abomination_fetid_consumption;
+	aoeCasterAsOrigin=true;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 1;
+	maxRange = 2.5;
+	coneAngle= 60;
+	bypassAll=true;
+	occupyAll=true;
+[AvAffecter]
+	ID=ari_abomination_fetid_consumption;
+	visibleMiss=false;
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=ari_filler_AV12;
+	magnitude=1;
+	duration=1;
+	chance=100 * is:12:t:ari_rot_status;
+	element=ruin;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_abomination_fetid_consumption;
+	aoeCasterAsOrigin=true;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 1;
+	maxRange = 2.5;
+	coneAngle= 60;
+	bypassAll=true;
+	occupyAll=true;
+[AvAffecter]
+	ID=ari_abomination_fetid_consumption;
+	visibleMiss=false;
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=ari_filler_AV13;
+	magnitude=1;
+	duration=1;
+	chance=100 * is:13:t:ari_rot_status;
+	element=ruin;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_abomination_fetid_consumption;
+	aoeCasterAsOrigin=true;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 1;
+	maxRange = 2.5;
+	coneAngle= 60;
+	bypassAll=true;
+	occupyAll=true;
+[AvAffecter]
+	ID=ari_abomination_fetid_consumption;
+	visibleMiss=false;
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=ari_filler_AV14;
+	magnitude=1;
+	duration=1;
+	chance=100 * is:14:t:ari_rot_status;
+	element=ruin;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_abomination_fetid_consumption;
+	aoeCasterAsOrigin=true;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 1;
+	maxRange = 2.5;
+	coneAngle= 60;
+	bypassAll=true;
+	occupyAll=true;
+[AvAffecter]
+	ID=ari_abomination_fetid_consumption;
+	visibleMiss=false;
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=ari_filler_AV15;
+	magnitude=1;
+	duration=1;
+	chance=100 * is:15:t:ari_rot_status;
+	element=ruin;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_abomination_fetid_consumption;
+	aoeCasterAsOrigin=true;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 1;
+	maxRange = 2.5;
+	coneAngle= 60;
+	bypassAll=true;
+	occupyAll=true;
+	
+	
+	
+	
+	
+
+[AvAffecter]
+	ID=ari_abomination_fetid_consumption;
+	visibleMiss=false;
+	actorValue=ari_rot_status;
+	harmful=true;
+	magnitude=-t:ari_rot_status;
+	duration=-2;
+	chance=100;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=Purple;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=Black;
+	FXOnHit=ping;
+	FXOnHitColor=Black;
+[AvAffecterAoE]
+	ID=ari_abomination_fetid_consumption;
+	aoeCasterAsOrigin=true;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 1;
+	maxRange = 2.5;
+	coneAngle= 60;
+	bypassAll=true;
+	occupyAll=true;
+	
+	
+	
+[Action] ID=ari_abomination_fetid_consumption_heal; 
+	name=Devour Rot;
+	icon=icon_gravekeeper_abomination_fetid_consumption;
+	mpCost=0 * d:mpCostMult + d:mpCostMod;
+	harmful=false;
+	attractAttention=false;
+	tooltip=Consume all stacks of Rot<icon=icon_gravekeeper_rot> to heal.;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	attractAttention=false;
+	
+	casterAnimation=handsup;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=largePing;
+	FXOnTarget=tinyShakeHoriz;
+	
+[ActionAoE] 
+	ID=ari_abomination_fetid_consumption_heal;
+	cloneFrom=adjacent;
+
+--[AvAffecter]
+--	ID=ari_abomination_fetid_consumption_heal;
+--	harmful=false;
+--	actorValue=HP;
+--	magnitude=t:ari_rot_status * 2;
+--	duration=-2;
+--	chance=100;
+--	element=ruin;
+--[AvAffecterAoE]
+--	ID=ari_abomination_fetid_consumption_heal;
+--	aoeCasterAsOrigin = true;
+--	cloneFrom=oneTile;
+--	canSelectAllies=true;
+--[AvAffecter]
+--	ID=ari_abomination_fetid_consumption_heal;
+--	harmful=false;
+--	actorValue=ari_rot_status;
+--	magnitude=-t:ari_rot_status;
+--	duration=-2;
+--	chance=100;
+--	element=ruin;
+--[AvAffecterAoE]
+--	ID=ari_abomination_fetid_consumption_heal;
+--	aoeCasterAsOrigin = true;
+--	cloneFrom=oneTile;
+--	canSelectAllies=true;
+
+[AvAffecter] --heal self if anyone within range has ari_filler_av status
+    ID=ari_abomination_fetid_consumption_heal; 
+    harmful=false;
+    actorValue=HP;
+    magnitude=2;
+    duration=-2;
+    chance=100 * allWithinAoEofCaster:ari_fetid_consumption_hitTarget:ari_filler_AV1;
+	visibleMiss=false;
+[AvAffecterAoE]
+    ID=ari_abomination_fetid_consumption_heal;
+    cloneFrom=oneTile;
+    aoeCasterAsOrigin=true;
+[AvAffecter] --remove the ari_filler_av status
+    ID=ari_abomination_fetid_consumption_heal; 
+    harmful=false;
+    actorValue=ari_filler_AV1;
+    magnitude=-1;
+    duration=-2;
+    chance=100;
+    visibleEvaluations=false;
+	visibleMiss=false;
+[AvAffecterAoE]
+    ID=ari_abomination_fetid_consumption_heal;
+    cloneFrom=ari_fetid_consumption_hitTarget;
+	
+[AvAffecter] --heal self if anyone within range has ari_filler_av status
+    ID=ari_abomination_fetid_consumption_heal; 
+    harmful=false;
+    actorValue=HP;
+    magnitude=4;
+    duration=-2;
+    chance=100 * allWithinAoEofCaster:ari_fetid_consumption_hitTarget:ari_filler_AV2;
+	visibleMiss=false;
+[AvAffecterAoE]
+    ID=ari_abomination_fetid_consumption_heal;
+    cloneFrom=oneTile;
+    aoeCasterAsOrigin=true;
+[AvAffecter] --remove the ari_filler_av status
+    ID=ari_abomination_fetid_consumption_heal; 
+    harmful=false;
+    actorValue=ari_filler_AV2;
+    magnitude=-1;
+    duration=-2;
+    chance=100;
+    visibleEvaluations=false;
+	visibleMiss=false;
+[AvAffecterAoE]
+    ID=ari_abomination_fetid_consumption_heal;
+    cloneFrom=ari_fetid_consumption_hitTarget;
+	
+[AvAffecter] --heal self if anyone within range has ari_filler_av status
+    ID=ari_abomination_fetid_consumption_heal; 
+    harmful=false;
+    actorValue=HP;
+    magnitude=6;
+    duration=-2;
+    chance=100 * allWithinAoEofCaster:ari_fetid_consumption_hitTarget:ari_filler_AV3;
+	visibleMiss=false;
+[AvAffecterAoE]
+    ID=ari_abomination_fetid_consumption_heal;
+    cloneFrom=oneTile;
+    aoeCasterAsOrigin=true;
+[AvAffecter] --remove the ari_filler_av status
+    ID=ari_abomination_fetid_consumption_heal; 
+    harmful=false;
+    actorValue=ari_filler_AV3;
+    magnitude=-1;
+    duration=-2;
+    chance=100;
+    visibleEvaluations=false;
+	visibleMiss=false;
+[AvAffecterAoE]
+    ID=ari_abomination_fetid_consumption_heal;
+    cloneFrom=ari_fetid_consumption_hitTarget;
+	
+[AvAffecter] --heal self if anyone within range has ari_filler_av status
+    ID=ari_abomination_fetid_consumption_heal; 
+    harmful=false;
+    actorValue=HP;
+    magnitude=8;
+    duration=-2;
+    chance=100 * allWithinAoEofCaster:ari_fetid_consumption_hitTarget:ari_filler_AV4;
+	visibleMiss=false;
+[AvAffecterAoE]
+    ID=ari_abomination_fetid_consumption_heal;
+    cloneFrom=oneTile;
+    aoeCasterAsOrigin=true;
+[AvAffecter] --remove the ari_filler_av status
+    ID=ari_abomination_fetid_consumption_heal; 
+    harmful=false;
+    actorValue=ari_filler_AV4;
+    magnitude=-1;
+    duration=-2;
+    chance=100;
+    visibleEvaluations=false;
+	visibleMiss=false;
+[AvAffecterAoE]
+    ID=ari_abomination_fetid_consumption_heal;
+    cloneFrom=ari_fetid_consumption_hitTarget;
+	
+[AvAffecter] --heal self if anyone within range has ari_filler_av status
+    ID=ari_abomination_fetid_consumption_heal; 
+    harmful=false;
+    actorValue=HP;
+    magnitude=10;
+    duration=-2;
+    chance=100 * allWithinAoEofCaster:ari_fetid_consumption_hitTarget:ari_filler_AV5;
+	visibleMiss=false;
+[AvAffecterAoE]
+    ID=ari_abomination_fetid_consumption_heal;
+    cloneFrom=oneTile;
+    aoeCasterAsOrigin=true;
+[AvAffecter] --remove the ari_filler_av status
+    ID=ari_abomination_fetid_consumption_heal; 
+    harmful=false;
+    actorValue=ari_filler_AV5;
+    magnitude=-1;
+    duration=-2;
+    chance=100;
+    visibleEvaluations=false;
+	visibleMiss=false;
+[AvAffecterAoE]
+    ID=ari_abomination_fetid_consumption_heal;
+    cloneFrom=ari_fetid_consumption_hitTarget;
+
+[AvAffecter] --heal self if anyone within range has ari_filler_av status
+    ID=ari_abomination_fetid_consumption_heal; 
+    harmful=false;
+    actorValue=HP;
+    magnitude=12;
+    duration=-2;
+    chance=100 * allWithinAoEofCaster:ari_fetid_consumption_hitTarget:ari_filler_AV6;
+	visibleMiss=false;
+[AvAffecterAoE]
+    ID=ari_abomination_fetid_consumption_heal;
+    cloneFrom=oneTile;
+    aoeCasterAsOrigin=true;
+[AvAffecter] --remove the ari_filler_av status
+    ID=ari_abomination_fetid_consumption_heal; 
+    harmful=false;
+    actorValue=ari_filler_AV6;
+    magnitude=-1;
+    duration=-2;
+    chance=100;
+    visibleEvaluations=false;
+	visibleMiss=false;
+[AvAffecterAoE]
+    ID=ari_abomination_fetid_consumption_heal;
+    cloneFrom=ari_fetid_consumption_hitTarget;
+
+[AvAffecter] --heal self if anyone within range has ari_filler_av status
+    ID=ari_abomination_fetid_consumption_heal; 
+    harmful=false;
+    actorValue=HP;
+    magnitude=14;
+    duration=-2;
+    chance=100 * allWithinAoEofCaster:ari_fetid_consumption_hitTarget:ari_filler_AV7;
+	visibleMiss=false;
+[AvAffecterAoE]
+    ID=ari_abomination_fetid_consumption_heal;
+    cloneFrom=oneTile;
+    aoeCasterAsOrigin=true;
+[AvAffecter] --remove the ari_filler_av status
+    ID=ari_abomination_fetid_consumption_heal; 
+    harmful=false;
+    actorValue=ari_filler_AV7;
+    magnitude=-1;
+    duration=-2;
+    chance=100;
+    visibleEvaluations=false;
+	visibleMiss=false;
+[AvAffecterAoE]
+    ID=ari_abomination_fetid_consumption_heal;
+    cloneFrom=ari_fetid_consumption_hitTarget;
+
+[AvAffecter] --heal self if anyone within range has ari_filler_av status
+    ID=ari_abomination_fetid_consumption_heal; 
+    harmful=false;
+    actorValue=HP;
+    magnitude=16;
+    duration=-2;
+    chance=100 * allWithinAoEofCaster:ari_fetid_consumption_hitTarget:ari_filler_AV8;
+	visibleMiss=false;
+[AvAffecterAoE]
+    ID=ari_abomination_fetid_consumption_heal;
+    cloneFrom=oneTile;
+    aoeCasterAsOrigin=true;
+[AvAffecter] --remove the ari_filler_av status
+    ID=ari_abomination_fetid_consumption_heal; 
+    harmful=false;
+    actorValue=ari_filler_AV8;
+    magnitude=-1;
+    duration=-2;
+    chance=100;
+    visibleEvaluations=false;
+	visibleMiss=false;
+[AvAffecterAoE]
+    ID=ari_abomination_fetid_consumption_heal;
+    cloneFrom=ari_fetid_consumption_hitTarget;
+
+[AvAffecter] --heal self if anyone within range has ari_filler_av status
+    ID=ari_abomination_fetid_consumption_heal; 
+    harmful=false;
+    actorValue=HP;
+    magnitude=18;
+    duration=-2;
+    chance=100 * allWithinAoEofCaster:ari_fetid_consumption_hitTarget:ari_filler_AV9;
+	visibleMiss=false;
+[AvAffecterAoE]
+    ID=ari_abomination_fetid_consumption_heal;
+    cloneFrom=oneTile;
+    aoeCasterAsOrigin=true;
+[AvAffecter] --remove the ari_filler_av status
+    ID=ari_abomination_fetid_consumption_heal; 
+    harmful=false;
+    actorValue=ari_filler_AV9;
+    magnitude=-1;
+    duration=-2;
+    chance=100;
+    visibleEvaluations=false;
+	visibleMiss=false;
+[AvAffecterAoE]
+    ID=ari_abomination_fetid_consumption_heal;
+    cloneFrom=ari_fetid_consumption_hitTarget;
+
+[AvAffecter] --heal self if anyone within range has ari_filler_av status
+    ID=ari_abomination_fetid_consumption_heal; 
+    harmful=false;
+    actorValue=HP;
+    magnitude=20;
+    duration=-2;
+    chance=100 * allWithinAoEofCaster:ari_fetid_consumption_hitTarget:ari_filler_AV10;
+	visibleMiss=false;
+[AvAffecterAoE]
+    ID=ari_abomination_fetid_consumption_heal;
+    cloneFrom=oneTile;
+    aoeCasterAsOrigin=true;
+[AvAffecter] --remove the ari_filler_av status
+    ID=ari_abomination_fetid_consumption_heal; 
+    harmful=false;
+    actorValue=ari_filler_AV10;
+    magnitude=-1;
+    duration=-2;
+    chance=100;
+    visibleEvaluations=false;
+	visibleMiss=false;
+[AvAffecterAoE]
+    ID=ari_abomination_fetid_consumption_heal;
+    cloneFrom=ari_fetid_consumption_hitTarget;
+
+[AvAffecter] --heal self if anyone within range has ari_filler_av status
+    ID=ari_abomination_fetid_consumption_heal; 
+    harmful=false;
+    actorValue=HP;
+    magnitude=22;
+    duration=-2;
+    chance=100 * allWithinAoEofCaster:ari_fetid_consumption_hitTarget:ari_filler_AV11;
+	visibleMiss=false;
+[AvAffecterAoE]
+    ID=ari_abomination_fetid_consumption_heal;
+    cloneFrom=oneTile;
+    aoeCasterAsOrigin=true;
+[AvAffecter] --remove the ari_filler_av status
+    ID=ari_abomination_fetid_consumption_heal; 
+    harmful=false;
+    actorValue=ari_filler_AV11;
+    magnitude=-1;
+    duration=-2;
+    chance=100;
+    visibleEvaluations=false;
+	visibleMiss=false;
+[AvAffecterAoE]
+    ID=ari_abomination_fetid_consumption_heal;
+    cloneFrom=ari_fetid_consumption_hitTarget;
+
+[AvAffecter] --heal self if anyone within range has ari_filler_av status
+    ID=ari_abomination_fetid_consumption_heal; 
+    harmful=false;
+    actorValue=HP;
+    magnitude=24;
+    duration=-2;
+    chance=100 * allWithinAoEofCaster:ari_fetid_consumption_hitTarget:ari_filler_AV12;
+	visibleMiss=false;
+[AvAffecterAoE]
+    ID=ari_abomination_fetid_consumption_heal;
+    cloneFrom=oneTile;
+    aoeCasterAsOrigin=true;
+[AvAffecter] --remove the ari_filler_av status
+    ID=ari_abomination_fetid_consumption_heal; 
+    harmful=false;
+    actorValue=ari_filler_AV12;
+    magnitude=-1;
+    duration=-2;
+    chance=100;
+    visibleEvaluations=false;
+	visibleMiss=false;
+[AvAffecterAoE]
+    ID=ari_abomination_fetid_consumption_heal;
+    cloneFrom=ari_fetid_consumption_hitTarget;
+
+[AvAffecter] --heal self if anyone within range has ari_filler_av status
+    ID=ari_abomination_fetid_consumption_heal; 
+    harmful=false;
+    actorValue=HP;
+    magnitude=26;
+    duration=-2;
+    chance=100 * allWithinAoEofCaster:ari_fetid_consumption_hitTarget:ari_filler_AV13;
+	visibleMiss=false;
+[AvAffecterAoE]
+    ID=ari_abomination_fetid_consumption_heal;
+    cloneFrom=oneTile;
+    aoeCasterAsOrigin=true;
+[AvAffecter] --remove the ari_filler_av status
+    ID=ari_abomination_fetid_consumption_heal; 
+    harmful=false;
+    actorValue=ari_filler_AV13;
+    magnitude=-1;
+    duration=-2;
+    chance=100;
+    visibleEvaluations=false;
+	visibleMiss=false;
+[AvAffecterAoE]
+    ID=ari_abomination_fetid_consumption_heal;
+    cloneFrom=ari_fetid_consumption_hitTarget;
+
+[AvAffecter] --heal self if anyone within range has ari_filler_av status
+    ID=ari_abomination_fetid_consumption_heal; 
+    harmful=false;
+    actorValue=HP;
+    magnitude=28;
+    duration=-2;
+    chance=100 * allWithinAoEofCaster:ari_fetid_consumption_hitTarget:ari_filler_AV14;
+	visibleMiss=false;
+[AvAffecterAoE]
+    ID=ari_abomination_fetid_consumption_heal;
+    cloneFrom=oneTile;
+    aoeCasterAsOrigin=true;
+[AvAffecter] --remove the ari_filler_av status
+    ID=ari_abomination_fetid_consumption_heal; 
+    harmful=false;
+    actorValue=ari_filler_AV14;
+    magnitude=-1;
+    duration=-2;
+    chance=100;
+    visibleEvaluations=false;
+	visibleMiss=false;
+[AvAffecterAoE]
+    ID=ari_abomination_fetid_consumption_heal;
+    cloneFrom=ari_fetid_consumption_hitTarget;
+
+[AvAffecter] --heal self if anyone within range has ari_filler_av status
+    ID=ari_abomination_fetid_consumption_heal; 
+    harmful=false;
+    actorValue=HP;
+    magnitude=30;
+    duration=-2;
+    chance=100 * allWithinAoEofCaster:ari_fetid_consumption_hitTarget:ari_filler_AV15;
+	visibleMiss=false;
+[AvAffecterAoE]
+    ID=ari_abomination_fetid_consumption_heal;
+    cloneFrom=oneTile;
+    aoeCasterAsOrigin=true;
+[AvAffecter] --remove the ari_filler_av status
+    ID=ari_abomination_fetid_consumption_heal; 
+    harmful=false;
+    actorValue=ari_filler_AV15;
+    magnitude=-1;
+    duration=-2;
+    chance=100;
+    visibleEvaluations=false;
+	visibleMiss=false;
+[AvAffecterAoE]
+    ID=ari_abomination_fetid_consumption_heal;
+    cloneFrom=ari_fetid_consumption_hitTarget;
+	
+----------------------------------------------------------------Abomination Commander Abilities
+----------------------------------------------------------------Consumption
+[Action] ID=ari_abomination_consume; 
+	name=Feast of Death;
+	icon=icon_gravekeeper_abomination_consume;
+	mpCost=0 * d:mpCostMult + d:mpCostMod;
+	cooldown=5;
+	harmful=false;
+	attractAttention=false;
+	tooltip=Devour a Minion<icon=icon_gravekeeper_risen> near you, healing and gaining additional attributes for every devoured minion, and allowing the use of the devoured Minion's<icon=icon_gravekeeper_risen> abilities. <n=>This does not consume an action in combat.;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	numTargets=1;
+	
+	attractAttention=false;
+	special=doesNotConsumeCombatAction;
+	
+	casterAnimation=spellcast;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=largePing;
+	FXOnTargetColor=Red;
+	FXOnTarget=tinyShakeHoriz;
+	FXOnTarget=splatter;
+	FXOnTargetColor=Red;
+	
+[ActionAoE] 
+	ID=ari_abomination_consume;
+	cloneFrom=adjacent+1;
+	minRange = 1;
+	maxRange = 1.5;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=true;
+	canSelectAllies=true;
+	occupyAll=false;
+	fReq=tsa:ari_summoned * isNot:1:t:ari_summoned_ethereal_spirit_AV;	
+
+[AvAffecter]
+	ID=ari_abomination_consume; 
+	chance=100 * t:ari_summoned_undead_skeleton_warrior_AV;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_abomination_consume;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+	
+[AvAffecter]
+	ID=ari_abomination_consume; 
+	harmful=false;
+	actorValue=ari_consumed_warrior;
+	magnitude=1;
+	chance=100 * thisPreviousAVHit:ari_abomination_consume;
+	duration=-2;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_abomination_consume;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+	
+[AvAffecter]
+	ID=ari_abomination_consume; 
+	chance=100 * t:ari_summoned_undead_skeleton_archer_AV;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_abomination_consume;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+	
+[AvAffecter]
+	ID=ari_abomination_consume; 
+	harmful=false;
+	actorValue=ari_consumed_archer;
+	magnitude=1;
+	chance=100 * thisPreviousAVHit:ari_abomination_consume;
+	duration=-2;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_abomination_consume;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+	
+[AvAffecter]
+	ID=ari_abomination_consume; 
+	chance=100 * t:ari_summoned_undead_skeleton_knight_AV;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	FXOnHit=blackCloud;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_abomination_consume;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+	
+[AvAffecter]
+	ID=ari_abomination_consume; 
+	harmful=false;
+	actorValue=ari_consumed_knight;
+	magnitude=1;
+	chance=100 * thisPreviousAVHit:ari_abomination_consume;
+	duration=-2;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	FXOnTile=blackCloud;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_abomination_consume;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+	
+[AvAffecter]
+	ID=ari_abomination_consume; 
+	chance=100 * t:ari_summoned_undead_zombie;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	FXOnHit=blackCloud;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_abomination_consume;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+	
+[AvAffecter]
+	ID=ari_abomination_consume; 
+	harmful=false;
+	actorValue=ari_consumed_zombie;
+	magnitude=1;
+	chance=100 * thisPreviousAVHit:ari_abomination_consume;
+	duration=-2;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_abomination_consume;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+
+[AvAffecter]
+	ID=ari_abomination_consume; 
+	harmful=false;
+	actorValue=ari_consumption_counter;
+	magnitude=1;
+	chance=100;
+	duration=-2;
+	FXOnTile= manySplatter_overlap; 
+	FXOnTileColor= Red; 
+	FXOnTile=delay_tiny;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_abomination_consume;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+	
+[AvAffecter]
+	ID=ari_abomination_consume; 
+	harmful=false;
+	actorValue=HP;
+	magnitude=c:TrueHPMax * 0.25;
+	chance=100;
+	duration=-2;
+	element=ruin;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_abomination_consume;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+	
+[AvAffecter]
+	ID=ari_abomination_consume;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=HP;
+	magnitude=t:TrueHPMax * -1 - 1;
+	duration=-2;
+	chance=100 * tsa:ari_summoned;
+	FXOnTile= manySplatter_overlap; 
+	FXOnTileColor= Red; 
+	FXOnHit=splatter;
+	FXOnHitColor=Red;
+	FXOnHit=splatter;
+	FXOnHitColor=pBloodyMess_slow;
+	FXOnTargetColor=pBloodyMess_slow;
+[AvAffecterAoE]
+	ID=ari_abomination_consume;
+	cloneFrom=oneTile;
+	
+----------------------------------------------------------------Abomination consumed Charge
+[Action] ID=ari_abomination_charge; 
+	name=Abominable Charge;
+	icon=icon_gravekeeper_skeletal_charge;
+	mpCost=0 * d:mpCostMult + d:mpCostMod;
+	cooldown=60;
+	tooltip=Charge forward recklessly to strike a distant foe for 70% damage.<n=>You must have consumed a Skeleton Footman<icon=icon_skeleton_footman_minion>.;
+	tooltipIcons=<icon=noRanged>;
+	tooltipTopRight=<icon=PhysAtk_small><icon=melee_small>;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	casterAnimation=weapon;
+	maxRank=3;
+	canExceedMaxRankBy=1;
+	special=moveCasterNextToTarget;
+	fReq=c:ari_consumed_warrior;
+	
+	FXOnTarget=weaponFX;
+	FXOnCaster=sidewardLines;
+	FXOnCasterColor=Red;
+	FXOnCaster=woosh;
+[ActionAoE]
+	ID=ari_abomination_charge; shape=2; 
+	needsLoS = false;
+	needsLoE = true;
+	minRange = 2;
+	maxRange = 1;
+	maxRangeBonus=3;
+	airborne=false;
+	bypassAll=false;
+	occupyAll=true;
+	canSelectActors=true;
+	fReq=1 - m:actorInTheWayOfMoveToTarget;
+[AvAffecter]
+	ID=ari_abomination_charge; 
+	weaponAvAffecter=true;
+	magnitude=c:PhysAtk * -0.7 - 1;
+	chance=100;
+	duration=-2;
+	element=melee;
+	element=physical;
+	element=slash;
+[AvAffecterAoE]
+	ID=ari_abomination_charge;
+	cloneFrom=oneTile;
+
+[AvAffecter]
+	ID=ari_abomination_charge; 
+	actorValue=ari_rot_status;
+	magnitude=1 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status + moreThan:13:t:ari_rot_status;
+	duration=40;
+	chance=100;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=ari_abomination_charge;
+	cloneFrom=oneTile;
+	
+--[AvAffecter]
+--	ID=ari_abomination_charge; 
+--	harmful=false;
+--	actorValue=ari_consumed_warrior;
+--	magnitude=-1;
+--	chance=100;
+--	duration=-2;
+--	visibleEvaluations=false;
+--	visibleMiss=false;
+--[AvAffecterAoE]
+--	ID=ari_abomination_charge;
+--	aoeCasterAsOrigin = true;
+--	cloneFrom=oneTile;
+--	canSelectAllies=true;
+	
+----------------------------------------------------------------Abomination consumed Bone Spear
+--Make this consume Rot and deal damage
+[Action] ID=ari_abomination_bonespear; 
+	name=Bone Lance;
+	icon=icon_gravekeeper_bone_spear;
+	mpCost=0 * d:mpCostMult + d:mpCostMod;
+	cooldown=60;
+	harmful=true;
+	attractAttention=false;
+	tooltip=Sacrifice 10% maximum <icon=HP> to forcefully eject a foul barrage of bone from your body, dealing <icon=skill_Ruin><math=c:skill_Ruin * 0.6 + 5> to all targets in the line of fire. Targets struck have up to three stacks of Rot<icon=icon_gravekeeper_rot> violently expunged from them, causing damage in an area around them.<n=>You must have consumed a Skeleton Archer<icon=icon_skeleton_archer_minion>;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	--special=doesNotConsumeCombatAction;
+	fReq=c:ari_consumed_archer;
+	
+	attractAttention=false;
+	
+	casterAnimation=handsup;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=largePing;
+	FXOnTarget=tinyShakeHoriz;
+	
+[ActionAoE] 
+	ID=ari_abomination_bonespear;
+	needsLoS = true;
+	needsLoE = true;
+	airborne = true;
+	arc = true;
+	cloneFrom=adjacent;
+
+[AvAffecter]
+	ID=ari_abomination_bonespear;
+	visibleMiss=false;
+	actorValue=HP;
+	harmful=true;
+	magnitude=c:skill_Ruin * -0.6 - 5;
+	duration=-2;
+	chance=d:ruinProjectileAcc;
+	FXOnTile=line;
+	FXOnTile=whiteExplosionVerySmall;
+	FXOnTileColor=DarkGreen;
+	FXOnHit=ThudShot;
+	FXOnHit=smallShakeHoriz;
+	element=ranged;
+	element=physical;
+	element=slash;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_abomination_bonespear;
+	shape=2;
+	coneAngle=1;
+	needsLoS = true;
+	needsLoE = true;
+	airborne = true;
+	arc = true;
+	minRange = 1;
+	maxRange = 5;
+	bypassAll=false;
+	occupyAll=true;
+	aoeCasterAsOrigin=true;
+	
+[AvAffecter]
+	ID=ari_abomination_bonespear;
+	actorValue=summonItem;
+	magnitude=ari_bonespear_explosion_3;
+	duration=1;
+	chance=100 * moreThan:2:t:ari_rot_status;
+[AvAffecterAoE]
+	ID=ari_abomination_bonespear;
+	shape=2;
+	coneAngle=1;
+	needsLoS = true;
+	needsLoE = true;
+	airborne = true;
+	arc = true;
+	minRange = 1;
+	maxRange = 5;
+	bypassAll=true;
+	aoeCasterAsOrigin=false;
+[AvAffecter]
+	ID=ari_abomination_bonespear;
+	actorValue=summonItem;
+	magnitude=ari_bonespear_explosion_2;
+	duration=1;
+	chance=100 * is:2:t:ari_rot_status;
+[AvAffecterAoE]
+	ID=ari_abomination_bonespear;
+	shape=2;
+	coneAngle=1;
+	needsLoS = true;
+	needsLoE = true;
+	airborne = true;
+	arc = true;
+	minRange = 1;
+	maxRange = 5;
+	bypassAll=true;
+	aoeCasterAsOrigin=false;
+[AvAffecter]
+	ID=ari_abomination_bonespear;
+	actorValue=summonItem;
+	magnitude=ari_bonespear_explosion_1;
+	duration=1;
+	chance=100 * is:1:t:ari_rot_status;
+[AvAffecterAoE]
+	ID=ari_abomination_bonespear;
+	shape=2;
+	coneAngle=1;
+	needsLoS = true;
+	needsLoE = true;
+	airborne = true;
+	arc = true;
+	minRange = 1;
+	maxRange = 5;
+	bypassAll=true;
+	aoeCasterAsOrigin=false;
+
+[AvAffecter]
+	ID=ari_abomination_bonespear;
+	visibleMiss=false;
+	actorValue=HP;
+	harmful=true;
+	magnitude=max:3:t:ari_rot_status * -2;
+	duration=-2;
+	chance=100;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_abomination_bonespear;
+	shape=2;
+	coneAngle=1;
+	needsLoS = true;
+	needsLoE = true;
+	airborne = true;
+	arc = true;
+	minRange = 1;
+	maxRange = 5;
+	bypassAll=true;
+	aoeCasterAsOrigin=false;
+[AvAffecter]
+	ID=ari_abomination_bonespear;
+	visibleMiss=false;
+	actorValue=ari_rot_status;
+	harmful=false;
+	magnitude=0;
+	duration=-2;
+	chance=100 * lessThan:4:t:ari_rot_status;
+[AvAffecterAoE]
+	ID=ari_abomination_bonespear;
+	shape=2;
+	coneAngle=1;
+	needsLoS = true;
+	needsLoE = true;
+	airborne = true;
+	arc = true;
+	minRange = 1;
+	maxRange = 5;
+	bypassAll=true;
+	aoeCasterAsOrigin=false;
+[AvAffecter]
+	ID=ari_abomination_bonespear;
+	visibleMiss=false;
+	actorValue=ari_rot_status;
+	harmful=false;
+	magnitude=moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status + moreThan:13:t:ari_rot_status + moreThan:14:t:ari_rot_status - 3;
+	duration=40;
+	chance=100 * moreThan:3:t:ari_rot_status;
+[AvAffecterAoE]
+	ID=ari_abomination_bonespear;
+	shape=2;
+	coneAngle=1;
+	needsLoS = true;
+	needsLoE = true;
+	airborne = true;
+	arc = true;
+	minRange = 1;
+	maxRange = 5;
+	bypassAll=true;
+	aoeCasterAsOrigin=false;
+
+[AvAffecter]
+	ID=ari_abomination_bonespear; 
+	actorValue=HP;
+	harmful=true;
+	magnitude=c:TrueHPMax * -0.1;
+	duration=-2;
+	chance=100;
+[AvAffecterAoE]
+	ID=ari_abomination_bonespear;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+
+
+
+----------------------------------------------------------------Abomination consumed Gravestrike	
+[Action] ID=ari_abomination_gravestrike; 
+	name=Plagued Strike;
+	icon=icon_gravekeeper_gravestrike;
+	mpCost=0 * d:mpCostMult + d:mpCostMod;
+	harmful=false;
+	attractAttention=false;
+	tooltip=Cleave those in front of you with your mighty appendages for <icon=HP><math=c:skill_Ruin * 0.6 + 6>. Inflict two stacks of Rot<icon=icon_gravekeeper_rot> to enemies for <icon=time>40.<n=>After the first strike, attempt to impale an enemy in a powerful stabbing attack that consumes up to five stacks of Rot<icon=icon_gravekeeper_rot> to deal additional damage.<n=>You must have consumed a Skeleton Knight<icon=icon_skeleton_knight_minion>.;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	attractAttention=false;
+	fReq=c:ari_consumed_knight;
+	
+	casterAnimation=broadswing;
+	--casterAnimationDependsOnWeaponHand=true;
+	--FXChangesWithWeaponHand=true;
+	FXOnTarget=swipe;
+	
+	queueAnotherAction=ari_abomination_gravestrike_second;
+	
+[ActionAoE] 
+	ID=ari_abomination_gravestrike;
+	cloneFrom=adjacent;
+[AvAffecter]
+	ID=ari_abomination_gravestrike; 
+	actorValue=HP;
+	magnitude=c:skill_Ruin * -0.6 - 6;
+	duration=-2;
+	chance=d:fistAcc;
+	element=melee;
+	element=physical;
+	element=slash;
+	element=heavySlash;
+[AvAffecterAoE]
+	ID=ari_abomination_gravestrike;
+	aoeCasterAsOrigin=true;
+	maxRange = 1.5;
+	coneAngle=90;
+[AvAffecter]
+	ID=ari_abomination_gravestrike; 
+	actorValue=ari_rot_status;
+	magnitude=2 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status;
+	duration=40;
+	chance=d:fistAcc;
+	element=ruin;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=ari_abomination_gravestrike;
+	aoeCasterAsOrigin=true;
+	maxRange = 1.5;
+	coneAngle=90;
+
+	
+[Action] ID=ari_abomination_gravestrike_second; 
+	name=Gravestrike;
+	icon=icon_gravekeeper_gravestrike;
+	mpCost=0 * d:mpCostMult + d:mpCostMod;
+	harmful=false;
+	attractAttention=false;
+	tooltip=Impale your target for <math=c:skill_Ruin + 6><icon=HP>, consuming up to five stacks of Rot<icon=icon_gravekeeper_rot> to deal additional damage.;
+	chargeTime=9 * d:chargeTimeMult * d:chargeTimeMult_onlyWithMP + d:chargeTimeMod;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	attractAttention=false;
+	
+	special=requiresCharging;
+	special=cancelChargingOnMove;
+	
+	casterAnimation=handsup;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=largePing;
+	FXOnTarget=tinyShakeHoriz;
+	
+[ActionAoE] 
+	ID=ari_abomination_gravestrike_second;
+	cloneFrom=adjacent;
+
+[AvAffecter]
+	ID=ari_abomination_gravestrike_second; 
+	actorValue=HP;
+	magnitude=c:skill_Ruin * -1.0 - 6;
+	duration=-2;
+	chance=d:fistAcc;
+	element=melee;
+	element=physical;
+	element=slash;
+	element=heavySlash;
+[AvAffecterAoE]
+	ID=ari_abomination_gravestrike_second;
+	aoeCasterAsOrigin=true;
+	maxRange = 1;
+	coneAngle=90;
+[AvAffecter]
+	ID=ari_abomination_gravestrike_second;
+	visibleMiss=false;
+	actorValue=HP;
+	harmful=true;
+	magnitude=max:5:t:ari_rot_status * -2;
+	duration=-2;
+	chance=100;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_abomination_gravestrike_second;
+	aoeCasterAsOrigin=true;
+	maxRange = 1;
+	coneAngle=90;
+[AvAffecter]
+	ID=ari_abomination_gravestrike_second;
+	visibleMiss=false;
+	actorValue=ari_rot_status;
+	harmful=false;
+	magnitude=0;
+	duration=-2;
+	chance=100 * lessThan:6:t:ari_rot_status;
+[AvAffecterAoE]
+	ID=ari_abomination_gravestrike_second;
+	aoeCasterAsOrigin=true;
+	maxRange = 1;
+	coneAngle=90;
+[AvAffecter]
+	ID=ari_abomination_gravestrike_second;
+	visibleMiss=false;
+	actorValue=ari_rot_status;
+	harmful=false;
+	magnitude=moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status + moreThan:13:t:ari_rot_status + moreThan:14:t:ari_rot_status - 3;
+	duration=40;
+	chance=100 * moreThan:5:t:ari_rot_status;
+[AvAffecterAoE]
+	ID=ari_abomination_gravestrike_second;
+	aoeCasterAsOrigin=true;
+	maxRange = 1;
+	coneAngle=90;
+	
+----------------------------------------------------------------Abomination consumed infectious bile
+[Action] ID=ari_abomination_infectious_bile; 
+	name=Repugnant Bile;
+	icon=icon_gravekeeper_zombie_bile;
+	mpCost=0 * d:mpCostMult + d:mpCostMod;
+	harmful=false;
+	attractAttention=false;
+	tooltip=Spew repugnant bile from within, dealing <math=c:skill_Ruin * 0.3 + 2> damage to enemies in a cone in front of you and infecting targets with three stacks of Rot<icon=icon_gravekeeper_rot> for <icon=time>40.<n=>You must have consumed a Zombie<icon=icon_zombie_minion>.;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	attractAttention=false;
+	fReq=c:ari_consumed_zombie;
+	
+	casterAnimation=handsup;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=largePing;
+	FXOnTarget=tinyShakeHoriz;
+	
+[ActionAoE] 
+	ID=ari_abomination_infectious_bile;
+	cloneFrom=adjacent;
+[AvAffecter]
+	ID=ari_abomination_infectious_bile; 
+	actorValue=HP;
+	harmful=true;
+	magnitude=c:skill_Ruin * -0.3 - 2;
+	duration=-2;
+	chance=d:ruinAcc;
+	FXOnTile=chargeBurst;
+	FXOnTileColor=Green;
+	FXOnHit=chargeSpiralFast_big;
+	FXOnHitColor=Green;
+	FXOnHit=sidewardLines;
+	FXOnHitColor=Green;
+	FXOnHit=splatter;
+	FXOnHitColor=Green;
+	element=melee;
+	element=physical;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_abomination_infectious_bile;
+	aoeCasterAsOrigin=true;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 1;
+	maxRange = 2.5;
+	coneAngle= 60;
+	bypassAll=true;
+	occupyAll=true;
+
+[AvAffecter]
+	ID=ari_abomination_infectious_bile; 
+	actorValue=ari_rot_status;
+	magnitude=3 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status;
+	duration=40;
+	chance=d:ruinAcc;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=ari_abomination_infectious_bile;
+	aoeCasterAsOrigin=true;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 1;
+	maxRange = 2.5;
+	coneAngle= 60;
+	bypassAll=true;
+	occupyAll=true;
+
+
+
+
+--Change this to something from Skeleton Mage
+[Action] ID=ari_abomination_corpse_expulsion; 
+	name=Rancid Discharge;
+	icon=icon_gravekeeper_corpse_expulsion;
+	mpCost=0 * d:mpCostMult + d:mpCostMod;
+	harmful=false;
+	attractAttention=false;
+	tooltip=Violently expel nearly all of the repulsive fluids contained within your corpse, taking 33% maximum<icon=HP> to deal damage to everyone around you, reducing against targets further away from you.<n=>You must have consumed a Zombie<icon=icon_zombie_minion>.;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	attractAttention=false;
+	fReq=c:ari_consumed_zombie;
+	
+	casterAnimation=handsup;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=largePing;
+	FXOnTarget=tinyShakeHoriz;
+	
+[ActionAoE] 
+	ID=ari_abomination_corpse_expulsion;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_abomination_corpse_expulsion; 
+	actorValue=HP;
+	harmful=true;
+	magnitude=c:skill_Ruin * -0.5;
+	duration=-2;
+	chance=100;
+	FXOnTile=chargeBurst;
+	FXOnTileColor=Green;
+	FXOnHit=chargeSpiralFast_big;
+	FXOnHitColor=Green;
+	FXOnHit=sidewardLines;
+	FXOnHitColor=Green;
+	FXOnHit=splatter;
+	FXOnHitColor=Green;
+	element=melee;
+	element=physical;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_abomination_corpse_expulsion;
+	cloneFrom=adjacentAndSelf+2;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 1;
+	maxRange = 1.5;
+	airborne=true;
+	arc=true;
+	bypassAll=true;
+	occupyAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=true;
+[AvAffecter]
+	ID=ari_abomination_corpse_expulsion; 
+	actorValue=ari_rot_status;
+	magnitude=2 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status;
+	duration=40;
+	chance=100;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=ari_abomination_corpse_expulsion;
+	cloneFrom=adjacentAndSelf+2;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 1;
+	maxRange = 1.5;
+	airborne=true;
+	arc=true;
+	bypassAll=true;
+	occupyAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=true;
+
+[AvAffecter]
+	ID=ari_abomination_corpse_expulsion; 
+	actorValue=HP;
+	harmful=true;
+	magnitude=c:skill_Ruin * -0.4;
+	duration=-2;
+	chance=100;
+	FXOnHit=chargeSpiralFast_big;
+	FXOnHitColor=Green;
+	FXOnHit=sidewardLines;
+	FXOnHitColor=Green;
+	element=melee;
+	element=physical;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_abomination_corpse_expulsion;
+	cloneFrom=adjacentAndSelf+2;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 2;
+	maxRange = 2.5;
+	airborne=true;
+	arc=true;
+	bypassAll=true;
+	occupyAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=true;
+	
+[AvAffecter]
+	ID=ari_abomination_corpse_expulsion; 
+	actorValue=HP;
+	harmful=true;
+	magnitude=c:TrueHPMax * -0.5;
+	duration=-2;
+	chance=100;
+[AvAffecterAoE]
+	ID=ari_abomination_corpse_expulsion;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+	
+--[AvAffecter]
+--	ID=ari_abomination_corpse_expulsion; 
+--	harmful=false;
+--	actorValue=ari_consumed_zombie;
+--	magnitude=-1;
+--	chance=100;
+--	duration=-2;
+--	visibleEvaluations=false;
+--	visibleMiss=false;
+--[AvAffecterAoE]
+--	ID=ari_abomination_corpse_expulsion;
+--	aoeCasterAsOrigin = true;
+--	cloneFrom=oneTile;
+--	canSelectAllies=true;
+
+
+----------------------------------------------------------------Risen Lich
+--Death Coil
+--strong single target nuke?
+
+----------------------------------------------------------------Beam of Rot
+[Action] ID=ari_lich_rotbeam; 
+	name=Beam of Rot;
+	icon=icon_gravekeeper_death_coil;
+	mpCost=6 * d:mpCostMult + d:mpCostMod;
+	cooldown=50;
+	harmful=true;
+	attractAttention=false;
+	tooltip=Blast all targets in a line with pure necrotic energies, infecting them with eight stacks of Rot<icon=> for <icon=time>40.;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	attractAttention=false;
+	
+	casterAnimation=handsup;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=largePing;
+	FXOnTarget=tinyShakeHoriz;
+	
+[ActionAoE] 
+	ID=ari_lich_rotbeam;
+	needsLoS = true;
+	needsLoE = true;
+	airborne = true;
+	arc = true;
+	cloneFrom=adjacent;
+	
+[AvAffecter]
+	ID=ari_lich_rotbeam; 
+	actorValue=ari_rot_status;
+	magnitude=8 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status;
+	duration=40;
+	chance=d:ruinAcc;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=Green;
+	element=ranged;
+	element=magic;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_lich_rotbeam;
+	shape=2;
+	coneAngle=1;
+	needsLoS = true;
+	needsLoE = true;
+	airborne = true;
+	arc = true;
+	minRange = 1;
+	maxRange = 5;
+	bypassAll=false;
+	occupyAll=true;
+	aoeCasterAsOrigin=true;
+
+
+
+----------------------------------------------------------------Fetid Fields
+--place hazards in aoe to simulate aoe
+--add 1 rot when starting/ending/moving through cloud
+--pop rot stacks for damage at 10 or higher stacks
+[Action] ID=ari_lich_fetid_field; 
+	name=Fetid Fields;
+	icon=icon_gravekeeper_rotfield;
+	mpCost=3 * d:mpCostMult + d:mpCostMod;
+	cooldown=65;
+	harmful=true;
+	attractAttention=false;
+	tooltip=Sacrifice 15% maximum <icon=HP> to forcefully eject a barrage of bone from your own body, piercing and dealing <math=c:skill_Ruin * -0.5 - 3><icon=HP> damage to all targets in a line in front of you. This does not use your action for the turn.<n=>You must have consumed a Skeleton Archer<icon=icon_skeleton_archer_minion>;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	attractAttention=false;
+	
+	casterAnimation=handsup;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=largePing;
+	FXOnTarget=tinyShakeHoriz;
+	
+[ActionAoE] 
+	ID=ari_lich_fetid_field;
+	cloneFrom=oneTile;
+	needsLoS = true;
+	needsLoE = true;
+	airborne=true;
+	arc=true;
+	minRange = 2;
+	maxRange = 5;
+[AvAffecter]
+	ID=ari_lich_fetid_field;
+	actorValue=summonItem;
+	magnitude=ari_fetid_field_item;
+	duration=1;
+	chance=100;
+	FXOnHit=sparkles;
+	FXOnHitColor=Green;
+	element=ranged;
+	element=magic;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_lich_fetid_field;
+	needsLoS = true;
+	needsLoE = true;
+	airborne = true;
+	arc = true;
+	maxRange = 2;
+	bypassAll=true;
+[AvAffecter] --Trick AI into using ability
+	ID=ari_lich_fetid_field;
+	visibleEvaluations=false;
+	harmful=false; 
+	actorValue=ari_ai_skill_useage_multi;
+	visibleMiss=false;
+	magnitude=2;
+	duration=-6;
+	chance=100;
+[AvAffecterAoE]
+	ID=ari_lich_fetid_field;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+	
+	
+--Lich Blight cloud
+[ItemType]  name=Fetid Field;
+ID=ari_fetid_field_item; itemCategory=hazard;
+journalID=journal_ari_fetid_fields; 
+texture=gkart;
+sprite=51;
+pR=pBuralk;
+
+special=cannotBePickedUp; special=randomFlipWhenPlaced;
+--special=moveCostOverride_2;
+special=reactsToPressure; special=big;
+special=transparent; 
+special=ignoreDarkness;
+--special=alwaysBelowOtherItems;
+
+special=timer; 
+--special=timer_advanceOnScreenOnly; 
+special=hideTimer;
+timer=25;
+
+cantFitInTileWith=ari_fetid_field_item;
+
+element=ruin;
+
+-- stepping on them = rot stack, or rot expunge at 10+
+[ItemReaction] 
+ID=ari_fetid_field_item; element=pressureMoveAcross; element=noMoveTaken;
+ action=ari_fetid_field_rot;
+
+-- At the end of duration, chance to spread or disappear
+[ItemReaction] 
+ID=ari_fetid_field_item; element=timerUp; action=ari_fetid_field_spread; newID=X;
+
+
+[JournalEntry]
+ID=journal_ari_fetid_fields;
+category=item; halfPage=true; rarity=0;
+title=Fetid Fields;
+text=<itemBig=ari_fetid_field_item><title=Fetid Fields><brAdj=>Fields of foul rot and decay.;
+
+[Action] 
+ID=ari_fetid_field_rot; 
+[ActionAoE] 
+	ID=ari_fetid_field_rot;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_fetid_field_rot; 
+	actorValue=HP;
+	magnitude=t:ari_rot_status * -2;
+	duration=-2;
+	chance=100 * moreThan:9:t:ari_rot_status;
+	element=physical;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_fetid_field_rot;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_fetid_field_rot; 
+	actorValue=ari_rot_status;
+	magnitude=-t:ari_rot_status;
+	duration=-2;
+	chance=100 * moreThan:9:t:ari_rot_status;
+[AvAffecterAoE]
+	ID=ari_fetid_field_rot;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_fetid_field_rot; 
+	actorValue=ari_rot_status;
+	magnitude=1 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status + moreThan:13:t:ari_rot_status;
+	duration=40;
+	chance=100;
+[AvAffecterAoE]
+	ID=ari_fetid_field_rot;
+	cloneFrom=oneTile;
+
+[Action] 
+ID=ari_fetid_field_spread; 
+[ActionAoE] 
+	ID=ari_fetid_field_spread;
+	cloneFrom=adjacent;
+[AvAffecter]
+	ID=ari_fetid_field_spread; 
+	actorValue=summonItem;
+	magnitude=ari_fetid_field_item;
+	duration=1;
+	chance=100;
+	FXOnHit=frostsparkles;
+	FXOnHitColor=SkyBlue;
+	element=melee;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_fetid_field_spread;
+	fReq=m:rand(100)-60;
+	cloneFrom=adjacent;
+	
+	
+----------------------------------------------------------------Disintegrate, Rot interaction spell
+[Action] ID=ari_lich_disintegrate; 
+	name=Disintegrate;
+	icon=icon_gravekeeper_disintegrate;
+	mpCost=8 * d:mpCostMult + d:mpCostMod;
+	harmful=true;
+	attractAttention=false;
+	tooltip=Forcefully expunge all stacks of Rot on the target, dealing damage to the target and those nearby and reducing armor for each stack.;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	attractAttention=false;
+	
+	casterAnimation=handsup;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=largePing;
+	FXOnTarget=tinyShakeHoriz;
+	
+[ActionAoE] 
+	ID=ari_lich_disintegrate;
+	cloneFrom=oneTile;
+	maxRange=5;
+	arc=true;
+	airborne=true;
+	needsLoE=true;
+	needsLoS=true;
+	bypassAll=true;
+	canSelectAllies=false;
+	fReq=moreThan:0:t:ari_rot_status;
+[AvAffecter]
+	ID=ari_lich_disintegrate;
+	visibleMiss=false;
+	actorValue=PhysDef;
+	harmful=true;
+	magnitude=t:ari_rot_status * -0.5;
+	duration=60;
+	chance=100;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=Purple;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=Black;
+	FXOnHit=ping;
+	FXOnHitColor=Black;
+	element=ranged;
+	element=magic;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_lich_disintegrate;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_lich_disintegrate;
+	visibleMiss=false;
+	actorValue=MagDef;
+	harmful=true;
+	magnitude=t:ari_rot_status * -0.5;
+	duration=60;
+	chance=100;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=Purple;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=Black;
+	FXOnHit=ping;
+	FXOnHitColor=Black;
+	element=ranged;
+	element=magic;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_lich_disintegrate;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_lich_disintegrate;
+	visibleMiss=false;
+	actorValue=HP;
+	harmful=true;
+	magnitude=t:ari_rot_status * -4;
+	duration=-2;
+	chance=100;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=Purple;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=Black;
+	FXOnHit=ping;
+	FXOnHitColor=Black;
+	element=ranged;
+	element=magic;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_lich_disintegrate;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_lich_disintegrate;
+	visibleMiss=false;
+	actorValue=HP;
+	harmful=true;
+	magnitude=-t:ari_rot_status;
+	duration=-2;
+	chance=100;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=Purple;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=Black;
+	FXOnHit=ping;
+	FXOnHitColor=Black;
+	element=ranged;
+	element=magic;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_lich_disintegrate;
+	cloneFrom=oneTile;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 1;
+	maxRange = 2;
+	airborne=true;
+	arc=true;
+	bypassAll=true;
+	occupyAll=true;
+	canSelectAllies=false;
+	canSelectEnemies=true;
+[AvAffecter]
+	ID=ari_lich_disintegrate;
+	visibleMiss=false;
+	actorValue=ari_rot_status;
+	harmful=true;
+	magnitude=-t:ari_rot_status;
+	duration=-2;
+	chance=100;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=Purple;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=Black;
+	FXOnHit=ping;
+	FXOnHitColor=Black;
+[AvAffecterAoE]
+	ID=ari_lich_disintegrate;
+	cloneFrom=oneTile;
+
+----------------------------------------------------------------Curse of Death
+[Action] ID=ari_lich_death_curse; 
+	name=Curse of Death;
+	icon=icon_gravekeeper_deathcurse;
+	mpCost=6 * d:mpCostMult + d:mpCostMod;
+	cooldown=90;
+	harmful=true;
+	attractAttention=false;
+	tooltip=Curse an enemy. Whenever the target takes damage, the curse accumulates and will explode at the end of its duration, releasing all of the accumulated damage at once.;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	attractAttention=false;
+	
+	casterAnimation=handsup;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=largePing;
+	FXOnTarget=tinyShakeHoriz;
+	
+[ActionAoE] 
+	ID=ari_lich_death_curse;
+	cloneFrom=oneTile;
+	maxRange=5;
+	arc=true;
+	airborne=true;
+	needsLoE=true;
+	needsLoS=true;
+	bypassAll=true;
+	canSelectAllies=false;
+[AvAffecter]
+	ID=ari_lich_death_curse;
+	visibleMiss=false;
+	actorValue=ari_death_curse_status;
+	harmful=true;
+	magnitude=1;
+	duration=67;
+	chance=100;
+	FXOnTarget=downwardLines;
+	FXOnTargetColor=Purple;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=Black;
+	FXOnHit=ping;
+	FXOnHitColor=Black;
+	element=ranged;
+	element=magic;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_lich_death_curse;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_lich_death_curse;
+	actorValue=summonItem;
+	magnitude=ari_death_curse_item;
+	duration=1;
+	chance=100;
+	FXOnHit=sparkles;
+	FXOnHitColor=Black;
+[AvAffecterAoE]
+	ID=ari_lich_death_curse;
+	cloneFrom=oneTile;
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+--Lich Curse of Death workaround
+[ItemType]  name=Curse of Death;
+ID=ari_death_curse_item; itemCategory=hazard;
+journalID=journal_ari_death_curse; 
+texture=gkart;
+sprite=52;
+pR=pBuralk;
+
+special=cannotBePickedUp; special=randomFlipWhenPlaced;
+--special=moveCostOverride_2;
+special=reactsToPressure; special=big;
+special=transparent; 
+special=invisible;
+special=alwaysBelowOtherItems;
+
+special=timer; special=timer_advanceOnScreenOnly; 
+--special=hideTimer;
+timer=66;
+
+-- At the end of duration, explode
+[ItemReaction] 
+ID=ari_death_curse_item; element=timerUp; action=ari_death_curse_unleash; newID=X;
+
+
+[JournalEntry]
+ID=journal_ari_death_curse;
+category=item; halfPage=true; rarity=0;
+title=Curse of Death;
+text=<itemBig=ari_death_curse_item><title=Curse of Death><brAdj=>Curse of Death.;
+	
+[Action] ID=ari_death_curse_unleash; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+	
+[ActionAoE] 
+	ID=ari_death_curse_unleash; 
+	cloneFrom=oneTile;
+
+[AvAffecter]
+	ID=ari_death_curse_unleash; 
+	visibleEvaluations=true;
+	harmful=true;
+	actorValue=HP;
+	magnitude=t:ari_death_curse_damage * -1;
+	duration=-2;
+	chance=100 * t:ari_death_curse_status;
+	visibleMiss=false;
+	element=magic;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_death_curse_unleash;
+	shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=true;
+[AvAffecter]
+	ID=ari_death_curse_unleash; 
+	visibleEvaluations=true;
+	harmful=true;
+	actorValue=ari_death_curse_damage;
+	magnitude=-c:ari_death_curse_damage;
+	duration=-2;
+	chance=100 * t:ari_death_curse_status;
+	visibleMiss=false;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_death_curse_unleash;
+	shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=true;
+[AvAffecter]
+	ID=ari_death_curse_unleash; 
+	visibleEvaluations=true;
+	harmful=true;
+	actorValue=ari_death_curse_status;
+	magnitude=-1;
+	duration=-2;
+	chance=100 * t:ari_death_curse_status;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_death_curse_unleash;
+	shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=true;
+	
+	
+	
+----------------------------------------------------------------Phantom ability for anti mage
+[Action] ID=ari_phantom_horror; 
+	name=Horrific Visions;
+	icon=icon_gravekeeper_horrific_visions;
+	mpCost=0 * d:mpCostMult + d:mpCostMod;
+	harmful=true;
+	attractAttention=false;
+	tooltip=Broken will or something.;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	attractAttention=false;
+	
+	casterAnimation=spellcast;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=largePing;
+	FXOnTargetColor=SkyBlue;
+	FXOnTarget=tinyShakeHoriz;
+	
+[ActionAoE] 
+	ID=ari_phantom_horror;
+	cloneFrom=adjacent;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 1;
+	maxRange = 3;
+	airborne=true;
+	arc=true;
+	bypassAll=true;
+	occupyAll=true;
+[AvAffecter]
+	ID=ari_phantom_horror; 
+	actorValue=HP;
+	harmful=true;
+	magnitude=t:MagAtk * -0.5;
+	duration=-2;
+	chance=100;
+	FXOnTile=chargeBurst;
+	FXOnTileColor=White;
+	FXOnHit=chargeSpiralFast_big;
+	FXOnHitColor=White;
+	FXOnHit=downwardLines;
+	FXOnHitColor=White;
+	FXOnHit=ping;
+	FXOnHitColor=White;
+	element=ranged;
+	element=magic;
+	element=ice;
+[AvAffecterAoE]
+	ID=ari_phantom_horror;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 0;
+	maxRange = 2;
+	airborne=true;
+	arc=true;
+	bypassAll=true;
+	occupyAll=true;
+	canSelectAllies=false;
+	canSelectEnemies=true;
+[AvAffecter]
+	ID=ari_phantom_horror; 
+	actorValue=ari_horrific_visions_status; --take MP damage and deal damage based on magatk when acting
+	harmful=true;
+	magnitude=1;
+	duration=50;
+	chance=100;
+[AvAffecterAoE]
+	ID=ari_phantom_horror;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 0;
+	maxRange = 2;
+	airborne=true;
+	arc=true;
+	bypassAll=true;
+	occupyAll=true;
+	canSelectAllies=false;
+	canSelectEnemies=true;
+[AvAffecter]
+	ID=ari_phantom_horror; 
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=ari_spirit_ability_used;
+	magnitude=1;
+	chance=100 * tsa:ari_summoned;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_phantom_horror;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+	canSelectAllies=true;
+	
+----------------------------------------------------------------Specter cold spot
+[Action] ID=ari_specter_coldspot; 
+	name=Cold Spot;
+	icon=icon_gravekeeper_poltergeist_shriek;
+	mpCost=0 * d:mpCostMult + d:mpCostMod;
+	harmful=true;
+	attractAttention=false;
+	tooltip=Appear next to a target and unleash a piercing aura of cold, causing the target to become chilled with -1<icon=moveDistance>.;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	attractAttention=false;
+	
+	casterAnimation=spellcast;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=largePing;
+	FXOnTargetColor=SkyBlue;
+	FXOnTarget=tinyShakeHoriz;
+	
+	
+[ActionAoE] 
+	ID=ari_specter_coldspot;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+	canSelectAllies=true;
+[AvAffecter]
+	ID=ari_specter_coldspot;
+	actorValue=HP;
+	magnitude=-1;
+	duration=-2;
+	chance=100;
+	FXOnHit=frostsparkles;
+	FXOnHitColor=SkyBlue;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_specter_coldspot;
+	cloneFrom=adjacent;
+	needsLoS = true;
+	needsLoE = true;
+	airborne=true;
+	arc=true;
+[AvAffecter]
+	ID=ari_specter_coldspot;
+	actorValue=summonItem;
+	magnitude=ari_cold_spot_item;
+	duration=1;
+	chance=100;
+	FXOnHit=frostsparkles;
+	FXOnHitColor=SkyBlue;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_specter_coldspot;
+	cloneFrom=adjacentAndSelf;
+	needsLoS = true;
+	needsLoE = true;
+	airborne=true;
+	arc=true;
+	--bypassAll=true;
+[AvAffecter]
+	ID=ari_specter_coldspot;
+	actorValue=summonItem;
+	magnitude=ari_cold_spot_item_weak;
+	duration=1;
+	chance=100;
+	FXOnHit=frostsparkles;
+	FXOnHitColor=SkyBlue;
+[AvAffecterAoE]
+	ID=ari_specter_coldspot;
+	cloneFrom=adjacentAndSelf+1;
+	minRange=1;
+	needsLoS = true;
+	needsLoE = true;
+	airborne=true;
+	arc=true;
+	--bypassAll=true;
+--[AvAffecter]
+--	ID=ari_specter_coldspot; 
+--	visibleEvaluations=false;
+--	visibleMiss=false;
+--	harmful=false;
+--	actorValue=ari_spirit_ability_used;
+--	magnitude=1;
+--	chance=100 * tsa:ari_summoned;
+--	duration=-2;
+--	FXOnTile=delay_tiny;
+--[AvAffecterAoE]
+--	ID=ari_specter_coldspot;
+--	cloneFrom=oneTile;
+--	aoeCasterAsOrigin=true;
+--	canSelectAllies=true;
+[AvAffecter] --Trick AI into using ability
+	ID=ari_specter_coldspot;
+	visibleEvaluations=false;
+	harmful=false; 
+	actorValue=ari_ai_skill_useage_multi;
+	visibleMiss=false;
+	magnitude=10;
+	duration=10;
+	chance=100;
+[AvAffecterAoE]
+	ID=ari_specter_coldspot;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+	
+
+--Specter Cold Spot item
+[ItemType]  name=Cold Spot;
+ID=ari_cold_spot_item; itemCategory=hazard;
+journalID=journal_ari_cold_spot; 
+texture=gkart;
+sprite=51;
+pR=p77;
+
+special=cannotBePickedUp; special=randomFlipWhenPlaced;
+--special=moveCostOverride_2;
+special=reactsToPressure; special=big;
+special=transparent; 
+special=ignoreDarkness;
+--special=alwaysBelowOtherItems;
+
+special=timer; special=timer_advanceOnScreenOnly; 
+--special=hideTimer;
+timer=30;
+
+cantFitInTileWith=ari_cold_spot_item;
+cantFitInTileWith=ari_cold_spot_item_weak;
+
+element=ice;
+
+[ItemReaction] 
+ID=ari_cold_spot_item; element=pressureMoveAcross; element=noMoveTaken;
+ action=ari_cold_spot_chill;
+
+-- At the end of duration, it will disappear
+[ItemReaction] 
+ID=ari_cold_spot_item; element=timerUp; newID=X;
+
+
+[JournalEntry]
+ID=journal_ari_cold_spot;
+category=item; halfPage=true; rarity=0;
+title=Cold Spot;
+text=<itemBig=ari_cold_spot_item><title=Cold Spot><brAdj=>A chilling spot left by a Specter.;
+
+[Action] 
+ID=ari_cold_spot_chill; 
+[ActionAoE] 
+	ID=ari_cold_spot_chill;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_cold_spot_chill; 
+	actorValue=HP;
+	magnitude=-1;
+	duration=-2;
+	chance=100;
+	element=ice;
+[AvAffecterAoE]
+	ID=ari_cold_spot_chill;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_cold_spot_chill; 
+	actorValue=moveDistance;
+	magnitude=t:moveDistance * -0.5;
+	duration=-5;
+	chance=100;
+	element=ice;
+[AvAffecterAoE]
+	ID=ari_cold_spot_chill;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_cold_spot_chill; 
+	actorValue=actTime;
+	magnitude=m:rand(5) * 1;
+	duration=-5;
+	chance=100;
+	element=ice;
+[AvAffecterAoE]
+	ID=ari_cold_spot_chill;
+	cloneFrom=oneTile;
+	
+--Specter WEAKER Cold Spot item
+[ItemType]  name=Cold Spot;
+ID=ari_cold_spot_item_weak; itemCategory=hazard;
+journalID=journal_ari_cold_spot; 
+texture=gkart;
+sprite=51;
+pR=p77;
+
+special=cannotBePickedUp; special=randomFlipWhenPlaced;
+--special=moveCostOverride_2;
+special=reactsToPressure; special=big;
+special=transparent; 
+special=ignoreDarkness;
+--special=alwaysBelowOtherItems;
+
+special=timer; special=timer_advanceOnScreenOnly; 
+--special=hideTimer;
+timer=15;
+
+cantFitInTileWith=ari_cold_spot_item_weak;
+cantFitInTileWith=ari_cold_spot_item;
+
+element=ice;
+
+[ItemReaction] 
+ID=ari_cold_spot_item_weak; element=pressureMoveAcross; element=noMoveTaken;
+ action=ari_cold_spot_chill_weak;
+
+-- At the end of duration, it will disappear
+[ItemReaction] 
+ID=ari_cold_spot_item_weak; element=timerUp; newID=X;
+
+[Action] 
+ID=ari_cold_spot_chill_weak; 
+[ActionAoE] 
+	ID=ari_cold_spot_chill_weak;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_cold_spot_chill_weak; 
+	actorValue=moveDistance;
+	magnitude=t:moveDistance * -0.25;
+	duration=-5;
+	chance=100;
+	element=ice;
+[AvAffecterAoE]
+	ID=ari_cold_spot_chill_weak;
+	cloneFrom=oneTile;
+
+
+----------------------------------------------------------------Wisp abilities
+[Action] ID=ari_wisp_souldrain; 
+	name=Soul Drain;
+	icon=icon_gravekeeper_chill_touch;
+	mpCost=0 * d:mpCostMult + d:mpCostMod;
+	harmful=false;
+	attractAttention=false;
+	tooltip=Drain the souls of nearby targets and apply Soul Rupture, further crippling the living.;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	numTargets=1;
+	
+	attractAttention=false;
+	
+	casterAnimation=spellcast;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=largePing;
+	FXOnTargetColor=SkyBlue;
+	FXOnTarget=tinyShakeHoriz;
+	
+[ActionAoE] 
+	ID=ari_wisp_souldrain;
+	cloneFrom=adjacent;
+
+[AvAffecter]
+	ID=ari_wisp_souldrain; 
+	actorValue=HP;
+	harmful=true;
+	magnitude=d:ruinDmg(9);
+	duration=-2;
+	chance=d:iceAcc;
+	element=melee;
+	element=magic;
+	element=ice;
+	FXOnTile=chargeBurst;
+	FXOnTileColor=White;
+	FXOnHit=chargeSpiralFast_big;
+	FXOnHitColor=White;
+	FXOnHit=downwardLines;
+	FXOnHitColor=White;
+	FXOnHit=ping;
+	FXOnHitColor=White;
+[AvAffecterAoE]
+	ID=ari_wisp_souldrain;
+	cloneFrom=adjacent+1;
+	canSelectAllies=false;
+	canSelectEnemies=true;
+[AvAffecter]
+	ID=ari_wisp_souldrain;
+	visibleMiss=false;
+	visibleEvaluations=false;
+	actorValue=ari_ruptured_soul_status;
+	harmful=true;
+	magnitude=1;
+	duration=30;
+	chance=d:ruinAcc;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=Purple;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=Black;
+	FXOnHit=ping;
+	FXOnHitColor=Black;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_wisp_souldrain;
+	cloneFrom=adjacent+1;
+	canSelectAllies=false;
+	canSelectEnemies=true;
+[AvAffecter]
+	ID=ari_wisp_souldrain;
+	visibleMiss=false;
+	visibleEvaluations=false;
+	actorValue=MP;
+	harmful=false;
+	magnitude=-40;
+	duration=-2;
+	chance=d:ruinAcc;
+[AvAffecterAoE]
+	ID=ari_wisp_souldrain;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+
+----------------------------------------------------------------Ghost abilities
+[Action] ID=ari_ghost_spiritcreep; 
+	name=Spirit Creep;
+	icon=icon_gravekeeper_ghost_haunting;
+	mpCost=0 * d:mpCostMult + d:mpCostMod;
+	harmful=false;
+	attractAttention=false;
+	tooltip=Terrify your target, dealing damage from a distance and applying Soul Rupture.;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	numTargets=1;
+	
+	attractAttention=false;
+	
+	casterAnimation=spellcast;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=largePing;
+	FXOnTargetColor=SkyBlue;
+	FXOnTarget=tinyShakeHoriz;
+	
+[ActionAoE] 
+	ID=ari_ghost_spiritcreep;
+	minRange=1;
+	maxRange=3;
+	arc=true;
+	airborne=true;
+	needsLoS=false;
+	needsLoE=false;
+	canSelectEnemies=true;
+	occupyAll=true;
+	bypassAll=true;
+
+[AvAffecter]
+	ID=ari_ghost_spiritcreep; 
+	actorValue=HP;
+	harmful=true;
+	magnitude=d:ruinDmg(6);
+	duration=-2;
+	chance=d:iceAcc;
+	element=ranged;
+	element=magic;
+	element=ice;
+	FXOnTile=chargeBurst;
+	FXOnTileColor=White;
+	FXOnHit=chargeSpiralFast_big;
+	FXOnHitColor=White;
+	FXOnHit=downwardLines;
+	FXOnHitColor=White;
+	FXOnHit=ping;
+	FXOnHitColor=White;
+[AvAffecterAoE]
+	ID=ari_ghost_spiritcreep;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_ghost_spiritcreep;
+	visibleMiss=false;
+	visibleEvaluations=false;
+	actorValue=ari_ruptured_soul_status;
+	harmful=true;
+	magnitude=1;
+	duration=30;
+	chance=d:ruinAcc;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=Purple;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=Black;
+	FXOnHit=ping;
+	FXOnHitColor=Black;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_ghost_spiritcreep;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_ghost_spiritcreep;
+	visibleMiss=false;
+	visibleEvaluations=false;
+	actorValue=MP;
+	harmful=false;
+	magnitude=-33;
+	duration=-2;
+	chance=d:ruinAcc;
+[AvAffecterAoE]
+	ID=ari_ghost_spiritcreep;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+
+	
+----------------------------------------------------------------Wraith abilities
+[Action] ID=ari_wraith_soul_tear; 
+	name=Soul Tear;
+	icon=icon_gravekeeper_soul_tear;
+	mpCost=0 * d:mpCostMult + d:mpCostMod;
+	harmful=true;
+	chargeTime=10 * d:chargeTimeMult * d:chargeTimeMult_onlyWithMP + d:chargeTimeMod + d:chargeTimeMod_onlyWithMP;
+	attractAttention=false;
+	tooltip=Wrench the target's soul from its body, dealing massive damage after a cast time.;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	special=requiresCasting;
+	special=redoMovementAnalysis;
+	special=requiresCharging;
+	special=cancelChargingOnMove;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	numTargets=1;
+	
+	attractAttention=false;
+	
+	casterAnimation=spellcast;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=largePing;
+	FXOnTargetColor=SkyBlue;
+	FXOnTarget=tinyShakeHoriz;
+	
+[ActionAoE] 
+	ID=ari_wraith_soul_tear;
+	minRange=1;
+	maxRange=7;
+	arc=true;
+	airborne=true;
+	needsLoS=false;
+	needsLoE=false;
+	canSelectEnemies=true;
+	occupyAll=true;
+	bypassAll=true;
+
+[AvAffecter]
+	ID=ari_wraith_soul_tear; 
+	actorValue=HP;
+	harmful=true;
+	magnitude=d:ruinDmg(18);
+	duration=-2;
+	chance=100;
+	FXOnTile=chargeBurst;
+	FXOnTileColor=White;
+	FXOnHit=chargeBurst;
+	FXOnHitColor=Black;
+	FXOnHit=chargeSpiralFast_big;
+	FXOnHitColor=White;
+	FXOnHit=downwardLines;
+	FXOnHitColor=Green;
+	FXOnHit=ping;
+	FXOnHitColor=White;
+[AvAffecterAoE]
+	ID=ari_wraith_soul_tear;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_wraith_soul_tear;
+	visibleMiss=false;
+	visibleEvaluations=false;
+	actorValue=MP;
+	harmful=false;
+	magnitude=-33;
+	duration=-2;
+	chance=d:ruinAcc;
+[AvAffecterAoE]
+	ID=ari_wraith_soul_tear;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	
+	
+	
+----------------------------------------------------------------Generic Spirit teleport
+[Action] ID=ari_spirit_spook; 
+	name=Spook;
+	icon=icon_gravekeeper_poltergeist_shriek;
+	mpCost=0 * d:mpCostMult + d:mpCostMod;
+	harmful=false;
+	attractAttention=false;
+	tooltip=Appear next to a target in a ghastly fashion.;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	attractAttention=false;
+	
+	casterAnimationSpeed=1.75;
+	special=swapCasterWithTarget;
+	special=doesNotConsumeCombatAction;
+	
+	FXOnCaster=sfx_highestHum;
+	FXOnCaster=horizSpark_many_wideArea;
+	FXOnCaster=gateOpen_flicker_fast;
+	FXOnCaster=gateClose_fast;
+	
+	queueAnotherAction=ari_spirit_spook_post;
+	
+[ActionAoE] 
+	ID=ari_spirit_spook;
+	needsLoS = true;
+	needsLoE = false;
+	airborne=true;
+	arc=true;
+	teleporting=true;
+	minRange = 1;
+	maxRange = 3;
+	canSelectActors=false;
+	bypassAll=true;
+	occupyAll=false;
+[AvAffecter]
+	ID=ari_spirit_spook; 
+	harmful=false;
+	actorValue=gate;
+	magnitude=0;
+	duration=-2;
+	chance=100;
+	FXOnTile=horizSpark_many_wideArea;
+	FXOnTile=gateOpen_fast;
+	FXOnTile=gateClose_flicker_fast;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_spirit_spook;
+	cloneFrom=oneTile;
+--[AvAffecter] --Trick AI into using ability
+--	ID=ari_spirit_spook;
+--	visibleEvaluations=false;
+--	harmful=false; 
+--	actorValue=ari_ai_skill_useage_multi;
+--	visibleMiss=false;
+--	magnitude=1;
+--	duration=10;
+--	chance=100;
+--[AvAffecterAoE]
+--	ID=ari_spirit_spook;
+--	aoeCasterAsOrigin = true;
+--	cloneFrom=oneTile;
+--	canSelectAllies=true;
+
+[Action] ID=ari_spirit_spook_post; 
+	name=Spook;
+	icon=icon_gravekeeper_poltergeist_shriek;
+	mpCost=0 * d:mpCostMult + d:mpCostMod;
+	harmful=false;
+	attractAttention=false;
+	tooltip=Appear next to a target in a ghastly fashion.;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	attractAttention=false;
+	
+	casterAnimationSpeed=1.75;
+
+	FXOnCaster=sfx_highestHum;
+	FXOnCaster=horizSpark_many_wideArea;
+	FXOnCaster=gateOpen_flicker_fast;
+	FXOnCaster=gateClose_fast;
+	
+[ActionAoE] 
+	ID=ari_spirit_spook_post;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_spirit_spook_post; 
+	harmful=true;
+	actorValue=MagDef;
+	magnitude=-2;
+	duration=20;
+	chance=100;
+[AvAffecterAoE]
+	ID=ari_spirit_spook_post;
+	cloneFrom=adjacent+2;
+	canSelectAllies=false;
+	canSelectEnemies=true;	
+	
+----------------------------------------------------------------Mausoleum abilities
+----------------------------------------------------------------Haunting
+[Action] ID=ari_mausoleum_haunting; 
+	name=Haunting;
+	icon=icon_gravekeeper_soul_tear;
+	mpCost=0 * d:mpCostMult + d:mpCostMod;
+	cooldown=50;
+	harmful=false;
+	attractAttention=false;
+	tooltip=Bombard an enemy with a wailing spirit which may summon forth souls of the dead. The target also becomes haunted.;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	numTargets=1;
+	
+	attractAttention=false;
+	
+	casterAnimation=spellcast;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=largePing;
+	FXOnTargetColor=SkyBlue;
+	FXOnTarget=tinyShakeHoriz;
+	
+	FXOnCaster=sfx_highThwum_loud;
+	FXOnCasterColor=DarkBlue;
+	FXOnCaster=ping_noOverlap;
+	FXOnCasterColor=DarkBlue;
+	FXOnCaster=ari_energyShotSummon_Souls;
+	
+[ActionAoE] 
+	ID=ari_mausoleum_haunting;
+	cloneFrom=oneTile;
+	needsLoS = true;
+	needsLoE = true;
+	airborne = true;
+	arc = true;
+	maxRange = 9;
+	bypassAll=false;
+	occupyAll=true;
+	canSelectAllies=false;
+	canSelectEnemies=true;
+	
+[AvAffecter] --Trick AI into using ability
+	ID=ari_mausoleum_haunting;
+	visibleEvaluations=false;
+	harmful=false; 
+	actorValue=ari_ai_skill_useage_multi;
+	visibleMiss=false;
+	magnitude=4;
+	duration=10;
+	chance=100;
+[AvAffecterAoE]
+	ID=ari_mausoleum_haunting;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+[AvAffecter]
+    ID=ari_mausoleum_haunting; 
+    visibleMiss=false; visibleEvaluations=false;
+    actorValue=task;
+    magnitude=setGlobalVar,ari_mausoleum_ruin_skill,c:skill_Ruin;
+    duration=1;
+    chance=100; 
+[AvAffecterAoE]
+    ID=ari_mausoleum_haunting;
+    cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_mausoleum_haunting; 
+	visibleMiss=false;
+	actorValue=ari_haunted_status;
+	harmful=true;
+	magnitude=1;
+	duration=50;
+	chance=d:ruinAcc;
+	FXOnHit=ping;
+	FXOnHitColor=Black;
+	FXOnTile=ari_energyShot_Souls;
+	element=ranged;
+	element=magic;
+	element=ice;
+[AvAffecterAoE]
+	ID=ari_mausoleum_haunting;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_mausoleum_haunting; 
+	visibleMiss=false;
+	actorValue=HP;
+	harmful=true;
+	magnitude=d:ruinDmgHalfDef(10);
+	duration=-2;
+	chance=d:ruinAcc;
+	FXOnHit=ping;
+	FXOnHitColor=Black;
+	element=ranged;
+	element=magic;
+	element=ice;
+[AvAffecterAoE]
+	ID=ari_mausoleum_haunting;
+	needsLoS = true;
+	needsLoE = true;
+	airborne = true;
+	arc = true;
+	maxRange = 2;
+	bypassAll=false;
+	occupyAll=true;
+	canSelectAllies=false;
+	canSelectEnemies=true;
+[AvAffecter]
+	ID=ari_mausoleum_haunting; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	magnitude=ari_spirit_wisp;
+	chance=11 - 101 * m:targetExists;
+	duration=-2;
+	element=ruin;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_mausoleum_haunting;
+	fReq=m:rand(100)-60;
+	needsLoS = true;
+	needsLoE = true;
+	airborne = true;
+	arc = true;
+	maxRange = 2;
+	bypassAll=false;
+	occupyAll=true;
+	canSelectAllies=false;
+	canSelectEnemies=true;
+[AvAffecter]
+	ID=ari_mausoleum_haunting; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	magnitude=ari_spirit_wraith;
+	chance=11 - 101 * m:targetExists;
+	duration=-2;
+	element=ruin;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_mausoleum_haunting;
+	fReq=m:rand(100)-60;
+	needsLoS = true;
+	needsLoE = true;
+	airborne = true;
+	arc = true;
+	maxRange = 2;
+	bypassAll=false;
+	occupyAll=true;
+	canSelectAllies=false;
+	canSelectEnemies=true;
+[AvAffecter]
+	ID=ari_mausoleum_haunting; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	magnitude=ari_spirit_ghost;
+	chance=11 - 101 * m:targetExists;
+	duration=-2;
+	element=ruin;
+	FXOnTile=tinyShakeHoriz;
+	FXOnTile=blackCloud;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_mausoleum_haunting;
+	needsLoS = true;
+	needsLoE = true;
+	airborne = true;
+	arc = true;
+	maxRange = 2;
+	bypassAll=false;
+	occupyAll=true;
+	canSelectAllies=false;
+	canSelectEnemies=true;
+
+
+--Give specters magic attack
+[AvAffecter]
+	ID=ari_mausoleum_haunting; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=MagAtk;
+	magnitude=c:skill_Ruin * 0.3;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_mausoleum_haunting;
+	needsLoS = true;
+	needsLoE = true;
+	airborne = true;
+	arc = true;
+	maxRange = 2;
+	bypassAll=false;
+	occupyAll=true;
+	canSelectAllies=false;
+	canSelectEnemies=true;
+
+--Give specters physical defense
+[AvAffecter]
+	ID=ari_mausoleum_haunting; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=PhysDef;
+	magnitude=c:skill_Ruin * 0.1;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_mausoleum_haunting;
+	needsLoS = true;
+	needsLoE = true;
+	airborne = true;
+	arc = true;
+	maxRange = 2;
+	bypassAll=false;
+	occupyAll=true;
+	canSelectAllies=false;
+	canSelectEnemies=true;
+
+--Give specters minions magic defense
+[AvAffecter]
+	ID=ari_mausoleum_haunting; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=MagDef;
+	magnitude=c:skill_Ruin * 0.3;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_mausoleum_haunting;
+	needsLoS = true;
+	needsLoE = true;
+	airborne = true;
+	arc = true;
+	maxRange = 2;
+	bypassAll=false;
+	occupyAll=true;
+	canSelectAllies=false;
+	canSelectEnemies=true;
+
+--Give specters our Ruin skill for added effects
+[AvAffecter]
+	ID=ari_mausoleum_haunting; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=skill_Ruin;
+	magnitude=c:skill_Ruin * 1.0;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_mausoleum_haunting;
+	needsLoS = true;
+	needsLoE = true;
+	airborne = true;
+	arc = true;
+	maxRange = 2;
+	bypassAll=false;
+	occupyAll=true;
+	canSelectAllies=false;
+	canSelectEnemies=true;
+
+--Give the specters time so that they act faster
+[AvAffecter]
+	ID=ari_mausoleum_haunting; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=actTimer;
+	magnitude=20;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_mausoleum_haunting;
+	needsLoS = true;
+	needsLoE = true;
+	airborne = true;
+	arc = true;
+	maxRange = 2;
+	bypassAll=false;
+	occupyAll=true;
+	canSelectAllies=false;
+	canSelectEnemies=true;
+
+--Remove the summoned undead AV so we don't keep buffing the same minions
+[AvAffecter]
+    ID=ari_mausoleum_haunting;
+	visibleEvaluations=false;
+    actorValue=ari_summoned_undead_AV;
+    harmful=false;
+    visibleMiss=false;
+    magnitude=-1;
+    duration=-2;
+    chance=100*t:ari_summoned_undead_AV;
+[AvAffecterAoE]
+	ID=ari_mausoleum_haunting;
+	needsLoS = true;
+	needsLoE = true;
+	airborne = true;
+	arc = true;
+	maxRange = 2;
+	bypassAll=false;
+	occupyAll=true;
+	canSelectAllies=false;
+	canSelectEnemies=true;
+
+
+
+
+----------------------------------------------------------------Summon spirits
+[Action] ID=ari_mausoleum_summon_spirits; 
+	name=Summon Spirits;
+	icon=icon_gravekeeper_soul_tear;
+	mpCost=0 * d:mpCostMult + d:mpCostMod;
+	--cooldown=35;
+	harmful=false;
+	attractAttention=false;
+	tooltip=Summon an assortment of Spirits to terrify and wreak havoc amongst enemies.;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	numTargets=3;
+	
+	attractAttention=false;
+	
+	casterAnimation=spellcast;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=largePing;
+	FXOnTargetColor=SkyBlue;
+	FXOnTarget=tinyShakeHoriz;
+	
+[ActionAoE] 
+	ID=ari_mausoleum_summon_spirits;
+	cloneFrom=adjacent+2;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	canSelectActors=false;
+	occupyAll=false;
+	
+[AvAffecter] --Trick AI into using ability
+	ID=ari_mausoleum_summon_spirits;
+	visibleEvaluations=false;
+	harmful=false; 
+	actorValue=ari_ai_skill_useage_multi;
+	visibleMiss=false;
+	magnitude=5;
+	duration=10;
+	chance=100;
+[AvAffecterAoE]
+	ID=ari_mausoleum_summon_spirits;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+--[AvAffecter]
+--	ID=ari_mausoleum_summon_spirits; 
+--	actorValue=PhysDef;
+--	harmful=false;
+--	magnitude=1;
+--	duration=-6;
+--	chance=100;
+--[AvAffecterAoE]
+--	ID=ari_mausoleum_summon_spirits;
+--	aoeCasterAsOrigin = true;
+--	cloneFrom=oneTile;
+--	canSelectAllies=true;
+[AvAffecter]
+	ID=ari_mausoleum_summon_spirits; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	magnitude=ari_spirit_wisp;
+	chance=100 - 101 * m:targetExists;
+	duration=-2;
+	element=ruin;
+	FXOnTile=tinyShakeHoriz;
+	FXOnTile=blackCloud;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_mausoleum_summon_spirits;
+	fReq=m:rand(100)-60;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_mausoleum_summon_spirits; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	magnitude=ari_spirit_ghost;
+	chance=100 - 101 * m:targetExists;
+	duration=-2;
+	element=ruin;
+	FXOnTile=tinyShakeHoriz;
+	FXOnTile=blackCloud;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_mausoleum_summon_spirits;
+	fReq=m:rand(100)-60;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_mausoleum_summon_spirits; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	magnitude=ari_spirit_wraith;
+	chance=100 - 101 * m:targetExists;
+	duration=-2;
+	element=ruin;
+	FXOnTile=tinyShakeHoriz;
+	FXOnTile=blackCloud;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_mausoleum_summon_spirits;
+	cloneFrom=oneTile;
+	
+
+
+
+--Give specters magic attack
+[AvAffecter]
+	ID=ari_mausoleum_summon_spirits; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=MagAtk;
+	magnitude=c:skill_Ruin * 0.3;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_mausoleum_summon_spirits;
+	cloneFrom=oneTile;
+
+--Give specters physical defense
+[AvAffecter]
+	ID=ari_mausoleum_summon_spirits; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=PhysDef;
+	magnitude=c:skill_Ruin * 0.1;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_mausoleum_summon_spirits;
+	cloneFrom=oneTile;
+
+--Give specters minions magic defense
+[AvAffecter]
+	ID=ari_mausoleum_summon_spirits; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=MagDef;
+	magnitude=c:skill_Ruin * 0.3;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_mausoleum_summon_spirits;
+	cloneFrom=oneTile;
+
+--Give specters our Ruin skill for added effects
+[AvAffecter]
+	ID=ari_mausoleum_summon_spirits; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=skill_Ruin;
+	magnitude=c:skill_Ruin * 1.0;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_mausoleum_summon_spirits;
+	cloneFrom=oneTile;
+
+--Give the specters time so that they act faster
+[AvAffecter]
+	ID=ari_mausoleum_summon_spirits; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=actTimer;
+	magnitude=20;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_mausoleum_summon_spirits;
+	cloneFrom=oneTile;
+
+--Remove the summoned undead AV so we don't keep buffing the same minions
+[AvAffecter]
+    ID=ari_mausoleum_summon_spirits;
+	visibleEvaluations=false;
+    actorValue=ari_summoned_undead_AV;
+    harmful=false;
+    visibleMiss=false;
+    magnitude=-1;
+    duration=-2;
+    chance=100*t:ari_summoned_undead_AV;
+[AvAffecterAoE]
+	ID=ari_mausoleum_summon_spirits;
+	cloneFrom=oneTile;
+
+
+
+
+----------------------------------------------------------------
+---------------------Enemy Actions------------------------------
+----------------------------------------------------------------
+
+----------------------------------------------------------------lesser enemy Soul Bombardment Stage 1
+[Action] ID=ari_enemy_skeleton_mage_bombard_stage1; 
+	name=Soul Bombardment;
+	icon=icon_gravekeeper_soul_tear;
+	mpCost=5 * d:mpCostMult + d:mpCostMod;
+	cooldown=75;
+	harmful=true;
+	attractAttention=false;
+	tooltip=Summon forth a catastrophic bombardment of necrotic energy, dealing <icon=skill_Ruin><math=d:ruinDmgDisplay(4) * 0.6> to all targets in its first volley.;
+	chargeTime=10 * d:chargeTimeMult * d:chargeTimeMult_onlyWithMP + d:chargeTimeMod;
+	tooltipTopRight=;
+	
+	XPCost=1;
+
+	
+	maxRank=1;
+	canExceedMaxRankBy=0;
+	
+	attractAttention=false;
+	
+	casterAnimation=handsup;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=largePing;
+	FXOnTarget=tinyShakeHoriz;
+	
+	queueAnotherAction=ari_enemy_skeleton_mage_bombard_stage2;
+	
+[ActionAoE] 
+	ID=ari_enemy_skeleton_mage_bombard_stage1;
+	needsLoS = true;
+	needsLoE = true;
+	airborne = true;
+	arc = true;
+	minRange = 3;
+	maxRange = 6;
+	bypassAll=false;
+	occupyAll=true;
+[AvAffecter]
+	ID=ari_enemy_skeleton_mage_bombard_stage1;
+	visibleMiss=false;
+	actorValue=HP;
+	harmful=true;
+	magnitude=d:ruinDmg(4) * 0.6;
+	duration=-2;
+	chance=d:ruinAcc;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=Purple;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=Black;
+	FXOnHit=ping;
+	FXOnHitColor=Black;
+	element=ranged;
+	element=magic;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_enemy_skeleton_mage_bombard_stage1;
+	cloneFrom=oneTile;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 0;
+	maxRange = 1;
+	airborne=true;
+	arc=true;
+	bypassAll=true;
+	occupyAll=true;
+	canSelectAllies=false;
+	canSelectEnemies=true;
+--[AvAffecter] --Trick AI into using ability
+--	ID=ari_enemy_skeleton_mage_bombard_stage1;
+--	visibleEvaluations=false;
+--	harmful=false; 
+--	actorValue=ari_ai_skill_useage_multi;
+--	visibleMiss=false;
+--	magnitude=1;
+--	duration=-6;
+--	chance=100;
+--[AvAffecterAoE]
+--	ID=ari_enemy_skeleton_mage_bombard_stage1;
+--	aoeCasterAsOrigin = true;
+--	cloneFrom=oneTile;
+--	canSelectAllies=true;
+	
+--Stage 2
+[Action] ID=ari_enemy_skeleton_mage_bombard_stage2; 
+	name=Soul Bombardment;
+	icon=icon_gravekeeper_soul_bombard2;
+	harmful=true;
+	attractAttention=false;
+	tooltip=The second and final volley of Soul Bombardment, dealing <icon=skill_Ruin><math=d:ruinDmgDisplay(7)>.;
+	chargeTime=15 * d:chargeTimeMult * d:chargeTimeMult_onlyWithMP + d:chargeTimeMod;
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	attractAttention=false;
+	
+	casterAnimation=handsup;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=largePing;
+	FXOnTarget=tinyShakeHoriz;
+	
+[ActionAoE] 
+	ID=ari_enemy_skeleton_mage_bombard_stage2;
+	needsLoS = true;
+	needsLoE = true;
+	airborne = true;
+	arc = true;
+	minRange = 3;
+	maxRange = 9;
+	bypassAll=false;
+	occupyAll=true;
+[AvAffecter]
+	ID=ari_enemy_skeleton_mage_bombard_stage2;
+	visibleMiss=false;
+	actorValue=HP;
+	harmful=true;
+	magnitude=d:ruinDmg(7);
+	duration=-2;
+	chance=d:ruinAcc;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=Purple;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=Black;
+	FXOnHit=ping;
+	FXOnHitColor=Black;
+	element=ranged;
+	element=magic;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_enemy_skeleton_mage_bombard_stage2;
+	cloneFrom=oneTile;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 0;
+	maxRange = 2;
+	airborne=true;
+	arc=true;
+	bypassAll=true;
+	occupyAll=true;
+	canSelectAllies=false;
+	canSelectEnemies=true;
+	
+----------------------------------------------------------------enemy Lich Zombie summon
+[Action] ID=ari_enemy_lich_summon_zombie; 
+	name=Raise Zombie;
+	icon=icon_empty_the_crypts;
+	mpCost=4 * d:mpCostMult + d:mpCostMod;
+	cooldown=65;
+	tooltip=Raise Zombies that will infect enemies.;
+	rankUpTooltip=;
+	tooltipTopRight=;
+	harmful=false;
+	
+	XPCost=0;
+	
+	numTargets=2;
+	maxDistanceBetweenTargets=3;
+
+	special=cantUseInTravel;
+	
+	casterAnimation=handsup;
+	
+	maxRank=1;
+	canExceedMaxRankBy=0;
+	
+	FXOnCaster=chargeBurst;
+	FXOnCaster=darken_minor;
+	FXOnCaster=Powerup_longerEchoBloop;
+
+--Target near you only
+[ActionAoE] 
+	ID=ari_enemy_lich_summon_zombie;
+	cloneFrom=adjacent+2;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	canSelectActors=false;
+	occupyAll=false;
+	
+[AvAffecter]
+	ID=ari_enemy_lich_summon_zombie; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	magnitude=summoned_undead_zombie_minion_enemy;
+	chance=100;
+	duration=-2;
+	element=ruin;
+	FXOnTile=tinyShakeHoriz;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_enemy_lich_summon_zombie;
+	cloneFrom=oneTile;
+[AvAffecter] --Trick AI into using ability
+	ID=ari_enemy_lich_summon_zombie;
+	visibleEvaluations=false;
+	harmful=false; 
+	actorValue=ari_ai_skill_useage_multi;
+	visibleMiss=false;
+	magnitude=3;
+	duration=-6;
+	chance=100;
+[AvAffecterAoE]
+	ID=ari_enemy_lich_summon_zombie;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+	
+----------------------------------------------------------------Finger of Death
+[Action] ID=ari_enemy_lich_finger_death; 
+	name=Finger of Death;
+	icon=icon_gravekeeper_death_coil;
+	mpCost=6 * d:mpCostMult + d:mpCostMod;
+	cooldown=90;
+	harmful=true;
+	attractAttention=false;
+	tooltip=Blast a target with the power of pure Ruin, dealing 50% current<icon=HP> as <icon=skill_Ruin> damage and infecting the target with three stacks of Rot for <icon=time>120.;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	
+	maxRank=1;
+	canExceedMaxRankBy=0;
+	
+	attractAttention=false;
+	
+	casterAnimation=handsup;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=largePing;
+	FXOnTarget=tinyShakeHoriz;
+	
+[ActionAoE] 
+	ID=ari_enemy_lich_finger_death;
+	cloneFrom=adjacentAndSelf+2;
+	arc=true;
+	airborne=true;
+	needsLoS=true;
+	needsLoE=true;
+	canSelectEnemies=true;
+	canSelectAllies=false;
+[AvAffecter]
+	ID=ari_enemy_lich_finger_death;
+	visibleMiss=false;
+	actorValue=HP;
+	harmful=true;
+	magnitude=t:HP * -0.5;
+	duration=-2;
+	chance=d:ruinAcc;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=Green;
+[AvAffecterAoE]
+	ID=ari_enemy_lich_finger_death;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_enemy_lich_finger_death;
+	actorValue=ari_rot_status_enemy;
+	magnitude=4 + moreThan:0:t:ari_rot_status_enemy + moreThan:1:t:ari_rot_status_enemy + moreThan:2:t:ari_rot_status_enemy + moreThan:3:t:ari_rot_status_enemy + moreThan:4:t:ari_rot_status_enemy + moreThan:5:t:ari_rot_status_enemy + moreThan:6:t:ari_rot_status_enemy + moreThan:7:t:ari_rot_status_enemy + moreThan:8:t:ari_rot_status_enemy + moreThan:9:t:ari_rot_status_enemy + moreThan:10:t:ari_rot_status_enemy;
+	duration=120;
+	chance=d:ruinAcc;
+	harmful=true;
+	element=ranged;
+	element=magic;
+	element=ruin;
+	FXOnTile=cut;
+[AvAffecterAoE]
+	ID=ari_enemy_lich_finger_death;
+	cloneFrom=oneTile;
+	
+----------------------------------------------------------------Chill Touch
+[Action] ID=ari_enemy_lich_chill_touch; 
+	name=Chill Touch;
+	icon=icon_gravekeeper_chill_touch;
+	mpCost=2 * d:mpCostMult + d:mpCostMod;
+	cooldown=35;
+	harmful=true;
+	attractAttention=false;
+	tooltip=Nearly freeze a target solid with a touch of icy death, doubling their time to act for <icon=time>20.;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	
+	maxRank=1;
+	canExceedMaxRankBy=0;
+	
+	special=doesNotConsumeCombatAction;
+	
+	attractAttention=false;
+	
+	casterAnimation=handsup;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=largePing;
+	FXOnTarget=tinyShakeHoriz;
+	
+[ActionAoE] 
+	ID=ari_enemy_lich_chill_touch;
+	cloneFrom=adjacent;
+	arc=true;
+	airborne=true;
+	needsLoS=true;
+	needsLoE=true;
+	canSelectEnemies=true;
+	canSelectAllies=false;
+[AvAffecter]
+	ID=ari_enemy_lich_chill_touch;
+	visibleMiss=false;
+	actorValue=HP;
+	harmful=true;
+	magnitude=d:ruinCastDmg0 * 0.5;
+	duration=-2;
+	chance=d:iceAcc;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=Green;
+[AvAffecterAoE]
+	ID=ari_enemy_lich_chill_touch;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_enemy_lich_chill_touch;
+	actorValue=actTime;
+	harmful=true;
+	magnitude=t:actTime * 0.5;
+	duration=20;
+	chance=d:iceAcc;
+	element=melee;
+	element=magic;
+	element=ice;
+	FXOnTile=cut;
+[AvAffecterAoE]
+	ID=ari_enemy_lich_chill_touch;
+	cloneFrom=oneTile;
+[AvAffecter] --Trick AI into using ability
+	ID=ari_enemy_lich_chill_touch;
+	visibleEvaluations=false;
+	harmful=false; 
+	actorValue=ari_ai_skill_useage_multi;
+	visibleMiss=false;
+	magnitude=2;
+	duration=-6;
+	chance=100;
+[AvAffecterAoE]
+	ID=ari_enemy_lich_chill_touch;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+	
+	
+----------------------------------------------------------------Enemy Weapons
+----------------------------------------------------------------Skeleton Warrior Sword
+[ItemType]  name=Corroded Sword;
+texture=items_weapons; 
+ID=ari_summoned_sword_enemy; pR=p5; pG=pCBlack; pB=p5;
+description=A sword rusted with time. It has a chance to infect the target with a stack of Rot<icon=icon_gravekeeper_rot> to the target for <icon=time>40.;
+journalID=journal_sword;
+weight=3; volume=10; value=0;
+power=2;
+sprite=187; spriteWhenHeld=207; itemCategory=weapon; 
+element=sword;
+depthMod=900;
+ action=skeletonswordAttack_enemy;
+
+[Action] ID=skeletonswordAttack_enemy; 
+	applyWeaponBuffs=true;
+	
+	casterAnimation=swing;
+	casterAnimationDependsOnWeaponHand=true;
+[ActionAoE] 
+	ID=skeletonswordAttack_enemy;
+	cloneFrom=adjacent;
+[AvAffecter]
+	ID=skeletonswordAttack_enemy; 
+	actorValue=HP;
+	magnitude= d:swordDmg;
+	duration=-2;
+	chance=d:swordAcc;
+	element=melee;
+	element=physical;
+	element=slash;
+	FXOnTile=cut;
+[AvAffecterAoE]
+	ID=skeletonswordAttack_enemy;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=skeletonswordAttack_enemy; 
+	actorValue=ari_rot_status_enemy;
+	magnitude=1 + moreThan:0:t:ari_rot_status_enemy + moreThan:1:t:ari_rot_status_enemy + moreThan:2:t:ari_rot_status_enemy + moreThan:3:t:ari_rot_status_enemy + moreThan:4:t:ari_rot_status_enemy + moreThan:5:t:ari_rot_status_enemy + moreThan:6:t:ari_rot_status_enemy + moreThan:7:t:ari_rot_status_enemy + moreThan:8:t:ari_rot_status_enemy + moreThan:9:t:ari_rot_status_enemy + moreThan:10:t:ari_rot_status_enemy + moreThan:11:t:ari_rot_status_enemy + moreThan:12:t:ari_rot_status_enemy + moreThan:13:t:ari_rot_status_enemy;
+	duration=40;
+	chance=d:swordAcc;
+	element=melee;
+	element=physical;
+	element=slash;
+	FXOnTile=cut;
+[AvAffecterAoE]
+	ID=skeletonswordAttack_enemy;
+	fReq=m:rand(100)-50;
+	cloneFrom=oneTile;
+	
+----------------------------------------------------------------Skeleton Ranger Crossbow
+[ItemType]  name=Corroded Crossbow;
+texture=items_weapons; 
+ID=ari_summoned_crossbow_enemy; pR=p5; pG=pCBlack; pB=p5;
+description=A rusted crossbow.;
+journalID=journal_xbow;
+sprite=184; spriteWhenHeld=215; itemCategory=weapon; element=aim;
+weight=5; volume=5; value=0;
+power=7;
+action=crossbowAttack_Rot_enemy;
+[ItemReaction] 
+ID=ari_summoned_crossbow_enemy; element=actionUsed; newID=ari_summoned_crossbow_unloaded_enemy;
+
+[Action] ID=crossbowAttack_Rot_enemy; 
+	cloneFrom=crossbowAttack;
+[AvAffecter]
+	ID=crossbowAttack_Rot_enemy; 
+	actorValue=ari_rot_status_enemy;
+	magnitude=1 + moreThan:0:t:ari_rot_status_enemy + moreThan:1:t:ari_rot_status_enemy + moreThan:2:t:ari_rot_status_enemy + moreThan:3:t:ari_rot_status_enemy + moreThan:4:t:ari_rot_status_enemy + moreThan:5:t:ari_rot_status_enemy + moreThan:6:t:ari_rot_status_enemy + moreThan:7:t:ari_rot_status_enemy + moreThan:8:t:ari_rot_status_enemy + moreThan:9:t:ari_rot_status_enemy + moreThan:10:t:ari_rot_status_enemy + moreThan:11:t:ari_rot_status_enemy + moreThan:12:t:ari_rot_status_enemy + moreThan:13:t:ari_rot_status_enemy;
+	duration=40;
+	chance=d:aimAcc;
+	element=melee;
+	element=physical;
+	element=slash;
+	FXOnTile=cut;
+[AvAffecterAoE]
+	ID=crossbowAttack_Rot_enemy;
+	fReq=m:rand(100)-75;
+	cloneFrom=oneTile;
+
+[ItemType]  name=Corroded Crossbow (Unloaded);
+texture=items_weapons; 
+ID=ari_summoned_crossbow_unloaded_enemy; pR=pSteel; pB=pSteelHilt;
+description=A rusted crossbow. Needs to be reloaded.; 
+journalID=journal_xbow;
+sprite=184; spriteWhenHeld=216; itemCategory=weapon; 
+weight=5; volume=5; value=0;
+power=7;
+ action=crossbowReload;
+[ItemReaction] 
+ID=ari_summoned_crossbow_unloaded_enemy; element=actionUsed; element=reload; newID=ari_summoned_crossbow_enemy;
+
+----------------------------------------------------------------Infection
+[Action] ID=ari_infectPunch_enemy; 
+	applyWeaponBuffs=true;
+	tooltip=A mundane punch that has a high chance to infect the target with a stack of Rot<icon=icon_gravekeeper_rot> for <icon=time>40.;
+	casterAnimation=punch;
+	casterAnimationDependsOnWeaponHand=true;
+	requiredWeaponElement=fist;
+	icon=skill_Fist;
+[ActionAoE] 
+	ID=ari_infectPunch_enemy;
+	cloneFrom=adjacent;
+[AvAffecter]
+	ID=ari_infectPunch_enemy; 
+	actorValue=HP;
+	magnitude=d:fistDmg;
+	duration=-2;
+	chance=d:fistAcc;
+	element=physical;
+	element=melee;
+	FXOnTile=pop;
+[AvAffecterAoE]
+	ID=ari_infectPunch_enemy;
+	cloneFrom=oneTile;
+	
+[AvAffecter]
+	ID=ari_infectPunch_enemy; 
+	actorValue=ari_rot_status_enemy;
+	magnitude=1 + moreThan:0:t:ari_rot_status_enemy + moreThan:1:t:ari_rot_status_enemy + moreThan:2:t:ari_rot_status_enemy + moreThan:3:t:ari_rot_status_enemy + moreThan:4:t:ari_rot_status_enemy + moreThan:5:t:ari_rot_status_enemy + moreThan:6:t:ari_rot_status_enemy + moreThan:7:t:ari_rot_status_enemy + moreThan:8:t:ari_rot_status_enemy + moreThan:9:t:ari_rot_status_enemy + moreThan:10:t:ari_rot_status_enemy + moreThan:11:t:ari_rot_status_enemy + moreThan:12:t:ari_rot_status_enemy + moreThan:13:t:ari_rot_status_enemy;
+	duration=40;
+	chance=d:fistAcc;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=ari_infectPunch_enemy;
+	fReq=m:rand(100)-20;
+	cloneFrom=oneTile;
+
+----------------------------------------------------------------Infectious Bile, cone shape Rot generator
+[Action] ID=ari_zombie_infectious_bile_enemy; 
+	name=Infectious Bile;
+	icon=icon_gravekeeper_zombie_bile;
+	mpCost=1 * d:mpCostMult + d:mpCostMod;
+	cooldown=60;
+	harmful=false;
+	attractAttention=false;
+	tooltip=Spew disgusting bile from your decaying innards, dealing <icon=skill_Ruin><math=d:ruinDmgDisplay(3)-d:fistDmg*0.5> damage to enemies in a cone in front of you and infecting targets with three stacks of Rot<icon=icon_gravekeeper_rot> for <icon=time>40.;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	attractAttention=false;
+	
+	casterAnimation=handsup;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=largePing;
+	FXOnTarget=tinyShakeHoriz;
+	
+[ActionAoE] 
+	ID=ari_zombie_infectious_bile_enemy;
+	cloneFrom=adjacent;
+[AvAffecter]
+	ID=ari_zombie_infectious_bile_enemy; 
+	actorValue=HP;
+	harmful=true;
+	magnitude=d:ruinDmg(3) + d:fistDmg*0.5;
+	duration=-2;
+	chance=d:ruinAcc;
+	FXOnTile=chargeBurst;
+	FXOnTileColor=Green;
+	FXOnHit=chargeSpiralFast_big;
+	FXOnHitColor=Green;
+	FXOnHit=sidewardLines;
+	FXOnHitColor=Green;
+	FXOnHit=splatter;
+	FXOnHitColor=Green;
+	element=melee;
+	element=physical;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_zombie_infectious_bile_enemy;
+	aoeCasterAsOrigin=true;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 1;
+	maxRange = 2.5;
+	coneAngle= 60;
+	bypassAll=true;
+	occupyAll=true;
+	canSelectAllies=false;
+
+[AvAffecter]
+	ID=ari_zombie_infectious_bile_enemy; 
+	actorValue=ari_rot_status_enemy;
+	magnitude=3 + moreThan:0:t:ari_rot_status_enemy + moreThan:1:t:ari_rot_status_enemy + moreThan:2:t:ari_rot_status_enemy + moreThan:3:t:ari_rot_status_enemy + moreThan:4:t:ari_rot_status_enemy + moreThan:5:t:ari_rot_status_enemy + moreThan:6:t:ari_rot_status_enemy + moreThan:7:t:ari_rot_status_enemy + moreThan:8:t:ari_rot_status_enemy + moreThan:9:t:ari_rot_status_enemy + moreThan:10:t:ari_rot_status_enemy + moreThan:11:t:ari_rot_status_enemy;
+	duration=40;
+	chance=d:ruinAcc;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=ari_zombie_infectious_bile_enemy;
+	aoeCasterAsOrigin=true;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 1;
+	maxRange = 2.5;
+	coneAngle= 60;
+	bypassAll=true;
+	occupyAll=true;
+	canSelectAllies=false;
+
+
+----------------------------------------------------------------ENEMY Corpse Expulsion, AoE rot nuke ability
+[Action] ID=ari_enemy_zombie_corpse_expulsion; 
+	name=Corpse Expulsion;
+	icon=icon_gravekeeper_corpse_expulsion;
+	mpCost=5 * d:mpCostMult + d:mpCostMod;
+	cooldown=120;
+	harmful=false;
+	attractAttention=false;
+	tooltip=Sacrifice 30% maximum<icon=HP> to expel nearly all of your bodily fluids and douse nearby targets in disease, dealing <icon=skill_Ruin><math=c:skill_Ruin * 0.3 + 5>, reducing to <icon=skill_Ruin><math=c:skill_Ruin * 0.2 + 2> against targets further away from you. Infects closer targets with two stacks of Rot<icon=icon_gravekeeper_rot> for <icon=time>40.;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	attractAttention=false;
+	
+	casterAnimation=handsup;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=largePing;
+	FXOnTarget=tinyShakeHoriz;
+	
+[ActionAoE] 
+	ID=ari_enemy_zombie_corpse_expulsion;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_enemy_zombie_corpse_expulsion; 
+	actorValue=HP;
+	harmful=true;
+	magnitude=d:ruinDmg(6);
+	--c:skill_Ruin * -0.3 - 5;
+	duration=-2;
+	chance=d:ruinAcc;
+	FXOnTile=chargeBurst;
+	FXOnTileColor=Green;
+	FXOnHit=chargeSpiralFast_big;
+	FXOnHitColor=Green;
+	FXOnHit=sidewardLines;
+	FXOnHitColor=Green;
+	FXOnHit=splatter;
+	FXOnHitColor=Green;
+	element=melee;
+	element=physical;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_enemy_zombie_corpse_expulsion;
+	cloneFrom=adjacent+1;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 1;
+	maxRange = 1.5;
+	airborne=true;
+	arc=true;
+	bypassAll=true;
+	occupyAll=true;
+	canSelectAllies=false;
+	canSelectEnemies=true;
+
+[AvAffecter]
+	ID=ari_enemy_zombie_corpse_expulsion; 
+	actorValue=ari_rot_status_enemy;
+	magnitude=2 + moreThan:0:t:ari_rot_status_enemy + moreThan:1:t:ari_rot_status_enemy + moreThan:2:t:ari_rot_status_enemy + moreThan:3:t:ari_rot_status_enemy + moreThan:4:t:ari_rot_status_enemy + moreThan:5:t:ari_rot_status_enemy + moreThan:6:t:ari_rot_status_enemy + moreThan:7:t:ari_rot_status_enemy + moreThan:8:t:ari_rot_status_enemy + moreThan:9:t:ari_rot_status_enemy + moreThan:10:t:ari_rot_status_enemy + moreThan:11:t:ari_rot_status_enemy + moreThan:12:t:ari_rot_status_enemy;
+	duration=40;
+	chance=d:ruinAcc;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=ari_enemy_zombie_corpse_expulsion;
+	cloneFrom=adjacent+1;
+	needsLoS = false;
+	needsLoE = false;
+	minRange = 1;
+	maxRange = 1.5;
+	airborne=true;
+	arc=true;
+	bypassAll=true;
+	occupyAll=true;
+	canSelectAllies=false;
+	canSelectEnemies=true;
+	
+----------------------------------------------------------------Charge, also Knight ability
+[Action] ID=ari_skeleton_warrior_charge_enemy; 
+	name=Skeletal Charge;
+	icon=icon_gravekeeper_skeletal_charge;
+	mpCost=0 * d:mpCostMult + d:mpCostMod;
+	cooldown=60;
+	tooltip=Recklessly charge forward to strike a distant foe with your weapon for 50% damage. It has a high chance to infect the target with a stack of Rot<icon=icon_gravekeeper_rot> for <icon=time>40.;
+	tooltipIcons=<icon=noRanged>;
+	tooltipTopRight=<icon=PhysAtk_small><icon=melee_small>;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	casterAnimation=weapon;
+	maxRank=3;
+	canExceedMaxRankBy=1;
+	special=moveCasterNextToTarget;
+	requiredWeaponElement=melee;
+	
+	FXOnTarget=weaponFX;
+	FXOnCaster=sidewardLines;
+	FXOnCasterColor=Red;
+	FXOnCaster=woosh;
+[ActionAoE]
+	ID=ari_skeleton_warrior_charge_enemy; shape=2; 
+	needsLoS = false;
+	needsLoE = true;
+	minRange = 2;
+	maxRange = 1;
+	maxRangeBonus=3;
+	airborne=false;
+	bypassAll=false;
+	occupyAll=true;
+	canSelectActors=true;
+	fReq=1 - m:actorInTheWayOfMoveToTarget;
+[AvAffecter]
+	ID=ari_skeleton_warrior_charge_enemy; 
+	weaponAvAffecter=true;
+	magnitude=w:magnitude * 0.5;
+	chance=w:chance;
+	duration=-2;
+	element=melee;
+	element=physical;
+	element=slash;
+[AvAffecterAoE]
+	ID=ari_skeleton_warrior_charge_enemy;
+	cloneFrom=oneTile;
+
+[AvAffecter]
+	ID=ari_skeleton_warrior_charge_enemy; 
+	actorValue=ari_rot_status_enemy;
+	magnitude=1 + moreThan:0:t:ari_rot_status_enemy + moreThan:1:t:ari_rot_status_enemy + moreThan:2:t:ari_rot_status_enemy + moreThan:3:t:ari_rot_status_enemy + moreThan:4:t:ari_rot_status_enemy + moreThan:5:t:ari_rot_status_enemy + moreThan:6:t:ari_rot_status_enemy + moreThan:7:t:ari_rot_status_enemy + moreThan:8:t:ari_rot_status_enemy + moreThan:9:t:ari_rot_status_enemy + moreThan:10:t:ari_rot_status_enemy + moreThan:11:t:ari_rot_status_enemy + moreThan:12:t:ari_rot_status_enemy + moreThan:13:t:ari_rot_status_enemy;
+	duration=40;
+	chance=100;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=ari_skeleton_warrior_charge_enemy;
+	fReq=m:rand(100)-20;
+	cloneFrom=oneTile;
+	
+----------------------------------------------------------------Enemy Fetid Fields
+--place hazards in aoe to simulate aoe
+--add 1 rot when starting/ending/moving through cloud
+--pop rot stacks for damage at 10 or higher stacks
+[Action] ID=ari_lich_fetid_field_enemy; 
+	name=Fetid Fields;
+	icon=icon_gravekeeper_rotfield;
+	mpCost=3 * d:mpCostMult + d:mpCostMod;
+	cooldown=65;
+	harmful=true;
+	attractAttention=false;
+	tooltip=Sacrifice 15% maximum <icon=HP> to forcefully eject a barrage of bone from your own body, piercing and dealing <math=c:skill_Ruin * -0.5 - 3><icon=HP> damage to all targets in a line in front of you. This does not use your action for the turn.<n=>You must have consumed a Skeleton Archer<icon=icon_skeleton_archer_minion>;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	attractAttention=false;
+	
+	casterAnimation=handsup;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=largePing;
+	FXOnTarget=tinyShakeHoriz;
+	
+[ActionAoE] 
+	ID=ari_lich_fetid_field_enemy;
+	cloneFrom=oneTile;
+	needsLoS = true;
+	needsLoE = true;
+	airborne=true;
+	arc=true;
+	minRange = 2;
+	maxRange = 5;
+[AvAffecter]
+	ID=ari_lich_fetid_field_enemy;
+	actorValue=summonItem;
+	magnitude=ari_fetid_field_item_enemy;
+	duration=1;
+	chance=100;
+	FXOnHit=sparkles;
+	FXOnHitColor=Green;
+	element=ranged;
+	element=magic;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_lich_fetid_field_enemy;
+	needsLoS = true;
+	needsLoE = true;
+	airborne = true;
+	arc = true;
+	maxRange = 2;
+	bypassAll=true;
+[AvAffecter] --Trick AI into using ability
+	ID=ari_lich_fetid_field_enemy;
+	visibleEvaluations=false;
+	harmful=false; 
+	actorValue=ari_ai_skill_useage_multi;
+	visibleMiss=false;
+	magnitude=2;
+	duration=-6;
+	chance=100;
+[AvAffecterAoE]
+	ID=ari_lich_fetid_field_enemy;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+	
+	
+--Lich Blight cloud
+[ItemType]  name=Fetid Field;
+ID=ari_fetid_field_item_enemy; itemCategory=hazard;
+journalID=journal_ari_fetid_fields; 
+texture=gkart;
+sprite=51;
+pR=pBuralk;
+
+special=cannotBePickedUp; special=randomFlipWhenPlaced;
+--special=moveCostOverride_2;
+special=reactsToPressure; special=big;
+special=transparent; 
+special=ignoreDarkness;
+--special=alwaysBelowOtherItems;
+
+special=timer; 
+--special=timer_advanceOnScreenOnly; 
+special=hideTimer;
+timer=25;
+
+cantFitInTileWith=ari_fetid_field_item_enemy;
+
+element=ruin;
+
+-- stepping on them = rot stack, or rot expunge at 10+
+[ItemReaction] 
+ID=ari_fetid_field_item_enemy; element=pressureMoveAcross; element=noMoveTaken;
+ action=ari_fetid_field_rot_enemy;
+
+-- At the end of duration, chance to spread or disappear
+[ItemReaction] 
+ID=ari_fetid_field_item_enemy; element=timerUp; action=ari_fetid_field_spread_enemy; newID=X;
+
+[Action] 
+ID=ari_fetid_field_rot_enemy; 
+[ActionAoE] 
+	ID=ari_fetid_field_rot_enemy;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_fetid_field_rot_enemy; 
+	actorValue=HP;
+	magnitude=t:ari_rot_status_enemy * -2;
+	duration=-2;
+	chance=100 * moreThan:9:t:ari_rot_status_enemy;
+	element=physical;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_fetid_field_rot_enemy;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_fetid_field_rot_enemy; 
+	actorValue=ari_rot_status_enemy;
+	magnitude=-t:ari_rot_status_enemy;
+	duration=-2;
+	chance=100 * moreThan:9:t:ari_rot_status_enemy;
+[AvAffecterAoE]
+	ID=ari_fetid_field_rot_enemy;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_fetid_field_rot_enemy; 
+	actorValue=ari_rot_status_enemy;
+	magnitude=1 + moreThan:0:t:ari_rot_status_enemy + moreThan:1:t:ari_rot_status_enemy + moreThan:2:t:ari_rot_status_enemy + moreThan:3:t:ari_rot_status_enemy + moreThan:4:t:ari_rot_status_enemy + moreThan:5:t:ari_rot_status_enemy + moreThan:6:t:ari_rot_status_enemy + moreThan:7:t:ari_rot_status_enemy + moreThan:8:t:ari_rot_status_enemy + moreThan:9:t:ari_rot_status_enemy + moreThan:10:t:ari_rot_status_enemy + moreThan:11:t:ari_rot_status_enemy + moreThan:12:t:ari_rot_status_enemy + moreThan:13:t:ari_rot_status_enemy;
+	duration=40;
+	chance=100;
+[AvAffecterAoE]
+	ID=ari_fetid_field_rot_enemy;
+	cloneFrom=oneTile;
+
+[Action] 
+ID=ari_fetid_field_spread_enemy; 
+[ActionAoE] 
+	ID=ari_fetid_field_spread_enemy;
+	cloneFrom=adjacent;
+[AvAffecter]
+	ID=ari_fetid_field_spread_enemy; 
+	actorValue=summonItem;
+	magnitude=ari_fetid_field_item_enemy;
+	duration=1;
+	chance=100;
+	FXOnHit=frostsparkles;
+	FXOnHitColor=SkyBlue;
+	element=melee;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_fetid_field_spread_enemy;
+	fReq=m:rand(100)-60;
+	cloneFrom=adjacent;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+----------------------------------------------------------------ENEMY Abomination normal Abilities
+----------------------------------------------------------------ENEMY Hurl Zombie
+[Action] ID=ari_enemy_abomination_hurl_zombie; 
+	name=Hurl Zombie;
+	icon=icon_gravekeeper_abomination_hurl_zombie;
+	mpCost=1 * d:mpCostMult + d:mpCostMod;
+	cooldown=35;
+	--harmful=false;
+	attractAttention=false;
+	tooltip=Hurl a mindless Zombie<icon=icon_zombie_minion> corpse at the target, dealing <math=c:PhysAtk * 0.4 + 3> damage and spawning a mindless Zombie<icon=icon_zombie_minion>.;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	numTargets=1;
+	
+	attractAttention=false;
+	
+	casterAnimation=spellcast;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=Ping;
+	FXOnTargetColor=White;
+	FXOnTarget=tinyShakeHoriz;
+	
+[ActionAoE] 
+	ID=ari_enemy_abomination_hurl_zombie;
+	cloneFrom=adjacent+3;
+	minRange = 1;
+	maxRange = 5;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	occupyAll=false;
+	canSelectEnemies=true;
+
+[AvAffecter]
+	ID=ari_enemy_abomination_hurl_zombie; 
+	harmful=false;
+	actorValue=HP;
+	magnitude=c:PhysAtk * -0.4 - 3;
+	chance=d:ruinProjectileAcc;
+	duration=-2;
+	element=ranged;
+	element=physical;
+	element=ruin;
+	FXOnTile=tinyShakeHoriz;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_enemy_abomination_hurl_zombie;
+	cloneFrom=oneTile;
+	
+[AvAffecter]
+	ID=ari_enemy_abomination_hurl_zombie; 
+	harmful=false;
+	actorValue=summonActor_temp;
+	magnitude=summoned_undead_zombie_minion_enemy;
+	chance=100;
+	duration=-2;
+	FXOnTile=tinyShakeHoriz;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_enemy_abomination_hurl_zombie;
+	cloneFrom=oneTile;
+
+	
+----------------------------------------------------------------ENEMY Amalgamated Limbs
+[Action] ID=ari_enemy_abomination_amalgamated_limb; 
+	name=Amalgamated Limb;
+	icon=icon_gravekeeper_abomination_amalgamated_limb;
+	mpCost=0 * d:mpCostMult + d:mpCostMod;
+	cooldown=50;
+	harmful=false;
+	attractAttention=false;
+	tooltip=As if having their own mind, your appendages flail about and strike a target near you, dealing <math=c:PhysAtk * 0.3 + 1> damage and pulling them one tile towards you. The appendages infect the target with a stack of Rot <icon=icon_gravekeeper_rot> for <icon=time>40. <n=>This does not consume an action in combat.;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	numTargets=1;
+	
+	attractAttention=false;
+	special=doesNotConsumeCombatAction;
+	
+	casterAnimation=spellcast;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=Ping;
+	FXOnTargetColor=White;
+	FXOnTarget=tinyShakeHoriz;
+	
+[ActionAoE]
+	ID=ari_enemy_abomination_amalgamated_limb;
+	cloneFrom=adjacent+2;
+	
+[AvAffecter]
+	ID=ari_enemy_abomination_amalgamated_limb; 
+	actorValue=HP;
+	magnitude=c:PhysAtk * -0.3 - 1;
+	chance=d:fistAcc;
+	duration=-2;
+	element=melee;
+	element=physical;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_enemy_abomination_amalgamated_limb;
+	cloneFrom=oneTile;
+
+[AvAffecter]
+	ID=ari_enemy_abomination_amalgamated_limb; 
+	actorValue=ari_rot_status_enemy;
+	magnitude=1 + moreThan:0:t:ari_rot_status_enemy + moreThan:1:t:ari_rot_status_enemy + moreThan:2:t:ari_rot_status_enemy + moreThan:3:t:ari_rot_status_enemy + moreThan:4:t:ari_rot_status_enemy + moreThan:5:t:ari_rot_status_enemy + moreThan:6:t:ari_rot_status_enemy + moreThan:7:t:ari_rot_status_enemy + moreThan:8:t:ari_rot_status_enemy + moreThan:9:t:ari_rot_status_enemy + moreThan:10:t:ari_rot_status_enemy + moreThan:11:t:ari_rot_status_enemy + moreThan:12:t:ari_rot_status_enemy + moreThan:13:t:ari_rot_status_enemy;
+	duration=40;
+	chance=d:fistAcc;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=ari_enemy_abomination_amalgamated_limb;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_enemy_abomination_amalgamated_limb; 
+	actorValue=pull;
+	magnitude=1;
+	duration=-2;
+	chance=d:fistAcc;
+	FXOnHit=largePing;
+	FXOnHit=click;
+[AvAffecterAoE]
+	ID=ari_enemy_abomination_amalgamated_limb;
+	cloneFrom=oneTile;
+	
+----------------------------------------------------------------ENEMY Corpse Slam
+[Action] ID=ari_enemy_abomination_corpse_slam; 
+	name=Corpse Slam;
+	icon=icon_gravekeeper_abomination_corpse_slam;
+	mpCost=0 * d:mpCostMult + d:mpCostMod;
+	cooldown=25;
+	harmful=false;
+	attractAttention=false;
+	tooltip=Slam down a hulking fist with vile, serrated splinters protruding from it in front of you, dealing <math=c:skill_Ruin * 0.4 + 5> damage to everything in an area.<n=>Infects the target with a stack of Rot<icon=icon_gravekeeper_rot> for <icon=time>40, and if a target has more than four stacks of Rot<icon=icon_gravekeeper_rot>, Corpse Slam reduces the target's defenses.;
+
+	tooltipTopRight=;
+	
+	XPCost=1;
+	XPCost=10;
+	XPCost=100;
+	
+	maxRank=3;
+	canExceedMaxRankBy=0;
+	
+	attractAttention=false;
+	
+	casterAnimation=spellcast;
+
+	FXOnCaster=magicCharge;
+	FXOnTarget=Ping;
+	FXOnTargetColor=White;
+	FXOnTarget=tinyShakeHoriz;
+	
+[ActionAoE] 
+	ID=ari_enemy_abomination_corpse_slam;
+	cloneFrom=adjacent;
+[AvAffecter]
+	ID=ari_enemy_abomination_corpse_slam;
+	visibleMiss=false;
+	actorValue=HP;
+	harmful=true;
+	magnitude=c:skill_Ruin * -0.4 - 5;
+	duration=-2;
+	chance=d:fistAcc;
+	FXOnHit=ping;
+	FXOnHitColor=Purple;
+	element=melee;
+	element=physical;
+	element=smash;
+[AvAffecterAoE]
+	ID=ari_enemy_abomination_corpse_slam;
+	aoeCasterAsOrigin=true;
+	maxRange = 2.5;
+	coneAngle=90;
+[AvAffecter]
+	ID=ari_enemy_abomination_corpse_slam;
+	visibleMiss=false;
+	actorValue=PhysDef;
+	harmful=true;
+	magnitude=-3;
+	duration=40;
+	chance=d:fistAcc * moreThan:4:t:ari_rot_status_enemy;
+	element=melee;
+	element=physical;
+	element=smash;
+[AvAffecterAoE]
+	ID=ari_enemy_abomination_corpse_slam;
+	aoeCasterAsOrigin=true;
+	maxRange = 2.5;
+	coneAngle=90;
+[AvAffecter]
+	ID=ari_enemy_abomination_corpse_slam;
+	visibleMiss=false;
+	actorValue=MagDef;
+	harmful=true;
+	magnitude=-3;
+	duration=40;
+	chance=d:fistAcc * moreThan:4:t:ari_rot_status_enemy;
+	element=melee;
+	element=physical;
+	element=smash;
+[AvAffecterAoE]
+	ID=ari_enemy_abomination_corpse_slam;
+	aoeCasterAsOrigin=true;
+	maxRange = 2.5;
+	coneAngle=90;
+[AvAffecter]
+	ID=ari_enemy_abomination_corpse_slam; 
+	actorValue=ari_rot_status_enemy;
+	magnitude=1 + moreThan:0:t:ari_rot_status_enemy + moreThan:1:t:ari_rot_status_enemy + moreThan:2:t:ari_rot_status_enemy + moreThan:3:t:ari_rot_status_enemy + moreThan:4:t:ari_rot_status_enemy + moreThan:5:t:ari_rot_status_enemy + moreThan:6:t:ari_rot_status_enemy + moreThan:7:t:ari_rot_status_enemy + moreThan:8:t:ari_rot_status_enemy + moreThan:9:t:ari_rot_status_enemy + moreThan:10:t:ari_rot_status_enemy + moreThan:11:t:ari_rot_status_enemy + moreThan:12:t:ari_rot_status_enemy + moreThan:13:t:ari_rot_status_enemy;
+	duration=40;
+	chance=d:fistAcc;
+	element=ruin;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=ari_enemy_abomination_corpse_slam;
+	aoeCasterAsOrigin=true;
+	maxRange = 2.5;
+	coneAngle=90;
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+--Bone Spear Explosion workaround
+[ItemType]  name=Bone Spear Explosion;
+ID=ari_bonespear_explosion_1; itemCategory=hazard;
+journalID=journal_ari_bonespear_explosion; 
+texture=gkart;
+sprite=54;
+pR=pBoneDark;
+
+special=cannotBePickedUp; special=randomFlipWhenPlaced; special=big; special=transparent; special=invisible; special=alwaysBelowOtherItems;
+
+special=timer; special=timer_advanceOnScreenOnly; 
+--special=hideTimer;
+timer=1;
+
+-- At the end of duration, explode
+[ItemReaction] 
+ID=ari_bonespear_explosion_1; element=timerUp; action=ari_bonespear_explosion_1_unleash; newID=X;
+
+[JournalEntry]
+ID=journal_ari_bonespear_explosion;
+category=item; halfPage=true; rarity=0;
+title=Bone Spear Explosion;
+text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spear forcibly expunges Rot<icon=icon_gravekeeper_rot>.;
+	
+[Action] ID=ari_bonespear_explosion_1_unleash; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+	
+[ActionAoE] 
+	ID=ari_bonespear_explosion_1_unleash;
+	aoeCasterAsOrigin=true;
+	cloneFrom=oneTile;
+
+[AvAffecter]
+	ID=ari_bonespear_explosion_1_unleash; 
+	visibleEvaluations=true;
+	harmful=true;
+	actorValue=HP;
+	magnitude=-2;
+	duration=-2;
+	chance=100;
+	element=magic;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_bonespear_explosion_1_unleash;
+	cloneFrom=adjacent;
+	canSelectAllies=true;
+	canSelectEnemies=true;
+	aoeCasterAsOrigin=true;
+	
+--Bone Spear Explosion workaround tier 2
+[ItemType]  name=Bone Spear Explosion;
+ID=ari_bonespear_explosion_2; itemCategory=hazard;
+journalID=journal_ari_bonespear_explosion; 
+texture=gkart;
+sprite=54;
+pR=pBoneDark;
+
+special=cannotBePickedUp; special=randomFlipWhenPlaced; special=big; special=transparent; special=invisible; special=alwaysBelowOtherItems;
+
+special=timer; special=timer_advanceOnScreenOnly; 
+--special=hideTimer;
+timer=1;
+
+-- At the end of duration, explode
+[ItemReaction] 
+ID=ari_bonespear_explosion_2; element=timerUp; action=ari_bonespear_explosion_2_unleash; newID=X;
+
+[JournalEntry]
+ID=journal_ari_bonespear_explosion;
+category=item; halfPage=true; rarity=0;
+title=Bone Spear Explosion;
+text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spear forcibly expunges Rot<icon=icon_gravekeeper_rot>.;
+	
+[Action] ID=ari_bonespear_explosion_2_unleash; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+	
+[ActionAoE] 
+	ID=ari_bonespear_explosion_2_unleash;
+	aoeCasterAsOrigin=true;
+	cloneFrom=oneTile;
+
+[AvAffecter]
+	ID=ari_bonespear_explosion_2_unleash; 
+	visibleEvaluations=true;
+	harmful=true;
+	actorValue=HP;
+	magnitude=-4;
+	duration=-2;
+	chance=100;
+	element=magic;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_bonespear_explosion_2_unleash;
+	cloneFrom=adjacent;
+	canSelectAllies=true;
+	canSelectEnemies=true;
+	aoeCasterAsOrigin=true;
+	
+--Bone Spear Explosion workaround tier 3
+[ItemType]  name=Bone Spear Explosion;
+ID=ari_bonespear_explosion_3; itemCategory=hazard;
+journalID=journal_ari_bonespear_explosion; 
+texture=gkart;
+sprite=54;
+pR=pBoneDark;
+
+special=cannotBePickedUp; special=randomFlipWhenPlaced; special=big; special=transparent; special=invisible; special=alwaysBelowOtherItems;
+
+special=timer; special=timer_advanceOnScreenOnly; 
+--special=hideTimer;
+timer=1;
+
+-- At the end of duration, explode
+[ItemReaction] 
+ID=ari_bonespear_explosion_3; element=timerUp; action=ari_bonespear_explosion_3_unleash; newID=X;
+
+[JournalEntry]
+ID=journal_ari_bonespear_explosion;
+category=item; halfPage=true; rarity=0;
+title=Bone Spear Explosion;
+text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spear forcibly expunges Rot<icon=icon_gravekeeper_rot>.;
+	
+[Action] ID=ari_bonespear_explosion_3_unleash; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+	
+[ActionAoE] 
+	ID=ari_bonespear_explosion_3_unleash;
+	aoeCasterAsOrigin=true;
+	cloneFrom=oneTile;
+
+[AvAffecter]
+	ID=ari_bonespear_explosion_3_unleash; 
+	visibleEvaluations=true;
+	harmful=true;
+	actorValue=HP;
+	magnitude=-6;
+	duration=-2;
+	chance=100;
+	element=magic;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_bonespear_explosion_3_unleash;
+	cloneFrom=adjacent;
+	canSelectAllies=true;
+	canSelectEnemies=true;
+	aoeCasterAsOrigin=true;

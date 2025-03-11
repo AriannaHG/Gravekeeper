@@ -1,0 +1,380 @@
+--Skeleton Spawns
+--Singular skeleton warrior
+[SpawnData]
+ID=ari_gravekeeper_single_skelwarr1;
+minActors = 1;
+maxActors = 1;
+minDifferentTypes = 1;
+maxDifferentTypes = 1;
+actorTypesMins=summoned_undead_skeleton_enemy=1;
+actorTypesMaxes=summoned_undead_skeleton_enemy=1;
+actorTypesChanceToReroll=summoned_undead_skeleton_enemy=0;
+mandatoryItemsPerActor_actorTypeID=summoned_undead_skeleton_enemy;
+mandatoryItemsPerActor_itemID=ari_summoned_sword_enemy;
+mandatoryItemsChanceToBeNothing=0;
+mandatoryItemsPerActor_actorTypeID=summoned_undead_skeleton_enemy;
+mandatoryItemsPerActor_itemID=ari_summoned_shield;
+mandatoryItemsChanceToBeNothing=0;
+actorClassesMins=ari_skeletonwarrior_class_enemy=1;
+actorClassesMaxes=ari_skeletonwarrior_class_enemy=1;
+actorClassesChanceToReroll=ari_skeletonwarrior_class_enemy=0;
+
+
+factionOverride=enemy;
+valuesDictOverrides=combatTeam=enemy;
+--minOptionalLootPerActor = 0;
+--maxOptionalLootPerActor = 1;
+minGoldPerActor = 0;
+maxGoldPerActor = 0;
+hostile=true;
+canDespawn=true;
+canManipCorpse=true;
+noPassives=false;
+random10percentHPMPBoost=true;
+spawnFX=;
+
+--Singular skeleton archer
+[SpawnData]
+ID=ari_gravekeeper_single_skelarcher1;
+minActors = 1;
+maxActors = 1;
+minDifferentTypes = 1;
+maxDifferentTypes = 1;
+actorTypesMins=summoned_undead_skeleton_archer_type_enemy=1;
+actorTypesMaxes=summoned_undead_skeleton_archer_type_enemy=1;
+actorTypesChanceToReroll=summoned_undead_skeleton_archer_type_enemy=0;
+mandatoryItemsPerActor_actorTypeID=summoned_undead_skeleton_archer_type_enemy;
+mandatoryItemsPerActor_itemID=ari_summoned_crossbow_enemy;
+mandatoryItemsChanceToBeNothing=0;
+mandatoryItemsPerActor_actorTypeID=summoned_undead_skeleton_archer_type_enemy;
+mandatoryItemsPerActor_itemID=ari_summoned_shield;
+mandatoryItemsChanceToBeNothing=0;
+actorClassesMins=ari_skeletonarcher_class_enemy=1;
+actorClassesMaxes=ari_skeletonarcher_class_enemy=1;
+actorClassesChanceToReroll=ari_skeletonarcher_class_enemy=0;
+
+forbiddenAbilities=ari_skeleton_archer_bonespear;
+forbiddenAbilities=ari_skeleton_archer_bone_shards;
+
+factionOverride=enemy;
+valuesDictOverrides=combatTeam=enemy;
+--minOptionalLootPerActor = 0;
+--maxOptionalLootPerActor = 1;
+minGoldPerActor = 0;
+maxGoldPerActor = 0;
+hostile=true;
+canDespawn=true;
+canManipCorpse=true;
+noPassives=false;
+random10percentHPMPBoost=true;
+spawnFX=;
+
+--Singular skeleton mage
+[SpawnData]
+ID=ari_gravekeeper_single_skelmage1;
+minActors = 1;
+maxActors = 1;
+minDifferentTypes = 1;
+maxDifferentTypes = 1;
+actorTypesMins=summoned_undead_skeleton_mage_type_enemy=1;
+actorTypesMaxes=summoned_undead_skeleton_mage_type_enemy=1;
+actorTypesChanceToReroll=summoned_undead_skeleton_mage_type_enemy=0;
+mandatoryItemsPerActor_actorTypeID=summoned_undead_skeleton_mage_type_enemy;
+mandatoryItemsPerActor_itemID=ari_grimoire_skulls;
+mandatoryItemsChanceToBeNothing=0;
+actorClassesMins=ari_skeletonmage_class_enemy=1;
+actorClassesMaxes=ari_skeletonmage_class_enemy=1;
+actorClassesChanceToReroll=ari_skeletonmage_class_enemy=0;
+
+factionOverride=enemy;
+valuesDictOverrides=combatTeam=enemy;
+--minOptionalLootPerActor = 0;
+--maxOptionalLootPerActor = 1;
+minGoldPerActor = 0;
+maxGoldPerActor = 0;
+hostile=true;
+canDespawn=true;
+canManipCorpse=true;
+noPassives=false;
+random10percentHPMPBoost=true;
+spawnFX=;
+
+--Zombie Spawns
+--Singular zombie
+[SpawnData]
+ID=ari_gravekeeper_single_zombie1;
+minActors = 1;
+maxActors = 1;
+minDifferentTypes = 1;
+maxDifferentTypes = 1;
+actorTypesMins=summoned_undead_zombie_enemy=1;
+actorTypesMaxes=summoned_undead_zombie_enemy=1;
+actorTypesChanceToReroll=summoned_undead_zombie_enemy=0;
+--mandatoryItemsPerActor_actorTypeID=summoned_undead_zombie_enemy;
+--mandatoryItemsPerActor_itemID=dagger_wood;
+--mandatoryItemsChanceToBeNothing=0.2;
+actorClassesMins=ari_zombie_class_enemy=1;
+actorClassesMaxes=ari_zombie_class_enemy=1;
+actorClassesChanceToReroll=ari_zombie_class_enemy=0;
+
+--forbiddenAbilities=ari_zombie_infectious_bile;
+--forbiddenAbilities=ari_zombie_corpse_expulsion;
+
+
+factionOverride=enemy;
+valuesDictOverrides=combatTeam=enemy;
+--minOptionalLootPerActor = 0;
+--maxOptionalLootPerActor = 1;
+minGoldPerActor = 0;
+maxGoldPerActor = 3;
+hostile=true;
+canDespawn=true;
+canManipCorpse=true;
+noPassives=false;
+random10percentHPMPBoost=true;
+spawnFX=;
+
+[SpawnData]
+ID=ari_gravekeeper_swarm_zombie1;
+minActors = 7;
+maxActors = 7;
+minDifferentTypes = 1;
+maxDifferentTypes = 1;
+actorTypesMins=summoned_undead_zombie_enemy=7;
+actorTypesMaxes=summoned_undead_zombie_enemy=7;
+actorTypesChanceToReroll=summoned_undead_zombie_enemy=0;
+--mandatoryItemsPerActor_actorTypeID=summoned_undead_zombie_enemy;
+--mandatoryItemsPerActor_itemID=dagger_wood;
+--mandatoryItemsChanceToBeNothing=0.2;
+actorClassesMins=ari_zombie_class_enemy=7;
+actorClassesMaxes=ari_zombie_class_enemy=7;
+actorClassesChanceToReroll=ari_zombie_class_enemy=0;
+
+--forbiddenAbilities=ari_zombie_infectious_bile;
+--forbiddenAbilities=ari_zombie_corpse_expulsion;
+
+
+factionOverride=enemy;
+valuesDictOverrides=combatTeam=enemy;
+--minOptionalLootPerActor = 0;
+--maxOptionalLootPerActor = 1;
+minGoldPerActor = 1;
+maxGoldPerActor = 5;
+hostile=true;
+canDespawn=true;
+canManipCorpse=true;
+noPassives=false;
+random10percentHPMPBoost=true;
+spawnFX=;
+
+[SpawnData]
+ID=ari_gravekeeper_random_swarm_zombie1;
+minActors = 1;
+maxActors = 5;
+minDifferentTypes = 1;
+maxDifferentTypes = 1;
+actorTypesMins=summoned_undead_zombie_enemy=1;
+actorTypesMaxes=summoned_undead_zombie_enemy=5;
+actorTypesChanceToReroll=summoned_undead_zombie_enemy=0;
+--mandatoryItemsPerActor_actorTypeID=summoned_undead_zombie_enemy;
+--mandatoryItemsPerActor_itemID=dagger_wood;
+--mandatoryItemsChanceToBeNothing=0.2;
+actorClassesMins=ari_zombie_class_enemy=5;
+actorClassesMaxes=ari_zombie_class_enemy=5;
+actorClassesChanceToReroll=ari_zombie_class_enemy=0;
+
+--forbiddenAbilities=ari_zombie_infectious_bile;
+--forbiddenAbilities=ari_zombie_corpse_expulsion;
+
+
+factionOverride=enemy;
+valuesDictOverrides=combatTeam=enemy;
+--minOptionalLootPerActor = 0;
+--maxOptionalLootPerActor = 1;
+minGoldPerActor = 1;
+maxGoldPerActor = 5;
+hostile=true;
+canDespawn=true;
+canManipCorpse=true;
+noPassives=false;
+random10percentHPMPBoost=true;
+spawnFX=;
+
+
+[SpawnData]
+ID=gravekeeper_zombie1;
+
+minActors = 0;
+maxActors = 2;
+
+minDifferentTypes = 0;
+maxDifferentTypes = 1;
+
+actorTypesMins=summoned_undead_zombie_enemy=0;
+actorTypesMaxes=summoned_undead_zombie_enemy=2;
+actorTypesChanceToReroll=summoned_undead_zombie_enemy=0;
+actorClassesMins=ari_zombie_class_enemy=2;
+actorClassesMaxes=ari_zombie_class_enemy=2;
+actorClassesChanceToReroll=ari_zombie_class_enemy=0;
+
+factionOverride=enemy;
+valuesDictOverrides=combatTeam=enemy;
+
+--minOptionalLootPerActor = 0;
+--maxOptionalLootPerActor = 1;
+minGoldPerActor = 0;
+maxGoldPerActor = 5;
+
+hostile=true;
+
+canDespawn=true;
+canManipCorpse=true;
+noPassives=true;
+random10percentHPMPBoost=true;
+
+spawnFX=;
+
+--Zombie Spawns
+[SpawnData]
+ID=gravekeeper_zombie2;
+
+minActors = 0;
+maxActors = 4;
+
+minDifferentTypes = 0;
+maxDifferentTypes = 1;
+
+actorTypesMins=summoned_undead_zombie_enemy=0;
+actorTypesMaxes=summoned_undead_zombie_enemy=4;
+actorTypesChanceToReroll=summoned_undead_zombie_enemy=0;
+actorClassesMins=ari_zombie_class_enemy=4;
+actorClassesMaxes=ari_zombie_class_enemy=4;
+actorClassesChanceToReroll=ari_zombie_class_enemy=0;
+
+factionOverride=enemy;
+valuesDictOverrides=combatTeam=enemy;
+
+--minOptionalLootPerActor = 0;
+--maxOptionalLootPerActor = 1;
+minGoldPerActor = 0;
+maxGoldPerActor = 3;
+
+hostile=true;
+
+canDespawn=true;
+canManipCorpse=true;
+noPassives=true;
+random10percentHPMPBoost=true;
+
+spawnFX=;
+
+
+--Singular enemy Abomination
+[SpawnData]
+ID=ari_gravekeeper_single_abomination1;
+minActors = 1;
+maxActors = 1;
+minDifferentTypes = 1;
+maxDifferentTypes = 1;
+actorTypesMins=summoned_undead_abomination_enemy=1;
+actorTypesMaxes=summoned_undead_abomination_enemy=1;
+actorTypesChanceToReroll=summoned_undead_abomination_enemy=0;
+actorClassesMins=ari_abomination_class_enemy=3;
+actorClassesMaxes=ari_abomination_class_enemy=3;
+actorClassesChanceToReroll=ari_abomination_class_enemy=0;
+
+-- FORCED ABILITIES -- 
+bonusAVs=ari_enemy_abomination_hurl_zombie=1;
+bonusAVs=ari_enemy_abomination_amalgamated_limb=1;
+bonusAVs=ari_enemy_abomination_corpse_slam=1;
+
+factionOverride=enemy;
+valuesDictOverrides=combatTeam=enemy;
+--minOptionalLootPerActor = 0;
+--maxOptionalLootPerActor = 1;
+minGoldPerActor = 0;
+maxGoldPerActor = 0;
+hostile=true;
+canDespawn=true;
+canManipCorpse=true;
+noPassives=false;
+random10percentHPMPBoost=false;
+spawnFX=;
+
+--Singular enemy Abomination for Quest
+[SpawnData]
+ID=ari_gravekeeper_single_quest_abomination1;
+minActors = 1;
+maxActors = 1;
+minDifferentTypes = 1;
+maxDifferentTypes = 1;
+actorTypesMins=summoned_undead_abomination_enemy_quest=1;
+actorTypesMaxes=summoned_undead_abomination_enemy_quest=1;
+actorTypesChanceToReroll=summoned_undead_abomination_enemy_quest=0;
+actorClassesMins=ari_abomination_class_enemy=3;
+actorClassesMaxes=ari_abomination_class_enemy=3;
+actorClassesChanceToReroll=ari_abomination_class_enemy=0;
+
+-- FORCED ABILITIES -- 
+bonusAVs=ari_enemy_abomination_hurl_zombie=1;
+bonusAVs=ari_enemy_abomination_amalgamated_limb=1;
+bonusAVs=ari_enemy_abomination_corpse_slam=1;
+
+factionOverride=enemy;
+valuesDictOverrides=combatTeam=enemy;
+--minOptionalLootPerActor = 0;
+--maxOptionalLootPerActor = 1;
+minGoldPerActor = 0;
+maxGoldPerActor = 0;
+hostile=true;
+canDespawn=false;
+canManipCorpse=false;
+noPassives=false;
+random10percentHPMPBoost=false;
+spawnFX=;
+
+--Singular enemy Ascetic for Quest
+[SpawnData]
+ID=ari_gravekeeper_single_quest_ascetic1;
+minActors = 1;
+maxActors = 1;
+minDifferentTypes = 1;
+maxDifferentTypes = 1;
+actorTypesMins=summoned_undead_ascetic_enemy_quest=1;
+actorTypesMaxes=summoned_undead_ascetic_enemy_quest=1;
+actorTypesChanceToReroll=summoned_undead_ascetic_enemy_quest=0;
+mandatoryItemsPerActor_actorTypeID=summoned_undead_ascetic_enemy_quest;
+mandatoryItemsPerActor_itemID=shana_deadbook_enemy;
+mandatoryItemsChanceToBeNothing=0;
+actorClassesMins=unmaker=1;
+actorClassesMaxes=unmaker=1;
+actorClassesChanceToReroll=unmaker=0;
+actorClassesMins=tactician=1;
+actorClassesMaxes=tactician=1;
+actorClassesChanceToReroll=tactician=0;
+
+-- FORCED ABILITIES -- 
+bonusAVs=Tac_command=1;
+bonusAVs=Tac_masterstroke=1;
+bonusAVs=Un_ruinTouch=1;
+bonusAVs=Un_drain=1;
+
+forbiddenAbilities=Tac_hold;
+forbiddenAbilities=Tac_withdraw;
+forbiddenAbilities=Tac_masterstroke;
+forbiddenAbilities=Un_decay;
+forbiddenAbilities=Un_wither;
+forbiddenAbilities=Un_shroud;
+
+factionOverride=enemy;
+valuesDictOverrides=combatTeam=enemy;
+--minOptionalLootPerActor = 0;
+--maxOptionalLootPerActor = 1;
+minGoldPerActor = 0;
+maxGoldPerActor = 0;
+hostile=true;
+canDespawn=false;
+canManipCorpse=false;
+noPassives=false;
+random10percentHPMPBoost=false;
+spawnFX=;

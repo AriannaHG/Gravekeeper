@@ -1,0 +1,4642 @@
+
+----------------------------------------------------------------Rot Status AV
+[ActorValue]
+ID=ari_rot_status;
+name=Rot;
+icon=<icon=icon_gravekeeper_rot>;
+bubbleIcon=icon_rot;
+minimum=0;
+maximum=15;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 1;
+harmfulMagnitude = 1;
+--bonusesMultiplier = 1;
+animationOnHarmful = pain;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = false;
+canBeRemovedByNonspecificAVEffectRemoval = true;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+[ActorValueReaction]
+ID=ari_rot_status; actorValues=ari_rot_status; newID=ari_rot_status;
+
+--Summon a zombie if an actor dies while rotting
+[ActorValueReaction]
+ID=ari_rot_status; element=incapacitated;
+action=ari_rot_raise;
+
+[Action] ID=ari_rot_raise; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+
+[ActionAoE] 
+	ID=ari_rot_raise; 
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_rot_raise; 
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=summonActor_defaultTeam;
+	magnitude=summoned_undead_rot_zombie_minion;
+	chance=100;
+	duration=-2;
+	element=ruin;
+	FXOnTile=tinyShakeHoriz;
+	FXOnTile=smokeCloud;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_rot_raise;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+	needsLoS = false;
+	needsLoE = false;
+	bypassAll=true;
+	occupyAll=true;
+
+
+--Deal damage at the end of an actor's turn and attempt to spread rot based on stack size
+[ActorValueReaction]
+ID=ari_rot_status; element=endTurn;
+action=ari_rot_damage;
+
+[Action] ID=ari_rot_damage; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+	
+[ActionAoE] 
+	ID=ari_rot_damage; 
+	cloneFrom=oneTile;
+
+[AvAffecter]
+	ID=ari_rot_damage; 
+	visibleEvaluations=true;
+	harmful=true;
+	actorValue=HP;
+	magnitude=c:ari_rot_status * -1;
+	duration=-2;
+	chance=100;
+	visibleMiss=false;
+	element=physical;
+	element=ruin;
+	
+	FXOnTile=spiral2;
+	FXOnTileColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=DarkGreen;
+[AvAffecterAoE]
+	ID=ari_rot_damage;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_rot_damage; 
+	visibleEvaluations=true;
+	harmful=true;
+	actorValue=ari_rot_status;
+	magnitude=1 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status + moreThan:13:t:ari_rot_status;
+	duration=40;
+	chance=thisPreviousAVHit:ari_rot_damage * c:ari_rot_status * 6;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_rot_damage;
+	aoeCasterAsOrigin = true;
+	cloneFrom=adjacentAndSelf;
+	minRange=1;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=true;
+	bypassAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=false;
+[AvAffecter]
+	ID=ari_rot_damage; 
+	visibleEvaluations=true;
+	harmful=true;
+	actorValue=ari_rot_status;
+	magnitude=1 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status + moreThan:13:t:ari_rot_status;
+	duration=40;
+	chance=moreThan:5:c:ari_rot_status * thisPreviousAVHit:ari_rot_damage * c:ari_rot_status * 6;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_rot_damage;
+	aoeCasterAsOrigin = true;
+	cloneFrom=adjacent+1;
+	minRange=2;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=true;
+	bypassAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=false;
+[AvAffecter]
+	ID=ari_rot_damage; 
+	visibleEvaluations=true;
+	harmful=true;
+	actorValue=ari_rot_status;
+	magnitude=1 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status + moreThan:13:t:ari_rot_status;
+	duration=40;
+	chance=moreThan:9:c:ari_rot_status * thisPreviousAVHit:ari_rot_damage * c:ari_rot_status * 6;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_rot_damage;
+	aoeCasterAsOrigin = true;
+	cloneFrom=adjacent+2;
+	minRange=3;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=true;
+	bypassAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=false;
+	
+----------------------------------------------------------------Ruptured Soul Status AV, deals damage to afflicted target whenever something dies
+[ActorValue]
+ID=ari_ruptured_soul_status;
+name=Ruptured Soul;
+icon=<icon=icon_gravekeeper_beyond_the_veil>;
+bubbleIcon=icon_ruptured_soul;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 3;
+harmfulMagnitude = 1;
+--bonusesMultiplier = 1;
+animationOnHarmful = pain;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = false;
+canBeRemovedByNonspecificAVEffectRemoval = true;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+----------------------------------------------------------------Horrific Visions Status AV, drains MP and MagDef and does damage based on MagAtk
+[ActorValue]
+ID=ari_horrific_visions_status;
+name=Horrific Visions;
+icon=<icon=icon_gravekeeper_horrific_visions>;
+bubbleIcon=icon_horrific_visions;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 15;
+harmfulMagnitude = 1;
+--bonusesMultiplier = 1;
+animationOnHarmful = pain;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = false;
+canBeRemovedByNonspecificAVEffectRemoval = true;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+[ActorValueReaction]
+ID=ari_horrific_visions_status; element=actionTaken;
+action=ari_horrific_visions_proc;
+
+[Action] ID=ari_horrific_visions_proc; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+	
+[ActionAoE] 
+	ID=ari_horrific_visions_proc; 
+	cloneFrom=oneTile;
+
+[AvAffecter]
+	ID=ari_horrific_visions_proc; 
+	visibleEvaluations=true;
+	harmful=true;
+	actorValue=MagDef;
+	magnitude=c:MagAtk * -0.5;
+	duration=-3;
+	chance=100;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_horrific_visions_proc;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_horrific_visions_proc; 
+	visibleEvaluations=true;
+	harmful=true;
+	actorValue=HP;
+	magnitude=c:MagAtk * -1;
+	duration=-2;
+	chance=100;
+	visibleMiss=false;
+	element=magic;
+	element=ice;
+[AvAffecterAoE]
+	ID=ari_horrific_visions_proc;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_horrific_visions_proc; 
+	visibleEvaluations=true;
+	harmful=true;
+	actorValue=MP;
+	magnitude=c:MagAtk * -2;
+	duration=-2;
+	chance=100;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_horrific_visions_proc;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+
+----------------------------------------------------------------Curse of Death AV
+[ActorValue]
+ID=ari_death_curse_damage;
+name=Curse of Death;
+icon=<icon=icon_gravekeeper_deathcurse>;
+bubbleIcon=;
+minimum=0;
+maximum=99;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = 1;
+--bonusesMultiplier = 1;
+animationOnHarmful = pain;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = false;
+canBeRemovedByNonspecificAVEffectRemoval = true;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+[ActorValue]
+ID=ari_death_curse_status;
+name=Curse of Death;
+icon=<icon=icon_gravekeeper_deathcurse>;
+bubbleIcon=icon_deathcurse;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = 1;
+--bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = false;
+canBeRemovedByNonspecificAVEffectRemoval = true;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+[ActorValueReaction]
+ID=ari_death_curse_status; element=physical; element=magical; element=ranged;
+action=ari_death_curse_accumulate;
+
+
+[Action] ID=ari_death_curse_accumulate; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+	special=canReactMultipleTimesPerTurn;
+	
+[ActionAoE] 
+	ID=ari_death_curse_accumulate; 
+	cloneFrom=oneTile;
+
+[AvAffecter]
+	ID=ari_death_curse_accumulate; 
+	visibleEvaluations=true;
+	harmful=false;
+	actorValue=ari_death_curse_damage;
+	magnitude=c:ari_death_curse_damage + m:cLastDmgTaken * 0.1;
+	duration=-2;
+	chance=100;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_death_curse_accumulate;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+
+
+
+
+
+
+
+
+	
+----------------------------------------------------------------Gravekeeper core related----------------------------------------------------------------
+----------------------------------------------------------------AV to determine if an actor holds any Gravekeeper skills capable of summoning
+[ActorValue]
+ID=ari_gravekeeper_class_check;
+name=Gravekeeper;
+icon=<icon=mark_soul_collector>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = true;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+----------------------------------------------------------------If actor has Gravekeeper skills, kill minions when gravekeeper gets incapacitated
+[ActorValueReaction]
+ID=ari_gravekeeper_class_check; element=incapacitated;
+action=ari_gravekeeper_destroy_minions;
+
+[Action] ID=ari_gravekeeper_destroy_minions; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+	
+	FXOnHit=delay_small;
+
+--Remove deathshield if it exists and Lichdom isn't slotted
+[ActionAoE] 
+	ID=ari_gravekeeper_destroy_minions; 
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_destroy_minions;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=true;
+	actorValue=ari_summoned_deathshield;
+	magnitude=-1;
+	duration=-2;
+	chance=100 * tsa:ari_summoned - 101 * csa:ari_gravekeeper_lichdom;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_destroy_minions; shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=true;
+
+--Remove Undeath if it exists and Lichdom isn't slotted
+[AvAffecter]
+	ID=ari_gravekeeper_destroy_minions; 
+	visibleEvaluations=false;
+	harmful=true;
+	actorValue=ari_commanded_undeath;
+	magnitude=-1;
+	duration=-2;
+	chance=100 * tsa:ari_summoned - 101 * csa:ari_gravekeeper_lichdom;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_destroy_minions; shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=true;
+--Remove Undying from MINIONS if it exists and Lichdom isn't slotted
+[AvAffecter]
+	ID=ari_gravekeeper_destroy_minions; 
+	visibleEvaluations=false;
+	harmful=true;
+	actorValue=ari_undying;
+	magnitude=-1;
+	duration=-2;
+	chance=100 * tsa:ari_summoned - 101 * csa:ari_gravekeeper_lichdom;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_destroy_minions; shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=true;
+
+--Kill minions if Lichdom isn't slotted
+[AvAffecter]
+	ID=ari_gravekeeper_destroy_minions; 
+	visibleEvaluations=false;
+	harmful=true;
+	actorValue=HP;
+	magnitude=t:TrueHPMax * -1.5 - 1;
+	duration=-2;
+	chance=100 * tsa:ari_summoned - 101 * csa:ari_gravekeeper_lichdom;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_destroy_minions; shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=true;
+
+----------------------------------------------------------------Decay Shield AV from Blood of the Master
+[ActorValue]
+ID=ari_summoned_decayshield;
+name=<icon=icon_decayshield>;
+icon=<icon=icon_decayshield>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+
+
+[ActorValue]
+ID=ari_blood_lifelink;
+name=<icon=icon_gravekeeper_lifelink>;
+icon=<icon=icon_gravekeeper_lifelink>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+
+[ActorValueReaction]
+ID=ari_blood_lifelink; element=physical; element=magical; element=ranged;
+action=ari_lifelink_reversal;
+
+[Action] ID=ari_lifelink_reversal; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+	special=canReactMultipleTimesPerTurn;
+	
+[ActionAoE] 
+	ID=ari_lifelink_reversal; 
+	cloneFrom=oneTile;
+	
+[AvAffecter]
+	ID=ari_lifelink_reversal;
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=HP;
+	magnitude=m:cLastDmgTaken * -0.03;
+	duration=-2;
+	chance=100 * tsa:ari_summoned * isNot:1:t:ari_summoned_ethereal_spirit_AV * isNot:1:t:ari_summoned_mindless_AV;
+	FXOnHit=sparkles;
+	FXOnHitColor=Red;
+[AvAffecterAoE]
+	ID=ari_lifelink_reversal; shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=false;
+
+[AvAffecter]
+	ID=ari_lifelink_reversal; 
+	visibleEvaluations=true;
+	harmful=false;
+	actorValue=HP;
+	magnitude=m:cLastDmgTaken * d:ari_minions_fielded1;
+	duration=-2;
+	chance=100;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_lifelink_reversal;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+
+----------------------------------------------------------------Deathmark AV to double souls from Reaper kills and force targeting
+[ActorValue]
+ID=ari_gravekeeper_deathmark;
+name=Deathmark;
+icon=;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+affectsActors = true;
+canAffectIncapped = true;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride = pCPurple;
+actorPaletteOverrideDuration = 20.0;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+[ActorValueEffect]
+ID=ari_gravekeeper_deathmark; actorValue=priority; magnitude=5; duration=-1;
+
+----------------------------------------------------------------Soul Collector flag AV assigned on soul collector skill
+[ActorValue]
+ID=ari_gravekeeper_soulcollector_av;
+name=Soul Collector;
+icon=<icon=mark_soul_collector>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = true;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+	
+	
+----------------------------------------------------------------Actual soul resource amount used in soul collector
+[ActorValue]
+ID=ari_gravekeeper_soul_amount;
+name=Souls;
+icon=<icon=soul_collected>;
+bubbleIcon=soul_collected;
+minimum=0;
+maximum=10;
+removedByNegativeMagnitude=true;
+description=Collected Souls.;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+affectsActors = true;
+canAffectIncapped = true;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+--Lose all souls on death
+[ActorValueReaction]
+ID=ari_gravekeeper_soul_amount; element=incapacitated;
+action=ari_gravekeeper_soul_removal_on_death;
+
+[Action] ID=ari_gravekeeper_soul_removal_on_death; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+
+[ActionAoE] 
+	ID=ari_gravekeeper_soul_removal_on_death; 
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_soul_removal_on_death; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=ari_gravekeeper_soul_amount;
+	magnitude=-c:ari_gravekeeper_soul_amount;
+	duration=-2;
+	chance=100;
+	visibleMiss=false;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_removal_on_death;
+	fReq=t:ari_gravekeeper_soul_collector;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+
+----------------------------------------------------------------The UI/tooltip portion of the soul resource to make it visible to the player
+[ActorValue]
+ID=ari_gravekeeper_soul_amountUI;
+name=Souls;
+icon=<icon=soul_collected>;
+bubbleIcon=;
+minimum=0;
+maximum=10;
+removedByNegativeMagnitude=true;
+description=Collected Souls.;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+----------------------------------------------------------------Granting souls when an actor dies, but only to actors that have the soul collector AV, and souls are not granted by spirits, zombies, mindless minions or minions that have undeath
+[ActorValueReaction]
+ID=TrueHPMax; element=incapacitated;
+action=ari_gravekeeper_soul_collection;
+
+[Action] ID=ari_gravekeeper_soul_collection; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+	
+	FXOnHit=delay_small;
+    FXOnHit=chargeFast;
+    FXOnHit=upwardLines;
+    FXOnHit=sparkles;
+    FXOnHit=sfx_powerup2;
+[ActionAoE] 
+	ID=ari_gravekeeper_soul_collection; 
+	cloneFrom=oneTile;
+
+--Since it fires off on every incapacitate, include ruptured soul damage here
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collection; 
+	visibleEvaluations=true;
+	harmful=true;
+	actorValue=HP;
+	magnitude=-3;
+	duration=-2;
+	chance=100 * t:ari_ruptured_soul_status;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collection; shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=true;
+	
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collection; 
+	visibleEvaluations=true;
+	harmful=false;
+	actorValue=ari_gravekeeper_soul_amount;
+	magnitude=1;
+	duration=-2;
+	chance=100 * t:ari_gravekeeper_soulcollector_av * isNot:1:c:ari_summoned_undead_zombie * isNot:1:c:ari_summoned_ethereal_spirit_AV * isNot:1:c:ari_summoned_mindless_AV * isNot:1:c:ari_commanded_undeath;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collection; shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=true;
+
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collection; 
+	visibleEvaluations=true;
+	harmful=false;
+	actorValue=ari_gravekeeper_soul_amount;
+	magnitude=moreThan:0:c:ari_gravekeeper_deathmark;
+	duration=-2;
+	chance=100 * t:ari_gravekeeper_soulcollector_av * isNot:1:c:ari_summoned_undead_zombie * isNot:1:c:ari_summoned_ethereal_spirit_AV * isNot:1:c:ari_summoned_mindless_AV * isNot:1:c:ari_commanded_undeath;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collection; shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=true;
+
+----------------------------------------------------------------Updates the soul UI and clears it out at combat end, kind of want to rework
+[ActorValueReaction]
+ID=ari_gravekeeper_soulcollector_av; element=any;
+action=ari_gravekeeper_soul_collectionUI;
+
+[Action] ID=ari_gravekeeper_soul_collectionUI; 
+--	special=canReactMultipleTimesPerTurn;
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+	
+[ActionAoE] 
+	ID=ari_gravekeeper_soul_collectionUI; 
+	cloneFrom=oneTile;
+
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collectionUI; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=ari_gravekeeper_soul_amountUI;
+	magnitude=c:ari_gravekeeper_soul_amount;
+	duration=666;
+	chance=100 * c:ari_gravekeeper_soulcollector_av * moreThan:0:c:ari_gravekeeper_soul_amount;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collectionUI;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collectionUI; 
+	visibleEvaluations=false;
+	harmful=true;
+	actorValue=ari_gravekeeper_soul_amountUI;
+	magnitude=-1;
+	duration=-2;
+	chance=100 * c:ari_gravekeeper_soulcollector_av * lessThan:1:c:ari_gravekeeper_soul_amount;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collectionUI;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+	
+[ActorValueReaction]
+ID=ari_gravekeeper_soulcollector_av; element=combatEnd;
+action=ari_gravekeeper_soul_collectionUI_clear;
+
+[Action] ID=ari_gravekeeper_soul_collectionUI_clear; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+	
+[ActionAoE] 
+	ID=ari_gravekeeper_soul_collectionUI_clear; 
+	cloneFrom=oneTile;
+
+[AvAffecter]
+	ID=ari_gravekeeper_soul_collectionUI_clear; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=ari_gravekeeper_soul_amountUI;
+	magnitude=-10;
+	duration=-2;
+	chance=100 * c:ari_gravekeeper_soulcollector_av;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_soul_collectionUI_clear;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+
+----------------------------------------------------------------Foul Corpses passive AV
+[ActorValue]
+ID=ari_foul_corpses_fuse;
+name=Fetid Corpse;
+icon=icon_foul_corpses;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+----------------------------------------------------------------Vampiric Aura passive AV
+[ActorValue]
+ID=ari_vampiric_aura;
+name=Vampiric Aura;
+icon=<icon=icon_vampirism_av>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+[ActorValueReaction]
+ID=ari_vampiric_aura; element=actionTaken;
+action=ari_gravekeeper_vampiric_aura_act;
+
+[Action] ID=ari_gravekeeper_vampiric_aura_act;
+	name=Vampirism;
+	icon=icon_gravekeeper_vampirism;
+	harmful=false;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+	
+	FXOnCaster=chargeBurst;
+	FXOnCaster=darken_minor;
+	FXOnCaster=sfx_rustle_short;
+	
+[ActionAoE] 
+	ID=ari_gravekeeper_vampiric_aura_act;
+	cloneFrom=oneTile;
+	
+[AvAffecter]
+	ID=ari_gravekeeper_vampiric_aura_act; 
+	harmful=false;
+	actorValue=HP;
+	magnitude=1;
+	chance=100;
+	duration=-2;
+	FXOnTarget=upwardLines;
+	FXOnTargetColor=pBloodyMess_slow;
+	FXOnTile=delay_tiny;
+
+[AvAffecterAoE]
+	ID=ari_gravekeeper_vampiric_aura_act;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+
+----------------------------------------------------------------Attaches when incapacitated with Lichdom, disabling revive
+[ActorValue]
+ID=ari_phylacteral_corpse;
+name=Soulless Husk;
+icon=<icon=phylacteral_corpse>;
+bubbleIcon=phylacteral_corpse;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = true;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride = pCPurple;
+actorPaletteOverrideDuration = 20.0;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+[ActorValueReaction]
+ID=ari_phylacteral_corpse;
+actorValues=revive;
+damageMultiplier=0; healMultiplier=0;
+
+----------------------------------------------------------------Halve the decay rate when a Lich is present
+[ActorValue]
+ID=ari_halve_decay;
+name=Decay Protection;
+icon=<icon=mark_soul_collector>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = true;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride = pCPurple;
+actorPaletteOverrideDuration = 20.0;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+----------------------------------------------------------------Lich Soulless Overseer AV to allow every other turn application
+[ActorValue]
+ID=lich_anti_undeath_AV;
+name=Anti Undeath;
+icon=<icon=icon_bone>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = true;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride = pCPurple;
+actorPaletteOverrideDuration = 20.0;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+----------------------------------------------------------------Necronomicon Hungry Lifesteal application
+[ActorValue]
+ID=ari_gravekeeper_hungry_necronomicon;
+name=The Necronomicon;
+icon=<icon=icon_gravekeeper_lich_soul_devourer>;
+bubbleIcon=icon_deathcurse;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+description=The Necronomicon grows hungry...;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+affectsActors = true;
+canAffectIncapped = true;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+	
+----------------------------------------------------------------Minion core related----------------------------------------------------------------
+----------------------------------------------------------------Core minion AV to flag minions and buff them
+[ActorValue]
+ID=ari_summoned_undead_AV;
+name=Risen Minion;
+icon=<icon_gravekeeper_risen>;
+bubbleIcon=;
+--minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+
+----------------------------------------------------------------Core REAPER AV to flag minions and buff them
+[ActorValue]
+ID=ari_summoned_undead_AV_Reaper;
+name=Risen Minion;
+icon=<icon_gravekeeper_risen>;
+bubbleIcon=;
+--minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+----------------------------------------------------------------Special AV to calculate whether Reaper will overkill heal
+[ActorValue]
+ID=ari_gravekeeper_reaper_rank;
+name=;
+icon=;
+bubbleIcon=;
+--minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = true;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+[ActorValueReaction]
+ID=ari_gravekeeper_reaper_rank; element=incapacitated;
+action=ari_gravekeeper_reaper_overkill_act;
+
+
+[Action] ID=ari_gravekeeper_reaper_overkill_act; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+	special=canReactMultipleTimesPerTurn;
+	
+[ActionAoE] 
+	ID=ari_gravekeeper_reaper_overkill_act; 
+	cloneFrom=oneTile;
+
+[AvAffecter]
+	ID=ari_gravekeeper_reaper_overkill_act; 
+	visibleEvaluations=true;
+	harmful=false;
+	actorValue=HP;
+	magnitude=m:cLastDmgTaken * 0.1 - g:reaper_target_hp * 0.1;
+	duration=-2;
+	chance=100;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_reaper_overkill_act;
+	shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=10;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=false;
+	canSelectEnemies=true;
+
+
+----------------------------------------------------------------Lich AV
+[ActorValue]
+ID=ari_summoned_undead_lich;
+name=Risen Lich;
+icon=<icon_gravekeeper_risen>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = pain;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+----------------------------------------------------------------Abomination AV
+[ActorValue]
+ID=ari_summoned_undead_abomination;
+name=Risen Abomination;
+icon=<icon_gravekeeper_risen>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+----------------------------------------------------------------Freshly spawned Abomination AV
+[ActorValue]
+ID=ari_summoned_undead_abomination_fresh;
+name=Risen Abomination;
+icon=<icon_gravekeeper_risen>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+----------------------------------------------------------------Freshly cast Foul Liturgy AV for buff workaround
+[ActorValue]
+ID=ari_foul_liturgy_cast;
+name=Foul Liturgy;
+icon=;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+[ActorValueReaction]
+ID=ari_foul_liturgy_cast; element=endTurn;
+action=ari_foul_liturgy_cast_buff;
+
+
+[Action] ID=ari_foul_liturgy_cast_buff; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+	special=canReactMultipleTimesPerTurn;
+	
+[ActionAoE] 
+	ID=ari_foul_liturgy_cast_buff; 
+	cloneFrom=oneTile;
+
+--Give Abomination the skills of minions it killed to summon it
+[AvAffecter]
+	ID=ari_foul_liturgy_cast_buff; 
+	harmful=false;
+	actorValue=ari_consumed_warrior;
+	magnitude=c:ari_consumed_warrior;
+	chance=100 * tsa:ari_summoned * t:ari_summoned_undead_abomination * t:ari_summoned_undead_abomination_fresh;
+	duration=-2;
+	visibleEvaluations=false;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_foul_liturgy_cast_buff; shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+	
+[AvAffecter]
+	ID=ari_foul_liturgy_cast_buff; 
+	harmful=false;
+	actorValue=ari_consumed_archer;
+	magnitude=c:ari_consumed_archer;
+	chance=100 * tsa:ari_summoned * t:ari_summoned_undead_abomination * t:ari_summoned_undead_abomination_fresh;
+	duration=-2;
+	visibleEvaluations=false;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_foul_liturgy_cast_buff; shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+	
+[AvAffecter]
+	ID=ari_foul_liturgy_cast_buff; 
+	harmful=false;
+	actorValue=ari_consumed_knight;
+	magnitude=c:ari_consumed_knight;
+	chance=100 * tsa:ari_summoned * t:ari_summoned_undead_abomination * t:ari_summoned_undead_abomination_fresh;
+	duration=-2;
+	visibleEvaluations=false;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_foul_liturgy_cast_buff; shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+	
+[AvAffecter]
+	ID=ari_foul_liturgy_cast_buff; 
+	harmful=false;
+	actorValue=ari_consumed_zombie;
+	magnitude=c:ari_consumed_zombie;
+	chance=100 * tsa:ari_summoned * t:ari_summoned_undead_abomination * t:ari_summoned_undead_abomination_fresh;
+	duration=-2;
+	visibleEvaluations=false;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_foul_liturgy_cast_buff; shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+
+[AvAffecter]
+	ID=ari_foul_liturgy_cast_buff; 
+	harmful=false;
+	actorValue=ari_consumed_mage;
+	magnitude=c:ari_consumed_mage;
+	chance=100 * tsa:ari_summoned * t:ari_summoned_undead_abomination * t:ari_summoned_undead_abomination_fresh;
+	duration=-2;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_foul_liturgy_cast_buff; shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+
+--Remove the summoned undead AV so we don't keep buffing the same minions
+[AvAffecter]
+    ID=ari_foul_liturgy_cast_buff;
+	visibleEvaluations=false;
+    actorValue=ari_summoned_undead_abomination_fresh;
+    harmful=false;
+    visibleMiss=false;
+    magnitude=-1;
+    duration=-2;
+    chance=100 * tsa:ari_summoned * t:ari_summoned_undead_abomination * t:ari_summoned_undead_abomination_fresh;
+    FXOnHit=sparkles;
+    FXOnHitColor=Black;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_foul_liturgy_cast_buff; shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+
+--Reset the caster's values for the killed minions
+[AvAffecter]
+	ID=ari_foul_liturgy_cast_buff; 
+	harmful=false;
+	actorValue=ari_consumed_warrior;
+	magnitude=-1;
+	chance=100;
+	duration=-2;
+	visibleEvaluations=false;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_foul_liturgy_cast_buff;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+	
+[AvAffecter]
+	ID=ari_foul_liturgy_cast_buff; 
+	harmful=false;
+	actorValue=ari_consumed_archer;
+	magnitude=-1;
+	chance=100;
+	duration=-2;
+	visibleEvaluations=false;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_foul_liturgy_cast_buff;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+	
+[AvAffecter]
+	ID=ari_foul_liturgy_cast_buff; 
+	harmful=false;
+	actorValue=ari_consumed_knight;
+	magnitude=-1;
+	chance=100;
+	duration=-2;
+	visibleEvaluations=false;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_foul_liturgy_cast_buff;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+	
+[AvAffecter]
+	ID=ari_foul_liturgy_cast_buff; 
+	harmful=false;
+	actorValue=ari_consumed_zombie;
+	magnitude=-1;
+	chance=100;
+	duration=-2;
+	visibleEvaluations=false;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_foul_liturgy_cast_buff;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+
+[AvAffecter]
+	ID=ari_foul_liturgy_cast_buff; 
+	harmful=false;
+	actorValue=ari_consumed_mage;
+	magnitude=-1;
+	chance=100;
+	duration=-2;
+	visibleEvaluations=false;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_foul_liturgy_cast_buff;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+
+----------------------------------------------------------------Foul Liturgy's buff effect minion AV
+[ActorValue]
+ID=ari_sacrificed_soul_AV;
+name=Sacrificed Soul;
+icon=<icon_gravekeeper_risen>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+----------------------------------------------------------------Abomination Consumption AVs
+----------------------------------------------------------------Skeleton Footman Consumption
+[ActorValue]
+ID=ari_consumed_warrior;
+name=Warrior Consumption;
+icon=<icon=icon_skeleton_footman_minion>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+----------------------------------------------------------------Skeleton Archer Consumption
+[ActorValue]
+ID=ari_consumed_archer;
+name=Archer Consumption;
+icon=<icon=icon_skeleton_archer_minion>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+----------------------------------------------------------------Skeleton Knight Consumption
+[ActorValue]
+ID=ari_consumed_knight;
+name=Knight Consumption;
+icon=<icon=icon_skeleton_knight_minion>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+----------------------------------------------------------------Skeleton Mage Consumption
+[ActorValue]
+ID=ari_consumed_mage;
+name=Mage Consumption;
+icon=<icon=icon_skeleton_mage_minion>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+----------------------------------------------------------------Zombie Consumption
+[ActorValue]
+ID=ari_consumed_zombie;
+name=Zombie Consumption;
+icon=<icon=icon_zombie_minion>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+----------------------------------------------------------------Consumption Counter
+[ActorValue]
+ID=ari_consumption_counter;
+name=Unending Hunger;
+icon=;
+bubbleIcon=;
+minimum=0;
+maximum=15;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+[ActorValueEffect]
+ID=ari_consumption_counter; actorValue=PhysDef; magnitude=0; formulaMod=1*c:ari_consumption_counter; duration=-1;
+[ActorValueEffect]
+ID=ari_consumption_counter; actorValue=MagDef; magnitude=0; formulaMod=1*c:ari_consumption_counter; duration=-1;
+[ActorValueEffect]
+ID=ari_consumption_counter; actorValue=PhysAtk; magnitude=0; formulaMod=2*c:ari_consumption_counter; duration=-1;
+[ActorValueEffect]
+ID=ari_consumption_counter; actorValue=skill_Ruin; magnitude=0; formulaMod=2*c:ari_consumption_counter; duration=-1;
+[ActorValueEffect]
+ID=ari_consumption_counter; actorValue=TrueHPMax; magnitude=0; formulaMod=20*c:ari_consumption_counter; duration=-1;
+[ActorValueEffect]
+ID=ari_consumption_counter; actorValue=TrueMPMax; magnitude=0; formulaMod=2*c:ari_consumption_counter; duration=-1;
+[ActorValueEffect]
+ID=ari_consumption_counter; actorValue=actTime; magnitude=0; formulaMod=-1*c:ari_consumption_counter; duration=-1;
+
+[ActorValueReaction]
+ID=ari_consumption_counter; element=timerUp;
+action=ari_consumption_satiation;
+
+[Action] ID=ari_consumption_satiation; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+
+[ActionAoE] 
+	ID=ari_consumption_satiation; 
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_consumption_satiation; 
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=HP;
+	magnitude=0.05 * c:ari_consumption_counter * c:TrueHPMax;
+	chance=100;
+	duration=-2;
+	element=ruin;
+	FXOnTile= manySplatter_overlap; 
+	FXOnTileColor= Red; 
+[AvAffecterAoE]
+	ID=ari_consumption_satiation;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+	needsLoS = false;
+	needsLoE = false;
+	bypassAll=true;
+	occupyAll=true;
+[AvAffecter]
+	ID=ari_consumption_satiation; 
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=MP;
+	magnitude=0.5 * c:ari_consumption_counter;
+	chance=100;
+	duration=-2;
+	element=ruin;
+	FXOnTile= manySplatter_overlap; 
+	FXOnTileColor= Blue; 
+[AvAffecterAoE]
+	ID=ari_consumption_satiation;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+	needsLoS = false;
+	needsLoE = false;
+	bypassAll=true;
+	occupyAll=true;
+
+----------------------------------------------------------------Zombie AV
+[ActorValue]
+ID=ari_summoned_undead_zombie;
+name=Risen Zombie;
+icon=<icon_gravekeeper_risen>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+----------------------------------------------------------------generic Skeleton AV
+[ActorValue]
+ID=ari_summoned_undead_skeleton;
+name=Risen Skeleton;
+icon=<icon_gravekeeper_risen>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+----------------------------------------------------------------Special AV to calculate the maximum skeletons fielded limit
+[ActorValue]
+ID=ari_summoned_skeleton_maxlimit;
+name=Maximum Skeletons;
+icon=<icon_gravekeeper_risen>;
+bubbleIcon=;
+--minimum=0;
+maximum=5;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+----------------------------------------------------------------Skeleton Footman class AV
+[ActorValue]
+ID=ari_summoned_undead_skeleton_warrior_AV;
+name=Risen Skeleton;
+icon=<icon_gravekeeper_risen>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+----------------------------------------------------------------Skeleton Archer class AV
+[ActorValue]
+ID=ari_summoned_undead_skeleton_archer_AV;
+name=Risen Skeleton;
+icon=<icon_gravekeeper_risen>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+----------------------------------------------------------------Skeleton Knight class AV
+[ActorValue]
+ID=ari_summoned_undead_skeleton_knight_AV;
+name=Risen Skeleton;
+icon=<icon_gravekeeper_risen>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+----------------------------------------------------------------Command: Undeath AV to resurrect minions on death
+[ActorValue]
+ID=ari_commanded_undeath;
+name=Undeath;
+icon=<icon=icon_undeath>;
+bubbleIcon=icon_undeath;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = true;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride = pCPurple;
+actorPaletteOverrideDuration = 20.0;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+----------------------------------------------------------------Skeleton Mage class AV
+[ActorValue]
+ID=ari_summoned_undead_skeleton_mage_AV;
+name=Risen Skeleton;
+icon=<icon_gravekeeper_risen>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+----------------------------------------------------------------Skeleton Mage Detonate Corpse depletion AV
+[ActorValue]
+ID=ari_depleted_corpse;
+name=Soulless Husk;
+icon=<icon=phylacteral_corpse>;
+bubbleIcon=phylacteral_corpse;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = true;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride = pCPurple;
+actorPaletteOverrideDuration = 20.0;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+--------------------------Gets removed on combat end or revival to re-enable detonate corpse use
+[ActorValueReaction]
+ID=ari_depleted_corpse;
+actorValues=revive;
+action=ari_depleted_corpse_removal;
+
+[ActorValueReaction]
+ID=ari_depleted_corpse;
+element=combatEnd;
+action=ari_depleted_corpse_removal;
+
+[Action] ID=ari_depleted_corpse_removal; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+	
+[ActionAoE] 
+	ID=ari_depleted_corpse_removal; 
+	cloneFrom=oneTile;
+
+[AvAffecter]
+	ID=ari_depleted_corpse_removal; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=ari_depleted_corpse;
+	magnitude=-1;
+	duration=-2;
+	chance=100;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_depleted_corpse_removal;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+
+----------------------------------------------------------------Reaper AV
+[ActorValue]
+ID=ari_summoned_undead_reaper;
+name=Reaper;
+icon=<icon_gravekeeper_risen>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+----------------------------------------------------------------generic Spirit AV
+[ActorValue]
+ID=ari_summoned_ethereal_spirit_AV;
+name=Ethereal Spirit;
+icon=<icon_gravekeeper_ethereal_spirit>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+----------------------------------------------------------------Banish spirits after using an ability
+[ActorValue]
+ID=ari_spirit_ability_used;
+name=Used Spirit Power;
+icon=<icon=icon_gravekeeper_ethereal_spirit>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = 1;
+--bonusesMultiplier = 1;
+animationOnHarmful = pain;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = false;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+[ActorValueReaction]
+ID=ari_spirit_ability_used; element=endTurn; 
+action=ari_kill_spirit_ability_used;
+
+[Action] ID=ari_kill_spirit_ability_used; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+
+[ActionAoE] 
+	ID=ari_kill_spirit_ability_used; 
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_kill_spirit_ability_used; 
+	visibleEvaluations=true;
+	visibleMiss=true;
+	harmful=false;
+	actorValue=HP;
+	magnitude=c:TrueHPMax * -1 - 1;
+	chance=100 * tsa:ari_summoned;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_kill_spirit_ability_used;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+	canSelectAllies=true;
+
+----------------------------------------------------------------Mausoleum AV
+[ActorValue]
+ID=ari_summoned_mausoleum_AV;
+name=Mausoleum;
+icon=<icon_gravekeeper_ethereal_spirit>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+----------------------------------------------------------------Mausoleum AV for Conduit of the Damned Soul Pact T4 Overload
+[ActorValue]
+ID=ari_conduit_damned;
+name=Conduit of the Damned;
+icon=<icon_gravekeeper_ethereal_spirit>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+[ActorValueReaction]
+ID=ari_conduit_damned; element=timerUp;
+action=ari_conduit_damned_act;
+
+[Action] ID=ari_conduit_damned_act; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+	
+	FXOnHit=delay_small;
+
+[ActionAoE] 
+	ID=ari_conduit_damned_act; 
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_conduit_damned_act; 
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=ari_conduit_expiration;
+	magnitude=1;
+	chance=100;
+	duration=-3;
+[AvAffecterAoE]
+	ID=ari_conduit_damned_act;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+[AvAffecter]
+	ID=ari_conduit_damned_act;
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=ari_damned_buff;
+	magnitude=1;
+	duration=-2;
+	chance=100 * tsa:ari_summoned;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_conduit_damned_act; shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=false;
+[AvAffecter]
+	ID=ari_conduit_damned_act;
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=actTimer;
+	magnitude=30;
+	duration=-2;
+	chance=100 * tsa:ari_summoned;
+	FXOnHit=sparkles;
+    FXOnHitColor=Green;
+	FXOnHit=sparkles;
+    FXOnHitColor=Black;
+[AvAffecterAoE]
+	ID=ari_conduit_damned_act; shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=false;
+
+
+[ActorValue]
+ID=ari_conduit_expiration;
+name=Unpowered Conduit;
+icon=<icon_gravekeeper_ethereal_spirit>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+executeActionOnDurationEnd=ari_conduit_expiration_act;
+
+[Action] ID=ari_conduit_expiration_act; 
+    icon=iconSharp;
+    special=usableEvenWhenCantAct;
+    special=usableEvenWhenReacting;
+    special=usableEvenWhenYourTurn;
+    special=dontDelayOtherActions;
+[ActionAoE]
+	ID=ari_conduit_expiration_act;
+	cloneFrom=oneTile;
+----------Remove deathshield if it exists so we don't summon a zombie AND abomination
+[AvAffecter]
+	ID=ari_conduit_expiration_act;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=true;
+	actorValue=ari_summoned_deathshield;
+	magnitude=-1;
+	duration=-2;
+	chance=100 * tsa:ari_summoned;
+[AvAffecterAoE]
+	ID=ari_conduit_expiration_act;
+	cloneFrom=oneTile;
+----------Remove undeath if it exists so we can actually kill and clear space for abomination
+[AvAffecter]
+	ID=ari_conduit_expiration_act;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=true;
+	actorValue=ari_commanded_undeath;
+	magnitude=-1;
+	duration=-2;
+	chance=100 * tsa:ari_summoned;
+[AvAffecterAoE]
+	ID=ari_conduit_expiration_act;
+	cloneFrom=oneTile;
+----------Also remove undying if it exists (Soul Pact T4 buff) so we can actually kill and clear space for abomination
+[AvAffecter]
+	ID=ari_conduit_expiration_act;
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=true;
+	actorValue=ari_undying;
+	magnitude=-1;
+	duration=-2;
+	chance=100 * tsa:ari_summoned;
+[AvAffecterAoE]
+	ID=ari_conduit_expiration_act;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_conduit_expiration_act; 
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=HP;
+	magnitude=c:TrueHPMax * -2;
+	chance=100 * tsa:ari_summoned;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_conduit_expiration_act;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+	canSelectAllies=true;
+
+
+[ActorValue]
+ID=ari_damned_buff;
+name=Damned;
+icon=<icon_gravekeeper_ethereal_spirit>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Lime;
+damageNumberColor_Negative = Lime;
+actorPaletteOverride = pG;
+actorPaletteOverrideDuration = 2.5;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+[ActorValueEffect]
+ID=ari_damned_buff; actorValue=skill_Sword; magnitude=0; formulaMod=c:skill_Ruin; duration=-1;
+[ActorValueEffect]
+ID=ari_damned_buff; actorValue=skill_Fist; magnitude=0; formulaMod=c:skill_Ruin; duration=-1;
+[ActorValueEffect]
+ID=ari_damned_buff; actorValue=c:skill_Aim; magnitude=0; formulaMod=c:skill_Ruin; duration=-1;
+[ActorValueEffect]
+ID=ari_damned_buff; actorValue=c:skill_Shield; magnitude=0; formulaMod=c:skill_Ruin; duration=-1;
+[ActorValueEffect]
+ID=ari_damned_buff; actorValue=PhysAtk; magnitude=0; formulaMod=c:skill_Ruin; duration=-1;
+[ActorValueEffect]
+ID=ari_damned_buff; actorValue=MagAtk; magnitude=0; formulaMod=c:skill_Ruin; duration=-1;
+[ActorValueEffect]
+ID=ari_damned_buff; actorValue=skill_Ruin; magnitude=0; formulaMod=c:skill_Ruin; duration=-1;
+
+[ActorValueReaction]
+ID=ari_damned_buff; element=endTurn; 
+action=ari_damned_buff_endTurn;
+
+[Action] ID=ari_damned_buff_endTurn; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+
+[ActionAoE] 
+	ID=ari_damned_buff_endTurn; 
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_damned_buff_endTurn; 
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=HP;
+	magnitude=c:TrueHPMax * -2;
+	chance=100 * tsa:ari_summoned;
+	duration=-2;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_damned_buff_endTurn;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+	canSelectAllies=true;
+
+
+----------------------------------------------------------------Phantom AV (Soul Collector T2 summon)
+[ActorValue]
+ID=ari_summoned_phantom_AV;
+name=Phantom;
+icon=<icon_gravekeeper_ethereal_spirit>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+----------------------------------------------------------------Ghost AV (Mausoleum summon)
+[ActorValue]
+ID=ari_summoned_ghost_AV;
+name=Ghost;
+icon=<icon_gravekeeper_ethereal_spirit>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+----------------------------------------------------------------Wraith AV (Mausoleum summon)
+[ActorValue]
+ID=ari_summoned_wraith_AV;
+name=Wraith;
+icon=<icon_gravekeeper_ethereal_spirit>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+----------------------------------------------------------------Wisp AV (Mausoleum summon)
+[ActorValue]
+ID=ari_summoned_wisp_AV;
+name=Wisp;
+icon=<icon_gravekeeper_ethereal_spirit>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+
+----------------------------------------------------------------Haunted Status AV
+[ActorValue]
+ID=ari_haunted_status;
+name=Haunted;
+icon=<icon=icon_gravekeeper_rot>;
+bubbleIcon=icon_rot;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 1;
+harmfulMagnitude = 1;
+--bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = false;
+canBeRemovedByNonspecificAVEffectRemoval = true;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+--Chance to summon spirits
+[ActorValueReaction]
+ID=ari_haunted_status; element=timerUp;
+action=ari_haunted_spawn;
+
+[Action] ID=ari_haunted_spawn; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+
+[ActionAoE] 
+	ID=ari_haunted_spawn; 
+	cloneFrom=oneTile;
+
+[AvAffecter]
+	ID=ari_haunted_spawn; 
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=summonActor_defaultTeam;
+	magnitude=ari_spirit_wisp;
+	chance=25 - 101 * m:targetExists;
+	duration=-2;
+	element=ruin;
+	FXOnTile=tinyShakeHoriz;
+	FXOnTile=blackCloud;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_haunted_spawn;
+	fReq=m:rand(100)-60;
+	cloneFrom=adjacent;
+	aoeCasterAsOrigin=true;
+	needsLoS = false;
+	needsLoE = false;
+	bypassAll=true;
+	occupyAll=true;
+[AvAffecter]
+	ID=ari_haunted_spawn; 
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=summonActor_defaultTeam;
+	magnitude=ari_spirit_wraith;
+	chance=25 - 101 * m:targetExists;
+	duration=-2;
+	element=ruin;
+	FXOnTile=tinyShakeHoriz;
+	FXOnTile=blackCloud;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_haunted_spawn;
+	fReq=m:rand(100)-60;
+	cloneFrom=adjacent;
+	aoeCasterAsOrigin=true;
+	needsLoS = false;
+	needsLoE = false;
+	bypassAll=true;
+	occupyAll=true;
+[AvAffecter]
+	ID=ari_haunted_spawn; 
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=summonActor_defaultTeam;
+	magnitude=ari_spirit_ghost;
+	chance=25 - 101 * m:targetExists;
+	duration=-2;
+	element=ruin;
+	FXOnTile=tinyShakeHoriz;
+	FXOnTile=blackCloud;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_haunted_spawn;
+	cloneFrom=adjacent;
+	aoeCasterAsOrigin=true;
+	needsLoS = false;
+	needsLoE = false;
+	bypassAll=true;
+	occupyAll=true;
+
+--Give specters magic attack
+[AvAffecter]
+	ID=ari_haunted_spawn; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=MagAtk;
+	magnitude=g:ari_mausoleum_ruin_skill * 0.3;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_haunted_spawn;
+	shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+
+--Give specters physical defense
+[AvAffecter]
+	ID=ari_haunted_spawn; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=PhysDef;
+	magnitude=g:ari_mausoleum_ruin_skill * 0.1;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_haunted_spawn;
+	shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+
+--Give specters minions magic defense
+[AvAffecter]
+	ID=ari_haunted_spawn; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=MagDef;
+	magnitude=g:ari_mausoleum_ruin_skill * 0.3;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_haunted_spawn;
+	shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+
+--Give specters our Ruin skill for added effects
+[AvAffecter]
+	ID=ari_haunted_spawn; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=skill_Ruin;
+	magnitude=g:ari_mausoleum_ruin_skill * 1.0;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_haunted_spawn;
+	shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+
+--Give the specters time so that they act faster
+[AvAffecter]
+	ID=ari_haunted_spawn; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=actTimer;
+	magnitude=6+m:rand(6);
+	duration=-2;
+	chance=100*t:ari_summoned_undead_AV;
+[AvAffecterAoE]
+	ID=ari_haunted_spawn;
+	shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+
+--Haunted specters don't spawn at full mana
+[AvAffecter]
+	ID=ari_haunted_spawn; 
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=MP;
+	magnitude=-0.5 * t:TrueMPMax;
+	chance=100*t:ari_summoned_undead_AV;
+	duration=-2;
+[AvAffecterAoE]
+	ID=ari_haunted_spawn;
+	shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+
+--Remove the summoned undead AV so we don't keep buffing the same minions
+[AvAffecter]
+    ID=ari_haunted_spawn;
+	visibleEvaluations=false;
+    actorValue=ari_summoned_undead_AV;
+    harmful=false;
+    visibleMiss=false;
+    magnitude=-1;
+    duration=-2;
+    chance=100*t:ari_summoned_undead_AV;
+[AvAffecterAoE]
+	ID=ari_haunted_spawn;
+	shape=17;
+	cloneFrom=adjacentAndSelf;
+	maxRange=30;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=false;
+	bypassAll=true;
+
+----------------------------------------------------------------Mindless minion AV to flag which minions are mindless so that blood of the master doesn't heal or buff
+[ActorValue]
+ID=ari_summoned_mindless_AV;
+name=Mindless Risen;
+icon=<icon_gravekeeper_risen>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+
+
+
+----------------------------------------------------------------Deathshield AV (Remove)
+[ActorValue]
+ID=ari_summoned_deathshield;
+name=<icon=icon_deathshield>;
+icon=<icon=icon_deathshield>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+
+
+
+	
+	
+
+----------------------------------------------------------------Undying AV to resurrect target and pulse Undeath
+[ActorValue]
+ID=ari_undying;
+name=Undying;
+icon=<icon=icon_undeath>;
+bubbleIcon=icon_undeath;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = true;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride = pCPurple;
+actorPaletteOverrideDuration = 20.0;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+[ActorValueReaction]
+ID=ari_undying; element=endTurn; 
+action=ari_undying_pulse;
+[ActorValueReaction]
+ID=ari_undying; element=incapacitated; 
+action=ari_undying_resurrect;
+
+[Action] ID=ari_undying_resurrect; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+[ActionAoE]
+	ID=ari_undying_resurrect; 
+	cloneFrom=oneTile;
+--Revival
+[AvAffecter]
+	ID=ari_undying_resurrect; 
+	visibleEvaluations=true;
+	visibleMiss=true;
+	harmful=false;
+	actorValue=revive;
+	magnitude=1;
+	chance=100 * c:ari_undying;
+	duration=-2;
+	element=ruin;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_undying_resurrect;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+--Heal 100%
+[AvAffecter]
+	ID=ari_undying_resurrect; 
+	visibleEvaluations=true;
+	visibleMiss=true;
+	harmful=false;
+	actorValue=HP;
+	magnitude=c:TrueHPMax * 1.0;
+	chance=100 * c:ari_undying;
+	duration=-2;
+	element=ruin;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_undying_resurrect;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+--Remove Undying
+[AvAffecter]
+	ID=ari_undying_resurrect; 
+	visibleEvaluations=true;
+	visibleMiss=true;
+	harmful=false;
+	actorValue=ari_undying;
+	magnitude=-1;
+	chance=100 * c:ari_undying;
+	duration=-2;
+	element=ruin;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_undying_resurrect;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+	
+[Action] ID=ari_undying_pulse; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+--Undeath pulses
+[ActionAoE] 
+	ID=ari_undying_pulse;
+	cloneFrom=adjacent+2;
+[AvAffecter]
+	ID=ari_undying_pulse; 
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=ari_commanded_undeath;
+	magnitude=1;
+	chance=100 * tsa:ari_summoned * isNot:1:t:ari_summoned_ethereal_spirit_AV * isNot:1:t:ari_summoned_mindless_AV;
+	duration=-4;
+	FXOnHit=upwardLines;
+	FXOnHitColor=Black;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_undying_pulse;
+	cloneFrom=adjacent+1;
+	minRange=1;
+	maxRange=3;
+	canSelectAllies=true;
+	canSelectEnemies=false;
+----------------------------------------------------------------Soul collector T4 buff (Remove)
+[ActorValue]
+ID=ari_beyond_the_veil;
+name=<icon=icon_gravekeeper_beyond_the_veil>;
+icon=<icon=icon_gravekeeper_beyond_the_veil>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+[ActorValueReaction]
+ID=ari_beyond_the_veil;
+actorValues=physical; actorValues=magical;
+damageMultiplier=0; healMultiplier=0;
+
+
+----------------------------------------------------------------Rot heal AVs
+[ActorValue]
+ID=ari_filler_AV1;
+name=<icon=icon_decayshield>;
+icon=<icon=icon_decayshield>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = pain;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+[ActorValue]
+ID=ari_filler_AV2;
+name=<icon=icon_decayshield>;
+icon=<icon=icon_decayshield>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = pain;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+[ActorValue]
+ID=ari_filler_AV3;
+name=<icon=icon_decayshield>;
+icon=<icon=icon_decayshield>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = pain;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+[ActorValue]
+ID=ari_filler_AV4;
+name=<icon=icon_decayshield>;
+icon=<icon=icon_decayshield>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = pain;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+[ActorValue]
+ID=ari_filler_AV5;
+name=<icon=icon_decayshield>;
+icon=<icon=icon_decayshield>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = pain;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+[ActorValue]
+ID=ari_filler_AV6;
+name=<icon=icon_decayshield>;
+icon=<icon=icon_decayshield>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = pain;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+[ActorValue]
+ID=ari_filler_AV7;
+name=<icon=icon_decayshield>;
+icon=<icon=icon_decayshield>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = pain;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+[ActorValue]
+ID=ari_filler_AV8;
+name=<icon=icon_decayshield>;
+icon=<icon=icon_decayshield>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = pain;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+[ActorValue]
+ID=ari_filler_AV9;
+name=<icon=icon_decayshield>;
+icon=<icon=icon_decayshield>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = pain;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+[ActorValue]
+ID=ari_filler_AV10;
+name=<icon=icon_decayshield>;
+icon=<icon=icon_decayshield>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = pain;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+[ActorValue]
+ID=ari_filler_AV11;
+name=<icon=icon_decayshield>;
+icon=<icon=icon_decayshield>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = pain;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+[ActorValue]
+ID=ari_filler_AV12;
+name=<icon=icon_decayshield>;
+icon=<icon=icon_decayshield>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = pain;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+[ActorValue]
+ID=ari_filler_AV13;
+name=<icon=icon_decayshield>;
+icon=<icon=icon_decayshield>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = pain;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+[ActorValue]
+ID=ari_filler_AV14;
+name=<icon=icon_decayshield>;
+icon=<icon=icon_decayshield>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = pain;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+[ActorValue]
+ID=ari_filler_AV15;
+name=<icon=icon_decayshield>;
+icon=<icon=icon_decayshield>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = pain;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+
+
+	
+
+
+
+----------------------------------------------------------------
+---------------------Enemy Actor Values-------------------------
+----------------------------------------------------------------
+[ActorValue]
+ID=ari_undead_enemy_resurrection_counter;
+defaultValue = 0;
+minimum=0;
+maximum=99;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+removedByNegativeMagnitude=false;
+
+[ActorValue]
+ID=ari_undead_enemy_resurrection;
+name=Undead Resurrection;
+icon=<icon_gravekeeper_risen>;
+bubbleIcon=;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = pain;
+affectsActors = true;
+canAffectIncapped = true;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+
+
+
+[ActorValue]
+ID=ari_undead_enemy_AV;
+name=Risen Minion;
+icon=<icon_gravekeeper_risen>;
+bubbleIcon=;
+--minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = pain;
+affectsActors = true;
+canAffectIncapped = true;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+
+
+
+[ActorValue]
+ID=ari_ai_skill_useage_multi;
+name=Skill Use Multiplier;
+icon=;
+bubbleIcon=;
+minimum=0;
+maximum=100;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 5;
+harmfulMagnitude = -1;
+bonusesMultiplier = 1;
+animationOnHarmful = ;
+affectsActors = true;
+canAffectIncapped = true;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+
+
+
+----------------------------------------------------------------Rot Status AV for enemy use
+[ActorValue]
+ID=ari_rot_status_enemy;
+name=Rot;
+icon=<icon=icon_gravekeeper_rot>;
+bubbleIcon=icon_rot;
+minimum=0;
+maximum=15;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 1;
+harmfulMagnitude = 1;
+--bonusesMultiplier = 1;
+animationOnHarmful = pain;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = false;
+canBeRemovedByNonspecificAVEffectRemoval = true;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+[ActorValueReaction]
+ID=ari_rot_status_enemy; actorValues=ari_rot_status_enemy; newID=ari_rot_status_enemy;
+
+--Summon a zombie if an actor dies while rotting
+[ActorValueReaction]
+ID=ari_rot_status_enemy; element=incapacitated;
+action=ari_rot_raise_enemy;
+
+[Action] ID=ari_rot_raise_enemy; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+
+[ActionAoE] 
+	ID=ari_rot_raise_enemy; 
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_rot_raise_enemy; 
+	visibleEvaluations=false;
+	visibleMiss=false;
+	harmful=false;
+	actorValue=summonActor_defaultTeam;
+	magnitude=summoned_undead_zombie_minion_enemy;
+	chance=100;
+	duration=-2;
+	element=ruin;
+	FXOnTile=tinyShakeHoriz;
+	FXOnTile=smokeCloud;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_rot_raise_enemy;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+	needsLoS = false;
+	needsLoE = false;
+	bypassAll=true;
+	occupyAll=true;
+
+
+--Deal damage at the end of an actor's turn and attempt to spread rot based on stack size
+[ActorValueReaction]
+ID=ari_rot_status_enemy; element=endTurn;
+action=ari_rot_damage_enemy;
+
+[Action] ID=ari_rot_damage_enemy; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+	
+[ActionAoE] 
+	ID=ari_rot_damage_enemy; 
+	cloneFrom=oneTile;
+
+[AvAffecter]
+	ID=ari_rot_damage_enemy; 
+	visibleEvaluations=true;
+	harmful=true;
+	actorValue=HP;
+	magnitude=c:ari_rot_status_enemy * -1;
+	duration=-2;
+	chance=100;
+	visibleMiss=false;
+	element=physical;
+	element=ruin;
+	
+	FXOnTile=spiral2;
+	FXOnTileColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=DarkGreen;
+[AvAffecterAoE]
+	ID=ari_rot_damage_enemy;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_rot_damage_enemy; 
+	visibleEvaluations=true;
+	harmful=true;
+	actorValue=ari_rot_status_enemy;
+	magnitude=1 + moreThan:0:t:ari_rot_status_enemy + moreThan:1:t:ari_rot_status_enemy + moreThan:2:t:ari_rot_status_enemy + moreThan:3:t:ari_rot_status_enemy + moreThan:4:t:ari_rot_status_enemy + moreThan:5:t:ari_rot_status_enemy + moreThan:6:t:ari_rot_status_enemy + moreThan:7:t:ari_rot_status_enemy + moreThan:8:t:ari_rot_status_enemy + moreThan:9:t:ari_rot_status_enemy + moreThan:10:t:ari_rot_status_enemy + moreThan:11:t:ari_rot_status_enemy + moreThan:12:t:ari_rot_status_enemy + moreThan:13:t:ari_rot_status_enemy;
+	duration=40;
+	chance=thisPreviousAVHit:ari_rot_damage_enemy * c:ari_rot_status_enemy * 6;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_rot_damage_enemy;
+	aoeCasterAsOrigin = true;
+	cloneFrom=adjacentAndSelf;
+	minRange=1;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=true;
+	bypassAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=false;
+[AvAffecter]
+	ID=ari_rot_damage_enemy; 
+	visibleEvaluations=true;
+	harmful=true;
+	actorValue=ari_rot_status_enemy;
+	magnitude=1 + moreThan:0:t:ari_rot_status_enemy + moreThan:1:t:ari_rot_status_enemy + moreThan:2:t:ari_rot_status_enemy + moreThan:3:t:ari_rot_status_enemy + moreThan:4:t:ari_rot_status_enemy + moreThan:5:t:ari_rot_status_enemy + moreThan:6:t:ari_rot_status_enemy + moreThan:7:t:ari_rot_status_enemy + moreThan:8:t:ari_rot_status_enemy + moreThan:9:t:ari_rot_status_enemy + moreThan:10:t:ari_rot_status_enemy + moreThan:11:t:ari_rot_status_enemy + moreThan:12:t:ari_rot_status_enemy + moreThan:13:t:ari_rot_status_enemy;
+	duration=40;
+	chance=moreThan:5:c:ari_rot_status_enemy * thisPreviousAVHit:ari_rot_damage_enemy * c:ari_rot_status_enemy * 6;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_rot_damage_enemy;
+	aoeCasterAsOrigin = true;
+	cloneFrom=adjacent+1;
+	minRange=2;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=true;
+	bypassAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=false;
+[AvAffecter]
+	ID=ari_rot_damage_enemy; 
+	visibleEvaluations=true;
+	harmful=true;
+	actorValue=ari_rot_status_enemy;
+	magnitude=1 + moreThan:0:t:ari_rot_status_enemy + moreThan:1:t:ari_rot_status_enemy + moreThan:2:t:ari_rot_status_enemy + moreThan:3:t:ari_rot_status_enemy + moreThan:4:t:ari_rot_status_enemy + moreThan:5:t:ari_rot_status_enemy + moreThan:6:t:ari_rot_status_enemy + moreThan:7:t:ari_rot_status_enemy + moreThan:8:t:ari_rot_status_enemy + moreThan:9:t:ari_rot_status_enemy + moreThan:10:t:ari_rot_status_enemy + moreThan:11:t:ari_rot_status_enemy + moreThan:12:t:ari_rot_status_enemy + moreThan:13:t:ari_rot_status_enemy;
+	duration=40;
+	chance=moreThan:9:c:ari_rot_status_enemy * thisPreviousAVHit:ari_rot_damage_enemy * c:ari_rot_status_enemy * 6;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=ari_rot_damage_enemy;
+	aoeCasterAsOrigin = true;
+	cloneFrom=adjacent+2;
+	minRange=3;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=true;
+	bypassAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=false;
+
+
+
+
+
+---------------------------------------------------------------------------Shanakor Creeping Death start
+[ActorValue]
+ID=shana_creepingdeath_status;
+name=Creeping Death;
+icon=Creeping Death;
+bubbleIcon=icon_creeping_death;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 1;
+harmfulMagnitude = 1;
+--bonusesMultiplier = 1;
+animationOnHarmful = pain;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = false;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = false;
+canBeRemovedByNonspecificAVEffectRemoval = true;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+[ActorValueReaction]
+ID=shana_creepingdeath_status; element=timerUp;
+action=shana_creepingdeath_rot;
+
+------------------------------Action for Creeping Death to inflict 2 Rot (this should be called at start of turn).
+
+[Action] ID=shana_creepingdeath_rot; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+[ActionAoE] 
+	ID=shana_creepingdeath_rot;
+	cloneFrom=oneTile; 
+[AvAffecter]
+	ID=shana_creepingdeath_rot; 
+	visibleEvaluations=true;
+	harmful=true;
+	actorValue=ari_rot_status;
+	magnitude=2 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status;
+
+	duration=99; --this should stop most crowd control from making the rot stack die
+	chance=100;
+	visibleMiss=false;
+	element=ruin;
+	
+	FXOnTile=spiral2;
+	FXOnTileColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=DarkGreen;
+[AvAffecterAoE]
+	ID=shana_creepingdeath_rot;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+
+
+
+---------------------------------------------------------------------------ENEMY Creeping Death start
+[ActorValue]
+ID=shana_creepingdeath_status_enemy;
+name=Creeping Death;
+icon=Creeping Death;
+bubbleIcon=icon_creeping_death;
+minimum=0;
+maximum=1;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 1;
+harmfulMagnitude = 1;
+--bonusesMultiplier = 1;
+animationOnHarmful = pain;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = false;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = false;
+canBeRemovedByNonspecificAVEffectRemoval = true;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+[ActorValueReaction]
+ID=shana_creepingdeath_status_enemy; element=timerUp;
+action=shana_creepingdeath_rot_enemy;
+------------------------------Action for ENEMY Creeping Death to inflict 2 Rot (this should be called at start of turn).
+
+[Action] ID=shana_creepingdeath_rot_enemy; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+[ActionAoE] 
+	ID=shana_creepingdeath_rot_enemy;
+	cloneFrom=oneTile; 
+[AvAffecter]
+	ID=shana_creepingdeath_rot_enemy; 
+	visibleEvaluations=true;
+	harmful=true;
+	actorValue=ari_rot_status_enemy;
+	magnitude=2 + moreThan:0:t:ari_rot_status_enemy + moreThan:1:t:ari_rot_status_enemy + moreThan:2:t:ari_rot_status_enemy + moreThan:3:t:ari_rot_status_enemy + moreThan:4:t:ari_rot_status_enemy + moreThan:5:t:ari_rot_status_enemy + moreThan:6:t:ari_rot_status_enemy + moreThan:7:t:ari_rot_status_enemy + moreThan:8:t:ari_rot_status_enemy + moreThan:9:t:ari_rot_status_enemy + moreThan:10:t:ari_rot_status_enemy + moreThan:11:t:ari_rot_status_enemy + moreThan:12:t:ari_rot_status_enemy;
+
+	duration=99; --this should stop most crowd control from making the rot stack die
+	chance=100;
+	visibleMiss=false;
+	element=ruin;
+	
+	FXOnTile=spiral2;
+	FXOnTileColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=DarkGreen;
+[AvAffecterAoE]
+	ID=shana_creepingdeath_rot_enemy;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
