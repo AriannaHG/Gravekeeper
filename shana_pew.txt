@@ -17,4 +17,4 @@ ID=shana_prayer_bench; element=fire; element=explode; newID=debris_wood_dark; fx
 ID=shana_journal_prayer_bench;
 category=item; halfPage=true;
 title=Prayer Bench;
-text=<itemBig=shana_prayer_bench><title=Prayer Bench><brAdj=>A little kneeling bench, complete with modest leather cushioning for the penitent's comfort. Dry as kindling, it burns with a hungry crackle, and a solid hit will reduce it to smithereens.;
+text=<itemBig=shana_prayer_bench><title=Prayer Bench><brAdj=>A little kneeling bench, complete with modest leather cushioning for the penitent's comfort. Dry as kindling, it burns with a hungry crackle, and a solid hit with a craftman's hammer or woodcutter's axe will reduce it to smithereens.;
