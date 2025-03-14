@@ -1,0 +1,20 @@
+[ItemType]  name=Prayer Bench;
+itemCategory=furnishing;
+ID=shana_prayer_bench; texture=shana_prayerbench;
+journalID=shana_journal_prayer_bench;
+weight=200; volume=100;
+special=big;
+special=moveCostOverride_2; special=cannotBePickedUp;
+blockWalking=true; 
+
+[ItemReaction] 
+ID=shana_prayer_bench; element=heavySlash; element=smash; newID=debris_wood_dark; fx=dust_wood;
+
+[ItemReaction] 
+ID=shana_prayer_bench; element=fire; element=explode; newID=debris_wood_dark; fx=dust_wood; spawnItem=fire;
+
+[JournalEntry]
+ID=shana_journal_prayer_bench;
+category=item; halfPage=true;
+title=Prayer Bench;
+text=<itemBig=shana_prayer_bench><title=Prayer Bench><brAdj=>A little kneeling bench, complete with modest leather cushioning for the penitent's comfort. Dry as kindling, it burns with a hungry crackle, and a solid hit will reduce it to smithereens.;
