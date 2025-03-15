@@ -769,7 +769,8 @@ icon=classIcon_ari_gravekeeper;
 
 
 ---------------------------------------------------------------------manuscript of divinity, heals all allies in radius 
-[Action] ID=ari_grimoire_divinity_heal; 
+[Action] ID=ari_grimoire_divinity_heal;
+	harmful=false;
 	special=usableEvenWhenCantAct;
 	special=usableEvenWhenReacting;
 	special=usableEvenWhenYourTurn;
@@ -779,9 +780,11 @@ icon=classIcon_ari_gravekeeper;
 [AvAffecter]
 	ID=ari_grimoire_divinity_heal; 
 	actorValue=HP;
+	harmful=false;
 	magnitude=2 + c:skill_Life * 0.5;
 	chance=100;
 	duration=-2;
+	element=magic;
 	element=life;
 	visibleMiss=false;
 	FXOnTile=chargeSpiralFast_big;
@@ -796,6 +799,7 @@ icon=classIcon_ari_gravekeeper;
 	airborne=true;
 	occupyAll=true;
 	bypassAll=true;
+	canSelectAllies=true;
 	canSelectEnemies=false;
 	maxRange=9;
 
@@ -840,6 +844,7 @@ icon=classIcon_ari_gravekeeper;
 [AvAffecter]
 	ID=ari_grimoire_divinity_attack;
 	harmful=false;
+	visibleMiss=false;
 	actorValue=HP;
 	magnitude=d:grimoireDivinityActualHeal_tier1;
 	duration=-2;
