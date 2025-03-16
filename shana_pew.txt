@@ -8,10 +8,10 @@ special=moveCostOverride_2; special=cannotBePickedUp;
 blockWalking=true; 
 
 [ItemReaction] 
-ID=shana_prayer_bench; element=heavySlash; element=smash; newID=debris_wood_dark; fx=dust_wood;
+ID=shana_prayer_bench; element=heavySlash; element=smash; newID=debris_wood_dark; fx=shana_pewbreak;
 
 [ItemReaction] 
-ID=shana_prayer_bench; element=fire; element=explode; newID=debris_wood_dark; fx=dust_wood; spawnItem=fire;
+ID=shana_prayer_bench; element=fire; element=explode; newID=debris_wood_dark; fx=shana_pewbreak; spawnItem=fire;
 
 [JournalEntry]
 ID=shana_journal_prayer_bench;
