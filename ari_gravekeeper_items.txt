@@ -142,6 +142,44 @@ weight=0; volume=0;
 description=A metal key that will unlock a gate.;
 pR=pBrown;
 
+[ItemType]  name=Summon Trigger;
+ID=ari_gk_summon_trigger; sprite=50; texture=gkart; stackable=false;
+weight=0; volume=0; value=0; itemCategory=mech;
+pR=pR; pG=pG; pB=pB;
+description=A counter for checking on summon counts.;
+special=cannotBePickedUp; special=transparent; special=invisible; special=alwaysBelowOtherItems; special=timer; special=timer_advanceOnScreenOnly; 
+timer=1;
+
+[ItemReaction] 
+ID=ari_gk_summon_trigger; element=40001; action=ari_gravekeeper_broken_phylactery_element_summon; newID=X;
+[ItemReaction] 
+ID=ari_gk_summon_trigger; element=timerUp; newID=X;
+
+[Action] ID=ari_gravekeeper_broken_phylactery_element_summon;
+	harmful=false;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	--special=dontDelayOtherActions;
+[ActionAoE] 
+	ID=ari_gravekeeper_broken_phylactery_element_summon;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_broken_phylactery_element_summon;
+	harmful=false;
+	actorValue=summonActor_temp;
+	magnitude=summoned_undead_zombie_minion;
+	chance=100;
+	duration=-2;
+	FXOnTile=viralShroud;
+	FXOnTileColor=DarkGreen;
+	FXOnTile=tinyShakeHoriz;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_broken_phylactery_element_summon;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+
+
 [ItemType]  name=Broken Phylactery;
 ID=ari_broken_phylactery_trinket; sprite=10;
 journalID=ari_broken_phylactery_trinket_journal;
@@ -155,7 +193,83 @@ pB=p84;
 ID=ari_broken_phylactery_trinket; actorValue=skill_Ruin; magnitude=2; duration=-1;
 
 [ItemReaction] 
-ID=ari_broken_phylactery_trinket; actorValues=wet; actorValues=chilled; actorValues=frozen; damageMultiplier=0.5;
+ID=ari_broken_phylactery_trinket; element=timerUp; action=ari_gravekeeper_broken_phylactery_turnstart;
+[ItemReaction] 
+ID=ari_broken_phylactery_trinket; element=timerUp; action=ari_gravekeeper_broken_phylactery_turnstart_summon;
+
+[Action] ID=ari_gravekeeper_broken_phylactery_turnstart;
+	name=Souls of the Phylactery;
+	harmful=false;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	
+[ActionAoE] 
+	ID=ari_gravekeeper_broken_phylactery_turnstart;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_broken_phylactery_turnstart;
+	useSeparateChanceRoll=true;
+	harmful=false;
+	actorValue=summonItem;
+	magnitude=ari_gk_summon_trigger;
+	chance=100 - 101*itemsZoneMoreThan:ari_gk_summon_trigger:0;
+	duration=1;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_broken_phylactery_turnstart;
+	fReq=m:rand(100)-80;
+	cloneFrom=adjacent+2;
+	needsLoS=false;
+	needsLoE=false;
+	airborne=true;
+	occupyAll=true;
+	bypassAll=true;
+	canSelectAllies=false;
+	canSelectEnemies=false;
+	canSelectActors=false;
+	maxRange=3;
+
+[Action] ID=ari_gravekeeper_broken_phylactery_turnstart_summon;
+	harmful=false;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+	casterAnimationSpeed=0.3;
+	casterAnimation=handsup;
+[ActionAoE] 
+	ID=ari_gravekeeper_broken_phylactery_turnstart_summon;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_broken_phylactery_turnstart_summon;	
+	FXOnTile=delay;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_broken_phylactery_turnstart_summon;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_gravekeeper_broken_phylactery_turnstart_summon;
+	harmful=false;
+	visibleMiss=true;
+	visibleEvaluations=true;
+	element=40001;
+	magnitude=1;
+	duration=-2;
+	chance=100;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+	ID=ari_gravekeeper_broken_phylactery_turnstart_summon;
+	cloneFrom=adjacent+2;
+	needsLoS=false;
+	needsLoE=false;
+	airborne=true;
+	occupyAll=true;
+	bypassAll=true;
+	canSelectAllies=false;
+	canSelectEnemies=false;
+	canSelectActors=false;
+	maxRange=3;
+
+
 
 [JournalEntry]
 ID=ari_broken_phylactery_trinket_journal;
