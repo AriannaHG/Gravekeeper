@@ -70,3 +70,9 @@ ID=ari_energyShotSummon_divinity; cloneFrom=summonEnergyShot;
 pR=pHoneyglow;
 pG=;
 pB=;
+
+[FXData]
+ID=shana_pewbreak; cloneFrom=dust_wood;
+pR=pCRedD;
+pG=;
+pB=;
