@@ -726,6 +726,7 @@ supportAbilsToReplace=prom_medium_haunting;
 supportAbilsToReplace=prom_armiger_divert_defenses;
 supportAbilsToReplace=prom_dayblade_grand_radiance;
 supportAbilsToReplace=prom_nightmagister_hypnotic_gaze;
+supportAbilsToReplace=prom_warlock_twin_bolt;
 canBeGivenToAI=false;
 
 [SupportAbilityReaction]

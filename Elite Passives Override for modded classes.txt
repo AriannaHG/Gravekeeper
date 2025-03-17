@@ -192,3 +192,9 @@ supportAbilsToReplace=ari_gravekeeper_lichdom;
 ID=prom_nightmagister_hypnotic_gaze;
 cloneFrom=prom_nightmagister_hypnotic_gaze;
 supportAbilsToReplace=ari_gravekeeper_lichdom;
+
+--WARLOCK
+[SupportAbility]
+ID=prom_warlock_twin_bolt;
+cloneFrom=prom_warlock_twin_bolt;
+supportAbilsToReplace=ari_gravekeeper_lichdom;
