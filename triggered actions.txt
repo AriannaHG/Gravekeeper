@@ -1,0 +1,24 @@
+---------------------------------------------------------------------Creeping Death trigger action called with 2 different triggers - combatStart and startTurn, inflicting creeping death AV on all crew at combat start. Triggers must have a defined X,Y coordinate otherwise commodore does not get affected. To prevent spam I'm going to make it only apply if no creeping death. 
+[Action] ID=shana_areacreepingdeathact; 
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+[ActionAoE] 								--not really used 
+	ID=shana_areacreepingdeathact;				--not really used
+	cloneFrom=allParty; 						--not really used
+[AvAffecter]
+	ID=shana_areacreepingdeathact; 
+	actorValue=shana_creepingdeath_status_enemy;
+	magnitude=1;
+	chance=100 - 100 * t:shana_creepingdeath_status_enemy;
+	duration=99;	
+	element=ruin;
+	visibleMiss=false;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=shana_areacreepingdeathact;
+	cloneFrom=allParty;
+
