@@ -1,4 +1,4 @@
----------------------------------------------------------------------Creeping Death trigger action called with 2 different triggers - combatStart and startTurn, inflicting creeping death AV on all crew at combat start. Triggers must have a defined X,Y coordinate otherwise commodore does not get affected. To prevent spam I'm going to make it only apply if no creeping death. 
+---------------------------------------------------------------------Creeping Death trigger action called with 2 different triggers - combatStart and startTurn, inflicting creeping death AV on all crew at combat start. Triggers must have a defined X,Y coordinate otherwise one party member does not get affected. To prevent spam I'm going to make it only apply if no creeping death. 
 [Action] ID=shana_areacreepingdeathact; 
 	special=usableEvenWhenCantAct;
 	special=usableEvenWhenReacting;
