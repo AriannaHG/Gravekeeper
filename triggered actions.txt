@@ -10,7 +10,7 @@
 	ID=shana_areacreepingdeathact; 
 	actorValue=shana_creepingdeath_status_enemy;
 	magnitude=1;
-	chance=100 - 100 * t:shana_creepingdeath_status_enemy;
+	chance=100 - 100 * t:shana_creepingdeath_status_enemy - 100 * m:tHostile; --only works if no creeping death and is not hostile (blue or green on action bar)
 	duration=99;	
 	element=ruin;
 	visibleMiss=false;
@@ -20,5 +20,5 @@
 	FXOnHitColor=Green;
 [AvAffecterAoE]
 	ID=shana_areacreepingdeathact;
-	cloneFrom=allParty;
+	cloneFrom=allActors;
 
