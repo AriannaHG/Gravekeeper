@@ -745,5 +745,14 @@ topX=40;topY=0;btmX=56;btmY=2;
 triggerImmediatelyOnEnteringZone=False; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
 [TriggerEffect] numID=1; effectID=travel_point; sValue=ari_gravekeeper_city_church_interior; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
 
+[Trigger] numID=2; aliasID=shana_area_creeping_death_combatStart;
+topX=1;topY=1;btmX=1;btmY=1;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[TriggerEffect] numID=1; effectID=action; sValue=shana_areacreepingdeathact; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=1; yValue=1;
+
+[Trigger] numID=3; aliasID=shana_area_creeping_death_startTurn;
+topX=2;topY=2;btmX=2;btmY=2;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=startTurn; travelModeOnly=False; triggerOnPlayerActorOnly=True; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[TriggerEffect] numID=3; effectID=action; sValue=shana_areacreepingdeathact; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=2; yValue=2;
 
 
