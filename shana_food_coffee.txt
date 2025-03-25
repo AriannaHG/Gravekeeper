@@ -1,0 +1,11 @@
+[ItemType]  name=Deadlight Brew;
+ID=shana_food_coffee; sprite=0;
+texture=shana_food_coffee;
+cloneFrom=food_base;
+value=27; power=3;
+description=Jet-black coffee laced with ruinglass dust.; 
+[ItemEffect]  
+ID=shana_food_coffee; actorValue=skill_Ruin; magnitude=1; duration=7;
+[ItemEffect]  
+ID=shana_food_coffee; actorValue=actTime; magnitude=-3; duration=7;
+durationIsWorldtimeDays=true; showNoDescription=true; canBeRemovedByNonspecificAVEffectRemoval=false;

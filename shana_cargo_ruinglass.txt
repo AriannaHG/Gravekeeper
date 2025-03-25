@@ -1,0 +1,7 @@
+[ItemType]  name=Ruinglass;
+ID=shana_cargo_ruinglass; texture=shana_cargo_ruinglass;
+journalID=journal_tradeGoods;
+description=Flawless prisms refined from undead ashes.; itemCategory=tool;
+volume=999; special=cargo; special=tradeGood;
+value=120;
+stackable=true;

@@ -12,11 +12,11 @@ discoveryFameMod=1;
 externalSong=PM-Resort2;
 locationItem=port_bighouses5;
 
-wealthLevel=30;
+wealthLevel=5;
 
 --Here's where I'm putting the cargo I've chosen, and the cafe food.
-tradeGood_itemTypeID=cargo_gemstone;
-cafeFood_itemTypeID=food_basic1;
+tradeGood_itemTypeID=shana_cargo_ruinglass;
+cafeFood_itemTypeID=shana_food_coffee;
 
 --These icons are what show up on the map.
 tooltipIcons=sign_icon_cup;
