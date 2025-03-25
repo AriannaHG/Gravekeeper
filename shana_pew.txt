@@ -1,6 +1,6 @@
 [ItemType]  name=Prayer Bench;
 itemCategory=furnishing;
-ID=shana_prayer_bench; texture=shana_prayerbench;
+ID=shana_prayer_bench; texture=shana_prayer_bench;
 journalID=shana_journal_prayer_bench;
 weight=200; volume=100;
 special=big;
