@@ -533,7 +533,7 @@ ID=ari_grimoire_necronomicon; element=endTurn; action=ari_necronomicon_hungry_ta
 [ItemType]  name=Rotbound Manuscript;
 ID=shana_deadbook;sprite=5; spriteWhenHeld=6; itemCategory=weapon; element=hammer;
 texture=gkart;
-description=A pestilent tome.<n=>Within its profaned pages lies a virulent plague that infects targets with Rot<icon=icon_gravekeeper_rot>, but enfeebles its wielder.;
+description=A pestilent tome.<n=>Its profaned pages inflict the Creeping Death<icon=icon_creeping_death> upon any foolish enough to darken the wielder's sight.;
 journalID=shana_journal_deadbook;
 weight=1; volume=0; value=666; power=1;
  action=hammerAttack;
@@ -554,7 +554,7 @@ ID=shana_deadbook; element=timerUp; action=shana_deadbookact;
 [ItemType]  name=Rotbound Manuscript;
 ID=shana_deadbook_enemy;sprite=5; spriteWhenHeld=6; itemCategory=weapon; element=hammer;
 texture=gkart;
-description=A pestilent tome.<n=>Within its profaned pages lies a virulent plague that infects targets with Rot<icon=icon_gravekeeper_rot>, but enfeebles its wielder.;
+description=A pestilent tome.<n=>Its profaned pages inflict the Creeping Death<icon=icon_creeping_death> upon any foolish enough to darken the wielder's sight.;
 journalID=shana_journal_deadbook;
 weight=1; volume=0; value=666; power=7;
  action=hammerAttack;
