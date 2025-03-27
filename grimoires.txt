@@ -533,7 +533,7 @@ ID=ari_grimoire_necronomicon; element=endTurn; action=ari_necronomicon_hungry_ta
 [ItemType]  name=Rotbound Manuscript;
 ID=shana_deadbook;sprite=5; spriteWhenHeld=6; itemCategory=weapon; element=hammer;
 texture=gkart;
-description=A pestilent tome.<n=>Its profaned pages inflict the Creeping Death<icon=icon_creeping_death> upon any foolish enough to darken the wielder's sight.;
+description=A pestilent tome.<n=>Its profaned pages inflict the Creeping Death upon any foolish enough to darken the wielder's sight.;
 journalID=shana_journal_deadbook;
 weight=1; volume=0; value=666; power=1;
  action=hammerAttack;
@@ -554,7 +554,7 @@ ID=shana_deadbook; element=timerUp; action=shana_deadbookact;
 [ItemType]  name=Rotbound Manuscript;
 ID=shana_deadbook_enemy;sprite=5; spriteWhenHeld=6; itemCategory=weapon; element=hammer;
 texture=gkart;
-description=A pestilent tome.<n=>Its profaned pages inflict the Creeping Death<icon=icon_creeping_death> upon any foolish enough to darken the wielder's sight.;
+description=A pestilent tome.<n=>Its profaned pages inflict the Creeping Death upon any foolish enough to darken the wielder's sight.;
 journalID=shana_journal_deadbook;
 weight=1; volume=0; value=666; power=7;
  action=hammerAttack;
@@ -574,7 +574,13 @@ ID=shana_deadbook_enemy; element=timerUp; action=shana_deadbookact_enemy;
 ID=shana_journal_deadbook;
 category=equipment; halfPage=false; rarity=4;
 title=Rotbound Manuscript;
-text=<itemBig=shana_deadbook><title=Rotbound Manuscript><brAdj=>A bitter requiem writ in flesh.<n=>     Once a sacred text bound in the unchanging remains of a martyred healer, the tome was stolen by a disgraced nun intent on unraveling the boundary between life and death. Banished from her order and stricken by a consuming sickness, she enacted one final, spiteful act: with her last breath, she desecrated the tome with the rot within, twisting the blessed flesh into a source of unending corruption.<n=>     When monks were later sent to recover the tome after her death, they too succumbed to the rot - each one falling to the spreading blight that emanated from its cursed pages.;
+text=<itemBig=shana_deadbook><title=Rotbound Manuscript><brAdj=>A living tome seething with virulent plague. Its pages are unreadable, but each fevered gasp it wrings from its victims is a masterclass in the nefarious dark arts.
+<n=>
+<n=>
+At the beginning of combat and the start of its wielder's turns, this grimoire afflicts foes in sight with the Creeping Death for <icon=time>99, applying 2 stacks of Rot at the beginning of each of their turns.
+<n=>
+<n=>
+Rot: Rot takes place at the end of a creature's turn, inflicting Ruin damage equal to stack size (max 15), with a severity-dependent chance to spread the Rot to nearby allies. Creatures infected by the Rot are reanimated as a Mindless Zombie on death.;
 
 
 
