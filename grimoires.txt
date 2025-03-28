@@ -574,7 +574,7 @@ ID=shana_deadbook_enemy; element=timerUp; action=shana_deadbookact_enemy;
 ID=shana_journal_deadbook;
 category=equipment; halfPage=false; rarity=4;
 title=Rotbound Manuscript;
-text=<itemBig=shana_deadbook><title=Rotbound Manuscript><brAdj=>A living tome seething with the virulent plague that choked the life from Barrow. Its pages are unreadable, but every pustule it births from its victims is a primer on the nefarious dark arts.
+text=<itemBig=shana_deadbook><title=Rotbound Manuscript><brAdj=>A plagued tome that choked the life from once-thriving Barrow. Its pages are unreadable, but every pustule it births from its victims is a primer on the nefarious dark arts.
 <n=>
 <n=>
 At the beginning of combat and the start of its wielder's turns, this grimoire afflicts foes in sight with the Creeping Death for <icon=time>99, applying 2 stacks of Rot at the beginning of each of their turns.
