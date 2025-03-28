@@ -533,7 +533,7 @@ ID=ari_grimoire_necronomicon; element=endTurn; action=ari_necronomicon_hungry_ta
 [ItemType]  name=Rotbound Manuscript;
 ID=shana_deadbook;sprite=5; spriteWhenHeld=6; itemCategory=weapon; element=hammer;
 texture=gkart;
-description=A pestilent tome.<n=>Its profaned pages inflict the Creeping Death upon any foolish enough to darken the wielder's sight.;
+description=A pestilent tome. Its profaned pages inflict the Creeping Death upon any foolish enough to darken its sight.;
 journalID=shana_journal_deadbook;
 weight=1; volume=0; value=666; power=1;
  action=hammerAttack;
@@ -554,7 +554,7 @@ ID=shana_deadbook; element=timerUp; action=shana_deadbookact;
 [ItemType]  name=Rotbound Manuscript;
 ID=shana_deadbook_enemy;sprite=5; spriteWhenHeld=6; itemCategory=weapon; element=hammer;
 texture=gkart;
-description=A pestilent tome.<n=>Its profaned pages inflict the Creeping Death upon any foolish enough to darken the wielder's sight.;
+description=A pestilent tome. Its profaned pages inflict the Creeping Death upon any foolish enough to darken its sight.;
 journalID=shana_journal_deadbook;
 weight=1; volume=0; value=666; power=7;
  action=hammerAttack;
@@ -577,10 +577,11 @@ title=Rotbound Manuscript;
 text=<itemBig=shana_deadbook><title=Rotbound Manuscript><brAdj=>A plagued tome that choked the life from once-thriving Barrow. Its pages are unreadable, but every pustule it births from its victims is a primer on the nefarious dark arts.
 <n=>
 <n=>
-At the beginning of combat and the start of its wielder's turns, this grimoire afflicts foes in sight with the Creeping Death for <icon=time>99, applying 2 stacks of Rot at the beginning of each of their turns.
+At the beginning of combat and the start of its wielder's turns, this grimoire afflicts foes it can see with the Creeping Death for <icon=time>99, applying 2 stacks of Rot at the beginning of each of their turns.
 <n=>
 <n=>
 Rot: Rot takes place at the end of a creature's turn, inflicting Ruin damage equal to stack size (max 15), with a severity-dependent chance to spread the Rot to nearby allies. Creatures infected by the Rot are reanimated as a Mindless Zombie on death.;
+
 
 
 
