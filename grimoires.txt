@@ -577,7 +577,7 @@ title=Rotbound Manuscript;
 text=<itemBig=shana_deadbook><title=Rotbound Manuscript><brAdj=>A plagued tome that choked the life from once-thriving Barrow. Its pages are unreadable, but every pustule it births from its victims is a primer on the nefarious dark arts.
 <n=>
 <n=>
-At the beginning of combat and the start of its wielder's turns, this grimoire afflicts foes it can see with the Creeping Death for <icon=time>99, applying 2 stacks of Rot at the beginning of each of their turns.
+At the beginning of combat and the start of its wielder's turns, this grimoire afflicts all foes it can see with the Creeping Death for <icon=time>99, applying 2 stacks of Rot at the beginning of each of their turns.
 <n=>
 <n=>
 Rot: Rot takes place at the end of a creature's turn, inflicting Ruin damage equal to stack size (max 15), with a severity-dependent chance to spread the Rot to nearby allies. Creatures infected by the Rot are reanimated as a Mindless Zombie on death.;
