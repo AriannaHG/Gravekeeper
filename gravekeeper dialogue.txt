@@ -1,4 +1,4 @@
---ari_gravekeeper_port (Deadlight Brew cafe dialog)
+--ari_gravekeeper_port (Deadlight Brew Reeve cafe dialog)
 [DialogNodeOverride] ID=reeve_cafe_party_dialog_ari_gravekeeper_port;
 dialogNodeID_toOverride=cafe_party_dialog;
 completeOverride=true;
@@ -17,6 +17,22 @@ statements=Smells nice and minty, too. I wonder why it's got such a dramatic nam
 statements=<speed=0.7>... *slurp*;
 statements=W-wow...!<p> T-<p>this brew's to die for, but my heart feels like it's gonna give out.;
 statements=I...<p=2> I think you'd better finish this for me.;
+
+---City Path (valley) Reeve entry dialog
+[DialogNode] ID=reeve_ari_gravekeeper_city_path_dialog1a;
+animations=scared;
+animations=sigh;
+animations=stern;
+statements=<color=DarkOliveGreen>-<p>cough-;
+statements=I don't feel too good...<p> hope I'm not coming down with something.;
+statements=Well, no sense in waiting around - let's go find that relic!;
+nextNodeID=;
+
+---Dialogue for combat start in Creeping Death zones
+[DialogNode] ID=shana_creeping_death_combat_start_message;
+animations=scared;
+statements=Rot seeps from unseen wounds...;
+nextNodeID=;
 
 [DialogNode] ID=ari_dialog_taidonchatter;
 animations=;
@@ -345,10 +361,12 @@ animations=stern;
 animations=stern;
 animations=stern;
 animations=stern;
+animations=stern;
 animations=sad;
 statements=Certainly, but there isn't too much to tell.;
-statements=I actually grew up in Barrow. It was in idyllic little city, bright and joyous. Its citizens were content.;
-statements=...Until recently, that is. Not too long we had strange stirrings at night, and people would start to go missing.;
+statements=I actually grew up in Barrow. It was an idyllic little city, bright and joyous. Its citizens were content.;
+statements=...Until recently, that is. Not too long ago, a plague began to ravage the citizens of Barrow.
+statements=Strange stirrings at night became common, and corpses would start to go missing.;
 statements=Many began to flee, fearing that they would be next. And then they came.;
 statements=A horde of undead swept through the city. We didn't know where they came from, or why.;
 statements=But we didn't have the means to defend, and so those lucky enough to survive fled.;
