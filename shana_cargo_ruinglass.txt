@@ -1,5 +1,6 @@
-[ItemType]  name=Ruinglass;
-ID=shana_cargo_ruinglass; texture=shana_cargo_ruinglass;
+[ItemType]  name=Soulglass;
+ID=shana_cargo_ruinglass; sprite=98;
+texture=gkart;
 journalID=journal_tradeGoods;
 description=Flawless prisms refined from undead ashes.; itemCategory=tool;
 volume=999; special=cargo; special=tradeGood;
