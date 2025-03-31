@@ -1,3 +1,23 @@
+--ari_gravekeeper_port (Deadlight Brew cafe dialog)
+[DialogNodeOverride] ID=reeve_cafe_party_dialog_ari_gravekeeper_port;
+dialogNodeID_toOverride=cafe_party_dialog;
+completeOverride=true;
+overrideSpecialEffects=false;
+fReq=party:reeve - g1:D_reeve_cafe_party_dialog_ari_gravekeeper_port + loc:ari_gravekeeper_port - 1;
+speakerOverride=reeve;
+specialEffect=delayDialog,3;
+specialEffect=noSpeechFXLookOrAnim;
+animations=happy;
+animations=sly;
+animations=meh;
+animations=scared;
+animations=stern;
+statements=I wasn't expecting it from our surroundings...<p> but this coffee looks really fancy!;
+statements=Smells nice and minty, too. I wonder why it's got such a dramatic name...;
+statements=<speed=0.7>... *slurp*;
+statements=W-wow...!<p> T-<p>this brew's to die for, but my heart feels like it's gonna give out.;
+statements=I...<p=2> I think you'd better finish this for me.;
+
 [DialogNode] ID=ari_dialog_taidonchatter;
 animations=;
 statements=<rand=Hey, did you notice anything sticking out of the ground near Arianna's house?/This place is pretty creepy at night.>;
