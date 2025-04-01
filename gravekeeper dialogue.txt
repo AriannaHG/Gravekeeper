@@ -364,8 +364,8 @@ animations=stern;
 animations=stern;
 animations=sad;
 statements=Certainly, but there isn't too much to tell.;
-statements=I actually grew up in Barrow. It was an idyllic little city, bright and joyous. Its citizens were content.;
-statements=...Until recently, that is. Not too long ago, a plague began to ravage the citizens of Barrow.
+statements=I actually grew up in Barrow. It was an idyllic little city, bright and joyous. Its citizens were content...;
+statements=<speed=0.5>...Until recently, that is.<speed=0.8> Not too long ago, a plague began to ravage the citizens of Barrow.;
 statements=Strange stirrings at night became common, and corpses would start to go missing.;
 statements=Many began to flee, fearing that they would be next. And then they came.;
 statements=A horde of undead swept through the city. We didn't know where they came from, or why.;
