@@ -89,20 +89,69 @@ combineWith=furnace2_lit; toMake=bones1;
 combineWith=furnace_everlit1; toMake=bones1; 
 combineWith=furnace_everlit2; toMake=bones1;
 
-[ItemType]  name=Grimoire of Rot;
-texture=gkart; 
-ID=ari_grimoire_rot; pR=p3; pG=pG; pB=p1;
-description=A tome containing intermediate instruction on the nefarious dark arts.<n=>This grimoire will heal you for a small amount of the damage dealt and inflict 3 stacks of Rot<icon=icon_gravekeeper_rot> for <icon=time>40.<n=>Charge time of <icon=time>3.;
-journalID=ari_journal_grimoire;
-sprite=1; spriteWhenHeld=0; itemCategory=weapon;
-element=ruin;
-weight=5; volume=10; value=1250;
-power=3;
- action=ari_grimoireAttack_rot;
-combineWith=furnace_lit; toMake=bones1; 
-combineWith=furnace2_lit; toMake=bones1; 
-combineWith=furnace_everlit1; toMake=bones1; 
-combineWith=furnace_everlit2; toMake=bones1;
+--Grimoire of Rot
+[Action] ID=ari_grimoireAttack_rot; 
+	special=requiresCasting;
+	special=redoMovementAnalysis;
+	applyWeaponBuffs=true;
+	chargeTime=3 * d:chargeTimeMult + d:chargeTimeMod;
+	casterAnimation=spellcast;
+	casterAnimationDependsOnWeaponHand=false;
+	FXChangesWithWeaponHand=false;
+	FXOnCaster=sfx_highThwum_loud;
+	FXOnCasterColor=DarkGreen;
+	FXOnCaster=ping_noOverlap;
+	FXOnCasterColor=DarkGreen;
+	FXOnCaster=ari_energyShotSummon_Dark;
+[ActionAoE] 
+	ID=ari_grimoireAttack_rot;
+	cloneFrom=adjacent+3;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=true;
+	canSelectActors=true;
+[AvAffecter]
+	ID=ari_grimoireAttack_rot; 
+	actorValue=ari_rot_status;
+	magnitude=3 + floor:d:ruinSkillDivide5 + t:ari_rot_status;
+	duration=40;
+	chance=d:ruinAcc;
+	FXOnTile=ari_energyShot_Rot;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=ari_grimoireAttack_rot;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_grimoireAttack_rot;
+	harmful=true;
+	actorValue=HP;
+	magnitude=m:targetExists * d:grimoireActualDamage_tier1;
+	duration=-2;
+	chance=d:ruinAcc;
+	element=ranged;
+	element=magic;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_grimoireAttack_rot;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=ari_grimoireAttack_rot;
+	harmful=false;
+	actorValue=HP;
+	magnitude=m:previousAVChanceYes * d:grimoireActualHeal_tier1;
+	duration=-2;
+	chance=m:previousAVChanceYes * d:ruinAcc;
+	element=ruin;
+[AvAffecterAoE]
+	ID=ari_grimoireAttack_rot;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+	canSelectAllies=true;
+
 
 [ItemType]  name=Dark Lexicon;
 texture=gkart; 
