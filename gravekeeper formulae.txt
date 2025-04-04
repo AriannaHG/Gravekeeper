@@ -186,6 +186,10 @@ formula=-c:MagAtk - c:skill_Ruin - m:isItThisDayOfWeek(5) + t:MagDef;
 [FormulaGlobal] ID=ari_full_health_check;
 formula=c:HP - c:HPMax;
 
+------------------------------------------------------Grimoire of Rot formula
+
+[FormulaGlobal] ID=ruinSkillDivide5;
+formula=c:skill_Ruin * 0.2;
 
 
 ------------------------------------------------------Summoner's Spellbook buff counter
@@ -221,3 +225,13 @@ formula=-1 * d:grimoireDivinityHeal0_tier1;
 
 [FormulaGlobal] ID=grimoireDivinityActualHeal_tier1;
 formula=min:1:d:grimoireDivinityConvertedHeal_tier1;
+
+
+
+-----------------------Rot formulas (0.34 cause I'm using floor)
+
+[FormulaGlobal] ID=rotDivide3;
+formula=c:ari_rot_status * 0.34;
+
+[FormulaGlobal] ID=enemyRotDivide3;
+formula=c:ari_rot_status_enemy * 0.34;

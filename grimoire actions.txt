@@ -186,7 +186,7 @@ icon=classIcon_ari_gravekeeper;
 [AvAffecter]
 	ID=ari_grimoireAttack_rot; 
 	actorValue=ari_rot_status;
-	magnitude=3 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status;
+	magnitude=3 + floor:d:ruinSkillDivide5 + t:ari_rot_status;
 	duration=40;
 	chance=d:ruinAcc;
 	FXOnTile=ari_energyShot_Rot;
