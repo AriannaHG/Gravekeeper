@@ -46,7 +46,7 @@ depthMod=900;
 [AvAffecter]
 	ID=skeletonswordAttack; 
 	actorValue=ari_rot_status;
-	magnitude=1 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status + moreThan:13:t:ari_rot_status;
+	magnitude=1 + t:ari_rot_status;
 	duration=40;
 	chance=d:swordAcc;
 	element=ruin;
@@ -92,7 +92,7 @@ ID=ari_summoned_crossbow; element=actionUsed; newID=ari_summoned_crossbow_unload
 [AvAffecter]
 	ID=crossbowAttack_Rot; 
 	actorValue=ari_rot_status;
-	magnitude=1 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status + moreThan:13:t:ari_rot_status;
+	magnitude=1 + t:ari_rot_status;
 	duration=40;
 	chance=d:aimAcc;
 	element=ruin;
@@ -159,7 +159,7 @@ depthMod=900;
 [AvAffecter]
 	ID=ari_skeletongreatswordAttack; 
 	actorValue=ari_rot_status;
-	magnitude=1 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status + moreThan:13:t:ari_rot_status;
+	magnitude=1 + t:ari_rot_status;
 	duration=40;
 	chance=d:gswordAcc;
 	element=ruin;
@@ -221,7 +221,7 @@ depthMod=900;
 [AvAffecter]
 	ID=ari_scytheAttack; 
 	actorValue=ari_rot_status;
-	magnitude=2 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status;
+	magnitude=2 + t:ari_rot_status;
 	duration=40;
 	chance=d:ruinAcc;
 	FXOnTile=chargeSpiralFast_big;
@@ -272,7 +272,7 @@ power=10;
 [AvAffecter]
 	ID=ari_infectPunch; 
 	actorValue=ari_rot_status;
-	magnitude=1 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status + moreThan:13:t:ari_rot_status;
+	magnitude=1 + t:ari_rot_status;
 	duration=40;
 	chance=d:fistAcc - 2;
 	element=ruin;
@@ -338,7 +338,7 @@ power=10;
 [AvAffecter]
 	ID=ari_skeleton_warrior_charge; 
 	actorValue=ari_rot_status;
-	magnitude=1 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status + moreThan:13:t:ari_rot_status;
+	magnitude=1 + t:ari_rot_status;
 	duration=40;
 	chance=100;
 	FXOnTile=chargeSpiralFast_big;
@@ -759,7 +759,7 @@ power=10;
 [AvAffecter]
 	ID=ari_skeleton_knight_gravestrike; 
 	actorValue=ari_rot_status;
-	magnitude=2 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status;
+	magnitude=2 + t:ari_rot_status;
 	duration=40;
 	chance=d:gswordAcc;
 	element=ruin;
@@ -855,7 +855,7 @@ power=10;
 	visibleMiss=false;
 	actorValue=ari_rot_status;
 	harmful=false;
-	magnitude=moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status + moreThan:13:t:ari_rot_status + moreThan:14:t:ari_rot_status - 5;
+	magnitude=t:ari_rot_status - 5;
 	duration=40;
 	chance=100 * moreThan:5:t:ari_rot_status;
 [AvAffecterAoE]
@@ -995,7 +995,7 @@ power=10;
 [AvAffecter]
 	ID=ari_skeleton_archer_bone_shards; 
 	actorValue=ari_rot_status;
-	magnitude=1 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status + moreThan:13:t:ari_rot_status;
+	magnitude=1 + t:ari_rot_status;
 	duration=40;
 	chance=d:ruinProjectileAcc;
 	FXOnTile=chargeSpiralFast_big;
@@ -1208,7 +1208,7 @@ power=10;
 	visibleMiss=false;
 	actorValue=ari_rot_status;
 	harmful=false;
-	magnitude=moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status + moreThan:13:t:ari_rot_status + moreThan:14:t:ari_rot_status - 3;
+	magnitude=t:ari_rot_status - 3;
 	duration=40;
 	chance=100 * moreThan:3:t:ari_rot_status;
 [AvAffecterAoE]
@@ -1675,7 +1675,7 @@ power=10;
 [AvAffecter]
 	ID=ari_zombie_infectious_bile; 
 	actorValue=ari_rot_status;
-	magnitude=3 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status;
+	magnitude=3 + t:ari_rot_status;
 	duration=40;
 	chance=d:ruinAcc;
 	FXOnTile=chargeSpiralFast_big;
@@ -1760,7 +1760,7 @@ power=10;
 [AvAffecter]
 	ID=ari_zombie_corpse_expulsion; 
 	actorValue=ari_rot_status;
-	magnitude=2 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status;
+	magnitude=2 + t:ari_rot_status;
 	duration=40;
 	chance=d:ruinAcc;
 	FXOnTile=chargeSpiralFast_big;
@@ -1950,7 +1950,7 @@ power=10;
 [AvAffecter]
 	ID=ari_abomination_amalgamated_limb; 
 	actorValue=ari_rot_status;
-	magnitude=1 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status + moreThan:13:t:ari_rot_status;
+	magnitude=1 + t:ari_rot_status;
 	duration=40;
 	chance=d:fistAcc;
 	FXOnTile=chargeSpiralFast_big;
@@ -2057,7 +2057,7 @@ power=10;
 [AvAffecter]
 	ID=ari_abomination_corpse_slam; 
 	actorValue=ari_rot_status;
-	magnitude=1 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status + moreThan:13:t:ari_rot_status;
+	magnitude=1 + t:ari_rot_status;
 	duration=40;
 	chance=d:fistAcc;
 	element=ruin;
@@ -3206,7 +3206,7 @@ needsLoS = false; needsLoE = false; shape=7;
 [AvAffecter]
 	ID=ari_abomination_charge; 
 	actorValue=ari_rot_status;
-	magnitude=1 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status + moreThan:13:t:ari_rot_status;
+	magnitude=1 + t:ari_rot_status;
 	duration=40;
 	chance=100;
 	FXOnTile=chargeSpiralFast_big;
@@ -3403,7 +3403,7 @@ needsLoS = false; needsLoE = false; shape=7;
 	visibleMiss=false;
 	actorValue=ari_rot_status;
 	harmful=false;
-	magnitude=moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status + moreThan:13:t:ari_rot_status + moreThan:14:t:ari_rot_status - 3;
+	magnitude=t:ari_rot_status - 3;
 	duration=40;
 	chance=100 * moreThan:3:t:ari_rot_status;
 [AvAffecterAoE]
@@ -3483,7 +3483,7 @@ needsLoS = false; needsLoE = false; shape=7;
 [AvAffecter]
 	ID=ari_abomination_gravestrike; 
 	actorValue=ari_rot_status;
-	magnitude=2 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status;
+	magnitude=2 + t:ari_rot_status;
 	duration=40;
 	chance=d:fistAcc;
 	element=ruin;
@@ -3578,7 +3578,7 @@ needsLoS = false; needsLoE = false; shape=7;
 	visibleMiss=false;
 	actorValue=ari_rot_status;
 	harmful=false;
-	magnitude=moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status + moreThan:13:t:ari_rot_status + moreThan:14:t:ari_rot_status - 3;
+	magnitude=t:ari_rot_status - 3;
 	duration=40;
 	chance=100 * moreThan:5:t:ari_rot_status;
 [AvAffecterAoE]
@@ -3649,7 +3649,7 @@ needsLoS = false; needsLoE = false; shape=7;
 [AvAffecter]
 	ID=ari_abomination_infectious_bile; 
 	actorValue=ari_rot_status;
-	magnitude=3 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status;
+	magnitude=3 + t:ari_rot_status;
 	duration=40;
 	chance=d:ruinAcc;
 	FXOnTile=chargeSpiralFast_big;
@@ -3735,7 +3735,7 @@ needsLoS = false; needsLoE = false; shape=7;
 [AvAffecter]
 	ID=ari_abomination_corpse_expulsion; 
 	actorValue=ari_rot_status;
-	magnitude=2 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status;
+	magnitude=2 + t:ari_rot_status;
 	duration=40;
 	chance=100;
 	FXOnTile=chargeSpiralFast_big;
@@ -3855,7 +3855,7 @@ needsLoS = false; needsLoE = false; shape=7;
 [AvAffecter]
 	ID=ari_lich_rotbeam; 
 	actorValue=ari_rot_status;
-	magnitude=8 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status;
+	magnitude=8 + t:ari_rot_status;
 	duration=40;
 	chance=d:ruinAcc;
 	FXOnTile=chargeSpiralFast_big;
@@ -4023,7 +4023,7 @@ ID=ari_fetid_field_rot;
 [AvAffecter]
 	ID=ari_fetid_field_rot; 
 	actorValue=ari_rot_status;
-	magnitude=1 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status + moreThan:13:t:ari_rot_status;
+	magnitude=1 + t:ari_rot_status;
 	duration=40;
 	chance=100;
 [AvAffecterAoE]
@@ -5888,7 +5888,7 @@ ID=ari_cold_spot_chill_weak;
 [AvAffecter]
 	ID=ari_enemy_lich_finger_death;
 	actorValue=ari_rot_status_enemy;
-	magnitude=4 + moreThan:0:t:ari_rot_status_enemy + moreThan:1:t:ari_rot_status_enemy + moreThan:2:t:ari_rot_status_enemy + moreThan:3:t:ari_rot_status_enemy + moreThan:4:t:ari_rot_status_enemy + moreThan:5:t:ari_rot_status_enemy + moreThan:6:t:ari_rot_status_enemy + moreThan:7:t:ari_rot_status_enemy + moreThan:8:t:ari_rot_status_enemy + moreThan:9:t:ari_rot_status_enemy + moreThan:10:t:ari_rot_status_enemy;
+	magnitude=4 + t:ari_rot_status_enemy;
 	duration=120;
 	chance=d:ruinAcc;
 	harmful=true;
@@ -6016,7 +6016,7 @@ depthMod=900;
 [AvAffecter]
 	ID=skeletonswordAttack_enemy; 
 	actorValue=ari_rot_status_enemy;
-	magnitude=1 + moreThan:0:t:ari_rot_status_enemy + moreThan:1:t:ari_rot_status_enemy + moreThan:2:t:ari_rot_status_enemy + moreThan:3:t:ari_rot_status_enemy + moreThan:4:t:ari_rot_status_enemy + moreThan:5:t:ari_rot_status_enemy + moreThan:6:t:ari_rot_status_enemy + moreThan:7:t:ari_rot_status_enemy + moreThan:8:t:ari_rot_status_enemy + moreThan:9:t:ari_rot_status_enemy + moreThan:10:t:ari_rot_status_enemy + moreThan:11:t:ari_rot_status_enemy + moreThan:12:t:ari_rot_status_enemy + moreThan:13:t:ari_rot_status_enemy;
+	magnitude=1 + t:ari_rot_status_enemy;
 	duration=40;
 	chance=d:swordAcc;
 	element=melee;
@@ -6046,7 +6046,7 @@ ID=ari_summoned_crossbow_enemy; element=actionUsed; newID=ari_summoned_crossbow_
 [AvAffecter]
 	ID=crossbowAttack_Rot_enemy; 
 	actorValue=ari_rot_status_enemy;
-	magnitude=1 + moreThan:0:t:ari_rot_status_enemy + moreThan:1:t:ari_rot_status_enemy + moreThan:2:t:ari_rot_status_enemy + moreThan:3:t:ari_rot_status_enemy + moreThan:4:t:ari_rot_status_enemy + moreThan:5:t:ari_rot_status_enemy + moreThan:6:t:ari_rot_status_enemy + moreThan:7:t:ari_rot_status_enemy + moreThan:8:t:ari_rot_status_enemy + moreThan:9:t:ari_rot_status_enemy + moreThan:10:t:ari_rot_status_enemy + moreThan:11:t:ari_rot_status_enemy + moreThan:12:t:ari_rot_status_enemy + moreThan:13:t:ari_rot_status_enemy;
+	magnitude=1 + t:ari_rot_status_enemy;
 	duration=40;
 	chance=d:aimAcc;
 	element=melee;
@@ -6097,7 +6097,7 @@ ID=ari_summoned_crossbow_unloaded_enemy; element=actionUsed; element=reload; new
 [AvAffecter]
 	ID=ari_infectPunch_enemy; 
 	actorValue=ari_rot_status_enemy;
-	magnitude=1 + moreThan:0:t:ari_rot_status_enemy + moreThan:1:t:ari_rot_status_enemy + moreThan:2:t:ari_rot_status_enemy + moreThan:3:t:ari_rot_status_enemy + moreThan:4:t:ari_rot_status_enemy + moreThan:5:t:ari_rot_status_enemy + moreThan:6:t:ari_rot_status_enemy + moreThan:7:t:ari_rot_status_enemy + moreThan:8:t:ari_rot_status_enemy + moreThan:9:t:ari_rot_status_enemy + moreThan:10:t:ari_rot_status_enemy + moreThan:11:t:ari_rot_status_enemy + moreThan:12:t:ari_rot_status_enemy + moreThan:13:t:ari_rot_status_enemy;
+	magnitude=1 + t:ari_rot_status_enemy;
 	duration=40;
 	chance=d:fistAcc;
 	FXOnTile=chargeSpiralFast_big;
@@ -6172,7 +6172,7 @@ ID=ari_summoned_crossbow_unloaded_enemy; element=actionUsed; element=reload; new
 [AvAffecter]
 	ID=ari_zombie_infectious_bile_enemy; 
 	actorValue=ari_rot_status_enemy;
-	magnitude=3 + moreThan:0:t:ari_rot_status_enemy + moreThan:1:t:ari_rot_status_enemy + moreThan:2:t:ari_rot_status_enemy + moreThan:3:t:ari_rot_status_enemy + moreThan:4:t:ari_rot_status_enemy + moreThan:5:t:ari_rot_status_enemy + moreThan:6:t:ari_rot_status_enemy + moreThan:7:t:ari_rot_status_enemy + moreThan:8:t:ari_rot_status_enemy + moreThan:9:t:ari_rot_status_enemy + moreThan:10:t:ari_rot_status_enemy + moreThan:11:t:ari_rot_status_enemy;
+	magnitude=3 + t:ari_rot_status_enemy;
 	duration=40;
 	chance=d:ruinAcc;
 	FXOnTile=chargeSpiralFast_big;
@@ -6259,7 +6259,7 @@ ID=ari_summoned_crossbow_unloaded_enemy; element=actionUsed; element=reload; new
 [AvAffecter]
 	ID=ari_enemy_zombie_corpse_expulsion; 
 	actorValue=ari_rot_status_enemy;
-	magnitude=2 + moreThan:0:t:ari_rot_status_enemy + moreThan:1:t:ari_rot_status_enemy + moreThan:2:t:ari_rot_status_enemy + moreThan:3:t:ari_rot_status_enemy + moreThan:4:t:ari_rot_status_enemy + moreThan:5:t:ari_rot_status_enemy + moreThan:6:t:ari_rot_status_enemy + moreThan:7:t:ari_rot_status_enemy + moreThan:8:t:ari_rot_status_enemy + moreThan:9:t:ari_rot_status_enemy + moreThan:10:t:ari_rot_status_enemy + moreThan:11:t:ari_rot_status_enemy + moreThan:12:t:ari_rot_status_enemy;
+	magnitude=2 + t:ari_rot_status_enemy;
 	duration=40;
 	chance=d:ruinAcc;
 	FXOnTile=chargeSpiralFast_big;
@@ -6332,7 +6332,7 @@ ID=ari_summoned_crossbow_unloaded_enemy; element=actionUsed; element=reload; new
 [AvAffecter]
 	ID=ari_skeleton_warrior_charge_enemy; 
 	actorValue=ari_rot_status_enemy;
-	magnitude=1 + moreThan:0:t:ari_rot_status_enemy + moreThan:1:t:ari_rot_status_enemy + moreThan:2:t:ari_rot_status_enemy + moreThan:3:t:ari_rot_status_enemy + moreThan:4:t:ari_rot_status_enemy + moreThan:5:t:ari_rot_status_enemy + moreThan:6:t:ari_rot_status_enemy + moreThan:7:t:ari_rot_status_enemy + moreThan:8:t:ari_rot_status_enemy + moreThan:9:t:ari_rot_status_enemy + moreThan:10:t:ari_rot_status_enemy + moreThan:11:t:ari_rot_status_enemy + moreThan:12:t:ari_rot_status_enemy + moreThan:13:t:ari_rot_status_enemy;
+	magnitude=1 + t:ari_rot_status_enemy;
 	duration=40;
 	chance=100;
 	FXOnTile=chargeSpiralFast_big;
@@ -6479,7 +6479,7 @@ ID=ari_fetid_field_rot_enemy;
 [AvAffecter]
 	ID=ari_fetid_field_rot_enemy; 
 	actorValue=ari_rot_status_enemy;
-	magnitude=1 + moreThan:0:t:ari_rot_status_enemy + moreThan:1:t:ari_rot_status_enemy + moreThan:2:t:ari_rot_status_enemy + moreThan:3:t:ari_rot_status_enemy + moreThan:4:t:ari_rot_status_enemy + moreThan:5:t:ari_rot_status_enemy + moreThan:6:t:ari_rot_status_enemy + moreThan:7:t:ari_rot_status_enemy + moreThan:8:t:ari_rot_status_enemy + moreThan:9:t:ari_rot_status_enemy + moreThan:10:t:ari_rot_status_enemy + moreThan:11:t:ari_rot_status_enemy + moreThan:12:t:ari_rot_status_enemy + moreThan:13:t:ari_rot_status_enemy;
+	magnitude=1 + t:ari_rot_status_enemy;
 	duration=40;
 	chance=100;
 [AvAffecterAoE]
@@ -6640,7 +6640,7 @@ ID=ari_fetid_field_spread_enemy;
 [AvAffecter]
 	ID=ari_enemy_abomination_amalgamated_limb; 
 	actorValue=ari_rot_status_enemy;
-	magnitude=1 + moreThan:0:t:ari_rot_status_enemy + moreThan:1:t:ari_rot_status_enemy + moreThan:2:t:ari_rot_status_enemy + moreThan:3:t:ari_rot_status_enemy + moreThan:4:t:ari_rot_status_enemy + moreThan:5:t:ari_rot_status_enemy + moreThan:6:t:ari_rot_status_enemy + moreThan:7:t:ari_rot_status_enemy + moreThan:8:t:ari_rot_status_enemy + moreThan:9:t:ari_rot_status_enemy + moreThan:10:t:ari_rot_status_enemy + moreThan:11:t:ari_rot_status_enemy + moreThan:12:t:ari_rot_status_enemy + moreThan:13:t:ari_rot_status_enemy;
+	magnitude=1 + t:ari_rot_status_enemy;
 	duration=40;
 	chance=d:fistAcc;
 	FXOnTile=chargeSpiralFast_big;
@@ -6746,7 +6746,7 @@ ID=ari_fetid_field_spread_enemy;
 [AvAffecter]
 	ID=ari_enemy_abomination_corpse_slam; 
 	actorValue=ari_rot_status_enemy;
-	magnitude=1 + moreThan:0:t:ari_rot_status_enemy + moreThan:1:t:ari_rot_status_enemy + moreThan:2:t:ari_rot_status_enemy + moreThan:3:t:ari_rot_status_enemy + moreThan:4:t:ari_rot_status_enemy + moreThan:5:t:ari_rot_status_enemy + moreThan:6:t:ari_rot_status_enemy + moreThan:7:t:ari_rot_status_enemy + moreThan:8:t:ari_rot_status_enemy + moreThan:9:t:ari_rot_status_enemy + moreThan:10:t:ari_rot_status_enemy + moreThan:11:t:ari_rot_status_enemy + moreThan:12:t:ari_rot_status_enemy + moreThan:13:t:ari_rot_status_enemy;
+	magnitude=1 + t:ari_rot_status_enemy;
 	duration=40;
 	chance=d:fistAcc;
 	element=ruin;

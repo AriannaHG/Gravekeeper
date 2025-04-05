@@ -4573,7 +4573,7 @@ action=shana_creepingdeath_rot;
 	visibleEvaluations=true;
 	harmful=true;
 	actorValue=ari_rot_status;
-	magnitude=2 + moreThan:0:t:ari_rot_status + moreThan:1:t:ari_rot_status + moreThan:2:t:ari_rot_status + moreThan:3:t:ari_rot_status + moreThan:4:t:ari_rot_status + moreThan:5:t:ari_rot_status + moreThan:6:t:ari_rot_status + moreThan:7:t:ari_rot_status + moreThan:8:t:ari_rot_status + moreThan:9:t:ari_rot_status + moreThan:10:t:ari_rot_status + moreThan:11:t:ari_rot_status + moreThan:12:t:ari_rot_status;
+	magnitude=2 + t:ari_rot_status;
 
 	duration=99; --this should stop most crowd control from making the rot stack die
 	chance=100;
