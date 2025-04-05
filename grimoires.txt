@@ -93,7 +93,7 @@ combineWith=furnace_everlit2; toMake=bones1;
 [ItemType]  name=Grimoire of Rot;
 texture=gkart; 
 ID=ari_grimoire_rot; pR=p3; pG=pG; pB=p1;
-description=A tome containing intermediate instruction on the nefarious dark arts.<n=>This grimoire will heal you for a small amount of the damage dealt and inflict 3 stacks of Rot<icon=icon_gravekeeper_rot> for <icon=time>40.<n=>Charge time of <icon=time>3.;
+description=A tome containing intermediate instruction on the nefarious dark arts.<n=>This grimoire will heal you for a small amount of the damage dealt and will inflict Rot<icon=icon_gravekeeper_rot> based on your <icon=skill_Ruin>.<n=>Charge time of <icon=time>3.;
 journalID=ari_journal_grimoire;
 sprite=1; spriteWhenHeld=0; itemCategory=weapon;
 element=ruin;
