@@ -72,6 +72,19 @@ pG=;
 pB=;
 
 [FXData]
+ID=shana_energyShot_deadbook; cloneFrom=energyShot;
+pR=pHoneyglow;
+pG=;
+pB=;
+
+[FXData]
+ID=shana_energyShotSummon_deadbook; cloneFrom=summonEnergyShot;
+pR=p80;
+pG=;
+pB=;
+
+
+[FXData]
 ID=shana_pewbreak; cloneFrom=dust_wood;
 pR=pCRedD;
 pG=;
