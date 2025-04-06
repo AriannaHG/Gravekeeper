@@ -73,7 +73,7 @@ pB=;
 
 [FXData]
 ID=shana_energyShot_deadbook; cloneFrom=energyShot;
-pR=pHoneyglow;
+pR=pBuralk;
 pG=;
 pB=;
 
