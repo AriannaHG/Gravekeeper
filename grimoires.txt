@@ -533,7 +533,7 @@ ID=ari_grimoire_necronomicon; element=endTurn; action=ari_necronomicon_hungry_ta
 
 
 [ItemType]  name=Rotbound Manuscript;
-ID=shana_deadbook;sprite=5; spriteWhenHeld=6; itemCategory=weapon; element=hammer;
+ID=shana_deadbook;sprite=5; spriteWhenHeld=6; itemCategory=weapon; element=ruin;
 texture=gkart;
 description=A pestilent tome. Its profaned pages inflict the Creeping Death upon any foolish enough to darken its sight. <n>Doubles Rot<icon=icon_gravekeeper_rot> when cast upon an enemy.;
 ;
@@ -542,6 +542,8 @@ weight=1; volume=0; value=666; power=1;
 action=shana_grimoireAttack_deadbook;
 special=enhanceDoesntAlterPalettes;
 
+[ItemLight]
+ID=shana_deadbook; red=0; blue=0; green=0.5; alpha=0.5; size=0.25; flicker=0;
 [ItemEffect]  
 ID=shana_deadbook; actorValue=PhysAtk; magnitude=-5; duration=-1;
 [ItemEffect]  
@@ -554,7 +556,7 @@ ID=shana_deadbook; element=combatStart; action=shana_deadbookact;
 ID=shana_deadbook; element=timerUp; action=shana_deadbookact;
 
 [ItemType]  name=Rotbound Manuscript;
-ID=shana_deadbook_enemy;sprite=5; spriteWhenHeld=6; itemCategory=weapon; element=hammer;
+ID=shana_deadbook_enemy;sprite=5; spriteWhenHeld=6; itemCategory=weapon; element=ruin;
 texture=gkart;
 description=A pestilent tome. Its profaned pages inflict the Creeping Death upon any foolish enough to darken its sight. <n>Doubles Rot<icon=icon_gravekeeper_rot> when cast upon an enemy.;
 journalID=shana_journal_deadbook;
@@ -562,6 +564,8 @@ weight=1; volume=0; value=666; power=7;
 action=shana_grimoireAttack_deadbook_enemy;
 special=enhanceDoesntAlterPalettes;
 
+[ItemLight]
+ID=shana_deadbook_enemy; red=0; blue=0; green=0.5; alpha=0.5; size=0.25; flicker=0;
 [ItemEffect]  
 ID=shana_deadbook_enemy; actorValue=skill_Life; magnitude=-5; duration=-1;
 [ItemEffect]  
@@ -581,7 +585,7 @@ text=<itemBig=shana_deadbook><title=Rotbound Manuscript><brAdj=>A plagued tome t
 At the beginning of combat and the start of its wielder's turns, this grimoire afflicts all foes it can see with the Creeping Death for <icon=time>99, applying 2 stacks of Rot at the beginning of each of their turns.
 <n=>
 <n=>
-Rot: Rot takes place at the end of a creature's turn, inflicting Ruin damage equal to stack size (max 15), with a severity-dependent chance to spread the Rot to nearby allies. Creatures infected by the Rot are reanimated as a Mindless Zombie on death.;
+Rot: Rot takes place at the end of a creature's turn, inflicting Ruin damage equal to stack size with a severity-dependent chance to spread the Rot to nearby allies. Creatures infected by the Rot are reanimated as a Mindless Zombie on death.;
 
 
 
@@ -597,6 +601,8 @@ weight=1; volume=0; value=999; power=7;
 special=unbreakable;
 special=enhanceDoesntAlterPalettes;
 
+[ItemLight]
+ID=ari_grimoire_divinity; red=0.5; blue=1; green=0.33; alpha=0.8; size=0.9; flicker=0; texture=krypton;
 [ItemEffect]  
 ID=ari_grimoire_divinity; actorValue=skill_Life; magnitude=2; duration=-1;
 [ItemEffect]  
