@@ -190,6 +190,7 @@ icon=classIcon_ari_gravekeeper;
 	duration=40;
 	chance=d:ruinAcc;
 	FXOnTile=ari_energyShot_Rot;
+	FXOnTileColor=Green;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
 	FXOnHit=downwardLinesQuick;
@@ -695,12 +696,56 @@ icon=classIcon_ari_gravekeeper;
 	ID=ari_grimoireAttack_lowheal_yore;
 	cloneFrom=oneTile;
 
-
-
-
-
-
-
+--Rotbound Manuscript doubling friendly rot
+[Action] ID=shana_grimoireAttack_deadbook; 
+	special=requiresCasting;
+	special=redoMovementAnalysis;
+	applyWeaponBuffs=true;
+	chargeTime=3 * d:chargeTimeMult + d:chargeTimeMod;
+	casterAnimation=spellcast;
+	casterAnimationDependsOnWeaponHand=false;
+	FXChangesWithWeaponHand=false;
+	FXOnCaster=sfx_highThwum_loud;
+	FXOnCasterColor=Black;
+	FXOnCaster=ping_noOverlap;
+	FXOnCasterColor=Black;
+	FXOnCaster=shana_energyShotSummon_deadbook;
+[ActionAoE] 
+	ID=shana_grimoireAttack_deadbook; 
+	cloneFrom=adjacent+3;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=true;
+	canSelectActors=true;
+[AvAffecter]
+	ID=shana_grimoireAttack_deadbook; 
+	actorValue=ari_rot_status;
+	magnitude=t:ari_rot_status * 2;
+	duration=80;
+	chance=d:ruinAcc;
+	FXOnTile=ari_energyShot_Green;
+	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=shana_grimoireAttack_deadbook; 
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_grimoireAttack_deadbook; 
+	harmful=true;
+	actorValue=HP;
+	magnitude=m:targetExists * d:grimoireActualDamage_tier1;
+	duration=-2;
+	chance=d:ruinAcc;
+	element=ranged;
+	element=magic;
+	element=ruin;
+[AvAffecterAoE]
+	ID=shana_grimoireAttack_deadbook; 
+	cloneFrom=oneTile;
 
 
 ---------------------------------------------------------------------Rot book action, inflicting creeping death AV on enemies in sight for 99t. 
@@ -734,6 +779,58 @@ icon=classIcon_ari_gravekeeper;
 	canSelectAllies=false;
 	minRange=1;
 	maxRange=22;
+
+--ENEMY Rotbound Manuscript doubling ENEMY rot
+[Action] ID=shana_grimoireAttack_deadbook_enemy; 
+	special=requiresCasting;
+	special=redoMovementAnalysis;
+	applyWeaponBuffs=true;
+	chargeTime=3 * d:chargeTimeMult + d:chargeTimeMod;
+	casterAnimation=spellcast;
+	casterAnimationDependsOnWeaponHand=false;
+	FXChangesWithWeaponHand=false;
+	FXOnCaster=sfx_highThwum_loud;
+	FXOnCasterColor=Black;
+	FXOnCaster=ping_noOverlap;
+	FXOnCasterColor=Black;
+	FXOnCaster=shana_energyShotSummon_deadbook;
+[ActionAoE] 
+	ID=shana_grimoireAttack_deadbook_enemy; 
+	cloneFrom=adjacent+3;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=true;
+	canSelectActors=true;
+[AvAffecter]
+	ID=shana_grimoireAttack_deadbook_enemy; 
+	actorValue=ari_rot_status;
+	magnitude=t:ari_rot_status_enemy * 2;
+	duration=80;
+	chance=d:ruinAcc;
+	FXOnTile=ari_energyShot_Green;
+	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=shana_grimoireAttack_deadbook_enemy; 
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_grimoireAttack_deadbook_enemy; 
+	harmful=true;
+	actorValue=HP;
+	magnitude=m:targetExists * d:grimoireActualDamage_tier1;
+	duration=-2;
+	chance=d:ruinAcc;
+	element=ranged;
+	element=magic;
+	element=ruin;
+[AvAffecterAoE]
+	ID=shana_grimoireAttack_deadbook_enemy; 
+	cloneFrom=oneTile;
+
 
 ---------------------------------------------------------------------Rot book action for ENEMY, inflicting creeping death AV on enemies in sight for 99t. 
 [Action] ID=shana_deadbookact_enemy; 
