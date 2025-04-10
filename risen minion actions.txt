@@ -5313,8 +5313,8 @@ ID=ari_cold_spot_chill_weak;
 	maxRange = 2;
 	bypassAll=false;
 	occupyAll=true;
-	canSelectAllies=false;
-	canSelectEnemies=true;
+	canSelectAllies=true;
+	canSelectEnemies=false;
 
 --Give specters physical defense
 [AvAffecter]
@@ -5334,8 +5334,8 @@ ID=ari_cold_spot_chill_weak;
 	maxRange = 2;
 	bypassAll=false;
 	occupyAll=true;
-	canSelectAllies=false;
-	canSelectEnemies=true;
+	canSelectAllies=true;
+	canSelectEnemies=false;
 
 --Give specters minions magic defense
 [AvAffecter]
@@ -5355,8 +5355,8 @@ ID=ari_cold_spot_chill_weak;
 	maxRange = 2;
 	bypassAll=false;
 	occupyAll=true;
-	canSelectAllies=false;
-	canSelectEnemies=true;
+	canSelectAllies=true;
+	canSelectEnemies=false;
 
 --Give specters our Ruin skill for added effects
 [AvAffecter]
@@ -5376,8 +5376,8 @@ ID=ari_cold_spot_chill_weak;
 	maxRange = 2;
 	bypassAll=false;
 	occupyAll=true;
-	canSelectAllies=false;
-	canSelectEnemies=true;
+	canSelectAllies=true;
+	canSelectEnemies=false;
 
 --Give the specters time so that they act faster
 [AvAffecter]
@@ -5397,8 +5397,8 @@ ID=ari_cold_spot_chill_weak;
 	maxRange = 2;
 	bypassAll=false;
 	occupyAll=true;
-	canSelectAllies=false;
-	canSelectEnemies=true;
+	canSelectAllies=true;
+	canSelectEnemies=false;
 
 --Remove the summoned undead AV so we don't keep buffing the same minions
 [AvAffecter]
@@ -5419,8 +5419,8 @@ ID=ari_cold_spot_chill_weak;
 	maxRange = 2;
 	bypassAll=false;
 	occupyAll=true;
-	canSelectAllies=false;
-	canSelectEnemies=true;
+	canSelectAllies=true;
+	canSelectEnemies=false;
 
 
 
