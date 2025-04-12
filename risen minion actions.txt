@@ -5234,7 +5234,7 @@ ID=ari_cold_spot_chill_weak;
 	harmful=false;
 	actorValue=summonActor_temp;
 	magnitude=ari_spirit_wisp;
-	chance=11 - 101 * m:targetExists;
+	chance=11 + c:skill_Ruin - 101 * m:targetExists;
 	duration=-2;
 	element=ruin;
 	FXOnTile=delay_tiny;
@@ -5255,7 +5255,7 @@ ID=ari_cold_spot_chill_weak;
 	harmful=false;
 	actorValue=summonActor_temp;
 	magnitude=ari_spirit_wraith;
-	chance=11 - 101 * m:targetExists;
+	chance=11 + c:skill_Ruin - 101 * m:targetExists;
 	duration=-2;
 	element=ruin;
 	FXOnTile=delay_tiny;
@@ -5276,7 +5276,7 @@ ID=ari_cold_spot_chill_weak;
 	harmful=false;
 	actorValue=summonActor_temp;
 	magnitude=ari_spirit_ghost;
-	chance=11 - 101 * m:targetExists;
+	chance=11 + c:skill_Ruin - 101 * m:targetExists;
 	duration=-2;
 	element=ruin;
 	FXOnTile=tinyShakeHoriz;
@@ -5498,9 +5498,6 @@ ID=ari_cold_spot_chill_weak;
 	chance=100 - 101 * m:targetExists;
 	duration=-2;
 	element=ruin;
-	FXOnTile=tinyShakeHoriz;
-	FXOnTile=blackCloud;
-	FXOnTile=delay_tiny;
 [AvAffecterAoE]
 	ID=ari_mausoleum_summon_spirits;
 	fReq=m:rand(100)-60;
@@ -5513,9 +5510,6 @@ ID=ari_cold_spot_chill_weak;
 	chance=100 - 101 * m:targetExists;
 	duration=-2;
 	element=ruin;
-	FXOnTile=tinyShakeHoriz;
-	FXOnTile=blackCloud;
-	FXOnTile=delay_tiny;
 [AvAffecterAoE]
 	ID=ari_mausoleum_summon_spirits;
 	fReq=m:rand(100)-60;
@@ -5528,9 +5522,6 @@ ID=ari_cold_spot_chill_weak;
 	chance=100 - 101 * m:targetExists;
 	duration=-2;
 	element=ruin;
-	FXOnTile=tinyShakeHoriz;
-	FXOnTile=blackCloud;
-	FXOnTile=delay_tiny;
 [AvAffecterAoE]
 	ID=ari_mausoleum_summon_spirits;
 	cloneFrom=oneTile;
@@ -5613,9 +5604,24 @@ ID=ari_cold_spot_chill_weak;
     magnitude=-1;
     duration=-2;
     chance=100*t:ari_summoned_undead_AV;
+	FXOnTile=blackCloud;
+	FXOnTileColor=WhiteSmoke;
+
+	FXOnTile=tileLine;
+	FXOnTileColor=WhiteSmoke;
+
+	FXOnTile=fireburst;
+	FXOnTileColor=WhiteSmoke;
+
+	FXOnTile=tinyShakeHoriz;
+	FXOnTileColor=WhiteSmoke;
+
+	FXOnTile=delay_tiny;
 [AvAffecterAoE]
 	ID=ari_mausoleum_summon_spirits;
 	cloneFrom=oneTile;
+
+
 
 
 
