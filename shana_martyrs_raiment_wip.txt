@@ -10,14 +10,92 @@ pR=pScur2;
 ID=shana_martyrs_raiment; actorValue=skill_Life; magnitude=2; duration=-1;
 [ItemEffect]
 ID=shana_martyrs_raiment; actorValue=PhysEva; magnitude=10; duration=-1;
+
 [ItemReaction]
+ID=shana_martyrs_raiment; -------------------------------------------------- set hp count av before doing anything
+element=HP; action=shana_martyrs_raiment_set_hp_count;
+
+[ItemReaction]-------------------------------------------------------------- the actual damage soaking action
 ID=shana_martyrs_raiment;
-actorValues=HP; action=shana_martyrs_raiment_act; aiRatingMod=2; -----------TODO: try set to d:shana_martyrs_raiment_damage_prevented 
+actorValues=HP; action=shana_martyrs_raiment_act; aiRatingMod=2; -----------TODO: try set to d:shana_martyrs_raiment_damage_prevented
+
+[ItemReaction]
+ID=shana_martyrs_raiment; -------------------------------------------------- after previous action resolves, set shana_HPCountBeforeBeingHit for next round
+element=HP; action=shana_martyrs_raiment_set_hp_count;
+
+[ItemReaction]
+ID=shana_martyrs_raiment; -------------------------------------------------- set shana_HPCountBeforeBeingHit AV on equip to initialize
+element=itemEquipped; action=shana_martyrs_raiment_set_hp_count;
+
+[ItemReaction]
+ID=shana_martyrs_raiment; -------------------------------------------------- set shana_HPCountBeforeBeingHit AV on combat start to initialize
+element=combatStart; action=shana_martyrs_raiment_set_hp_count;
+
+
+[ActorValue] --------------------------------------------------------------- define shana_HPBeforeBeingHit AV
+ID=shana_HPBeforeBeingHit;
+name=HP Before Being Hit (this should not be visible);
+icon=;
+bubbleIcon=;
+removedByNegativeMagnitude=false;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = 0;
+affectsActors = true;
+canAffectIncapped = true;
+showDamageNumbers = false;
+showDamageNumbersMagnitude = false;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = false;
+showDamageNumbersElements = false;
+showDamageNumbersIconInTooltips = false;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0;
+elementReactionModifiesDuration = false;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = false;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+[Action] ID=shana_martyrs_raiment_set_hp_count; --------------------------------------------------------------------------------------------set equal to current hp at the time its called. 
+harmful=false;
+special=usableEvenWhenCantAct;
+special=usableEvenWhenReacting;
+special=usableEvenWhenYourTurn;
+[ActionAoE] 
+    ID=shana_martyrs_raiment_set_hp_count;
+    cloneFrom=oneTile;
+[AvAffecter] 
+    ID=shana_martyrs_raiment_set_hp_count; 
+    harmful=false;
+    actorValue=shana_HPBeforeBeingHit; 
+    magnitude=-t:shana_HPBeforeBeingHit + t:HP;
+    duration=-1;
+    chance=100;
+    visibleMiss=false;
+    FXOnHit=hitDust_shatterNegate;
+    FXOnHit=square16_shine_big;
+[AvAffecterAoE]
+    ID=shana_martyrs_raiment_set_hp_count;
+    cloneFrom=oneTile;
+
+
+
 [JournalEntry]
 ID=shana_journal_martyrs_raiment;
 category=equipment; halfPage=true; rarity=4;
 title=Martyr's Raiment;
 text=<itemBig=shana_martyrs_raiment><title=Martyr's Raiment><brAdj=>An unassuming robe of mundane origin, once donned by a frail old woman who used her failing, plague-ridden body to buy time for the citizens of Barrow to flee the undead hordes. Any instance of damage exceeding 20% of the wearer's maximum <icon=HP> has the excess damage converted to a delayed wound, borne in full at the end of the wearer's turn. Predictably, the raiment's power does not work on debt accrued in this way.;
+
+
+
+
 
 --------------------------------------------------------Martyrs Raiment Formulas --change dmg healed for low hp case
 [FormulaGlobal] ID=shana_0.2_maxhp;
@@ -29,11 +107,11 @@ formula=floor:d:shana_0.2_maxhp;
 [FormulaGlobal] ID=shana_martyrs_raiment_threshold;
 formula=min:1:d:shana_floor_0.2_maxhp;
 
---[FormulaGlobal] ID=shana_current_hp_minus_threshold; -- due to order of operations I need to add back last damage taken as I want hp before being hit
---formula=c:HP - d:shana_martyrs_raiment_threshold;
+[FormulaGlobal] ID=shana_current_hp_minus_threshold; -- hp before being hit
+formula=c:shana_HPBeforeBeingHit - d:shana_martyrs_raiment_threshold;
 
---[FormulaGlobal] ID=shana_is_hp_above_threshold;
---formula=moreThan:0:d:shana_current_hp_minus_threshold;
+[FormulaGlobal] ID=shana_is_hp_above_threshold;
+formula=moreThan:0:d:shana_current_hp_minus_threshold;
 
 [FormulaGlobal] ID=shana_martyrs_raiment_damage_prevented;
 formula=m:cLastDmgTaken - d:shana_martyrs_raiment_threshold;
@@ -41,9 +119,26 @@ formula=m:cLastDmgTaken - d:shana_martyrs_raiment_threshold;
 [FormulaGlobal] ID=shana_martyrs_raiment_did_it_proc;
 formula=moreThan:0:d:shana_martyrs_raiment_damage_prevented - c:negate; --prevent negate still giving debuff
 
---[FormulaGlobal] ID=shana_martyrs_raiment_healback; --pseud
---formula=min(d:shana_martyrs_raiment_damage_prevented, c:HP-d:shana_martyrs_raiment_threshold
+[FormulaGlobal] ID=shana_martyrs_raiment_heal_cap_after_hit; 
+formula=c:shana_HPBeforeBeingHit - d:shana_martyrs_raiment_threshold - c:HP;
 
+[FormulaGlobal] ID=shana_martyrs_raiment_healback_calc; 
+formula=d:shana_martyrs_raiment_damage_prevented - d:shana_martyrs_raiment_heal_cap_after_hit;
+
+[FormulaGlobal] ID=shana_martyrs_raiment_healback_damage_prevented_bigger;
+formula=moreThan:0:d:shana_martyrs_raiment_healback_calc;
+
+[FormulaGlobal] ID=shana_martyrs_raiment_healback_damage_prevented_smaller_or_zero;
+formula=1 - d:shana_martyrs_raiment_healback_damage_prevented_bigger;
+
+[FormulaGlobal] ID=shana_healback_pt1;
+formula=d:shana_martyrs_raiment_healback_damage_prevented_bigger * d:shana_martyrs_raiment_heal_cap_after_hit;
+
+[FormulaGlobal] ID=shana_healback_pt2;
+formula=d:shana_martyrs_raiment_healback_damage_prevented_smaller_or_zero * d:shana_martyrs_raiment_damage_prevented;
+
+[FormulaGlobal] ID=shana_martyrs_raiment_healback;
+formula=d:shana_healback_pt1 + d:shana_healback_pt2;
 
 --------------------------------------------------------Action for Martyr's Raiment, only occurring when hp dmg taken more than 20% wearers max hp rounded down.
 [Action] ID=shana_martyrs_raiment_act; 
@@ -60,7 +155,7 @@ special=usableEvenWhenYourTurn;
     actorValue=shana_redeemed_suffering_status; 
     magnitude=d:shana_martyrs_raiment_damage_prevented + t:shana_redeemed_suffering_status;
     duration=9999; --TODO and ask
-    chance=m:cLastDmgTakenGreaterThanX(0) * 100 + d:shana_martyrs_raiment_did_it_proc * 100 - 100; --procs only if took damage, not heal, hp is actually above threshold
+    chance=m:cLastDmgTakenGreaterThanX(0) * 100 + d:shana_martyrs_raiment_did_it_proc * 100 + d:shana_is_hp_above_threshold * 100 - 200; --procs only if took damage, not heal and hp before being hit is more than threshold
     FXOnHit=hitDust_shatterNegate;
     FXOnHit=square16_shine_big;
     visibleMiss=false;
@@ -71,9 +166,9 @@ special=usableEvenWhenYourTurn;
 ID=shana_martyrs_raiment_act; 
     harmful=false;
     actorValue=HPTrue;
-    magnitude=d:shana_martyrs_raiment_damage_prevented;
+    magnitude=d:shana_martyrs_raiment_healback;
     duration=-2;
-    chance=m:cLastDmgTakenGreaterThanX(0) * 100 + d:shana_martyrs_raiment_did_it_proc * 100 - 100;
+    chance=m:cLastDmgTakenGreaterThanX(0) * 100 + d:shana_martyrs_raiment_did_it_proc * 100 + d:shana_is_hp_above_threshold * 100 - 200;
     visibleEvaluations=false;
     visibleMiss=false;
 [AvAffecterAoE]
