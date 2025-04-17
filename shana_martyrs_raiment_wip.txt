@@ -13,15 +13,15 @@ ID=shana_martyrs_raiment; actorValue=PhysEva; magnitude=10; duration=-1;
 
 [ItemReaction]
 ID=shana_martyrs_raiment; -------------------------------------------------- set hp count av before doing anything
-element=HP; action=shana_martyrs_raiment_set_hp_count;
+element=any; action=shana_martyrs_raiment_set_hp_count;
 
 [ItemReaction]-------------------------------------------------------------- the actual damage soaking action
 ID=shana_martyrs_raiment;
 actorValues=HP; action=shana_martyrs_raiment_act; aiRatingMod=2; -----------TODO: try set to d:shana_martyrs_raiment_damage_prevented
 
-[ItemReaction]
-ID=shana_martyrs_raiment; -------------------------------------------------- after previous action resolves, set shana_HPCountBeforeBeingHit for next round
-element=HP; action=shana_martyrs_raiment_set_hp_count;
+--[ItemReaction]
+--ID=shana_martyrs_raiment; -------------------------------------------------- after previous action resolves, set shana_HPCountBeforeBeingHit for next round
+--element=HP; action=shana_martyrs_raiment_set_hp_count;
 
 [ItemReaction]
 ID=shana_martyrs_raiment; -------------------------------------------------- set shana_HPCountBeforeBeingHit AV on equip to initialize
@@ -79,8 +79,10 @@ special=usableEvenWhenYourTurn;
     duration=-1;
     chance=100;
     visibleMiss=false;
-    FXOnHit=hitDust_shatterNegate;
-    FXOnHit=square16_shine_big;
+	FXOnHit=magicCharge;
+	FXOnHit=largePing;
+	FXOnHitColor=SkyBlue;
+	FXOnTile=delay_tiny;
 [AvAffecterAoE]
     ID=shana_martyrs_raiment_set_hp_count;
     cloneFrom=oneTile;
@@ -95,7 +97,7 @@ text=<itemBig=shana_martyrs_raiment><title=Martyr's Raiment><brAdj=>An unassumin
 
 
 
-
+----- 50 goes to 28 - 22 damage is taken whrn you only dealt 11, 23 damage is taken when you only dealt 12, 24 is taken when you dealt 13. there are two errors, one is rounding and the other is the threshold seems to be subtracted?
 
 --------------------------------------------------------Martyrs Raiment Formulas --change dmg healed for low hp case
 [FormulaGlobal] ID=shana_0.2_maxhp;
@@ -120,7 +122,9 @@ formula=m:cLastDmgTaken - d:shana_martyrs_raiment_threshold;
 formula=moreThan:0:d:shana_martyrs_raiment_damage_prevented - c:negate; --prevent negate still giving debuff
 
 [FormulaGlobal] ID=shana_martyrs_raiment_heal_cap_after_hit; 
-formula=c:shana_HPBeforeBeingHit - d:shana_martyrs_raiment_threshold - c:HP;
+-----there's an issue here - c:shana_HPBeforeBeingHit is 20, d:shana_martyrs_raiment_threshold is 4 and c:HP is 0..... I need to involve m:cLastDmgTaken. lets say I get chunked for 50 hit when my max hp is 20. c:HP should not be used as it's sus.
+-----The amount I should should still have (should be healed by) is 16 = 20 (c:shana_HPBeforeBeingHit) - 50 (damage last taken) + 46 (shana_martyrs_raiment_damage_prevented)
+formula=c:shana_HPBeforeBeingHit - m:cLastDmgTaken + d:shana_martyrs_raiment_damage_prevented;
 
 [FormulaGlobal] ID=shana_martyrs_raiment_healback_calc; 
 formula=d:shana_martyrs_raiment_damage_prevented - d:shana_martyrs_raiment_heal_cap_after_hit;
