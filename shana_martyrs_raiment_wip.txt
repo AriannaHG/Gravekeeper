@@ -1,6 +1,6 @@
 [ItemType]  name=Martyr's Raiment;
-ID=shana_martyrs_raiment; sprite=3; texture=qpart;
-description=Dauntless robe that defies mortal wounds. <n=>In combat, damage recieved in excess of 20% of the wearer's maximum <icon=hp> will be deferred until the end of the wearer's turn.; 
+ID=shana_martyrs_raiment; sprite=194; itemCategory=3;
+description=Dauntless robe that defies mortal wounds. <n=>In combat, physical damage recieved in excess of 20% of the wearer's maximum <icon=hp> will be deferred until the end of the wearer's turn.; 
 journalID=shana_journal_martyrs_raiment;
 weight=1; volume=3; value=9999;
 itemCategory=3; 
@@ -12,9 +12,9 @@ ID=shana_martyrs_raiment; actorValue=skill_Life; magnitude=2; duration=-1;
 ID=shana_martyrs_raiment; actorValue=PhysEva; magnitude=10; duration=-1;
 
 
-[ItemReaction]-------------------------------------------------------------- the actual damage soaking action
+[ItemReaction]-------------------------------------------------------------- the actual damage soaking action. Lo, to the aspirant who wishes to make a similar item - special=canReactMultipleTimesPerTurn; is kind of fucked because the way reactions work is: actorValues=HP; element=physical; means that it will proc if the action has the physical element and changes your hp. However, if multiple elements are matched, it would proc multiple times. For an extreme case a volskarn sword action matched against actor value hp and element all would have all 5 of its elements match all, thus making it proc 5 times. Restricting it to physical was not by choice lol
 ID=shana_martyrs_raiment;
-actorValues=HP; action=shana_martyrs_raiment_act; aiRatingMod=2; -----------TODO: try set to d:shana_martyrs_raiment_damage_prevented
+actorValues=HP; element=physical; action=shana_martyrs_raiment_act; aiRatingMod=2; -----------TODO: try set to d:shana_martyrs_raiment_damage_prevented. AV/element - need both, but every combination of match is a proc so can only use one element
 
 [ItemReaction]
 ID=shana_martyrs_raiment; -------------------------------------------------- set shana_HPCountBeforeBeingHit AV on equip to initialize
@@ -91,7 +91,7 @@ special=usableEvenWhenYourTurn;
 ID=shana_journal_martyrs_raiment;
 category=equipment; halfPage=true; rarity=4;
 title=Martyr's Raiment;
-text=<itemBig=shana_martyrs_raiment><title=Martyr's Raiment><brAdj=>An unassuming robe of mundane origin, once donned by a frail old woman who used her failing, plague-ridden body to buy time for the citizens of Barrow to flee the undead hordes. While in combat, any instance of damage exceeding 20% of the wearer's maximum <icon=HP> has the excess damage converted to a delayed wound, borne in full at the end of the wearer's turn. Predictably, the raiment's power does not work on debt accrued in this way.;
+text=<itemBig=shana_martyrs_raiment><title=Martyr's Raiment><brAdj=>An unassuming robe of mundane origin, once donned by a frail old woman who used her failing, plague-ridden body to buy time for the citizens of Barrow to flee the undead hordes. While in combat, any instance of physical damage exceeding 20% of the wearer's maximum <icon=HP> has the excess damage converted to a delayed wound, borne in full at the end of the wearer's turn. Predictably, the raiment's power does not work on debt accrued in this way.;
 
 
 
@@ -144,7 +144,7 @@ formula=d:shana_healback_pt1 + d:shana_healback_pt2;
 [Action] ID=shana_martyrs_raiment_act; 
 harmful=false;
 special=usableEvenWhenCantAct;
-special=usableEvenWhenReacting;
+--special=usableEvenWhenReacting;
 special=usableEvenWhenYourTurn;
 special=canReactMultipleTimesPerTurn; ----------------------------this is causing issues
 [ActionAoE] 
@@ -195,8 +195,8 @@ special=canReactMultipleTimesPerTurn; ----------------------------this is causin
 [ActorValue]
 ID=shana_redeemed_suffering_status;
 name=Redeemed Suffering;
-icon=<icon=icon_gravekeeper_rot>;
-bubbleIcon=icon_rot;
+icon=<icon=skill_Ruin>;
+bubbleIcon=skill_Ruin_small;
 minimum=0;
 maximum=999;
 removedByNegativeMagnitude=true;
