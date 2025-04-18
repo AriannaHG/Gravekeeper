@@ -1,6 +1,6 @@
 [ItemType]  name=Martyr's Raiment;
 ID=shana_martyrs_raiment; sprite=3; texture=qpart;
-description=Dauntless robe that defies mortal wounds. <n=>Damage recieved in excess of 20% of the wearer's maximum <icon=hp> will be deferred until the end of the wearer's turn.; 
+description=Dauntless robe that defies mortal wounds. <n=>In combat, damage recieved in excess of 20% of the wearer's maximum <icon=hp> will be deferred until the end of the wearer's turn.; 
 journalID=shana_journal_martyrs_raiment;
 weight=1; volume=3; value=9999;
 itemCategory=3; 
@@ -11,17 +11,10 @@ ID=shana_martyrs_raiment; actorValue=skill_Life; magnitude=2; duration=-1;
 [ItemEffect]
 ID=shana_martyrs_raiment; actorValue=PhysEva; magnitude=10; duration=-1;
 
-[ItemReaction]
-ID=shana_martyrs_raiment; -------------------------------------------------- set hp count av before doing anything
-element=any; action=shana_martyrs_raiment_set_hp_count;
 
 [ItemReaction]-------------------------------------------------------------- the actual damage soaking action
 ID=shana_martyrs_raiment;
 actorValues=HP; action=shana_martyrs_raiment_act; aiRatingMod=2; -----------TODO: try set to d:shana_martyrs_raiment_damage_prevented
-
---[ItemReaction]
---ID=shana_martyrs_raiment; -------------------------------------------------- after previous action resolves, set shana_HPCountBeforeBeingHit for next round
---element=HP; action=shana_martyrs_raiment_set_hp_count;
 
 [ItemReaction]
 ID=shana_martyrs_raiment; -------------------------------------------------- set shana_HPCountBeforeBeingHit AV on equip to initialize
@@ -30,6 +23,11 @@ element=itemEquipped; action=shana_martyrs_raiment_set_hp_count;
 [ItemReaction]
 ID=shana_martyrs_raiment; -------------------------------------------------- set shana_HPCountBeforeBeingHit AV on combat start to initialize
 element=combatStart; action=shana_martyrs_raiment_set_hp_count;
+
+[ItemReaction]
+ID=shana_martyrs_raiment; -------------------------------------------------- set shana_HPCountBeforeBeingHit AV on revive
+element=revive; action=shana_martyrs_raiment_set_hp_count;
+
 
 
 [ActorValue] --------------------------------------------------------------- define shana_HPBeforeBeingHit AV
@@ -93,7 +91,7 @@ special=usableEvenWhenYourTurn;
 ID=shana_journal_martyrs_raiment;
 category=equipment; halfPage=true; rarity=4;
 title=Martyr's Raiment;
-text=<itemBig=shana_martyrs_raiment><title=Martyr's Raiment><brAdj=>An unassuming robe of mundane origin, once donned by a frail old woman who used her failing, plague-ridden body to buy time for the citizens of Barrow to flee the undead hordes. Any instance of damage exceeding 20% of the wearer's maximum <icon=HP> has the excess damage converted to a delayed wound, borne in full at the end of the wearer's turn. Predictably, the raiment's power does not work on debt accrued in this way.;
+text=<itemBig=shana_martyrs_raiment><title=Martyr's Raiment><brAdj=>An unassuming robe of mundane origin, once donned by a frail old woman who used her failing, plague-ridden body to buy time for the citizens of Barrow to flee the undead hordes. While in combat, any instance of damage exceeding 20% of the wearer's maximum <icon=HP> has the excess damage converted to a delayed wound, borne in full at the end of the wearer's turn. Predictably, the raiment's power does not work on debt accrued in this way.;
 
 
 
@@ -122,8 +120,6 @@ formula=m:cLastDmgTaken - d:shana_martyrs_raiment_threshold;
 formula=moreThan:0:d:shana_martyrs_raiment_damage_prevented - c:negate; --prevent negate still giving debuff
 
 [FormulaGlobal] ID=shana_martyrs_raiment_heal_cap_after_hit; 
------there's an issue here - c:shana_HPBeforeBeingHit is 20, d:shana_martyrs_raiment_threshold is 4 and c:HP is 0..... I need to involve m:cLastDmgTaken. lets say I get chunked for 50 hit when my max hp is 20. c:HP should not be used as it's sus.
------The amount I should should still have (should be healed by) is 16 = 20 (c:shana_HPBeforeBeingHit) - 50 (damage last taken) + 46 (shana_martyrs_raiment_damage_prevented)
 formula=c:shana_HPBeforeBeingHit - m:cLastDmgTaken + d:shana_martyrs_raiment_damage_prevented;
 
 [FormulaGlobal] ID=shana_martyrs_raiment_healback_calc; 
@@ -150,6 +146,7 @@ harmful=false;
 special=usableEvenWhenCantAct;
 special=usableEvenWhenReacting;
 special=usableEvenWhenYourTurn;
+special=canReactMultipleTimesPerTurn; ----------------------------this is causing issues
 [ActionAoE] 
     ID=shana_martyrs_raiment_act;
     cloneFrom=oneTile;
@@ -159,7 +156,7 @@ special=usableEvenWhenYourTurn;
     actorValue=shana_redeemed_suffering_status; 
     magnitude=d:shana_martyrs_raiment_damage_prevented + t:shana_redeemed_suffering_status;
     duration=9999; --TODO and ask
-    chance=m:cLastDmgTakenGreaterThanX(0) * 100 + d:shana_martyrs_raiment_did_it_proc * 100 + d:shana_is_hp_above_threshold * 100 - 200; --procs only if took damage, not heal and hp before being hit is more than threshold
+    chance=m:cLastDmgTakenGreaterThanX(0) * 100 + d:shana_martyrs_raiment_did_it_proc * 100 + d:shana_is_hp_above_threshold * 100 + m:combat * 100 - 300; --procs only if took damage, not heal and hp before being hit is more than threshold and are in combat, and
     FXOnHit=hitDust_shatterNegate;
     FXOnHit=square16_shine_big;
     visibleMiss=false;
@@ -167,17 +164,32 @@ special=usableEvenWhenYourTurn;
     ID=shana_martyrs_raiment_act;
     cloneFrom=oneTile;
 [AvAffecter] ---------------------------------------------------------------------------------------------this will actually prevent damage by instantly healing that much back.
-ID=shana_martyrs_raiment_act; 
+    ID=shana_martyrs_raiment_act; 
     harmful=false;
     actorValue=HPTrue;
     magnitude=d:shana_martyrs_raiment_healback;
     duration=-2;
-    chance=m:cLastDmgTakenGreaterThanX(0) * 100 + d:shana_martyrs_raiment_did_it_proc * 100 + d:shana_is_hp_above_threshold * 100 - 200;
+    chance=m:cLastDmgTakenGreaterThanX(0) * 100 + d:shana_martyrs_raiment_did_it_proc * 100 + d:shana_is_hp_above_threshold * 100 + m:combat * 100 - 300; 
     visibleEvaluations=false;
     visibleMiss=false;
 [AvAffecterAoE]
-    ID=shana_martyrs_raiment_act;
+   ID=shana_martyrs_raiment_act;
     cloneFrom=oneTile;
+[AvAffecter]  -----------------------------------------Set hp count AV after being hit
+    ID=shana_martyrs_raiment_act;  
+    harmful=false;
+    actorValue=shana_HPBeforeBeingHit; 
+    magnitude=-t:shana_HPBeforeBeingHit + t:HP;
+    duration=-1;
+    chance=100;
+    visibleMiss=false;
+	FXOnHit=magicCharge;
+	FXOnHit=largePing;
+	FXOnHitColor=SkyBlue;
+[AvAffecterAoE]
+    ID=shana_martyrs_raiment_act; 
+    cloneFrom=oneTile;
+
 
 ----------------------------------------------------------------Redeemed Suffering Status AV
 [ActorValue]
