@@ -11,7 +11,6 @@ ID=shana_martyrs_raiment; actorValue=skill_Life; magnitude=2; duration=-1;
 [ItemEffect]
 ID=shana_martyrs_raiment; actorValue=PhysEva; magnitude=10; duration=-1;
 
-
 [ItemReaction]-------------------------------------------------------------- the actual damage soaking action. Lo, to the aspirant who wishes to make a similar item - special=canReactMultipleTimesPerTurn; is kind of fucked because the way reactions work is: actorValues=HP; element=physical; means that it will proc if the action has the physical element and changes your hp. However, if multiple elements are matched, it would proc multiple times. For an extreme case a volskarn sword action matched against actor value hp and element all would have all 5 of its elements match all, thus making it proc 5 times. Restricting it to physical was not by choice lol
 ID=shana_martyrs_raiment;
 actorValues=HP; element=physical; action=shana_martyrs_raiment_act; aiRatingMod=2; -----------TODO: try set to d:shana_martyrs_raiment_damage_prevented. AV/element - need both, but every combination of match is a proc so can only use one element
@@ -26,7 +25,12 @@ element=combatStart; action=shana_martyrs_raiment_set_hp_count;
 
 [ItemReaction]
 ID=shana_martyrs_raiment; -------------------------------------------------- set shana_HPCountBeforeBeingHit AV on revive
-element=revive; action=shana_martyrs_raiment_set_hp_count;
+actorValues=revive; action=shana_martyrs_raiment_set_hp_count;
+
+[ItemReaction]
+ID=shana_martyrs_raiment; -------------------------------------------------- set shana_HPCountBeforeBeingHit AV on revive
+actorValues=HP; element=any; action=shana_martyrs_raiment_set_hp_count_multireact;
+
 
 
 
@@ -86,6 +90,32 @@ special=usableEvenWhenYourTurn;
     cloneFrom=oneTile;
 
 
+[Action] ID=shana_martyrs_raiment_set_hp_count_multireact; --------------------------------------------------------------------------------------------set equal to current hp at the time its called. 
+harmful=false;
+special=usableEvenWhenCantAct;
+special=usableEvenWhenReacting;
+special=usableEvenWhenYourTurn;
+special=canReactMultipleTimesPerTurn; 
+[ActionAoE] 
+    ID=shana_martyrs_raiment_set_hp_count_multireact;
+    cloneFrom=oneTile;
+[AvAffecter] 
+    ID=shana_martyrs_raiment_set_hp_count_multireact; 
+    harmful=false;
+    actorValue=shana_HPBeforeBeingHit; 
+    magnitude=-t:shana_HPBeforeBeingHit + t:HP;
+    duration=-1;
+    chance=100;
+    visibleMiss=false;
+	FXOnHit=magicCharge;
+	FXOnHit=largePing;
+	FXOnHitColor=SkyBlue;
+	FXOnTile=delay_tiny;
+[AvAffecterAoE]
+    ID=shana_martyrs_raiment_set_hp_count_multireact;
+    cloneFrom=oneTile;
+
+
 
 [JournalEntry]
 ID=shana_journal_martyrs_raiment;
@@ -94,8 +124,6 @@ title=Martyr's Raiment;
 text=<itemBig=shana_martyrs_raiment><title=Martyr's Raiment><brAdj=>An unassuming robe of mundane origin, once donned by a frail old woman who used her failing, plague-ridden body to buy time for the citizens of Barrow to flee the undead hordes. While in combat, any instance of physical damage exceeding 20% of the wearer's maximum <icon=HP> has the excess damage converted to a delayed wound, borne in full at the end of the wearer's turn. Predictably, the raiment's power does not work on debt accrued in this way.;
 
 
-
------ 50 goes to 28 - 22 damage is taken whrn you only dealt 11, 23 damage is taken when you only dealt 12, 24 is taken when you dealt 13. there are two errors, one is rounding and the other is the threshold seems to be subtracted?
 
 --------------------------------------------------------Martyrs Raiment Formulas --change dmg healed for low hp case
 [FormulaGlobal] ID=shana_0.2_maxhp;
