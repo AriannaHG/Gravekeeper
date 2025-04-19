@@ -1,6 +1,6 @@
 [ItemType]  name=Martyr's Raiment;
 ID=shana_martyrs_raiment; sprite=194; itemCategory=3;
-description=Dauntless robe that defies mortal wounds. <n=>In combat, physical damage recieved in excess of 20% of the wearer's maximum <icon=hp> will be deferred until the end of the wearer's turn.; 
+description=Dauntless robe that defies mortal wounds.<n=>In combat, physical damage recieved in excess of 20% of the wearer's maximum <icon=hp> will be deferred until the end of the wearer's turn.; 
 journalID=shana_journal_martyrs_raiment;
 weight=1; volume=3; value=9999;
 itemCategory=3; 
@@ -126,7 +126,7 @@ special=canReactMultipleTimesPerTurn;
 ID=shana_journal_martyrs_raiment;
 category=equipment; halfPage=true; rarity=4;
 title=Martyr's Raiment;
-text=<itemBig=shana_martyrs_raiment><title=Martyr's Raiment><brAdj=>An unassuming robe of mundane origin, once donned by a frail old woman who used her failing, plague-ridden body to buy time for the citizens of Barrow to flee the undead hordes. While in combat, any instance of physical damage exceeding 20% of the wearer's maximum <icon=HP> has the excess damage converted to a delayed wound, borne in full at the end of the wearer's turn. Predictably, the raiment's power does not work on debt accrued in this way.;
+text=<itemBig=shana_martyrs_raiment><title=Martyr's Raiment><brAdj=>An unassuming robe of mundane origin, once donned by a frail old woman who used her failing, plague-ridden body to buy time for the citizens of Barrow to flee the undead hordes. While in combat, any instance of physical damage exceeding 20% of the wearer's maximum <icon=HP> has the excess damage converted to a delayed wound, borne in full at the end of the wearer's turn.;
 
 
 
