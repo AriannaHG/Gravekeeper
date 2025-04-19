@@ -28,18 +28,18 @@ ID=shana_martyrs_raiment; -------------------------------------------------- set
 actorValues=revive; action=shana_martyrs_raiment_set_hp_count;
 
 [ItemReaction]
-ID=shana_martyrs_raiment; -------------------------------------------------- set shana_HPCountBeforeBeingHit AV on revive
+ID=shana_martyrs_raiment; -------------------------------------------------- set shana_HPCountBeforeBeingHit AV on any element, only happens in combat
 actorValues=HP; element=any; action=shana_martyrs_raiment_set_hp_count_multireact;
 
 
 
 
-[ActorValue] --------------------------------------------------------------- define shana_HPBeforeBeingHit AV
+[ActorValue] --------------------------------------------------------------- define shana_HPBeforeBeingHit AV, TODO: remove self at combat end
 ID=shana_HPBeforeBeingHit;
 name=HP Before Being Hit (this should not be visible);
 icon=;
 bubbleIcon=;
-removedByNegativeMagnitude=false;
+
 defaultValue = 0; AIValue = 0;
 harmfulMagnitude = 0;
 affectsActors = true;
@@ -64,6 +64,11 @@ XPCostBase = 0;
 XPCostIncrement = 0;
 XPCostMultiplier = 1;
 XPCostFloorToNearest = 0;
+
+[ActorValueReaction] -----------------------------------------------------------------------------------------------------------------------garbage collection
+ID=shana_HPBeforeBeingHit;
+element=combatEnd; newID=X;
+
 
 [Action] ID=shana_martyrs_raiment_set_hp_count; --------------------------------------------------------------------------------------------set equal to current hp at the time its called. 
 harmful=false;
@@ -105,7 +110,7 @@ special=canReactMultipleTimesPerTurn;
     actorValue=shana_HPBeforeBeingHit; 
     magnitude=-t:shana_HPBeforeBeingHit + t:HP;
     duration=-1;
-    chance=100;
+    chance=m:combat * 100 - 100; ----helps stop stacking
     visibleMiss=false;
 	FXOnHit=magicCharge;
 	FXOnHit=largePing;
@@ -219,7 +224,7 @@ special=canReactMultipleTimesPerTurn; ----------------------------this is causin
     cloneFrom=oneTile;
 
 
-----------------------------------------------------------------Redeemed Suffering Status AV
+----------------------------------------------------------------Redeemed Suffering Status AV TODO: remove self at combat end
 [ActorValue]
 ID=shana_redeemed_suffering_status;
 name=Redeemed Suffering;
@@ -261,6 +266,11 @@ ID=shana_redeemed_suffering_status; actorValues=shana_redeemed_suffering_status;
 
 [ActorValueReaction]
 ID=shana_redeemed_suffering_status; element=ruinTouch; damageMultiplier=1.34;
+
+[ActorValueReaction] -----------------------------------------------------------------------------------------------------------------------garbage collection
+ID=shana_redeemed_suffering_status;
+element=combatEnd; newID=X;
+
 
 --Deal damage at the end of an actor's turn and remove itself - TODO
 
