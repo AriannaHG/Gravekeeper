@@ -42,6 +42,11 @@ ID=ari_rot_status; actorValues=ari_rot_status; newID=ari_rot_status;
 [ActorValueReaction]
 ID=ari_rot_status; element=ruinTouch; damageMultiplier=1.34;
 
+[ActorValueReaction] -----------------------------------------------------------------------------------------------------------------------garbage collection
+ID=ari_rot_status;
+element=combatEnd; newID=X;
+
+
 --Summon a zombie if an actor dies while rotting
 [ActorValueReaction]
 ID=ari_rot_status; element=incapacitated;
@@ -4371,6 +4376,11 @@ ID=ari_rot_status_enemy; element=ruinTouch; damageMultiplier=1.34;
 [ActorValueReaction]
 ID=ari_rot_status_enemy; actorValues=ari_rot_status_enemy; newID=ari_rot_status_enemy;
 
+[ActorValueReaction] -----------------------------------------------------------------------------------------------------------------------garbage collection
+ID=ari_rot_status_enemy;
+element=combatEnd; newID=X;
+
+
 --Summon a zombie if an actor dies while rotting
 [ActorValueReaction]
 ID=ari_rot_status_enemy; element=incapacitated;
@@ -4557,6 +4567,11 @@ ID=shana_creepingdeath_status; element=ruinTouch; damageMultiplier=1.34;
 ID=shana_creepingdeath_status; element=timerUp;
 action=shana_creepingdeath_rot;
 
+[ActorValueReaction] -----------------------------------------------------------------------------------------------------------------------garbage collection
+ID=shana_creepingdeath_status;
+element=combatEnd; newID=X;
+
+
 ------------------------------Action for Creeping Death to inflict 2 Rot (this should be called at start of turn).
 
 [Action] ID=shana_creepingdeath_rot; 
@@ -4634,6 +4649,11 @@ ID=shana_creepingdeath_status_enemy; element=ruinTouch; damageMultiplier=1.34;
 [ActorValueReaction]
 ID=shana_creepingdeath_status_enemy; element=timerUp;
 action=shana_creepingdeath_rot_enemy;
+
+[ActorValueReaction] -----------------------------------------------------------------------------------------------------------------------garbage collection
+ID=shana_creepingdeath_status_enemy;
+element=combatEnd; newID=X;
+
 ------------------------------Action for ENEMY Creeping Death to inflict 2 Rot (this should be called at start of turn).
 
 [Action] ID=shana_creepingdeath_rot_enemy; 
