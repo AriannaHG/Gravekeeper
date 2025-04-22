@@ -1,6 +1,6 @@
 [ItemType]  name=Martyr's Raiment;
 ID=shana_martyrs_raiment; sprite=194; itemCategory=3;
-description=Dauntless robe that defies mortal wounds.<n=>In combat, physical damage recieved in excess of 20% of the wearer's maximum <icon=hp> will be deferred until the end of the wearer's turn.; 
+description=Dauntless robe that defies mortal wounds.<n=>In combat, physical damage recieved in excess of 20% of the wearer's maximum <icon=HP> will be deferred until the end of the wearer's turn.; 
 journalID=shana_journal_martyrs_raiment;
 weight=1; volume=3; value=9999;
 itemCategory=3; 
@@ -86,9 +86,9 @@ special=usableEvenWhenYourTurn;
     duration=-1;
     chance=100;
     visibleMiss=false;
-	FXOnHit=magicCharge;
-	FXOnHit=largePing;
-	FXOnHitColor=SkyBlue;
+--	FXOnHit=magicCharge;
+--	FXOnHit=largePing;
+--	FXOnHitColor=SkyBlue;
 	FXOnTile=delay_tiny;
 [AvAffecterAoE]
     ID=shana_martyrs_raiment_set_hp_count;
@@ -112,9 +112,9 @@ special=canReactMultipleTimesPerTurn;
     duration=-1;
     chance=m:combat * 100 - 100; ----helps stop stacking
     visibleMiss=false;
-	FXOnHit=magicCharge;
-	FXOnHit=largePing;
-	FXOnHitColor=SkyBlue;
+--	FXOnHit=magicCharge;
+--	FXOnHit=largePing;
+--	FXOnHitColor=SkyBlue;
 	FXOnTile=delay_tiny;
 [AvAffecterAoE]
     ID=shana_martyrs_raiment_set_hp_count_multireact;
@@ -229,7 +229,7 @@ special=canReactMultipleTimesPerTurn; ----------------------------this is causin
 ID=shana_redeemed_suffering_status;
 name=Redeemed Suffering;
 icon=<icon=skill_Ruin>;
-bubbleIcon=skill_Ruin_small;
+bubbleIcon=icon_redeemed_suffering_small;
 minimum=0;
 maximum=999;
 removedByNegativeMagnitude=true;
@@ -271,7 +271,66 @@ ID=shana_redeemed_suffering_status; element=ruinTouch; damageMultiplier=1.34;
 ID=shana_redeemed_suffering_status;
 element=combatEnd; newID=X;
 
+[ActorValueReaction]
+ID=shana_redeemed_suffering_status; element=endTurn;
+action=shana_redeemed_suffering_damage;
 
---Deal damage at the end of an actor's turn and remove itself - TODO
+[Action] ID=shana_redeemed_suffering_damage; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+	
+[ActionAoE] ----------------------------------------------------------do damage equal to stack size
+	ID=shana_redeemed_suffering_damage; 
+	cloneFrom=oneTile;
+
+[AvAffecter]
+	ID=shana_redeemed_suffering_damage; 
+	visibleEvaluations=true;
+	harmful=true;
+	actorValue=HP;
+	magnitude=c:shana_redeemed_suffering_status * -1;
+	duration=-2;
+	chance=100;
+	visibleMiss=false;
+	
+	FXOnHit=ping;
+	FXOnHitColor=Black;
+	FXOnHit=manySplatter;
+	FXOnHitColor=Red;
+	FXOnHit=manySplatter;
+	FXOnHitColor=Black;
+	FXOnHit=manySplatter;
+	FXOnHitColor=DarkRed;
+	FXOnHit=pop;
+
+[AvAffecterAoE]
+	ID=shana_redeemed_suffering_damage;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+
+[ActionAoE] ----------------------------------------------------------remove self
+	ID=shana_redeemed_suffering_damage; 
+	cloneFrom=oneTile;
+
+[AvAffecter]
+	ID=shana_redeemed_suffering_damage; 
+	visibleEvaluations=true;
+	harmful=true;
+	actorValue=shana_redeemed_suffering_status;
+	magnitude=c:shana_redeemed_suffering_status * -1;
+	duration=9999;
+	chance=100;
+	visibleMiss=false;
+
+[AvAffecterAoE]
+	ID=shana_redeemed_suffering_damage;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+
+
+
 
 
