@@ -105,9 +105,9 @@ action=ari_rot_damage;
 	duration=-2;
 	chance=100;
 	visibleMiss=false;
-	element=physical;
+	--element=physical;
 	element=ruin;
-	
+	applyElementToTile=false;
 	FXOnTile=spiral2;
 	FXOnTileColor=Green;
 	FXOnHit=downwardLinesQuick;
@@ -4434,9 +4434,9 @@ action=ari_rot_damage_enemy;
 	duration=-2;
 	chance=100;
 	visibleMiss=false;
-	element=physical;
+	--element=physical;
 	element=ruin;
-	
+	applyElementToTile=false;
 	FXOnTile=spiral2;
 	FXOnTileColor=Green;
 	FXOnHit=downwardLinesQuick;
@@ -4579,7 +4579,7 @@ action=shana_creepingdeath_rot;
 	chance=100;
 	visibleMiss=false;
 	element=ruin;
-	
+	applyElementToTile=false;
 	FXOnTile=spiral2;
 	FXOnTileColor=Green;
 	FXOnHit=downwardLinesQuick;
@@ -4656,7 +4656,7 @@ action=shana_creepingdeath_rot_enemy;
 	chance=100;
 	visibleMiss=false;
 	element=ruin;
-	
+	applyElementToTile=false;
 	FXOnTile=spiral2;
 	FXOnTileColor=Green;
 	FXOnHit=downwardLinesQuick;

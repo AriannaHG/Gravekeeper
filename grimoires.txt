@@ -451,6 +451,7 @@ ID=ari_grimoire_necronomicon; element=incapacitated; action=ari_necronomicon_res
 	chance=100 * c:ari_gravekeeper_hungry_necronomicon;
 	duration=-2;
 	element=ruin;
+	applyElementToTile=false;
 	FXOnTile=viralShroud;
 	FXOnTileColor=Red;
 	FXOnTile=tinyShakeHoriz;
