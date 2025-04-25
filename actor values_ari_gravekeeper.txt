@@ -105,7 +105,6 @@ action=ari_rot_damage;
 	duration=-2;
 	chance=100;
 	visibleMiss=false;
-	element=physical;
 	element=ruin;
 	
 	FXOnTile=spiral2;
@@ -4434,7 +4433,6 @@ action=ari_rot_damage_enemy;
 	duration=-2;
 	chance=100;
 	visibleMiss=false;
-	element=physical;
 	element=ruin;
 	
 	FXOnTile=spiral2;
