@@ -29,7 +29,7 @@ text=<itemBig=ari_grimoire_necronomicon><title=Necronomicon><brAdj=>A tome conta
 	
 	
 
-[ItemType]  name=Dusty Book;
+[ItemType]  name=Dusty Book; ---------------------------------------------------------------------------------unique book found buried behind Arianna's house that crafts into the manuscript
 texture=gkart; 
 ID=ari_grimoire_dusty; pR=p5; pG=pG; pB=overworld6;
 description=A tome containing illegible text on the nefarious dark arts.<n=>Charge time of <icon=time>3.;
@@ -39,10 +39,6 @@ element=ruin;
 weight=5; volume=10; value=10;
 power=3;
  action=ari_grimoireAttack_basic;
-combineWith=furnace_lit; toMake=bones1; 
-combineWith=furnace2_lit; toMake=bones1; 
-combineWith=furnace_everlit1; toMake=bones1; 
-combineWith=furnace_everlit2; toMake=bones1;
 
 [ItemType]  name=Forbidden Book;
 texture=gkart; 
@@ -54,10 +50,10 @@ element=ruin;
 weight=5; volume=10; value=40;
 power=5;
  action=ari_grimoireAttack_basic;
-combineWith=furnace_lit; toMake=bones1; 
-combineWith=furnace2_lit; toMake=bones1; 
-combineWith=furnace_everlit1; toMake=bones1; 
-combineWith=furnace_everlit2; toMake=bones1;
+combineWith=furnace_lit; toMake=iron_chunk; 
+combineWith=furnace2_lit; toMake=iron_chunk; 
+combineWith=furnace_everlit1; toMake=iron_chunk; 
+combineWith=furnace_everlit2; toMake=iron_chunk;
 
 [ItemType]  name=Book of Skulls;
 texture=gkart; 
@@ -73,6 +69,9 @@ combineWith=furnace_lit; toMake=bones1;
 combineWith=furnace2_lit; toMake=bones1; 
 combineWith=furnace_everlit1; toMake=bones1; 
 combineWith=furnace_everlit2; toMake=bones1;
+[ItemEffect]
+ID=ari_grimoire_skulls; actorValue=skill_Ruin; magnitude=1; duration=-1;
+
 
 [ItemType]  name=Grim Lexicon;
 texture=gkart; 
@@ -84,10 +83,10 @@ element=ruin;
 weight=5; volume=10; value=225;
 power=5;
  action=ari_grimoireAttack_lowheal;
-combineWith=furnace_lit; toMake=bones1; 
-combineWith=furnace2_lit; toMake=bones1; 
-combineWith=furnace_everlit1; toMake=bones1; 
-combineWith=furnace_everlit2; toMake=bones1;
+combineWith=furnace_lit; toMake=steel_bar; 
+combineWith=furnace2_lit; toMake=steel_bar; 
+combineWith=furnace_everlit1; toMake=steel_bar; 
+combineWith=furnace_everlit2; toMake=steel_bar;
 
 
 [ItemType]  name=Grimoire of Rot;
@@ -100,10 +99,10 @@ element=ruin;
 weight=5; volume=10; value=1250;
 power=3;
  action=ari_grimoireAttack_rot;
-combineWith=furnace_lit; toMake=bones1; 
-combineWith=furnace2_lit; toMake=bones1; 
-combineWith=furnace_everlit1; toMake=bones1; 
-combineWith=furnace_everlit2; toMake=bones1;
+combineWith=furnace_lit; toMake=fang_spidest; 
+combineWith=furnace2_lit; toMake=fang_spidest; 
+combineWith=furnace_everlit1; toMake=fang_spidest; 
+combineWith=furnace_everlit2; toMake=fang_spidest;
 
 
 [ItemType]  name=Dark Lexicon;
@@ -116,10 +115,10 @@ element=ruin;
 weight=5; volume=10; value=1000;
 power=5;
  action=ari_grimoireAttack_midheal;
-combineWith=furnace_lit; toMake=bones1; 
-combineWith=furnace2_lit; toMake=bones1; 
-combineWith=furnace_everlit1; toMake=bones1; 
-combineWith=furnace_everlit2; toMake=bones1;
+combineWith=furnace_lit; toMake=mythril_chunk; 
+combineWith=furnace2_lit; toMake=mythril_chunk; 
+combineWith=furnace_everlit1; toMake=mythril_chunk; 
+combineWith=furnace_everlit2; toMake=mythril_chunk;
 
 
 [ItemType]  name=Black Bible;
@@ -226,10 +225,10 @@ element=ruin;
 weight=5; volume=10; value=3000;
 power=0;
  action=ari_grimoireAttack_necronomicon;
-combineWith=furnace_lit; toMake=bones1; 
-combineWith=furnace2_lit; toMake=bones1; 
-combineWith=furnace_everlit1; toMake=bones1; 
-combineWith=furnace_everlit2; toMake=bones1;
+--combineWith=furnace_lit; toMake=bones1; 
+--combineWith=furnace2_lit; toMake=bones1; 
+--combineWith=furnace_everlit1; toMake=bones1; 
+--combineWith=furnace_everlit2; toMake=bones1;
 [ItemReaction] 
 ID=ari_grimoire_necronomicon; element=timerUp; action=ari_grimoire_necronomicon_buff;
 
@@ -316,9 +315,53 @@ combineWith=furnace_everlit2; toMake=yore_chunk;
 
 
 
+--------------------------------------------------------------BONES CRAFTING START
 
+[ItemType] ID=bones1;
+cloneFrom=bones1;
+combineWith=ari_craft_grimoire; toMake=ari_grimoire_skulls;
 
+[ItemType] ID=bone_spine;
+cloneFrom=bone_spine;
+combineWith=ari_craft_grimoire; toMake=ari_grimoire_skulls;
 
+[ItemType] ID=ribs2;
+cloneFrom=ribs2;
+combineWith=ari_craft_grimoire; toMake=ari_grimoire_skulls;
+
+[ItemType] ID=tusk;
+cloneFrom=tusk;
+combineWith=ari_craft_grimoire; toMake=ari_grimoire_skulls;
+
+[ItemType] ID=bones2;
+cloneFrom=bones2;
+combineWith=ari_craft_grimoire; toMake=ari_grimoire_skulls;
+
+[ItemType] ID=skull_dog2;
+cloneFrom=skull_dog2;
+combineWith=ari_craft_grimoire; toMake=ari_grimoire_skulls;
+
+[ItemType] ID=skull_dog1;
+cloneFrom=skull_dog1;
+combineWith=ari_craft_grimoire; toMake=ari_grimoire_skulls;
+
+[ItemType] ID=bone;
+cloneFrom=bone;
+combineWith=ari_craft_grimoire; toMake=ari_grimoire_skulls;
+
+[ItemType] ID=ribs1;
+cloneFrom=ribs1;
+combineWith=ari_craft_grimoire; toMake=ari_grimoire_skulls;
+
+[ItemType] ID=skull2;
+cloneFrom=skull2;
+combineWith=ari_craft_grimoire; toMake=ari_grimoire_skulls;
+
+[ItemType] ID=skull;
+cloneFrom=skull;
+combineWith=ari_craft_grimoire; toMake=ari_grimoire_skulls;
+
+--------------------------------------------------------------BONES CRAFTING END
 
 
 [ItemType] ID=iron_chunk;
