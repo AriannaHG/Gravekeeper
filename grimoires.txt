@@ -39,6 +39,11 @@ element=ruin;
 weight=5; volume=10; value=10;
 power=3;
  action=ari_grimoireAttack_basic;
+combineWith=furnace_lit; toMake=bone_dust; 
+combineWith=furnace2_lit; toMake=bone_dust; 
+combineWith=furnace_everlit1; toMake=bone_dust; 
+combineWith=furnace_everlit2; toMake=bone_dust;
+
 
 [ItemType]  name=Forbidden Book;
 texture=gkart; 
@@ -313,6 +318,9 @@ combineWith=furnace_everlit2; toMake=yore_chunk;
 
 
 
+[ItemType] ID=bone_dust;
+cloneFrom=bone_dust;
+combineWith=ari_craft_grimoire; toMake=ari_grimoire_dusty;
 
 
 --------------------------------------------------------------BONES CRAFTING START
