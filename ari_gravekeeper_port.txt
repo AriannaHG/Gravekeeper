@@ -1,6 +1,6 @@
 [Zone]  ID=ari_gravekeeper_port; dark=True; timeUntilNewDay=23.39987; showFogOfWar=True; fogOfWar=True; minimapEnabled=True; allowCameraPastZoneEdges=False; cantAct=False; cantGameOver=False; alwaysKeepWeaponsUnsheathed=False; peaceful=True; overseerMode=False; rollingPinStyle=False; drawSky=False; drawSky_overrideYpos=-1; boatZone=False; wind=False; overworld=False; canDropItems=True; 
  travelSong=PM-Resort4; travelSongVolume=1; travelSongPitch=0; combatSong=; combatSongVolume=1; combatSongPitch=0; combatSongDelay=0; 
-darkR=255; darkG=255; darkB=255; 
+darkR=224; darkG=224; darkB=237; 
  screenWaveFreq=0; screenDarkWaveFreq=0; screenWaveAmp=0.01; screenDarkWaveAmp=0.01; screenWaveSpeed=0.2; screenWaveAmp_reflect=0.0014; 
  bgTerrainTypeID=; bgFXID=ocean; bgFX_sineWave=0; darkenedTileTexture=darkenedTile; bgScale=1; bgParallaxRatio=1; bgMoveSpeedX=0; bgMoveSpeedY=0; 
 paletteOverride=; zoneDirtPalette=pDirt; zoneGrassPalette=pGreen; zoneGrassDarkPalette=pGreen2; zoneStonePalette=pGreyD; zoneStoneDarkPalette=pGreyD2; zoneStoneLightPalette=pGreyD; zoneWaterPalette=pBlue; zoneDirtDarkPalette=pDirt; zoneWoodPalette=pWood; zoneWoodDarkPalette=pWoodDark; zoneMisc1Palette=pWoodDark; zoneMisc2Palette=zoneDirt; zoneMisc3Palette=pRed; zoneMisc4Palette=pBlue; zoneMisc5Palette=pGreen; zoneMisc6Palette=pOrange; zoneMisc7Palette=pYellow; zoneMisc8Palette=pPurple; 
@@ -122,6 +122,8 @@ combatMode=False;
 [Item] ID=door_closed_wood_shoddy; q=1; r=360; x=14; y=24;
 [Item] ID=cantBlackenTile; q=1; x=14; y=24;
 [Item] ID=gravestone2; q=1; x=15; y=3;
+[Item] ID=bush_flowers1; q=1; x=15; y=4;
+[Item] ID=tile_cantTarget_peaceful; q=1; x=15; y=4;
 [Item] ID=wall2_style6; q=1; x=15; y=5;
 [Item] ID=roof2_back; q=1; x=15; y=5;
 [Item] ID=roof2_top; q=1; x=15; y=6;
@@ -139,7 +141,7 @@ combatMode=False;
 [Item] ID=rope_pile_huge2; q=1; x=15; y=20;
 [Item] ID=roof2; q=1; x=15; y=21;
 [Item] ID=table_mid; q=1; x=15; y=21;
-[Item] ID=lamp; q=1; x=15; y=21;
+[Item] ID=lamp; q=-2; x=15; y=21;
 [Item] ID=roof2; q=1; x=15; y=22;
 [Item] ID=barrel_broken; q=1; r=-360; x=15; y=22; containerID=0;
 [Item] ID=roof2; q=1; x=15; y=23;
@@ -183,6 +185,8 @@ combatMode=False;
 [Item] ID=cantBlackenTile; q=1; x=16; y=24;
 [Item] ID=pebbles1; q=1; r=-360; x=16; y=25;
 [Item] ID=gravestone2; q=1; x=17; y=2;
+[Item] ID=bush_flowers1; q=1; x=17; y=3;
+[Item] ID=tile_cantTarget_peaceful; q=1; x=17; y=3;
 [Item] ID=wall3_style6; q=1; x=17; y=5;
 [Item] ID=roof2_back; q=1; x=17; y=5;
 [Item] ID=fade_s6; q=1; r=180; x=17; y=5;
@@ -215,7 +219,11 @@ combatMode=False;
 [Item] ID=sign_hanging1; q=1; r=-360; x=17; y=23;
 [Item] ID=sign_icon_boat; q=1; x=17; y=23;
 [Item] ID=fade_s2; q=1; r=90; x=17; y=24;
-[Item] ID=rubble; q=1; r=-360; x=18; y=2;
+[Item] ID=sign_hanging1; q=1; x=18; y=1;
+[Item] ID=sign_icon_bag; q=1; x=18; y=1;
+[Item] ID=debris; q=1; oX=0; oY=-4; x=18; y=2;
+[Item] ID=lamp; q=1; oX=0; oY=-6; x=18; y=2;
+[Item] ID=item_cantGrabOrPlace; q=1; x=18; y=2;
 [Item] ID=fade_s1; q=1; x=18; y=5;
 [Item] ID=fade_s1; q=1; x=18; y=6;
 [Item] ID=fade_s1; q=1; x=18; y=7;
@@ -243,21 +251,18 @@ combatMode=False;
 [Item] ID=rocks1; q=3; r=180; x=19; y=3;
 [Item] ID=wall2_style6; q=1; x=19; y=11;
 [Item] ID=roof2_back; q=1; x=19; y=11;
-[Item] ID=table_left; q=1; x=19; y=12;
 [Item] ID=roof2_top; q=1; x=19; y=12;
 [Item] ID=roof2; q=1; x=19; y=13;
 [Item] ID=roof2; q=1; x=19; y=14;
-[Item] ID=smallBed; q=1; x=19; y=14;
 [Item] ID=wall2_style6_roof; q=1; x=19; y=15;
-[Item] ID=smallBed_btm; q=1; x=19; y=15;
 [Item] ID=wall5_style6; q=1; x=19; y=16;
 [Item] ID=cantBlackenTile; q=1; x=19; y=16;
 [Item] ID=rocks1; q=1; r=-360; x=19; y=17;
 [Item] ID=wall2_style6; q=1; x=20; y=11;
 [Item] ID=roof2_back; q=1; x=20; y=11;
-[Item] ID=table_mid; q=1; x=20; y=12;
 [Item] ID=roof2_top; q=1; x=20; y=12;
 [Item] ID=roof2; q=1; x=20; y=13;
+[Item] ID=table_left; q=1; x=20; y=13;
 [Item] ID=roof2; q=1; x=20; y=14;
 [Item] ID=wall2_style6_roof; q=1; x=20; y=15;
 [Item] ID=wall5_style6; q=1; x=20; y=16;
@@ -265,10 +270,11 @@ combatMode=False;
 [Item] ID=pebbles1; q=1; x=21; y=4;
 [Item] ID=wall2_style6; q=1; x=21; y=11;
 [Item] ID=roof2_back; q=1; x=21; y=11;
-[Item] ID=table_right; q=1; x=21; y=12;
 [Item] ID=roof2_top; q=1; x=21; y=12;
-[Item] ID=stool3; q=1; x=21; y=13;
+[Item] ID=chest_wood1_locked; q=1; x=21; y=12; containerID=2;
 [Item] ID=roof2; q=1; x=21; y=13;
+[Item] ID=table_right; q=1; x=21; y=13;
+[Item] ID=lamp; q=1; x=21; y=13;
 [Item] ID=roof2; q=1; x=21; y=14;
 [Item] ID=wall2_style6_roof; q=1; x=21; y=15;
 [Item] ID=cantBlackenTile; q=1; x=21; y=16;
@@ -298,6 +304,8 @@ combatMode=False;
 [Item] ID=fade_s1; q=1; x=23; y=13;
 [Item] ID=fade_s1; q=1; x=23; y=14;
 [Item] ID=fade_s1; q=1; x=23; y=15;
+[Item] ID=sign_hanging1; q=1; x=23; y=15;
+[Item] ID=sign_icon_balance; q=1; x=23; y=15;
 [Item] ID=fade_s2; q=1; r=90; x=23; y=16;
 [Item] ID=bush2; q=1; x=23; y=16;
 [Item] ID=dirt_sandy1; q=1; r=90; x=24; y=18;
@@ -308,6 +316,9 @@ combatMode=False;
 [Item] ID=rubble; q=1; x=26; y=3;
 [Item] ID=bush2; q=1; x=26; y=8;
 [Item] ID=dirt_sandy2; q=1; x=26; y=18;
+[Item] ID=bush2; q=1; r=-360; x=26; y=21;
+[Item] ID=plant_small3; q=1; r=-360; x=26; y=21;
+[Item] ID=bush_flowers1; q=1; x=26; y=22;
 [Item] ID=fence_metal_btm_corner; q=1; x=27; y=3;
 [Item] ID=pebbles1; q=1; r=-360; x=27; y=4;
 [Item] ID=streetlight_off1; q=1; x=27; y=4;
@@ -317,12 +328,14 @@ combatMode=False;
 [Item] ID=dirt_sandy2; q=1; r=90; x=27; y=18;
 [Item] ID=dirt_sandy2; q=3; x=27; y=20;
 [Item] ID=pebbles2; q=1; r=90; x=27; y=20;
+[Item] ID=bush2; q=1; r=-360; x=27; y=22;
+[Item] ID=plant_small3; q=1; r=-360; x=27; y=22;
 [Item] ID=fence_metal; q=1; x=28; y=3;
 [Item] ID=dirt_sandy1; q=1; x=28; y=5;
 [Item] ID=pebbles1; q=1; x=28; y=11;
 [Item] ID=streetlight_off1; q=1; x=28; y=11;
 [Item] ID=pebbles2; q=1; r=-360; x=28; y=12;
-[Item] ID=pebbles2; q=1; r=-360; x=28; y=16;
+[Item] ID=pebbles2; q=1; r=-360; x=28; y=17;
 [Item] ID=dirt_sandy1; q=1; x=29; y=0;
 [Item] ID=dirt_sandy2; q=1; x=29; y=1;
 [Item] ID=dirt_sandy2; q=1; x=29; y=2;
@@ -342,11 +355,11 @@ combatMode=False;
 [Item] ID=travelPoint_0D; q=1; r=270; x=30; y=11;
 [Item] ID=sign_hanging1; q=1; x=30; y=12;
 [Item] ID=sign_icon_cup; q=1; x=30; y=12;
-[Item] ID=barrel_open; q=1; x=30; y=13; containerID=2;
-[Item] ID=loot0; q=1; containedIn=2; cSlot=0;
-[Item] ID=loot0; q=1; containedIn=2; cSlot=4;
-[Item] ID=loot_none; q=1; containedIn=2; cSlot=7;
-[Item] ID=loot_none; q=1; containedIn=2; cSlot=8;
+[Item] ID=barrel_open; q=1; x=30; y=13; containerID=3;
+[Item] ID=loot0; q=1; containedIn=3; cSlot=0;
+[Item] ID=loot0; q=1; containedIn=3; cSlot=4;
+[Item] ID=loot_none; q=1; containedIn=3; cSlot=7;
+[Item] ID=loot_none; q=1; containedIn=3; cSlot=8;
 [Item] ID=bush1; q=1; x=30; y=14;
 [Item] ID=plant_small3; q=1; x=30; y=15;
 [Item] ID=dirt_sandy2; q=2; r=90; x=30; y=24;
@@ -367,15 +380,15 @@ combatMode=False;
 [Item] ID=cantBlackenTile; q=1; x=31; y=12;
 [Item] ID=wall4_style6; q=1; x=31; y=13;
 [Item] ID=cantBlackenTile; q=1; x=31; y=13;
-[Item] ID=barrel_open; q=1; x=31; y=14; containerID=3;
-[Item] ID=loot_none; q=1; containedIn=3; cSlot=0;
-[Item] ID=food; q=2; containedIn=3; cSlot=3;
-[Item] ID=loot_none; q=1; containedIn=3; cSlot=4;
-[Item] ID=loot0; q=1; containedIn=3; cSlot=6;
-[Item] ID=crate_small_damaged; q=1; x=31; y=15; containerID=4;
-[Item] ID=loot_none; q=1; containedIn=4; cSlot=3;
+[Item] ID=barrel_open; q=1; x=31; y=14; containerID=4;
+[Item] ID=loot_none; q=1; containedIn=4; cSlot=0;
+[Item] ID=food; q=2; containedIn=4; cSlot=3;
 [Item] ID=loot_none; q=1; containedIn=4; cSlot=4;
-[Item] ID=loot_none; q=1; containedIn=4; cSlot=5;
+[Item] ID=loot0; q=1; containedIn=4; cSlot=6;
+[Item] ID=crate_small_damaged; q=1; x=31; y=15; containerID=5;
+[Item] ID=loot_none; q=1; containedIn=5; cSlot=3;
+[Item] ID=loot_none; q=1; containedIn=5; cSlot=4;
+[Item] ID=loot_none; q=1; containedIn=5; cSlot=5;
 [Item] ID=fade_s2_diag30; q=1; r=-270; x=31; y=25;
 [Item] ID=fade_s4; q=1; r=-90; x=31; y=26;
 [Item] ID=fade_s4; q=1; r=-90; x=31; y=27;
@@ -446,10 +459,10 @@ combatMode=False;
 [Item] ID=wall2_style6; q=1; x=34; y=12;
 [Item] ID=cantBlackenTile; q=1; x=34; y=12;
 [Item] ID=fade_s1; q=1; x=34; y=13;
-[Item] ID=barrel_open; q=1; x=34; y=13; containerID=5;
-[Item] ID=loot_none; q=1; containedIn=5; cSlot=2;
-[Item] ID=loot_none; q=1; containedIn=5; cSlot=3;
-[Item] ID=loot_none; q=1; containedIn=5; cSlot=4;
+[Item] ID=barrel_open; q=1; x=34; y=13; containerID=6;
+[Item] ID=loot_none; q=1; containedIn=6; cSlot=2;
+[Item] ID=loot_none; q=1; containedIn=6; cSlot=3;
+[Item] ID=loot_none; q=1; containedIn=6; cSlot=4;
 [Item] ID=pebbles1; q=1; r=90; x=34; y=18;
 [Item] ID=wall2_style6; q=1; x=35; y=2;
 [Item] ID=roof2_back; q=1; x=35; y=2;
@@ -523,10 +536,12 @@ combatMode=False;
 [Item] ID=fade_s1; q=1; x=37; y=3;
 [Item] ID=fade_s1; q=1; x=37; y=4;
 [Item] ID=pebbles2; q=1; x=37; y=4;
-[Item] ID=crate_small_damaged; q=1; x=37; y=4; containerID=6;
-[Item] ID=notes_blank; q=1; containedIn=6; cSlot=3;
-[Item] ID=notes_useless; q=1; containedIn=6; cSlot=4;
-[Item] ID=notes_useless; q=1; containedIn=6; cSlot=8;
+[Item] ID=crate_small_damaged; q=1; x=37; y=4; containerID=7;
+[Item] ID=trigger_ruin; q=1; containedIn=7; cSlot=2;
+[Item] ID=notes_blank; q=1; containedIn=7; cSlot=3;
+[Item] ID=notes_useless; q=1; containedIn=7; cSlot=4;
+[Item] ID=shana_cargo_ruinglass; q=2; containedIn=7; cSlot=7;
+[Item] ID=notes_useless; q=1; containedIn=7; cSlot=8;
 [Item] ID=fade_s2; q=1; r=90; x=37; y=5;
 [Item] ID=rocks1; q=1; x=37; y=5;
 [Item] ID=wall2_style6; q=1; x=37; y=8;
@@ -554,7 +569,7 @@ combatMode=False;
 [Item] ID=debris; q=1; x=38; y=3;
 [Item] ID=pebbles1; q=1; r=180; x=38; y=3;
 [Item] ID=rocks1; q=1; x=38; y=3;
-[Item] ID=ari_grimoire_dusty; q=1; bu=True; x=38; y=3; containerID=7;
+[Item] ID=ari_grimoire_dusty; q=1; bu=True; x=38; y=3; containerID=8;
 [Item] ID=rubble; q=1; r=-360; x=38; y=4;
 [Item] ID=rocks1; q=2; x=38; y=5;
 [Item] ID=wall2_style6; q=1; x=38; y=8;
@@ -618,6 +633,7 @@ combatMode=False;
 [Item] ID=wall3_style6; q=1; x=39; y=19;
 [Item] ID=fade_s6; q=1; r=180; x=39; y=19;
 [Item] ID=cantBlackenTile; q=1; x=39; y=19;
+[Item] ID=plant_small3; q=1; r=-360; x=39; y=20;
 [Item] ID=grass_tall1; q=1; x=40; y=1;
 [Item] ID=fade_s1; q=1; x=40; y=8;
 [Item] ID=fade_s1; q=1; x=40; y=9;
@@ -629,6 +645,8 @@ combatMode=False;
 [Item] ID=fade_s1; q=1; x=40; y=17;
 [Item] ID=fade_s1; q=1; x=40; y=18;
 [Item] ID=fade_s2; q=1; r=90; x=40; y=19;
+[Item] ID=bush2; q=1; r=-360; x=40; y=23;
+[Item] ID=plant_small3; q=1; r=-360; x=40; y=23;
 [Item] ID=bush2; q=1; r=-360; x=40; y=23;
 [Item] ID=plant_small3; q=1; r=-360; x=40; y=23;
 [Item] ID=rocks1; q=1; x=41; y=25;
@@ -669,7 +687,7 @@ combatMode=False;
 [Actor]ID=human_ari_gravekeeper_port_; name=Arianna;
 actorTypeID=human; sprite=; actorClass=ari_gravekeeper; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=6; position=31,6; destination=-1,-1; facingRot=180; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=False; fearless=False; unkillable=False; factionBoss=False; faction=none; combatTeam=; clothPalette=p2; skinPalette=pHuman7; armorPalette=pCWhite; unarmoredPalette=pUnarmored; aiScript=wander_leash1_slow; aiTarget=; aiVarX=25; aiVarY=6; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=ari_gravekeeper_arianna_greeting; aggressiveness=0.5; bravery=0.5; intelligence=0.5; honor=0.4; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
  headSprite=human_head_ponytail; faceSprite=meh_face_female; legsSprite=legs_dress; armLSprite=template_arm; armRSprite=template_arm; torsoSprite=template_torso; shoulderLSprite=; shoulderRSprite=; backSprite=;
- supportAbilities=;  supportAbilities=;  supportAbilities=; HPMax=35; MPMax=25; 
+ supportAbilities=;  supportAbilities=;  supportAbilities=; HP=47; MP=33; HPMax=47; MPMax=33; 
 
 [ActorState]
 canSwap=False;
@@ -680,6 +698,22 @@ canSwap=False;
  actorValue=TrueMPMax; sourceAVAffecter=ari_gravekeeper; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
 [ActorEffect]
  actorValue=skill_Ruin; sourceAVAffecter=ari_gravekeeper; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=2; duration=-1;
+[ActorEffect]
+ actorValue=TrueHPMax; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=12; duration=-1;
+[ActorEffect]
+ actorValue=TrueMPMax; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=8; duration=-1;
+[ActorEffect]
+ actorValue=PhysAtk; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=2; duration=-1;
+[ActorEffect]
+ actorValue=MagAtk; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=2; duration=-1;
+[ActorEffect]
+ actorValue=PhysDef; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=MagDef; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=PhysEva; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=True; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
+[ActorEffect]
+ actorValue=MagEva; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=True; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
 
 [ActorInventory]
 style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
@@ -688,9 +722,9 @@ style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=
 
 
 [Actor]ID=human_ari_gravekeeper_port_0; name=Zomb;
-actorTypeID=human; sprite=; actorClass=sailor; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=6; position=25,13; destination=-1,-1; facingRot=90; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=False; fearless=False; unkillable=False; factionBoss=False; faction=none; combatTeam=; clothPalette=pGreyD; skinPalette=pHuman2; armorPalette=p81; unarmoredPalette=pUnarmored; aiScript=wander_leash5_slow; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=ari_dialog_zombchatter; aggressiveness=0.5; bravery=0.5; intelligence=0.5; honor=0.4; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
+actorTypeID=human; sprite=; actorClass=sailor; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=6; position=25,13; destination=-1,-1; facingRot=90; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=False; fearless=False; unkillable=False; factionBoss=False; faction=none; combatTeam=; clothPalette=pGreyD; skinPalette=pHuman2; armorPalette=p81; unarmoredPalette=pUnarmored; aiScript=wander_leash5_slow; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=True; favoredHand=0; incapacitated=False; dialogNodeID=ari_dialog_zombchatter; aggressiveness=0.5; bravery=0.5; intelligence=0.5; honor=0.4; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
  headSprite=human_head_sideburns_male; faceSprite=goatee_face_male; legsSprite=template_legs; armLSprite=sailor_arm; armRSprite=sailor_arm; torsoSprite=sailor_torso; shoulderLSprite=sailor_shoulder; shoulderRSprite=sailor_shoulder; backSprite=;
- supportAbilities=;  supportAbilities=;  supportAbilities=; 
+ supportAbilities=saltyDog;  supportAbilities=;  supportAbilities=; HP=42; MP=28; HPMax=42; MPMax=28; 
 chosenAbilityOfEachClass=sailor=Sai_heave; 
 
 [ActorState]
@@ -718,6 +752,22 @@ canSwap=False;
  actorValue=skill_Fist; sourceAVAffecter=sailor; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
 [ActorEffect]
  actorValue=skill_Dagger; sourceAVAffecter=sailor; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=TrueHPMax; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=12; duration=-1;
+[ActorEffect]
+ actorValue=TrueMPMax; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=8; duration=-1;
+[ActorEffect]
+ actorValue=PhysAtk; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=2; duration=-1;
+[ActorEffect]
+ actorValue=MagAtk; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=2; duration=-1;
+[ActorEffect]
+ actorValue=PhysDef; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=MagDef; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=PhysEva; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=True; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
+[ActorEffect]
+ actorValue=MagEva; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=True; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
 
 [ActorInventory]
 style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
@@ -727,9 +777,9 @@ style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=
 
 
 [Actor]ID=human_ari_gravekeeper_port_1; name=Taidon;
-actorTypeID=human; sprite=; actorClass=rogue; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=6; position=14,8; destination=-1,-1; facingRot=90; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=False; fearless=False; unkillable=False; factionBoss=False; faction=none; combatTeam=; clothPalette=pGreen2; skinPalette=pHuman9; armorPalette=pGreen3; unarmoredPalette=pUnarmored; aiScript=wander_leash5_slow; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=ari_dialog_taidonchatter; aggressiveness=0.5; bravery=0.5; intelligence=0.5; honor=0.4; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
+actorTypeID=human; sprite=; actorClass=rogue; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=6; position=14,7; destination=-1,-1; facingRot=90; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=False; fearless=False; unkillable=False; factionBoss=False; faction=none; combatTeam=; clothPalette=pGreen2; skinPalette=pHuman9; armorPalette=pGreen3; unarmoredPalette=pUnarmored; aiScript=wander_leash1_slow; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=True; favoredHand=0; incapacitated=False; dialogNodeID=ari_dialog_taidonchatter; aggressiveness=0.5; bravery=0.5; intelligence=0.5; honor=0.4; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
  headSprite=human_head_beardLong_male; faceSprite=template_face; legsSprite=template_legs; armLSprite=rogue_arm; armRSprite=rogue_arm; torsoSprite=rogue_torso; shoulderLSprite=rogue_shoulder; shoulderRSprite=rogue_shoulder; backSprite=;
- supportAbilities=;  supportAbilities=;  supportAbilities=; 
+ supportAbilities=backstab;  supportAbilities=;  supportAbilities=; HP=42; MP=28; HPMax=42; MPMax=28; 
 chosenAbilityOfEachClass=rogue=Ro_poisonTip; 
 
 [ActorState]
@@ -751,6 +801,22 @@ canSwap=False;
  actorValue=skill_Bow; sourceAVAffecter=rogue; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
 [ActorEffect]
  actorValue=skill_Aim; sourceAVAffecter=rogue; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=TrueHPMax; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=12; duration=-1;
+[ActorEffect]
+ actorValue=TrueMPMax; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=8; duration=-1;
+[ActorEffect]
+ actorValue=PhysAtk; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=2; duration=-1;
+[ActorEffect]
+ actorValue=MagAtk; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=2; duration=-1;
+[ActorEffect]
+ actorValue=PhysDef; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=MagDef; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=PhysEva; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=True; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
+[ActorEffect]
+ actorValue=MagEva; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=True; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
 
 [ActorInventory]
 style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
@@ -760,9 +826,9 @@ style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=
 
 
 [Actor]ID=human_ari_gravekeeper_port_2; name=Skelter;
-actorTypeID=human; sprite=; actorClass=sage; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=6; position=38,11; destination=-1,-1; facingRot=90; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=False; fearless=False; unkillable=False; factionBoss=False; faction=none; combatTeam=; clothPalette=p75; skinPalette=pHuman3; armorPalette=p62; unarmoredPalette=pUnarmored; aiScript=; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=cafe; aggressiveness=0.5; bravery=0.5; intelligence=0.5; honor=0.4; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
+actorTypeID=human; sprite=; actorClass=sage; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=6; position=38,11; destination=-1,-1; facingRot=90; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=False; fearless=False; unkillable=False; factionBoss=False; faction=none; combatTeam=; clothPalette=p75; skinPalette=pHuman3; armorPalette=p62; unarmoredPalette=pUnarmored; aiScript=; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=True; favoredHand=0; incapacitated=False; dialogNodeID=cafe; aggressiveness=0.5; bravery=0.5; intelligence=0.5; honor=0.4; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
  headSprite=human_head_longHair3; faceSprite=feminine_face_female; legsSprite=legs_dress; armLSprite=sage_arm; armRSprite=sage_arm; torsoSprite=sage_torso; shoulderLSprite=sage_shoulder; shoulderRSprite=sage_shoulder; backSprite=;
- supportAbilities=;  supportAbilities=;  supportAbilities=; 
+ supportAbilities=criticalRecovery;  supportAbilities=;  supportAbilities=; HP=42; MP=28; HPMax=42; MPMax=28; 
 chosenAbilityOfEachClass=scholar=Sch_flame; 
 chosenAbilityOfEachClass=sage=Sa_heal; 
 
@@ -779,6 +845,22 @@ canSwap=False;
  actorValue=skill_Hammer; sourceAVAffecter=sage; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
 [ActorEffect]
  actorValue=skill_Life; sourceAVAffecter=sage; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=2; duration=-1;
+[ActorEffect]
+ actorValue=TrueHPMax; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=12; duration=-1;
+[ActorEffect]
+ actorValue=TrueMPMax; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=8; duration=-1;
+[ActorEffect]
+ actorValue=PhysAtk; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=2; duration=-1;
+[ActorEffect]
+ actorValue=MagAtk; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=2; duration=-1;
+[ActorEffect]
+ actorValue=PhysDef; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=MagDef; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=PhysEva; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=True; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
+[ActorEffect]
+ actorValue=MagEva; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=True; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
 
 [ActorInventory]
 style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
@@ -787,9 +869,9 @@ style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=
 
 
 [Actor]ID=human_ari_gravekeeper_port_3; name=Corway;
-actorTypeID=human; sprite=; actorClass=sailor; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=6; position=14,20; destination=-1,-1; facingRot=90; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=False; fearless=False; unkillable=False; factionBoss=False; faction=none; combatTeam=; clothPalette=p55; skinPalette=pHuman3; armorPalette=pUnarmored; unarmoredPalette=pUnarmored; aiScript=; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=shipwright; aggressiveness=0.5; bravery=0.5; intelligence=0.5; honor=0.4; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
+actorTypeID=human; sprite=; actorClass=sailor; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=6; position=14,20; destination=-1,-1; facingRot=90; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=False; fearless=False; unkillable=False; factionBoss=False; faction=none; combatTeam=; clothPalette=p55; skinPalette=pHuman3; armorPalette=pUnarmored; unarmoredPalette=pUnarmored; aiScript=; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=True; favoredHand=0; incapacitated=False; dialogNodeID=shipwright; aggressiveness=0.5; bravery=0.5; intelligence=0.5; honor=0.4; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
  headSprite=human_head_mohawk; faceSprite=sleepy_face; legsSprite=legs_heavyBoots; armLSprite=sailor_arm; armRSprite=sailor_arm; torsoSprite=sailor_torso; shoulderLSprite=sailor_shoulder; shoulderRSprite=sailor_shoulder; backSprite=;
- supportAbilities=;  supportAbilities=;  supportAbilities=; 
+ supportAbilities=saltyDog;  supportAbilities=;  supportAbilities=; HP=42; MP=28; HPMax=42; MPMax=28; 
 chosenAbilityOfEachClass=sailor=Sai_heave; 
 
 [ActorState]
@@ -817,6 +899,22 @@ canSwap=False;
  actorValue=skill_Fist; sourceAVAffecter=sailor; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
 [ActorEffect]
  actorValue=skill_Dagger; sourceAVAffecter=sailor; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=TrueHPMax; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=12; duration=-1;
+[ActorEffect]
+ actorValue=TrueMPMax; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=8; duration=-1;
+[ActorEffect]
+ actorValue=PhysAtk; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=2; duration=-1;
+[ActorEffect]
+ actorValue=MagAtk; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=2; duration=-1;
+[ActorEffect]
+ actorValue=PhysDef; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=MagDef; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=PhysEva; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=True; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
+[ActorEffect]
+ actorValue=MagEva; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=True; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
 
 [ActorInventory]
 style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
@@ -825,9 +923,9 @@ style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=
 
 
 [Actor]ID=human_ari_gravekeeper_port_4; name=Lucca;
-actorTypeID=human; sprite=; actorClass=shiftcloak; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=6; position=16,3; destination=-1,-1; facingRot=90; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=False; fearless=False; unkillable=False; factionBoss=False; faction=none; combatTeam=; clothPalette=pGrey3; skinPalette=pHuman2; armorPalette=pGreyD; unarmoredPalette=pGreyD; aiScript=wander_leash1_slow; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=merchant_items; aggressiveness=0.5; bravery=0.5; intelligence=0.5; honor=0.4; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
+actorTypeID=human; sprite=; actorClass=shiftcloak; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=6; position=16,3; destination=-1,-1; facingRot=90; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=False; fearless=False; unkillable=False; factionBoss=False; faction=none; combatTeam=; clothPalette=pGrey3; skinPalette=pHuman2; armorPalette=pGreyD; unarmoredPalette=pGreyD; aiScript=; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=True; favoredHand=0; incapacitated=False; dialogNodeID=merchant_items; aggressiveness=0.5; bravery=0.5; intelligence=0.5; honor=0.4; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
  headSprite=human_head_spikyHair; faceSprite=angry_face; legsSprite=template_legs; armLSprite=shiftcloak_armL; armRSprite=shiftcloak_armR; torsoSprite=shiftcloak_torso; shoulderLSprite=shiftcloak_shoulderL; shoulderRSprite=shiftcloak_shoulderR; backSprite=;
- supportAbilities=;  supportAbilities=;  supportAbilities=; 
+ supportAbilities=meleeMomentum;  supportAbilities=;  supportAbilities=; HP=42; MP=28; HPMax=42; MPMax=28; 
 chosenAbilityOfEachClass=shiftcloak=Sh_tumble; 
 
 [ActorState]
@@ -847,11 +945,91 @@ canSwap=False;
  actorValue=skill_Aim; sourceAVAffecter=shiftcloak; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
 [ActorEffect]
  actorValue=skill_Wind; sourceAVAffecter=shiftcloak; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=TrueHPMax; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=12; duration=-1;
+[ActorEffect]
+ actorValue=TrueMPMax; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=8; duration=-1;
+[ActorEffect]
+ actorValue=PhysAtk; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=2; duration=-1;
+[ActorEffect]
+ actorValue=MagAtk; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=2; duration=-1;
+[ActorEffect]
+ actorValue=PhysDef; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=MagDef; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=PhysEva; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=True; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
+[ActorEffect]
+ actorValue=MagEva; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=True; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
 
 [ActorInventory]
 style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
  
 
+
+
+[Actor]ID=human_ari_graveekeeper_port_5; name=Lenore;
+actorTypeID=human; sprite=; actorClass=unmaker; secondaryClass=minstrel; actorClass3=; actorClass4=; movementSpeed=6; position=20,12; destination=-1,-1; facingRot=450; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=False; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=False; fearless=False; unkillable=False; factionBoss=False; faction=none; combatTeam=; clothPalette=pCPurpleD; skinPalette=pHuman9; armorPalette=pUnarmored; unarmoredPalette=pUnarmored; aiScript=; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=True; favoredHand=0; incapacitated=False; dialogNodeID=merchant; aggressiveness=0.5; bravery=0.5; intelligence=0.5; honor=0.4; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
+ headSprite=human_head_bun_female; faceSprite=feminine_face_female; legsSprite=legs_heavyBoots; armLSprite=gladiator_armL; armRSprite=gladiator_armR; torsoSprite=gladiator_torso; shoulderLSprite=gladiator_shoulder; shoulderRSprite=gladiator_shoulder; backSprite=;
+ supportAbilities=absorbMagic;  supportAbilities=cheerful;  supportAbilities=battleCaster; HP=34; MP=31; HPMax=34; MPMax=31; TrueHPMax=24; TrueMPMax=22; PhysAtk=0; MagAtk=6; skill_Ruin=5; Gla_smash=1; Gla_revenge=1; reckless=1; gladiator_XP=0; gladiator_XP_stars=0; 
+numRanksBought=reckless=1; 
+numRanksBought=Gla_smash=1; 
+numRanksBought=Gla_revenge=1; 
+numRanksBought=skill_Flail=-3; 
+chosenAbilityOfEachClass=gladiator=Gla_smash; 
+chosenAbilityOfEachClass=rogue=Ro_poisonTip; 
+chosenAbilityOfEachClass=scout=Sc_firestarter; 
+chosenAbilityOfEachClass=ranger=Sha_contactShot; 
+chosenAbilityOfEachClass=swashbuckler=Swa_boltBalestra; 
+
+[ActorState]
+canSwap=False;
+
+[ActorEffect]
+ actorValue=skill_Hammer; sourceAVAffecter=gloves_handwrap; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=skill_Flail; sourceAVAffecter=gloves_handwrap; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=skill_Fist; sourceAVAffecter=gloves_handwrap; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=skill_Shield; sourceAVAffecter=gloves_handwrap; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=MagDef; sourceAVAffecter=necklace_spellcatcher; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=2; duration=-1;
+[ActorEffect]
+ actorValue=skill_Ruin; sourceAVAffecter=knuckle_bone; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=skill_Ruin; sourceAVAffecter=knuckle_bone; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=MagAtk; sourceAVAffecter=unmaker; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=MagEva; sourceAVAffecter=unmaker; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=10; duration=-1;
+[ActorEffect]
+ actorValue=skill_Dagger; sourceAVAffecter=unmaker; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=skill_Ruin; sourceAVAffecter=unmaker; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=2; duration=-1;
+[ActorEffect]
+ actorValue=TrueHPMax; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=10; duration=-1;
+[ActorEffect]
+ actorValue=TrueMPMax; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=9; duration=-1;
+[ActorEffect]
+ actorValue=MagAtk; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
+[ActorEffect]
+ actorValue=PhysDef; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=MagDef; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=PhysEva; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=True; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
+[ActorEffect]
+ actorValue=MagEva; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=True; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
+
+[ActorInventory]
+style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
+ 
+
+[ActorItem] ID=knuckle_bone; cSlot=0; containerID=0;
+[ActorItem] ID=knuckle_bone; cSlot=1; containerID=1;
+[ActorItem] ID=gloves_handwrap; cSlot=3;
+[ActorItem] ID=necklace_spellcatcher; cSlot=4;
 
 
 
