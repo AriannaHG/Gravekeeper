@@ -14,19 +14,19 @@ ID=shana_martyrs_raiment; actorValue=PhysEva; magnitude=10; duration=-1;
 ID=shana_martyrs_raiment;
 actorValues=HP; element=physical; action=shana_martyrs_raiment_act; aiRatingMod=2; 
 [ItemReaction]
-ID=shana_martyrs_raiment; -------------------------------------------------- set shana_HPCountBeforeBeingHit AV on equip to initialize
+ID=shana_martyrs_raiment; -------------------------------------------------- set shana_HPBeforeBeingHit AV on equip to initialize
 element=itemEquipped; action=shana_martyrs_raiment_set_hp_count;
 
 [ItemReaction]
-ID=shana_martyrs_raiment; -------------------------------------------------- set shana_HPCountBeforeBeingHit AV on combat start to initialize
+ID=shana_martyrs_raiment; -------------------------------------------------- set shana_HPBeforeBeingHit AV on combat start to initialize
 element=combatStart; action=shana_martyrs_raiment_set_hp_count;
 
 [ItemReaction]
-ID=shana_martyrs_raiment; -------------------------------------------------- set shana_HPCountBeforeBeingHit AV on revive
+ID=shana_martyrs_raiment; -------------------------------------------------- set shana_HPBeforeBeingHit AV on revive
 actorValues=revive; action=shana_martyrs_raiment_set_hp_count;
 
 [ItemReaction]
-ID=shana_martyrs_raiment; -------------------------------------------------- set shana_HPCountBeforeBeingHit AV on any element, only happens in combat
+ID=shana_martyrs_raiment; -------------------------------------------------- set shana_HPBeforeBeingHit AV on any element, only happens in combat
 actorValues=HP; element=any; action=shana_martyrs_raiment_set_hp_count_multireact;
 
 
@@ -108,7 +108,7 @@ special=canReactMultipleTimesPerTurn;
     actorValue=shana_HPBeforeBeingHit; 
     magnitude=-t:shana_HPBeforeBeingHit + t:HP;
     duration=-1;
-    chance=m:combat * 100 - 100; ----helps stop stacking
+    chance=m:combat * 100; ----helps stop stacking
     visibleMiss=false;
 --	FXOnHit=magicCharge;
 --	FXOnHit=largePing;
