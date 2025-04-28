@@ -70,6 +70,7 @@ combatMode=False;
 [Item] ID=smallBed_btm; q=1; x=12; y=7;
 [Item] ID=roof2; q=1; x=12; y=8;
 [Item] ID=wall2_style6_roof; q=1; x=12; y=9;
+[Item] ID=bin_clothes1; q=1; x=12; y=9;
 [Item] ID=wall5_style6; q=1; x=12; y=10;
 [Item] ID=cantBlackenTile; q=1; x=12; y=10;
 [Item] ID=wall1_style6; q=1; x=12; y=19;
@@ -94,6 +95,7 @@ combatMode=False;
 [Item] ID=cantBlackenTile; q=1; x=13; y=10;
 [Item] ID=wall2_style6; q=1; x=13; y=19;
 [Item] ID=roof2_back; q=1; x=13; y=19;
+[Item] ID=posters; q=1; oX=0; oY=6; x=13; y=19;
 [Item] ID=roof2_top; q=1; x=13; y=20;
 [Item] ID=roof2; q=1; x=13; y=21;
 [Item] ID=roof2; q=1; x=13; y=22;
@@ -143,6 +145,7 @@ combatMode=False;
 [Item] ID=roof2; q=1; x=15; y=21;
 [Item] ID=table_mid; q=1; x=15; y=21;
 [Item] ID=lamp; q=-2; x=15; y=21;
+[Item] ID=item_cantGrabOrPlace; q=1; x=15; y=21;
 [Item] ID=roof2; q=1; x=15; y=22;
 [Item] ID=barrel_broken; q=1; r=-360; x=15; y=22; containerID=0;
 [Item] ID=roof2; q=1; x=15; y=23;
@@ -253,6 +256,8 @@ combatMode=False;
 [Item] ID=rocks1; q=3; r=180; x=19; y=3;
 [Item] ID=wall2_style6; q=1; x=19; y=11;
 [Item] ID=roof2_back; q=1; x=19; y=11;
+[Item] ID=mount_item; q=1; x=19; y=11;
+[Item] ID=bush_flowers1; q=1; x=19; y=11;
 [Item] ID=roof2_top; q=1; x=19; y=12;
 [Item] ID=roof2; q=1; x=19; y=13;
 [Item] ID=roof2; q=1; x=19; y=14;
@@ -274,9 +279,17 @@ combatMode=False;
 [Item] ID=roof2_back; q=1; x=21; y=11;
 [Item] ID=roof2_top; q=1; x=21; y=12;
 [Item] ID=chest_wood1_locked; q=1; x=21; y=12; containerID=2;
+[Item] ID=bandage; q=1; containedIn=2; cSlot=0;
+[Item] ID=splint; q=1; containedIn=2; cSlot=3;
+[Item] ID=bandage; q=2; containedIn=2; cSlot=5;
+[Item] ID=lifeshard; q=1; containedIn=2; cSlot=7;
+[Item] ID=lifeshard; q=1; containedIn=2; cSlot=8;
+[Item] ID=cargo_silk; q=1; containedIn=2; cSlot=10;
+[Item] ID=splint; q=1; containedIn=2; cSlot=14;
 [Item] ID=roof2; q=1; x=21; y=13;
 [Item] ID=table_right; q=1; x=21; y=13;
 [Item] ID=lamp; q=1; x=21; y=13;
+[Item] ID=item_cantGrabOrPlace; q=1; x=21; y=13;
 [Item] ID=roof2; q=1; x=21; y=14;
 [Item] ID=wall2_style6_roof; q=1; x=21; y=15;
 [Item] ID=cantBlackenTile; q=1; x=21; y=16;
@@ -1008,8 +1021,6 @@ canSwap=False;
 [ActorEffect]
  actorValue=skill_Ruin; sourceAVAffecter=knuckle_bone; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
 [ActorEffect]
- actorValue=skill_Ruin; sourceAVAffecter=knuckle_bone; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
-[ActorEffect]
  actorValue=MagAtk; sourceAVAffecter=unmaker; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
 [ActorEffect]
  actorValue=MagEva; sourceAVAffecter=unmaker; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=10; duration=-1;
@@ -1031,6 +1042,8 @@ canSwap=False;
  actorValue=PhysEva; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=True; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
 [ActorEffect]
  actorValue=MagEva; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=True; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
+[ActorEffect]
+ actorValue=skill_Ruin; sourceAVAffecter=knuckle_bone; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
 
 [ActorInventory]
 style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
@@ -1040,6 +1053,7 @@ style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=
 [ActorItem] ID=knuckle_bone; cSlot=1; containerID=1;
 [ActorItem] ID=gloves_handwrap; cSlot=3;
 [ActorItem] ID=necklace_spellcatcher; cSlot=4;
+[ActorItem] ID=mirror; cSlot=5;
 
 
 
