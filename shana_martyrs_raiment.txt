@@ -8,7 +8,7 @@ pR=pAsh_still; pB=pMarble_deepPurple;
 [ItemEffect]
 ID=shana_martyrs_raiment; actorValue=skill_Life; magnitude=2; duration=-1;
 [ItemEffect]
-ID=shana_martyrs_raiment; actorValue=PhysEva; magnitude=10; duration=-1;
+ID=shana_martyrs_raiment; actorValue=MagEva; magnitude=10; duration=-1;
 
 [ItemReaction]-------------------------------------------------------------- the actual damage soaking action. Lo, to the aspirant who wishes to make a similar item - special=canReactMultipleTimesPerTurn; is kind of fucked because the way reactions work is: actorValues=HP; element=physical; means that it will proc if the action has the physical element and changes your hp. However, if multiple elements are matched, it would proc multiple times. For an extreme case a volskarn sword action matched against actor value hp and element all would have all 5 of its elements match all, thus making it proc 5 times. Restricting it to physical was not by choice lol
 ID=shana_martyrs_raiment;
