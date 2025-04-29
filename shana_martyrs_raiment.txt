@@ -87,7 +87,7 @@ special=usableEvenWhenYourTurn;
 --	FXOnHit=magicCharge;
 --	FXOnHit=largePing;
 --	FXOnHitColor=SkyBlue;
-	FXOnTile=delay_tiny;
+	FXOnTile=delay_tiniest;
 [AvAffecterAoE]
     ID=shana_martyrs_raiment_set_hp_count;
     cloneFrom=oneTile;
@@ -113,7 +113,7 @@ special=canReactMultipleTimesPerTurn;
 --	FXOnHit=magicCharge;
 --	FXOnHit=largePing;
 --	FXOnHitColor=SkyBlue;
-	FXOnTile=delay_tiny;
+	FXOnTile=delay_tiniest;
 [AvAffecterAoE]
     ID=shana_martyrs_raiment_set_hp_count_multireact;
     cloneFrom=oneTile;
