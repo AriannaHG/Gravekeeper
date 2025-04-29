@@ -4,7 +4,7 @@ texture=gkart; itemCategory=3;
 description=Dauntless robe that defies mortal wounds.<n=>In combat, physical damage received in excess of 20% of the wearer's maximum <icon=HP> will be deferred until the end of the wearer's turn.; 
 journalID=shana_journal_martyrs_raiment;
 weight=4; volume=15; value=9999;
-pR=pDead; pB=pMarble_deepPurple;
+pR=pAsh_still; pB=pMarble_deepPurple;
 [ItemEffect]
 ID=shana_martyrs_raiment; actorValue=skill_Life; magnitude=2; duration=-1;
 [ItemEffect]
