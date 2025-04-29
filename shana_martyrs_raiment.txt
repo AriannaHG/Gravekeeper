@@ -1,7 +1,7 @@
 [ItemType]  name=Martyr's Raiment;
 ID=shana_martyrs_raiment; sprite=96;
 texture=gkart; itemCategory=3;
-description=Dauntless robe that defies mortal wounds.<n=>In combat, physical damage recieved in excess of 20% of the wearer's maximum <icon=HP> will be deferred until the end of the wearer's turn.; 
+description=Dauntless robe that defies mortal wounds.<n=>In combat, physical damage received in excess of 20% of the wearer's maximum <icon=HP> will be deferred until the end of the wearer's turn.; 
 journalID=shana_journal_martyrs_raiment;
 weight=4; volume=15; value=9999;
 pR=pDead; pB=pMarble_deepPurple;
