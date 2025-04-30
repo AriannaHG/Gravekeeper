@@ -2,9 +2,7 @@
 ID=help_status_ari_rot;
 category=help; halfPage=false; rarity=-1;
 title=Rot;
-text=<iconBig=icon_rot><icon=icon_gravekeeper_rot> <title=Rot><brAdj=>        This status will deal damage equal to its stack size when the infected actor ends their turn.       
-	<br=> Has a chance dependent on stack size to infect adjacent allies with one stack when it deals damage
-	<br=> If an actor dies with Rot affecting them, they will spawn a Mindless Zombie on an adjacent tile;
+text=<iconBig=icon_rot><icon=icon_gravekeeper_rot> <title=Rot><brAdj=>        Rot takes place at the end of a creature's turn, inflicting Ruin damage equal to stack size with a severity-dependent chance to spread the Rot to nearby allies. Creatures infected by the Rot are reanimated as a Zombie on death, the allegiance and characteristics of which being dependant on the source of the Rot.
 [GlobalTriggerEffect]
 ID=tLoadGame; effectID=learnJournalEntry; sValue=help_status_ari_rot; bValue2=True;
 
