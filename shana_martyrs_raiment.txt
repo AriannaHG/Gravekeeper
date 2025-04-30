@@ -6,9 +6,12 @@ journalID=shana_journal_martyrs_raiment;
 weight=4; volume=15; value=9999;
 pR=pAsh_still; pB=pMarble_deepPurple;
 [ItemEffect]
-ID=shana_martyrs_raiment; actorValue=MagEva; magnitude=10; duration=-1;
+ID=shana_martyrs_raiment; actorValue=MagEva; magnitude=18; duration=-1;
 [ItemEffect]
 ID=shana_martyrs_raiment; actorValue=skill_Life; magnitude=2; duration=-1;
+[ItemEffect]
+ID=shana_martyrs_raiment; actorValue=skill_Ruin; magnitude=2; duration=-1;
+
 
 [ItemReaction]-------------------------------------------------------------- the actual damage soaking action. Lo, to the aspirant who wishes to make a similar item - special=canReactMultipleTimesPerTurn; is kind of fucked because the way reactions work is: actorValues=HP; element=physical; means that it will proc if the action has the physical element and changes your hp. However, if multiple elements are matched, it would proc multiple times. For an extreme case a volskarn sword action matched against actor value hp and element all would have all 5 of its elements match all, thus making it proc 5 times. Restricting it to physical was not by choice lol
 ID=shana_martyrs_raiment;
@@ -124,7 +127,7 @@ special=canReactMultipleTimesPerTurn;
 ID=shana_journal_martyrs_raiment;
 category=equipment; halfPage=false; rarity=4;
 title=Martyr's Raiment;
-text=<itemBig=shana_martyrs_raiment><title=Martyr's Raiment><brAdj=>   An unassuming robe of mundane origin, once donned by a frail old woman who used her failing, plague-ridden body to buy time for the citizens of Barrow to flee the undead hordes.<n=>   While in combat, any instance of physical damage exceeding 20% of the wearer's maximum <icon=HP> has the excess damage converted to a delayed, incurable wound. This wound is borne in full at the end of the wearer's turn, bypassing all attempts at mitigation.;
+text=<itemBig=shana_martyrs_raiment><title=Martyr's Raiment><brAdj=>   An unassuming robe of mundane origin, once donned by a frail old woman who used her failing, plague-ridden body to buy time for the citizens of Barrow to flee the undead hordes.<n=>   While in combat, any instance of physical damage exceeding 20% of the wearer's maximum <icon=HP> has the excess damage converted to a delayed, incurable, untransferable wound. This wound is borne in full at the end of the wearer's turn, bypassing all attempts at mitigation.;
 
 
 
