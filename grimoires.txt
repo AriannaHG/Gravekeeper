@@ -586,10 +586,9 @@ ID=ari_grimoire_necronomicon; element=endTurn; action=ari_necronomicon_hungry_ta
 [ItemType]  name=Rotbound Manuscript;
 ID=shana_deadbook;sprite=5; spriteWhenHeld=6; itemCategory=weapon; element=ruin;
 texture=gkart;
-description=A pestilent tome. Its profaned pages inflict the Creeping Death upon any foolish enough to darken its sight. <n>Doubles Rot<icon=icon_gravekeeper_rot> when cast upon an enemy.;
-;
+description=A pestilent tome. Its profaned pages inflict the Creeping Death upon any foolish enough to darken its sight. <n=>Doubles Rot<icon=icon_gravekeeper_rot> when cast upon an enemy. <n=>Charge time of <icon=time>3.;
 journalID=shana_journal_deadbook;
-weight=1; volume=0; value=666; power=1;
+weight=1; volume=0; value=2664; power=7;
 action=shana_grimoireAttack_deadbook;
 special=enhanceDoesntAlterPalettes;
 
@@ -609,9 +608,9 @@ ID=shana_deadbook; element=timerUp; action=shana_deadbookact;
 [ItemType]  name=Rotbound Manuscript;
 ID=shana_deadbook_enemy;sprite=5; spriteWhenHeld=6; itemCategory=weapon; element=ruin;
 texture=gkart;
-description=A pestilent tome. Its profaned pages inflict the Creeping Death upon any foolish enough to darken its sight. <n>Doubles Rot<icon=icon_gravekeeper_rot> when cast upon an enemy.;
+description=You shouldn't be reading this in normal gameplay as this is the enemy variant of the Manuscript, unintended for player use. Feel free to use this alongside the actual Rotbound Manuscript, but the Rot this version inflicts will spawn an enemy zombie on death. The Gravekeeper Mod developers would love to know how this got into your inventory!;
 journalID=shana_journal_deadbook;
-weight=1; volume=0; value=666; power=7;
+weight=1; volume=0; value=2664; power=7;
 action=shana_grimoireAttack_deadbook_enemy;
 special=enhanceDoesntAlterPalettes;
 
@@ -633,12 +632,7 @@ title=Rotbound Manuscript;
 text=<itemBig=shana_deadbook><title=Rotbound Manuscript><brAdj=>A plagued tome that choked the life from once-thriving Barrow. Its pages are unreadable, but every vein it blackens is a lesson on the nefarious dark arts.
 <n=>
 <n=>
-At the beginning of combat and the start of its wielder's turns, this grimoire afflicts all foes it can see with the Creeping Death for <icon=time>99, applying 2 stacks of Rot at the beginning of each of their turns.
-<n=>
-<n=>
-Rot: Rot takes place at the end of a creature's turn, inflicting Ruin damage equal to stack size with a severity-dependent chance to spread the Rot to nearby allies. Creatures infected by the Rot are reanimated as a Mindless Zombie on death.;
-
-
+This grimore doubles the Rot of any enemy it is cast upon. Furthermore, at the beginning of combat and the start of its wielder's turns, it afflicts all foes it can see with the Creeping Death for <icon=time>99, applying 2 stacks of Rot at the beginning of each of their turns.;
 
 
 [ItemType]  name=Manuscript of Divinity;
