@@ -1,10 +1,19 @@
 [JournalEntry]
 ID=help_status_ari_rot;
-category=help; halfPage=false; rarity=-1;
+category=help; halfPage=true; rarity=-1;
 title=Rot;
 text=<iconBig=icon_rot><icon=icon_gravekeeper_rot> <title=Rot><brAdj=>        Rot takes place at the end of a creature's turn, inflicting Ruin damage equal to stack size with a severity-dependent chance to spread the Rot to nearby allies. Creatures infected by the Rot are reanimated as a Zombie on death, the allegiance and characteristics of which being dependant on the source of the Rot.
 [GlobalTriggerEffect]
 ID=tLoadGame; effectID=learnJournalEntry; sValue=help_status_ari_rot; bValue2=True;
+
+[JournalEntry]
+ID=help_status_shana_creeping_death;
+category=help; halfPage=true; rarity=-1;
+title=Creeping Death;
+text=<iconBig=icon_creeping_death> <title=Creeping Death><brAdj=>        Creatures unfortunate enough to be plagued by the Creeping Death take 2 stacks of Rot at the beginning of each of their turns.
+[GlobalTriggerEffect]
+ID=tLoadGame; effectID=learnJournalEntry; sValue=help_status_shana_creeping_death; bValue2=True;
+
 
 ----------------------------------------------------------------Weapons
 ----------------------------------------------------------------Skeleton Warrior Sword
