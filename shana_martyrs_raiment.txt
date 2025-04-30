@@ -190,7 +190,7 @@ ID=shana_martyrs_raiment_act;
     actorValue=shana_redeemed_suffering_status; 
     magnitude=d:shana_martyrs_raiment_damage_prevented + t:shana_redeemed_suffering_status;
     duration=9999; --TODO and ask
-    chance=m:cLastDmgTakenGreaterThanX(0) * 100 + d:shana_martyrs_raiment_did_it_proc * 100 + d:shana_is_hp_above_threshold * 100 + m:combat * 100 - m:incapped * 100 - 300; --procs only if took damage, not heal and hp before being hit is more than threshold and are in combat
+    chance=m:cLastDmgTakenGreaterThanX(0) * 100 + d:shana_martyrs_raiment_did_it_proc * 100 + d:shana_is_hp_above_threshold * 100 + m:combat * 100 - 300; --procs only if took damage, not heal and hp before being hit is more than threshold and are in combat
 	
     FXOnHit=manySplatter;
     FXOnHitColor=Red;
@@ -235,6 +235,7 @@ bubbleIcon=icon_redeemed_suffering_small;
 removedByNegativeMagnitude=true;
 --description=;
 defaultValue = 0; AIValue = 1;
+minimum=0;
 harmfulMagnitude = 1;
 --bonusesMultiplier = 1;
 animationOnHarmful = pain;
