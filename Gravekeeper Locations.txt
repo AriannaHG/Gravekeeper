@@ -29,21 +29,19 @@ tooltipIcons=sign_icon_book;
 itemType_quantity=gear_boarding=-2;
 
 --Here are some basic items available at the merchant.
-itemType_quantity=cloak=-2;
-itemType_quantity=hood=-2;
 itemType_quantity=cloak_hood=-2;
-itemType_quantity=band_life=1;
-itemType_quantity=necklace_lifebead=1;
+itemType_quantity=lantern=-2;
 
 itemType_quantity=reviveDust=-2;
 itemType_quantity=bandage=-2;
-itemType_quantity=splint=-2;
-itemType_quantity=lifeshard=-2;
-itemType_quantity=bottle_beer=-2;
+itemType_quantity=bottle=-2;
+itemType_quantity=oilCan=-2;
 itemType_quantity=shovel=-2;
-itemType_quantity=bottle_oil=-2;
-itemType_quantity=shears=-2;
 itemType_quantity=xpGem=1;
+
+itemType_quantity=trigger_life=1;
+itemType_quantity=band_life=1;
+itemType_quantity=necklace_lifebead=1;
 
 
 --Here are the ships available by default.
@@ -69,9 +67,9 @@ itemType_formula_unlockable=overworld_hazard_launchB_off=m:locWealth(100);
 
 
 itemType_quantity_unlockable=xpGem=3;
-itemType_formula_unlockable=xpGem=m:locWealth(65);
+itemType_formula_unlockable=xpGem=m:locWealth(55);
 itemType_quantity_unlockable=ghost_grub=1;
-itemType_formula_unlockable=ghost_grub=m:locWealth(70);
+itemType_formula_unlockable=ghost_grub=m:locWealth(75);
 itemType_quantity_unlockable=xpGemMed=2;
 itemType_formula_unlockable=xpGemMed=m:locWealth(75);
 itemType_quantity_unlockable=ghost_grub=1;
@@ -86,12 +84,10 @@ itemType_quantity_unlockable=band_life=-2;
 itemType_formula_unlockable=band_life=m:locWealth(60);
 itemType_quantity_unlockable=necklace_lifebead=-2;
 itemType_formula_unlockable=necklace_lifebead=m:locWealth(70);
-itemType_quantity_unlockable=band_ruin=1;
-itemType_formula_unlockable=band_ruin=m:locWealth(70);
 itemType_quantity_unlockable=trigger_ruin=-2;
 itemType_formula_unlockable=trigger_ruin=m:locWealth(80);
 itemType_quantity_unlockable=band_ruin=-2;
-itemType_formula_unlockable=band_life=m:locWealth(80);
+itemType_formula_unlockable=band_ruin=m:locWealth(80);
 itemType_quantity_unlockable=band_life_ruin=1;
 itemType_formula_unlockable=band_life_ruin=m:locWealth(80);
 itemType_quantity_unlockable=band_life_ruin=-2;
