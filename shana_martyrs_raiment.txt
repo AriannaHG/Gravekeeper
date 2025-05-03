@@ -127,7 +127,7 @@ special=canReactMultipleTimesPerTurn;
 ID=shana_journal_martyrs_raiment;
 category=equipment; halfPage=false; rarity=4;
 title=Martyr's Raiment;
-text=<itemBig=shana_martyrs_raiment><title=Martyr's Raiment><brAdj=>   An unassuming robe of mundane origin, once donned by a frail old woman who used her failing, plague-ridden body to buy time for the citizens of Barrow to flee the undead hordes.<n=>   While in combat, any instance of physical damage exceeding 20% of the wearer's maximum <icon=HP> has the excess damage converted to a delayed, incurable, untransferable wound. This wound is borne in full at the end of the wearer's turn, bypassing all attempts at mitigation.<n=>   Additionally, the wearer will find their more physically inclined adversaries somehow compelled to target them, as though some unseen force were trying to recreate the original bearer's demise.;
+text=<itemBig=shana_martyrs_raiment><title=Martyr's Raiment><brAdj=>   An unassuming robe of mundane origin, once donned by a frail old woman who used her failing, plague-ridden body to buy time for the citizens of Barrow to flee the undead hordes.<n=>   While in combat, any instance of physical damage exceeding 20% of the wearer's maximum <icon=HP> has the excess damage converted to a delayed, incurable, untransferable wound. This wound is borne in full at the end of the wearer's turn, bypassing all attempts at mitigation.<n=>   Additionally, the wearer will find themselves a more attractive target to physically inclined adversaries, as though some unseen force were subtly trying to recreate the original bearer's sacrifice.;
 
 
 
