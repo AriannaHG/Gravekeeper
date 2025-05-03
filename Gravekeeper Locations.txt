@@ -12,7 +12,7 @@ discoveryFameMod=1;
 externalSong=PM-Resort2;
 locationItem=port_bighouses5;
 
-wealthLevel=5;
+wealthLevel=52;
 
 --Here's where I'm putting the cargo I've chosen, and the cafe food.
 tradeGood_itemTypeID=shana_cargo_ruinglass;
@@ -20,64 +20,91 @@ cafeFood_itemTypeID=shana_food_coffee;
 
 --These icons are what show up on the map.
 tooltipIcons=sign_icon_cup;
-tooltipIcons=sign_icon_book;
-tooltipIcons=sign_icon_bag;
+tooltipIcons=sign_icon_balance;
 tooltipIcons=sign_icon_boat;
+tooltipIcons=sign_icon_bag;
+tooltipIcons=sign_icon_book;
 
 --This is where the ship weapons go.
---itemType_quantity=cannon_falconet=-2;
---itemType_quantity=gear_boarding=-2;
---itemType_quantity=cannon_culverin=-2;
+itemType_quantity=gear_boarding=-2;
 
 --Here are some basic items available at the merchant.
+itemType_quantity=cloak=-2;
+itemType_quantity=hood=-2;
+itemType_quantity=cloak_hood=-2;
+itemType_quantity=band_life=1;
+itemType_quantity=necklace_lifebead=1;
+
 itemType_quantity=reviveDust=-2;
 itemType_quantity=bandage=-2;
 itemType_quantity=splint=-2;
---itemType_quantity=lifeshard=-2;
+itemType_quantity=lifeshard=-2;
 itemType_quantity=bottle_beer=-2;
---itemType_quantity=dart=-2;
+itemType_quantity=shovel=-2;
+itemType_quantity=bottle_oil=-2;
+itemType_quantity=shears=-2;
+itemType_quantity=xpGem=1;
+
 
 --Here are the ships available by default.
 shipwright_boatTypes=sailboat;
+shipwright_boatTypes=caravel;
 
 --Unlockables.
---itemType_quantity_unlockable=cannon_harpoon=-2;
---itemType_formula_unlockable=cannon_harpoon=m:locWealth(70);
---itemType_quantity_unlockable=gear_extraCache=-2;
---itemType_formula_unlockable=gear_extraCache=m:locWealth(80);
---itemType_quantity_unlockable=cannon_cannon=-2;
---itemType_formula_unlockable=cannon_cannon=m:locWealth(90);
---itemType_quantity_unlockable=gear_boarding_hook=1;
---itemType_formula_unlockable=gear_boarding_hook=m:locWealth(100);
+itemType_quantity_unlockable=cannon_harpoon=-2;
+itemType_formula_unlockable=cannon_harpoon=m:locWealth(70);
+itemType_quantity_unlockable=cannon_ram=-2;
+itemType_formula_unlockable=cannon_ram=m:locWealth(70);
+itemType_quantity_unlockable=cannon_ram_mythril=1;			
+itemType_formula_unlockable=cannon_ram_mythril=m:locWealth(80);
+itemType_quantity_unlockable=cannon_ram_mythril=-2;
+itemType_formula_unlockable=cannon_ram_mythril=m:locWealth(90);
+itemType_quantity_unlockable=gear_boarding_plank=-2;
+itemType_formula_unlockable=gear_boarding_plank=m:locWealth(100);
+itemType_quantity_unlockable=gear_boarding_hook=-2;
+itemType_formula_unlockable=gear_boarding_hook=m:locWealth(100);
+itemType_quantity_unlockable=overworld_hazard_launchB_off=1;
+itemType_formula_unlockable=overworld_hazard_launchB_off=m:locWealth(100);
 
---itemType_quantity_unlockable=mythril_chunk=1;
---itemType_formula_unlockable=mythril_chunk=m:locWealth(65);
+
+
 itemType_quantity_unlockable=xpGem=3;
 itemType_formula_unlockable=xpGem=m:locWealth(65);
---itemType_quantity_unlockable=xpGemMed=2;
---itemType_formula_unlockable=xpGemMed=m:locWealth(75);
---itemType_quantity_unlockable=fish_mag=1;
---itemType_formula_unlockable=fish_mag=m:locWealth(75);
---itemType_quantity_unlockable=cloak_kingfur=1;
---itemType_formula_unlockable=cloak_kingfur=m:locWealth(75);
---itemType_quantity_unlockable=ghost_grub=1;
---itemType_formula_unlockable=ghost_grub=m:locWealth(90);
---itemType_quantity_unlockable=ironice_chunk=1;
---itemType_formula_unlockable=ironice_chunk=m:locWealth(90);
---itemType_quantity_unlockable=abilityCrest=1;
---itemType_formula_unlockable=abilityCrest=m:locWealth(100);
+itemType_quantity_unlockable=ghost_grub=1;
+itemType_formula_unlockable=ghost_grub=m:locWealth(70);
+itemType_quantity_unlockable=xpGemMed=2;
+itemType_formula_unlockable=xpGemMed=m:locWealth(75);
+itemType_quantity_unlockable=ghost_grub=1;
+itemType_formula_unlockable=ghost_grub=m:locWealth(90);
+itemType_quantity_unlockable=abilityCrest=1;
+itemType_formula_unlockable=abilityCrest=m:locWealth(100);
 
---itemType_quantity_unlockable=necklace_lifebead=1;
---itemType_formula_unlockable=necklace_lifebead=m:locWealth(70);
---itemType_quantity_unlockable=band_fire_elec=1;
---itemType_formula_unlockable=band_fire_elec=m:locWealth(80);
---itemType_quantity_unlockable=armor_shellworm=1;
---itemType_formula_unlockable=armor_shellworm=m:locWealth(90);
---itemType_quantity_unlockable=guideexample_armor_golden_mail=1;
---itemType_formula_unlockable=guideexample_armor_golden_mail=m:locWealth(100);
+------------------------------------------------------------------------TODO:Rusted weapons go here at 55 wealth?
+itemType_quantity_unlockable=trigger_life=-2;
+itemType_formula_unlockable=trigger_life=m:locWealth(60);
+itemType_quantity_unlockable=band_life=-2;
+itemType_formula_unlockable=band_life=m:locWealth(60);
+itemType_quantity_unlockable=necklace_lifebead=-2;
+itemType_formula_unlockable=necklace_lifebead=m:locWealth(70);
+itemType_quantity_unlockable=band_ruin=1;
+itemType_formula_unlockable=band_ruin=m:locWealth(70);
+itemType_quantity_unlockable=trigger_ruin=-2;
+itemType_formula_unlockable=trigger_ruin=m:locWealth(80);
+itemType_quantity_unlockable=band_ruin=-2;
+itemType_formula_unlockable=band_life=m:locWealth(80);
+itemType_quantity_unlockable=band_life_ruin=1;
+itemType_formula_unlockable=band_life_ruin=m:locWealth(80);
+itemType_quantity_unlockable=band_life_ruin=-2;
+itemType_formula_unlockable=band_life_ruin=m:locWealth(90);
+itemType_quantity_unlockable=shana_martyrs_raiment=1;
+itemType_formula_unlockable=shana_martyrs_raiment=m:locWealth(100);
 
---itemType_quantity_unlockable=fullrigged=-2;
---itemType_formula_unlockable=fullrigged=m:locWealth(100);
+itemType_quantity_unlockable=brigantine; 
+itemType_formula_unlockable=brigantine=m:locWealth(70);
+itemType_quantity_unlockable=drekkar=-2;
+itemType_formula_unlockable=drekkar=m:locWealth(90);
+itemType_quantity_unlockable=corvair=-2;
+itemType_formula_unlockable=corvair=m:locWealth(100);
 
 --This tells the game which crew to spawn at the cafe. Assuming it works...
 auto_spawnDataID=hire_human;
