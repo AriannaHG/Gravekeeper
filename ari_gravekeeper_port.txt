@@ -82,7 +82,7 @@ combatMode=False;
 [Item] ID=wall4_style6; q=1; x=12; y=22;
 [Item] ID=roof2; q=1; x=12; y=22;
 [Item] ID=cantBlackenTile; q=1; x=12; y=22;
-[Item] ID=wall1_style6; q=1; x=12; y=23;
+[Item] ID=wall3_style6; q=1; r=-360; x=12; y=23;
 [Item] ID=cantBlackenTile; q=1; x=12; y=23;
 [Item] ID=pebbles2; q=1; x=13; y=3;
 [Item] ID=wall2_style6; q=1; x=13; y=5;
@@ -99,10 +99,10 @@ combatMode=False;
 [Item] ID=roof2_top; q=1; x=13; y=20;
 [Item] ID=roof2; q=1; x=13; y=21;
 [Item] ID=roof2; q=1; x=13; y=22;
-[Item] ID=wall3_style6; q=1; x=13; y=23;
+[Item] ID=wall5_style6; q=1; r=-360; x=13; y=23;
 [Item] ID=roof2; q=1; x=13; y=23;
 [Item] ID=cantBlackenTile; q=1; x=13; y=23;
-[Item] ID=wall1_style6; q=1; x=13; y=24;
+[Item] ID=wall6_style6; q=1; r=-360; x=13; y=24;
 [Item] ID=cantBlackenTile; q=1; x=13; y=24;
 [Item] ID=dirt_sandy1; q=1; r=360; x=14; y=4;
 [Item] ID=wall2_style6; q=1; x=14; y=5;
@@ -148,10 +148,13 @@ combatMode=False;
 [Item] ID=item_cantGrabOrPlace; q=1; x=15; y=21;
 [Item] ID=roof2; q=1; x=15; y=22;
 [Item] ID=barrel_broken; q=1; r=-360; x=15; y=22; containerID=0;
+[Item] ID=wall5_style6; q=1; x=15; y=23;
+[Item] ID=cantBlackenTile; q=1; x=15; y=23;
+[Item] ID=cantBlackenTile; q=1; x=15; y=23;
 [Item] ID=roof2; q=1; x=15; y=23;
-[Item] ID=rope_pile_huge2; q=1; r=-360; x=15; y=23;
-[Item] ID=wall2_style6; q=1; x=15; y=24;
+[Item] ID=wall6_style6; q=1; x=15; y=24;
 [Item] ID=cantBlackenTile; q=1; x=15; y=24;
+[Item] ID=fade_s6; q=1; r=180; x=15; y=24;
 [Item] ID=rocks1; q=1; x=16; y=2;
 [Item] ID=rocks1; q=2; x=16; y=4;
 [Item] ID=wall2_style6; q=1; x=16; y=5;
@@ -161,6 +164,7 @@ combatMode=False;
 [Item] ID=roof2; q=1; x=16; y=8;
 [Item] ID=urn_empty1; q=1; x=16; y=8;
 [Item] ID=wall5_style6; q=1; x=16; y=9;
+[Item] ID=cantBlackenTile; q=1; x=16; y=9;
 [Item] ID=cantBlackenTile; q=1; x=16; y=9;
 [Item] ID=wall6_style6; q=1; x=16; y=10;
 [Item] ID=cantBlackenTile; q=1; x=16; y=10;
@@ -181,12 +185,10 @@ combatMode=False;
 [Item] ID=fade_s6; q=1; r=180; x=16; y=22;
 [Item] ID=cantBlackenTile; q=1; x=16; y=22;
 [Item] ID=wall3_style6; q=1; x=16; y=23;
-[Item] ID=roof2; q=1; x=16; y=23;
-[Item] ID=fade_s6; q=1; r=180; x=16; y=23;
 [Item] ID=cantBlackenTile; q=1; x=16; y=23;
-[Item] ID=wall6_style6; q=1; x=16; y=24;
-[Item] ID=fade_s6; q=1; r=180; x=16; y=24;
-[Item] ID=cantBlackenTile; q=1; x=16; y=24;
+[Item] ID=fade_s6; q=1; r=180; x=16; y=23;
+[Item] ID=dirt_sandy1; q=1; x=16; y=24;
+[Item] ID=fade_s1; q=1; x=16; y=24;
 [Item] ID=pebbles1; q=1; r=-360; x=16; y=25;
 [Item] ID=gravestone2; q=1; x=17; y=2;
 [Item] ID=bush_flowers1; q=1; x=17; y=3;
@@ -1021,6 +1023,8 @@ canSwap=False;
 [ActorEffect]
  actorValue=skill_Ruin; sourceAVAffecter=knuckle_bone; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
 [ActorEffect]
+ actorValue=skill_Ruin; sourceAVAffecter=knuckle_bone; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
  actorValue=MagAtk; sourceAVAffecter=unmaker; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
 [ActorEffect]
  actorValue=MagEva; sourceAVAffecter=unmaker; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=10; duration=-1;
@@ -1042,8 +1046,6 @@ canSwap=False;
  actorValue=PhysEva; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=True; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
 [ActorEffect]
  actorValue=MagEva; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=True; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
-[ActorEffect]
- actorValue=skill_Ruin; sourceAVAffecter=knuckle_bone; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
 
 [ActorInventory]
 style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
