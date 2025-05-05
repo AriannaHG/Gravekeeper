@@ -92,6 +92,8 @@ itemType_quantity_unlockable=band_life_ruin=1;
 itemType_formula_unlockable=band_life_ruin=m:locWealth(80);
 itemType_quantity_unlockable=band_life_ruin=-2;
 itemType_formula_unlockable=band_life_ruin=m:locWealth(90);
+itemType_quantity_unlockable=ari_grimoire_occult_tome=1;
+itemType_formula_unlockable=ari_grimoire_occult_tome=m:locWealth(90);
 itemType_quantity_unlockable=shana_martyrs_raiment=1;
 itemType_formula_unlockable=shana_martyrs_raiment=m:locWealth(100);
 
