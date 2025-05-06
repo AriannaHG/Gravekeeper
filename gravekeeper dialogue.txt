@@ -17,6 +17,7 @@ statements=Smells nice and minty, too. I wonder why it's got such a dramatic nam
 statements=<speed=0.7>... *slurp*;
 statements=W-wow...!<p> T-<p>this brew's to die for, but my heart feels like it's gonna give out.;
 statements=I...<p=2> I think you'd better finish this for me.;
+nextNodeID=endCafeTalk;
 
 ---City Path (valley) Reeve entry dialog
 [DialogNode] ID=reeve_ari_gravekeeper_city_path_dialog1a;
