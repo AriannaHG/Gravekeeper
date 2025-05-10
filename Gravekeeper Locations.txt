@@ -30,7 +30,7 @@ itemType_quantity=gear_boarding=-2;
 
 --Here are some basic items available at the merchant.
 itemType_quantity=cloak_hood=-2;
-itemType_quantity=lantern=-2;
+itemType_quantity=lamp=-2;
 
 itemType_quantity=reviveDust=-2;
 itemType_quantity=bandage=-2;

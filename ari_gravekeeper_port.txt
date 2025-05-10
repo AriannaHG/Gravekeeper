@@ -254,6 +254,7 @@ combatMode=False;
 [Item] ID=wall1_style6; q=1; x=18; y=15;
 [Item] ID=cantBlackenTile; q=1; x=18; y=15;
 [Item] ID=wall4_style6; q=1; r=360; x=18; y=16;
+[Item] ID=cantBlackenTile; q=1; x=18; y=16;
 [Item] ID=dirt_sandy1; q=1; r=-360; x=18; y=18;
 [Item] ID=dirt_sandy1; q=1; x=18; y=21;
 [Item] ID=pebbles1; q=1; r=-270; x=18; y=21;
