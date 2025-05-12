@@ -1,12 +1,19 @@
 [JournalEntry]
 ID=help_status_ari_rot;
-category=help; halfPage=false; rarity=-1;
+category=help; halfPage=true; rarity=-1;
 title=Rot;
-text=<iconBig=icon_rot><icon=icon_gravekeeper_rot> <title=Rot><brAdj=>        This status will deal damage equal to its stack size when the infected actor ends their turn.       
-	<br=> Has a chance dependent on stack size to infect adjacent allies with one stack when it deals damage
-	<br=> If an actor dies with Rot affecting them, they will spawn a Mindless Zombie on an adjacent tile;
+text=<iconBig=icon_rot><icon=icon_gravekeeper_rot> <title=Rot><brAdj=>        Rot takes place at the end of a creature's turn, inflicting Ruin damage equal to stack size with a severity-dependent chance to spread the Rot to nearby allies. Creatures infected by the Rot are reanimated as a Zombie on death, the allegiance and characteristics of which being dependant on the source of the Rot.
 [GlobalTriggerEffect]
 ID=tLoadGame; effectID=learnJournalEntry; sValue=help_status_ari_rot; bValue2=True;
+
+[JournalEntry]
+ID=help_status_shana_creeping_death;
+category=help; halfPage=true; rarity=-1;
+title=Creeping Death;
+text=<iconBig=icon_creeping_death> <title=Creeping Death><brAdj=>        Creatures unfortunate enough to be plagued by the Creeping Death take 2 stacks of Rot at the beginning of each of their turns.
+[GlobalTriggerEffect]
+ID=tLoadGame; effectID=learnJournalEntry; sValue=help_status_shana_creeping_death; bValue2=True;
+
 
 ----------------------------------------------------------------Weapons
 ----------------------------------------------------------------Skeleton Warrior Sword
@@ -78,7 +85,7 @@ ID=ari_summoned_shield; actorValue=PhysDef; magnitude=1; duration=-1;
 [ItemType]  name=Corroded Crossbow;
 texture=items_weapons; 
 ID=ari_summoned_crossbow; pR=p5; pG=pCBlack; pB=p5;
-description=A rusted crossbow.;
+description=A rusted crossbow. Inflicts Rot<icon=icon_gravekeeper_rot> based on your <icon=skill_Ruin>.;
 journalID=journal_xbow;
 sprite=184; spriteWhenHeld=215; itemCategory=weapon; element=aim;
 weight=5; volume=5; value=0;
@@ -92,7 +99,7 @@ ID=ari_summoned_crossbow; element=actionUsed; newID=ari_summoned_crossbow_unload
 [AvAffecter]
 	ID=crossbowAttack_Rot; 
 	actorValue=ari_rot_status;
-	magnitude=1 + t:ari_rot_status;
+	magnitude=1 + floor:d:ruinSkillDivide5 + t:ari_rot_status;
 	duration=40;
 	chance=d:aimAcc;
 	element=ruin;

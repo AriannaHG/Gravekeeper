@@ -1,32 +1,35 @@
 [ItemType]  name=Martyr's Raiment;
 ID=shana_martyrs_raiment; sprite=96;
 texture=gkart; itemCategory=3;
-description=Dauntless robe that defies mortal wounds.<n=>In combat, physical damage recieved in excess of 20% of the wearer's maximum <icon=HP> will be deferred until the end of the wearer's turn.; 
+description=Dauntless robe that defies mortal wounds.<n=>In combat, physical damage received in excess of 20% of the wearer's maximum <icon=HP> will be deferred until the end of the wearer's turn.; 
 journalID=shana_journal_martyrs_raiment;
 weight=4; volume=15; value=9999;
-pR=pDead; pB=pMarble_deepPurple;
+pR=pAsh_still; pB=pMarble_deepPurple;
+[ItemEffect]
+ID=shana_martyrs_raiment; actorValue=MagEva; magnitude=18; duration=-1;
 [ItemEffect]
 ID=shana_martyrs_raiment; actorValue=skill_Life; magnitude=2; duration=-1;
 [ItemEffect]
-ID=shana_martyrs_raiment; actorValue=PhysEva; magnitude=10; duration=-1;
+ID=shana_martyrs_raiment; actorValue=skill_Ruin; magnitude=2; duration=-1;
+
 
 [ItemReaction]-------------------------------------------------------------- the actual damage soaking action. Lo, to the aspirant who wishes to make a similar item - special=canReactMultipleTimesPerTurn; is kind of fucked because the way reactions work is: actorValues=HP; element=physical; means that it will proc if the action has the physical element and changes your hp. However, if multiple elements are matched, it would proc multiple times. For an extreme case a volskarn sword action matched against actor value hp and element all would have all 5 of its elements match all, thus making it proc 5 times. Restricting it to physical was not by choice lol
 ID=shana_martyrs_raiment;
-actorValues=HP; element=physical; action=shana_martyrs_raiment_act; aiRatingMod=2; 
-[ItemReaction]
-ID=shana_martyrs_raiment; -------------------------------------------------- set shana_HPCountBeforeBeingHit AV on equip to initialize
-element=itemEquipped; action=shana_martyrs_raiment_set_hp_count;
+actorValues=HP; element=physical; action=shana_martyrs_raiment_act; aiRatingMod=8; ------the AI rating mod adds 8 hp worth of "incentive" for the AI to proc this reaction
+--[ItemReaction]
+--ID=shana_martyrs_raiment; -------------------------------------------------- set shana_HPBeforeBeingHit AV on equip to initialize
+--element=itemEquipped; action=shana_martyrs_raiment_set_hp_count;
 
 [ItemReaction]
-ID=shana_martyrs_raiment; -------------------------------------------------- set shana_HPCountBeforeBeingHit AV on combat start to initialize
+ID=shana_martyrs_raiment; -------------------------------------------------- set shana_HPBeforeBeingHit AV on combat start to initialize
 element=combatStart; action=shana_martyrs_raiment_set_hp_count;
 
 [ItemReaction]
-ID=shana_martyrs_raiment; -------------------------------------------------- set shana_HPCountBeforeBeingHit AV on revive
+ID=shana_martyrs_raiment; -------------------------------------------------- set shana_HPBeforeBeingHit AV on revive
 actorValues=revive; action=shana_martyrs_raiment_set_hp_count;
 
 [ItemReaction]
-ID=shana_martyrs_raiment; -------------------------------------------------- set shana_HPCountBeforeBeingHit AV on any element, only happens in combat
+ID=shana_martyrs_raiment; -------------------------------------------------- set shana_HPBeforeBeingHit AV on any element, only happens in combat
 actorValues=HP; element=any; action=shana_martyrs_raiment_set_hp_count_multireact;
 
 
@@ -87,7 +90,7 @@ special=usableEvenWhenYourTurn;
 --	FXOnHit=magicCharge;
 --	FXOnHit=largePing;
 --	FXOnHitColor=SkyBlue;
-	FXOnTile=delay_tiny;
+	FXOnTile=delay_tiniest;
 [AvAffecterAoE]
     ID=shana_martyrs_raiment_set_hp_count;
     cloneFrom=oneTile;
@@ -108,12 +111,12 @@ special=canReactMultipleTimesPerTurn;
     actorValue=shana_HPBeforeBeingHit; 
     magnitude=-t:shana_HPBeforeBeingHit + t:HP;
     duration=-1;
-    chance=m:combat * 100 - 100; ----helps stop stacking
+    chance=m:combat * 100; ----helps stop stacking
     visibleMiss=false;
 --	FXOnHit=magicCharge;
 --	FXOnHit=largePing;
 --	FXOnHitColor=SkyBlue;
-	FXOnTile=delay_tiny;
+	FXOnTile=delay_tiniest;
 [AvAffecterAoE]
     ID=shana_martyrs_raiment_set_hp_count_multireact;
     cloneFrom=oneTile;
@@ -122,9 +125,9 @@ special=canReactMultipleTimesPerTurn;
 
 [JournalEntry]
 ID=shana_journal_martyrs_raiment;
-category=equipment; halfPage=true; rarity=4;
+category=equipment; halfPage=false; rarity=4;
 title=Martyr's Raiment;
-text=<itemBig=shana_martyrs_raiment><title=Martyr's Raiment><brAdj=>An unassuming robe of mundane origin, once donned by a frail old woman who used her failing, plague-ridden body to buy time for the citizens of Barrow to flee the undead hordes. While in combat, any instance of physical damage exceeding 20% of the wearer's maximum <icon=HP> has the excess damage converted to a delayed wound, borne in full at the end of the wearer's turn.;
+text=<itemBig=shana_martyrs_raiment><title=Martyr's Raiment><brAdj=>   An unassuming robe of mundane origin, once donned by a frail old woman who used her failing, plague-ridden body to buy time for the citizens of Barrow to flee the undead hordes.<n=>   While in combat, any instance of physical damage exceeding 20% of the wearer's maximum <icon=HP> has the excess damage converted to a delayed, incurable, untransferable wound. This wound is borne in full at the end of the wearer's turn, bypassing all attempts at mitigation.<n=>   Additionally, the wearer will find themselves a more attractive target to physically inclined adversaries, as though some unseen force were subtly trying to recreate the original bearer's sacrifice.;
 
 
 
@@ -188,7 +191,6 @@ ID=shana_martyrs_raiment_act;
     magnitude=d:shana_martyrs_raiment_damage_prevented + t:shana_redeemed_suffering_status;
     duration=9999; --TODO and ask
     chance=m:cLastDmgTakenGreaterThanX(0) * 100 + d:shana_martyrs_raiment_did_it_proc * 100 + d:shana_is_hp_above_threshold * 100 + m:combat * 100 - 300; --procs only if took damage, not heal and hp before being hit is more than threshold and are in combat
-	
     FXOnHit=manySplatter;
     FXOnHitColor=Red;
     visibleMiss=false;
@@ -229,11 +231,10 @@ ID=shana_redeemed_suffering_status;
 name=Redeemed Suffering;
 icon=<icon=icon_redeemed_suffering>;
 bubbleIcon=icon_redeemed_suffering_small;
-minimum=0;
-maximum=999;
 removedByNegativeMagnitude=true;
 --description=;
 defaultValue = 0; AIValue = 1;
+minimum=0;
 harmfulMagnitude = 1;
 --bonusesMultiplier = 1;
 animationOnHarmful = pain;
@@ -250,7 +251,7 @@ damageNumberColor_Negative = Green;
 actorPaletteOverride =;
 actorPaletteOverrideDuration = 0.27;
 elementReactionModifiesDuration = false;
-canBeRemovedByNonspecificAVEffectRemoval = true;
+canBeRemovedByNonspecificAVEffectRemoval = false;
 recordInActorData = true;
 showEvaluationInfo = true;
 allowDecimalValues = false;
@@ -289,7 +290,7 @@ action=shana_redeemed_suffering_damage;
 	ID=shana_redeemed_suffering_damage; 
 	visibleEvaluations=true;
 	harmful=true;
-	actorValue=HP;
+	actorValue=HPTrue;
 	magnitude=c:shana_redeemed_suffering_status * -1;
 	duration=-2;
 	chance=100;
