@@ -14,8 +14,8 @@
 	duration=99;	
 	element=ruin;
 	visibleMiss=false;
-	FXOnTile=chargeSpiralFast_big;
-	FXOnTileColor=Green;
+	FXOnHit=chargeSpiralFast_big;
+	FXOnHitColor=Green;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
