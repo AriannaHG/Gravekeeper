@@ -4587,6 +4587,43 @@ action=shana_creepingdeath_rot;
 
 
 
+---------------------------------------------------------------------------Actor Value Reaction to apply a stack of Rot whenever Creeping Death is applied.
+[ActorValueReaction]
+ID=shana_creepingdeath_status; actorValues=shana_creepingdeath_status;
+action=shana_creepingdeath_reapplyrot;
+
+[Action] ID=shana_creepingdeath_reapplyrot; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+[ActionAoE] 
+	ID=shana_creepingdeath_reapplyrot;
+	cloneFrom=oneTile; 
+[AvAffecter]
+	ID=shana_creepingdeath_reapplyrot; 
+	visibleEvaluations=true;
+	harmful=true;
+	actorValue=ari_rot_status;
+	magnitude=1 + t:ari_rot_status;
+
+	duration=99; --this should stop most crowd control from making the rot stack die
+	chance=100;
+	visibleMiss=false;
+	element=ruin;
+	
+	FXOnTile=spiral2;
+	FXOnTileColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=DarkGreen;
+[AvAffecterAoE]
+	ID=shana_creepingdeath_reapplyrot;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+
+
+
 ---------------------------------------------------------------------------ENEMY Creeping Death start
 [ActorValue]
 ID=shana_creepingdeath_status_enemy;
@@ -4659,5 +4696,40 @@ action=shana_creepingdeath_rot_enemy;
 	FXOnHitColor=DarkGreen;
 [AvAffecterAoE]
 	ID=shana_creepingdeath_rot_enemy;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+
+---------------------------------------------------------------------------ENEMY Actor Value Reaction to apply a stack of Rot whenever Creeping Death is applied.
+[ActorValueReaction]
+ID=shana_creepingdeath_status_enemy; actorValues=shana_creepingdeath_status_enemy;
+action=shana_creepingdeath_reapplyrot_enemy;
+
+[Action] ID=shana_creepingdeath_reapplyrot_enemy; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+[ActionAoE] 
+	ID=shana_creepingdeath_reapplyrot_enemy;
+	cloneFrom=oneTile; 
+[AvAffecter]
+	ID=shana_creepingdeath_reapplyrot_enemy; 
+	visibleEvaluations=true;
+	harmful=true;
+	actorValue=ari_rot_status_enemy;
+	magnitude=1 + t:ari_rot_status_enemy;
+
+	duration=99; --this should stop most crowd control from making the rot stack die
+	chance=100;
+	visibleMiss=false;
+	element=ruin;
+	
+	FXOnTile=spiral2;
+	FXOnTileColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=DarkGreen;
+[AvAffecterAoE]
+	ID=shana_creepingdeath_reapplyrot_enemy;
 	aoeCasterAsOrigin = true;
 	cloneFrom=oneTile;

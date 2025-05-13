@@ -631,7 +631,7 @@ category=equipment; halfPage=false; rarity=4;
 title=Rotbound Manuscript;
 text=<itemBig=shana_deadbook><title=Rotbound Manuscript><brAdj=>A plagued tome that choked the life from once-thriving Barrow. Its pages are unreadable, but every vein it blackens is a lesson on the nefarious dark arts.
 <n=>
-This grimore doubles the Rot of any enemy it is cast upon. Furthermore, at the beginning of combat and the start of its wielder's turns, it afflicts all foes it can see with the Creeping Death for <icon=time>99, applying 2 stacks of Rot at the beginning of each of their turns.;
+This grimore doubles the Rot of any enemy it is cast upon. Furthermore, at the beginning of combat and the start of its wielder's turns, it afflicts all foes it can see with the Creeping Death for <icon=time>99, applying 2 stacks of Rot at the beginning of each of their turns and an additional stack whenever Creeping Death is reapplied.;
 
 
 [ItemType]  name=Manuscript of Divinity;

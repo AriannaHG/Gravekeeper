@@ -10,7 +10,8 @@ ID=tLoadGame; effectID=learnJournalEntry; sValue=help_status_ari_rot; bValue2=Tr
 ID=help_status_shana_creeping_death;
 category=help; halfPage=true; rarity=-1;
 title=Creeping Death;
-text=<iconBig=icon_creeping_death> <title=Creeping Death><brAdj=>        Creatures unfortunate enough to be plagued by the Creeping Death take 2 stacks of Rot at the beginning of each of their turns.
+text=<iconBig=icon_creeping_death> <title=Creeping Death><brAdj=>        Creatures unfortunate enough to be plagued by the Creeping Death take 2 stacks of Rot at the beginning of each of their turns, and an additional stack when it is reapplied.
+
 [GlobalTriggerEffect]
 ID=tLoadGame; effectID=learnJournalEntry; sValue=help_status_shana_creeping_death; bValue2=True;
 
