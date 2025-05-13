@@ -6060,7 +6060,7 @@ ID=ari_summoned_crossbow_enemy; element=actionUsed; newID=ari_summoned_crossbow_
 [AvAffecter]
 	ID=crossbowAttack_Rot_enemy; 
 	actorValue=ari_rot_status_enemy;
-	magnitude=1 + t:ari_rot_status_enemy;
+	magnitude=1 + floor:d:ruinSkillDivide5 + t:ari_rot_status_enemy;
 	duration=40;
 	chance=d:aimAcc;
 	element=melee;
