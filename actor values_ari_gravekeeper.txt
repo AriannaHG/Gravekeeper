@@ -4598,6 +4598,7 @@ action=shana_creepingdeath_reapplyrot;
 	special=usableEvenWhenReacting;
 	special=usableEvenWhenYourTurn;
 	special=dontDelayOtherActions;
+	fReq=1 - t:aegis;
 [ActionAoE] 
 	ID=shana_creepingdeath_reapplyrot;
 	cloneFrom=oneTile; 
@@ -4710,6 +4711,7 @@ action=shana_creepingdeath_reapplyrot_enemy;
 	special=usableEvenWhenReacting;
 	special=usableEvenWhenYourTurn;
 	special=dontDelayOtherActions;
+	fReq=1 - t:aegis;
 [ActionAoE] 
 	ID=shana_creepingdeath_reapplyrot_enemy;
 	cloneFrom=oneTile; 
