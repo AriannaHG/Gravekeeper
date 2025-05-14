@@ -4614,8 +4614,8 @@ action=shana_creepingdeath_reapplyrot;
 	visibleMiss=false;
 	element=ruin;
 	
-	FXOnTile=spiral2;
-	FXOnTileColor=Green;
+	FXOnHit=spiral2;
+	FXOnHitColor=Green;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=DarkGreen;
 [AvAffecterAoE]
@@ -4727,8 +4727,8 @@ action=shana_creepingdeath_reapplyrot_enemy;
 	visibleMiss=false;
 	element=ruin;
 	
-	FXOnTile=spiral2;
-	FXOnTileColor=Green;
+	FXOnHit=spiral2;
+	FXOnHitColor=Green;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=DarkGreen;
 [AvAffecterAoE]
