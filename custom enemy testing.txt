@@ -1,0 +1,172 @@
+[ItemType]  name=Test Grimoire Necrotize;
+texture=gkart; 
+ID=shana_grimoire_test_3; pR=p5; pG=pG; pB=overworld6;
+description=Testing Necrotize.;
+journalID=ari_journal_grimoire;
+sprite=1; spriteWhenHeld=0; itemCategory=weapon;
+element=ruin;
+weight=5; volume=10; value=10;
+power=0;
+ action=shana_necrotize_stage1;
+combineWith=furnace_lit; toMake=bones1; 
+combineWith=furnace2_lit; toMake=bones1; 
+combineWith=furnace_everlit1; toMake=bones1; 
+combineWith=furnace_everlit2; toMake=bones1;
+
+
+[ActorValue] --------------------------------------------------------------- define shana_necrotize_sync AV
+ID=shana_necrotize_sync;
+name=Necrotize Sync;
+icon=;
+bubbleIcon=;
+
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = 0;
+affectsActors = true;
+canAffectIncapped = true;
+showDamageNumbers = true; -------------
+showDamageNumbersMagnitude = true; ----
+showDamageNumbersSign = false;
+showDamageNumbersIcon = false;
+showDamageNumbersElements = false;
+showDamageNumbersIconInTooltips = false;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0;
+elementReactionModifiesDuration = false;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = false;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+
+[ActorValue] --------------------------------------------------------------- define shana_necrotize_sync AV
+ID=shana_necrotize_sync;
+name=Necrotize Sync;
+icon=;
+bubbleIcon=;
+
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = 0;
+affectsActors = true;
+canAffectIncapped = true;
+showDamageNumbers = true; -------------
+showDamageNumbersMagnitude = true; ----
+showDamageNumbersSign = false;
+showDamageNumbersIcon = false;
+showDamageNumbersElements = false;
+showDamageNumbersIconInTooltips = false;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0;
+elementReactionModifiesDuration = false;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = false;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+
+[Action] ID=shana_necrotize_stage1; ----------------------------------- this is the instant bit with 3 avaffecters - one that grants shana_necrotize_sync to target and caster, setting magnitude equal to the global variable + 1 and then one that increments the global variable.
+
+-- stage 1: grant sync to target
+
+-- stage 2: grant sync to caster
+
+-- stage 3: 
+
+	name=Necrotize;
+	cooldown=50;
+	icon=icon_fire2;
+	AIRatingBias=50;
+	
+	mpCost=5;
+--	chargeTime=0;
+	
+	casterAnimation=s_40to43atk;
+	
+--	special=startBattleOnCooldown;
+	FXOnCaster=darken_major;
+	FXOnCaster=delay;
+	FXOnCaster=delay;
+	FXOnCaster=delay;
+	FXOnCaster=DramaticNyeaow;
+	FXOnCaster=tileLine_topLeft_ignoreDark;
+
+--	queueAnotherAction=shana_necrotize_stage2;
+
+[ActionAoE] 
+	ID=shana_necrotize_stage1;
+	shape=17;
+	needsLoS = true;
+	needsLoE = false;
+	airborne = true;
+	arc = true;
+--	minRange = 3;
+	maxRange = 10;
+	canSelectAllies=True;
+	canSelectEnemies=True;
+
+[AvAffecter]
+    ID=shana_necrotize_stage1; ------------------------------------------------------------------this avaffecter increments the shana_necrotize_gvar by 1
+    visibleMiss=false; visibleEvaluations=false;
+    actorValue=task;
+    magnitude=setGlobalVar_math,shana_necrotize_gvar,g:shana_necrotize_gvar + 1; -----------------TODO: create global formula for g:shana_necrotize_gvar + 1
+    duration=1;
+    chance=100; 
+[AvAffecterAoE]
+    ID=shana_necrotize_stage1;
+    cloneFrom=oneTile;
+
+
+[AvAffecter]							-----------------this avaffecter should inflict the "target" AV to target
+	ID=shana_necrotize_stage1; 
+	actorValue=shana_necrotize_sync;
+	magnitude=g:shana_necrotize_gvar + 1;
+	duration=-1;
+	chance=100;
+	FXOnTile=targetRet_flicker;
+	FXOnTile=bipFlutter;
+	FXOnTile=tileLine_overlap;
+	FXOnTile=sfx_DramaticN_quiet;
+	FXOnTile=whiteExplosionSmall_rand_overlap;
+	FXOnTile=smallShakeHoriz;
+	FXOnTile=delay_minor;
+	
+[AvAffecterAoE]
+	ID=shana_necrotize_stage1;
+	cloneFrom=oneTile;
+
+[AvAffecter]							-----------------this avaffecter should inflict the "target" AV to caster
+	ID=shana_necrotize_stage1; 
+	actorValue=shana_necrotize_sync;
+	magnitude=g:shana_necrotize_gvar + 1;
+	duration=-1;
+	chance=100;
+	FXOnTile=targetRet_flicker;
+	FXOnTile=bipFlutter;
+	FXOnTile=tileLine_overlap;
+	FXOnTile=sfx_DramaticN_quiet;
+	FXOnTile=whiteExplosionSmall_rand_overlap;
+	FXOnTile=smallShakeHoriz;
+	FXOnTile=delay_minor;
+	
+[AvAffecterAoE]
+	ID=shana_necrotize_stage1;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;                 
+
+
+
+
