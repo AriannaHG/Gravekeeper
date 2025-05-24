@@ -79,7 +79,7 @@ action=ari_rot_raise;
 	occupyAll=true;
 
 
---Deal damage at the end of an actor's turn and attempt to spread rot based on stack size
+--attempt to spread rot based on stack size, then deal damage at the end of an actor's turn 
 [ActorValueReaction]
 ID=ari_rot_status; element=endTurn;
 action=ari_rot_damage;
@@ -95,25 +95,6 @@ action=ari_rot_damage;
 	ID=ari_rot_damage; 
 	cloneFrom=oneTile;
 
-[AvAffecter]
-	ID=ari_rot_damage; 
-	visibleEvaluations=true;
-	harmful=true;
-	actorValue=HP;
-	magnitude=c:ari_rot_status * -1;
-	duration=-2;
-	chance=100;
-	visibleMiss=false;
-	element=ruin;
-	
-	FXOnTile=spiral2;
-	FXOnTileColor=Green;
-	FXOnHit=downwardLinesQuick;
-	FXOnHitColor=DarkGreen;
-[AvAffecterAoE]
-	ID=ari_rot_damage;
-	aoeCasterAsOrigin = true;
-	cloneFrom=oneTile;
 [AvAffecter]
 	ID=ari_rot_damage; 
 	visibleEvaluations=true;
@@ -177,6 +158,26 @@ action=ari_rot_damage;
 	bypassAll=true;
 	canSelectAllies=true;
 	canSelectEnemies=false;
+[AvAffecter]
+	ID=ari_rot_damage; 
+	visibleEvaluations=true;
+	harmful=true;
+	actorValue=HP;
+	magnitude=c:ari_rot_status * -1;
+	duration=-2;
+	chance=100;
+	visibleMiss=false;
+	element=ruin;
+	
+	FXOnTile=spiral2;
+	FXOnTileColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=DarkGreen;
+[AvAffecterAoE]
+	ID=ari_rot_damage;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+
 	
 ----------------------------------------------------------------Ruptured Soul Status AV, deals damage to afflicted target whenever something dies
 [ActorValue]
@@ -4426,25 +4427,6 @@ action=ari_rot_damage_enemy;
 	ID=ari_rot_damage_enemy; 
 	visibleEvaluations=true;
 	harmful=true;
-	actorValue=HP;
-	magnitude=c:ari_rot_status_enemy * -1;
-	duration=-2;
-	chance=100;
-	visibleMiss=false;
-	element=ruin;
-	
-	FXOnTile=spiral2;
-	FXOnTileColor=Green;
-	FXOnHit=downwardLinesQuick;
-	FXOnHitColor=DarkGreen;
-[AvAffecterAoE]
-	ID=ari_rot_damage_enemy;
-	aoeCasterAsOrigin = true;
-	cloneFrom=oneTile;
-[AvAffecter]
-	ID=ari_rot_damage_enemy; 
-	visibleEvaluations=true;
-	harmful=true;
 	actorValue=ari_rot_status_enemy;
 	magnitude=1 + floor:d:enemyRotSpread + t:ari_rot_status_enemy;
 	duration=40;
@@ -4504,6 +4486,26 @@ action=ari_rot_damage_enemy;
 	bypassAll=true;
 	canSelectAllies=true;
 	canSelectEnemies=false;
+[AvAffecter]
+	ID=ari_rot_damage_enemy; 
+	visibleEvaluations=true;
+	harmful=true;
+	actorValue=HP;
+	magnitude=c:ari_rot_status_enemy * -1;
+	duration=-2;
+	chance=100;
+	visibleMiss=false;
+	element=ruin;
+	
+	FXOnTile=spiral2;
+	FXOnTileColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=DarkGreen;
+[AvAffecterAoE]
+	ID=ari_rot_damage_enemy;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+
 
 
 

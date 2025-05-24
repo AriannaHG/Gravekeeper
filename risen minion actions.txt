@@ -2,7 +2,7 @@
 ID=help_status_ari_rot;
 category=help; halfPage=true; rarity=-1;
 title=Rot;
-text=<iconBig=icon_rot><icon=icon_gravekeeper_rot> <title=Rot><brAdj=>        Rot takes place at the end of a creature's turn, inflicting Ruin damage equal to stack size with a severity-dependent chance to spread the Rot to nearby allies. Creatures infected by the Rot are reanimated as a Zombie on death, the allegiance and characteristics of which being dependant on the source of the Rot.
+text=<iconBig=icon_rot><icon=icon_gravekeeper_rot> <title=Rot><brAdj=>        Rot takes effect at the end of a creature's turn. When triggered, it first has a severity-dependent chance to spread a portion of itself to the host creature's allies. It then inflicts Ruin damage to the host creature equal to its stack size. Creatures infected by the Rot are reanimated as a Zombie on death, the allegiance and characteristics of which being dependant on the source of the Rot.
 [GlobalTriggerEffect]
 ID=tLoadGame; effectID=learnJournalEntry; sValue=help_status_ari_rot; bValue2=True;
 
