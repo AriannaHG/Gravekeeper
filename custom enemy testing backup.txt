@@ -158,7 +158,7 @@ XPCostFloorToNearest = 0;
 	name=Necrotize;
 	icon=icon_fire2;
 	AIRatingBias=50;
-	tooltip= All in range have their positive effects purged, then suffer Rot equal to the tracked target's maximum health. Death is no escape.;
+	tooltip= All within 3 squares of the tracked target (or their corpse) have their positive effects purged, then suffer Rot equal to the tracked target's maximum health.;
 	mpCost=5;
 	chargeTime=20;
 	
@@ -220,6 +220,46 @@ XPCostFloorToNearest = 0;
 	ID=shana_necrotize_stage2;
 	cloneFrom=oneTile;
 
+[AvAffecter]
+    ID=shana_necrotize_stage2; ------------------------------------------------------------------this avaffecter resets the target max hp variable
+    visibleMiss=false; visibleEvaluations=false;
+    actorValue=task;
+    magnitude=setGlobalVar,shana_target_maxhp_gvar,0;
+    duration=1;
+    chance=100 - 100 * m:casterIsTarget; --prevent self target
+	FXOnTile=targetRet_flicker;
+	FXOnTile=bipFlutter;
+	FXOnTile=tileLine_overlap;
+	FXOnTile=sfx_DramaticN_quiet;
+	FXOnTile=whiteExplosionSmall_rand_overlap;
+	FXOnTile=smallShakeHoriz;
+	FXOnTile=delay_minor;
+
+[AvAffecterAoE]
+    ID=shana_necrotize_stage2;
+    cloneFrom=oneTile;
+
+[AvAffecter]
+    ID=shana_necrotize_stage2; ------------------------------------------------------------------this avaffecter grabs the target's max hp and puts it in a variable
+    visibleMiss=false; visibleEvaluations=false;
+    actorValue=task;
+    magnitude=setGlobalVar_math,shana_target_maxhp_gvar,t:HPMax;
+    duration=1;
+    chance=100 - 100 * m:casterIsTarget; --prevent self target
+	FXOnTile=targetRet_flicker;
+	FXOnTile=bipFlutter;
+	FXOnTile=tileLine_overlap;
+	FXOnTile=sfx_DramaticN_quiet;
+	FXOnTile=whiteExplosionSmall_rand_overlap;
+	FXOnTile=smallShakeHoriz;
+	FXOnTile=delay_minor;
+
+
+[AvAffecterAoE]
+    ID=shana_necrotize_stage2;
+    cloneFrom=oneTile;
+
+
 
 [AvAffecter]
 ID=shana_necrotize_stage2; ------------------------------------------------------------------this avaffecter triggers stage 3
@@ -232,6 +272,30 @@ ID=shana_necrotize_stage2; -----------------------------------------------------
     ID=shana_necrotize_stage2;
     cloneFrom=oneTile;
 
+
+[Action] ID=shana_necrotize_stagedebug; ----------------------------------- debug
+
+	name=Necrotize;
+--	cooldown=50;
+	icon=icon_fire2;
+	AIRatingBias=50;
+	
+--	mpCost=5;
+--	chargeTime=0;
+	
+	casterAnimation=s_40to43atk;
+	
+--	special=startBattleOnCooldown;
+	FXOnCaster=darken_major;
+	FXOnCaster=delay;
+	FXOnCaster=delay;
+	FXOnCaster=delay;
+	FXOnCaster=DramaticNyeaow;
+	FXOnCaster=tileLine_topLeft_ignoreDark;
+
+[ActionAoE]
+    ID=shana_necrotize_stagedebug; 
+    cloneFrom=oneTile;
 
 
 
@@ -260,46 +324,6 @@ ID=shana_necrotize_stage2; -----------------------------------------------------
     ID=shana_necrotize_stage3; 
     cloneFrom=oneTile;
 
-
-
-[AvAffecter]
-    ID=shana_necrotize_stage3; ------------------------------------------------------------------this avaffecter resets the variable
-    visibleMiss=false; visibleEvaluations=false;
-    actorValue=trigger;
-    magnitude=setGlobalVar_math,shana_target_maxhp_gvar,0;
-    duration=1;
-    chance=100 - 100 * m:casterIsTarget; --prevent self target
-	FXOnTile=targetRet_flicker;
-	FXOnTile=bipFlutter;
-	FXOnTile=tileLine_overlap;
-	FXOnTile=sfx_DramaticN_quiet;
-	FXOnTile=whiteExplosionSmall_rand_overlap;
-	FXOnTile=smallShakeHoriz;
-	FXOnTile=delay_minor;
-
-[AvAffecterAoE]
-    ID=shana_necrotize_stage3;
-    cloneFrom=oneTile;
-
-[AvAffecter]
-    ID=shana_necrotize_stage3; ------------------------------------------------------------------this avaffecter grabs the target's max hp and puts it in a variable
-    visibleMiss=false; visibleEvaluations=false;
-    actorValue=trigger;
-    magnitude=setGlobalVar_math,shana_target_maxhp_gvar,t:HPMax;
-    duration=1;
-    chance=100 - 100 * m:casterIsTarget; --prevent self target
-	FXOnTile=targetRet_flicker;
-	FXOnTile=bipFlutter;
-	FXOnTile=tileLine_overlap;
-	FXOnTile=sfx_DramaticN_quiet;
-	FXOnTile=whiteExplosionSmall_rand_overlap;
-	FXOnTile=smallShakeHoriz;
-	FXOnTile=delay_minor;
-
-
-[AvAffecterAoE]
-    ID=shana_necrotize_stage3;
-    cloneFrom=oneTile;
 
 [AvAffecter]							-----------------this avaffecter purges.
 	ID=shana_necrotize_stage3; 
