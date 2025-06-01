@@ -1,0 +1,254 @@
+---------------------------------------------todo: actionaoe should exclude self
+
+[Action] ID=Ba_warmth; 
+    cloneFrom=Ba_warmth;
+    
+	casterAnimation=s_40to43atk;
+    queueAnotherAction=shana_necrotize_stage2;
+[ActionAoE] 
+    ID=Ba_warmth; 
+    cloneFrom=Ba_warmth;
+
+[AvAffecter]
+    ID=Ba_warmth; ------------------------------------------------------------------this avaffecter increments the shana_delay_gvar by 1
+    visibleMiss=false; visibleEvaluations=false;
+    actorValue=trigger;
+    magnitude=setGlobalVar_math,shana_delay_gvar,g:shana_delay_gvar + 1;
+    duration=1;
+    chance=100; 
+[AvAffecterAoE]
+    ID=Ba_warmth;
+    cloneFrom=oneTile;
+
+
+[AvAffecter]
+	ID=Ba_warmth; 
+	actorValue=shana_delay_sync;
+	magnitude=g:shana_delay_gvar + 1;
+	duration=-1;
+	chance=100;
+	visibleEvaluations=false;
+	stacksWithSelf=true;
+[AvAffecterAoE]
+	ID=Ba_warmth;
+	cloneFrom=oneTile;
+
+[AvAffecter]
+	ID=Ba_warmth; 
+	actorValue=shana_delay_sync;
+	magnitude=g:shana_delay_gvar + 1;
+	duration=-1;
+	chance=100;
+	visibleEvaluations=false;
+[AvAffecterAoE]
+	ID=Ba_warmth;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+
+
+
+
+
+[Action] ID=shana_necrotize_stage2;
+	name=Necrotize;
+	chargeTime=20;
+	
+	casterAnimation=s_40to43atk;
+	
+	FXOnCaster=darken_major;
+	FXOnCaster=delay;
+	FXOnCaster=delay;
+	FXOnCaster=delay;
+	FXOnCaster=DramaticNyeaow;
+	FXOnCaster=tileLine_topLeft_ignoreDark;
+
+[ActionAoE] 
+	ID=shana_necrotize_stage2;
+	cloneFrom=oneTile;
+	needsLoS = false;
+	needsLoE = false;
+	airborne = true;
+	arc = true;
+--	minRange = 3;
+--	maxRange = 10;
+	canSelectAllies=True;
+	canSelectEnemies=True;
+
+--[AvAffecter]
+--	ID=shana_necrotize_stage2; 
+--	FXOnTile=delay2;
+--[AvAffecterAoE]
+--	ID=shana_necrotize_stage2;
+--	cloneFrom=oneTile;
+--	aoeCasterAsOrigin=true;
+
+[AvAffecter]
+    ID=shana_necrotize_stage2; ------------------------------------------------------------------this avaffecter resets shana_necrotize_targetid
+    visibleMiss=false; visibleEvaluations=false;
+    actorValue=trigger;
+    magnitude=setGlobalVar,shana_necrotize_targetid,invalid;
+    duration=1;
+    chance=100; 
+[AvAffecterAoE]
+    ID=shana_necrotize_stage2;
+    cloneFrom=oneTile;
+
+
+[AvAffecter]
+	ID=shana_necrotize_stage2; ------------------------------------------------------------------this avaffecter grabs the target's id and puts it in gvar shana_necrotize_targetid
+	visibleMiss=false; visibleEvaluations=false;
+	actorValue=trigger;
+	magnitude=setGlobalVar_toActorID,shana_necrotize_targetid,False,False;
+	duration=1;
+	chance=100 * d:shana_is_delay_sync_equal - 100 * m:casterIsTarget;
+[AvAffecterAoE]
+	ID=shana_necrotize_stage2;
+	cloneFrom=allActors;
+
+[AvAffecter]
+	ID=shana_necrotize_stage2; 
+	FXOnTile=delay;
+	chance=0*debug:d:shana_is_delay_sync_equal;
+[AvAffecterAoE]
+	ID=shana_necrotize_stage2;
+	cloneFrom=oneTile;
+
+[AvAffecter]
+ID=shana_necrotize_stage2; ------------------------------------------------------------------this avaffecter triggers stage 3
+	visibleMiss=false; 
+	--visibleEvaluations=false;
+	actorValue=trigger;
+	magnitude=action,shana_necrotize_stage3,@ACurrent,@XYA@Gshana_necrotize_targetid,false,false,false,false;
+[AvAffecterAoE]
+    ID=shana_necrotize_stage2;
+    cloneFrom=oneTile;
+
+
+[Action] ID=shana_necrotize_stage3; 	
+	name=Necrotize;
+--	cooldown=50;
+	icon=icon_fire2;
+	AIRatingBias=50;
+--	mpCost=5;
+--	chargeTime=0;
+	casterAnimation=s_40to43atk;
+--	special=startBattleOnCooldown;
+[ActionAoE]
+    ID=shana_necrotize_stage3; 
+    cloneFrom=oneTile;
+
+[AvAffecter]
+    ID=shana_necrotize_stage3; ------------------------------------------------------------------this avaffecter resets the target max hp variable
+    visibleMiss=false; visibleEvaluations=false;
+    actorValue=task;
+    magnitude=setGlobalVar,shana_target_maxhp_gvar,0;
+    duration=1;
+    chance=100 - 100 * m:casterIsTarget; --prevent self target
+	FXOnTile=targetRet_flicker;
+	FXOnTile=bipFlutter;
+	FXOnTile=tileLine_overlap;
+	FXOnTile=sfx_DramaticN_quiet;
+	FXOnTile=whiteExplosionSmall_rand_overlap;
+	FXOnTile=smallShakeHoriz;
+	FXOnTile=delay_minor;
+[AvAffecterAoE]
+    ID=shana_necrotize_stage3;
+    cloneFrom=oneTile;
+
+[AvAffecter]
+    ID=shana_necrotize_stage3; ------------------------------------------------------------------this avaffecter grabs the target's max hp and puts it in a variable
+    visibleMiss=false; visibleEvaluations=false;
+    actorValue=task;
+    magnitude=setGlobalVar_math,shana_target_maxhp_gvar,t:HPMax;
+    duration=1;
+    chance=100 - 100 * m:casterIsTarget; --prevent self target
+	FXOnTile=targetRet_flicker;
+	FXOnTile=bipFlutter;
+	FXOnTile=tileLine_overlap;
+	FXOnTile=sfx_DramaticN_quiet;
+	FXOnTile=whiteExplosionSmall_rand_overlap;
+	FXOnTile=smallShakeHoriz;
+	FXOnTile=delay_minor;
+[AvAffecterAoE]
+    ID=shana_necrotize_stage3;
+    cloneFrom=oneTile;
+
+[AvAffecter]							-----------------this avaffecter purges.
+	ID=shana_necrotize_stage3; 
+	actorValue=purge;
+	magnitude=1;
+	duration=-2;
+	chance=100;
+	element=magic;
+	FXOnTile=targetRet_flicker;
+	FXOnTile=bipFlutter;
+	FXOnTile=tileLine_overlap;
+	FXOnTile=sfx_DramaticN_quiet;
+	FXOnTile=whiteExplosionSmall_rand_overlap;
+	FXOnTile=smallShakeHoriz;
+	FXOnTile=delay_minor;	
+[AvAffecterAoE] --  This should have a radius of 3 tiles and the fReq that checks if target has magnitude sync AV equal to caster
+	ID=shana_necrotize_stage3;
+	cloneFrom=adjacentAndSelf+2;
+	needsLoS = false;
+	needsLoE = false;
+	airborne = true;
+	arc = true;
+
+[AvAffecter]							-----------------this avaffecter should inflict Rot (enemy) equal to target's max hp.
+	ID=shana_necrotize_stage3; 
+	actorValue=ari_rot_status_enemy;
+	magnitude=t:ari_rot_status_enemy + g:shana_target_maxhp_gvar;
+	duration=80;
+	chance=100;
+	visibleMiss=false;	
+[AvAffecterAoE] --  This should have a radius of 3 tiles and the fReq that checks if target has magnitude sync AV equal to caster
+	ID=shana_necrotize_stage3;
+	cloneFrom=adjacentAndSelf+2;
+	needsLoS = false;
+	needsLoE = false;
+	airborne = true;
+	arc = true;
+
+
+[FormulaGlobal] ID=shana_delay_sync_difference; --------------------------------- for delay sync check
+formula=c:shana_delay_sync - t:shana_delay_sync;
+
+[FormulaGlobal] ID=shana_is_delay_sync_equal;
+formula=is:0:d:shana_delay_sync_difference;
+
+[ActorValue] --------------------------------------------------------------- define shana_delay_sync AV
+ID=shana_delay_sync;
+name=Delay Sync;
+icon=;
+bubbleIcon=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = 0;
+affectsActors = true;
+canAffectIncapped = true;
+showDamageNumbers = true; -------------
+showDamageNumbersMagnitude = true; ----
+showDamageNumbersSign = false;
+showDamageNumbersIcon = false;
+showDamageNumbersElements = false;
+showDamageNumbersIconInTooltips = false;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0;
+elementReactionModifiesDuration = false;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = false;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+-----------------------------------------------------------------------TODO: make it remove itself from caster and target after successful cast or interrupt (see if it is possible to only remove the one from caster, then vfx jank)
+
+[ActorValueReaction] -----------------------------------------------------------------------------------------------------------------------garbage collection
+ID=shana_delay_sync;
+element=combatEnd; newID=X;
