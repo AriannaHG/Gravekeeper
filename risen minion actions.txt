@@ -88,7 +88,7 @@ texture=items_weapons;
 ID=ari_summoned_crossbow; pR=p5; pG=pCBlack; pB=p5;
 description=A rusted crossbow. Inflicts Rot<icon=icon_gravekeeper_rot> based on your <icon=skill_Ruin>.;
 journalID=journal_xbow;
-sprite=184; spriteWhenHeld=215; itemCategory=weapon; element=aim;
+sprite=183; spriteWhenHeld=215; itemCategory=weapon; element=aim;
 weight=5; volume=5; value=0;
 power=7;
 action=crossbowAttack_Rot;
@@ -115,7 +115,7 @@ ID=ari_summoned_crossbow; element=actionUsed; newID=ari_summoned_crossbow_unload
 
 [ItemType]  name=Corroded Crossbow (Unloaded);
 texture=items_weapons; 
-ID=ari_summoned_crossbow_unloaded; pR=pSteel; pB=pSteelHilt;
+ID=ari_summoned_crossbow_unloaded; pR=p5; pG=pCBlack; pB=p5;
 description=A rusted crossbow. Needs to be reloaded.; 
 journalID=journal_xbow;
 sprite=184; spriteWhenHeld=216; itemCategory=weapon; 
@@ -6048,7 +6048,7 @@ texture=items_weapons;
 ID=ari_summoned_crossbow_enemy; pR=p5; pG=pCBlack; pB=p5;
 description=A rusted crossbow.;
 journalID=journal_xbow;
-sprite=184; spriteWhenHeld=215; itemCategory=weapon; element=aim;
+sprite=183; spriteWhenHeld=215; itemCategory=weapon; element=aim;
 weight=5; volume=5; value=0;
 power=7;
 action=crossbowAttack_Rot_enemy;
@@ -6074,7 +6074,7 @@ ID=ari_summoned_crossbow_enemy; element=actionUsed; newID=ari_summoned_crossbow_
 
 [ItemType]  name=Corroded Crossbow (Unloaded);
 texture=items_weapons; 
-ID=ari_summoned_crossbow_unloaded_enemy; pR=pSteel; pB=pSteelHilt;
+ID=ari_summoned_crossbow_unloaded_enemy; pR=p5; pG=pCBlack; pB=p5;
 description=A rusted crossbow. Needs to be reloaded.; 
 journalID=journal_xbow;
 sprite=184; spriteWhenHeld=216; itemCategory=weapon; 
