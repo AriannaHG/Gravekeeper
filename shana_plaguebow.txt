@@ -30,7 +30,7 @@ formula=-d:bowDmg + c:skill_Ruin * 0.5;
 	FXOnTileColor=Green;
 	FXOnTile=arrow;
 	FXOnTileColor=Green;
-	FXOnTile=chk;
+	FXOnTile=chk; ----------------TODO: replace with debuff sound from rupture
 	FXOnTileColor=Green;	
 	FXOnTile=hitDustQuiet;
 	FXOnTileColor=Green;	
@@ -45,10 +45,10 @@ formula=-d:bowDmg + c:skill_Ruin * 0.5;
 	cloneFrom=oneTile;
 
 
-[ItemType]  name=Koshokuyumi;
+[ItemType]  name=Ekibyonoyumi;
 journalID=shana_journal_plaguebow;
 texture=gkart;
-description=Ruinous yumi whose arrows eschew direct damage in favor of concentrated <icon=>Rot.;
+description=Ruinous yumi whose arrows eschew direct damage in favor of inflicting concentrated <icon=>Rot.;
 weight=4; volume=3; value=5000; pR=pLime; pB=pG;
 power=8; 
 ID=shana_plaguebow; sprite=22; spriteWhenHeld=32; itemCategory=weapon; element=bow;
@@ -62,5 +62,5 @@ ID=shana_plaguebow; red=0; blue=0; green=0.5; alpha=0.5; size=0.25; flicker=0;
 [JournalEntry]
 ID=shana_journal_plaguebow;
 category=equipment; halfPage=false; rarity=3;
-title=Plaguebringer;
-text=<itemBig=shana_plaguebow><title=Koshokuyumi><brAdj=>   Corrupted yumi once wielded by an eastern traveller, turned against the fleeing population of Barrow.<n=>   Arrows shot from this bow convert direct damage into an equal amount of contagious Rot, dealing damage over time and raising the infected as zombies - much to the despair of many a refugee. <n=>   This bow's accuracy increases with <icon=PhysAtk>, while its arrows are made more potent by <icon=skill_Ruin>.; 
+title=Ekibyonoyumi;
+text=<itemBig=shana_plaguebow><title=Koshokuyumi><brAdj=>   Corrupted yumi once wielded by an eastern traveller, turned against the fleeing population of Barrow.<n=>   Arrows shot from this bow convert damage dealt into an equal amount of contagious Rot, dealing damage over time and raising the infected as zombies - much to the horror of many a refugee. <n=>   This bow's accuracy increases with <icon=PhysAtk>, while its arrows are made more potent by <icon=skill_Ruin>.; 
