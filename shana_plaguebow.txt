@@ -28,7 +28,7 @@ formula=-d:bowDmg + c:skill_Ruin * 0.5;
 	element=ranged;
 	FXOnTile=sfx_zyew;
 	FXOnTileColor=Green;
-	FXOnTile=arrow;
+	FXOnTile=shana_plaguearrow;
 	FXOnTileColor=Green;
 	FXOnTile=chk; ----------------TODO: replace with debuff sound from rupture
 	FXOnTileColor=Green;	
@@ -50,7 +50,7 @@ journalID=shana_journal_plaguebow;
 texture=gkart;
 description=Ruinous yumi whose arrows eschew direct damage in favor of inflicting concentrated Rot<icon=icon_gravekeeper_rot>.;
 weight=4; volume=3; value=5000; pR=p71; pB=p37;
-power=8; 
+power=9; 
 ID=shana_plaguebow; sprite=22; spriteWhenHeld=32; itemCategory=weapon; element=bow;
  special=rotate90WhenSheathed;
 special=sprite2xWidth; special=twoHanded; 
