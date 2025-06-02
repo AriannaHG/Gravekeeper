@@ -89,3 +89,10 @@ ID=shana_pewbreak; cloneFrom=dust_wood;
 pR=pCRedD;
 pG=;
 pB=;
+
+[FXData]
+ID=shana_plaguearrow; cloneFrom=arrow;
+pR=p71;
+pG=;
+pB=;
+
