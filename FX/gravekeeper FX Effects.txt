@@ -90,9 +90,53 @@ pR=pCRedD;
 pG=;
 pB=;
 
+
+
 [FXData]
 ID=shana_plaguearrow; cloneFrom=arrow;
+particleID=shana_projectile_plaguearrow;
 pR=p71;
 pG=;
 pB=;
 
+[drawOrderFX]
+ID=shana_projectile_plaguearrow;
+texture=fx_projectile_arrow;
+sourceRect=0,0,9,9;
+origin=5,5;
+timePerFrame=0.4;
+duration=0.4;
+accel=0,20;
+rotateBasedOnVelocity=true;
+
+[drawOrderFXLight]
+ID=shana_projectile_plaguearrow; red=0; blue=0; green=0.5; alpha=0.5; size=0.1; flicker=0.01; texture=lightmask;
+
+
+
+[FXData]
+ID=shana_Fast_Sparkles; cloneFrom=sparkles;
+particleID=shana_fast_sparkle;
+
+[FXData]
+ID=shana_Fast_superSparkles;
+particleID=shana_fast_sparkle;
+numParticles=33;
+--speedOffset = 1.5;
+posOffset=-0.4,-0.2;
+randPos=0.8,0.3;
+velocOffset=-10,-10;
+randVeloc=20,20;
+randScale=0.1;
+initialDelayIncreasePerParticle=0.03;
+
+[drawOrderFX]
+ID=shana_fast_sparkle;
+texture=fx_sparkle;
+sourceRect=0,0,5,7;
+origin=3,4;
+timePerFrame=0.1;
+duration=0.2; --was 0.3
+
+[drawOrderFXLight]
+ID=shana_fast_sparkle; red=0; blue=0; green=0.5; alpha=0.5; size=0.15; flicker=0.01; texture=lightmask;
