@@ -756,6 +756,18 @@ icon=classIcon_ari_gravekeeper;
 [ActionAoE] 
 	ID=shana_deadbookact;
 	cloneFrom=oneTile; 
+
+[AvAffecter]
+	ID=shana_deadbookact; 
+	FXOnHit=shana_Fast_Sparkles;
+	FXOnHitColor=Chartreuse;
+	FXOnHit=shana_Fast_superSparkles;
+	FXOnHitColor=Green;
+	FXOnHit=shana_Fast_superSparkles;
+	FXOnHitColor=Chartreuse;
+[AvAffecterAoE]
+	ID=shana_deadbookact;
+	cloneFrom=oneTile; 
 [AvAffecter]
 	ID=shana_deadbookact; 
 	actorValue=shana_creepingdeath_status;
@@ -838,6 +850,18 @@ icon=classIcon_ari_gravekeeper;
 	special=usableEvenWhenReacting;
 	special=usableEvenWhenYourTurn;
 [ActionAoE] 
+	ID=shana_deadbookact_enemy;
+	cloneFrom=oneTile;
+
+[AvAffecter]
+	ID=shana_deadbookact_enemy; 
+	FXOnHit=shana_Fast_Sparkles;
+	FXOnHitColor=Chartreuse;
+	FXOnHit=shana_Fast_superSparkles;
+	FXOnHitColor=Green;
+	FXOnHit=shana_Fast_superSparkles;
+	FXOnHitColor=Chartreuse;
+[AvAffecterAoE]
 	ID=shana_deadbookact_enemy;
 	cloneFrom=oneTile; 
 [AvAffecter]
