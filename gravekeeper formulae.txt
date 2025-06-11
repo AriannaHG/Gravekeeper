@@ -231,7 +231,7 @@ formula=min:1:d:grimoireDivinityConvertedHeal_tier1;
 -----------------------Rot formulas (0.34 cause I'm using floor)
 
 [FormulaGlobal] ID=rotSpread;
-formula=c:ari_rot_status * 0.34;
+formula=1 + c:ari_rot_status * 0.34;
 
 [FormulaGlobal] ID=enemyRotSpread;
-formula=c:ari_rot_status_enemy * 0.34;
+formula=1 + c:ari_rot_status_enemy * 0.34;
