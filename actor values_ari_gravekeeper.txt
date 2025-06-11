@@ -102,8 +102,13 @@ action=ari_rot_damage;
 	actorValue=ari_rot_status;
 	magnitude=1 + floor:d:rotSpread + t:ari_rot_status;
 	duration=40;
-	chance=thisPreviousAVHit:ari_rot_damage * c:ari_rot_status * 6;
+	chance=c:ari_rot_status * 6;
 	visibleMiss=false;
+	FXOnHit=spiral2;
+	FXOnHitColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=DarkGreen;
+
 [AvAffecterAoE]
 	ID=ari_rot_damage;
 	aoeCasterAsOrigin = true;
@@ -125,6 +130,11 @@ action=ari_rot_damage;
 	duration=40;
 	chance=moreThan:5:c:ari_rot_status * thisPreviousAVHit:ari_rot_damage * c:ari_rot_status * 6;
 	visibleMiss=false;
+	FXOnHit=spiral2;
+	FXOnHitColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=DarkGreen;
+
 [AvAffecterAoE]
 	ID=ari_rot_damage;
 	aoeCasterAsOrigin = true;
@@ -146,6 +156,11 @@ action=ari_rot_damage;
 	duration=40;
 	chance=moreThan:9:c:ari_rot_status * thisPreviousAVHit:ari_rot_damage * c:ari_rot_status * 6;
 	visibleMiss=false;
+	FXOnHit=spiral2;
+	FXOnHitColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=DarkGreen;
+
 [AvAffecterAoE]
 	ID=ari_rot_damage;
 	aoeCasterAsOrigin = true;
@@ -4430,8 +4445,13 @@ action=ari_rot_damage_enemy;
 	actorValue=ari_rot_status_enemy;
 	magnitude=1 + floor:d:enemyRotSpread + t:ari_rot_status_enemy;
 	duration=40;
-	chance=thisPreviousAVHit:ari_rot_damage_enemy * c:ari_rot_status_enemy * 6;
+	chance=c:ari_rot_status_enemy * 6;
 	visibleMiss=false;
+	FXOnHit=spiral2;
+	FXOnHitColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=DarkGreen;
+
 [AvAffecterAoE]
 	ID=ari_rot_damage_enemy;
 	aoeCasterAsOrigin = true;
@@ -4444,6 +4464,7 @@ action=ari_rot_damage_enemy;
 	bypassAll=true;
 	canSelectAllies=true;
 	canSelectEnemies=false;
+
 [AvAffecter]
 	ID=ari_rot_damage_enemy; 
 	visibleEvaluations=true;
@@ -4453,6 +4474,11 @@ action=ari_rot_damage_enemy;
 	duration=40;
 	chance=moreThan:5:c:ari_rot_status_enemy * thisPreviousAVHit:ari_rot_damage_enemy * c:ari_rot_status_enemy * 6;
 	visibleMiss=false;
+	FXOnHit=spiral2;
+	FXOnHitColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=DarkGreen;
+
 [AvAffecterAoE]
 	ID=ari_rot_damage_enemy;
 	aoeCasterAsOrigin = true;
@@ -4474,6 +4500,11 @@ action=ari_rot_damage_enemy;
 	duration=40;
 	chance=moreThan:9:c:ari_rot_status_enemy * thisPreviousAVHit:ari_rot_damage_enemy * c:ari_rot_status_enemy * 6;
 	visibleMiss=false;
+	FXOnHit=spiral2;
+	FXOnHitColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=DarkGreen;
+
 [AvAffecterAoE]
 	ID=ari_rot_damage_enemy;
 	aoeCasterAsOrigin = true;
