@@ -235,3 +235,9 @@ formula=1 + c:ari_rot_status * 0.34;
 
 [FormulaGlobal] ID=enemyRotSpread;
 formula=1 + c:ari_rot_status_enemy * 0.34;
+
+[FormulaGlobal] ID=1rotcalcpt1;
+formula=1 * rxn:ruin;
+
+[FormulaGlobal] ID=1rotcalc;
+formula=ceiling:d:1rotcalcpt1;
