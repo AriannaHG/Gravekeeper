@@ -99,7 +99,7 @@ ID=ari_summoned_crossbow; element=actionUsed; newID=ari_summoned_crossbow_unload
 [AvAffecter]
 	ID=crossbowAttack_Rot; 
 	actorValue=ari_rot_status;
-	magnitude=d:1rotcalcpt1 + floor:d:ruinSkillDivide5 * rxn:ruin + t:ari_rot_status;
+	magnitude=d:1rotcalc + floor:d:ruinSkillDivide5 * rxn:ruin + t:ari_rot_status;
 	duration=80;
 	chance=d:aimAcc;
 	FXOnTile=chargeSpiralFast_big;
@@ -165,7 +165,7 @@ depthMod=900;
 [AvAffecter]
 	ID=ari_skeletongreatswordAttack; 
 	actorValue=ari_rot_status;
-	magnitude=d:1rotcalcpt1 + t:ari_rot_status;
+	magnitude=d:1rotcalc + t:ari_rot_status;
 	duration=80;
 	chance=d:gswordAcc;
 	FXOnTile=chargeSpiralFast_big;
@@ -277,7 +277,7 @@ power=10;
 [AvAffecter]
 	ID=ari_infectPunch; 
 	actorValue=ari_rot_status;
-	magnitude=d:1rotcalcpt1 + t:ari_rot_status;
+	magnitude=d:1rotcalc + t:ari_rot_status;
 	duration=80;
 	chance=d:fistAcc - 2;
 	element=ruin;
@@ -343,7 +343,7 @@ power=10;
 [AvAffecter]
 	ID=ari_skeleton_warrior_charge; 
 	actorValue=ari_rot_status;
-	magnitude=d:1rotcalcpt1 + t:ari_rot_status;
+	magnitude=d:1rotcalc + t:ari_rot_status;
 	duration=80;
 	chance=100;
 	FXOnTile=chargeSpiralFast_big;
@@ -999,7 +999,7 @@ power=10;
 [AvAffecter]
 	ID=ari_skeleton_archer_bone_shards; 
 	actorValue=ari_rot_status;
-	magnitude=d:1rotcalcpt1 + t:ari_rot_status;
+	magnitude=d:1rotcalc + t:ari_rot_status;
 	duration=80;
 	chance=d:ruinProjectileAcc;
 	FXOnTile=chargeSpiralFast_big;
@@ -1954,7 +1954,7 @@ power=10;
 [AvAffecter]
 	ID=ari_abomination_amalgamated_limb; 
 	actorValue=ari_rot_status;
-	magnitude=1 + t:ari_rot_status;
+	magnitude=d:1rotcalc + t:ari_rot_status;
 	duration=80;
 	chance=d:fistAcc;
 	FXOnTile=chargeSpiralFast_big;
@@ -2061,7 +2061,7 @@ power=10;
 [AvAffecter]
 	ID=ari_abomination_corpse_slam; 
 	actorValue=ari_rot_status;
-	magnitude=1 + t:ari_rot_status;
+	magnitude=d:1rotcalc + t:ari_rot_status;
 	duration=80;
 	chance=d:fistAcc;
 	FXOnTile=chargeSpiralFast_big;
