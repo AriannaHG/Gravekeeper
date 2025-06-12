@@ -90,7 +90,7 @@ element=ruin;
 damageMultiplier=0.5; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton;
-element=poison;
+element=poison; actorValue=HP;
 damageMultiplier=-1; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton;
@@ -199,7 +199,7 @@ element=ruin;
 damageMultiplier=0.5; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton_mage_type;
-element=poison;
+element=poison; actorValue=HP;
 damageMultiplier=-1; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton_mage_type;
@@ -313,7 +313,7 @@ element=ruin;
 damageMultiplier=0.5; healMultiplier=1;
 [ActorTypeReaction]
 ID=mindless_undead_skeleton;
-element=poison;
+element=poison; actorValue=HP;
 damageMultiplier=-1; healMultiplier=1;
 [ActorTypeReaction]
 ID=mindless_undead_skeleton;
@@ -1981,7 +1981,7 @@ element=ruin;
 damageMultiplier=0.5; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton_commander_version;
-element=poison;
+element=poison; actorValue=HP;
 damageMultiplier=-1; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton_commander_version;
@@ -2091,7 +2091,7 @@ element=ruin;
 damageMultiplier=0.5; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton_commander_version_mage;
-element=poison;
+element=poison; actorValue=HP;
 damageMultiplier=-1; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton_commander_version_mage;
@@ -2202,7 +2202,7 @@ element=ruin;
 damageMultiplier=0.5; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_zombie_commander_version;
-element=poison;
+element=poison; actorValue=HP;
 damageMultiplier=-1; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_zombie_commander_version;
@@ -5914,7 +5914,7 @@ element=ruin;
 damageMultiplier=0.5; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton_enemy;
-element=poison;
+element=poison; actorValue=HP;
 damageMultiplier=-1; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton_enemy;
@@ -6026,7 +6026,7 @@ element=ruin;
 damageMultiplier=0.5; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton_mage_type_enemy;
-element=poison;
+element=poison; actorValue=HP;
 damageMultiplier=-1; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton_mage_type_enemy;
