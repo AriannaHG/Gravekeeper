@@ -4602,7 +4602,7 @@ action=shana_creepingdeath_rot;
 	visibleEvaluations=true;
 	harmful=true;
 	actorValue=ari_rot_status;
-	magnitude=2 * rxn:ruin + t:ari_rot_status;
+	magnitude=d:1rotcalc + rxn:ruin + t:ari_rot_status;
 
 	duration=80; --this should stop most crowd control from making the rot stack die
 	chance=100;
@@ -4639,7 +4639,7 @@ action=shana_creepingdeath_reapplyrot;
 	visibleEvaluations=true;
 	harmful=true;
 	actorValue=ari_rot_status;
-	magnitude=1 * rxn:ruin + t:ari_rot_status;
+	magnitude=d:1rotcalc + t:ari_rot_status;
 
 	duration=80; --this should stop most crowd control from making the rot stack die
 	chance=100;
@@ -4715,7 +4715,7 @@ action=shana_creepingdeath_rot_enemy;
 	visibleEvaluations=true;
 	harmful=true;
 	actorValue=ari_rot_status_enemy;
-	magnitude=2 * rxn:ruin + t:ari_rot_status_enemy;
+	magnitude=d:1rotcalc + rxn:ruin + t:ari_rot_status_enemy;
 
 	duration=80; --this should stop most crowd control from making the rot stack die
 	chance=100;
@@ -4750,7 +4750,7 @@ action=shana_creepingdeath_reapplyrot_enemy;
 	visibleEvaluations=true;
 	harmful=true;
 	actorValue=ari_rot_status_enemy;
-	magnitude=1 * rxn:ruin + t:ari_rot_status_enemy;
+	magnitude=d:1rotcalc + t:ari_rot_status_enemy;
 
 	duration=80; --this should stop most crowd control from making the rot stack die
 	chance=100;

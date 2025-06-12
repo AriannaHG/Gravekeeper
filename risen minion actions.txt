@@ -226,7 +226,7 @@ depthMod=900;
 [AvAffecter]
 	ID=ari_scytheAttack; 
 	actorValue=ari_rot_status;
-	magnitude=2 * rxn:ruin + t:ari_rot_status;
+	magnitude=d:1rotcalc + rxn:ruin + t:ari_rot_status;
 	duration=80;
 	chance=d:ruinAcc;
 	FXOnTile=chargeSpiralFast_big;
@@ -764,7 +764,7 @@ power=10;
 [AvAffecter]
 	ID=ari_skeleton_knight_gravestrike; 
 	actorValue=ari_rot_status;
-	magnitude=2 * rxn:ruin + t:ari_rot_status;
+	magnitude=d:1rotcalc + rxn:ruin + t:ari_rot_status;
 	duration=80;
 	chance=d:gswordAcc;
 	FXOnTile=chargeSpiralFast_big;
@@ -1764,7 +1764,7 @@ power=10;
 [AvAffecter]
 	ID=ari_zombie_corpse_expulsion; 
 	actorValue=ari_rot_status;
-	magnitude=2 * rxn:ruin + t:ari_rot_status;
+	magnitude=d:1rotcalc + rxn:ruin + t:ari_rot_status;
 	duration=80;
 	chance=d:ruinAcc;
 	FXOnTile=chargeSpiralFast_big;
@@ -3486,7 +3486,7 @@ needsLoS = false; needsLoE = false; shape=7;
 [AvAffecter]
 	ID=ari_abomination_gravestrike; 
 	actorValue=ari_rot_status;
-	magnitude=2 * rxn:ruin + t:ari_rot_status;
+	magnitude=d:1rotcalc + rxn:ruin + t:ari_rot_status;
 	duration=80;
 	chance=d:fistAcc;
 	FXOnTile=chargeSpiralFast_big;
