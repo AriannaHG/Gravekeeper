@@ -186,7 +186,7 @@ icon=classIcon_ari_gravekeeper;
 [AvAffecter]
 	ID=ari_grimoireAttack_rot; 
 	actorValue=ari_rot_status;
-	magnitude=3 * rxn:ruin + floor:d:ruinSkillDivide5 * rxn:ruin + t:ari_rot_status;
+	magnitude=2 * rxn:ruin + d:1rotcalc + floor:d:ruinSkillDivide5 * rxn:ruin + t:ari_rot_status;
 	duration=80;
 	chance=d:ruinAcc;
 	FXOnTile=ari_energyShot_Rot;

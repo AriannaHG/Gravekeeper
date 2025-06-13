@@ -226,7 +226,7 @@ depthMod=900;
 [AvAffecter]
 	ID=ari_scytheAttack; 
 	actorValue=ari_rot_status;
-	magnitude=d:1rotcalc + rxn:ruin + t:ari_rot_status;
+	magnitude=d:1rotcalc + 0.1 * c:skill_Ruin * rxn:ruin + t:ari_rot_status;
 	duration=80;
 	chance=d:ruinAcc;
 	FXOnTile=chargeSpiralFast_big;
@@ -280,7 +280,6 @@ power=10;
 	magnitude=d:1rotcalc + t:ari_rot_status;
 	duration=80;
 	chance=d:fistAcc - 2;
-	element=ruin;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
 	FXOnHit=downwardLinesQuick;
@@ -3209,8 +3208,8 @@ needsLoS = false; needsLoE = false; shape=7;
 [AvAffecter]
 	ID=ari_abomination_charge; 
 	actorValue=ari_rot_status;
-	magnitude=1 + t:ari_rot_status;
-	duration=40;
+	magnitude=d:1rotcalc + t:ari_rot_status;
+	duration=80;
 	chance=100;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
@@ -3407,7 +3406,7 @@ needsLoS = false; needsLoE = false; shape=7;
 	actorValue=ari_rot_status;
 	harmful=false;
 	magnitude=t:ari_rot_status - 3;
-	duration=40;
+	duration=80;
 	chance=100 * moreThan:3:t:ari_rot_status;
 [AvAffecterAoE]
 	ID=ari_abomination_bonespear;
@@ -3581,7 +3580,7 @@ needsLoS = false; needsLoE = false; shape=7;
 	actorValue=ari_rot_status;
 	harmful=false;
 	magnitude=t:ari_rot_status - 3;
-	duration=40;
+	duration=80;
 	chance=100 * moreThan:5:t:ari_rot_status;
 [AvAffecterAoE]
 	ID=ari_abomination_gravestrike_second;
@@ -3651,8 +3650,8 @@ needsLoS = false; needsLoE = false; shape=7;
 [AvAffecter]
 	ID=ari_abomination_infectious_bile; 
 	actorValue=ari_rot_status;
-	magnitude=3 + t:ari_rot_status;
-	duration=40;
+	magnitude=2 * rxn:ruin + d:1rotcalc + t:ari_rot_status;
+	duration=80;
 	chance=d:ruinAcc;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
@@ -3737,8 +3736,8 @@ needsLoS = false; needsLoE = false; shape=7;
 [AvAffecter]
 	ID=ari_abomination_corpse_expulsion; 
 	actorValue=ari_rot_status;
-	magnitude=2 + t:ari_rot_status;
-	duration=40;
+	magnitude=rxn:ruin + d:1rotcalc + t:ari_rot_status;
+	duration=80;
 	chance=100;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
@@ -3857,15 +3856,13 @@ needsLoS = false; needsLoE = false; shape=7;
 [AvAffecter]
 	ID=ari_lich_rotbeam; 
 	actorValue=ari_rot_status;
-	magnitude=8 * rxn:ruin + t:ari_rot_status;
+	magnitude=7 * rxn:ruin + d:1rotcalc + t:ari_rot_status;
 	duration=80;
 	chance=d:ruinAcc;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
-	element=ranged;
-	element=magic;
 [AvAffecterAoE]
 	ID=ari_lich_rotbeam;
 	shape=2;
@@ -4024,8 +4021,8 @@ ID=ari_fetid_field_rot;
 [AvAffecter]
 	ID=ari_fetid_field_rot; 
 	actorValue=ari_rot_status;
-	magnitude=1 + t:ari_rot_status;
-	duration=40;
+	magnitude=d:1rotcalc + t:ari_rot_status;
+	duration=80;
 	chance=100;
 [AvAffecterAoE]
 	ID=ari_fetid_field_rot;
@@ -5895,12 +5892,10 @@ ID=ari_cold_spot_chill_weak;
 [AvAffecter]
 	ID=ari_enemy_lich_finger_death;
 	actorValue=ari_rot_status_enemy;
-	magnitude=8 * rxn:ruin + t:ari_rot_status_enemy;
+	magnitude=7 * rxn:ruin + d:1rotcalc + t:ari_rot_status_enemy;
 	duration=80;
 	chance=d:ruinAcc;
 	harmful=true;
-	element=ranged;
-	element=magic;
 	FXOnTile=cut;
 [AvAffecterAoE]
 	ID=ari_enemy_lich_finger_death;
@@ -6022,12 +6017,9 @@ depthMod=900;
 [AvAffecter]
 	ID=skeletonswordAttack_enemy; 
 	actorValue=ari_rot_status_enemy;
-	magnitude=1 + t:ari_rot_status_enemy;
-	duration=40;
+	magnitude=d:1rotcalc + t:ari_rot_status_enemy;
+	duration=80;
 	chance=d:swordAcc;
-	element=melee;
-	element=physical;
-	element=slash;
 	FXOnTile=cut;
 [AvAffecterAoE]
 	ID=skeletonswordAttack_enemy;
@@ -6052,12 +6044,9 @@ ID=ari_summoned_crossbow_enemy; element=actionUsed; newID=ari_summoned_crossbow_
 [AvAffecter]
 	ID=crossbowAttack_Rot_enemy; 
 	actorValue=ari_rot_status_enemy;
-	magnitude=1 + floor:d:ruinSkillDivide5 + t:ari_rot_status_enemy;
-	duration=40;
+	magnitude=d:1rotcalc + floor:d:ruinSkillDivide5 + t:ari_rot_status_enemy;
+	duration=80;
 	chance=d:aimAcc;
-	element=melee;
-	element=physical;
-	element=slash;
 	FXOnTile=cut;
 [AvAffecterAoE]
 	ID=crossbowAttack_Rot_enemy;
@@ -6103,8 +6092,8 @@ ID=ari_summoned_crossbow_unloaded_enemy; element=actionUsed; element=reload; new
 [AvAffecter]
 	ID=ari_infectPunch_enemy; 
 	actorValue=ari_rot_status_enemy;
-	magnitude=1 + t:ari_rot_status_enemy;
-	duration=40;
+	magnitude=d:1rotcalc + t:ari_rot_status_enemy;
+	duration=80;
 	chance=d:fistAcc;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
@@ -6178,8 +6167,8 @@ ID=ari_summoned_crossbow_unloaded_enemy; element=actionUsed; element=reload; new
 [AvAffecter]
 	ID=ari_zombie_infectious_bile_enemy; 
 	actorValue=ari_rot_status_enemy;
-	magnitude=3 + t:ari_rot_status_enemy;
-	duration=40;
+	magnitude=2 * rxn:ruin + d:1rotcalc + t:ari_rot_status_enemy;
+	duration=80;
 	chance=d:ruinAcc;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
@@ -6265,8 +6254,8 @@ ID=ari_summoned_crossbow_unloaded_enemy; element=actionUsed; element=reload; new
 [AvAffecter]
 	ID=ari_enemy_zombie_corpse_expulsion; 
 	actorValue=ari_rot_status_enemy;
-	magnitude=2 + t:ari_rot_status_enemy;
-	duration=40;
+	magnitude=1 * rxn:ruin + d:1rotcalc + t:ari_rot_status_enemy;
+	duration=80;
 	chance=d:ruinAcc;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
@@ -6338,8 +6327,8 @@ ID=ari_summoned_crossbow_unloaded_enemy; element=actionUsed; element=reload; new
 [AvAffecter]
 	ID=ari_skeleton_warrior_charge_enemy; 
 	actorValue=ari_rot_status_enemy;
-	magnitude=1 + t:ari_rot_status_enemy;
-	duration=40;
+	magnitude=d:1rotcalc + t:ari_rot_status_enemy;
+	duration=80;
 	chance=100;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
@@ -6485,8 +6474,8 @@ ID=ari_fetid_field_rot_enemy;
 [AvAffecter]
 	ID=ari_fetid_field_rot_enemy; 
 	actorValue=ari_rot_status_enemy;
-	magnitude=1 + t:ari_rot_status_enemy;
-	duration=40;
+	magnitude=d:1rotcalc + t:ari_rot_status_enemy;
+	duration=80;
 	chance=100;
 [AvAffecterAoE]
 	ID=ari_fetid_field_rot_enemy;
@@ -6646,8 +6635,8 @@ ID=ari_fetid_field_spread_enemy;
 [AvAffecter]
 	ID=ari_enemy_abomination_amalgamated_limb; 
 	actorValue=ari_rot_status_enemy;
-	magnitude=1 + t:ari_rot_status_enemy;
-	duration=40;
+	magnitude=d:1rotcalc + t:ari_rot_status_enemy;
+	duration=80;
 	chance=d:fistAcc;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
