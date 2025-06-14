@@ -51,7 +51,7 @@ Will your legions overrun the enemy, or will you succumb to the demands of the d
 
 ## *Credits*
 - **Mafe**: I threw ideas at them until they made the mod for me (Not really but Mafe is amazing and helped a ton)
-- **Prominence**: a number of sprites ripped straight from their mods and quite a bit of copy-pasting code
+- **Prominence**: a number of sprites ripped straight from their mods and quite a bit of copy-pasting code, as well as graciously allowing the use of his Ruin Enchant and "Nowhere To Hide" elite passive.
 - **Dadzio**: those skeletons are direct ports from their great Skeletons mod, [here!](https://steamcommunity.com/sharedfiles/filedetails/?id=2670522662)
 - The *Horizon's Gate* Discord and community for a whole lot of help, tips and tricks
 - **Eldiran**: for creating a plethora of fantastic games that have some of the best modding capabilities I've ever seen
