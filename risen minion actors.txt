@@ -7034,4 +7034,4 @@ MP=15; MPMax=15; TrueMPMax=15;
 canSwap=False;
 
 [ActorInventory]
-style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
+style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9;

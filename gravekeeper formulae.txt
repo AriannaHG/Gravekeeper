@@ -239,13 +239,13 @@ formula=1 + c:ari_rot_status * 0.25;
 [FormulaGlobal] ID=rotSpread3;
 formula=1 + c:ari_rot_status * 0.2;
 
-[FormulaGlobal] ID=enemyRotSpread;
+[FormulaGlobal] ID=enemyrotSpread;
 formula=1 + c:ari_rot_status_enemy * 0.34;
 
-[FormulaGlobal] ID=enemyRotSpread2;
+[FormulaGlobal] ID=enemyrotSpread2;
 formula=1 + c:ari_rot_status_enemy * 0.25;
 
-[FormulaGlobal] ID=enemyRotSpread3;
+[FormulaGlobal] ID=enemyrotSpread3;
 formula=1 + c:ari_rot_status_enemy * 0.2;
 
 [FormulaGlobal] ID=1rotcalcpt1;

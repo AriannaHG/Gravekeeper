@@ -521,3 +521,17 @@ ruinModeSupportAbility=;
 
 [ActorClassEffect]  ID=ari_abomination_class_enemy; actorValue=skill_Fist; magnitude=8; duration=-1;
 [ActorClassEffect]  ID=ari_abomination_class_enemy; actorValue=skill_Ruin; magnitude=6; duration=-1;
+
+-----------------------------------------Fake Double Tap workaround ranger
+[ActorClass] name=Ranger;
+ID=shana_ranger_enemy;
+selectableClass=false;
+icon=classIcon_ranger2;
+journalID=journal_ranger2;
+
+description=Protector that fights & heals from a distance.;
+paletteUI=pGreen;
+
+actions=shana_Ran_doubleTap_enemy;
+
+ruinModeSupportAbility=;

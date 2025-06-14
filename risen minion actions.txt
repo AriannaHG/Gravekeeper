@@ -6929,3 +6929,59 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 	canSelectAllies=true;
 	canSelectEnemies=true;
 	aoeCasterAsOrigin=true;
+
+
+-----------------------------------------------Fake double tap for Plaguebringer Yokaze
+[Action] ID=shana_Ran_doubleTap_enemy;
+	name=Double Tap;
+	icon=icon_Ran_doubleTap;
+	tooltip=Attack twice for <math=15 + 5 * c:rank>% damage. Both attacks apply secondary effects.;
+	rankUpTooltip=Each rank adds +5% damage (to enemies only).;
+	tooltipTopRight=<icon=PhysAtk_small><icon=melee_small>;
+	mpCost=4 * d:mpCostMult + d:mpCostMod;
+	applyWeaponBuffs=true;
+
+	AIRatingBias=999;
+
+	maxRank=4;
+	canExceedMaxRankBy=1;
+
+
+	XPCost=220;
+	XPCost=440;
+	XPCost=880;
+	XPCost=1600;
+
+	casterAnimation=weapon;
+	casterAnimationSpeed=2.4;
+	--casterAnimationLoops=1;
+
+	special=doNotApplyActionUsedToItemUsed;
+
+	requiredWeaponElement=weapon;
+
+	FXOnCaster=sidewardLines;
+	FXOnCaster=woosh;
+
+	FXOnTarget=weaponFX;
+[ActionAoE]
+	ID=shana_Ran_doubleTap_enemy; shape=10;
+[AvAffecter]
+	ID=shana_Ran_doubleTap_enemy;
+	weaponAvAffecter=true;
+	magnitude=w:magnitude * 0.15 + w:magnitude * 0.05 * c:rank * m:diffHostile + w:magnitude * 0.05 * m:sameHostile;
+	chance=w:chance;
+	duration=-2;
+[AvAffecterAoE]
+	ID=shana_Ran_doubleTap_enemy;
+	 shape=11;
+[AvAffecter]
+	ID=shana_Ran_doubleTap_enemy;
+	weaponAvAffecter=true;
+	magnitude=w:magnitude * 0.15 + w:magnitude * 0.05 * c:rank * m:diffHostile + w:magnitude * 0.05 * m:sameHostile;
+	chance=w:chance;
+	duration=-2;
+[AvAffecterAoE]
+	ID=shana_Ran_doubleTap_enemy;
+	 shape=11;
+
