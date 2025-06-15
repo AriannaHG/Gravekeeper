@@ -1829,6 +1829,34 @@ text=<itemBig=ari_death_aura_item><title=Aura of Death><brAdj=>At the start of c
 ID=shana_projectileMastery_enemy;
 cloneFrom=projectileMastery;
 
+[SupportAbilityReaction]
+ID=shana_projectileMastery_enemy;
+element=ruin;
+damageMultiplier=0.5; healMultiplier=1;
+[SupportAbilityReaction]
+ID=shana_projectileMastery_enemy;
+element=poison; actorValue=HP;
+damageMultiplier=-1; healMultiplier=1;
+[SupportAbilityReaction]
+ID=shana_projectileMastery_enemy;
+element=defiler;
+damageMultiplier=0.5; healMultiplier=0.5;
+[SupportAbilityReaction]
+ID=shana_projectileMastery_enemy;
+element=life; element=antiUndead;
+damageMultiplier=2; healMultiplier=-1;
+[SupportAbilityReaction]
+ID=shana_projectileMastery_enemy;
+element=bonemeld;
+damageMultiplier=5; healMultiplier=0;
+[SupportAbilityReaction]
+ID=shana_projectileMastery_enemy;
+actorValues=morale; actorValues=poison;
+actorValues=itchy; actorValues=decay;
+actorValues=sleep;
+damageMultiplier=0; healMultiplier=0;
+
+
 -----------------------------------------Cloned "Nowhere To Hide" for Plaguebringer Yokaze courtesy of Prominence
 [SupportAbility]
 ID=prom_scout_nowhere_to_hide_enemy;
