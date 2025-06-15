@@ -1,0 +1,294 @@
+[ItemType] name=Test Grimoire Necrotize;
+texture=gkart;
+ID=shana_grimoire_test_3; pR=p5; pG=pG; pB=overworld6;
+description=Testing Necrotize.;
+journalID=ari_journal_grimoire;
+sprite=1; spriteWhenHeld=0; itemCategory=weapon;
+element=ruin;
+weight=5; volume=10; value=10;
+power=0;
+action=shana_necrotize;
+combineWith=furnace_lit; toMake=bones1;
+combineWith=furnace2_lit; toMake=bones1;
+combineWith=furnace_everlit1; toMake=bones1;
+combineWith=furnace_everlit2; toMake=bones1;
+
+
+
+
+-- Used to find our matching caster/target AV ID.
+[FormulaGlobal] ID=shana_delay_sync_id;
+formula=g:shana_delay_gvar % 5;
+
+-- Returns the number of matching AV IDs. Use dMax1:shana_delay_sync_same_id to just return 1 max in case there are multiple caster/target IDs.
+[FormulaGlobal] ID=shana_delay_sync_same_id;
+formula=c:shana_delay_sync0 * t:shana_delay_sync0 + c:shana_delay_sync1 * t:shana_delay_sync1 + c:shana_delay_sync2 * t:shana_delay_sync2 + c:shana_delay_sync3 * t:shana_delay_sync3 + c:shana_delay_sync4 * t:shana_delay_sync4;
+
+
+
+
+
+-- I am setting up shana_delay_sync to actually work with multiple casters, as I don't think it would have done what you were hoping for the way you had it.
+-- Using c:shana_delay_sync will return the total amount of the AV, so if there were multiple stacks using stacksWithSelf=; or duration=-1; on the AvAffecter, they would be totaled together. There's no way to check for separate amounts of applied AVs.
+-- Not using stacksWithSelf=; would also just overwrite whatever the previous AV was and use the new magnitude=; and duration=;. Because of this, you would 'cancel' any already-casting-necrotize on an Actor if you cast another necrotize with another Actor, since the sync would be 1 higher than needed.
+
+-- The way it is setup now is to have 5 separate AVs that will be added to the target and caster based on the gVar. When the charged cast fires, we will then find all targets within 25 tiles that have the same AV as the caster and target them with a custom element that causes them to react.
+
+[ActorValue]
+-- Removed properties that were just set to their default anyway, so didn't need to be specified.
+ID=shana_delay_sync0;
+harmfulMagnitude=0;
+maximum=1;
+canAffectIncapped=true;
+canBeRemovedByNonspecificAVEffectRemoval=false;
+AIValue=0;
+
+-- Set these 3 to false after testing.
+showDamageNumbers=true;
+showDamageNumbersIconInTooltips=true;
+showEvaluationInfo=true;
+
+-- Remove these 2 after testing.
+prefixIcon=Sync 1;
+showDamageNumbersMagnitude=false;
+
+-- Remove after combat.
+[ActorValueReaction]
+ID=shana_delay_sync0; element=combatEnd; newID=X;
+
+-- This is the reaction to our custom Element that will be applied to our Necrotize target, causing them to cast the Action that purges and rots them + 3 tiles.
+[ActorValueReaction]
+ID=shana_delay_sync0; element=6000; action=shana_necrotize3;
+
+
+[ActorValue] ID=shana_delay_sync1; cloneFrom=shana_delay_sync0; prefixIcon=Sync 2; -- Remove all these prefixIcon=;s after testing.
+[ActorValue] ID=shana_delay_sync2; cloneFrom=shana_delay_sync0; prefixIcon=Sync 3;
+[ActorValue] ID=shana_delay_sync3; cloneFrom=shana_delay_sync0; prefixIcon=Sync 4;
+[ActorValue] ID=shana_delay_sync4; cloneFrom=shana_delay_sync0; prefixIcon=Sync 5;
+
+
+
+
+
+-- First part of Necrotize.
+[Action] ID=shana_necrotize;
+	name=Necrotize;
+	cooldown=50;
+	icon=icon_fire2;
+	AIRatingBias=50;
+	mpCost=5;
+-- Although you commented this out (I assume for testing), if you did try to use this special=;, it only works on Actions set in an ActorClass's actions=; and not on Item action=;s.
+--	special=startBattleOnCooldown;
+	casterAnimation=cast;
+-- Setting requiresCasting or requiresCharging will make this Actor play their casting/charging Animation.
+	special=requiresCharging;
+--	FXOnCaster=darken_major;
+--	FXOnCaster=delay;
+--	FXOnCaster=delay;
+--	FXOnCaster=delay;
+--	FXOnCaster=DramaticNyeaow;
+--	FXOnCaster=tileLine_topLeft_ignoreDark;
+	queueAnotherAction=shana_necrotize2;
+[ActionAoE]
+	ID=shana_necrotize;
+-- 17 is allActors_nonIncapped.
+	shape=17;
+	needsLoS=true;
+	needsLoE=false;
+	airborne=true;
+	arc=true;
+	minRange=1;
+	maxRange=10;
+
+
+-- Calculate which AV is getting used as our ID and apply it to both the target and the caster.
+[AvAffecter]
+	ID=shana_necrotize;
+	actorValue=shana_delay_sync0;
+	magnitude=1;
+	duration=21;
+	chance=is:0:d:shana_delay_sync_id * 100;
+	visibleMiss=false;
+--	visibleEvaluations=false;
+--	FXOnTile=targetRet_flicker;
+--	FXOnTile=bipFlutter;
+--	FXOnTile=tileLine_overlap;
+--	FXOnTile=sfx_DramaticN_quiet;
+--	FXOnTile=whiteExplosionSmall_rand_overlap;
+--	FXOnTile=smallShakeHoriz;
+--	FXOnTile=delay_minor;
+[AvAffecterAoE]
+	ID=shana_necrotize;
+	cloneFrom=oneTile;
+
+
+-- These AvAffecters are the same as above, just compacted.
+[AvAffecter] ID=shana_necrotize; actorValue=shana_delay_sync1; magnitude=1; duration=21; chance=is:1:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_necrotize; cloneFrom=oneTile;
+[AvAffecter] ID=shana_necrotize; actorValue=shana_delay_sync2; magnitude=1; duration=21; chance=is:2:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_necrotize; cloneFrom=oneTile;
+[AvAffecter] ID=shana_necrotize; actorValue=shana_delay_sync3; magnitude=1; duration=21; chance=is:3:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_necrotize; cloneFrom=oneTile;
+[AvAffecter] ID=shana_necrotize; actorValue=shana_delay_sync4; magnitude=1; duration=21; chance=is:4:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_necrotize; cloneFrom=oneTile;
+
+
+[AvAffecter]
+	ID=shana_necrotize;
+	actorValue=shana_delay_sync0;
+	magnitude=1;
+	duration=21;
+	chance=is:0:d:shana_delay_sync_id * 100;
+	visibleMiss=false;
+--	visibleEvaluations=false;
+--	FXOnTile=targetRet_flicker;
+--	FXOnTile=bipFlutter;
+--	FXOnTile=tileLine_overlap;
+--	FXOnTile=sfx_DramaticN_quiet;
+--	FXOnTile=whiteExplosionSmall_rand_overlap;
+--	FXOnTile=smallShakeHoriz;
+--	FXOnTile=delay_minor;
+[AvAffecterAoE]
+	ID=shana_necrotize;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+
+
+[AvAffecter] ID=shana_necrotize; actorValue=shana_delay_sync1; magnitude=1; duration=21; chance=is:1:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_necrotize; cloneFrom=oneTile; aoeCasterAsOrigin=true;
+[AvAffecter] ID=shana_necrotize; actorValue=shana_delay_sync2; magnitude=1; duration=21; chance=is:2:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_necrotize; cloneFrom=oneTile; aoeCasterAsOrigin=true;
+[AvAffecter] ID=shana_necrotize; actorValue=shana_delay_sync3; magnitude=1; duration=21; chance=is:3:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_necrotize; cloneFrom=oneTile; aoeCasterAsOrigin=true;
+[AvAffecter] ID=shana_necrotize; actorValue=shana_delay_sync4; magnitude=1; duration=21; chance=is:4:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_necrotize; cloneFrom=oneTile; aoeCasterAsOrigin=true;
+
+
+-- Moved to the end to ensure chance=;s get calculated properly.
+[AvAffecter]
+	ID=shana_necrotize;
+	visibleMiss=false;
+	visibleEvaluations=false;
+	actorValue=trigger;
+-- Changed to modGlobalVar, since it does the same thing as calculating the gVar + 1.
+	magnitude=modGlobalVar,shana_delay_gvar,1;
+[AvAffecterAoE]
+	ID=shana_necrotize;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+	ignoreCannotTarget=true;
+
+
+
+
+
+-- The actual charging part of Necrotize.
+[Action] ID=shana_necrotize2;
+	name=Necrotize;
+	icon=icon_fire2;
+	chargeTime=20;
+	special=requiresCharging;
+	casterAnimation=shoulderbash;
+--	FXOnCaster=darken_major;
+--	FXOnCaster=delay;
+--	FXOnCaster=delay;
+--	FXOnCaster=delay;
+--	FXOnCaster=DramaticNyeaow;
+--	FXOnCaster=tileLine_topLeft_ignoreDark;
+[ActionAoE]
+-- This Action should only hit the caster, with our AvAffecter determining which tile our target is on. We then apply a custom element to that target that causes them to react and do whatever we want.
+	ID=shana_necrotize2;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+
+
+[AvAffecter]
+	ID=shana_necrotize2;
+-- Our custom element triggers the reaction that does the actual damage.
+	element=6000;
+--	FXOnTile=targetRet_flicker;
+--	FXOnTile=bipFlutter;
+--	FXOnTile=tileLine_overlap;
+--	FXOnTile=sfx_DramaticN_quiet;
+--	FXOnTile=whiteExplosionSmall_rand_overlap;
+--	FXOnTile=smallShakeHoriz;
+--	FXOnTile=delay_minor;
+[AvAffecterAoE]
+	ID=shana_necrotize2;
+	shape=7;
+	minRange=0;
+	maxRange=25;
+	needsLoS=false;
+	needsLoE=false;
+	airborne=true;
+	arc=true;
+	bypassAll=true;
+	ignoreCannotTarget=true;
+	aoeCasterAsOrigin=true;
+	fReq=dMax1:shana_delay_sync_same_id - m:casterIsTarget;
+
+
+
+
+
+-- Cast by the delayed target on themself + 3 tiles.
+[Action] ID=shana_necrotize3;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+[ActionAoE]
+	ID=shana_necrotize3;
+	cloneFrom=oneTile;
+	ignoreCannotTarget=true;
+
+
+-- Purge.
+[AvAffecter]
+	ID=shana_necrotize3;
+	actorValue=purge;
+	magnitude=1;
+	duration=-2;
+	element=magic;
+	chance=100;
+-- These FX were chosen because they have percentDurationBeforeOverlapWithOtherFX=0;, so will all play at once to show the targeted area.
+	FXOnTile=upwardLines_quick_noOverlap;
+	FXOnTile=sfx_DramaticN_quiet;
+	FXOnTile=ping_noOverlap;
+[AvAffecterAoE]
+	ID=shana_necrotize3;
+	cloneFrom=adjacentAndSelf+2;
+	needsLoS=false;
+	needsLoE=false;
+	airborne=true;
+	arc=true;
+	ignoreCannotTarget=true;
+
+
+-- Rot.
+[AvAffecter]
+	ID=shana_necrotize3;
+-- Set to HP just for testing.
+	actorValue=HP;
+	magnitude=-c:HPMax;
+	duration=-2;
+--	actorValue=ari_rot_status_enemy;
+--	magnitude=t:ari_rot_status_enemy + g:shana_target_maxhp_gvar;
+--	duration=80;
+	chance=100;
+[AvAffecterAoE]
+	ID=shana_necrotize3;
+	cloneFrom=adjacentAndSelf+2;
+	needsLoS=false;
+	needsLoE=false;
+	airborne=true;
+	arc=true;
+	ignoreCannotTarget=true;
+
+
+
+
+
+
+
+
+
