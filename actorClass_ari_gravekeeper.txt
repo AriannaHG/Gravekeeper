@@ -525,7 +525,7 @@ ruinModeSupportAbility=;
 -----------------------------------------Fake Double Tap workaround ranger
 [ActorClass] name=Ranger;
 ID=shana_ranger_enemy;
-selectableClass=false;
+selectableClass=true;
 icon=classIcon_ranger2;
 journalID=journal_ranger2;
 

@@ -1827,8 +1827,12 @@ text=<itemBig=ari_death_aura_item><title=Aura of Death><brAdj=>At the start of c
 -----------------------------------------Cloned Projectile Mastery that grants appropriate resistances and weaknesses to Plaguebringer Yokaze.
 [SupportAbility]
 ID=shana_projectileMastery_enemy;
-cloneFrom=projectileMastery;
+name=Projectile Mastery;
+tooltip=Ranged attacks do half damage to you.;
+icon=iconP_Sto_projectileMastery;
 
+[SupportAbilityReaction]
+ID=shana_projectileMastery_enemy; element=ranged; damageMultiplier=0.5;
 [SupportAbilityReaction]
 ID=shana_projectileMastery_enemy;
 element=ruin;
