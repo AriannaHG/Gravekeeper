@@ -161,7 +161,7 @@ nextNodeID=;
 
 [DialogNode] ID=ari_gravekeeper_arianna_greeting3;
 animations=;
-statements=Hey visitor, have you come back to tell me you'll take a look at where that Abomination came from?
+statements=Hey visitor, have you come back to tell me you'll take a look at where that Abomination came from?;
 [DialogOption] text=Alright, I'll go take a look.;
 nodeToConnectTo=ari_gravekeeper_arianna_graveyardlich_quest_accept1;
 [DialogOption] text=Sorry, but no.;

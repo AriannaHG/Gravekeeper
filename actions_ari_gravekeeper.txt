@@ -1601,7 +1601,7 @@
 --	FXOnTile=delay_tiny;
 --[AvAffecterAoE]
 --	ID=ari_gravekeeper_foot_grave;
---	cloneFrom=oneTile
+--	cloneFrom=oneTile;
 	
 [AvAffecter]
 	ID=ari_gravekeeper_foot_grave; 
@@ -1617,7 +1617,7 @@
 	FXOnTile=delay_tiny;
 [AvAffecterAoE]
 	ID=ari_gravekeeper_foot_grave;
-	cloneFrom=oneTile
+	cloneFrom=oneTile;
 [AvAffecter]
     ID=ari_gravekeeper_foot_grave; 
     visibleMiss=false; visibleEvaluations=false;
