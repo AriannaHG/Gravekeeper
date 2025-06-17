@@ -306,7 +306,7 @@ combatMode=False;
 [Actor]ID=shana_plaguebow_boss_ari_gravekeeper_city_path_; name=Yokaze;
 actorTypeID=shana_plaguebow_fareem_boss; sprite=; actorClass=scout; secondaryClass=shana_ranger_enemy; actorClass3=ranger; actorClass4=rogue; movementSpeed=6; position=15,11; destination=-1,-1; facingRot=90; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=False; canControlFullyIfControllable=False; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=True; faction=enemy; combatTeam=; clothPalette=pCBlack; skinPalette=p13; armorPalette=pBoneDark; unarmoredPalette=pUnarmored; aiScript=idle; aiTarget=player; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.3; bravery=0.2; intelligence=0.1; honor=0.8; aiRating_bonusToNotMoving=10; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
  timer=0; headSprite=fareem_head; faceSprite=angry_face_female; legsSprite=fareem_legs_armor_heavy; armLSprite=fareem_arm; armRSprite=fareem_arm; torsoSprite=template_torso; shoulderLSprite=ranger_shoulderR; shoulderRSprite=ranger_shoulderL; backSprite=;
- supportAbilities=overeager;  supportAbilities=shana_projectileMastery_enemy;  supportAbilities=prom_scout_nowhere_to_hide_enemy; HP=88; MP=30; HPMax=88; MPMax=30; TrueHPMax=88; TrueMPMax=30; PhysDef=2; skill_Bow=11; skill_Wind=3; skill_Ruin=7; overeager=1; scourge_XP=0; Ro_hide=1; rogue_XP=0; scout_XP=0; Sha_contactShot=3; ranger_XP=0; projectileMastery=1; stormshot_XP=0; stormshot_XP_stars=0; unmaker_XP_stars=0; shana_Ran_doubleTap_enemy=4; shana_Sha_multishot_enemy=3; shana_Sc_trip_enemy=3; shana_ranger_enemy_XP=0;
+ supportAbilities=overeager;  supportAbilities=shana_projectileMastery_enemy;  supportAbilities=prom_scout_nowhere_to_hide_enemy; HP=88; MP=30; HPMax=88; MPMax=30; TrueHPMax=88; TrueMPMax=30; PhysDef=3; MagDef=3; skill_Bow=11; skill_Wind=3; skill_Ruin=7; overeager=1; scourge_XP=0; Ro_hide=1; rogue_XP=0; scout_XP=0; Sha_contactShot=3; ranger_XP=0; projectileMastery=1; stormshot_XP=0; stormshot_XP_stars=0; unmaker_XP_stars=0; shana_Ran_doubleTap_enemy=4; shana_Sha_multishot_enemy=3; shana_Sc_trip_enemy=3; shana_ranger_enemy_XP=0;
 numRanksBought=Sha_contactShot=3;
 numRanksBought=Ro_hide=1;
 numRanksBought=shana_Ran_doubleTap_enemy=4;
@@ -373,7 +373,6 @@ style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=
 
 
 [ActorItem] ID=shana_plaguebow_enemy; cSlot=0; containerID=0;
-[Item] ID=focus_stone; q=1; containedIn=0; cSlot=0;
 [ActorItem] ID=armor_bonemeld; cSlot=2; containerID=1;
 [Item] ID=trigger_ruin; q=1; containedIn=1; cSlot=0;
 [Item] ID=trigger_ruin; q=1; containedIn=1; cSlot=1;

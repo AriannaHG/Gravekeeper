@@ -7070,12 +7070,3 @@ action=shana_spawn_plaguebow;
 [AvAffecterAoE]
 	ID=shana_spawn_plaguebow;
 	cloneFrom=oneTile;
-[AvAffecter]
-	ID=shana_spawn_plaguebow;
-	actorValue=summonItem;
-	magnitude=focus_stone;
-	duration=1;
-	chance=100;
-[AvAffecterAoE]
-	ID=shana_spawn_plaguebow;
-	cloneFrom=oneTile;
