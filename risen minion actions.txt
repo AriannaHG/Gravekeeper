@@ -6986,3 +6986,12 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 	ID=shana_Ran_doubleTap_enemy;
 	 shape=11;
 
+-----------------------------------------------Fake multishot for Plaguebringer Yokaze
+[Action] ID=shana_Sha_multishot_enemy;
+cloneFrom=Sha_multishot;
+cooldown=80;
+
+-----------------------------------------------Fake trip up for Plaguebringer Yokaze
+[Action] ID=shana_Sc_trip_enemy;
+cloneFrom=Sc_trip;
+cooldown=80;

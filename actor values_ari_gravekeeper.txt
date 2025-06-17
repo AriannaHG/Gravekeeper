@@ -928,7 +928,8 @@ action=ari_gravekeeper_soul_collection;
 	actorValue=HP;
 	magnitude=-3;
 	duration=-2;
-	chance=100 * t:ari_ruptured_soul_status;
+	chance=100;
+	fReq=t:ari_ruptured_soul_status;
 	visibleMiss=false;
 [AvAffecterAoE]
 	ID=ari_gravekeeper_soul_collection; shape=17;
