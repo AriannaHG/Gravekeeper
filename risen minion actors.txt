@@ -7044,6 +7044,7 @@ style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=
 cloneFrom=fareem;
 disappearOnDeath=true;
 disappearOnDeath_dropItems=false;
+unarmedAction = ari_infectPunch_enemy;
 
 [ActorTypeReaction] --- Spawns the boss loot.
 ID=shana_plaguebow_fareem_boss;
