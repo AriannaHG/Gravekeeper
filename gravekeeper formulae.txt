@@ -239,6 +239,15 @@ formula=1 + c:ari_rot_status * 0.2;
 [FormulaGlobal] ID=rotSpread3;
 formula=1 + c:ari_rot_status * 0.1;
 
+[FormulaGlobal] ID=didrotSpread;
+formula=c:ari_rot_status * 8 - g:shana_rot_rng;
+
+[FormulaGlobal] ID=didrotSpread2;
+formula=c:ari_rot_status * 5 - g:shana_rot_rng;
+
+[FormulaGlobal] ID=didrotSpread3;
+formula=c:ari_rot_status * 3 - g:shana_rot_rng;
+
 [FormulaGlobal] ID=enemyrotSpread;
 formula=1 + c:ari_rot_status_enemy * 0.35;
 
@@ -247,6 +256,15 @@ formula=1 + c:ari_rot_status_enemy * 0.2;
 
 [FormulaGlobal] ID=enemyrotSpread3;
 formula=1 + c:ari_rot_status_enemy * 0.1;
+
+[FormulaGlobal] ID=didenemyrotSpread;
+formula=c:ari_rot_status_enemy * 8 - g:shana_rot_rng_enemy;
+
+[FormulaGlobal] ID=didenemyrotSpread2;
+formula=c:ari_rot_status_enemy * 5 - g:shana_rot_rng_enemy;
+
+[FormulaGlobal] ID=didenemyrotSpread3;
+formula=c:ari_rot_status_enemy * 3 - g:shana_rot_rng_enemy;
 
 [FormulaGlobal] ID=1rotcalcpt1;
 formula=1 * rxn:ruin;

@@ -1,0 +1,8 @@
+[ActorValue] -----------------------------------------this is a change to vanilla behavior, but it matches prominence's mods and is needed for Yokaze boss passive to function
+ID=invisible;
+cloneFrom=invisible;
+removedByNegativeMagnitude=true;
+canBeRemovedByNonspecificAVEffectRemoval = true;
+[ActorValueReaction]
+ID=invisible;
+element=dispel; newID=X;

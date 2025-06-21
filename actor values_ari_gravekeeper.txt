@@ -90,19 +90,31 @@ action=ari_rot_damage;
 	special=usableEvenWhenReacting;
 	special=usableEvenWhenYourTurn;
 	special=dontDelayOtherActions;
-	
+
 [ActionAoE] 
 	ID=ari_rot_damage; 
 	cloneFrom=oneTile;
 
 [AvAffecter]
+    ID=ari_rot_damage; --set rot rng
+    visibleMiss=false; visibleEvaluations=false;
+    actorValue=task;
+    magnitude=setGlobalVar_math,shana_rot_rng,m:rand(100);
+    duration=1;
+    chance=100;
+
+[AvAffecterAoE]
+    ID=ari_rot_damage;
+    cloneFrom=oneTile;
+
+[AvAffecter] --spread 1
 	ID=ari_rot_damage; 
 	visibleEvaluations=true;
 	harmful=true;
 	actorValue=ari_rot_status;
 	magnitude=floor:d:rotSpread * rxn:ruin * m:casterIsntTarget + d:1rotcalc * m:casterIsTarget + t:ari_rot_status;
 	duration=80;
-	chance=c:ari_rot_status * 8;
+	chance=100;
 	visibleMiss=false;
 	FXOnHit=spiral2;
 	FXOnHitColor=Green;
@@ -121,14 +133,37 @@ action=ari_rot_damage;
 	bypassAll=true;
 	canSelectAllies=true;
 	canSelectEnemies=false;
-[AvAffecter]
+	fReq=d:didrotSpread;
+
+[AvAffecter] --spread fx 1
+	ID=ari_rot_damage;
+	chance=100;
+	visibleMiss=false;
+	FXOnTile=chargeFast_overlap; --t1 spread
+	FXOnTileColor=Black;
+	FXOnTile=chargeFast_overlap;
+	FXOnTileColor=DarkGreen;
+
+[AvAffecterAoE]
+	ID=ari_rot_damage;
+	aoeCasterAsOrigin = true;
+	cloneFrom=adjacentAndSelf;
+	minRange=1;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=true;
+	bypassAll=true;
+	fReq=d:didrotSpread;
+
+[AvAffecter] --spread 2
 	ID=ari_rot_damage; 
 	visibleEvaluations=true;
 	harmful=true;
 	actorValue=ari_rot_status;
 	magnitude=floor:d:rotSpread2 * rxn:ruin * m:casterIsntTarget + d:1rotcalc * m:casterIsTarget + t:ari_rot_status;
 	duration=80;
-	chance=moreThan:5:c:ari_rot_status * thisPreviousAVHit:ari_rot_damage * c:ari_rot_status * 5;
+	chance=100;
 	visibleMiss=false;
 	FXOnHit=spiral2;
 	FXOnHitColor=Green;
@@ -147,14 +182,37 @@ action=ari_rot_damage;
 	bypassAll=true;
 	canSelectAllies=true;
 	canSelectEnemies=false;
-[AvAffecter]
+	fReq=d:didrotSpread2 * moreThan:5:c:ari_rot_status;
+
+[AvAffecter] --spread fx 2
+	ID=ari_rot_damage;
+	chance=100;
+	visibleMiss=false;
+	FXOnTile=chargeFast_overlap; --t2 spread
+	FXOnTileColor=Black;
+	FXOnTile=chargeFast_overlap;
+	FXOnTileColor=OliveDrab;
+
+[AvAffecterAoE]
+	ID=ari_rot_damage;
+	aoeCasterAsOrigin = true;
+	cloneFrom=adjacent+1;
+	minRange=1;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=true;
+	bypassAll=true;
+	fReq=d:didrotSpread2 * moreThan:5:c:ari_rot_status;
+
+[AvAffecter] --spread 3
 	ID=ari_rot_damage; 
 	visibleEvaluations=true;
 	harmful=true;
 	actorValue=ari_rot_status;
 	magnitude=floor:d:rotSpread3 * rxn:ruin * m:casterIsntTarget + d:1rotcalc * m:casterIsTarget + t:ari_rot_status;
 	duration=80;
-	chance=moreThan:13:c:ari_rot_status * thisPreviousAVHit:ari_rot_damage * c:ari_rot_status * 3;
+	chance=100;
 	visibleMiss=false;
 	FXOnHit=spiral2;
 	FXOnHitColor=Green;
@@ -173,7 +231,30 @@ action=ari_rot_damage;
 	bypassAll=true;
 	canSelectAllies=true;
 	canSelectEnemies=false;
-[AvAffecter]
+	fReq=d:didrotSpread3 * moreThan:13:c:ari_rot_status;
+
+[AvAffecter] --spread fx 3
+	ID=ari_rot_damage;
+	chance=100;
+	visibleMiss=false;
+	FXOnTile=chargeFast_overlap; --t3 spread
+    FXOnTileColor=Black;
+	FXOnTile=chargeFast_overlap;
+	FXOnTileColor=Olive;
+
+[AvAffecterAoE]
+	ID=ari_rot_damage;
+	aoeCasterAsOrigin = true;
+	cloneFrom=adjacent+2;
+	minRange=1;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=true;
+	bypassAll=true;
+	fReq=d:didrotSpread3 * moreThan:13:c:ari_rot_status;
+
+[AvAffecter] --deal damage
 	ID=ari_rot_damage; 
 	visibleEvaluations=true;
 	harmful=true;
@@ -183,11 +264,14 @@ action=ari_rot_damage;
 	chance=100;
 	visibleMiss=false;
 	element=ruin;
-	
 	FXOnTile=spiral2;
 	FXOnTileColor=Green;
+	FXOnHit=shroudExplode;
+    FXOnHitColor=Black;
+   	FXOnHit=darken; --take damage
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=DarkGreen;
+
 [AvAffecterAoE]
 	ID=ari_rot_damage;
 	aoeCasterAsOrigin = true;
@@ -4423,7 +4507,7 @@ action=ari_rot_raise_enemy;
 	occupyAll=true;
 
 
---Deal damage at the end of an actor's turn and attempt to spread rot based on stack size
+--attempt to spread rot based on stack size, then deal damage at the end of an actor's turn
 [ActorValueReaction]
 ID=ari_rot_status_enemy; element=endTurn;
 action=ari_rot_damage_enemy;
@@ -4440,13 +4524,25 @@ action=ari_rot_damage_enemy;
 	cloneFrom=oneTile;
 
 [AvAffecter]
+    ID=ari_rot_damage_enemy; --set rot rng
+    visibleMiss=false; visibleEvaluations=false;
+    actorValue=task;
+    magnitude=setGlobalVar_math,shana_rot_rng_enemy,m:rand(100); -----------------here
+    duration=1;
+    chance=100;
+
+[AvAffecterAoE]
+    ID=ari_rot_damage_enemy;
+    cloneFrom=oneTile;
+
+[AvAffecter] --spread 1
 	ID=ari_rot_damage_enemy; 
 	visibleEvaluations=true;
 	harmful=true;
 	actorValue=ari_rot_status_enemy;
 	magnitude=floor:d:enemyrotSpread * rxn:ruin * m:casterIsntTarget + d:1rotcalc * m:casterIsTarget + t:ari_rot_status_enemy;
 	duration=80;
-	chance=c:ari_rot_status_enemy * 8;
+	chance=100;
 	visibleMiss=false;
 	FXOnHit=spiral2;
 	FXOnHitColor=Green;
@@ -4465,15 +4561,38 @@ action=ari_rot_damage_enemy;
 	bypassAll=true;
 	canSelectAllies=true;
 	canSelectEnemies=false;
+	fReq=d:didenemyrotSpread;
 
-[AvAffecter]
+[AvAffecter] --spread fx 1
+	ID=ari_rot_damage_enemy;
+	chance=100;
+	visibleMiss=false;
+	FXOnTile=chargeFast_overlap; --t1 spread
+	FXOnTileColor=Black;
+	FXOnTile=chargeFast_overlap;
+	FXOnTileColor=DarkGreen;
+
+[AvAffecterAoE]
+	ID=ari_rot_damage_enemy;
+	aoeCasterAsOrigin = true;
+	cloneFrom=adjacentAndSelf;
+	minRange=1;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=true;
+	bypassAll=true;
+	fReq=d:didenemyrotSpread;
+
+
+[AvAffecter] --spread 2
 	ID=ari_rot_damage_enemy; 
 	visibleEvaluations=true;
 	harmful=true;
 	actorValue=ari_rot_status_enemy;
 	magnitude=floor:d:enemyrotSpread2 * rxn:ruin * m:casterIsntTarget + d:1rotcalc * m:casterIsTarget + t:ari_rot_status_enemy;
 	duration=80;
-	chance=moreThan:5:c:ari_rot_status_enemy * thisPreviousAVHit:ari_rot_damage_enemy * c:ari_rot_status_enemy * 5;
+	chance=100;
 	visibleMiss=false;
 	FXOnHit=spiral2;
 	FXOnHitColor=Green;
@@ -4492,14 +4611,37 @@ action=ari_rot_damage_enemy;
 	bypassAll=true;
 	canSelectAllies=true;
 	canSelectEnemies=false;
-[AvAffecter]
+	fReq=d:didenemyrotSpread2 * moreThan:5:c:ari_rot_status_enemy;
+
+[AvAffecter] --spread fx 2
+	ID=ari_rot_damage_enemy;
+	chance=100;
+	visibleMiss=false;
+	FXOnTile=chargeFast_overlap; --t2 spread
+	FXOnTileColor=Black;
+	FXOnTile=chargeFast_overlap;
+	FXOnTileColor=OliveDrab;
+
+[AvAffecterAoE]
+	ID=ari_rot_damage_enemy;
+	aoeCasterAsOrigin = true;
+	cloneFrom=adjacent+1;
+	minRange=1;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=true;
+	bypassAll=true;
+	fReq=d:didenemyrotSpread2 * moreThan:5:c:ari_rot_status_enemy;
+
+[AvAffecter] --spread 3
 	ID=ari_rot_damage_enemy; 
 	visibleEvaluations=true;
 	harmful=true;
 	actorValue=ari_rot_status_enemy;
 	magnitude=floor:d:enemyrotSpread3 * rxn:ruin * m:casterIsntTarget + d:1rotcalc * m:casterIsTarget + t:ari_rot_status_enemy;
 	duration=80;
-	chance=moreThan:13:c:ari_rot_status_enemy * thisPreviousAVHit:ari_rot_damage_enemy * c:ari_rot_status_enemy * 3;
+	chance=100;
 	visibleMiss=false;
 	FXOnHit=spiral2;
 	FXOnHitColor=Green;
@@ -4518,7 +4660,30 @@ action=ari_rot_damage_enemy;
 	bypassAll=true;
 	canSelectAllies=true;
 	canSelectEnemies=false;
-[AvAffecter]
+	fReq=d:didenemyrotSpread3 * moreThan:13:c:ari_rot_status_enemy;
+
+[AvAffecter] --spread fx 3
+	ID=ari_rot_damage_enemy;
+	chance=100;
+	visibleMiss=false;
+	FXOnTile=chargeFast_overlap; --t3 spread
+    FXOnTileColor=Black;
+	FXOnTile=chargeFast_overlap;
+	FXOnTileColor=Olive;
+
+[AvAffecterAoE]
+	ID=ari_rot_damage_enemy;
+	aoeCasterAsOrigin = true;
+	cloneFrom=adjacent+2;
+	minRange=1;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=true;
+	bypassAll=true;
+	fReq=d:didenemyrotSpread3 * moreThan:13:c:ari_rot_status_enemy;
+
+[AvAffecter] --deal damage
 	ID=ari_rot_damage_enemy; 
 	visibleEvaluations=true;
 	harmful=true;
