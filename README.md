@@ -47,6 +47,9 @@ Grimoires can be crafted from [Gossamer](https://steamcommunity.com/sharedfiles/
 
 Will your legions overrun the enemy, or will you succumb to the demands of the dead?
 
+## DISCLAIMER
+This mod alters the behavior of the vanilla Invisibility status effect such that it is removed by Dispel (which is in line with Prominence's excellent mods) and Purge (which is not in line with Prominence's excellent mods). 
+
 ---
 
 ## *Credits*
