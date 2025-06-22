@@ -525,7 +525,7 @@ ruinModeSupportAbility=;
 -----------------------------------------Fake everything workaround ranger
 [ActorClass] name=Ranger;
 ID=shana_ranger_enemy;
-selectableClass=true;
+selectableClass=false;
 icon=classIcon_ranger2;
 journalID=journal_ranger2;
 

@@ -6,3 +6,6 @@ canBeRemovedByNonspecificAVEffectRemoval = true;
 [ActorValueReaction]
 ID=invisible;
 element=dispel; newID=X;
+[ActorValueReaction]
+ID=invisible;
+actorValue=purge; newID=X;
