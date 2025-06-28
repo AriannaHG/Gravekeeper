@@ -1,0 +1,353 @@
+[SupportAbility]
+ID=shana_festering_fulcrum;
+name=Festering Fulcrum;
+icon=icon_shana_festering_fulcrum;
+tooltip=When the final bearer of this ability dies, all allies are stunned for 30 <icon=time>, lose their <icon=PhysDef> <icon=MagDef> and will lose a third of their maximum <icon=HP> at the end of each of their turns, rounded up.
+
+----------------------------------------------------------------------------------------------------Define Unsustainable status effect (not visible to player by design since lasts for rest of battle more or less)
+
+[FormulaGlobal] ID=shana_unsustainablehp;
+formula=t:HPMax * 0.34; --yes, the description is a filthy liar but it's in the player's favor lmao
+
+[FormulaGlobal] ID=shana_ceilingunsustainablehp;
+formula=ceiling:d:shana_unsustainablehp * -1;
+
+[ActorValue]
+ID=shana_unsustainable_status;
+name=Unsustainable;
+--icon=<icon=icon_gravekeeper_rot>;
+--bubbleIcon=icon_rot;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 1;
+minimum=0;
+harmfulMagnitude = 1;
+--bonusesMultiplier = 1;
+animationOnHarmful = pain;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = false;
+showDamageNumbersMagnitude = false;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = false;
+showDamageNumbersElements = false;
+showDamageNumbersIconInTooltips = false;
+damageNumberColor_Positive = White;
+damageNumberColor_Negative = White;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = false;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = false;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+
+[ActorValueReaction]
+ID=shana_unsustainable_status; element=endTurn;
+action=shana_unsustainable_status_act;
+
+[Action] ID=shana_unsustainable_status_act;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+[ActionAoE]
+	ID=shana_unsustainable_status_act;
+	cloneFrom=oneTile;
+[AvAffecter] --lose 34% hp rounded up
+	ID=shana_unsustainable_status_act;
+	actorValue=HP;
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=true;
+	magnitude=shana_ceilingunsustainablehp;
+	duration=-2;
+	chance=100;
+	element=HPbased;
+[AvAffecterAoE]
+	ID=shana_unsustainable_status_act;
+	cloneFrom=oneTile;
+
+-------------------------------------------------------------------------------------------------------We return to your regularly scheduled Festering Fulcrum.
+[SupportAbilityReaction]
+ID=shana_festering_fulcrum; element=incapacitated; action=shana_festering_fulcrum_act; --allActors_nonIncapped or shape=17
+
+[Action] ID=shana_festering_fulcrum_act;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+[ActionAoE]
+	ID=shana_festering_fulcrum_act;
+	cloneFrom=oneTile;
+
+[AvAffecter]
+    ID=shana_festering_fulcrum_act; --set shana_fulcrums_remaining global var to zero
+    visibleMiss=false; visibleEvaluations=false;
+    actorValue=task;
+    magnitude=setGlobalVar_math,shana_fulcrums_remaining,0;
+    duration=1;
+    chance=100;
+[AvAffecterAoE]
+    ID=shana_festering_fulcrum_act;
+    cloneFrom=oneTile;
+
+[AvAffecter]
+    ID=shana_festering_fulcrum_act; --increment shana_fulcrums_remaining by 1 for each remaining bearer of Festering Fulcrum.
+    visibleMiss=false; visibleEvaluations=false;
+    actorValue=task;
+    magnitude=setGlobalVar_math,shana_fulcrums_remaining,g:shana_fulcrums_remaining;
+    duration=1;
+    chance=100;
+[AvAffecterAoE]
+    ID=shana_festering_fulcrum_act;
+    shape=17;
+    arc=true;
+    airborne=true;
+    needsLoE=false;
+    needsLoS=false;
+    bypassAll=true;
+    canSelectAllies=true;
+    canSelectEnemies=false;
+
+[AvAffecter]
+    ID=shana_festering_fulcrum_act; --Stun.
+    visibleMiss=false; visibleEvaluations=false;
+    actorValue=stun;
+    magnitude=1;
+    duration=30;
+    chance=100;
+[AvAffecterAoE]
+    ID=shana_festering_fulcrum_act;
+    shape=17;
+    arc=true;
+    airborne=true;
+    needsLoE=false;
+    needsLoS=false;
+    bypassAll=true;
+    canSelectAllies=true;
+    canSelectEnemies=false;
+    fReq=gIs0:shana_fulcrums_remaining;
+
+[AvAffecter]
+    ID=shana_festering_fulcrum_act; --Remove Phys Def for 47 turns or ticks out of combat, in case this somehow triggers on player party.
+    visibleMiss=false; visibleEvaluations=false;
+    actorValue=PhysDef;
+    magnitude=setGlobalVar_math,shana_fulcrums_remaining,g:shana_fulcrums_remaining;
+    duration=-50;
+    chance=100;
+[AvAffecterAoE]
+    ID=shana_festering_fulcrum_act;
+    shape=17;
+    arc=true;
+    airborne=true;
+    needsLoE=false;
+    needsLoS=false;
+    bypassAll=true;
+    canSelectAllies=true;
+    canSelectEnemies=false;
+    fReq=gIs0:shana_fulcrums_remaining;
+
+[AvAffecter]
+    ID=shana_festering_fulcrum_act; --Remove Mag Def for 47 turns or ticks out of combat, in case this somehow triggers on player party.
+    visibleMiss=false; visibleEvaluations=false;
+    actorValue=MagDef;
+    magnitude=setGlobalVar_math,shana_fulcrums_remaining,g:shana_fulcrums_remaining;
+    duration=-50;
+    chance=100;
+[AvAffecterAoE]
+    ID=shana_festering_fulcrum_act;
+    shape=17;
+    arc=true;
+    airborne=true;
+    needsLoE=false;
+    needsLoS=false;
+    bypassAll=true;
+    canSelectAllies=true;
+    canSelectEnemies=false;
+    fReq=gIs0:shana_fulcrums_remaining;
+
+[AvAffecter]
+    ID=shana_festering_fulcrum_act; --inflict Unsustainable (34% hp damage per turn, rounded up) for 47 turns or ticks out of combat, in case this somehow triggers on player party.
+    visibleMiss=false; visibleEvaluations=false;
+    actorValue=shana_unsustainable_status;
+    magnitude=1;
+    duration=-50;
+    chance=100;
+[AvAffecterAoE]
+    ID=shana_festering_fulcrum_act;
+    shape=17;
+    arc=true;
+    airborne=true;
+    needsLoE=false;
+    needsLoS=false;
+    bypassAll=true;
+    canSelectAllies=true;
+    canSelectEnemies=false;
+    fReq=gIs0:shana_fulcrums_remaining;
+
+
+
+
+[SupportAbility]
+ID=shana_instability;
+name=Unstable Essence;
+icon=icon_shana_instability;
+tooltip=You will be interrupted if hit by physical damage while channeling a spell. If this occurs, the resulting backlash pushes and inflicts Ruin damage equal to your <icon=ruinSkill> to all adjacent, and the effects of this passive are disabled for 120 <icon=time>.;
+
+----------------------------------------------------------------Dampened Essence AV
+[ActorValue]
+ID=shana_dampened_essence;
+name=Dampened Essence;
+icon=<icon=icon_shana_dampened_essence>;
+bubbleIcon=icon_shana_dampened_essence_small;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 1;
+minimum=0;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = false;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+
+[SupportAbilityReaction]
+ID=shana_instability; element=physical; actorValue=HP; action=shana_instability_act;
+
+[Action] ID=shana_instability_act;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+[ActionAoE]
+	ID=shana_instability_act;
+	cloneFrom=oneTile;
+	canSelectStackedActors=true;
+	fReq=tCancel - c:shana_dampened_essence;
+
+[AvAffecter] --interrupt self
+	ID=shana_instability_act;
+	visibleMiss = false;
+	actorValue=cancel;
+	magnitude=1;
+	chance=100;
+	duration=-2;
+[AvAffecterAoE]
+	ID=shana_instability_act;
+	cloneFrom=oneTile;
+
+[AvAffecter] --do ruin damage to adjacent
+	ID=shana_instability_act;
+	actorValue=HP;
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=true;
+	magnitude=c:skill_Ruin;
+	duration=-2;
+	chance=100;
+	element=ruin;
+[AvAffecterAoE]
+	ID=shana_instability_act;
+	cloneFrom=adjacent;
+
+
+[AvAffecter] --dampened essence
+	ID=shana_instability_act;
+	visibleMiss = false;
+	actorValue=shana_dampened_essence;
+	magnitude=1;
+	chance=100;
+	duration=120;
+[AvAffecterAoE]
+	ID=shana_instability_act;
+	cloneFrom=oneTile;
+
+
+
+[SupportAbility]
+ID=shana_critical_autolyze;
+name=Critical Autolyze;
+icon=icon_shana_critical_autolyze;
+tooltip=If you are in critical condition (25% <icon=HP> or below) at the start of your turn, grant all allies a stacking +6 <icon=PhysAtk> and +6 <icon=ruinSkill> for 60 <time>, then lose 5% of your maximum <icon=HP>, rounded up.;
+
+[SupportAbilityReaction]
+ID=shana_critical_autolyze; element=timerUp; action=shana_critical_autolyze_act;
+
+[Action] ID=shana_critical_autolyze_act;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+[ActionAoE]
+	ID=shana_critical_autolyze_act;
+	cloneFrom=oneTile;
+	canSelectStackedActors=true;
+	fReq=m:cCritical;
+[AvAffecter] --6 phys
+	ID=shana_critical_autolyze_act;
+	actorValue=PhysAtk;
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=false;
+	magnitude=6 + cFromSource:PhysAtk:shana_critical_autolyze_act;
+	duration=60;
+	chance=100;
+	FXOnHit=sparkles;
+	FXOnHitColor=Black;
+	FXOnHit=sparkles;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=shana_critical_autolyze_act;
+	cloneFrom=allAllies;
+[AvAffecter] --6 ruin
+	ID=shana_critical_autolyze_act;
+	actorValue=ruinSkill;
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=false;
+	magnitude=6 + cFromSource:ruinSkill:shana_critical_autolyze_act;
+	duration=60;
+	chance=100;
+[AvAffecterAoE]
+	ID=shana_critical_autolyze_act;
+	cloneFrom=allAllies;
+
+[FormulaGlobal] ID=shana_autolyzehp;
+formula=t:HPMax * 0.05;
+
+[FormulaGlobal] ID=shana_ceilingautolyzehp;
+formula=ceiling:d:shana_autolyzehp * -1;
+
+[AvAffecter] --lose 5% hp rounded up
+	ID=shana_critical_autolyze_act;
+	actorValue=HP;
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=true;
+	magnitude=shana_ceilingautolyzehp;
+	duration=-2;
+	chance=100;
+	element=HPbased;
+[AvAffecterAoE]
+	ID=shana_critical_autolyze_act;
+	cloneFrom=oneTile;
