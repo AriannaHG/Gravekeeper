@@ -16,8 +16,9 @@ ID=shana_martyrs_raiment; actorValue=skill_Ruin; magnitude=2; duration=-1;
 [ItemReaction]-------------------------------------------------------------- the actual damage soaking action. Lo, to the aspirant who wishes to make a similar item - special=canReactMultipleTimesPerTurn; is kind of fucked because the way reactions work is: actorValues=HP; element=physical; means that it will proc if the action has the physical element and changes your hp. However, if multiple elements are matched, it would proc multiple times. For an extreme case a volskarn sword action matched against actor value hp and element all would have all 5 of its elements match all, thus making it proc 5 times. Restricting it to physical was not by choice lol
 ID=shana_martyrs_raiment;
 actorValues=HP; element=physical; action=shana_martyrs_raiment_act; aiRatingMod=8; ------the AI rating mod adds 8 hp worth of "incentive" for the AI to proc this reaction
+
 --[ItemReaction]
---ID=shana_martyrs_raiment; -------------------------------------------------- set shana_HPBeforeBeingHit AV on equip to initialize
+--ID=shana_martyrs_raiment; -------------------------------------------------- commented out because game crashes on main menu if it tries to do this set shana_HPBeforeBeingHit AV on equip to initialize
 --element=itemEquipped; action=shana_martyrs_raiment_set_hp_count;
 
 [ItemReaction]
@@ -129,7 +130,7 @@ category=equipment; halfPage=false; rarity=4;
 title=Martyr's Raiment;
 text=<itemBig=shana_martyrs_raiment><title=Martyr's Raiment><brAdj=>   An unassuming robe of mundane origin, once donned by a frail old woman who used her failing, plague-ridden body to buy time for the citizens of Barrow to flee the undead hordes.<n=>   While in combat, any instance of physical damage exceeding 20% of the wearer's maximum <icon=HP> has the excess damage converted to a delayed, incurable, untransferable wound. This wound is borne in full at the end of the wearer's turn, bypassing all attempts at mitigation.<n=>   Additionally, the wearer will find themselves a more attractive target to physically inclined adversaries, as though some unseen force were subtly trying to recreate the original bearer's sacrifice.;
 
-
+--todo:issue:if you have negate and get hit, you gain hp and redeemed suffering equal to the damage prevented. you get hit first, then the reaction will always think you don't have negate. bruh. possible fix: add a check for negate with the hp sync thing.
 
 --------------------------------------------------------Martyrs Raiment Formulas --change dmg healed for low hp case
 [FormulaGlobal] ID=shana_0.2_maxhp;
@@ -151,7 +152,7 @@ formula=moreThan:0:d:shana_current_hp_minus_threshold;
 formula=m:cLastDmgTaken - d:shana_martyrs_raiment_threshold;
 
 [FormulaGlobal] ID=shana_martyrs_raiment_did_it_proc;
-formula=moreThan:0:d:shana_martyrs_raiment_damage_prevented - c:negate; --prevent negate still giving debuff
+formula=moreThan:0:d:shana_martyrs_raiment_damage_prevented - t:negate; --prevent negate still giving debuff
 
 [FormulaGlobal] ID=shana_martyrs_raiment_heal_cap_after_hit; 
 formula=c:shana_HPBeforeBeingHit - m:cLastDmgTaken + d:shana_martyrs_raiment_damage_prevented;

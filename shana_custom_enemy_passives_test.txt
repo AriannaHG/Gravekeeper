@@ -228,7 +228,7 @@ name=Unstable Essence;
 icon=icon_gravekeeper_blood_of_the_master;
 tooltip=You will be interrupted if hit by physical damage while channeling a spell. <n=>If this occurs, the resulting backlash pushes and inflicts Ruin damage equal to your <icon=skill_Ruin> to all adjacent, and the effects of this passive are disabled for 120 <icon=time>.;
 
-----------------------------------------------------------------Dampened Essence AV
+----------------------------------------------------------------Dampened Essence AV todo: this isn't doing anything besides canceling,
 [ActorValue]
 ID=shana_dampened_essence;
 name=Dampened Essence;
@@ -273,7 +273,7 @@ ID=shana_instability; element=physical; actorValue=HP; action=shana_instability_
 	ID=shana_instability_act;
 	cloneFrom=oneTile;
 	canSelectStackedActors=true;
-	fReq=tCancel - c:shana_dampened_essence;
+	fReq=m:tCancel - c:shana_dampened_essence;
 
 [AvAffecter] --interrupt self
 	ID=shana_instability_act;
@@ -332,16 +332,25 @@ ID=shana_critical_autolyze; element=timerUp; action=shana_critical_autolyze_act;
 	ID=shana_critical_autolyze_act;
 	cloneFrom=oneTile;
 	canSelectStackedActors=true;
-	fReq=m:cCritical;
+[AvAffecter] --this is a workaround to check if the caster (target) is in critical condition as reactions don't count the "caster" as the caster.
+	ID=shana_critical_autolyze_act;
+	actorValue=skill_Ruin;
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=false;
+	chance=100 * m:tCritical;
+[AvAffecterAoE]
+	ID=shana_critical_autolyze_act;
+	cloneFrom=oneTile;
 [AvAffecter] --6 phys
 	ID=shana_critical_autolyze_act;
 	actorValue=PhysAtk;
 	visibleEvaluations=true;
 	visibleMiss=false;
 	harmful=false;
-	magnitude=6 + cFromSource:PhysAtk:shana_critical_autolyze_act;
+	magnitude=6 + cFromSource:PhysAtk:shana_critical_autolyze_act; --stack
 	duration=60;
-	chance=100;
+	chance=100 * thisPreviousAVHit:shana_critical_autolyze_act;
 	FXOnHit=sparkles;
 	FXOnHitColor=Black;
 	FXOnHit=sparkles;
@@ -351,13 +360,13 @@ ID=shana_critical_autolyze; element=timerUp; action=shana_critical_autolyze_act;
 	cloneFrom=allAllies;
 [AvAffecter] --6 ruin
 	ID=shana_critical_autolyze_act;
-	actorValue=ruinSkill;
+	actorValue=skill_Ruin;
 	visibleEvaluations=true;
 	visibleMiss=false;
 	harmful=false;
-	magnitude=6 + cFromSource:ruinSkill:shana_critical_autolyze_act;
+	magnitude=6 + cFromSource:skill_Ruin:shana_critical_autolyze_act;
 	duration=60;
-	chance=100;
+	chance=100 * thisPreviousAVHit:shana_critical_autolyze_act;
 [AvAffecterAoE]
 	ID=shana_critical_autolyze_act;
 	cloneFrom=allAllies;
@@ -365,8 +374,11 @@ ID=shana_critical_autolyze; element=timerUp; action=shana_critical_autolyze_act;
 [FormulaGlobal] ID=shana_autolyzehp;
 formula=t:HPMax * 0.05;
 
+[FormulaGlobal] ID=shana_positiveceilingautolyzehp;
+formula=ceiling:d:shana_autolyzehp;
+
 [FormulaGlobal] ID=shana_ceilingautolyzehp;
-formula=ceiling:d:shana_autolyzehp * -1;
+formula=-d:shana_positiveceilingautolyzehp;
 
 [AvAffecter] --lose 5% hp rounded up
 	ID=shana_critical_autolyze_act;
@@ -374,9 +386,9 @@ formula=ceiling:d:shana_autolyzehp * -1;
 	visibleEvaluations=true;
 	visibleMiss=false;
 	harmful=true;
-	magnitude=shana_ceilingautolyzehp;
+	magnitude=d:shana_ceilingautolyzehp;
 	duration=-2;
-	chance=100;
+	chance=100 * thisPreviousAVHit:shana_critical_autolyze_act;
 	element=HPbased;
 [AvAffecterAoE]
 	ID=shana_critical_autolyze_act;
