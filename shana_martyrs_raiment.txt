@@ -12,6 +12,13 @@ ID=shana_martyrs_raiment; actorValue=skill_Life; magnitude=2; duration=-1;
 [ItemEffect]
 ID=shana_martyrs_raiment; actorValue=skill_Ruin; magnitude=2; duration=-1;
 
+--todo:
+--define shana_NegateBeforeBeingHit AV done
+--add two avaffecters, one that checks for negate and sets it to 1, and one that checks for not having negate and then sets it to 0 done
+--paste these two avaffecter into shana_martyrs_raiment_set_hp_count shana_martyrs_raiment_act and shana_martyrs_raiment_set_hp_count_multireact done
+--add an itemreaction to negate av that calls the shana_martyrs_raiment_set_hp_count done
+--change all the chances of shana_martyrs_raiment_act so that they do NOT proc if you have negate
+--test:pummel with hits being more than 20 percent hp and recipient being under negate
 
 [ItemReaction]-------------------------------------------------------------- the actual damage soaking action. Lo, to the aspirant who wishes to make a similar item - special=canReactMultipleTimesPerTurn; is kind of fucked because the way reactions work is: actorValues=HP; element=physical; means that it will proc if the action has the physical element and changes your hp. However, if multiple elements are matched, it would proc multiple times. For an extreme case a volskarn sword action matched against actor value hp and element all would have all 5 of its elements match all, thus making it proc 5 times. Restricting it to physical was not by choice lol
 ID=shana_martyrs_raiment;
@@ -22,15 +29,19 @@ actorValues=HP; element=physical; action=shana_martyrs_raiment_act; aiRatingMod=
 --element=itemEquipped; action=shana_martyrs_raiment_set_hp_count;
 
 [ItemReaction]
-ID=shana_martyrs_raiment; -------------------------------------------------- set shana_HPBeforeBeingHit AV on combat start to initialize
+ID=shana_martyrs_raiment; -------------------------------------------------- set shana_HPBeforeBeingHit and shana_NegateBeforeBeingHit AV on combat start to initialize
 element=combatStart; action=shana_martyrs_raiment_set_hp_count;
 
 [ItemReaction]
-ID=shana_martyrs_raiment; -------------------------------------------------- set shana_HPBeforeBeingHit AV on revive
+ID=shana_martyrs_raiment; -------------------------------------------------- set shana_HPBeforeBeingHit and shana_NegateBeforeBeingHit AV on revive
 actorValues=revive; action=shana_martyrs_raiment_set_hp_count;
 
 [ItemReaction]
-ID=shana_martyrs_raiment; -------------------------------------------------- set shana_HPBeforeBeingHit AV on any element, only happens in combat
+ID=shana_martyrs_raiment; -------------------------------------------------- set shana_HPBeforeBeingHit and shana_NegateBeforeBeingHit AV on negate
+actorValues=negate; action=shana_martyrs_raiment_set_hp_count;
+
+[ItemReaction]
+ID=shana_martyrs_raiment; -------------------------------------------------- set shana_HPBeforeBeingHit and shana_NegateBeforeBeingHit AV on any element, only happens in combat
 actorValues=HP; element=any; action=shana_martyrs_raiment_set_hp_count_multireact;
 
 
@@ -72,6 +83,46 @@ ID=shana_HPBeforeBeingHit;
 element=combatEnd; newID=X;
 
 
+[ActorValue] --------------------------------------------------------------- define shana_NegateBeforeBeingHit AV
+ID=shana_NegateBeforeBeingHit;
+name=You Have Negate Before Being Hit (this should not be visible);
+icon=;
+bubbleIcon=;
+
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = 0;
+affectsActors = true;
+canAffectIncapped = true;
+showDamageNumbers = false;
+showDamageNumbersMagnitude = false;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = false;
+showDamageNumbersElements = false;
+showDamageNumbersIconInTooltips = false;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0;
+elementReactionModifiesDuration = false;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+removedByNegativeMagnitude=true; --this isn't in the above av, this is so I can remove it with the check avaffecter
+recordInActorData = true;
+showEvaluationInfo = false;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+[ActorValueReaction] -----------------------------------------------------------------------------------------------------------------------garbage collection
+ID=shana_NegateBeforeBeingHit;
+element=combatEnd; newID=X;
+
+--todo: double check if raiment works now against the mythril bow with ruin trigger
+--todo: do regression test with old version of this file against mythril bow with ruin trigger
+--todo: using salvation prominence's caretaker mod as an example, clone the vanilla negate and make it call the update action when its duration naturally runs out
+
 [Action] ID=shana_martyrs_raiment_set_hp_count; --------------------------------------------------------------------------------------------set equal to current hp at the time its called. 
 harmful=false;
 special=usableEvenWhenCantAct;
@@ -80,7 +131,7 @@ special=usableEvenWhenYourTurn;
 [ActionAoE] 
     ID=shana_martyrs_raiment_set_hp_count;
     cloneFrom=oneTile;
-[AvAffecter] 
+[AvAffecter] ---------------------------------------------------VERY IMPORTANT - duration -1 lets the av have negative values since its treated similarly to say an equip with negative stats. duration -2 locks it to a positive value
     ID=shana_martyrs_raiment_set_hp_count; 
     harmful=false;
     actorValue=shana_HPBeforeBeingHit; 
@@ -95,7 +146,28 @@ special=usableEvenWhenYourTurn;
 [AvAffecterAoE]
     ID=shana_martyrs_raiment_set_hp_count;
     cloneFrom=oneTile;
-
+[AvAffecter]--do you have negate?
+    ID=shana_martyrs_raiment_set_hp_count;
+    harmful=false;
+    actorValue=shana_NegateBeforeBeingHit;
+    magnitude=1;
+    duration=-2;
+    chance=100 * t:negate;
+    visibleMiss=false;
+[AvAffecterAoE]
+    ID=shana_martyrs_raiment_set_hp_count;
+    cloneFrom=oneTile;
+[AvAffecter]--do you NOT have negate?
+    ID=shana_martyrs_raiment_set_hp_count;
+    harmful=false;
+    actorValue=shana_NegateBeforeBeingHit;
+    magnitude=-1; --removed
+    duration=-2;
+    chance=100 - 100 * t:negate;
+    visibleMiss=false;
+[AvAffecterAoE]
+    ID=shana_martyrs_raiment_set_hp_count;
+    cloneFrom=oneTile;
 
 [Action] ID=shana_martyrs_raiment_set_hp_count_multireact; --------------------------------------------------------------------------------------------set equal to current hp at the time its called. 
 harmful=false;
@@ -121,6 +193,28 @@ special=canReactMultipleTimesPerTurn;
 [AvAffecterAoE]
     ID=shana_martyrs_raiment_set_hp_count_multireact;
     cloneFrom=oneTile;
+[AvAffecter]--do you have negate?
+    ID=shana_martyrs_raiment_set_hp_count_multireact;
+    harmful=false;
+    actorValue=shana_NegateBeforeBeingHit;
+    magnitude=1;
+    duration=-2;
+    chance=100 * t:negate;
+    visibleMiss=false;
+[AvAffecterAoE]
+    ID=shana_martyrs_raiment_set_hp_count_multireact;
+    cloneFrom=oneTile;
+[AvAffecter]--do you NOT have negate?
+    ID=shana_martyrs_raiment_set_hp_count_multireact;
+    harmful=false;
+    actorValue=shana_NegateBeforeBeingHit;
+    magnitude=-1; --removed
+    duration=-2;
+    chance=100 - 100 * t:negate;
+    visibleMiss=false;
+[AvAffecterAoE]
+    ID=shana_martyrs_raiment_set_hp_count_multireact;
+    cloneFrom=oneTile;
 
 
 
@@ -129,8 +223,6 @@ ID=shana_journal_martyrs_raiment;
 category=equipment; halfPage=false; rarity=4;
 title=Martyr's Raiment;
 text=<itemBig=shana_martyrs_raiment><title=Martyr's Raiment><brAdj=>   An unassuming robe of mundane origin, once donned by a frail old woman who used her failing, plague-ridden body to buy time for the citizens of Barrow to flee the undead hordes.<n=>   While in combat, any instance of physical damage exceeding 20% of the wearer's maximum <icon=HP> has the excess damage converted to a delayed, incurable, untransferable wound. This wound is borne in full at the end of the wearer's turn, bypassing all attempts at mitigation.<n=>   Additionally, the wearer will find themselves a more attractive target to physically inclined adversaries, as though some unseen force were subtly trying to recreate the original bearer's sacrifice.;
-
---todo:issue:if you have negate and get hit, you gain hp and redeemed suffering equal to the damage prevented. you get hit first, then the reaction will always think you don't have negate. bruh. possible fix: add a check for negate with the hp sync thing.
 
 --------------------------------------------------------Martyrs Raiment Formulas --change dmg healed for low hp case
 [FormulaGlobal] ID=shana_0.2_maxhp;
@@ -152,7 +244,7 @@ formula=moreThan:0:d:shana_current_hp_minus_threshold;
 formula=m:cLastDmgTaken - d:shana_martyrs_raiment_threshold;
 
 [FormulaGlobal] ID=shana_martyrs_raiment_did_it_proc;
-formula=moreThan:0:d:shana_martyrs_raiment_damage_prevented - t:negate; --prevent negate still giving debuff
+formula=moreThan:0:d:shana_martyrs_raiment_damage_prevented - t:shana_NegateBeforeBeingHit; --prevent negate still giving debuff
 
 [FormulaGlobal] ID=shana_martyrs_raiment_heal_cap_after_hit; 
 formula=c:shana_HPBeforeBeingHit - m:cLastDmgTaken + d:shana_martyrs_raiment_damage_prevented;
@@ -190,7 +282,7 @@ ID=shana_martyrs_raiment_act;
     harmful=false;
     actorValue=shana_redeemed_suffering_status; 
     magnitude=d:shana_martyrs_raiment_damage_prevented + t:shana_redeemed_suffering_status;
-    duration=9999; --TODO and ask
+    duration=9999; --unfortunately I need to do this jank for it to be visible to player
     chance=m:cLastDmgTakenGreaterThanX(0) * 100 + d:shana_martyrs_raiment_did_it_proc * 100 + d:shana_is_hp_above_threshold * 100 + m:combat * 100 - 300; --procs only if took damage, not heal and hp before being hit is more than threshold and are in combat
     FXOnHit=manySplatter;
     FXOnHitColor=Red;
@@ -223,6 +315,28 @@ ID=shana_martyrs_raiment_act;
 --	FXOnHitColor=SkyBlue;
 [AvAffecterAoE]
     ID=shana_martyrs_raiment_act; 
+    cloneFrom=oneTile;
+[AvAffecter]--do you have negate?
+    ID=shana_martyrs_raiment_act;
+    harmful=false;
+    actorValue=shana_NegateBeforeBeingHit;
+    magnitude=1;
+    duration=-2;
+    chance=100 * t:negate;
+    visibleMiss=false;
+[AvAffecterAoE]
+    ID=shana_martyrs_raiment_act;
+    cloneFrom=oneTile;
+[AvAffecter]--do you NOT have negate?
+    ID=shana_martyrs_raiment_act;
+    harmful=false;
+    actorValue=shana_NegateBeforeBeingHit;
+    magnitude=-1; --removed
+    duration=-2;
+    chance=100 - 100 * t:negate;
+    visibleMiss=false;
+[AvAffecterAoE]
+    ID=shana_martyrs_raiment_act;
     cloneFrom=oneTile;
 
 
