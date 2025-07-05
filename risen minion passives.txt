@@ -1093,6 +1093,8 @@ action=ari_abomination_rot_cloud_act;
 	chance=50;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]

@@ -193,6 +193,8 @@ icon=classIcon_ari_gravekeeper;
 	FXOnTileColor=Green;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -730,6 +732,8 @@ icon=classIcon_ari_gravekeeper;
     FXOnTileColor=Black;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -780,6 +784,8 @@ icon=classIcon_ari_gravekeeper;
 	visibleMiss=false;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -825,9 +831,9 @@ icon=classIcon_ari_gravekeeper;
 	FXOnTile=shana_energyShot_deadbook;
 	FXOnTileColor=Green;
 	FXOnTile=chargeSpiralFast_big;
-    FXOnTileColor=Black;
-	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -878,6 +884,8 @@ icon=classIcon_ari_gravekeeper;
 	visibleMiss=false;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]

@@ -59,6 +59,8 @@ depthMod=900;
 	chance=d:swordAcc;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -104,6 +106,8 @@ ID=ari_summoned_crossbow; element=actionUsed; newID=ari_summoned_crossbow_unload
 	chance=d:aimAcc;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -170,6 +174,8 @@ depthMod=900;
 	chance=d:gswordAcc;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -231,6 +237,8 @@ depthMod=900;
 	chance=d:ruinAcc;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -282,6 +290,8 @@ power=10;
 	chance=d:fistAcc - 2;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -347,6 +357,8 @@ power=10;
 	chance=100;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -768,6 +780,8 @@ power=10;
 	chance=d:gswordAcc;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -1003,6 +1017,8 @@ power=10;
 	chance=d:ruinProjectileAcc;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -1683,6 +1699,8 @@ power=10;
 	chance=d:ruinAcc;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -1768,6 +1786,8 @@ power=10;
 	chance=d:ruinAcc;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -1958,6 +1978,8 @@ power=10;
 	chance=d:fistAcc;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -2065,6 +2087,8 @@ power=10;
 	chance=d:fistAcc;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -3213,6 +3237,8 @@ needsLoS = false; needsLoE = false; shape=7;
 	chance=100;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -3490,6 +3516,8 @@ needsLoS = false; needsLoE = false; shape=7;
 	chance=d:fistAcc;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -3655,6 +3683,8 @@ needsLoS = false; needsLoE = false; shape=7;
 	chance=d:ruinAcc;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -3741,6 +3771,8 @@ needsLoS = false; needsLoE = false; shape=7;
 	chance=100;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -3861,6 +3893,8 @@ needsLoS = false; needsLoE = false; shape=7;
 	chance=d:ruinAcc;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -6097,6 +6131,8 @@ ID=ari_summoned_crossbow_unloaded_enemy; element=actionUsed; element=reload; new
 	chance=d:fistAcc;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -6172,6 +6208,8 @@ ID=ari_summoned_crossbow_unloaded_enemy; element=actionUsed; element=reload; new
 	chance=d:ruinAcc;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -6259,6 +6297,8 @@ ID=ari_summoned_crossbow_unloaded_enemy; element=actionUsed; element=reload; new
 	chance=d:ruinAcc;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -6332,6 +6372,8 @@ ID=ari_summoned_crossbow_unloaded_enemy; element=actionUsed; element=reload; new
 	chance=100;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -6640,6 +6682,8 @@ ID=ari_fetid_field_spread_enemy;
 	chance=d:fistAcc;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -6746,6 +6790,8 @@ ID=ari_fetid_field_spread_enemy;
 	chance=d:fistAcc;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
