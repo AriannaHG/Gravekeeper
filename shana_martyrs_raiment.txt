@@ -220,7 +220,7 @@ ID=shana_journal_martyrs_raiment;
 category=equipment; halfPage=false; rarity=4;
 title=Martyr's Raiment;
 text=<itemBig=shana_martyrs_raiment><title=Martyr's Raiment><brAdj=>   Sacrificial garment of mundane origin, once donned by a frail old woman who used her failing, plague-ridden body to buy time for the citizens of Barrow to flee the undead hordes.<n=>   While in combat, physical attacks exceeding 20% of the wearer's maximum <icon=HP> have the excess damage converted to a delayed, incurable, untransferable wound. However, only the magnitude of the final instance of damage associated with a compound attack - such as the damage from being pushed into an ally, or the additional damage inflicted by a weapon augment, would be considered for this effect. This wound is borne in full at the end of the wearer's turn, bypassing all attempts at mitigation.<n=>   Furthermore, the wearer will find themselves a more attractive target to physically inclined adversaries - as though some unseen force were subtly trying to recreate the original bearer's sacrifice.;
-
+--there's a bit of jank in favor of the player here but I can't fix it. In the event of taking 9999 physical damage with a rider of slightly higher than 20% of the wearer's hp, the wearer would wind up on the brink of death as they're at 0 hp and then healed slightly/get a slight delayed wound. This jank is on the level of vanilla negate, it's player favoured, and it's insanely unlikely to come up in actual play, and I've spent way too long on this item so it can stay =)
 --------------------------------------------------------Martyrs Raiment Formulas
 [FormulaGlobal] ID=shana_0.2_maxhp;
 formula=c:HPMax * 0.2;
