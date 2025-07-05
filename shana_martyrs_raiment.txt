@@ -1,7 +1,8 @@
 [ItemType]  name=Martyr's Raiment;
 ID=shana_martyrs_raiment; sprite=96;
 texture=gkart; itemCategory=3;
-description=Dauntless robe that defies mortal wounds.<n=>In combat, physical damage received in excess of 20% of the wearer's maximum <icon=HP> will be deferred until the end of the wearer's turn.; 
+description=Bloodstained robe that defies mortal wounds.<n=>In combat, most instances of physical damage received in excess of 20% of the wearer's maximum <icon=HP> will see the excess deferred until the end of the wearer's turn.<n=>Additionally, the wearer attracts enemy attention more easily.;
+--todo:physical damage received in excess of 20% of the wearer's maximum <icon=HP> will be deferred until the end of the wearer's turn, though only the last damage instance of a blow is considered.<n=>Additionally, the wearer attracts enemy attention more easily.;
 journalID=shana_journal_martyrs_raiment;
 weight=4; volume=15; value=9999;
 pR=pAsh_still; pB=pMarble_deepPurple;
@@ -11,14 +12,6 @@ ID=shana_martyrs_raiment; actorValue=MagEva; magnitude=18; duration=-1;
 ID=shana_martyrs_raiment; actorValue=skill_Life; magnitude=2; duration=-1;
 [ItemEffect]
 ID=shana_martyrs_raiment; actorValue=skill_Ruin; magnitude=2; duration=-1;
-
---todo:
---define shana_NegateBeforeBeingHit AV done
---add two avaffecters, one that checks for negate and sets it to 1, and one that checks for not having negate and then sets it to 0 done
---paste these two avaffecter into shana_martyrs_raiment_set_hp_count shana_martyrs_raiment_act and shana_martyrs_raiment_set_hp_count_multireact done
---add an itemreaction to negate av that calls the shana_martyrs_raiment_set_hp_count done
---change all the chances of shana_martyrs_raiment_act so that they do NOT proc if you have negate
---test:pummel with hits being more than 20 percent hp and recipient being under negate
 
 [ItemReaction]-------------------------------------------------------------- the actual damage soaking action. Lo, to the aspirant who wishes to make a similar item - special=canReactMultipleTimesPerTurn; is kind of fucked because the way reactions work is: actorValues=HP; element=physical; means that it will proc if the action has the physical element and changes your hp. However, if multiple elements are matched, it would proc multiple times. For an extreme case a volskarn sword action matched against actor value hp and element all would have all 5 of its elements match all, thus making it proc 5 times. Restricting it to physical was not by choice lol
 ID=shana_martyrs_raiment;
@@ -44,8 +37,9 @@ actorValues=negate; action=shana_martyrs_raiment_set_hp_count;
 ID=shana_martyrs_raiment; -------------------------------------------------- set shana_HPBeforeBeingHit and shana_NegateBeforeBeingHit AV on any element, only happens in combat
 actorValues=HP; element=any; action=shana_martyrs_raiment_set_hp_count_multireact;
 
-
-
+[ItemReaction]
+ID=shana_martyrs_raiment; -------------------------------------------------- set shana_HPBeforeBeingHit and shana_NegateBeforeBeingHit AV on any element, only happens in combat
+actorValues=HPTrue; element=any; action=shana_martyrs_raiment_set_hp_count_multireact;
 
 [ActorValue] --------------------------------------------------------------- define shana_HPBeforeBeingHit AV
 ID=shana_HPBeforeBeingHit;
@@ -119,9 +113,12 @@ XPCostFloorToNearest = 0;
 ID=shana_NegateBeforeBeingHit;
 element=combatEnd; newID=X;
 
---todo: double check if raiment works now against the mythril bow with ruin trigger
---todo: do regression test with old version of this file against mythril bow with ruin trigger
---todo: using salvation prominence's caretaker mod as an example, clone the vanilla negate and make it call the update action when its duration naturally runs out
+[ActorValue] --------------------------------------------------------------this is necessary for the raiment to work, hopefully it doesnt result in too much lag
+ID=negate;
+cloneFrom=negate;
+executeActionOnDurationEnd=shana_martyrs_raiment_set_hp_count;
+
+
 
 [Action] ID=shana_martyrs_raiment_set_hp_count; --------------------------------------------------------------------------------------------set equal to current hp at the time its called. 
 harmful=false;
@@ -131,7 +128,7 @@ special=usableEvenWhenYourTurn;
 [ActionAoE] 
     ID=shana_martyrs_raiment_set_hp_count;
     cloneFrom=oneTile;
-[AvAffecter] ---------------------------------------------------VERY IMPORTANT - duration -1 lets the av have negative values since its treated similarly to say an equip with negative stats. duration -2 locks it to a positive value
+[AvAffecter] ---------------------------------------------------VERY IMPORTANT - duration -1 lets the av have negative values since its treated similarly to say an equip with negative stats. duration -2 locks it to a positive value. The only source of desync I can observe is directly changing the hp value of the wearer in debug mode, but I don't think there's an ingame equivalent to that.
     ID=shana_martyrs_raiment_set_hp_count; 
     harmful=false;
     actorValue=shana_HPBeforeBeingHit; 
@@ -169,19 +166,19 @@ special=usableEvenWhenYourTurn;
     ID=shana_martyrs_raiment_set_hp_count;
     cloneFrom=oneTile;
 
-[Action] ID=shana_martyrs_raiment_set_hp_count_multireact; --------------------------------------------------------------------------------------------set equal to current hp at the time its called. 
+[Action] ID=shana_martyrs_raiment_set_hp_count_multireact; --------------------------------------------------------------------------------------------set equal to current hp at the time its called.
 harmful=false;
 special=usableEvenWhenCantAct;
 special=usableEvenWhenReacting;
 special=usableEvenWhenYourTurn;
-special=canReactMultipleTimesPerTurn; 
-[ActionAoE] 
+special=canReactMultipleTimesPerTurn;
+[ActionAoE]
     ID=shana_martyrs_raiment_set_hp_count_multireact;
     cloneFrom=oneTile;
-[AvAffecter] 
-    ID=shana_martyrs_raiment_set_hp_count_multireact; 
+[AvAffecter]
+    ID=shana_martyrs_raiment_set_hp_count_multireact;
     harmful=false;
-    actorValue=shana_HPBeforeBeingHit; 
+    actorValue=shana_HPBeforeBeingHit;
     magnitude=-t:shana_HPBeforeBeingHit + t:HP;
     duration=-1;
     chance=m:combat * 100; ----helps stop stacking
@@ -222,9 +219,9 @@ special=canReactMultipleTimesPerTurn;
 ID=shana_journal_martyrs_raiment;
 category=equipment; halfPage=false; rarity=4;
 title=Martyr's Raiment;
-text=<itemBig=shana_martyrs_raiment><title=Martyr's Raiment><brAdj=>   An unassuming robe of mundane origin, once donned by a frail old woman who used her failing, plague-ridden body to buy time for the citizens of Barrow to flee the undead hordes.<n=>   While in combat, any instance of physical damage exceeding 20% of the wearer's maximum <icon=HP> has the excess damage converted to a delayed, incurable, untransferable wound. This wound is borne in full at the end of the wearer's turn, bypassing all attempts at mitigation.<n=>   Additionally, the wearer will find themselves a more attractive target to physically inclined adversaries, as though some unseen force were subtly trying to recreate the original bearer's sacrifice.;
+text=<itemBig=shana_martyrs_raiment><title=Martyr's Raiment><brAdj=>   Sacrificial garment of mundane origin, once donned by a frail old woman who used her failing, plague-ridden body to buy time for the citizens of Barrow to flee the undead hordes.<n=>   While in combat, physical attacks exceeding 20% of the wearer's maximum <icon=HP> have the excess damage converted to a delayed, incurable, untransferable wound. However, only the magnitude of the final instance of damage associated with a compound attack - such as the damage from being pushed into an ally, or the additional damage inflicted by a weapon augment, would be considered for this effect. This wound is borne in full at the end of the wearer's turn, bypassing all attempts at mitigation.<n=>   Furthermore, the wearer will find themselves a more attractive target to physically inclined adversaries - as though some unseen force were subtly trying to recreate the original bearer's sacrifice.;
 
---------------------------------------------------------Martyrs Raiment Formulas --change dmg healed for low hp case
+--------------------------------------------------------Martyrs Raiment Formulas
 [FormulaGlobal] ID=shana_0.2_maxhp;
 formula=c:HPMax * 0.2;
 
@@ -246,10 +243,10 @@ formula=m:cLastDmgTaken - d:shana_martyrs_raiment_threshold;
 [FormulaGlobal] ID=shana_martyrs_raiment_did_it_proc;
 formula=moreThan:0:d:shana_martyrs_raiment_damage_prevented - t:shana_NegateBeforeBeingHit; --prevent negate still giving debuff
 
-[FormulaGlobal] ID=shana_martyrs_raiment_heal_cap_after_hit; 
+[FormulaGlobal] ID=shana_martyrs_raiment_heal_cap_after_hit;
 formula=c:shana_HPBeforeBeingHit - m:cLastDmgTaken + d:shana_martyrs_raiment_damage_prevented;
 
-[FormulaGlobal] ID=shana_martyrs_raiment_healback_calc; 
+[FormulaGlobal] ID=shana_martyrs_raiment_healback_calc;
 formula=d:shana_martyrs_raiment_damage_prevented - d:shana_martyrs_raiment_heal_cap_after_hit;
 
 [FormulaGlobal] ID=shana_martyrs_raiment_healback_damage_prevented_bigger;
@@ -268,19 +265,19 @@ formula=d:shana_martyrs_raiment_healback_damage_prevented_smaller_or_zero * d:sh
 formula=d:shana_healback_pt1 + d:shana_healback_pt2;
 
 --------------------------------------------------------Action for Martyr's Raiment, only occurring when hp dmg taken more than 20% wearers max hp rounded down.
-[Action] ID=shana_martyrs_raiment_act; 
+[Action] ID=shana_martyrs_raiment_act;
 harmful=false;
 special=usableEvenWhenCantAct;
 --special=usableEvenWhenReacting;
 special=usableEvenWhenYourTurn;
-special=canReactMultipleTimesPerTurn; ----------------------------this is causing issues
-[ActionAoE] 
+special=canReactMultipleTimesPerTurn; ----------------------------this caused softlock issues before but fixed
+[ActionAoE]
     ID=shana_martyrs_raiment_act;
     cloneFrom=oneTile;
-[AvAffecter] --------------------------------------------------------------------------------------------give redeemed suffering    
-ID=shana_martyrs_raiment_act; 
+[AvAffecter] --------------------------------------------------------------------------------------------give redeemed suffering
+ID=shana_martyrs_raiment_act;
     harmful=false;
-    actorValue=shana_redeemed_suffering_status; 
+    actorValue=shana_redeemed_suffering_status;
     magnitude=d:shana_martyrs_raiment_damage_prevented + t:shana_redeemed_suffering_status;
     duration=9999; --unfortunately I need to do this jank for it to be visible to player
     chance=m:cLastDmgTakenGreaterThanX(0) * 100 + d:shana_martyrs_raiment_did_it_proc * 100 + d:shana_is_hp_above_threshold * 100 + m:combat * 100 - 300; --procs only if took damage, not heal and hp before being hit is more than threshold and are in combat
@@ -291,22 +288,22 @@ ID=shana_martyrs_raiment_act;
     ID=shana_martyrs_raiment_act;
     cloneFrom=oneTile;
 [AvAffecter] ---------------------------------------------------------------------------------------------this will actually prevent damage by instantly healing that much back.
-    ID=shana_martyrs_raiment_act; 
+    ID=shana_martyrs_raiment_act;
     harmful=false;
     actorValue=HPTrue;
     magnitude=d:shana_martyrs_raiment_healback;
     duration=-2;
-    chance=m:cLastDmgTakenGreaterThanX(0) * 100 + d:shana_martyrs_raiment_did_it_proc * 100 + d:shana_is_hp_above_threshold * 100 + m:combat * 100 - 300; 
+    chance=m:cLastDmgTakenGreaterThanX(0) * 100 + d:shana_martyrs_raiment_did_it_proc * 100 + d:shana_is_hp_above_threshold * 100 + m:combat * 100 - 300;
     visibleEvaluations=false;
     visibleMiss=false;
 [AvAffecterAoE]
    ID=shana_martyrs_raiment_act;
     cloneFrom=oneTile;
 [AvAffecter]  -----------------------------------------Set hp count AV after being hit
-    ID=shana_martyrs_raiment_act;  
+    ID=shana_martyrs_raiment_act;
     harmful=false;
-    actorValue=shana_HPBeforeBeingHit; 
-    magnitude=-t:shana_HPBeforeBeingHit + t:HP;
+    actorValue=shana_HPBeforeBeingHit;
+    magnitude=-t:shana_HPBeforeBeingHit + t:HP; -------the magnitude and duration had to be done this way because iirc hp can't go negative, so the usual -2 duration method and directly getting the hp wasn't cutting it hence the jank state machine. hope no more desyncs happened lmao
     duration=-1;
     chance=100;
     visibleMiss=false;
