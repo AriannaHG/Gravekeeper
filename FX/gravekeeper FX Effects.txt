@@ -140,3 +140,27 @@ duration=0.2; --was 0.3
 
 [drawOrderFXLight]
 ID=shana_fast_sparkle; red=0; blue=0; green=0.5; alpha=0.5; size=0.15; flicker=0.01; texture=lightmask;
+
+
+[FXData]
+ID=shana_Fast_superduperSparkles;
+particleID=shana_fast_superdupersparkle;
+numParticles=70;
+--speedOffset = 1.5;
+posOffset=-0.4,-0.2;
+randPos=0.8,0.3;
+velocOffset=-10,-10;
+randVeloc=20,20;
+randScale=0.1;
+initialDelayIncreasePerParticle=0.03;
+
+[drawOrderFX]
+ID=shana_fast_superdupersparkle;
+texture=fx_sparkle;
+sourceRect=0,0,5,7;
+origin=3,4;
+timePerFrame=0.2;
+duration=1; --was 0.3
+
+[drawOrderFXLight]
+ID=shana_fast_superdupersparkle; red=0; blue=0; green=0.5; alpha=0.5; size=0.15; flicker=0.01; texture=lightmask;
