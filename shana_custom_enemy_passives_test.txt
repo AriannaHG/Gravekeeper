@@ -1,4 +1,4 @@
-[SupportAbility]
+[SupportAbility] --todo add vfx to debuff - refer to rupture but turn it black and green maybe
 ID=shana_festering_fulcrum;
 name=Festering Fulcrum;
 --icon=icon_shana_festering_fulcrum;
@@ -226,28 +226,30 @@ ID=shana_instability;
 name=Unstable Essence;
 --icon=icon_shana_instability;
 icon=icon_gravekeeper_blood_of_the_master;
-tooltip=You will be interrupted if hit by physical damage while channeling a spell. <n=>If this occurs, the resulting backlash pushes and inflicts Ruin damage equal to your <icon=skill_Ruin> to all adjacent, and the effects of this passive are disabled for 120 <icon=time>.;
+tooltip=You will be interrupted and silenced for 30 <icon=time> if hit by physical damage. <n=>If this occurs, the resulting backlash pushes and inflicts Ruin damage equal to twice your <icon=skill_Ruin> to all adjacent, and the effects of this passive are disabled for 120 <icon=time>.;
 
-----------------------------------------------------------------Dampened Essence AV todo: this isn't doing anything besides canceling,
+----------------------------------------------------------------Dampened Essence AV
 [ActorValue]
 ID=shana_dampened_essence;
 name=Dampened Essence;
-icon=<icon=icon_shana_dampened_essence>;
-bubbleIcon=icon_shana_dampened_essence_small;
+icon=Dampened Essence;
+bubbleIcon=;
 removedByNegativeMagnitude=true;
+minimum=0;
+maximum=1;
+harmfulMagnitude = -1;
 --description=;
 defaultValue = 0; AIValue = 1;
-minimum=0;
 affectsActors = true;
-canAffectIncapped = false;
+canAffectIncapped = true;
 showDamageNumbers = true;
-showDamageNumbersMagnitude = true;
+showDamageNumbersMagnitude = false;
 showDamageNumbersSign = false;
 showDamageNumbersIcon = true;
 showDamageNumbersElements = true;
 showDamageNumbersIconInTooltips = true;
-damageNumberColor_Positive = Green;
-damageNumberColor_Negative = Green;
+damageNumberColor_Positive = Black;
+damageNumberColor_Negative = Black;
 actorPaletteOverride =;
 actorPaletteOverrideDuration = 0.27;
 elementReactionModifiesDuration = false;
@@ -269,19 +271,27 @@ ID=shana_instability; element=physical; actorValue=HP; action=shana_instability_
 	special=usableEvenWhenCantAct;
 	special=usableEvenWhenReacting;
 	special=usableEvenWhenYourTurn;
+	fReq=1 - c:shana_dampened_essence;
 [ActionAoE]
 	ID=shana_instability_act;
 	cloneFrom=oneTile;
 	canSelectStackedActors=true;
-	fReq=m:tCancel - c:shana_dampened_essence;
 
-[AvAffecter] --interrupt self
+[AvAffecter] --dampened essence
 	ID=shana_instability_act;
-	visibleMiss = false;
-	actorValue=cancel;
+	visibleMiss=false;
+	actorValue=shana_dampened_essence;
+	harmful=false;
 	magnitude=1;
 	chance=100;
-	duration=-2;
+	duration=120;
+	FXOnTile=tileLine_overlap;
+	FXOnTileColor=Black;
+	FXOnTile=DramaticNyeaow;
+    FXOnTileColor=Black;
+	FXOnTile=whiteExplosionSmall_rand_overlap;
+    FXOnTileColor=Black;
+	FXOnTile=smallShakeHoriz;
 [AvAffecterAoE]
 	ID=shana_instability_act;
 	cloneFrom=oneTile;
@@ -292,27 +302,54 @@ ID=shana_instability; element=physical; actorValue=HP; action=shana_instability_
 	visibleEvaluations=true;
 	visibleMiss=false;
 	harmful=true;
-	magnitude=c:skill_Ruin;
+	magnitude=-c:skill_Ruin * 2;
 	duration=-2;
 	chance=100;
 	element=ruin;
+	FXOnTile=upwardLines_quick_noOverlap;
+    FXOnTileColor=Black;
+	FXOnTile=ping_noOverlap;
+    FXOnTileColor=Black;
+	FXOnHit=largePing;
+    FXOnHitColor=Green;
+	FXOnHit=click;
 [AvAffecterAoE]
 	ID=shana_instability_act;
 	cloneFrom=adjacent;
 
+[AvAffecter] --push adjacent
+	ID=shana_instability_act;
+	actorValue=push;
+	magnitude=1;
+	duration=-2;
+	chance=100;
+[AvAffecterAoE]
+	ID=shana_instability_act;
+	cloneFrom=adjacent;
 
-[AvAffecter] --dampened essence
+[AvAffecter] --interrupt self
 	ID=shana_instability_act;
 	visibleMiss = false;
-	actorValue=shana_dampened_essence;
+	actorValue=cancel;
 	magnitude=1;
 	chance=100;
-	duration=120;
+	duration=-2;
+	FXOnHit=egg_fade;
+    FXOnHitColor=Black;
 [AvAffecterAoE]
 	ID=shana_instability_act;
 	cloneFrom=oneTile;
 
-
+[AvAffecter] --silence
+	ID=shana_instability_act;
+	actorValue=silence;
+	visibleMiss=false;
+	magnitude=1;
+	duration=30;
+	chance=100;
+[AvAffecterAoE]
+	ID=shana_instability_act;
+	cloneFrom=oneTile;
 
 [SupportAbility]
 ID=shana_critical_autolyze;
@@ -339,6 +376,11 @@ ID=shana_critical_autolyze; element=timerUp; action=shana_critical_autolyze_act;
 	visibleMiss=false;
 	harmful=false;
 	chance=100 * m:tCritical;
+	FXOnHit=shana_Fast_superduperSparkles;
+    FXOnHitColor=Black;
+    FXOnHit=shana_Fast_superduperSparkles;
+    FXOnHitColor=Green;
+    FXOnHit=sfx_crystallize_echo;
 [AvAffecterAoE]
 	ID=shana_critical_autolyze_act;
 	cloneFrom=oneTile;
