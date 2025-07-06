@@ -17,7 +17,7 @@
 	FXOnHit=chargeSpiralFast_big;
 	FXOnHitColor=Green;
 	FXOnTile=chargeSpiralFast_big;
-        FXOnTileColor=Black;
+	FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
