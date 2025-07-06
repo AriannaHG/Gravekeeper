@@ -226,7 +226,7 @@ ID=shana_instability;
 name=Unstable Essence;
 --icon=icon_shana_instability;
 icon=icon_gravekeeper_blood_of_the_master;
-tooltip=You will be interrupted and silenced for 30 <icon=time> if hit by physical damage. <n=>If this occurs, the resulting backlash pushes and inflicts Ruin damage equal to twice your <icon=skill_Ruin> to all adjacent, and the effects of this passive are disabled for 120 <icon=time>.;
+tooltip=You will be interrupted and silenced for 30 <icon=time> when hit by physical damage. <n=>If this occurs, the resulting backlash pushes and inflicts Ruin damage equal to twice your <icon=skill_Ruin> to all adjacent, and the effects of this passive are disabled for 120 <icon=time>.;
 
 ----------------------------------------------------------------Dampened Essence AV
 [ActorValue]
