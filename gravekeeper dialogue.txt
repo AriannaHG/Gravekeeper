@@ -868,9 +868,159 @@ specialEffect=trigger,ari_gk_destroy_lich_altar;
 nextNodeID=;
 
 
+--Yokaze boss dialog
+[DialogNode] ID=shana_gravekeeper_yokaze_intro;
+nextNodeID_fReq=m:landingPartySize-1;
+nextNodeID=shana_gravekeeper_yokaze_intro_1;
+nextNodeID=shana_gravekeeper_yokaze_intro_1a_solo;
+
+[DialogNode] ID=shana_gravekeeper_yokaze_intro_1;
+--speaker=shana_plaguebow_boss_ari_gravekeeper_city_path_;
+animations=happy;
+animations=sly;
+animations=stern;
+statements=Greetings, travellers. I haven't had visitors grace this valley for a while.;
+statements=Weren't you warned away from this place?;
+statements=Regardless, I do hope you're more prepared than the last batch was.;
+nextNodeID_fReq=party:mh_livia;
+nextNodeID=shana_gravekeeper_yokaze_intro_1a_livia;
+nextNodeID=shana_gravekeeper_yokaze_intro_2;
+
+[DialogNode] ID=shana_gravekeeper_yokaze_intro_1a_solo; --for solo
+--speaker=shana_plaguebow_boss_ari_gravekeeper_city_path_;
+animations=happy;
+animations=sly;
+animations=stern;
+animations=sad;
+statements=Greetings, traveller. I haven't had a visitor grace this valley for a while.;
+statements=Weren't you warned away from this place?;
+statements=Regardless, I do hope you're more prepared than the last batch was...<p>;
+statements=...But if you're alone, you probably aren't. I'd love to see you prove me wrong, though.;
+nextNodeID_fReq=party:mh_livia;
+nextNodeID=shana_gravekeeper_yokaze_intro_1a_livia;
+nextNodeID=shana_gravekeeper_yokaze_intro_2;
+
+[DialogNode] ID=shana_gravekeeper_yokaze_intro_1a_livia; --cross content with Livia from Prominence's mod Mage Hunter. Bloody good time, check it out if you haven't.
+speakerOverride=mh_livia;
+animations=sad;
+statements=You... you're undead? How are you even speaking?;
+nextNodeID=shana_gravekeeper_yokaze_intro_2a_livia;
+
+[DialogNode] ID=shana_gravekeeper_yokaze_intro_2a_livia; --cross content with Livia from Prominence's mod Mage Hunter. Bloody good time, check it out if you haven't.
+speakerOverride=shana_plaguebow_boss_ari_gravekeeper_city_path_;
+animations=sad;
+statements=Yes. I'm undead, but somehow whatever reanimated me kept most of my mental faculties intact.;
+nextNodeID=shana_gravekeeper_yokaze_intro_3;
+
+[DialogNode] ID=shana_gravekeeper_yokaze_intro_2;
+animations=sad;
+statements=And yes, I'm undead, but somehow whatever reanimated me kept most of my mental faculties intact.;
+nextNodeID=shana_gravekeeper_yokaze_intro_3;
+
+[DialogNode] ID=shana_gravekeeper_yokaze_intro_3;
+animations=angry;
+animations=angry;
+statements=<speed=1.2>Free will not included, of course!;
+statements=<speed=1.5>Can't leave, can't free my own spirit, can't even pick a fight or have a chat with the other <color=DarkOliveGreen><p>undead<color=Black> around here, but I can be bored out of my exposed skull!;
+nextNodeID=shana_gravekeeper_yokaze_intro_4;
+
+[DialogNode] ID=shana_gravekeeper_yokaze_intro_4;
+speakerOverride=shana_plaguebow_boss_ari_gravekeeper_city_path_;
+animations=sly;
+statements=<speed=1.0>Do you have any questions for me? Please ask, I'd love to have an actual intelligent conversation with you before I'm forced to kill you and you get raised as <textIf=mindless zombies=m:landingPartySize-1><textIf=a mindless zombie=2-m:landingPartySize>.;
+[DialogOption] text=The air here feels wrong.;
+animation=sigh;
+nodeToConnectTo=shana_gravekeeper_yokaze_intro_5;
+[DialogOption] text=What happened to you?;
+animation=sad;
+newLineOfOptions=true;
+nodeToConnectTo=shana_gravekeeper_yokaze_intro_6;
+[DialogOption] text=Could you please let us leave?;
+animation=scared;
+newLineOfOptions=true;
+nodeToConnectTo=shana_gravekeeper_yokaze_intro_7;
+[DialogOption] text=I don't speak to the undead.; --todo:add icon for combat
+animation=stern;
+newLineOfOptions=true;
+nodeToConnectTo=shana_gravekeeper_yokaze_intro_8; --Fair enough.....
+
+[DialogNode] ID=shana_gravekeeper_yokaze_intro_4a; --this connects back if youve asked at least one question, todo intro 8a where yokaze isn't as sad, more respectful lets fight
+speakerOverride=shana_plaguebow_boss_ari_gravekeeper_city_path_;
+animations=stern;
+statements=<speed=1.0>Anything else you'd like to ask?;
+[DialogOption] text=The air here feels wrong.;
+animation=sigh;
+nodeToConnectTo=shana_gravekeeper_yokaze_intro_5;
+[DialogOption] text=What happened to you?;
+animation=sad;
+newLineOfOptions=true;
+nodeToConnectTo=shana_gravekeeper_yokaze_intro_6;
+[DialogOption] text=Could you please let us leave?;
+animation=scared;
+newLineOfOptions=true;
+nodeToConnectTo=shana_gravekeeper_yokaze_intro_7;
+[DialogOption] text=I have no more questions - let's get this over with.; --todo:add icon for combat
+animation=stern;
+newLineOfOptions=true;
+nodeToConnectTo=shana_gravekeeper_yokaze_intro_8a; --start fight
 
 
+[DialogNode] ID=shana_gravekeeper_yokaze_intro_5; --air is wrong
+animation=sigh;
+animation=stern;
+animation=cheerful;
+statements=You can feel it too, huh? The Rot hangs thick in the air here. It truly enhances the ambiance, wouldn't you agree?;
+statements=I’ve seen others keep it at bay with the help of a Sage’s<icon=classIcon_sage> spells or a Ministrel’s<icon=classIcon_minstrel> song, and there may be other techniques that work on it.;
+statements=I'm too far gone for that, though. Please don’t try to cure me - the previous batch of would-be healers ended up being cured of breathing instead.;
+nextNodeID=shana_gravekeeper_yokaze_intro_4a;
 
+[DialogNode] ID=shana_gravekeeper_yokaze_intro_6; --what happened to you?
+animation=angry;
+animation=angry;
+animation=sad;
+animation=sad;
+statements=<speed=1.2>You probably have a better idea than I do! I can’t even investigate because the Rot won’t let me leave this valley from either end!;
+statements=<speed=1.5>I sought a single night's lodging in that damned town on the way to Jascias, ignored the innkeeper's suggestion to lodge somewhere else - he didn't tell me why, of course, and woke up to a horde of undead!;
+statements=<speed=0.8>In hindsight, I really should have listened to him. The next thing I knew, I was forced to...<p> well......<p=2> to turn my ancestral bow against the fleeing citizens of Barrow.;
+statements=<speed=0.7>I tried my hardest to resist, but my body just wasn’t my own.
+nextNodeID_fReq=party:reeve;
+nextNodeID=shana_gravekeeper_yokaze_intro_6a_reeve;
+nextNodeID_fReq=party:mh_livia;
+nextNodeID=shana_gravekeeper_yokaze_intro_6b_livia;
+nextNodeID=shana_gravekeeper_yokaze_intro_4a;
+
+[DialogNode] ID=shana_gravekeeper_yokaze_intro_6a_reeve; --more cross content
+speakerOverride=reeve;
+animation=angry;
+statements=...;
+nextNodeID_fReq=party:mh_livia;
+nextNodeID=shana_gravekeeper_yokaze_intro_6b_livia;
+nextNodeID=shana_gravekeeper_yokaze_intro_4a;
+
+[DialogNode] ID=shana_gravekeeper_yokaze_intro_6b_livia; --more cross content
+speakerOverride=mh_livia;
+animation=angry;
+animation=angry;
+animation=stern;
+statements=...;
+statements=Well, then.;
+statements=It seems I have one more mage to hunt.;
+nextNodeID=shana_gravekeeper_yokaze_intro_6c_livia;
+
+[DialogNode] ID=shana_gravekeeper_yokaze_intro_7; --let us leave?
+animation=stern;
+statements=I’m sorry, but that isn’t possible. I literally can’t do that.;
+nextNodeID=shana_gravekeeper_yokaze_intro_4a;
+
+[DialogNode] ID=shana_gravekeeper_yokaze_intro_8; --player skips
+animation=cheerful;
+statements=Fair enough! I'll let my arrows do the talking, then.;
+nextNodeID=;
+
+[DialogNode] ID=shana_gravekeeper_yokaze_intro_8a; --normal combat start
+animation=stern;
+statements=Don't hold back. I'd rather lose than win...<p> but I can't just roll over for you.;
+nextNodeID=;
 
 
 
