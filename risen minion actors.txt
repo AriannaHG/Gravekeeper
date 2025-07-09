@@ -7046,6 +7046,11 @@ disappearOnDeath=true;
 disappearOnDeath_dropItems=false;
 unarmedAction = ari_infectPunch_enemy;
 
+[ActorTypeReaction]
+ID=shana_plaguebow_fareem_boss;
+element=HPbased;
+damageMultiplier=0.7; healMultiplier=1;
+
 [ActorTypeReaction] --- Spawns the boss loot.
 ID=shana_plaguebow_fareem_boss;
 element=incapacitated;
