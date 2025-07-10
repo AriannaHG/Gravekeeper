@@ -48,7 +48,7 @@ nodeToConnectTo=;
 
 [DialogNode] ID=ari_gravekeeper_arianna_greeting;
 animations=;
-statements=Well hello. We don't get many visitors around here and those we do get tend not stay after their first night.;
+statements=Well hello. We don't get many visitors around here and those we do get tend not to stay after their first night.;
 specialEffect=incDefaultNode;
 [DialogOption] text=What happens on their first night?;
 nodeToConnectTo=ari_gravekeeper_arianna_firstnight;
@@ -927,62 +927,67 @@ nextNodeID=shana_gravekeeper_yokaze_intro_4;
 [DialogNode] ID=shana_gravekeeper_yokaze_intro_4;
 speakerOverride=shana_plaguebow_boss_ari_gravekeeper_city_path_;
 animations=sly;
-statements=<speed=1.0>Do you have any questions for me? Please ask, I'd love to have an actual intelligent conversation with you before I'm forced to kill you and you get raised as <textIf=mindless zombies=m:landingPartySize-1><textIf=a mindless zombie=2-m:landingPartySize>.;
+statements=<speed=1.0>Do you have any questions for me? Please ask, it's been far too long since I had a conversation with anyone.;
 [DialogOption] text=The air here feels wrong.;
-animation=sigh;
+animations=sigh;
 nodeToConnectTo=shana_gravekeeper_yokaze_intro_5;
 [DialogOption] text=What happened to you?;
-animation=sad;
+animations=sad;
 newLineOfOptions=true;
 nodeToConnectTo=shana_gravekeeper_yokaze_intro_6;
 [DialogOption] text=Could you please let us leave?;
-animation=scared;
+animations=scared;
 newLineOfOptions=true;
 nodeToConnectTo=shana_gravekeeper_yokaze_intro_7;
 [DialogOption] text=I don't speak to the undead.; --todo:add icon for combat
-animation=stern;
+animations=stern;
 newLineOfOptions=true;
 nodeToConnectTo=shana_gravekeeper_yokaze_intro_8; --Fair enough.....
 
 [DialogNode] ID=shana_gravekeeper_yokaze_intro_4a; --this connects back if youve asked at least one question, todo intro 8a where yokaze isn't as sad, more respectful lets fight
 speakerOverride=shana_plaguebow_boss_ari_gravekeeper_city_path_;
-animations=stern;
+animations=sly;
 statements=<speed=1.0>Anything else you'd like to ask?;
 [DialogOption] text=The air here feels wrong.;
-animation=sigh;
+animations=sigh;
+formulaReq=1 - g:shana_done_gravekeeper_yokaze_intro_5;
 nodeToConnectTo=shana_gravekeeper_yokaze_intro_5;
 [DialogOption] text=What happened to you?;
-animation=sad;
+animations=sad;
 newLineOfOptions=true;
+formulaReq=1 - g:shana_done_gravekeeper_yokaze_intro_6;
 nodeToConnectTo=shana_gravekeeper_yokaze_intro_6;
 [DialogOption] text=Could you please let us leave?;
-animation=scared;
+animations=scared;
 newLineOfOptions=true;
+formulaReq=1 - g:shana_done_gravekeeper_yokaze_intro_7;
 nodeToConnectTo=shana_gravekeeper_yokaze_intro_7;
 [DialogOption] text=I have no more questions - let's get this over with.; --todo:add icon for combat
-animation=stern;
+animations=stern;
 newLineOfOptions=true;
 nodeToConnectTo=shana_gravekeeper_yokaze_intro_8a; --start fight
 
 
 [DialogNode] ID=shana_gravekeeper_yokaze_intro_5; --air is wrong
-animation=sigh;
-animation=stern;
-animation=cheerful;
-statements=You can feel it too, huh? The Rot hangs thick in the air here. It truly enhances the ambiance, wouldn't you agree?;
-statements=I’ve seen others keep it at bay with the help of a Sage’s<icon=classIcon_sage> spells or a Ministrel’s<icon=classIcon_minstrel> song, and there may be other techniques that work on it.;
-statements=I'm too far gone for that, though. Please don’t try to cure me - the previous batch of would-be healers ended up being cured of breathing instead.;
+animations=sigh;
+animations=stern;
+animations=happy;
+statements=You can feel it too, can't you? The Rot<iconBig=icon_gravekeeper_rot> hangs thick in the air here.;
+statements=I've seen others keep it at bay with the help of a Sage's<iconBig=classIcon_sage> spells or a Minstrel's<iconBig=classIcon_minstrel> song, but anything that dispels the stuff should work.;
+statements=I'm too far gone for that, though. Please don't try to cure me. The previous batch of would-be healers ended up being cured of breathing instead.;
+specialEffect=modGlobalVar,shana_done_gravekeeper_yokaze_intro_5,1;
 nextNodeID=shana_gravekeeper_yokaze_intro_4a;
 
 [DialogNode] ID=shana_gravekeeper_yokaze_intro_6; --what happened to you?
-animation=angry;
-animation=angry;
-animation=sad;
-animation=sad;
-statements=<speed=1.2>You probably have a better idea than I do! I can’t even investigate because the Rot won’t let me leave this valley from either end!;
+animations=angry;
+animations=angry;
+animations=sad;
+animations=sad;
+statements=<speed=1.2>You probably have a better idea than I do! I can't even investigate because the Rot won't let me leave this valley from either end!;
 statements=<speed=1.5>I sought a single night's lodging in that damned town on the way to Jascias, ignored the innkeeper's suggestion to lodge somewhere else - he didn't tell me why, of course, and woke up to a horde of undead!;
-statements=<speed=0.8>In hindsight, I really should have listened to him. The next thing I knew, I was forced to...<p> well......<p=2> to turn my ancestral bow against the fleeing citizens of Barrow.;
-statements=<speed=0.7>I tried my hardest to resist, but my body just wasn’t my own.
+statements=<speed=0.8>In hindsight, I really should have listened to him. The next thing I knew, I was forced to...<p> well...<p> to turn my ancestral bow against the fleeing citizens of Barrow.;
+statements=<speed=0.7>I tried my hardest to resist, but my body just wasn't my own.;
+specialEffect=modGlobalVar,shana_done_gravekeeper_yokaze_intro_6,1;
 nextNodeID_fReq=party:reeve;
 nextNodeID=shana_gravekeeper_yokaze_intro_6a_reeve;
 nextNodeID_fReq=party:mh_livia;
@@ -991,7 +996,7 @@ nextNodeID=shana_gravekeeper_yokaze_intro_4a;
 
 [DialogNode] ID=shana_gravekeeper_yokaze_intro_6a_reeve; --more cross content
 speakerOverride=reeve;
-animation=angry;
+animations=angry;
 statements=...;
 nextNodeID_fReq=party:mh_livia;
 nextNodeID=shana_gravekeeper_yokaze_intro_6b_livia;
@@ -999,28 +1004,39 @@ nextNodeID=shana_gravekeeper_yokaze_intro_4a;
 
 [DialogNode] ID=shana_gravekeeper_yokaze_intro_6b_livia; --more cross content
 speakerOverride=mh_livia;
-animation=angry;
-animation=angry;
-animation=stern;
+animations=angry;
+animations=angry;
+animations=stern;
 statements=...;
 statements=Well, then.;
 statements=It seems I have one more mage to hunt.;
-nextNodeID=shana_gravekeeper_yokaze_intro_6c_livia;
+nextNodeID=shana_gravekeeper_yokaze_intro_6c;
+
+[DialogNode] ID=shana_gravekeeper_yokaze_intro_6c; --more cross content
+speakerOverride=shana_plaguebow_boss_ari_gravekeeper_city_path_;
+animations=happy;
+animations=sly;
+animations=happy;
+statements=If you survive this, I'll be cheering you on from wherever I end up!;
+statements=Most of my mortal wealth is buried in that grave over to my right...<p> or your left.;
+statements=Can't buy you drinks as I am now, but that should do the job!;
+nextNodeID=shana_gravekeeper_yokaze_intro_4a;
 
 [DialogNode] ID=shana_gravekeeper_yokaze_intro_7; --let us leave?
-animation=stern;
-statements=I’m sorry, but that isn’t possible. I literally can’t do that.;
+animations=sigh;
+statements=I'm sorry, but that isn't possible. I literally can't do that.;
+specialEffect=modGlobalVar,shana_done_gravekeeper_yokaze_intro_7,1;
 nextNodeID=shana_gravekeeper_yokaze_intro_4a;
 
 [DialogNode] ID=shana_gravekeeper_yokaze_intro_8; --player skips
-animation=cheerful;
+animations=happy;
 statements=Fair enough! I'll let my arrows do the talking, then.;
-nextNodeID=;
+nextNodeID=enemyInitiateCombat;
 
 [DialogNode] ID=shana_gravekeeper_yokaze_intro_8a; --normal combat start
-animation=stern;
+animations=sigh;
 statements=Don't hold back. I'd rather lose than win...<p> but I can't just roll over for you.;
-nextNodeID=;
+nextNodeID=enemyInitiateCombat;
 
 
 
