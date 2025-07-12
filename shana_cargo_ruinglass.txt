@@ -6,3 +6,152 @@ description=Flawless prisms refined from undead ashes.; itemCategory=tool;
 volume=999; special=cargo; special=tradeGood;
 value=108;
 stackable=true;
+
+--------------------------------------------------------------------------Cross content with Ports of Ill Repute (It's a great time!)
+
+
+[ItemType]  name=Active Ray Oil;
+ID=poir_ray_oil_active;
+cloneFrom=poir_ray_oil_active;
+requiredForCombining=poir_cauldron; combineSound=sfx_bottle;
+combineWith=shana_cargo_ruinglass; toMake=poir_base_gravekeeper_umbral; consumeOnCombine=true;
+
+[ItemType]  name=Umbral Potion Base;
+ID=poir_base_gravekeeper_umbral; sprite=13; texture=poirart_from_Prominence;
+journalID=journal_poir_potion_base;
+description=A potion base that can be combined with an empty Potion Flask on a Mixing Cauldron.;
+stackable=false; itemCategory=1;
+weight=0; value=1;
+pR=p92;
+requiredForCombining=poir_cauldron; combineSound=sfx_bottle;
+combineWith=poir_potion_empty; toMake=poir_potion_gravekeeper_umbral; consumeOnCombine=true;
+
+[ItemType]  name=Umbral Potion;
+description=A potion that grants a ruin enchantment to weapons and increases ruin skill.; itemCategory=1;
+journalID=journal_poir_potions;
+weight=1; volume=3; value=3; texture=poirart_from_Prominence; special=animateEvery100Frames;
+pR=p92;
+pG=pBrown;
+ID=poir_potion_gravekeeper_umbral; sprite=6; stackable=false; combineSound=sfx_bottle;
+combineWith=poir_sink; toMake=poir_potion_empty;
+action=poir_drink_potion_gravekeeper_umbral;
+[ItemReaction]
+ID=poir_potion_gravekeeper_umbral; element=actionUsed; newID=poir_potion_gravekeeper_umbral_used;
+
+[ItemType]  name=Umbral Potion (Used);
+description=Use a witch's Alembic to refill this flask, or clean it out in a witch's Sink.; itemCategory=1;
+journalID=journal_poir_potions;
+weight=1; volume=3; value=3; texture=poirart_from_Prominence;
+pR=p92;
+pG=pBrown;
+ID=poir_potion_gravekeeper_umbral_used; sprite=12; stackable=false; combineSound=sfx_bottle;
+combineWith=poir_alembic; toMake=poir_potion_gravekeeper_umbral;
+combineWith=poir_sink; toMake=poir_potion_empty;
+
+[ItemType]  name=Mushroom of Plenty;
+ID=poir_plentyshroom;
+cloneFrom=poir_plentyshroom;
+combineWith=poir_potion_gravekeeper_umbral; toMake=poir_potion_gravekeeper_umbral_bottomless; consumeOnCombine=true;
+
+[ItemType]  name=Bottomless Umbral Potion;
+description=A potion that provides a ruin enchantment on weapons and increases ruin skill.; itemCategory=1;
+journalID=journal_poir_potions_bottomless;
+weight=1; volume=3; value=9999; texture=poirart_from_Prominence; special=animateEvery100Frames;
+pR=p92;
+pG=pBone;
+pB=pMagenta;
+ID=poir_potion_gravekeeper_umbral_bottomless; sprite=42; stackable=false; combineSound=sfx_bottle;
+action=poir_drink_potion_gravekeeper_umbral;
+
+[Action] ID=poir_drink_potion_gravekeeper_umbral; 
+	name=Umbral Potion;
+	harmful=false;
+	casterAnimation=use;
+	cooldown=200;
+	attractAttention=false;
+	AIRatingBias=-4;
+	special=cantUseInTravel;
+[ActionAoE] 
+	ID=poir_drink_potion_gravekeeper_umbral;
+	cloneFrom=party;
+	ignoreCannotTarget=true;
+[AvAffecter]
+	ID=poir_drink_potion_gravekeeper_umbral; 
+	harmful=false;
+	actorValue=prom_ruinWpn;
+	magnitude=1;
+	duration=60 + 60 * g:poir_potion_duration;
+	chance=100;
+	element=magic;
+	FXOnTile=sfx_bottle;
+	FXOnTile=sparkle;
+	FXOnTileColor=Green;
+    FXOnTile=magicCharge;
+    FXOnTileColor=Purple;
+    FXOnTile=chargeSpiralFast;
+    FXOnTileColor=Purple;
+    FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
+    FXOnTile=risingBip;
+	FXOnTile=blackCloud;
+	FXOnHit=upwardLines_many_low;
+	FxOnHitColor=Purple;
+
+[AvAffecterAoE]
+	ID=poir_drink_potion_gravekeeper_umbral;
+	cloneFrom=oneTile;
+	ignoreCannotTarget=true;
+[AvAffecter]
+	ID=poir_drink_potion_gravekeeper_umbral; 
+	harmful=false;
+	actorValue=skill_Ruin;
+	magnitude=2;
+	duration=60 + 60 * g:poir_potion_duration;
+	chance=100;
+	FXOnHit=skill_Ruin;
+[AvAffecterAoE]
+	ID=poir_drink_potion_gravekeeper_umbral;
+	cloneFrom=oneTile;
+	ignoreCannotTarget=true;
+[AvAffecter]
+	ID=poir_drink_potion_gravekeeper_umbral; 
+	harmful=false;
+	actorValue=MP;
+	visibleMiss=false;
+	showEvaluationInfo=false;
+	visibleEvaluations=false;
+	magnitude=1 + t:skill_Life;
+	duration=-2;
+	chance=100 * g:poir_potion_MP;
+[AvAffecterAoE]
+	ID=poir_drink_potion_gravekeeper_umbral;
+	cloneFrom=oneTile;
+	ignoreCannotTarget=true;
+[AvAffecter]
+	ID=poir_drink_potion_gravekeeper_umbral; 
+	harmful=false;
+	actorValue=HP;
+	visibleMiss=false;
+	visibleEvaluations=false;
+	showEvaluationInfo=false;
+	magnitude=1 + t:skill_Life;
+	duration=-2;
+	chance=100 * g:poir_potion_heal;
+[AvAffecterAoE]
+	ID=poir_drink_potion_gravekeeper_umbral;
+	cloneFrom=oneTile;
+	ignoreCannotTarget=true;
+[AvAffecter]
+	ID=poir_drink_potion_gravekeeper_umbral; 
+	harmful=false;
+	actorValue=cure;
+	visibleMiss=false;
+	showEvaluationInfo=false;
+	visibleEvaluations=false;
+	magnitude=1;
+	duration=-2;
+	chance=100 * g:poir_potion_cure;
+[AvAffecterAoE]
+	ID=poir_drink_potion_gravekeeper_umbral;
+	cloneFrom=oneTile;
+	ignoreCannotTarget=true;
