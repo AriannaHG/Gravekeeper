@@ -60,7 +60,7 @@ This mod alters the behavior of the vanilla Invisibility status effect such that
 
 ## *Credits*
 - **Mafe**: I threw ideas at them until they made the mod for me (Not really but Mafe is amazing and helped a ton)
-- **Prominence**: a number of sprites ripped straight from their mods and quite a bit of copy-pasting code, as well as graciously allowing the use of his Ruin Enchantment and "Nowhere To Hide" elite passive.
+- **Prominence**: a number of sprites ripped straight from their mods and quite a bit of copy-pasting code, as well as graciously allowing the use of their Ruin Enchantment and "Nowhere To Hide" elite passive.
 - **Furdabip** for hard carrying and providing working, bug-free code for Necrotize, and thus by extension Bestow Ruin and any other skill that functions similarly.
 - **Dadzio**: those skeletons are direct ports from their great Skeletons mod, [here!](https://steamcommunity.com/sharedfiles/filedetails/?id=2670522662)
 - The *Horizon's Gate* Discord and community for a whole lot of help, tips and tricks
