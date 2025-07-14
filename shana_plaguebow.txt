@@ -34,6 +34,7 @@ formula=-d:bowDmg + c:skill_Ruin * 0.5;
 	FXOnTile=chk;
 	FXOnTileColor=Green;
 	FXOnTile=hitDustQuiet;
+	FXOnTileColor=SpringGreen;
 	FXOnHit=pop;
 [AvAffecterAoE]
 	ID=shana_yumiAttack_rot;
@@ -112,6 +113,7 @@ text=<itemBig=shana_plaguebow><title=Ekibyonoyumi><brAdj=>   Corrupted yumi once
 	FXOnTile=chk;
 	FXOnTileColor=Green;
 	FXOnTile=hitDustQuiet;
+	FXOnTileColor=SpringGreen;
 	FXOnHit=pop;
 [AvAffecterAoE]
 	ID=shana_yumiAttack_rot_enemy;
