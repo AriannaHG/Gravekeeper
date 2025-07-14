@@ -90,7 +90,7 @@ pR=pCRedD;
 pG=;
 pB=;
 
-
+----------------------------------------Plague Bow
 
 [FXData]
 ID=shana_plaguearrow; cloneFrom=arrow;
@@ -112,7 +112,7 @@ rotateBasedOnVelocity=true;
 [drawOrderFXLight]
 ID=shana_projectile_plaguearrow; red=0; blue=0; green=0.5; alpha=0.5; size=0.1; flicker=0.01; texture=lightmask;
 
-
+----------------------------------------End Plague Bow
 
 [FXData]
 ID=shana_Fast_Sparkles; cloneFrom=sparkles;
