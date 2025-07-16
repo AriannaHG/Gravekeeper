@@ -563,7 +563,7 @@ ID=shana_delay_sync0; element=41001; action=shana_bestow_ruin3;
 	cloneFrom=oneTile;
 	ignoreCannotTarget=true;
 
--- Ruin Enchant part 1.
+-- Ruin Enchant part 1. todo change and upload the fx
 [AvAffecter]
 	ID=shana_bestow_ruin3;
 	actorValue=prom_ruinWpn;
@@ -572,12 +572,10 @@ ID=shana_delay_sync0; element=41001; action=shana_bestow_ruin3;
 	element=magic;
 	chance=100;
 	harmful=false;
-	FXOnTile=upwardLines_quick_noOverlap;
-	FxOnTileColor=Purple;
 	FXOnTile=sfx_DramaticN_quiet;
 	FxOnTileColor=Purple;
-	FXOnTile=ping_noOverlap;
-	FxOnTileColor=Black;
+	FXOnTile=shana_ruinupwardLines_quick_noOverlap;
+	FXOnTile=shana_ruinping_noOverlap;
 	FXOnHit=chargeSpiralFast;
 	FXOnHitColor=Purple;
 	FXOnHit=chargeSpiralFast_big;
@@ -607,12 +605,10 @@ ID=shana_delay_sync0; element=41001; action=shana_bestow_ruin3;
 	element=magic;
 	chance=100;
 	harmful=false;
-	FXOnTile=upwardLines_quick_noOverlap;
-	FxOnTileColor=Purple;
 	FXOnTile=sfx_DramaticN_quiet;
 	FxOnTileColor=Purple;
-	FXOnTile=ping_noOverlap;
-	FxOnTileColor=Black;
+	FXOnTile=shana_ruinupwardLines_quick_noOverlap;
+	FXOnTile=shana_ruinping_noOverlap;
 	FXOnHit=chargeSpiralFast;
 	FXOnHitColor=Purple;
 	FXOnHit=chargeSpiralFast_big;
@@ -633,7 +629,7 @@ ID=shana_delay_sync0; element=41001; action=shana_bestow_ruin3;
 	arc=true;
 	ignoreCannotTarget=true;
 
--- Ruin Damage part 1. todo change the aoe
+-- Ruin Damage part 1.
 [AvAffecter]
 	ID=shana_bestow_ruin3;
 	actorValue=HP;
@@ -656,7 +652,7 @@ ID=shana_delay_sync0; element=41001; action=shana_bestow_ruin3;
 	arc=true;
 	ignoreCannotTarget=true;
 
--- Ruin Damage part 2. todo change the aoe
+-- Ruin Damage part 2.
 [AvAffecter]
 	ID=shana_bestow_ruin3;
 	actorValue=HP;
