@@ -79,7 +79,7 @@ action=ari_rot_raise;
 	occupyAll=true;
 
 
---Deal damage at the end of an actor's turn and attempt to spread rot based on stack size
+--attempt to spread rot based on stack size, then deal damage at the end of an actor's turn 
 [ActorValueReaction]
 ID=ari_rot_status; element=endTurn;
 action=ari_rot_damage;
@@ -90,39 +90,37 @@ action=ari_rot_damage;
 	special=usableEvenWhenReacting;
 	special=usableEvenWhenYourTurn;
 	special=dontDelayOtherActions;
-	
+
 [ActionAoE] 
 	ID=ari_rot_damage; 
 	cloneFrom=oneTile;
 
 [AvAffecter]
-	ID=ari_rot_damage; 
-	visibleEvaluations=true;
-	harmful=true;
-	actorValue=HP;
-	magnitude=c:ari_rot_status * -1;
-	duration=-2;
-	chance=100;
-	visibleMiss=false;
-	element=ruin;
-	applyElementToTile=false;
-	FXOnTile=spiral2;
-	FXOnTileColor=Green;
-	FXOnHit=downwardLinesQuick;
-	FXOnHitColor=DarkGreen;
+    ID=ari_rot_damage; --set rot rng
+    visibleMiss=false; visibleEvaluations=false;
+    actorValue=task;
+    magnitude=setGlobalVar_math,shana_rot_rng,m:rand(100);
+    duration=1;
+    chance=100;
+
 [AvAffecterAoE]
-	ID=ari_rot_damage;
-	aoeCasterAsOrigin = true;
-	cloneFrom=oneTile;
-[AvAffecter]
+    ID=ari_rot_damage;
+    cloneFrom=oneTile;
+
+[AvAffecter] --spread 1
 	ID=ari_rot_damage; 
 	visibleEvaluations=true;
 	harmful=true;
 	actorValue=ari_rot_status;
-	magnitude=1 + floor:d:rotSpread + t:ari_rot_status;
-	duration=40;
-	chance=thisPreviousAVHit:ari_rot_damage * c:ari_rot_status * 6;
+	magnitude=floor:d:rotSpread * rxn:ruin * m:casterIsntTarget + d:1rotcalc * m:casterIsTarget + t:ari_rot_status;
+	duration=80;
+	chance=100;
 	visibleMiss=false;
+	FXOnHit=spiral2;
+	FXOnHitColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=DarkGreen;
+
 [AvAffecterAoE]
 	ID=ari_rot_damage;
 	aoeCasterAsOrigin = true;
@@ -135,15 +133,43 @@ action=ari_rot_damage;
 	bypassAll=true;
 	canSelectAllies=true;
 	canSelectEnemies=false;
-[AvAffecter]
+	fReq=d:didrotSpread;
+
+[AvAffecter] --spread fx 1
+	ID=ari_rot_damage;
+	chance=100;
+	visibleMiss=false;
+	FXOnTile=chargeFast_overlap; --t1 spread
+	FXOnTileColor=Black;
+	FXOnTile=chargeFast_overlap;
+	FXOnTileColor=DarkGreen;
+
+[AvAffecterAoE]
+	ID=ari_rot_damage;
+	aoeCasterAsOrigin = true;
+	cloneFrom=adjacentAndSelf;
+	minRange=1;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=true;
+	bypassAll=true;
+	fReq=d:didrotSpread;
+
+[AvAffecter] --spread 2
 	ID=ari_rot_damage; 
 	visibleEvaluations=true;
 	harmful=true;
 	actorValue=ari_rot_status;
-	magnitude=1 + floor:d:rotSpread + t:ari_rot_status;
-	duration=40;
-	chance=moreThan:5:c:ari_rot_status * thisPreviousAVHit:ari_rot_damage * c:ari_rot_status * 6;
+	magnitude=floor:d:rotSpread2 * rxn:ruin * m:casterIsntTarget + d:1rotcalc * m:casterIsTarget + t:ari_rot_status;
+	duration=80;
+	chance=100;
 	visibleMiss=false;
+	FXOnHit=spiral2;
+	FXOnHitColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=DarkGreen;
+
 [AvAffecterAoE]
 	ID=ari_rot_damage;
 	aoeCasterAsOrigin = true;
@@ -156,15 +182,43 @@ action=ari_rot_damage;
 	bypassAll=true;
 	canSelectAllies=true;
 	canSelectEnemies=false;
-[AvAffecter]
+	fReq=d:didrotSpread2 * moreThan:5:c:ari_rot_status;
+
+[AvAffecter] --spread fx 2
+	ID=ari_rot_damage;
+	chance=100;
+	visibleMiss=false;
+	FXOnTile=chargeFast_overlap; --t2 spread
+	FXOnTileColor=Black;
+	FXOnTile=chargeFast_overlap;
+	FXOnTileColor=OliveDrab;
+
+[AvAffecterAoE]
+	ID=ari_rot_damage;
+	aoeCasterAsOrigin = true;
+	cloneFrom=adjacent+1;
+	minRange=1;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=true;
+	bypassAll=true;
+	fReq=d:didrotSpread2 * moreThan:5:c:ari_rot_status;
+
+[AvAffecter] --spread 3
 	ID=ari_rot_damage; 
 	visibleEvaluations=true;
 	harmful=true;
 	actorValue=ari_rot_status;
-	magnitude=1 + floor:d:rotSpread + t:ari_rot_status;
-	duration=40;
-	chance=moreThan:9:c:ari_rot_status * thisPreviousAVHit:ari_rot_damage * c:ari_rot_status * 6;
+	magnitude=floor:d:rotSpread3 * rxn:ruin * m:casterIsntTarget + d:1rotcalc * m:casterIsTarget + t:ari_rot_status;
+	duration=80;
+	chance=100;
 	visibleMiss=false;
+	FXOnHit=spiral2;
+	FXOnHitColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=DarkGreen;
+
 [AvAffecterAoE]
 	ID=ari_rot_damage;
 	aoeCasterAsOrigin = true;
@@ -177,6 +231,52 @@ action=ari_rot_damage;
 	bypassAll=true;
 	canSelectAllies=true;
 	canSelectEnemies=false;
+	fReq=d:didrotSpread3 * moreThan:13:c:ari_rot_status;
+
+[AvAffecter] --spread fx 3
+	ID=ari_rot_damage;
+	chance=100;
+	visibleMiss=false;
+	FXOnTile=chargeFast_overlap; --t3 spread
+    FXOnTileColor=Black;
+	FXOnTile=chargeFast_overlap;
+	FXOnTileColor=Olive;
+
+[AvAffecterAoE]
+	ID=ari_rot_damage;
+	aoeCasterAsOrigin = true;
+	cloneFrom=adjacent+2;
+	minRange=1;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=true;
+	bypassAll=true;
+	fReq=d:didrotSpread3 * moreThan:13:c:ari_rot_status;
+
+[AvAffecter] --deal damage
+	ID=ari_rot_damage; 
+	visibleEvaluations=true;
+	harmful=true;
+	actorValue=HP;
+	magnitude=c:ari_rot_status * -1;
+	duration=-2;
+	chance=100;
+	visibleMiss=false;
+	element=ruin;
+	FXOnTile=spiral2;
+	FXOnTileColor=Green;
+	FXOnHit=shroudExplode;
+    FXOnHitColor=Black;
+   	FXOnHit=darken; --take damage
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=DarkGreen;
+
+[AvAffecterAoE]
+	ID=ari_rot_damage;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+
 	
 ----------------------------------------------------------------Ruptured Soul Status AV, deals damage to afflicted target whenever something dies
 [ActorValue]
@@ -912,7 +1012,8 @@ action=ari_gravekeeper_soul_collection;
 	actorValue=HP;
 	magnitude=-3;
 	duration=-2;
-	chance=100 * t:ari_ruptured_soul_status;
+	chance=100;
+	fReq=t:ari_ruptured_soul_status;
 	visibleMiss=false;
 [AvAffecterAoE]
 	ID=ari_gravekeeper_soul_collection; shape=17;
@@ -4406,7 +4507,7 @@ action=ari_rot_raise_enemy;
 	occupyAll=true;
 
 
---Deal damage at the end of an actor's turn and attempt to spread rot based on stack size
+--attempt to spread rot based on stack size, then deal damage at the end of an actor's turn
 [ActorValueReaction]
 ID=ari_rot_status_enemy; element=endTurn;
 action=ari_rot_damage_enemy;
@@ -4423,33 +4524,31 @@ action=ari_rot_damage_enemy;
 	cloneFrom=oneTile;
 
 [AvAffecter]
-	ID=ari_rot_damage_enemy; 
-	visibleEvaluations=true;
-	harmful=true;
-	actorValue=HP;
-	magnitude=c:ari_rot_status_enemy * -1;
-	duration=-2;
-	chance=100;
-	visibleMiss=false;
-	element=ruin;
-	applyElementToTile=false;
-	FXOnTile=spiral2;
-	FXOnTileColor=Green;
-	FXOnHit=downwardLinesQuick;
-	FXOnHitColor=DarkGreen;
+    ID=ari_rot_damage_enemy; --set rot rng
+    visibleMiss=false; visibleEvaluations=false;
+    actorValue=task;
+    magnitude=setGlobalVar_math,shana_rot_rng_enemy,m:rand(100); -----------------here
+    duration=1;
+    chance=100;
+
 [AvAffecterAoE]
-	ID=ari_rot_damage_enemy;
-	aoeCasterAsOrigin = true;
-	cloneFrom=oneTile;
-[AvAffecter]
+    ID=ari_rot_damage_enemy;
+    cloneFrom=oneTile;
+
+[AvAffecter] --spread 1
 	ID=ari_rot_damage_enemy; 
 	visibleEvaluations=true;
 	harmful=true;
 	actorValue=ari_rot_status_enemy;
-	magnitude=1 + floor:d:enemyRotSpread + t:ari_rot_status_enemy;
-	duration=40;
-	chance=thisPreviousAVHit:ari_rot_damage_enemy * c:ari_rot_status_enemy * 6;
+	magnitude=floor:d:enemyrotSpread * rxn:ruin * m:casterIsntTarget + d:1rotcalc * m:casterIsTarget + t:ari_rot_status_enemy;
+	duration=80;
+	chance=100;
 	visibleMiss=false;
+	FXOnHit=spiral2;
+	FXOnHitColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=DarkGreen;
+
 [AvAffecterAoE]
 	ID=ari_rot_damage_enemy;
 	aoeCasterAsOrigin = true;
@@ -4462,15 +4561,44 @@ action=ari_rot_damage_enemy;
 	bypassAll=true;
 	canSelectAllies=true;
 	canSelectEnemies=false;
-[AvAffecter]
+	fReq=d:didenemyrotSpread;
+
+[AvAffecter] --spread fx 1
+	ID=ari_rot_damage_enemy;
+	chance=100;
+	visibleMiss=false;
+	FXOnTile=chargeFast_overlap; --t1 spread
+	FXOnTileColor=Black;
+	FXOnTile=chargeFast_overlap;
+	FXOnTileColor=DarkGreen;
+
+[AvAffecterAoE]
+	ID=ari_rot_damage_enemy;
+	aoeCasterAsOrigin = true;
+	cloneFrom=adjacentAndSelf;
+	minRange=1;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=true;
+	bypassAll=true;
+	fReq=d:didenemyrotSpread;
+
+
+[AvAffecter] --spread 2
 	ID=ari_rot_damage_enemy; 
 	visibleEvaluations=true;
 	harmful=true;
 	actorValue=ari_rot_status_enemy;
-	magnitude=1 + floor:d:enemyRotSpread + t:ari_rot_status_enemy;
-	duration=40;
-	chance=moreThan:5:c:ari_rot_status_enemy * thisPreviousAVHit:ari_rot_damage_enemy * c:ari_rot_status_enemy * 6;
+	magnitude=floor:d:enemyrotSpread2 * rxn:ruin * m:casterIsntTarget + d:1rotcalc * m:casterIsTarget + t:ari_rot_status_enemy;
+	duration=80;
+	chance=100;
 	visibleMiss=false;
+	FXOnHit=spiral2;
+	FXOnHitColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=DarkGreen;
+
 [AvAffecterAoE]
 	ID=ari_rot_damage_enemy;
 	aoeCasterAsOrigin = true;
@@ -4483,15 +4611,43 @@ action=ari_rot_damage_enemy;
 	bypassAll=true;
 	canSelectAllies=true;
 	canSelectEnemies=false;
-[AvAffecter]
+	fReq=d:didenemyrotSpread2 * moreThan:5:c:ari_rot_status_enemy;
+
+[AvAffecter] --spread fx 2
+	ID=ari_rot_damage_enemy;
+	chance=100;
+	visibleMiss=false;
+	FXOnTile=chargeFast_overlap; --t2 spread
+	FXOnTileColor=Black;
+	FXOnTile=chargeFast_overlap;
+	FXOnTileColor=OliveDrab;
+
+[AvAffecterAoE]
+	ID=ari_rot_damage_enemy;
+	aoeCasterAsOrigin = true;
+	cloneFrom=adjacent+1;
+	minRange=1;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=true;
+	bypassAll=true;
+	fReq=d:didenemyrotSpread2 * moreThan:5:c:ari_rot_status_enemy;
+
+[AvAffecter] --spread 3
 	ID=ari_rot_damage_enemy; 
 	visibleEvaluations=true;
 	harmful=true;
 	actorValue=ari_rot_status_enemy;
-	magnitude=1 + floor:d:enemyRotSpread + t:ari_rot_status_enemy;
-	duration=40;
-	chance=moreThan:9:c:ari_rot_status_enemy * thisPreviousAVHit:ari_rot_damage_enemy * c:ari_rot_status_enemy * 6;
+	magnitude=floor:d:enemyrotSpread3 * rxn:ruin * m:casterIsntTarget + d:1rotcalc * m:casterIsTarget + t:ari_rot_status_enemy;
+	duration=80;
+	chance=100;
 	visibleMiss=false;
+	FXOnHit=spiral2;
+	FXOnHitColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=DarkGreen;
+
 [AvAffecterAoE]
 	ID=ari_rot_damage_enemy;
 	aoeCasterAsOrigin = true;
@@ -4504,6 +4660,49 @@ action=ari_rot_damage_enemy;
 	bypassAll=true;
 	canSelectAllies=true;
 	canSelectEnemies=false;
+	fReq=d:didenemyrotSpread3 * moreThan:13:c:ari_rot_status_enemy;
+
+[AvAffecter] --spread fx 3
+	ID=ari_rot_damage_enemy;
+	chance=100;
+	visibleMiss=false;
+	FXOnTile=chargeFast_overlap; --t3 spread
+    FXOnTileColor=Black;
+	FXOnTile=chargeFast_overlap;
+	FXOnTileColor=Olive;
+
+[AvAffecterAoE]
+	ID=ari_rot_damage_enemy;
+	aoeCasterAsOrigin = true;
+	cloneFrom=adjacent+2;
+	minRange=1;
+	arc=true;
+	airborne=true;
+	needsLoE=false;
+	needsLoS=true;
+	bypassAll=true;
+	fReq=d:didenemyrotSpread3 * moreThan:13:c:ari_rot_status_enemy;
+
+[AvAffecter] --deal damage
+	ID=ari_rot_damage_enemy; 
+	visibleEvaluations=true;
+	harmful=true;
+	actorValue=HP;
+	magnitude=c:ari_rot_status_enemy * -1;
+	duration=-2;
+	chance=100;
+	visibleMiss=false;
+	element=ruin;
+	
+	FXOnTile=spiral2;
+	FXOnTileColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=DarkGreen;
+[AvAffecterAoE]
+	ID=ari_rot_damage_enemy;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+
 
 
 
@@ -4569,19 +4768,55 @@ action=shana_creepingdeath_rot;
 	visibleEvaluations=true;
 	harmful=true;
 	actorValue=ari_rot_status;
-	magnitude=2 + t:ari_rot_status;
+	magnitude=d:1rotcalc + rxn:ruin + t:ari_rot_status;
 
-	duration=99; --this should stop most crowd control from making the rot stack die
+	duration=80; --this should stop most crowd control from making the rot stack die
 	chance=100;
 	visibleMiss=false;
-	element=ruin;
-	applyElementToTile=false;
+	
 	FXOnTile=spiral2;
 	FXOnTileColor=Green;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=DarkGreen;
 [AvAffecterAoE]
 	ID=shana_creepingdeath_rot;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+
+
+
+---------------------------------------------------------------------------Actor Value Reaction to apply a stack of Rot whenever Creeping Death is reapplied.
+[ActorValueReaction]
+ID=shana_creepingdeath_status; actorValues=shana_creepingdeath_status;
+action=shana_creepingdeath_reapplyrot;
+
+[Action] ID=shana_creepingdeath_reapplyrot; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+	fReq=1 - t:aegis;
+[ActionAoE] 
+	ID=shana_creepingdeath_reapplyrot;
+	cloneFrom=oneTile; 
+[AvAffecter]
+	ID=shana_creepingdeath_reapplyrot; 
+	visibleEvaluations=true;
+	harmful=true;
+	actorValue=ari_rot_status;
+	magnitude=d:1rotcalc + t:ari_rot_status;
+
+	duration=80; --this should stop most crowd control from making the rot stack die
+	chance=100;
+	visibleMiss=false;
+	
+	FXOnHit=spiral2;
+	FXOnHitColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=DarkGreen;
+[AvAffecterAoE]
+	ID=shana_creepingdeath_reapplyrot;
 	aoeCasterAsOrigin = true;
 	cloneFrom=oneTile;
 
@@ -4646,18 +4881,52 @@ action=shana_creepingdeath_rot_enemy;
 	visibleEvaluations=true;
 	harmful=true;
 	actorValue=ari_rot_status_enemy;
-	magnitude=2 + t:ari_rot_status_enemy;
+	magnitude=d:1rotcalc + rxn:ruin + t:ari_rot_status_enemy;
 
-	duration=99; --this should stop most crowd control from making the rot stack die
+	duration=80; --this should stop most crowd control from making the rot stack die
 	chance=100;
 	visibleMiss=false;
-	element=ruin;
-	applyElementToTile=false;
+	
 	FXOnTile=spiral2;
 	FXOnTileColor=Green;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=DarkGreen;
 [AvAffecterAoE]
 	ID=shana_creepingdeath_rot_enemy;
+	aoeCasterAsOrigin = true;
+	cloneFrom=oneTile;
+
+---------------------------------------------------------------------------ENEMY Actor Value Reaction to apply a stack of Rot whenever Creeping Death is reapplied.
+[ActorValueReaction]
+ID=shana_creepingdeath_status_enemy; actorValues=shana_creepingdeath_status_enemy;
+action=shana_creepingdeath_reapplyrot_enemy;
+
+[Action] ID=shana_creepingdeath_reapplyrot_enemy; 
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=dontDelayOtherActions;
+	fReq=1 - t:aegis;
+[ActionAoE] 
+	ID=shana_creepingdeath_reapplyrot_enemy;
+	cloneFrom=oneTile; 
+[AvAffecter]
+	ID=shana_creepingdeath_reapplyrot_enemy; 
+	visibleEvaluations=true;
+	harmful=true;
+	actorValue=ari_rot_status_enemy;
+	magnitude=d:1rotcalc + t:ari_rot_status_enemy;
+
+	duration=80; --this should stop most crowd control from making the rot stack die
+	chance=100;
+	visibleMiss=false;
+	
+	FXOnHit=spiral2;
+	FXOnHitColor=Green;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=DarkGreen;
+[AvAffecterAoE]
+	ID=shana_creepingdeath_reapplyrot_enemy;
 	aoeCasterAsOrigin = true;
 	cloneFrom=oneTile;

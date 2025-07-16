@@ -90,7 +90,7 @@ element=ruin;
 damageMultiplier=0.5; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton;
-element=poison;
+element=poison; actorValue=HP;
 damageMultiplier=-1; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton;
@@ -199,7 +199,7 @@ element=ruin;
 damageMultiplier=0.5; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton_mage_type;
-element=poison;
+element=poison; actorValue=HP;
 damageMultiplier=-1; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton_mage_type;
@@ -313,7 +313,7 @@ element=ruin;
 damageMultiplier=0.5; healMultiplier=1;
 [ActorTypeReaction]
 ID=mindless_undead_skeleton;
-element=poison;
+element=poison; actorValue=HP;
 damageMultiplier=-1; healMultiplier=1;
 [ActorTypeReaction]
 ID=mindless_undead_skeleton;
@@ -1981,7 +1981,7 @@ element=ruin;
 damageMultiplier=0.5; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton_commander_version;
-element=poison;
+element=poison; actorValue=HP;
 damageMultiplier=-1; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton_commander_version;
@@ -2091,7 +2091,7 @@ element=ruin;
 damageMultiplier=0.5; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton_commander_version_mage;
-element=poison;
+element=poison; actorValue=HP;
 damageMultiplier=-1; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton_commander_version_mage;
@@ -2202,7 +2202,7 @@ element=ruin;
 damageMultiplier=0.5; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_zombie_commander_version;
-element=poison;
+element=poison; actorValue=HP;
 damageMultiplier=-1; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_zombie_commander_version;
@@ -5914,7 +5914,7 @@ element=ruin;
 damageMultiplier=0.5; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton_enemy;
-element=poison;
+element=poison; actorValue=HP;
 damageMultiplier=-1; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton_enemy;
@@ -6026,7 +6026,7 @@ element=ruin;
 damageMultiplier=0.5; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton_mage_type_enemy;
-element=poison;
+element=poison; actorValue=HP;
 damageMultiplier=-1; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton_mage_type_enemy;
@@ -7034,4 +7034,45 @@ MP=15; MPMax=15; TrueMPMax=15;
 canSwap=False;
 
 [ActorInventory]
-style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
+style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9;
+
+
+
+----------------------------------------------------------------------Cloned Fareem Actor Type for Yokaze - resistances are handled by cloned Projectile Mastery
+
+[ActorType] ID=shana_plaguebow_fareem_boss;
+cloneFrom=fareem;
+disappearOnDeath=true;
+disappearOnDeath_dropItems=false;
+unarmedAction = ari_infectPunch_enemy;
+
+[ActorTypeReaction]
+ID=shana_plaguebow_fareem_boss;
+element=HPbased;
+damageMultiplier=0.7; healMultiplier=1;
+
+[ActorTypeReaction] --- Spawns the boss loot.
+ID=shana_plaguebow_fareem_boss;
+element=incapacitated;
+action=shana_spawn_plaguebow;
+
+[Action] ID=shana_spawn_plaguebow;
+    special=usableEvenWhenCantAct;
+    special=usableEvenWhenReacting;
+    special=usableEvenWhenYourTurn;
+    special=dontDelayOtherActions;
+	FXOnTarget=blackCloud;
+[ActionAoE]
+    ID=shana_spawn_plaguebow;
+    cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_spawn_plaguebow;
+	actorValue=summonItem;
+	magnitude=shana_plaguebow;
+	duration=1;
+	chance=100;
+	FXOnHit=sparkles;
+	FXOnHitColor=Black;
+[AvAffecterAoE]
+	ID=shana_spawn_plaguebow;
+	cloneFrom=oneTile;

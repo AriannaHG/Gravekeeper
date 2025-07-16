@@ -1,8 +1,8 @@
 [JournalEntry]
 ID=help_status_ari_rot;
-category=help; halfPage=true; rarity=-1;
+category=help; halfPage=false; rarity=-1;
 title=Rot;
-text=<iconBig=icon_rot><icon=icon_gravekeeper_rot> <title=Rot><brAdj=>        Rot takes place at the end of a creature's turn, inflicting Ruin damage equal to stack size with a severity-dependent chance to spread the Rot to nearby allies. Creatures infected by the Rot are reanimated as a Zombie on death, the allegiance and characteristics of which being dependant on the source of the Rot.
+text=<iconBig=icon_rot><icon=icon_gravekeeper_rot> <title=Rot><brAdj=>        Rot takes effect at the end of a creature's turn. When triggered, it first has a severity-dependent chance to spread a portion of itself to the host creature's allies. It then inflicts <icon=skill_Ruin> damage to the host creature equal to its stack size. Creatures infected by the Rot are reanimated as a Zombie on death, the allegiance and characteristics of which being dependant on the source of the Rot.<n=>        Rot is doubly affected by the victim's <icon=skill_Ruin> resistance, as it impacts both the amount of Rot inflicted as well as the subsequent <icon=skill_Ruin> damage taken.
 [GlobalTriggerEffect]
 ID=tLoadGame; effectID=learnJournalEntry; sValue=help_status_ari_rot; bValue2=True;
 
@@ -10,7 +10,8 @@ ID=tLoadGame; effectID=learnJournalEntry; sValue=help_status_ari_rot; bValue2=Tr
 ID=help_status_shana_creeping_death;
 category=help; halfPage=true; rarity=-1;
 title=Creeping Death;
-text=<iconBig=icon_creeping_death> <title=Creeping Death><brAdj=>        Creatures unfortunate enough to be plagued by the Creeping Death take 2 stacks of Rot at the beginning of each of their turns.
+text=<iconBig=icon_creeping_death> <title=Creeping Death><brAdj=>        Creatures unfortunate enough to be plagued by the Creeping Death take 2 stacks of Rot at the beginning of each of their turns, and an additional stack when it is reapplied.
+
 [GlobalTriggerEffect]
 ID=tLoadGame; effectID=learnJournalEntry; sValue=help_status_shana_creeping_death; bValue2=True;
 
@@ -53,12 +54,13 @@ depthMod=900;
 [AvAffecter]
 	ID=skeletonswordAttack; 
 	actorValue=ari_rot_status;
-	magnitude=1 + t:ari_rot_status;
-	duration=40;
+	magnitude=d:1rotcalc + t:ari_rot_status;
+	duration=80;
 	chance=d:swordAcc;
-	element=ruin;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -87,7 +89,7 @@ texture=items_weapons;
 ID=ari_summoned_crossbow; pR=p5; pG=pCBlack; pB=p5;
 description=A rusted crossbow. Inflicts Rot<icon=icon_gravekeeper_rot> based on your <icon=skill_Ruin>.;
 journalID=journal_xbow;
-sprite=184; spriteWhenHeld=215; itemCategory=weapon; element=aim;
+sprite=183; spriteWhenHeld=215; itemCategory=weapon; element=aim;
 weight=5; volume=5; value=0;
 power=7;
 action=crossbowAttack_Rot;
@@ -99,12 +101,13 @@ ID=ari_summoned_crossbow; element=actionUsed; newID=ari_summoned_crossbow_unload
 [AvAffecter]
 	ID=crossbowAttack_Rot; 
 	actorValue=ari_rot_status;
-	magnitude=1 + floor:d:ruinSkillDivide5 + t:ari_rot_status;
-	duration=40;
+	magnitude=d:1rotcalc + floor:d:ruinSkillDivide5 * rxn:ruin + t:ari_rot_status;
+	duration=80;
 	chance=d:aimAcc;
-	element=ruin;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -114,7 +117,7 @@ ID=ari_summoned_crossbow; element=actionUsed; newID=ari_summoned_crossbow_unload
 
 [ItemType]  name=Corroded Crossbow (Unloaded);
 texture=items_weapons; 
-ID=ari_summoned_crossbow_unloaded; pR=pSteel; pB=pSteelHilt;
+ID=ari_summoned_crossbow_unloaded; pR=p5; pG=pCBlack; pB=p5;
 description=A rusted crossbow. Needs to be reloaded.; 
 journalID=journal_xbow;
 sprite=184; spriteWhenHeld=216; itemCategory=weapon; 
@@ -166,12 +169,13 @@ depthMod=900;
 [AvAffecter]
 	ID=ari_skeletongreatswordAttack; 
 	actorValue=ari_rot_status;
-	magnitude=1 + t:ari_rot_status;
-	duration=40;
+	magnitude=d:1rotcalc + t:ari_rot_status;
+	duration=80;
 	chance=d:gswordAcc;
-	element=ruin;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -228,11 +232,13 @@ depthMod=900;
 [AvAffecter]
 	ID=ari_scytheAttack; 
 	actorValue=ari_rot_status;
-	magnitude=2 + t:ari_rot_status;
-	duration=40;
+	magnitude=d:1rotcalc + 0.1 * c:skill_Ruin * rxn:ruin + t:ari_rot_status;
+	duration=80;
 	chance=d:ruinAcc;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -279,12 +285,13 @@ power=10;
 [AvAffecter]
 	ID=ari_infectPunch; 
 	actorValue=ari_rot_status;
-	magnitude=1 + t:ari_rot_status;
-	duration=40;
+	magnitude=d:1rotcalc + t:ari_rot_status;
+	duration=80;
 	chance=d:fistAcc - 2;
-	element=ruin;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -345,11 +352,13 @@ power=10;
 [AvAffecter]
 	ID=ari_skeleton_warrior_charge; 
 	actorValue=ari_rot_status;
-	magnitude=1 + t:ari_rot_status;
-	duration=40;
+	magnitude=d:1rotcalc + t:ari_rot_status;
+	duration=80;
 	chance=100;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -766,12 +775,13 @@ power=10;
 [AvAffecter]
 	ID=ari_skeleton_knight_gravestrike; 
 	actorValue=ari_rot_status;
-	magnitude=2 + t:ari_rot_status;
-	duration=40;
+	magnitude=d:1rotcalc + rxn:ruin + t:ari_rot_status;
+	duration=80;
 	chance=d:gswordAcc;
-	element=ruin;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -863,7 +873,7 @@ power=10;
 	actorValue=ari_rot_status;
 	harmful=false;
 	magnitude=t:ari_rot_status - 5;
-	duration=40;
+	duration=80;
 	chance=100 * moreThan:5:t:ari_rot_status;
 [AvAffecterAoE]
 	ID=ari_skeleton_knight_gravestrike_second;
@@ -1002,11 +1012,13 @@ power=10;
 [AvAffecter]
 	ID=ari_skeleton_archer_bone_shards; 
 	actorValue=ari_rot_status;
-	magnitude=1 + t:ari_rot_status;
-	duration=40;
+	magnitude=d:1rotcalc + t:ari_rot_status;
+	duration=80;
 	chance=d:ruinProjectileAcc;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -1216,7 +1228,7 @@ power=10;
 	actorValue=ari_rot_status;
 	harmful=false;
 	magnitude=t:ari_rot_status - 3;
-	duration=40;
+	duration=80;
 	chance=100 * moreThan:3:t:ari_rot_status;
 [AvAffecterAoE]
 	ID=ari_skeleton_archer_bonespear;
@@ -1682,11 +1694,13 @@ power=10;
 [AvAffecter]
 	ID=ari_zombie_infectious_bile; 
 	actorValue=ari_rot_status;
-	magnitude=3 + t:ari_rot_status;
-	duration=40;
+	magnitude=3 * rxn:ruin + t:ari_rot_status;
+	duration=80;
 	chance=d:ruinAcc;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -1767,11 +1781,13 @@ power=10;
 [AvAffecter]
 	ID=ari_zombie_corpse_expulsion; 
 	actorValue=ari_rot_status;
-	magnitude=2 + t:ari_rot_status;
-	duration=40;
+	magnitude=d:1rotcalc + rxn:ruin + t:ari_rot_status;
+	duration=80;
 	chance=d:ruinAcc;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -1957,11 +1973,13 @@ power=10;
 [AvAffecter]
 	ID=ari_abomination_amalgamated_limb; 
 	actorValue=ari_rot_status;
-	magnitude=1 + t:ari_rot_status;
-	duration=40;
+	magnitude=d:1rotcalc + t:ari_rot_status;
+	duration=80;
 	chance=d:fistAcc;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -2064,12 +2082,13 @@ power=10;
 [AvAffecter]
 	ID=ari_abomination_corpse_slam; 
 	actorValue=ari_rot_status;
-	magnitude=1 + t:ari_rot_status;
-	duration=40;
+	magnitude=d:1rotcalc + t:ari_rot_status;
+	duration=80;
 	chance=d:fistAcc;
-	element=ruin;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -3213,11 +3232,13 @@ needsLoS = false; needsLoE = false; shape=7;
 [AvAffecter]
 	ID=ari_abomination_charge; 
 	actorValue=ari_rot_status;
-	magnitude=1 + t:ari_rot_status;
-	duration=40;
+	magnitude=d:1rotcalc + t:ari_rot_status;
+	duration=80;
 	chance=100;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -3411,7 +3432,7 @@ needsLoS = false; needsLoE = false; shape=7;
 	actorValue=ari_rot_status;
 	harmful=false;
 	magnitude=t:ari_rot_status - 3;
-	duration=40;
+	duration=80;
 	chance=100 * moreThan:3:t:ari_rot_status;
 [AvAffecterAoE]
 	ID=ari_abomination_bonespear;
@@ -3490,12 +3511,13 @@ needsLoS = false; needsLoE = false; shape=7;
 [AvAffecter]
 	ID=ari_abomination_gravestrike; 
 	actorValue=ari_rot_status;
-	magnitude=2 + t:ari_rot_status;
-	duration=40;
+	magnitude=d:1rotcalc + rxn:ruin + t:ari_rot_status;
+	duration=80;
 	chance=d:fistAcc;
-	element=ruin;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -3586,7 +3608,7 @@ needsLoS = false; needsLoE = false; shape=7;
 	actorValue=ari_rot_status;
 	harmful=false;
 	magnitude=t:ari_rot_status - 3;
-	duration=40;
+	duration=80;
 	chance=100 * moreThan:5:t:ari_rot_status;
 [AvAffecterAoE]
 	ID=ari_abomination_gravestrike_second;
@@ -3656,11 +3678,13 @@ needsLoS = false; needsLoE = false; shape=7;
 [AvAffecter]
 	ID=ari_abomination_infectious_bile; 
 	actorValue=ari_rot_status;
-	magnitude=3 + t:ari_rot_status;
-	duration=40;
+	magnitude=2 * rxn:ruin + d:1rotcalc + t:ari_rot_status;
+	duration=80;
 	chance=d:ruinAcc;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -3742,11 +3766,13 @@ needsLoS = false; needsLoE = false; shape=7;
 [AvAffecter]
 	ID=ari_abomination_corpse_expulsion; 
 	actorValue=ari_rot_status;
-	magnitude=2 + t:ari_rot_status;
-	duration=40;
+	magnitude=rxn:ruin + d:1rotcalc + t:ari_rot_status;
+	duration=80;
 	chance=100;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -3862,16 +3888,15 @@ needsLoS = false; needsLoE = false; shape=7;
 [AvAffecter]
 	ID=ari_lich_rotbeam; 
 	actorValue=ari_rot_status;
-	magnitude=8 + t:ari_rot_status;
-	duration=40;
+	magnitude=7 * rxn:ruin + d:1rotcalc + t:ari_rot_status;
+	duration=80;
 	chance=d:ruinAcc;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
-	element=ranged;
-	element=magic;
-	element=ruin;
 [AvAffecterAoE]
 	ID=ari_lich_rotbeam;
 	shape=2;
@@ -4030,8 +4055,8 @@ ID=ari_fetid_field_rot;
 [AvAffecter]
 	ID=ari_fetid_field_rot; 
 	actorValue=ari_rot_status;
-	magnitude=1 + t:ari_rot_status;
-	duration=40;
+	magnitude=d:1rotcalc + t:ari_rot_status;
+	duration=80;
 	chance=100;
 [AvAffecterAoE]
 	ID=ari_fetid_field_rot;
@@ -5901,13 +5926,10 @@ ID=ari_cold_spot_chill_weak;
 [AvAffecter]
 	ID=ari_enemy_lich_finger_death;
 	actorValue=ari_rot_status_enemy;
-	magnitude=4 + t:ari_rot_status_enemy;
-	duration=120;
+	magnitude=7 * rxn:ruin + d:1rotcalc + t:ari_rot_status_enemy;
+	duration=80;
 	chance=d:ruinAcc;
 	harmful=true;
-	element=ranged;
-	element=magic;
-	element=ruin;
 	FXOnTile=cut;
 [AvAffecterAoE]
 	ID=ari_enemy_lich_finger_death;
@@ -6029,12 +6051,9 @@ depthMod=900;
 [AvAffecter]
 	ID=skeletonswordAttack_enemy; 
 	actorValue=ari_rot_status_enemy;
-	magnitude=1 + t:ari_rot_status_enemy;
-	duration=40;
+	magnitude=d:1rotcalc + t:ari_rot_status_enemy;
+	duration=80;
 	chance=d:swordAcc;
-	element=melee;
-	element=physical;
-	element=slash;
 	FXOnTile=cut;
 [AvAffecterAoE]
 	ID=skeletonswordAttack_enemy;
@@ -6047,7 +6066,7 @@ texture=items_weapons;
 ID=ari_summoned_crossbow_enemy; pR=p5; pG=pCBlack; pB=p5;
 description=A rusted crossbow.;
 journalID=journal_xbow;
-sprite=184; spriteWhenHeld=215; itemCategory=weapon; element=aim;
+sprite=183; spriteWhenHeld=215; itemCategory=weapon; element=aim;
 weight=5; volume=5; value=0;
 power=7;
 action=crossbowAttack_Rot_enemy;
@@ -6059,12 +6078,9 @@ ID=ari_summoned_crossbow_enemy; element=actionUsed; newID=ari_summoned_crossbow_
 [AvAffecter]
 	ID=crossbowAttack_Rot_enemy; 
 	actorValue=ari_rot_status_enemy;
-	magnitude=1 + t:ari_rot_status_enemy;
-	duration=40;
+	magnitude=d:1rotcalc + floor:d:ruinSkillDivide5 + t:ari_rot_status_enemy;
+	duration=80;
 	chance=d:aimAcc;
-	element=melee;
-	element=physical;
-	element=slash;
 	FXOnTile=cut;
 [AvAffecterAoE]
 	ID=crossbowAttack_Rot_enemy;
@@ -6073,7 +6089,7 @@ ID=ari_summoned_crossbow_enemy; element=actionUsed; newID=ari_summoned_crossbow_
 
 [ItemType]  name=Corroded Crossbow (Unloaded);
 texture=items_weapons; 
-ID=ari_summoned_crossbow_unloaded_enemy; pR=pSteel; pB=pSteelHilt;
+ID=ari_summoned_crossbow_unloaded_enemy; pR=p5; pG=pCBlack; pB=p5;
 description=A rusted crossbow. Needs to be reloaded.; 
 journalID=journal_xbow;
 sprite=184; spriteWhenHeld=216; itemCategory=weapon; 
@@ -6110,11 +6126,13 @@ ID=ari_summoned_crossbow_unloaded_enemy; element=actionUsed; element=reload; new
 [AvAffecter]
 	ID=ari_infectPunch_enemy; 
 	actorValue=ari_rot_status_enemy;
-	magnitude=1 + t:ari_rot_status_enemy;
-	duration=40;
+	magnitude=d:1rotcalc + t:ari_rot_status_enemy;
+	duration=80;
 	chance=d:fistAcc;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -6185,11 +6203,13 @@ ID=ari_summoned_crossbow_unloaded_enemy; element=actionUsed; element=reload; new
 [AvAffecter]
 	ID=ari_zombie_infectious_bile_enemy; 
 	actorValue=ari_rot_status_enemy;
-	magnitude=3 + t:ari_rot_status_enemy;
-	duration=40;
+	magnitude=2 * rxn:ruin + d:1rotcalc + t:ari_rot_status_enemy;
+	duration=80;
 	chance=d:ruinAcc;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -6272,11 +6292,13 @@ ID=ari_summoned_crossbow_unloaded_enemy; element=actionUsed; element=reload; new
 [AvAffecter]
 	ID=ari_enemy_zombie_corpse_expulsion; 
 	actorValue=ari_rot_status_enemy;
-	magnitude=2 + t:ari_rot_status_enemy;
-	duration=40;
+	magnitude=1 * rxn:ruin + d:1rotcalc + t:ari_rot_status_enemy;
+	duration=80;
 	chance=d:ruinAcc;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -6345,11 +6367,13 @@ ID=ari_summoned_crossbow_unloaded_enemy; element=actionUsed; element=reload; new
 [AvAffecter]
 	ID=ari_skeleton_warrior_charge_enemy; 
 	actorValue=ari_rot_status_enemy;
-	magnitude=1 + t:ari_rot_status_enemy;
-	duration=40;
+	magnitude=d:1rotcalc + t:ari_rot_status_enemy;
+	duration=80;
 	chance=100;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -6492,8 +6516,8 @@ ID=ari_fetid_field_rot_enemy;
 [AvAffecter]
 	ID=ari_fetid_field_rot_enemy; 
 	actorValue=ari_rot_status_enemy;
-	magnitude=1 + t:ari_rot_status_enemy;
-	duration=40;
+	magnitude=d:1rotcalc + t:ari_rot_status_enemy;
+	duration=80;
 	chance=100;
 [AvAffecterAoE]
 	ID=ari_fetid_field_rot_enemy;
@@ -6653,11 +6677,13 @@ ID=ari_fetid_field_spread_enemy;
 [AvAffecter]
 	ID=ari_enemy_abomination_amalgamated_limb; 
 	actorValue=ari_rot_status_enemy;
-	magnitude=1 + t:ari_rot_status_enemy;
-	duration=40;
+	magnitude=d:1rotcalc + t:ari_rot_status_enemy;
+	duration=80;
 	chance=d:fistAcc;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -6759,12 +6785,13 @@ ID=ari_fetid_field_spread_enemy;
 [AvAffecter]
 	ID=ari_enemy_abomination_corpse_slam; 
 	actorValue=ari_rot_status_enemy;
-	magnitude=1 + t:ari_rot_status_enemy;
-	duration=40;
+	magnitude=d:1rotcalc + t:ari_rot_status_enemy;
+	duration=80;
 	chance=d:fistAcc;
-	element=ruin;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -6948,3 +6975,69 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 	canSelectAllies=true;
 	canSelectEnemies=true;
 	aoeCasterAsOrigin=true;
+
+
+-----------------------------------------------Fake double tap for Plaguebringer Yokaze
+[Action] ID=shana_Ran_doubleTap_enemy;
+	name=Double Tap;
+	icon=icon_Ran_doubleTap;
+	tooltip=Attack twice for <math=15 + 5 * c:rank>% damage. Both attacks apply secondary effects.;
+	rankUpTooltip=Each rank adds +5% damage (to enemies only).;
+	tooltipTopRight=<icon=PhysAtk_small><icon=melee_small>;
+	mpCost=4 * d:mpCostMult + d:mpCostMod;
+	applyWeaponBuffs=true;
+
+	AIRatingBias=200;
+	cooldown=80;
+
+	maxRank=4;
+	canExceedMaxRankBy=1;
+
+
+	XPCost=220;
+	XPCost=440;
+	XPCost=880;
+	XPCost=1600;
+
+	casterAnimation=weapon;
+	casterAnimationSpeed=2.4;
+	--casterAnimationLoops=1;
+
+	special=doNotApplyActionUsedToItemUsed;
+
+	requiredWeaponElement=weapon;
+
+	FXOnCaster=sidewardLines;
+	FXOnCaster=woosh;
+
+	FXOnTarget=weaponFX;
+[ActionAoE]
+	ID=shana_Ran_doubleTap_enemy; shape=10;
+[AvAffecter]
+	ID=shana_Ran_doubleTap_enemy;
+	weaponAvAffecter=true;
+	magnitude=w:magnitude * 0.15 + w:magnitude * 0.05 * c:rank * m:diffHostile + w:magnitude * 0.05 * m:sameHostile;
+	chance=w:chance;
+	duration=-2;
+[AvAffecterAoE]
+	ID=shana_Ran_doubleTap_enemy;
+	 shape=11;
+[AvAffecter]
+	ID=shana_Ran_doubleTap_enemy;
+	weaponAvAffecter=true;
+	magnitude=w:magnitude * 0.15 + w:magnitude * 0.05 * c:rank * m:diffHostile + w:magnitude * 0.05 * m:sameHostile;
+	chance=w:chance;
+	duration=-2;
+[AvAffecterAoE]
+	ID=shana_Ran_doubleTap_enemy;
+	 shape=11;
+
+-----------------------------------------------Fake multishot for Plaguebringer Yokaze
+[Action] ID=shana_Sha_multishot_enemy;
+cloneFrom=Sha_multishot;
+cooldown=80;
+
+-----------------------------------------------Fake trip up for Plaguebringer Yokaze
+[Action] ID=shana_Sc_trip_enemy;
+cloneFrom=Sc_trip;
+cooldown=80;

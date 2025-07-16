@@ -1,0 +1,455 @@
+[SupportAbility] --todo add vfx to debuff - refer to rupture but turn it black and green maybe
+ID=shana_festering_fulcrum;
+name=Festering Fulcrum;
+--icon=icon_shana_festering_fulcrum;
+icon=icon_gravekeeper_blood_of_the_master;
+tooltip=When the final bearer of this ability dies, all allies are stunned for 30 <icon=time>, lose their <icon=PhysDef> <icon=MagDef> and will lose a third of their maximum <icon=HP> at the end of each of their turns, rounded up.;
+
+----------------------------------------------------------------------------------------------------Define Unsustainable status effect (not visible to player by design since lasts for rest of battle more or less)
+
+[FormulaGlobal] ID=shana_unsustainablehp;
+formula=t:HPMax * 0.34; --yes, the description is a filthy liar but it's in the player's favor lmao
+
+[FormulaGlobal] ID=shana_ceilingunsustainablehp;
+formula=ceiling:d:shana_unsustainablehp * -1;
+
+[ActorValue]
+ID=shana_unsustainable_status;
+name=Unsustainable;
+--icon=<icon=icon_gravekeeper_rot>;
+--bubbleIcon=icon_rot;
+removedByNegativeMagnitude=true;
+--description=;
+defaultValue = 0; AIValue = 1;
+minimum=0;
+harmfulMagnitude = 1;
+--bonusesMultiplier = 1;
+animationOnHarmful = pain;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = false;
+showDamageNumbersMagnitude = false;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = false;
+showDamageNumbersElements = false;
+showDamageNumbersIconInTooltips = false;
+damageNumberColor_Positive = White;
+damageNumberColor_Negative = White;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = false;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = false;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+[ActorValueReaction]
+ID=shana_unsustainable_status; element=ruinTouch; damageMultiplier=1.34;
+
+[ActorValueReaction]
+ID=shana_unsustainable_status; element=endTurn;
+action=shana_unsustainable_status_act;
+
+[Action] ID=shana_unsustainable_status_act;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+[ActionAoE]
+	ID=shana_unsustainable_status_act;
+	cloneFrom=oneTile;
+[AvAffecter] --lose 34% hp rounded up
+	ID=shana_unsustainable_status_act;
+	actorValue=HP;
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=true;
+	magnitude=d:shana_ceilingunsustainablehp;
+	duration=-2;
+	chance=100;
+	element=HPbased;
+[AvAffecterAoE]
+	ID=shana_unsustainable_status_act;
+	cloneFrom=oneTile;
+
+-------------------------------------------------------------------------------------------------------Define actor value that just shows you have Festering Fulcrum equipped
+
+[ActorValue] --------------------------------------------------------------- define shana_festering_fulcrum_equipped AV
+ID=shana_festering_fulcrum_equipped;
+name=Festering Fulcrum Equipped (this should not be visible);
+icon=;
+bubbleIcon=;
+
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = 0;
+affectsActors = true;
+canAffectIncapped = true;
+showDamageNumbers = false;
+showDamageNumbersMagnitude = false;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = false;
+showDamageNumbersElements = false;
+showDamageNumbersIconInTooltips = false;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0;
+elementReactionModifiesDuration = false;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = false;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+-------------------------------------------------------------------------------------------------------We return to your regularly scheduled Festering Fulcrum.
+[SupportAbilityEffect]
+ID=shana_festering_fulcrum;
+actorValue=shana_festering_fulcrum_equipped; magnitude=1; duration=-1;
+
+[SupportAbilityReaction]
+ID=shana_festering_fulcrum; element=incapacitated; action=shana_festering_fulcrum_act; --allActors_nonIncapped or shape=17
+
+[GlobalAoE] -- so the below works, shape 17 is all non incapped units
+    ID=shana_allActors_nonIncapped; cloneFrom=allActors; shape=17;
+
+[FormulaGlobal] ID=shana_fulcrums_remaining; --You can use allWithinAoEofCaster:shana_allActors_nonIncapped:shana_festering_fulcrum_equipped to return the total of shana_festering_fulcrum_equipped on all Actors within the shana_allActors_nonIncapped global AoE.
+    formula=allWithinAoEofCaster:shana_allActors_nonIncapped:shana_festering_fulcrum_equipped;
+
+[FormulaGlobal] ID=shana_no_fulcrums_remaining;
+    formula=2-d:shana_fulcrums_remaining; --this is 2 instead of 1 due to the formula not updating in a timely manner
+
+[Action] ID=shana_festering_fulcrum_act;
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+[ActionAoE]
+	ID=shana_festering_fulcrum_act;
+	cloneFrom=oneTile;
+
+[AvAffecter]
+    ID=shana_festering_fulcrum_act; --stun
+    visibleMiss=true; visibleEvaluations=true; harmful=true;
+    actorValue=stun;
+    magnitude=1;
+    duration=30;
+    chance=100;
+[AvAffecterAoE]
+    ID=shana_festering_fulcrum_act;
+    shape=17;
+    arc=true;
+    airborne=true;
+    needsLoE=false;
+    needsLoS=false;
+    bypassAll=true;
+    canSelectAllies=true;
+    canSelectEnemies=true;
+    fReq=d:shana_no_fulcrums_remaining;
+    minRange=0;
+    maxRange=99;
+
+[AvAffecter]
+    ID=shana_festering_fulcrum_act; --Remove Phys Def for 47 turns or ticks out of combat, in case this somehow triggers on player party.
+    visibleMiss=false; visibleEvaluations=false;
+    actorValue=PhysDef;
+    magnitude=-t:PhysDef;
+    duration=-50;
+    chance=100;
+[AvAffecterAoE]
+    ID=shana_festering_fulcrum_act;
+    shape=17;
+    arc=true;
+    airborne=true;
+    needsLoE=false;
+    needsLoS=false;
+    bypassAll=true;
+    canSelectAllies=true;
+    canSelectEnemies=false;
+    fReq=d:shana_no_fulcrums_remaining;
+    minRange=0;
+    maxRange=99;
+
+[AvAffecter]
+    ID=shana_festering_fulcrum_act; --Remove Mag Def for 47 turns or ticks out of combat, in case this somehow triggers on player party.
+    visibleMiss=false; visibleEvaluations=false;
+    actorValue=MagDef;
+    magnitude=-t:MagDef;
+    duration=-50;
+    chance=100;
+[AvAffecterAoE]
+    ID=shana_festering_fulcrum_act;
+    shape=17;
+    arc=true;
+    airborne=true;
+    needsLoE=false;
+    needsLoS=false;
+    bypassAll=true;
+    canSelectAllies=true;
+    canSelectEnemies=false;
+    fReq=d:shana_no_fulcrums_remaining;
+    minRange=0;
+    maxRange=99;
+
+[AvAffecter]
+    ID=shana_festering_fulcrum_act; --inflict Unsustainable (34% hp damage per turn, rounded up) for 47 turns or ticks out of combat, in case this somehow triggers on player party.
+    visibleMiss=false; visibleEvaluations=false;
+    actorValue=shana_unsustainable_status;
+    magnitude=1;
+    duration=-50;
+    chance=100;
+[AvAffecterAoE]
+    ID=shana_festering_fulcrum_act;
+    shape=17;
+    arc=true;
+    airborne=true;
+    needsLoE=false;
+    needsLoS=false;
+    bypassAll=true;
+    canSelectAllies=true;
+    canSelectEnemies=false;
+    fReq=d:shana_no_fulcrums_remaining;
+    minRange=0;
+    maxRange=99;
+
+
+
+[SupportAbility]
+ID=shana_instability;
+name=Unstable Essence;
+--icon=icon_shana_instability;
+icon=icon_gravekeeper_blood_of_the_master;
+tooltip=You will be interrupted and silenced for 30 <icon=time> when hit by physical damage. <n=>If this occurs, the resulting backlash pushes and inflicts Ruin damage equal to twice your <icon=skill_Ruin> to all adjacent, and the effects of this passive are disabled for 120 <icon=time>.;
+
+----------------------------------------------------------------Dampened Essence AV
+[ActorValue]
+ID=shana_dampened_essence;
+name=Dampened Essence;
+icon=Dampened Essence;
+bubbleIcon=;
+removedByNegativeMagnitude=true;
+minimum=0;
+maximum=1;
+harmfulMagnitude = -1;
+--description=;
+defaultValue = 0; AIValue = 1;
+affectsActors = true;
+canAffectIncapped = true;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = false;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Black;
+damageNumberColor_Negative = Black;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+elementReactionModifiesDuration = false;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+
+[SupportAbilityReaction]
+ID=shana_instability; element=physical; actorValue=HP; action=shana_instability_act;
+
+[Action] ID=shana_instability_act;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	fReq=1 - c:shana_dampened_essence;
+[ActionAoE]
+	ID=shana_instability_act;
+	cloneFrom=oneTile;
+	canSelectStackedActors=true;
+
+[AvAffecter] --dampened essence
+	ID=shana_instability_act;
+	visibleMiss=false;
+	actorValue=shana_dampened_essence;
+	harmful=false;
+	magnitude=1;
+	chance=100;
+	duration=120;
+	FXOnTile=tileLine_overlap;
+	FXOnTileColor=Black;
+	FXOnTile=DramaticNyeaow;
+    FXOnTileColor=Black;
+	FXOnTile=whiteExplosionSmall_rand_overlap;
+    FXOnTileColor=Black;
+	FXOnTile=smallShakeHoriz;
+[AvAffecterAoE]
+	ID=shana_instability_act;
+	cloneFrom=oneTile;
+
+[AvAffecter] --do ruin damage to adjacent
+	ID=shana_instability_act;
+	actorValue=HP;
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=true;
+	magnitude=-c:skill_Ruin * 2;
+	duration=-2;
+	chance=100;
+	element=ruin;
+	FXOnTile=upwardLines_quick_noOverlap;
+    FXOnTileColor=Black;
+	FXOnTile=ping_noOverlap;
+    FXOnTileColor=Black;
+	FXOnHit=largePing;
+    FXOnHitColor=Green;
+	FXOnHit=click;
+[AvAffecterAoE]
+	ID=shana_instability_act;
+	cloneFrom=adjacent;
+
+[AvAffecter] --push adjacent
+	ID=shana_instability_act;
+	actorValue=push;
+	magnitude=1;
+	duration=-2;
+	chance=100;
+[AvAffecterAoE]
+	ID=shana_instability_act;
+	cloneFrom=adjacent;
+
+[AvAffecter] --interrupt self
+	ID=shana_instability_act;
+	visibleMiss = false;
+	actorValue=cancel;
+	magnitude=1;
+	chance=100;
+	duration=-2;
+	FXOnHit=egg_fade;
+    FXOnHitColor=Black;
+[AvAffecterAoE]
+	ID=shana_instability_act;
+	cloneFrom=oneTile;
+
+[AvAffecter] --silence
+	ID=shana_instability_act;
+	actorValue=silence;
+	visibleMiss=false;
+	magnitude=1;
+	duration=30;
+	chance=100;
+[AvAffecterAoE]
+	ID=shana_instability_act;
+	cloneFrom=oneTile;
+
+[SupportAbility]
+ID=shana_critical_autolyze;
+name=Critical Autolyze;
+--icon=icon_shana_critical_autolyze;
+icon=icon_gravekeeper_blood_of_the_master;
+tooltip=If you are in critical condition (25% <icon=HP> or below) at the start of your turn, grant all allies a stacking +6 <icon=PhysAtk> and +6 <icon=skill_Ruin> for 60 <icon=time>, then lose 5% of your maximum <icon=HP>, rounded up.;
+
+[SupportAbilityReaction]
+ID=shana_critical_autolyze; element=timerUp; action=shana_critical_autolyze_act;
+
+[Action] ID=shana_critical_autolyze_act;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+[ActionAoE]
+	ID=shana_critical_autolyze_act;
+	cloneFrom=oneTile;
+	canSelectStackedActors=true;
+[AvAffecter] --this is a workaround to check if the caster (target) is in critical condition as reactions don't count the "caster" as the caster.
+	ID=shana_critical_autolyze_act;
+	actorValue=skill_Ruin;
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=false;
+	chance=100 * m:tCritical;
+	FXOnHit=shana_Fast_superduperSparkles;
+    FXOnHitColor=Black;
+    FXOnHit=shana_Fast_superduperSparkles;
+    FXOnHitColor=Green;
+    FXOnHit=sfx_crystallize_echo;
+[AvAffecterAoE]
+	ID=shana_critical_autolyze_act;
+	cloneFrom=oneTile;
+[AvAffecter] --6 phys
+	ID=shana_critical_autolyze_act;
+	actorValue=PhysAtk;
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=false;
+	magnitude=6 + cFromSource:PhysAtk:shana_critical_autolyze_act; --stack
+	duration=60;
+	chance=100 * thisPreviousAVHit:shana_critical_autolyze_act;
+	FXOnHit=sparkles;
+	FXOnHitColor=Black;
+	FXOnHit=sparkles;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=shana_critical_autolyze_act;
+	cloneFrom=allAllies;
+[AvAffecter] --6 ruin
+	ID=shana_critical_autolyze_act;
+	actorValue=skill_Ruin;
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=false;
+	magnitude=6 + cFromSource:skill_Ruin:shana_critical_autolyze_act;
+	duration=60;
+	chance=100 * thisPreviousAVHit:shana_critical_autolyze_act;
+[AvAffecterAoE]
+	ID=shana_critical_autolyze_act;
+	cloneFrom=allAllies;
+
+[FormulaGlobal] ID=shana_autolyzehp;
+formula=t:HPMax * 0.05;
+
+[FormulaGlobal] ID=shana_positiveceilingautolyzehp;
+formula=ceiling:d:shana_autolyzehp;
+
+[FormulaGlobal] ID=shana_ceilingautolyzehp;
+formula=-d:shana_positiveceilingautolyzehp;
+
+[AvAffecter] --lose 5% hp rounded up
+	ID=shana_critical_autolyze_act;
+	actorValue=HP;
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=true;
+	magnitude=d:shana_ceilingautolyzehp;
+	duration=-2;
+	chance=100 * thisPreviousAVHit:shana_critical_autolyze_act;
+	element=HPbased;
+[AvAffecterAoE]
+	ID=shana_critical_autolyze_act;
+	cloneFrom=oneTile;
+
+-----------------------------------------testing
+[ActorClass] name=Testing;
+ID=shana_testing;
+selectableClass=true;
+icon=classIcon_ranger2;
+journalID=journal_ranger2;
+
+description=Testing.;
+paletteUI=pGreen;
+
+actions=shana_Ran_doubleTap_enemy;
+
+supportAbilities=shana_festering_fulcrum;
+supportAbilities=shana_instability;
+supportAbilities=shana_critical_autolyze;
+
+relevantStats=TrueHPMax;

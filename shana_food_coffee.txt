@@ -5,8 +5,67 @@ cloneFrom=food_base;
 value=33; power=7;
 description=Jet-black coffee laced with soulglass.; 
 [ItemEffect]  
-ID=shana_food_coffee; actorValue=actTime; magnitude=-3; duration=7;
+ID=shana_food_coffee; actorValue=shana_coffee_av; magnitude=1; duration=7;
 durationIsWorldtimeDays=true; showNoDescription=true; canBeRemovedByNonspecificAVEffectRemoval=false;
 [ItemEffect]  
 ID=shana_food_coffee; actorValue=skill_Ruin; magnitude=1; duration=7;
 durationIsWorldtimeDays=true; showNoDescription=true; canBeRemovedByNonspecificAVEffectRemoval=false;
+
+[ActorValue] ----------------------------------COFFEE
+ID=shana_coffee_av;
+name=First Strike;
+icon=;
+bubbleIcon=;
+
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = 0;
+affectsActors = true;
+canAffectIncapped = true;
+showDamageNumbers = false; -------------
+showDamageNumbersMagnitude = false; ----
+showDamageNumbersSign = false;
+showDamageNumbersIcon = false;
+showDamageNumbersElements = false;
+showDamageNumbersIconInTooltips = false;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0;
+elementReactionModifiesDuration = false;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+
+[ActorValueReaction]
+ID=shana_coffee_av;
+element=combatStart; action=shana_coffee_act;
+
+[Action] ID=shana_coffee_act; 	
+	harmful=false;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+[ActionAoE] 
+	ID=shana_coffee_act;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_coffee_act; 
+	actorValue=actTimer;
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=false;
+	magnitude=26;
+	duration=-2;
+	chance=100;
+	FXOnHit=egg_fade;
+	FXOnHit=sfx_schwee;
+[AvAffecterAoE]
+	ID=shana_coffee_act;
+	cloneFrom=oneTile;

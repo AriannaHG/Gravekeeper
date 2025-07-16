@@ -1,0 +1,101 @@
+[ActorValueReaction]
+ID=fireWpn;
+actorValues=prom_ruinWpn; newID=X;
+
+[ActorValueReaction]
+ID=iceWpn;
+actorValues=prom_ruinWpn; newID=X;
+
+[ActorValueReaction]
+ID=windWpn;
+actorValues=prom_ruinWpn; newID=X;
+
+[ActorValueReaction]
+ID=elecWpn;
+actorValues=prom_ruinWpn; newID=X;
+
+
+
+
+
+
+[ActorValue]
+ID=prom_ruinWpn;
+name=Ruin Wpn;
+icon=Ruin Wpn;
+bubbleIcon=prom_ruinWpnStatus;
+minimum=0;
+maximum=1;
+description=Add 7 or more Ruin damage to attacks.;
+defaultValue = 0;
+
+harmfulMagnitude = -1;
+
+
+animationOnHarmful = pain;
+
+affectsActors = true;
+
+canAffectIncapped = true;
+
+removedByNegativeMagnitude=true;
+showDamageNumbers = false;
+showDamageNumbersMagnitude = false;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = false;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Blue;
+damageNumberColor_Negative = Red;
+
+
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+
+elementReactionModifiesDuration = true;
+
+canBeRemovedByNonspecificAVEffectRemoval = true;
+
+recordInActorData = true;
+showEvaluationInfo = true;
+
+allowDecimalValues = false;
+percentage = false;
+
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+[ActorValueEffect]
+ID=prom_ruinWpn;
+actorValue=skill_Ruin; magnitude=1; duration=-1;
+[ActorValueReaction]
+ID=prom_ruinWpn;
+element=weaponBuff; action=prom_ruinWpn_act;
+[ActorValueReaction]
+ID=prom_ruinWpn;
+actorValues=fireWpn; actorValues=elecWpn; actorValues=iceWpn; actorValues=windWpn; newID=X;
+
+[Action] ID=prom_ruinWpn_act;
+[ActionAoE]
+	ID=prom_ruinWpn_act;
+	cloneFrom=oneTile;
+	maxRange=12;
+[AvAffecter]
+	ID=prom_ruinWpn_act;
+	harmful=true;
+	actorValue=HP;
+	magnitude=d:ruinDmgHalfDef(4);
+	duration=-2;
+	chance=d:ruinProjectileAcc;
+	element=magic;
+	element=ruin;
+	FXOnTile=popSilent;
+	FXOnTileColor=Purple;
+	FXOnTile=tinyShakeHoriz;
+	FXOnTile=ThudShotBigger;
+	FXOnHit=shroudExplode;
+	FXOnHitColor=Purple;
+[AvAffecterAoE]
+	ID=prom_ruinWpn_act;
+	cloneFrom=oneTile;

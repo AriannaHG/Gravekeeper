@@ -186,13 +186,15 @@ icon=classIcon_ari_gravekeeper;
 [AvAffecter]
 	ID=ari_grimoireAttack_rot; 
 	actorValue=ari_rot_status;
-	magnitude=3 + floor:d:ruinSkillDivide5 + t:ari_rot_status;
-	duration=40;
+	magnitude=2 * rxn:ruin + d:1rotcalc + floor:d:ruinSkillDivide5 * rxn:ruin + t:ari_rot_status;
+	duration=80;
 	chance=d:ruinAcc;
 	FXOnTile=ari_energyShot_Rot;
 	FXOnTileColor=Green;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -727,7 +729,11 @@ icon=classIcon_ari_gravekeeper;
 	FXOnTile=shana_energyShot_deadbook;
 	FXOnTileColor=Green;
 	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
+	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -756,6 +762,18 @@ icon=classIcon_ari_gravekeeper;
 [ActionAoE] 
 	ID=shana_deadbookact;
 	cloneFrom=oneTile; 
+
+[AvAffecter]
+	ID=shana_deadbookact; 
+	FXOnHit=shana_Fast_Sparkles;
+	FXOnHitColor=Chartreuse;
+	FXOnHit=shana_Fast_superSparkles;
+	FXOnHitColor=Green;
+	FXOnHit=shana_Fast_superSparkles;
+	FXOnHitColor=Chartreuse;
+[AvAffecterAoE]
+	ID=shana_deadbookact;
+	cloneFrom=oneTile; 
 [AvAffecter]
 	ID=shana_deadbookact; 
 	actorValue=shana_creepingdeath_status;
@@ -767,6 +785,8 @@ icon=classIcon_ari_gravekeeper;
 	visibleMiss=false;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -813,6 +833,8 @@ icon=classIcon_ari_gravekeeper;
 	FXOnTileColor=Green;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
@@ -840,6 +862,18 @@ icon=classIcon_ari_gravekeeper;
 	special=usableEvenWhenYourTurn;
 [ActionAoE] 
 	ID=shana_deadbookact_enemy;
+	cloneFrom=oneTile;
+
+[AvAffecter]
+	ID=shana_deadbookact_enemy; 
+	FXOnHit=shana_Fast_Sparkles;
+	FXOnHitColor=Chartreuse;
+	FXOnHit=shana_Fast_superSparkles;
+	FXOnHitColor=Green;
+	FXOnHit=shana_Fast_superSparkles;
+	FXOnHitColor=Chartreuse;
+[AvAffecterAoE]
+	ID=shana_deadbookact_enemy;
 	cloneFrom=oneTile; 
 [AvAffecter]
 	ID=shana_deadbookact_enemy; 
@@ -852,6 +886,8 @@ icon=classIcon_ari_gravekeeper;
 	visibleMiss=false;
 	FXOnTile=chargeSpiralFast_big;
 	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
