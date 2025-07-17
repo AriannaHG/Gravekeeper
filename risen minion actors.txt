@@ -87,7 +87,7 @@ ID=summoned_undead_skeleton; actorValues=drowning; action=drown;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton;
 element=ruin;
-damageMultiplier=0.5; healMultiplier=1;
+damageMultiplier=-1; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton;
 element=poison; actorValue=HP;
@@ -196,7 +196,7 @@ ID=summoned_undead_skeleton_mage_type; actorValues=drowning; action=drown;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton_mage_type;
 element=ruin;
-damageMultiplier=0.5; healMultiplier=1;
+damageMultiplier=-1; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton_mage_type;
 element=poison; actorValue=HP;
@@ -310,7 +310,7 @@ ID=mindless_undead_skeleton; actorValues=drowning; action=drown;
 [ActorTypeReaction]
 ID=mindless_undead_skeleton;
 element=ruin;
-damageMultiplier=0.5; healMultiplier=1;
+damageMultiplier=-1; healMultiplier=1;
 [ActorTypeReaction]
 ID=mindless_undead_skeleton;
 element=poison; actorValue=HP;
@@ -421,7 +421,7 @@ ID=summoned_undead_zombie; actorValues=drowning; action=drown;
 [ActorTypeReaction]
 ID=summoned_undead_zombie;
 element=ruin;
-damageMultiplier=0.5; healMultiplier=1;
+damageMultiplier=-1; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_zombie;
 element=life; element=antiUndead;
@@ -540,7 +540,7 @@ ID=mindless_undead_zombie; actorValues=drowning; action=drown;
 [ActorTypeReaction]
 ID=mindless_undead_zombie;
 element=ruin;
-damageMultiplier=0.5; healMultiplier=1;
+damageMultiplier=-1; healMultiplier=1;
 [ActorTypeReaction]
 ID=mindless_undead_zombie;
 element=life; element=antiUndead;
@@ -1869,7 +1869,7 @@ ID=summoned_undead_abomination; actorValues=drowning; action=drown;
 [ActorTypeReaction]
 ID=summoned_undead_abomination;
 element=ruin;
-damageMultiplier=0.5; healMultiplier=1;
+damageMultiplier=-1; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_abomination;
 element=life; element=antiUndead;
@@ -1978,7 +1978,7 @@ ID=summoned_undead_skeleton_commander_version; actorValues=drowning; action=drow
 [ActorTypeReaction]
 ID=summoned_undead_skeleton_commander_version;
 element=ruin;
-damageMultiplier=0.5; healMultiplier=1;
+damageMultiplier=-1; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton_commander_version;
 element=poison; actorValue=HP;
@@ -2088,7 +2088,7 @@ ID=summoned_undead_skeleton_commander_version_mage; actorValues=drowning; action
 [ActorTypeReaction]
 ID=summoned_undead_skeleton_commander_version_mage;
 element=ruin;
-damageMultiplier=0.5; healMultiplier=1;
+damageMultiplier=-1; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton_commander_version_mage;
 element=poison; actorValue=HP;
@@ -2199,7 +2199,7 @@ ID=summoned_undead_zombie_commander_version; actorValues=drowning; action=drown;
 [ActorTypeReaction]
 ID=summoned_undead_zombie_commander_version;
 element=ruin;
-damageMultiplier=0.5; healMultiplier=1;
+damageMultiplier=-1; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_zombie_commander_version;
 element=poison; actorValue=HP;
@@ -2312,7 +2312,7 @@ ID=summoned_undead_lich_actor; actorValues=drowning; action=drown;
 [ActorTypeReaction]
 ID=summoned_undead_lich_actor;
 element=ruin;
-damageMultiplier=0.5; healMultiplier=1;
+damageMultiplier=-1; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_lich_actor;
 element=life; element=antiUndead;
@@ -5911,7 +5911,7 @@ randomNames=Undead Skeleton;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton_enemy;
 element=ruin;
-damageMultiplier=0.5; healMultiplier=1;
+damageMultiplier=-1; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton_enemy;
 element=poison; actorValue=HP;
@@ -6023,7 +6023,7 @@ randomNames=Undead Skeleton;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton_mage_type_enemy;
 element=ruin;
-damageMultiplier=0.5; healMultiplier=1;
+damageMultiplier=-1; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton_mage_type_enemy;
 element=poison; actorValue=HP;
@@ -6127,7 +6127,7 @@ randomNames=Undead Zombie;
 [ActorTypeReaction]
 ID=summoned_undead_zombie_enemy;
 element=ruin;
-damageMultiplier=0.5; healMultiplier=1;
+damageMultiplier=-1; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_zombie_enemy;
 element=life; element=antiUndead;
@@ -6310,7 +6310,7 @@ randomNames=Hulking Abomination;
 [ActorTypeReaction]
 ID=summoned_undead_abomination_enemy;
 element=ruin;
-damageMultiplier=0.5; healMultiplier=1;
+damageMultiplier=-1; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_abomination_enemy;
 element=life; element=antiUndead;
@@ -6450,7 +6450,7 @@ randomNames=Undead Lich;
 [ActorTypeReaction]
 ID=summoned_undead_lich_actor_enemy;
 element=ruin;
-damageMultiplier=0.5; healMultiplier=1;
+damageMultiplier=-1; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_lich_actor_enemy;
 element=life; element=antiUndead;
