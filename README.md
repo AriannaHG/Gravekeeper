@@ -47,7 +47,7 @@ Gravekeeper is a standalone mod, however integration with other mods is present:
 
 Grimoires can be crafted from [Gossamer](https://steamcommunity.com/sharedfiles/filedetails/?id=2975431040) *(Also requires [The Summoners of New Vesper](https://steamcommunity.com/sharedfiles/filedetails/?id=2864331568))*, [Heartwood](https://steamcommunity.com/sharedfiles/filedetails/?id=2667588820), [Bloodstone](https://steamcommunity.com/sharedfiles/filedetails/?id=2870452778) and [Yore](https://steamcommunity.com/sharedfiles/filedetails/?id=3367799950), and the Gravekeeper offers its own unique [Elite passive](https://steamcommunity.com/sharedfiles/filedetails/?id=3044437113). Additionally, the trade good offered by Port Barrow can be crafted into a unique potion via [Ports of Ill Repute](https://steamcommunity.com/sharedfiles/filedetails/?id=2828763440).
 
-Finally, [Livia](https://steamcommunity.com/sharedfiles/filedetails/?id=2345135808) may have a thing or two to say about the adventure zones this mod offers...
+[Livia](https://steamcommunity.com/sharedfiles/filedetails/?id=2345135808) may have a thing or two to say about the adventure zones this mod offers...
 
 **Place this mod below the relevant crafting material mods and Elite Passives** if you want to craft with their materials and have the Gravekeeper's Elite passive be treated as such, but they are not required.
 
