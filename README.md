@@ -8,7 +8,7 @@ A class mod that adds the Gravekeeper and its content to Horizon's Gate.
 
 # Delve into a Troubled Tomb
 
-Delve into a troubled tomb to seek ancient secrets and forbidden powers. Do battle with the recently departed and afterwards seek training in a new class; the **Gravekeeper**. The brave or foolhardy may ignore the warnings plastered all over the local graveyard's north gate... but that is not a requirement to learn the dark arts.
+Delve into a troubled tomb to seek ancient secrets and forbidden powers. Do battle with the recently departed and afterwards seek training in a new class; the **Gravekeeper**. The brave or foolhardy may ignore the warnings about the local graveyard's north gate... but that is not a requirement to learn the dark arts.
 
 Gravekeepers raise veritable armies of the dead to lay waste to their foes and offer a variety of playstyles, most of which revolve around minions. While Gravekeepers lack the ability to take out foes of their own accord, a Gravekeeper may opt to equip themselves with a new weapon type to shore up this weakness; the **grimoire**.
 
