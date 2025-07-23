@@ -334,8 +334,9 @@ ID=shana_delay_sync0; element=41001; action=shana_bestow_ruin3;
 -----------------------------------------------------------END NECROTIZE
 
 -----------------------------------------------------------BESTOW RUIN
---todo: Actor values cannot have more than one element reaction or something, so you need to make a custom set of 10 av for each move
---todo: change the aoe so it's a queens move
+--todo: add effects to the casting part of Bestow Ruin, remove caster anim maybe since its going on a monster
+--todo: when all testing is done canSelectAllies=false; canSelectEnemies=true;
+
 -- First part of Bestow Ruin.
 [Action] ID=shana_bestow_ruin;
 	name=Bestow Ruin;
@@ -563,7 +564,7 @@ ID=shana_delay_sync0; element=41001; action=shana_bestow_ruin3;
 	cloneFrom=oneTile;
 	ignoreCannotTarget=true;
 
--- Ruin Enchant part 1. todo change and upload the fx
+-- Ruin Enchant part 1.
 [AvAffecter]
 	ID=shana_bestow_ruin3;
 	actorValue=prom_ruinWpn;

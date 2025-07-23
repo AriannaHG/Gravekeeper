@@ -8,7 +8,7 @@ A class mod that adds the Gravekeeper and its content to Horizon's Gate.
 
 # Delve into a Troubled Tomb
 
-Delve into a troubled tomb to seek ancient secrets and forbidden powers. Do battle with the recently departed and afterwards seek training in a new class; the **Gravekeeper**. The brave or foolhardy may ignore the warnings plastered all over the local graveyard's north gate... but that is not a requirement to learn the dark arts.
+Delve into a troubled tomb to seek ancient secrets and forbidden powers. Do battle with the recently departed and afterwards seek training in a new class; the **Gravekeeper**. The brave or foolhardy may ignore the warnings about the local graveyard's north gate... but that is not a requirement to learn the dark arts.
 
 Gravekeepers raise veritable armies of the dead to lay waste to their foes and offer a variety of playstyles, most of which revolve around minions. While Gravekeepers lack the ability to take out foes of their own accord, a Gravekeeper may opt to equip themselves with a new weapon type to shore up this weakness; the **grimoire**.
 
@@ -46,6 +46,8 @@ Grimoires can strike a single target up to 4 tiles away, dealing damage based on
 Gravekeeper is a standalone mod, however integration with other mods is present:
 
 Grimoires can be crafted from [Gossamer](https://steamcommunity.com/sharedfiles/filedetails/?id=2975431040) *(Also requires [The Summoners of New Vesper](https://steamcommunity.com/sharedfiles/filedetails/?id=2864331568))*, [Heartwood](https://steamcommunity.com/sharedfiles/filedetails/?id=2667588820), [Bloodstone](https://steamcommunity.com/sharedfiles/filedetails/?id=2870452778) and [Yore](https://steamcommunity.com/sharedfiles/filedetails/?id=3367799950), and the Gravekeeper offers its own unique [Elite passive](https://steamcommunity.com/sharedfiles/filedetails/?id=3044437113). Additionally, the trade good offered by Port Barrow can be crafted into a unique potion via [Ports of Ill Repute](https://steamcommunity.com/sharedfiles/filedetails/?id=2828763440).
+
+[Livia](https://steamcommunity.com/sharedfiles/filedetails/?id=2345135808) may have a thing or two to say about the adventure zones this mod offers...
 
 **Place this mod below the relevant crafting material mods and Elite Passives** if you want to craft with their materials and have the Gravekeeper's Elite passive be treated as such, but they are not required.
 

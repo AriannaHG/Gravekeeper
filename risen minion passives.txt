@@ -1838,7 +1838,7 @@ ID=shana_projectileMastery_enemy; element=ranged; damageMultiplier=0.5;
 [SupportAbilityReaction]
 ID=shana_projectileMastery_enemy;
 element=ruin;
-damageMultiplier=0.5; healMultiplier=1;
+damageMultiplier=-1; healMultiplier=1;
 [SupportAbilityReaction]
 ID=shana_projectileMastery_enemy;
 element=poison; actorValue=HP;
