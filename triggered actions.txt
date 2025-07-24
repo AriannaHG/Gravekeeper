@@ -24,3 +24,36 @@
 	ID=shana_areacreepingdeathact;
 	cloneFrom=allActors;
 
+[GlobalTrigger]
+    ID=ari_trigger_lichdom_unlock;
+    topX=0;
+    topY=0;
+    btmX=0;
+    btmY=0;
+    aliasID=ari_trigger_lichdom_unlock;
+[GlobalTriggerEffect]
+    ID=ari_trigger_lichdom_unlock;
+    effectID=setGlobalVar;
+    sValue=class_gravekeeper_lichdom;
+    sValue2=1;
+[GlobalTriggerEffect]
+    ID=ari_trigger_lichdom_unlock;
+    effectID=fx;
+    sValue=blackenScreen;
+[GlobalTriggerEffect]
+    ID=ari_trigger_lichdom_unlock;
+    effectID=fx;
+    sValue=longGoodAuraSound;
+[GlobalTriggerEffect]
+    ID=ari_trigger_lichdom_unlock;
+    effectID=textOverlay;
+    sValue=<iconBig=icon_gravekeeper_lichdom_elite>Lichdom Elite passive unlocked!;
+    bValue1=False;
+    bValue2=False;
+[GlobalTriggerEffect]
+    ID=ari_trigger_lichdom_unlock;
+    effectID=textOverlay;
+    sValue=;
+    bValue1=False;
+    bValue2=False;
+    delay=2;

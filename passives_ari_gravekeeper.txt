@@ -652,7 +652,7 @@ ID=ari_gravekeeper_foul_corpses; element=timerUp; action=ari_gravekeeper_corpse_
 ID=ari_gravekeeper_lichdom;
 name=Lichdom;
 icon=icon_gravekeeper_lichdom_elite;
-tooltip=<color=Crimson><textIf=(Inproficient) =1 - g:class_gravekeeper_lichdom><color=Gold>Elite. Return from death as a Risen Lich<icon=icon_gravekeeper_risen> for <icon=time>100. You may not be Revived during this time.;
+tooltip=<color=Crimson><textIf=(Unproficient) =1 - g:class_gravekeeper_lichdom><color=Gold>Elite. Return from death as a Risen Lich<icon=icon_gravekeeper_risen> for <icon=time>100. You may not be Revived during this time.;
 XPCostUnlock=2000;
 canBeGivenToAI=false;
 fxEvery4Frames=;
