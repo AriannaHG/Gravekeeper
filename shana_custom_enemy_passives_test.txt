@@ -1,8 +1,7 @@
 [SupportAbility] --todo add vfx to debuff - refer to rupture but turn it black and green maybe
 ID=shana_festering_fulcrum;
 name=Festering Fulcrum;
---icon=icon_shana_festering_fulcrum;
-icon=icon_gravekeeper_blood_of_the_master;
+icon=icon_festering_fulcrum;
 tooltip=When the final bearer of this ability dies, all allies are stunned for 30 <icon=time>, lose their <icon=PhysDef> <icon=MagDef> and will lose a third of their maximum <icon=HP> at the end of each of their turns, rounded up.;
 
 ----------------------------------------------------------------------------------------------------Define Unsustainable status effect (not visible to player by design since lasts for rest of battle more or less)
@@ -224,8 +223,7 @@ ID=shana_festering_fulcrum; element=incapacitated; action=shana_festering_fulcru
 [SupportAbility]
 ID=shana_instability;
 name=Unstable Essence;
---icon=icon_shana_instability;
-icon=icon_gravekeeper_blood_of_the_master;
+icon=icon_unstable_essence;
 tooltip=You will be interrupted and silenced for 30 <icon=time> when hit by physical damage. <n=>If this occurs, the resulting backlash pushes and inflicts Ruin damage equal to twice your <icon=skill_Ruin> to all adjacent, and the effects of this passive are disabled for 120 <icon=time>.;
 
 ----------------------------------------------------------------Dampened Essence AV
@@ -354,8 +352,7 @@ ID=shana_instability; element=physical; actorValue=HP; action=shana_instability_
 [SupportAbility]
 ID=shana_critical_autolyze;
 name=Critical Autolyze;
---icon=icon_shana_critical_autolyze;
-icon=icon_gravekeeper_blood_of_the_master;
+icon=icon_critical_autolyze;
 tooltip=If you are in critical condition (25% <icon=HP> or below) at the start of your turn, grant all allies a stacking +6 <icon=PhysAtk> and +6 <icon=skill_Ruin> for 60 <icon=time>, then lose 5% of your maximum <icon=HP>, rounded up.;
 
 [SupportAbilityReaction]
