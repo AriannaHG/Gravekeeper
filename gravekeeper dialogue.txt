@@ -26,7 +26,7 @@ animations=sigh;
 animations=stern;
 statements=<color=DarkOliveGreen>-<p>cough-;
 statements=I don't feel too good...<p> hope I'm not coming down with something.;
-statements=Well, no sense in waiting around - let's go find that relic!;
+statements=Well, no sense in waiting around.;
 nextNodeID=;
 
 ---Dialogue for combat start in Creeping Death zones
@@ -35,14 +35,328 @@ animations=scared;
 statements=Rot seeps from unseen wounds...;
 nextNodeID=;
 
-[DialogNode] ID=ari_dialog_taidonchatter;
-animations=;
-statements=<rand=Hey, did you notice anything sticking out of the ground near Arianna's house?/This place is pretty creepy at night.>;
+---------------------------------------------taidondialog
+
+
+--todo untargetable graveyard path
+
+--todo maybe make an introhandler dialog node?
+
+--todo one more check to make sure DialogNode has nextNodeID and DialogOption has nodeToConnectTo
+[DialogNode] ID=shana_dialog_taidonintro1; --Before any quest progress
+animations=stern;
+animations=meh;
+animations=happy;
+
+statements=Bah, I've nothing to offer you right now.;
+statements=Go talk to Arianna if you must, that girl can talk anyone's ear off.;
+statements=Not very good at hiding things, but I wouldn't say that to her face!;
+specialEffect=incDefaultNode; --default node was taidonintro1, after this it'll be 2
+nextNodeID=;
+
+[DialogNode] ID=shana_dialog_taidonintro2;
+animations=meh;
+Go talk to Arianna if you must, that girl can talk anyone's ear off.;
+nextNodeID=;
+--todo after talking to Ari and accepting the quest, change taidons dialogue to shana_dialog_taidon1
+--todo specialEffect=setActorDialogNodeId,human_ari_gravekeeper_port_1,shana_dialog_taidonhandler;
+--todo ari mentions taidon may have something to say
+
+[DialogNode] ID=shana_dialog_taidonhandler;
+--todo checks for all the reaction nodes in happy path order
+--reaction nodes redirect to this node. the last check goes to shana_dialog_taidon1
+
+[DialogNode] ID=shana_dialog_taidon1; --todo textif based on prog
+animations=stern;
+statements=So you're the fools Arianna roped into solving our undead issue, eh?;
+
+[DialogOption] text=Know anything useful?;
+animations=sly;
+nodeToConnectTo=shana_dialog_taidon1a_ask;
+
+[DialogOption] text=Which night?;
+animations=stern;
+nodeToConnectTo=shana_dialog_taidon1a_night;
+
+[DialogOption] text=Gate?;
+animations=meh;
+formulaReq=g:shana_asked_taidon_night;
+nodeToConnectTo=shana_dialog_taidon1a_gate;
+
+[DialogOption] text=What's so bad about Old Barrow?;
+animations=meh;
+formulaReq=g:shana_asked_taidon_night;
+nodeToConnectTo=shana_dialog_taidon1a_old_barrow;
+
+[DialogOption] text=If it's so dangerous, why not ask Jascias for help?;
+animations=sly;
+formulaReq=g:shana_asked_taidon_old_barrow;
+nodeToConnectTo=shana_dialog_taidon1a_jascias;
+
+[DialogOption] text=Got some news for you.;
+animations=happy;
+nodeToConnectTo=shana_dialog_taidon1a_news;
+
+[DialogOption] text=Ok, bye.; --todo change all leave texts, I think it was leave?
+nextNodeID=;
+bottomOption=true;
+
+[DialogNode] ID=shana_dialog_taidon1a_ask;
+animations=sly;
+animations=sigh;
+statements=Word to the wise, the Rot<iconBig=icon_gravekeeper_rot> can be dispelled.;
+statements=Don't know how I'd have survived that night in Old Barrow without Lenore<iconBig=classIcon_minstrel> and Skelter<iconBig=classIcon_sage>...;
+nodeToConnectTo=shana_dialog_taidon1;
+
+--todo sequential dialogue options
+
+[DialogNode] ID=shana_dialog_taidon1a_night;--Which night?
+animations=stern;
+animations=sigh;
+animations=stern;
+animations=stern;
+statements=I'm not going to ruin my mood by talking about that night. Ask Arianna if you're so curious.;
+statements=Just stay away from that gate at the north end of the graveyard if you know what's good for you.;
+statements=Old Barrow's better off forgotten, and Arianna says whatever's raising the undead in our graveyard has nothing to do with it.;
+statements=If it did, we'd have long abandoned this town.;
+specialEffect=setGlobalVar,shana_asked_taidon_night,1;
+nextNodeID=shana_dialog_taidon1_anythingelse;
+
+[DialogNode] ID=shana_dialog_taidon1a_gate;--Gate?
+animations=angry;
+animations=stern;
+animations=stern;
+animations=stern;
+animations=sly;
+animations=sigh;
+statements=Feh!<p><p> I've tried to repair that gate many times now.;
+statements=Every time, the next day it'd be as if I hadn't touched the thing.;
+statements=Even smashed it to bits with my hammer as I've seen your type do, dragged the pieces back here.;
+statements=Came back next morning to find a new gate in place, just as damaged as before.;
+statements=Almost seems like Old Barrow's trying to lure the clever ones in...<p> but the truly smart wouldn't entertain it.;
+statements=To be fair, I know your sort. Put something like that in your way, and it's like Bullion to a merchant.;
+nextNodeID=shana_dialog_taidon1_anythingelse;
+
+
+[DialogNode] ID=shana_dialog_taidon1a_old_barrow;--what's so bad about Old Barrow?
+animations=angry;
+animations=sigh;
+animations=stern;
+statements=Bah!<p><p> You young'uns think you're invincible, don't you?;
+statements=You go in there...<p> you're not coming out.;
+statements=Don't say I didn't warn you.;
+specialEffect=setGlobalVar,shana_asked_taidon_old_barrow,1;
+
+[DialogOption] text=I make no promises, old man.;
+animations=meh;
+nodeToConnectTo=shana_dialog_taidon1a_old_barrow_eager;
+
+[DialogOption] text=Sure, I'll stay away.;
+animations=stern;
+nodeToConnectTo=shana_dialog_taidon1a_old_barrow_caution;
+
+[DialogOption] text=You didn't answer my question though?;
+animations=sly;
+nodeToConnectTo=shana_dialog_taidon1a_old_barrow_none_returned;
+
+[DialogNode] ID=shana_dialog_taidon1a_old_barrow_eager;
+animations=sigh;
+animations=meh;
+animations=stern;
+animations=sad;
+animations=sad;
+statements=Can't change your mind, I suppose.;
+statements=At least mark the tally on the fence before you enter, you'll know it when you see it.;
+statements=Seems like whatever's responsible for the gate doesn't mind the warning I stuck there.;
+statements=And...<p> if you happen to come across an undead Fareem in there, please tell her there's nothing to forgive.;
+statements=It's not like she had a choice, being controlled by the plague and all.;
+specialEffect=setGlobalVar,shana_taidon_message,1;
+nextNodeID=shana_dialog_taidon1_anythingelse;
+
+[DialogNode] ID=shana_dialog_taidon1a_old_barrow_caution;
+animations=happy;
+animations=meh;
+animations=sigh;
+statements=Well, least you're one of the smart ones.;
+statements=Not like that bunch of Gatekeepers who came by with a stick up their bums.;
+statements=Didn't even bring a Sage<iconBig=classIcon_sage> with them, the fools.;
+nextNodeID=shana_dialog_taidon1_anythingelse;
+
+[DialogNode] ID=shana_dialog_taidon1a_old_barrow_none_returned;
+animations=sigh;
+animations=sigh;
+animations=stern;
+animations=sad;
+statements=Fine.<p> Can't really tell you much, on account of nobody coming back after venturing in there.;
+statements=All I know is a virulent plague befell us that night, one that rotted<iconBig=icon_gravekeeper_rot> the flesh off peoples' bones and raised them under its command.;
+statements=Dispelling the victim staved off the plague's symptoms for a time, but it didn't stop until we were well clear of the city limits.;
+statements=...<p>I say "we", but only a few of us made it out alive.;
+nextNodeID=shana_dialog_taidon1_anythingelse;
+
+[DialogNode] ID=shana_dialog_taidon1a_jascias;--ask Jascias for help?
+animations=sigh;
+animations=meh;
+animations=meh;
+animations=sigh;
+statements=We tried, yes.;
+statements=They sent the most gaudily dressed sailors I've ever seen, and we got to watch them set up a scrying ritual of some sort.;
+statements=Said something about the grapes needing time to ripen, then washed their hands of the entire thing before leaving.;
+statements=Useless bunch of kooks if you ask me.;
+nextNodeID=shana_dialog_taidon1_anythingelse;
+
+[DialogNode] ID=shana_dialog_taidon1a_old_barrow_worried_a;--todo option: You're not worried about Old Barrow? (main node, shana_asked_taidon_old_barrow, barrow3 not cleared)
+animations=sly;
+statements=See, that's different - bad as that night was, the place hasn't done anything to us since. Live and let live, that's what I always say.;
+nextNodeID=shana_dialog_taidon1_anythingelse;
+
+[DialogNode] ID=shana_dialog_taidon1a_old_barrow_worried_b;--todo same option but barrow 3 cleared
+animations=happy;
+animations=happy;
+animations=stern;
+animations=meh;
+animations=sly;
+statements=Well now, why'd I be worried about that?;
+statements=You've already ripped its heart out - without that book, the plague's not coming back.;
+nextNodeID=shana_dialog_taidon1a_old_barrow_worried_b2;
+nextNodeID_fReq=g:ari_dead_lich;
+nextNodeID=shana_dialog_taidon1a_old_barrow_worried_b1;
+
+[DialogNode] ID=shana_dialog_taidon1a_old_barrow_worried_b1;
+statements=Now go nip the immediate problem in the bud before we get a repeat of what happened that night, y'hear me? Shouldn't be too much of a challenge for you.;
+nextNodeID=shana_dialog_taidon1_anythingelse;
+
+[DialogNode] ID=shana_dialog_taidon1a_old_barrow_worried_b2;
+statements=Y'know, I definitely wouldn't put it past that Lich to try recreating the events of that night once its body regenerates.;
+statements=Maybe you should do something about that? Shouldn't be too much of an issue for you.;
+nextNodeID=shana_dialog_taidon1_anythingelse;
+
+
+-----------TAIDON REACTIONS-----------
+[DialogNode] ID=shana_dialog_taidon_reaction_abombutnotlich;--after abom but not lich
+statements=That Abomination may have been taken care of, and you have my thanks...;
+statements=<fast, angry>but an old man like me can't sleep knowing something's actively raising the dead right next to us!;
+statements=Didn't think you whippersnappers were the type to leave a job half done.;
+statements=If my back didn't ache so much I'd go into the tomb myself!.;
+statements=<sly> I'd check for a basement if I were you...<p> I know the place has one.;
+nextNodeID=shana_dialog_taidon1_reactionhandler;
+
+
+[DialogNode] ID=shana_dialog_taidon_reaction_lichdefeated;-- after lich beaten but not yeeted
+statements=<happy>Heard about what you did. Well done!
+statements=<happy>That Lich likely won't be back for a good, long while, and it'll be someone else's problem by then.;
+nextNodeID=shana_dialog_taidon_reaction_lichdefeated_a;
+nextNodeID_fReq=1-g:ari_dead_ascetic;                        --barrow 3 not cleared
+nextNodeID=shana_dialog_taidon_reaction_lichdefeated_b;
+
+[DialogNode] ID=shana_dialog_taidon_reaction_lichdefeated_a; --barrow 3 not cleared
+fReq=;
+statements=I think you can consider your job done...<p> wouldn't go for extra credit if I were you.;
+
+[DialogOption] text=Extra credit?;
+animations=sly;
+nodeToConnectTo=shana_dialog_taidon_reaction_lichdefeated_extracredit;
+[DialogOption] text=Always happy to help.;
+animations=happy;
+nextNodeID=shana_dialog_taidon1_reactionhandler;
+bottomOption=true;
+
+[DialogNode] ID=shana_dialog_taidon_reaction_lichdefeated_extracredit;
+animations=stern;
+statements=Don't worry 'bout it. You've done enough, and I'm grateful for the help you've given our little town.;
+nextNodeID=shana_dialog_taidon1_reactionhandler;
+
+[DialogNode] ID=shana_dialog_taidon_reaction_lichdefeated_b;
+animations=happy;
+statements=Now, if you wanted you could <textIf=head to a Temple, purify that book<itemBig=shana_deadbook> you looted from the old church and =lessThan:2:g:arianna_gravekeeper_phylactery_quest>blast that Lich to smithereens<textIf= using that book<itemBig=ari_grimoire_divinity> you purified=moreThan:1:g:arianna_gravekeeper_phylactery_quest>!;
+nextNodeID=shana_dialog_taidon1_reactionhandler;
+
+
+[DialogNode] ID=shana_dialog_taidon_reaction_barrow1; -- after barrow 1
+animations=surprised;
+animations=meh;
+animations=sigh;
+animations=sigh;
+animations=sad;
+statements=Huh.<p> Well, that's the first time I've seen a crew venture past that gate and live to tell the tale.;
+statements=You met Yokaze? I 'member her, poor girl was beside herself after she got reanimated.;
+statements=Fought like a snaevar against the plague's control, telling us to run and leave her behind.;
+statements=Her arrows claimed quite a few of us when she succumbed - but it could have been so much worse.;
+statements=Least she's at peace now.;
+
+[DialogOption] text=She told me to thank you on her behalf.;
+formulaReq=g:shana_yokaze_reply;
+nextNodeID=shana_dialog_taidon_final_remnant;
+[DialogOption] text=Let the moment pass.;
+nextNodeID=shana_dialog_taidon1_reactionhandler;
+bottomOption=true;
+
+[DialogNode] ID=shana_dialog_taidon_reaction_yokaze_message; -- after barrow 1 if yokaze message
+animations=stern;
+animations=stern;
+statements=If she were here I'd tell her it's the least I could do.;
+statements=At least it helped make her final years bearable.;
+nextNodeID=shana_dialog_taidon1_reactionhandler;
+
+[DialogNode] ID=shana_dialog_taidon_reaction_barrow3;--after barrow 3.
+statements=...<p><p>;
+statements=Well, I won't lie.;
+statements=Thought you were a bunch of fools headed to their deaths.;
+statements=S'ppose that shows how much I know about the world.;
+statements=;
+nextNodeID=shana_dialog_taidon_reaction_barrow3a; --lich not yeeted
+nextNodeID_fReq=isNot:3:g:arianna_gravekeeper_phylactery_quest;
+nextNodeID=shana_dialog_taidon_reaction_barrow3b; --lich yeeted
+
+[DialogNode] ID=shana_dialog_taidon_reaction_barrow3a;--lich not yeeted.
+statements=Now go <if not purified=purify that book<itemBig=shana_deadbook> you got from the old church and> show <(if not fought lich)whatever's been raising the dead/(if fought lich) that Lich> what for!; todo:textif
+statements=Shouldn't be particularly dangerous to you lot, at this point.;
+nextNodeID=shana_dialog_taidon1_reactionhandler;
+
+[DialogNode] ID=shana_dialog_taidon_reaction_barrow3b;--lich yeeted
+statements=Seems like we won't have to worry the undead any more, all thanks to you.
+statements=My old bones felt it from all the way up here! Good riddance to bad rubbish, that's what I like to say.;
+--todo increment default node? this would lead to
+nextNodeID=shana_dialog_taidon_finalhandler;
+
+[DialogNode] ID=shana_dialog_taidon_finalhandler;
+nextNodeID=shana_dialog_taidon_final_foul;
+nextNodeID_fReq=partyItem:ari_gk_foul_remnant;
+nextNodeID=shana_dialog_taidon_final;
+
+[DialogNode] ID=shana_dialog_taidon_final_foul;
+statements=<rand=An old man like me has nothing more to offer you heroes, but you're welcome here anytime./Come to keep an old man company, eh?/Guess I can look forward to living the rest of my days out in peace.>;
+[DialogOption] text=This... thing<itemBig=ari_gk_foul_remnant> came out of the book when I got it purified. Anything I can do with it?;
+nextNodeID=shana_dialog_taidon_final_remnant;
+[DialogOption] text=Goodbye.;
+nextNodeID=;
+bottomOption=true;
+
+[DialogNode] ID=shana_dialog_taidon_final_remnant;
+statements=That's more Arianna's thing than mine, but if what she's been telling me is correct, you might be able to recreate that relic's corrupted form by slamming it into a Dusty Book<itemBig=ari_grimoire_dusty>.;
+statements=Can't for the life of me explain how that works, but you might be able to make one out of some Bone Dust<itemBig=bone_dust>.;
+statements=Pretty sure Arianna had one buried somewhere too, but what do I know?;
+statements=Don't use it for evil now, y'hear?;
+nextNodeID=;
+
+[DialogNode] ID=shana_dialog_taidon_final;
+statements=<rand=An old man like me has nothing more to offer you heroes, but you're welcome here anytime./Come to keep an old man company, eh?/Guess I can look forward to living the rest of my days out in peace.>;
+[DialogOption] text=This... thing<itemBig=ari_gk_foul_remnant> came out of the book when I got it purified. Anything I can do with it?;
+nextNodeID=shana_dialog_taidon_final_remnant;
+[DialogOption] text=Goodbye.;
+nextNodeID=;
+bottomOption=true;
 nodeToConnectTo=;
+
+[DialogNode] ID=ari_dialog_taidonchatter2; --tips for mausoleum todo include this somehow
+animations=meh;
+statements=<rand=You should probably have a way to dispel the Rot<iconBig=icon_gravekeeper_rot>./Undead can't stand Life magic, but using Ruin magic on them is a fool's errand./Some weapons and spells are uniquely effective against the undead.>;
+nodeToConnectTo=;
+
+-------------------------------------------------------------------end todo
 
 [DialogNode] ID=ari_dialog_zombchatter;
 animations=stern;
-statements=<rand=Be careful at night around here./Don't stray too close to the graveyard up north./We don't normally get visitors here...>;
+statements=<rand=Hey, did you notice anything sticking out of the ground near Arianna's house?/Be careful at night around here./Don't stray too close to the graveyard up north./We don't normally get visitors here...>;
 nodeToConnectTo=;
 
 
@@ -253,10 +567,9 @@ nodeToConnectTo=ari_gravekeeper_arianna_lichdom_learn;
 bottomOption=true;
 
 [DialogNode] ID=ari_gravekeeper_arianna_lichdom_learn;
---specialEffect=setGlobalVar,class_gravekeeper_lichdom,1;
+specialEffect=setGlobalVar,class_gravekeeper_lichdom,1;
 specialEffect=setGlobalVar,grimoire_unlock,1;
 specialEffect=markTrainerLocDone;
-specialEffect=trigger,ari_trigger_lichdom_unlock;
 nextNodeID=;
 
 [DialogNode] ID=ari_gravekeeper_arianna_greeting5;
@@ -928,7 +1241,7 @@ nextNodeID=shana_gravekeeper_yokaze_intro_4;
 [DialogNode] ID=shana_gravekeeper_yokaze_intro_4;
 speakerOverride=shana_plaguebow_boss_ari_gravekeeper_city_path_;
 animations=sly;
-statements=<speed=1.0>Do you have any questions for me? Please ask, it's been far too long since I had a conversation with anyone.;
+statements=<speed=1.0>Do you have any questions for me? Please ask, it's been far too long since I've had a conversation with anyone.;
 [DialogOption] text=The air here feels wrong.;
 animations=sigh;
 nodeToConnectTo=shana_gravekeeper_yokaze_intro_5;
@@ -936,16 +1249,21 @@ nodeToConnectTo=shana_gravekeeper_yokaze_intro_5;
 animations=sad;
 newLineOfOptions=true;
 nodeToConnectTo=shana_gravekeeper_yokaze_intro_6;
+[DialogOption] text=I have a message from Taidon.;
+animations=meh;
+newLineOfOptions=true;
+formulaReq=g:shana_taidon_message-g:shana_done_gravekeeper_yokaze_intro_taidon_message;
+nodeToConnectTo=shana_gravekeeper_yokaze_intro_taidon_message;
 [DialogOption] text=Could you please let us leave?;
 animations=scared;
 newLineOfOptions=true;
 nodeToConnectTo=shana_gravekeeper_yokaze_intro_7;
-[DialogOption] text=I don't speak to the undead.; --todo:add icon for combat
+[DialogOption] text=I don't speak to the undead.;
 animations=stern;
 newLineOfOptions=true;
 nodeToConnectTo=shana_gravekeeper_yokaze_intro_8; --Fair enough.....
 
-[DialogNode] ID=shana_gravekeeper_yokaze_intro_4a; --this connects back if youve asked at least one question, todo intro 8a where yokaze isn't as sad, more respectful lets fight
+[DialogNode] ID=shana_gravekeeper_yokaze_intro_4a; --this connects back if youve asked at least one question
 speakerOverride=shana_plaguebow_boss_ari_gravekeeper_city_path_;
 animations=sly;
 statements=<speed=1.0>Anything else you'd like to ask?;
@@ -958,12 +1276,17 @@ animations=sad;
 newLineOfOptions=true;
 formulaReq=1 - g:shana_done_gravekeeper_yokaze_intro_6;
 nodeToConnectTo=shana_gravekeeper_yokaze_intro_6;
+[DialogOption] text=I have a message from Taidon.;
+animations=meh;
+newLineOfOptions=true;
+formulaReq=g:shana_taidon_message-g:shana_done_gravekeeper_yokaze_intro_taidon_message;
+nodeToConnectTo=shana_gravekeeper_yokaze_intro_taidon_message;
 [DialogOption] text=Could you please let us leave?;
 animations=scared;
 newLineOfOptions=true;
 formulaReq=1 - g:shana_done_gravekeeper_yokaze_intro_7;
 nodeToConnectTo=shana_gravekeeper_yokaze_intro_7;
-[DialogOption] text=I have no more questions - let's get this over with.; --todo:add icon for combat
+[DialogOption] text=I have no more questions - let's get this over with.;
 animations=stern;
 newLineOfOptions=true;
 nodeToConnectTo=shana_gravekeeper_yokaze_intro_8a; --start fight
@@ -1021,6 +1344,19 @@ animations=happy;
 statements=If you survive this, I'll be cheering you on from wherever I end up!;
 statements=Most of my mortal wealth is buried in that grave over to my right...<p> or your left.;
 statements=Can't buy you drinks as I am now, but that should do the job!;
+nextNodeID=shana_gravekeeper_yokaze_intro_4a;
+
+[DialogNode] ID=shana_gravekeeper_yokaze_intro_taidon_message;
+animations=happy;
+animations=meh;
+animations=sad;
+animations=stern;
+statements=I've already heard this message a few times, but it's always nice.;
+statements=Keeps me sane, you know?;
+statements=Honestly, I don't know if I even deserve that much anymore.;
+statements=If you end up being the one to put me to rest, please thank him for me.;
+specialEffect=modGlobalVar,shana_done_gravekeeper_yokaze_intro_taidon_message,1;
+specialEffect=modGlobalVar,shana_yokaze_reply,1;
 nextNodeID=shana_gravekeeper_yokaze_intro_4a;
 
 [DialogNode] ID=shana_gravekeeper_yokaze_intro_7; --let us leave?
