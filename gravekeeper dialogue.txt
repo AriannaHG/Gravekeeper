@@ -63,6 +63,8 @@ nextNodeID=;
 --todo ari mentions taidon may have something to say
 
 [DialogNode] ID=shana_dialog_taidonhandler;
+statements=Good, this is shana_dialog_taidonhandler;
+nextNodeID=;
 --todo checks for all the reaction nodes in happy path order
 --reaction nodes redirect to this node. the last check goes to shana_dialog_taidon1
 
@@ -98,7 +100,7 @@ animations=happy;
 nodeToConnectTo=shana_dialog_taidon1a_news;
 
 [DialogOption] text=Ok, bye.; --todo change all leave texts, I think it was leave?
-nextNodeID=;
+nodeToConnectTo=;
 bottomOption=true;
 
 [DialogNode] ID=shana_dialog_taidon1a_ask;
@@ -257,7 +259,7 @@ animations=sly;
 nodeToConnectTo=shana_dialog_taidon_reaction_lichdefeated_extracredit;
 [DialogOption] text=Always happy to help.;
 animations=happy;
-nextNodeID=shana_dialog_taidon1_reactionhandler;
+nodeToConnectTo=shana_dialog_taidon1_reactionhandler;
 bottomOption=true;
 
 [DialogNode] ID=shana_dialog_taidon_reaction_lichdefeated_extracredit;
@@ -285,9 +287,9 @@ statements=Least she's at peace now.;
 
 [DialogOption] text=She told me to thank you on her behalf.;
 formulaReq=g:shana_yokaze_reply;
-nextNodeID=shana_dialog_taidon_final_remnant;
+nodeToConnectTo=shana_dialog_taidon_final_remnant;
 [DialogOption] text=Let the moment pass.;
-nextNodeID=shana_dialog_taidon1_reactionhandler;
+nodeToConnectTo=shana_dialog_taidon1_reactionhandler;
 bottomOption=true;
 
 [DialogNode] ID=shana_dialog_taidon_reaction_yokaze_message; -- after barrow 1 if yokaze message
@@ -308,7 +310,7 @@ nextNodeID_fReq=isNot:3:g:arianna_gravekeeper_phylactery_quest;
 nextNodeID=shana_dialog_taidon_reaction_barrow3b; --lich yeeted
 
 [DialogNode] ID=shana_dialog_taidon_reaction_barrow3a;--lich not yeeted.
-statements=Now go <if not purified=purify that book<itemBig=shana_deadbook> you got from the old church and> show <(if not fought lich)whatever's been raising the dead/(if fought lich) that Lich> what for!; todo:textif
+statements=Now go <textIf=purify that <itemBig=shana_deadbook>book you got from the old church and <textIf=show whatever's been raising the dead what for!=lessThan:2:g:arianna_gravekeeper_phylactery_quest><textIf=show that Lich what for!=moreThan:1:g:arianna_gravekeeper_phylactery_quest>;
 statements=Shouldn't be particularly dangerous to you lot, at this point.;
 nextNodeID=shana_dialog_taidon1_reactionhandler;
 
@@ -325,26 +327,20 @@ nextNodeID=shana_dialog_taidon_final;
 
 [DialogNode] ID=shana_dialog_taidon_final_foul;
 statements=<rand=An old man like me has nothing more to offer you heroes, but you're welcome here anytime./Come to keep an old man company, eh?/Guess I can look forward to living the rest of my days out in peace.>;
-[DialogOption] text=This... thing<itemBig=ari_gk_foul_remnant> came out of the book when I got it purified. Anything I can do with it?;
-nextNodeID=shana_dialog_taidon_final_remnant;
+[DialogOption] text=Anything I can do with this <itemBig_low=ari_gk_foul_remnant>Foul Remnant?;
+nodeToConnectTo=shana_dialog_taidon_final_remnant;
 [DialogOption] text=Goodbye.;
-nextNodeID=;
+nodeToConnectTo=;
 bottomOption=true;
 
 [DialogNode] ID=shana_dialog_taidon_final_remnant;
-statements=That's more Arianna's thing than mine, but if what she's been telling me is correct, you might be able to recreate that relic's corrupted form by slamming it into a Dusty Book<itemBig=ari_grimoire_dusty>.;
-statements=Can't for the life of me explain how that works, but you might be able to make one out of some Bone Dust<itemBig=bone_dust>.;
-statements=Pretty sure Arianna had one buried somewhere too, but what do I know?;
-statements=Don't use it for evil now, y'hear?;
+statements=That's more Arianna's thing than mine, but if what she's been telling me is correct, you might be able to recreate that relic's corrupted form by slamming it into a <itemBig_low=ari_grimoire_dusty>Dusty Book.;
+statements=Can't for the life of me explain how that works, but you might be able to make one out of some <itemBig=bone_dust>Bone Dust.;
+statements=Pretty sure she had one buried somewhere too, but what do I know?;
 nextNodeID=;
 
 [DialogNode] ID=shana_dialog_taidon_final;
 statements=<rand=An old man like me has nothing more to offer you heroes, but you're welcome here anytime./Come to keep an old man company, eh?/Guess I can look forward to living the rest of my days out in peace.>;
-[DialogOption] text=This... thing<itemBig=ari_gk_foul_remnant> came out of the book when I got it purified. Anything I can do with it?;
-nextNodeID=shana_dialog_taidon_final_remnant;
-[DialogOption] text=Goodbye.;
-nextNodeID=;
-bottomOption=true;
 nodeToConnectTo=;
 
 [DialogNode] ID=ari_dialog_taidonchatter2; --tips for mausoleum todo include this somehow
@@ -367,7 +363,7 @@ specialEffect=incDefaultNode;
 [DialogOption] text=What happens on their first night?;
 nodeToConnectTo=ari_gravekeeper_arianna_firstnight;
 [DialogOption] text=OK, bye.;
-nextNodeID=;
+nodeToConnectTo=;
 bottomOption=true;
 
 [DialogNode] ID=ari_gravekeeper_arianna_greeting1;
