@@ -2,7 +2,7 @@
 ID=shana_festering_fulcrum;
 name=Festering Fulcrum;
 icon=icon_festering_fulcrum;
-tooltip=When the final bearer of this ability dies, all allies are stunned for 30 <icon=time>, lose their <icon=PhysDef> <icon=MagDef> and will lose a third of their maximum <icon=HP> at the end of each of their turns, rounded up.;
+tooltip=When the bearer of this ability dies, all allies are stunned for 30 <icon=time>. <n>If none remain, all allies lose their <icon=PhysDef> <icon=MagDef> and will lose a third of their maximum <icon=HP> at the end of each of their turns, rounded up.;
 
 ----------------------------------------------------------------------------------------------------Define Unsustainable status effect (not visible to player by design since lasts for rest of battle more or less)
 
@@ -47,8 +47,8 @@ XPCostIncrement = 0;
 XPCostMultiplier = 1;
 XPCostFloorToNearest = 0;
 
-[ActorValueReaction]
-ID=shana_unsustainable_status; element=ruinTouch; damageMultiplier=1.34;
+--[ActorValueReaction] this isn't visible to the player
+--ID=shana_unsustainable_status; element=ruinTouch; damageMultiplier=1.34;
 
 [ActorValueReaction]
 ID=shana_unsustainable_status; element=endTurn;
@@ -150,8 +150,7 @@ ID=shana_festering_fulcrum; element=incapacitated; action=shana_festering_fulcru
     needsLoS=false;
     bypassAll=true;
     canSelectAllies=true;
-    canSelectEnemies=true;
-    fReq=d:shana_no_fulcrums_remaining;
+    canSelectEnemies=false;
     minRange=0;
     maxRange=99;
 
@@ -440,10 +439,10 @@ ID=shana_uber_instability; element=physical; actorValue=HP; action=shana_uber_in
 ID=shana_critical_autolyze;
 name=Critical Autolyze;
 icon=icon_critical_autolyze;
-tooltip=If you are in critical condition (25% <icon=HP> or below) at the start of your turn, grant all allies a stacking +6 <icon=PhysAtk> and +6 <icon=skill_Ruin> for 60 <icon=time>, then lose 5% of your maximum <icon=HP>, rounded up.;
+tooltip=If you are hit into critical condition (25% <icon=HP> or below), grant all allies a stacking +6 <icon=PhysAtk> and +6 <icon=skill_Ruin> for 30 <icon=time>.;
 
 [SupportAbilityReaction]
-ID=shana_critical_autolyze; element=timerUp; action=shana_critical_autolyze_act;
+ID=shana_critical_autolyze; element=physical; element=magic; actorValues=HP; action=shana_critical_autolyze_act;
 
 [Action] ID=shana_critical_autolyze_act;
 	special=usableEvenWhenCantAct;
@@ -453,7 +452,7 @@ ID=shana_critical_autolyze; element=timerUp; action=shana_critical_autolyze_act;
 	ID=shana_critical_autolyze_act;
 	cloneFrom=oneTile;
 	canSelectStackedActors=true;
-[AvAffecter] --this is a workaround to check if the caster (target) is in critical condition as reactions don't count the "caster" as the caster.
+[AvAffecter]
 	ID=shana_critical_autolyze_act;
 	actorValue=skill_Ruin;
 	visibleEvaluations=true;
@@ -475,7 +474,7 @@ ID=shana_critical_autolyze; element=timerUp; action=shana_critical_autolyze_act;
 	visibleMiss=false;
 	harmful=false;
 	magnitude=6 + cFromSource:PhysAtk:shana_critical_autolyze_act; --stack
-	duration=60;
+	duration=30;
 	chance=100 * thisPreviousAVHit:shana_critical_autolyze_act;
 	FXOnHit=sparkles;
 	FXOnHitColor=Black;
@@ -491,34 +490,34 @@ ID=shana_critical_autolyze; element=timerUp; action=shana_critical_autolyze_act;
 	visibleMiss=false;
 	harmful=false;
 	magnitude=6 + cFromSource:skill_Ruin:shana_critical_autolyze_act;
-	duration=60;
+	duration=30;
 	chance=100 * thisPreviousAVHit:shana_critical_autolyze_act;
 [AvAffecterAoE]
 	ID=shana_critical_autolyze_act;
 	cloneFrom=allAllies;
 
-[FormulaGlobal] ID=shana_autolyzehp;
-formula=t:HPMax * 0.05;
+--[FormulaGlobal] ID=shana_autolyzehp;
+--formula=t:HPMax * 0.05;
 
-[FormulaGlobal] ID=shana_positiveceilingautolyzehp;
-formula=ceiling:d:shana_autolyzehp;
+--[FormulaGlobal] ID=shana_positiveceilingautolyzehp;
+--formula=ceiling:d:shana_autolyzehp;
 
-[FormulaGlobal] ID=shana_ceilingautolyzehp;
-formula=-d:shana_positiveceilingautolyzehp;
+--[FormulaGlobal] ID=shana_ceilingautolyzehp;
+--formula=-d:shana_positiveceilingautolyzehp;
 
-[AvAffecter] --lose 5% hp rounded up
-	ID=shana_critical_autolyze_act;
-	actorValue=HP;
-	visibleEvaluations=true;
-	visibleMiss=false;
-	harmful=true;
-	magnitude=d:shana_ceilingautolyzehp;
-	duration=-2;
-	chance=100 * thisPreviousAVHit:shana_critical_autolyze_act;
-	element=HPbased;
-[AvAffecterAoE]
-	ID=shana_critical_autolyze_act;
-	cloneFrom=oneTile;
+--[AvAffecter] --lose 5% hp rounded up
+--	ID=shana_critical_autolyze_act;
+--	actorValue=HP;
+--	visibleEvaluations=true;
+--	visibleMiss=false;
+--	harmful=true;
+--	magnitude=d:shana_ceilingautolyzehp;
+--	duration=-2;
+--	chance=100 * thisPreviousAVHit:shana_critical_autolyze_act;
+--	element=HPbased;
+--[AvAffecterAoE]
+--	ID=shana_critical_autolyze_act;
+--	cloneFrom=oneTile;
 
 -----------------------------------------testing
 [ActorClass] name=Testing;
