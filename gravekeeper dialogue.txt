@@ -273,7 +273,7 @@ statements=Now, if you wanted you could <textIf=head to a Temple, purify that bo
 nextNodeID=shana_dialog_taidon1_reactionhandler;
 
 
-[DialogNode] ID=shana_dialog_taidon_reaction_barrow1; -- after barrow 1
+[DialogNode] ID=shana_dialog_taidon_reaction_barrow1; -- after barrow 1 --todo what if player asked but doesn't pass the message?
 animations=surprised;
 animations=meh;
 animations=sigh;
@@ -283,7 +283,7 @@ statements=Huh.<p> Well, that's the first time I've seen a crew venture past tha
 statements=You met Yokaze? I 'member her, poor girl was beside herself after she got reanimated.;
 statements=Fought like a snaevar against the plague's control, telling us to run and leave her behind.;
 statements=Her arrows claimed quite a few of us when she succumbed - but it could have been so much worse.;
-statements=Least she's at peace now.;
+statements=Least she's at peace now.; todo... - textiffinal - <p> did she receive my message?
 
 [DialogOption] text=She told me to thank you on her behalf.;
 formulaReq=g:shana_yokaze_reply;

@@ -510,6 +510,7 @@ ID=shana_delay_sync0; element=41001; action=shana_bestow_ruin3;
 	name=Bestow Ruin;
 	icon=icon_fire2;
 	chargeTime=20;
+	tooltip=This spell tracks its target, or their corpse if present. Deals <thinnerIcon=skill_Ruin><math=11212> damage to the target and all others in the same row, column, and diagonals, then enchants the weapons of all affected with ruinous energy.; --todo change math
 	special=requiresCharging;
 	casterAnimation=shoulderbash;
 --	FXOnCaster=darken_major;

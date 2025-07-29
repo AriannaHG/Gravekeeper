@@ -437,7 +437,7 @@ ID=shana_uber_instability; element=physical; actorValue=HP; action=shana_uber_in
 
 [SupportAbility]
 ID=shana_critical_autolyze;
-name=Critical Autolyze;
+name=Critical Bequeath;
 icon=icon_critical_autolyze;
 tooltip=If you are hit into critical condition (25% <icon=HP> or below), grant all allies a stacking +6 <icon=PhysAtk> and +6 <icon=skill_Ruin> for 30 <icon=time>.;
 
