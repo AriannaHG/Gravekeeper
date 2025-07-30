@@ -95,6 +95,13 @@ animations=sly;
 formulaReq=g:shana_asked_taidon_old_barrow;
 nodeToConnectTo=shana_dialog_taidon1a_jascias;
 
+[DialogOption] text=You're not worried about living so near Old Barrow?;
+animations=sly;
+formulaReq=g:shana_asked_taidon_old_barrow;
+nodeToConnectTo=shana_dialog_taidon1a_old_barrow_worried_b;
+
+nodeToConnectTo=shana_dialog_taidon1a_old_barrow_worried_a;
+
 [DialogOption] text=Got some news for you.;
 animations=happy;
 nodeToConnectTo=shana_dialog_taidon1a_news;
@@ -106,8 +113,8 @@ bottomOption=true;
 [DialogNode] ID=shana_dialog_taidon1a_ask;
 animations=sly;
 animations=sigh;
-statements=Word to the wise, the Rot<iconBig=icon_gravekeeper_rot> can be dispelled.;
-statements=Don't know how I'd have survived that night in Old Barrow without Lenore<iconBig=classIcon_minstrel> and Skelter<iconBig=classIcon_sage>...;
+statements=Word to the wise, the <iconBig=icon_gravekeeper_rot>Rot can be dispelled.;
+statements=Don't know how I'd have survived that night in Old Barrow without <iconBig=classIcon_minstrel>Lenore and <iconBig=classIcon_sage>Skelter...;
 nodeToConnectTo=shana_dialog_taidon1;
 
 --todo sequential dialogue options
@@ -181,7 +188,7 @@ animations=meh;
 animations=sigh;
 statements=Well, least you're one of the smart ones.;
 statements=Not like that bunch of Gatekeepers who came by with a stick up their bums.;
-statements=Didn't even bring a Sage<iconBig=classIcon_sage> with them, the fools.;
+statements=Didn't even bring a <iconBig=classIcon_sage>Sage with them, the fools.;
 nextNodeID=shana_dialog_taidon1_anythingelse;
 
 [DialogNode] ID=shana_dialog_taidon1a_old_barrow_none_returned;
@@ -190,7 +197,7 @@ animations=sigh;
 animations=stern;
 animations=sad;
 statements=Fine.<p> Can't really tell you much, on account of nobody coming back after venturing in there.;
-statements=All I know is a virulent plague befell us that night, one that rotted<iconBig=icon_gravekeeper_rot> the flesh off peoples' bones and raised them under its command.;
+statements=All I know is a virulent plague befell us that night, one that <iconBig=icon_gravekeeper_rot>rotted the flesh off peoples' bones and raised them under its command.;
 statements=Dispelling the victim staved off the plague's symptoms for a time, but it didn't stop until we were well clear of the city limits.;
 statements=...<p>I say "we", but only a few of us made it out alive.;
 nextNodeID=shana_dialog_taidon1_anythingelse;
@@ -206,7 +213,7 @@ statements=Said something about the grapes needing time to ripen, then washed th
 statements=Useless bunch of kooks if you ask me.;
 nextNodeID=shana_dialog_taidon1_anythingelse;
 
-[DialogNode] ID=shana_dialog_taidon1a_old_barrow_worried_a;--todo option: You're not worried about Old Barrow? (main node, shana_asked_taidon_old_barrow, barrow3 not cleared)
+[DialogNode] ID=shana_dialog_taidon1a_old_barrow_worried_a;--todo option: You're not worried about living so close to Old Barrow? (main node, shana_asked_taidon_old_barrow)
 animations=sly;
 statements=See, that's different - bad as that night was, the place hasn't done anything to us since. Live and let live, that's what I always say.;
 nextNodeID=shana_dialog_taidon1_anythingelse;
@@ -273,7 +280,7 @@ statements=Now, if you wanted you could <textIf=head to a Temple, purify that bo
 nextNodeID=shana_dialog_taidon1_reactionhandler;
 
 
-[DialogNode] ID=shana_dialog_taidon_reaction_barrow1; -- after barrow 1 --todo what if player asked but doesn't pass the message?
+[DialogNode] ID=shana_dialog_taidon_reaction_barrow1_normal; -- after barrow 1 no message
 animations=surprised;
 animations=meh;
 animations=sigh;
@@ -283,21 +290,56 @@ statements=Huh.<p> Well, that's the first time I've seen a crew venture past tha
 statements=You met Yokaze? I 'member her, poor girl was beside herself after she got reanimated.;
 statements=Fought like a snaevar against the plague's control, telling us to run and leave her behind.;
 statements=Her arrows claimed quite a few of us when she succumbed - but it could have been so much worse.;
-statements=Least she's at peace now.; todo... - textiffinal - <p> did she receive my message?
+statements=Least she's at peace now.;
+nextNodeID=shana_dialog_taidon1_reactionhandler;
+
+[DialogNode] ID=shana_dialog_taidon_reaction_barrow1_message; -- after barrow 1 if taidon asked
+animations=surprised;
+animations=meh;
+animations=sigh;
+animations=sigh;
+animations=sad;
+statements=Huh.<p> Well, that's the first time I've seen a crew venture past that gate and live to tell the tale.;
+statements=You met Yokaze? I 'member her, poor girl was beside herself after she got reanimated.;
+statements=Fought like a snaevar against the plague's control, telling us to run and leave her behind.;
+statements=Her arrows claimed quite a few of us when she succumbed - but it could have been so much worse.;
+statements=Did she receive my message?;
+nextNodeID=shana_dialog_taidon1_reactionhandler;
 
 [DialogOption] text=She told me to thank you on her behalf.;
+animations=meh;
 formulaReq=g:shana_yokaze_reply;
-nodeToConnectTo=shana_dialog_taidon_final_remnant;
-[DialogOption] text=Let the moment pass.;
-nodeToConnectTo=shana_dialog_taidon1_reactionhandler;
+nodeToConnectTo=shana_dialog_taidon_reaction_yokaze_message;
+[DialogOption] text=I delivered it to her. (Lie);
+animations=meh;
+formulaReq=g:shana_yokaze_reply;
+nodeToConnectTo=shana_dialog_taidon_reaction_yokaze_message_lie;
+[DialogOption] text=I didn't deliver your message.;
+animations=sigh;
+nodeToConnectTo=shana_dialog_taidon1_reaction_didntdeliver;
 bottomOption=true;
 
 [DialogNode] ID=shana_dialog_taidon_reaction_yokaze_message; -- after barrow 1 if yokaze message
-animations=stern;
-animations=stern;
+animations=sad;
+animations=sad;
 statements=If she were here I'd tell her it's the least I could do.;
-statements=At least it helped make her final years bearable.;
+statements=I hope it helped make her final years bearable.;
 nextNodeID=shana_dialog_taidon1_reactionhandler;
+
+[DialogNode] ID=shana_dialog_taidon_reaction_yokaze_message_lie; -- after barrow 1 if yokaze message
+animations=stern;
+animations=sad;
+statements=...;
+statements=Least she's at peace now.;
+nextNodeID=shana_dialog_taidon1_reactionhandler;
+
+[DialogNode] ID=shana_dialog_taidon1_reaction_didntdeliver; -- after barrow 1 if yokaze message
+animations=stern;
+animations=sad;
+statements=...;
+statements=Least she's at peace now.;
+nextNodeID=shana_dialog_taidon1_reactionhandler;
+
 
 [DialogNode] ID=shana_dialog_taidon_reaction_barrow3;--after barrow 3.
 statements=...<p><p>;
@@ -345,7 +387,7 @@ nodeToConnectTo=;
 
 [DialogNode] ID=ari_dialog_taidonchatter2; --tips for mausoleum todo include this somehow
 animations=meh;
-statements=<rand=You should probably have a way to dispel the Rot<iconBig=icon_gravekeeper_rot>./Undead can't stand Life magic, but using Ruin magic on them is a fool's errand./Some weapons and spells are uniquely effective against the undead.>;
+statements=<rand=You should probably have a way to dispel the <iconBig=icon_gravekeeper_rot>Rot./Undead can't stand Life magic, but using Ruin on them is a fool's errand./Some weapons and spells are uniquely effective against the undead.>;
 nodeToConnectTo=;
 
 -------------------------------------------------------------------end todo
@@ -1292,8 +1334,8 @@ nodeToConnectTo=shana_gravekeeper_yokaze_intro_8a; --start fight
 animations=sigh;
 animations=stern;
 animations=happy;
-statements=You can feel it too, can't you? The Rot<iconBig=icon_gravekeeper_rot> hangs thick in the air here.;
-statements=I've seen others keep it at bay with the help of a Sage's<iconBig=classIcon_sage> spells or a Minstrel's<iconBig=classIcon_minstrel> song, but anything that dispels the stuff should work.;
+statements=You can feel it too, can't you? The <iconBig=icon_gravekeeper_rot>Rot hangs thick in the air here.;
+statements=I've seen others keep it at bay with the help of a <iconBig=classIcon_sage>Sage's spells or a <iconBig=classIcon_minstrel>Minstrel's song, but anything that dispels the stuff should work.;
 statements=I'm too far gone for that, though. Please don't try to cure me. The previous batch of would-be healers ended up being cured of breathing instead.;
 specialEffect=modGlobalVar,shana_done_gravekeeper_yokaze_intro_5,1;
 nextNodeID=shana_gravekeeper_yokaze_intro_4a;
