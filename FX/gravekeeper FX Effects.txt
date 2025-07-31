@@ -204,3 +204,21 @@ timePerFrame=0.2;
 duration=0.2;
 scaleVeloc=-2;
 scaleAccel=-5;
+
+-------------------------------Old Barrow Gate
+
+[FXData]
+ID=shana_gate_dust;
+particleID=pixelR;
+numParticles=18;
+posOffset=-0.2,-0.2;
+randPos=0.4,0.4;
+velocOffset=-3,-3;
+randVeloc=6,6;
+accelOffset=0,3;
+scaleOffset=2;
+speedOffset=1.2;
+randScale=2;
+percentDurationBeforeOverlapWithOtherFX=0;
+soundName=yelpscreamLow;
+pR=pRed3;
