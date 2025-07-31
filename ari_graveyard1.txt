@@ -58,7 +58,7 @@ combatMode=False;
 [Item] ID=loot_gp3; q=1; containedIn=0; cSlot=0;
 [Item] ID=loot_gp3; q=1; containedIn=0; cSlot=1;
 [Item] ID=ari_grimoire_rot; q=1; containedIn=0; cSlot=6; containerID=1;
-[Item] ID=ari_summoned_crossbow_enemy; q=1; containedIn=0; cSlot=9; containerID=2;
+[Item] ID=foodDX; q=1; containedIn=0; cSlot=9;
 [Item] ID=xpGemMed2; q=1; containedIn=0; cSlot=14;
 [Item] ID=rubble; q=1; r=270; x=9; y=15;
 [Item] ID=bugsMass_small; q=1; x=10; y=2;
@@ -446,6 +446,13 @@ triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=F
 topX=6;topY=0;btmX=14;btmY=1;
 triggerImmediatelyOnEnteringZone=False; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
 [TriggerEffect] numID=1; effectID=travel_point; sValue=ari_gravekeeper_city_path; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+
+
+[Trigger] numID=18; aliasID=Repair_GateTrigger;
+topX=16;topY=22;btmX=24;btmY=32;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=newDay; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[TriggerEffect] numID=18; effectID=applyElementToZone; sValue=41010; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=16; yValue=22;
 
 
 

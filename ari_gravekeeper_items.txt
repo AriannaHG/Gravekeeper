@@ -76,7 +76,7 @@ texture=gkart;
   special=huge; special=cannotBePickedUp;
 	blockLoS=false; blockLoE=true; blockWalking=true; blockJumping=true;
 	pR=zoneStoneDark; pG=pFadeDarker;
-combineWith=ari_graveyard_key; toMake=ari_open_graveyard_gate; consumeOnCombine=true;
+combineWith=ari_graveyard_key; toMake=ari_open_graveyard_gate; consumeOnCombine=true; combineSound=unlock;
 
 [ItemType]  name=Open Metal Gate;
 itemCategory=mech;
@@ -113,25 +113,40 @@ depthMod=1050;
 
 
 
-[ItemType]  name=Metal Gate;
+[ItemType]  name=Gate to Old Barrow;
 itemCategory=mech;
-  ID=ari_closed_barrow_gate; sprite=74; special=sprite2xWidth;
-journalID=journal_door;
+  ID=ari_closed_barrow_gate; sprite=84; special=sprite2xWidth;
+journalID=ari_journal_barrow_gate;
 texture=gkart;
   weight=500; 
   special=huge; special=cannotBePickedUp;
 	blockLoS=false; blockLoE=true; blockWalking=true; blockJumping=true;
 	pR=zoneStoneDark; pG=pFadeDarker;
-combineWith=ari_barrow_key; toMake=ari_open_barrow_gate; consumeOnCombine=true;
+combineWith=ari_barrow_key; toMake=ari_open_barrow_gate; consumeOnCombine=false; combineSound=unlock;
+combineWith=key; toMake=ari_open_barrow_gate; consumeOnCombine=false; combineSound=unlock;
 
-[ItemType]  name=Open Metal Gate;
+[ItemReaction]
+ID=ari_closed_barrow_gate; element=melee; element=physical; element=ranged; element=smash; element=explode; fx=shana_gate_dust; newID=ari_open_barrow_gate;
+
+[ItemType]  name=Metal Fence; --This is the opened gate
 itemCategory=mech;
-  ID=ari_open_barrow_gate; sprite=76; special=sprite2xWidth;
-journalID=journal_door;
+  ID=ari_open_barrow_gate; sprite=86; special=sprite2xWidth;
+journalID=ari_journal_barrow_gate;
 texture=gkart;
   weight=500;
   special=huge; special=cannotBePickedUp;
 	pR=zoneStoneDark; pG=pFadeDarker;
+
+[ItemReaction] --regenerates the gate using custom element from trigger if a day has passed
+ID=ari_open_barrow_gate; element=41010; newID=ari_closed_barrow_gate;
+
+[JournalEntry]
+ID=ari_journal_barrow_gate;
+category=item; halfPage=true; rarity=2;
+title=Gate to Old Barrow;
+text=<itemBig=ari_closed_barrow_gate><title=Gate to Old Barrow><brAdj=>Heavily damaged gate that crumbles when met with the slightest force, only to make its inexplicable return the following day. <n=>Highly effective at luring the adventurous in, but rather ineffective at keeping intruders out.;
+
+
 
 
 [ItemType]  name=Key to the City of Barrow;
