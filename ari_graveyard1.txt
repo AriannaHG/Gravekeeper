@@ -67,6 +67,7 @@ combatMode=False;
 [Item] ID=grass_tall1; q=1; x=10; y=31;
 [Item] ID=grass_mid1; q=1; x=10; y=32;
 [Item] ID=fence_metal; q=1; x=11; y=3;
+[Item] ID=shana_barrow_warning_notice; q=1; oX=0; oY=2; x=11; y=3;
 [Item] ID=gravestone1; q=1; x=11; y=5;
 [Item] ID=gravestone4; q=1; x=11; y=9;
 [Item] ID=gravestone2; q=1; x=11; y=13;
@@ -453,6 +454,13 @@ triggerImmediatelyOnEnteringZone=False; triggeredByElement=none; travelModeOnly=
 topX=16;topY=22;btmX=24;btmY=32;
 triggerImmediatelyOnEnteringZone=False; triggeredByElement=newDay; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
 [TriggerEffect] numID=18; effectID=applyElementToZone; sValue=41010; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=16; yValue=22;
+
+
+
+[Trigger] numID=19; aliasID=;
+topX=11;topY=3;btmX=11;btmY=3;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=use; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[TriggerEffect] numID=19; effectID=talk; sValue=; sValue2=shana_warning_dialog_1; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
 
 
 

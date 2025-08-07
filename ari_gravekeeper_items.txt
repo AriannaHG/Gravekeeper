@@ -146,8 +146,39 @@ category=item; halfPage=true; rarity=2;
 title=Gate to Old Barrow;
 text=<itemBig=ari_closed_barrow_gate><title=Gate to Old Barrow><brAdj=>Heavily damaged gate that crumbles when met with the slightest force, only to make its inexplicable return the following day. <n=>Highly effective at luring the adventurous in, but rather ineffective at keeping intruders out.;
 
+[ItemType]  name=Warning;
+itemCategory=mech; stackable=true;
+ID=shana_barrow_warning_notice; sprite=2025;
+pR=pWood;
+description=Use to read.;
+special=cannotBePickedUp; special=canHangOnWalls;
+special=fullTileHitbox; special=oneClickToUse;
+[ItemReaction]
+ID=shana_barrow_warning_notice; element=use; action=use;
+
+[JournalEntry]
+ID=shana_barrow_warning_notice;
+category=item; halfPage=true; rarity=0;
+title=Warning;
+text=<itemBig=shana_barrow_warning_notice><title=Warning><brAdj=>A waterproofed poster, inked by a frustrated-looking hand.;
 
 
+
+
+[ItemType]  name=Tally Mark Base 4;
+ID=shana_four_tally_marks; texture=gkart; sprite=88;
+special=cannotBePickedUp; value=4; power=5;
+description=Don't use this. It's used to get tally marks in dialog via itemBig_low=.;
+
+[ItemType]  name=Tally Mark Base 5;
+ID=shana_five_tally_marks; texture=gkart; sprite=89;
+special=cannotBePickedUp; value=4; power=5;
+description=Don't use this. It's used to get tally marks in dialog via itemBig_low=.;
+
+[ItemType]  name=Tally Mark Base 5 Player;
+ID=shana_five_tally_marks_player; texture=gkart; sprite=90;
+special=cannotBePickedUp; value=4; power=5;
+description=Don't use this. It's used to get tally marks in dialog via itemBig_low=.;
 
 [ItemType]  name=Key to the City of Barrow;
 ID=ari_barrow_key; sprite=78;

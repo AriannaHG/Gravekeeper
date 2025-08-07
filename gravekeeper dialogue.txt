@@ -95,12 +95,15 @@ animations=sly;
 formulaReq=g:shana_asked_taidon_old_barrow;
 nodeToConnectTo=shana_dialog_taidon1a_jascias;
 
-[DialogOption] text=You're not worried about living so near Old Barrow?;
+[DialogOption] text=You're not worried about living so near Old Barrow?; --asked without having cleared barrow 3
 animations=sly;
-formulaReq=g:shana_asked_taidon_old_barrow;
-nodeToConnectTo=shana_dialog_taidon1a_old_barrow_worried_b;
-
+formulaReq=g:shana_asked_taidon_old_barrow-g:ari_dead_ascetic;
 nodeToConnectTo=shana_dialog_taidon1a_old_barrow_worried_a;
+
+[DialogOption] text=You're not worried about living so near Old Barrow?; --asked having cleared barrow 3
+animations=sly;
+formulaReq=g:shana_asked_taidon_old_barrow + g:ari_dead_ascetic - 1;
+nodeToConnectTo=shana_dialog_taidon1a_old_barrow_worried_b;
 
 [DialogOption] text=Got some news for you.;
 animations=happy;
@@ -383,14 +386,79 @@ nextNodeID=;
 
 [DialogNode] ID=shana_dialog_taidon_final;
 statements=<rand=An old man like me has nothing more to offer you heroes, but you're welcome here anytime./Come to keep an old man company, eh?/Guess I can look forward to living the rest of my days out in peace.>;
-nodeToConnectTo=;
+nextNodeID=;
 
 [DialogNode] ID=ari_dialog_taidonchatter2; --tips for mausoleum todo include this somehow
 animations=meh;
 statements=<rand=You should probably have a way to dispel the <iconBig=icon_gravekeeper_rot>Rot./Undead can't stand Life magic, but using Ruin on them is a fool's errand./Some weapons and spells are uniquely effective against the undead.>;
-nodeToConnectTo=;
+nextNodeID=;
 
 -------------------------------------------------------------------end todo
+
+----------Warning poster next to damaged Old Barrow gate-----------refer to <itemBig_low=shana_four_tally_marks> and shana_five_tally_marks, use textif to show your added mark and freq to make sure you can't add another mark
+[DialogNode] ID=shana_warning_dialog_1;
+statements=<speed=6>Yes, the gate to Old Barrow is falling apart.<n=>Yes, a child could easily smash it off its hinges.<n=>Yes, there are quicker and easier ways to die if you're so inclined.;
+[DialogOption] text=Continue reading.;
+nodeToConnectTo=shana_warning_dialog_2;
+fReq=1-g:shana_added_tally;
+[DialogOption] text=Continue reading.;
+nodeToConnectTo=shana_warning_dialog_2a;
+fReq=g:shana_added_tally;
+[DialogOption] text=Done reading.;
+nodeToConnectTo=;
+bottomOption=true;
+
+[DialogNode] ID=shana_warning_dialog_2;
+statements=<speed=6>Don't throw your life away, but add a mark to the tally first if you must.<n=><n=> <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_four_tally_marks>;
+[DialogOption] text=Continue reading.;
+nodeToConnectTo=shana_warning_dialog_3;
+[DialogOption] text=Go back.;
+nodeToConnectTo=shana_warning_dialog_1;
+[DialogOption] text=Add your mark to the tally.;
+fReq=1-g:shana_added_tally;
+specialEffect=setGlobalVar,shana_added_tally,1;
+specialEffect=fx,sfx_goodConfirm;
+nodeToConnectTo=shana_warning_dialog_2b;
+[DialogOption] text=Done reading.;
+nodeToConnectTo=;
+bottomOption=true;
+
+[DialogNode] ID=shana_warning_dialog_2a;
+statements=<speed=6>Don't throw your life away, but add a mark to the tally first if you must.<n=><n=> <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks_player>;
+[DialogOption] text=Continue reading.;
+nodeToConnectTo=shana_warning_dialog_3;
+[DialogOption] text=Go back.;
+nodeToConnectTo=shana_warning_dialog_1;
+[DialogOption] text=Done reading.;
+nodeToConnectTo=;
+bottomOption=true;
+
+[DialogNode] ID=shana_warning_dialog_2b;
+statements=<speed=99>Don't throw your life away, but add a mark to the tally first if you must.<n=><n=> <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks_player>;
+[DialogOption] text=Continue reading.;
+nodeToConnectTo=shana_warning_dialog_3;
+[DialogOption] text=Go back.;
+nodeToConnectTo=shana_warning_dialog_1;
+[DialogOption] text=Done reading.;
+nodeToConnectTo=;
+bottomOption=true;
+
+[DialogNode] ID=shana_warning_dialog_3;
+statements=<speed=6>P.S: If the dead are getting unruly again, I have it on good authority the source is probably lurking in the tomb to your right. Old Barrow's remained dormant so far, and I hope it stays that way.;
+[DialogOption] text=Done reading.;
+nodeToConnectTo=;
+[DialogOption] text=Go back.;
+nodeToConnectTo=shana_warning_dialog_2;
+fReq=1-g:shana_added_tally;
+[DialogOption] text=Go back.;
+nodeToConnectTo=shana_warning_dialog_2a;
+fReq=g:shana_added_tally;
+
+
+
+
+-----------End Warning poster dialogue---------------------------
+
 
 [DialogNode] ID=ari_dialog_zombchatter;
 animations=stern;
