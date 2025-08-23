@@ -47,10 +47,11 @@ combineWith=furnace_everlit2; toMake=bones1;
 --copy testing grimoire above, replace id, description and action (the action should be shana_skill)
 --add a custom element and reaction like so, replacing the element and action to match the id
 --[ActorValueReaction]
---ID=shana_delay_sync0; element=41000; action=shana_necrotize3;
---copy the entire Necrotize, then select the copied bit. enable match case
+--ID=shana_delay_sync0; element=41001; action=shana_bestow_ruin3;
+--dont copy necrotize as that doesn't have the set bit
+--copy the entire Bestow Ruin, then select the copied bit. enable match case
 --ctrl r, then control r again to search in selection
---Find and replace "Necrotize" with capitalized name of skill, "necrotize" with name of skill in small letters
+--Find and replace "Bestow Ruin" with capitalized name of skill, "bestow_ruin" with name of skill in small letters
 --find and replace 41000 with the custom element triggering part 3 of the skill
 
 --todo: for bestow ruin, 2 actions are queued by the first action instead of one - one that grabs the sync partner's ruin skill and puts it in a global variable, and a second queued action with the custom element that makes the synced target cast it on itself taking the global variable to get casters ruin at time of casting
@@ -707,7 +708,47 @@ ID=shana_delay_sync0; element=41002; action=shana_subsume3;
 
 -----------------------------------------------------------SUBSUME (use whatever removal method drowning uses)
 --todo
---This spell tracks its target, or their corpse if present. Deals <thinnerIcon=skill_Ruin><math=11212> damage and triggers the target's Rot<thinnerIcon=icon_gravekeeper_rot>. Then, if the target is dead, they will.... leaving an Undead Abscess in their wake.; --todo math
+--This spell tracks its target, or their corpse if present. Deals <thinnerIcon=skill_Ruin><math=11212> damage. If the target is dead, their corpse will be absorbed into the Rot, putting them out of reach for the remainder of the combat.; --todo math
+FOR REFERENCE, DELETE WHEN DONE
+[Action] ID=removing;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=removeCaster;
+	harmful=false;
+	FXOnTarget=actor_flee;
+[ActionAoE]
+	ID=removing;
+	cloneFrom=oneTile;
+	canSelectStackedActors=false;
+[AvAffecter]
+	ID=removing;
+	visibleEvaluations=false;
+	harmful=false;
+[AvAffecterAoE]
+	ID=removing;
+	cloneFrom=oneTile;
+	canSelectStackedActors=false;
+
+[Action] ID=drown;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	special=removeCaster_XP;
+	attractAttention=false;
+	harmful=false;
+[ActionAoE]
+	ID=drown;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=drown;
+	harmful=false;
+	FXOnTile=actorFall_waterFX;
+[AvAffecterAoE]
+	ID=drown;
+	cloneFrom=oneTile;
+--todo
+
 
 -- First part of Subsume.
 [Action] ID=shana_subsume;
@@ -727,11 +768,11 @@ ID=shana_delay_sync0; element=41002; action=shana_subsume3;
 --	FXOnCaster=delay;
 --	FXOnCaster=DramaticNyeaow;
 --	FXOnCaster=tileLine_topLeft_ignoreDark;
-	queueAnotherAction=shana_subsume2;
+	queueAnotherAction=shana_subsume2set;
 [ActionAoE]
 	ID=shana_subsume;
--- 17 is allActors_nonIncapped.
-	shape=17;
+-- 7 is allActors. --todo make it biased towards downed crewmembers
+	shape=7;
 	needsLoS=true;
 	needsLoE=false;
 	airborne=true;
@@ -842,7 +883,39 @@ ID=shana_delay_sync0; element=41002; action=shana_subsume3;
 	ignoreCannotTarget=true;
 
 
+--This sets the variables referred to in the damaging reaction being cast. when its initially charged, it queues the ruin3 action too
+[Action] ID=shana_subsume2set;
+	name=Subsume (set gvar);
+	icon=icon_fire2;
+	chargeTime=20;
+	special=requiresCharging;
+	casterAnimation=shoulderbash;
+--	FXOnCaster=darken_major;
+--	FXOnCaster=delay;
+--	FXOnCaster=delay;
+--	FXOnCaster=delay;
+--	FXOnCaster=DramaticNyeaow;
+--	FXOnCaster=tileLine_topLeft_ignoreDark;
+	queueAnotherAction=shana_subsume2;
+[ActionAoE]
+	ID=shana_subsume2set;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
 
+
+[AvAffecter]
+	ID=shana_subsume2set;
+-- This sets my global variable.
+    visibleMiss=false; visibleEvaluations=false;
+    actorValue=task;
+    magnitude=setGlobalVar_math,shana_subsume_casterruinskill,t:skill_Ruin;
+    duration=1;
+    chance=100;
+
+[AvAffecterAoE]
+    ID=shana_subsume2set;
+    cloneFrom=oneTile;
+	aoeCasterAsOrigin=true; --required so the target is caster
 
 
 -- The actual charging part of Subsume.
@@ -850,6 +923,7 @@ ID=shana_delay_sync0; element=41002; action=shana_subsume3;
 	name=Subsume;
 	icon=icon_fire2;
 	chargeTime=20;
+	tooltip=This spell tracks its target, or their corpse if present. Deals <thinnerIcon=skill_Ruin><math=11212> damage to the target and all others in the same row, column, and diagonals, then enchants the weapons of all affected with ruinous energy.; --todo change math
 	special=requiresCharging;
 	casterAnimation=shoulderbash;
 --	FXOnCaster=darken_major;
@@ -868,7 +942,7 @@ ID=shana_delay_sync0; element=41002; action=shana_subsume3;
 [AvAffecter]
 	ID=shana_subsume2;
 -- Our custom element triggers the reaction that does the actual damage.
-	element=41002;
+	element=41001;
 --	FXOnTile=targetRet_flicker;
 --	FXOnTile=bipFlutter;
 --	FXOnTile=tileLine_overlap;
@@ -904,43 +978,112 @@ ID=shana_delay_sync0; element=41002; action=shana_subsume3;
 	cloneFrom=oneTile;
 	ignoreCannotTarget=true;
 
-
--- Purge.
+-- Ruin Enchant part 1.
 [AvAffecter]
 	ID=shana_subsume3;
-	actorValue=purge;
+	actorValue=prom_ruinWpn;
 	magnitude=1;
-	duration=-2;
+	duration=120;
 	element=magic;
 	chance=100;
--- These FX were chosen because they have percentDurationBeforeOverlapWithOtherFX=0;, so will all play at once to show the targeted area.
-	FXOnTile=upwardLines_quick_noOverlap;
+	harmful=false;
 	FXOnTile=sfx_DramaticN_quiet;
-	FXOnTile=ping_noOverlap;
+	FxOnTileColor=Purple;
+	FXOnTile=shana_ruinupwardLines_quick_noOverlap;
+	FXOnTile=shana_ruinping_noOverlap;
+	FXOnHit=chargeSpiralFast;
+	FXOnHitColor=Purple;
+	FXOnHit=chargeSpiralFast_big;
+	FXOnHitColor=Black;
+	FXOnHit=risingBip;
+	FXOnHit=sfx_schwee;
+    FXOnHit=skill_Ruin;
+    FXOnHit=shadowWhirl;
+    FXOnHit=spookyOccurence;
 [AvAffecterAoE]
 	ID=shana_subsume3;
-	cloneFrom=adjacentAndSelf+2;
+	shape=2;
+	minRange = 0;
+    maxRange = 25;
 	needsLoS=false;
 	needsLoE=false;
 	airborne=true;
 	arc=true;
 	ignoreCannotTarget=true;
 
-
--- Rot.
+-- Ruin Enchant part 2.
 [AvAffecter]
 	ID=shana_subsume3;
--- Set to HP just for testing.
+	actorValue=prom_ruinWpn;
+	magnitude=1;
+	duration=120;
+	element=magic;
+	chance=100;
+	harmful=false;
+	FXOnTile=sfx_DramaticN_quiet;
+	FxOnTileColor=Purple;
+	FXOnTile=shana_ruinupwardLines_quick_noOverlap;
+	FXOnTile=shana_ruinping_noOverlap;
+	FXOnHit=chargeSpiralFast;
+	FXOnHitColor=Purple;
+	FXOnHit=chargeSpiralFast_big;
+	FXOnHitColor=Black;
+	FXOnHit=risingBip;
+	FXOnHit=sfx_schwee;
+    FXOnHit=skill_Ruin;
+    FXOnHit=shadowWhirl;
+    FXOnHit=spookyOccurence;
+[AvAffecterAoE]
+	ID=shana_subsume3;
+	shape=25;
+	minRange = 1;
+    maxRange = 25;
+	needsLoS=false;
+	needsLoE=false;
+	airborne=true;
+	arc=true;
+	ignoreCannotTarget=true;
+
+-- Ruin Damage part 1.
+[AvAffecter]
+	ID=shana_subsume3;
 	actorValue=HP;
-	magnitude=-c:HPMax;
+	magnitude=-g:shana_subsume_casterruinskill;
 	duration=-2;
 --	actorValue=ari_rot_status_enemy;
 --	magnitude=t:ari_rot_status_enemy + g:shana_target_maxhp_gvar;
 --	duration=80;
 	chance=100;
+	element=magic;
+	element=ruin;
 [AvAffecterAoE]
 	ID=shana_subsume3;
-	cloneFrom=adjacentAndSelf+2;
+	shape=2;
+	minRange = 0;
+    maxRange = 25;
+	needsLoS=false;
+	needsLoE=false;
+	airborne=true;
+	arc=true;
+	ignoreCannotTarget=true;
+
+-- Ruin Damage part 2.
+[AvAffecter]
+	ID=shana_subsume3;
+	actorValue=HP;
+	magnitude=-g:shana_subsume_casterruinskill;
+	duration=-2;
+--	actorValue=ari_rot_status_enemy;
+--	magnitude=t:ari_rot_status_enemy + g:shana_target_maxhp_gvar;
+--	duration=80;
+	chance=100;
+	element=magic;
+	element=ruin;
+[AvAffecterAoE]
+	ID=shana_subsume3;
+	shape=25;
+	minRange = 1;
+    maxRange = 25;
 	needsLoS=false;
 	needsLoE=false;
 	airborne=true;
@@ -948,15 +1091,15 @@ ID=shana_delay_sync0; element=41002; action=shana_subsume3;
 	ignoreCannotTarget=true;
 -----------------------------------------------------------END SUBSUME
 
-------------------------------------------------------------ROTTING PRISON
+------------------------------------------------------------PUTRID PRISON
 
 --todo, 9999 cd
---This spell tracks its target, or their corpse if present. Deals X (minor) damage to the target and all adjacent, then spawns an Undead Abscess in each unoccupied tile. --Range should be something like 4-8? Usable once per combat, via 9999 cd
+--This spell tracks its target, or their corpse if present. An Undead Abscess rises from all adjacent unoccupied tiles. If an adjacent tile is occupied, the nascent Abscess will instead detonate, dealing <massive> <fire> damage to the tile's occupant. --Range should be something like 4-8, or infinite range if not full hp. Usable once per combat, via 9999 cd. Huge ai incentive.
 
 
-------------------------------------------------------------Undead Abscess Skills
+------------------------------------------------------------Undead Abscess Skills (all 12 cast time)
 
-------------------------------------------------------------SLEEPING SICKNESS - Rot, Itchy and Sleep spell
+------------------------------------------------------------SLEEPING SICKNESS - Rot, Itchy and Sleep spell, adjacent
 
 ------------------------------------------------------------PUTREFY VISION - Rot, Blind and Horrific Visions spell
 

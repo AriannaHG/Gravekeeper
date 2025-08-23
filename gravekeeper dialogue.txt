@@ -675,6 +675,7 @@ bottomOption=true;
 [DialogNode] ID=ari_gravekeeper_arianna_lichdom_learn;
 specialEffect=setGlobalVar,class_gravekeeper_lichdom,1;
 specialEffect=setGlobalVar,grimoire_unlock,1;
+specialEffect=trigger,ari_trigger_lichdom_unlock;
 specialEffect=markTrainerLocDone;
 nextNodeID=;
 
