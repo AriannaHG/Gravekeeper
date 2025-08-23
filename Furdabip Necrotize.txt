@@ -582,7 +582,7 @@ ID=shana_delay_sync0; element=41002; action=shana_subsume3;
 
 
 
--- Cast by the delayed target on themself + 3 tiles.
+-- Cast by the delayed target on themself.
 [Action] ID=shana_bestow_ruin3;
 	special=usableEvenWhenCantAct;
 	special=usableEvenWhenReacting;
@@ -708,45 +708,8 @@ ID=shana_delay_sync0; element=41002; action=shana_subsume3;
 
 -----------------------------------------------------------SUBSUME (use whatever removal method drowning uses)
 --todo
---This spell tracks its target, or their corpse if present. Deals <thinnerIcon=skill_Ruin><math=11212> damage. If the target is dead, their corpse will be absorbed into the Rot, putting them out of reach for the remainder of the combat.; --todo math
-FOR REFERENCE, DELETE WHEN DONE
-[Action] ID=removing;
-	special=usableEvenWhenCantAct;
-	special=usableEvenWhenReacting;
-	special=usableEvenWhenYourTurn;
-	special=removeCaster;
-	harmful=false;
-	FXOnTarget=actor_flee;
-[ActionAoE]
-	ID=removing;
-	cloneFrom=oneTile;
-	canSelectStackedActors=false;
-[AvAffecter]
-	ID=removing;
-	visibleEvaluations=false;
-	harmful=false;
-[AvAffecterAoE]
-	ID=removing;
-	cloneFrom=oneTile;
-	canSelectStackedActors=false;
+--This spell tracks its target, or their corpse if present. Deals <thinnerIcon=skill_Ruin><math=11212> damage. Then, if the target is dead, their corpse will be removed from combat.; --todo math
 
-[Action] ID=drown;
-	special=usableEvenWhenCantAct;
-	special=usableEvenWhenReacting;
-	special=usableEvenWhenYourTurn;
-	special=removeCaster_XP;
-	attractAttention=false;
-	harmful=false;
-[ActionAoE]
-	ID=drown;
-	cloneFrom=oneTile;
-[AvAffecter]
-	ID=drown;
-	harmful=false;
-	FXOnTile=actorFall_waterFX;
-[AvAffecterAoE]
-	ID=drown;
-	cloneFrom=oneTile;
 --todo
 
 
@@ -923,7 +886,7 @@ FOR REFERENCE, DELETE WHEN DONE
 	name=Subsume;
 	icon=icon_fire2;
 	chargeTime=20;
-	tooltip=This spell tracks its target, or their corpse if present. Deals <thinnerIcon=skill_Ruin><math=11212> damage to the target and all others in the same row, column, and diagonals, then enchants the weapons of all affected with ruinous energy.; --todo change math
+	tooltip=This spell tracks its target, or their corpse if present. Deals <thinnerIcon=skill_Ruin><math=11212> damage. Then, if the target is dead, their corpse will be removed from combat.; --todo change math
 	special=requiresCharging;
 	casterAnimation=shoulderbash;
 --	FXOnCaster=darken_major;
@@ -942,7 +905,7 @@ FOR REFERENCE, DELETE WHEN DONE
 [AvAffecter]
 	ID=shana_subsume2;
 -- Our custom element triggers the reaction that does the actual damage.
-	element=41001;
+	element=41002;
 --	FXOnTile=targetRet_flicker;
 --	FXOnTile=bipFlutter;
 --	FXOnTile=tileLine_overlap;
@@ -968,83 +931,19 @@ FOR REFERENCE, DELETE WHEN DONE
 
 
 
--- Cast by the delayed target on themself + 3 tiles.
+-- Cast by the delayed target on themself.
 [Action] ID=shana_subsume3;
 	special=usableEvenWhenCantAct;
 	special=usableEvenWhenReacting;
 	special=usableEvenWhenYourTurn;
+	queueAnotherAction=drown;
 [ActionAoE]
 	ID=shana_subsume3;
 	cloneFrom=oneTile;
 	ignoreCannotTarget=true;
 
--- Ruin Enchant part 1.
-[AvAffecter]
-	ID=shana_subsume3;
-	actorValue=prom_ruinWpn;
-	magnitude=1;
-	duration=120;
-	element=magic;
-	chance=100;
-	harmful=false;
-	FXOnTile=sfx_DramaticN_quiet;
-	FxOnTileColor=Purple;
-	FXOnTile=shana_ruinupwardLines_quick_noOverlap;
-	FXOnTile=shana_ruinping_noOverlap;
-	FXOnHit=chargeSpiralFast;
-	FXOnHitColor=Purple;
-	FXOnHit=chargeSpiralFast_big;
-	FXOnHitColor=Black;
-	FXOnHit=risingBip;
-	FXOnHit=sfx_schwee;
-    FXOnHit=skill_Ruin;
-    FXOnHit=shadowWhirl;
-    FXOnHit=spookyOccurence;
-[AvAffecterAoE]
-	ID=shana_subsume3;
-	shape=2;
-	minRange = 0;
-    maxRange = 25;
-	needsLoS=false;
-	needsLoE=false;
-	airborne=true;
-	arc=true;
-	ignoreCannotTarget=true;
 
--- Ruin Enchant part 2.
-[AvAffecter]
-	ID=shana_subsume3;
-	actorValue=prom_ruinWpn;
-	magnitude=1;
-	duration=120;
-	element=magic;
-	chance=100;
-	harmful=false;
-	FXOnTile=sfx_DramaticN_quiet;
-	FxOnTileColor=Purple;
-	FXOnTile=shana_ruinupwardLines_quick_noOverlap;
-	FXOnTile=shana_ruinping_noOverlap;
-	FXOnHit=chargeSpiralFast;
-	FXOnHitColor=Purple;
-	FXOnHit=chargeSpiralFast_big;
-	FXOnHitColor=Black;
-	FXOnHit=risingBip;
-	FXOnHit=sfx_schwee;
-    FXOnHit=skill_Ruin;
-    FXOnHit=shadowWhirl;
-    FXOnHit=spookyOccurence;
-[AvAffecterAoE]
-	ID=shana_subsume3;
-	shape=25;
-	minRange = 1;
-    maxRange = 25;
-	needsLoS=false;
-	needsLoE=false;
-	airborne=true;
-	arc=true;
-	ignoreCannotTarget=true;
-
--- Ruin Damage part 1.
+-- Ruin Damage. --todo defiler heartgrip + unmaker wither but black/purple?
 [AvAffecter]
 	ID=shana_subsume3;
 	actorValue=HP;
@@ -1058,36 +957,21 @@ FOR REFERENCE, DELETE WHEN DONE
 	element=ruin;
 [AvAffecterAoE]
 	ID=shana_subsume3;
-	shape=2;
-	minRange = 0;
-    maxRange = 25;
-	needsLoS=false;
-	needsLoE=false;
-	airborne=true;
-	arc=true;
+	cloneFrom=oneTile;
 	ignoreCannotTarget=true;
 
--- Ruin Damage part 2.
-[AvAffecter]
+-- Remove from Combat if incapacitated.
+[AvAffecter] --todo on hit black smoke like night magister darkness. negative fx?
 	ID=shana_subsume3;
-	actorValue=HP;
-	magnitude=-g:shana_subsume_casterruinskill;
+	actorValue=removeActor;
+	magnitude=1;
 	duration=-2;
---	actorValue=ari_rot_status_enemy;
---	magnitude=t:ari_rot_status_enemy + g:shana_target_maxhp_gvar;
---	duration=80;
-	chance=100;
+	chance=100 * m:incapped;
 	element=magic;
 	element=ruin;
 [AvAffecterAoE]
 	ID=shana_subsume3;
-	shape=25;
-	minRange = 1;
-    maxRange = 25;
-	needsLoS=false;
-	needsLoE=false;
-	airborne=true;
-	arc=true;
+	cloneFrom=oneTile;
 	ignoreCannotTarget=true;
 -----------------------------------------------------------END SUBSUME
 
