@@ -212,14 +212,14 @@ text=<icon=icon_skeleton_knight_minion><title=Skeleton Knight><brAdj=>A long-dea
 
 [ActorClassEffect]  ID=ari_skeletonknight_class; actorValue=priority; magnitude=-0.5; duration=-1;
 
-----------------------------------------------------------------Skeleton Footman
-[ActorClass] name=Skeleton Footman;
+----------------------------------------------------------------Skeleton Warrior
+[ActorClass] name=Skeleton Warrior;
 ID=ari_skeletonwarrior_class;
 selectableClass=false;
 icon=icon_skeleton_footman_minion;
 journalID=ari_journal_skeletonwarrior_class;
 
-description=A long-dead footman brought back at its master's whim.;
+description=A long-dead warrior brought back at its master's whim.;
 paletteUI=pPurple;
 
 actions=ari_skeleton_warrior_charge;
@@ -231,8 +231,8 @@ ruinModeSupportAbility=;
 [JournalEntry]
 ID=ari_journal_skeletonwarrior_class;
 category=actorClass; halfPage=true; rarity=0;
-title=Skeleton Footman;
-text=<icon=icon_skeleton_footman_minion><title=Skeleton Footman><brAdj=>A long-dead footman brought back at its master's whim.;
+title=Skeleton Warrior;
+text=<icon=icon_skeleton_footman_minion><title=Skeleton Warrior><brAdj=>A long-dead warrior brought back at its master's whim.;
 
 [ActorClassEffect]  ID=ari_skeletonwarrior_class; actorValue=priority; magnitude=-0.5; duration=-1;
 
@@ -459,14 +459,14 @@ supportAbilities=ari_enemy_lich_death_aura;
 
 ruinModeSupportAbility=;
 
------------------------------------------Enemy Skeleton Footman
-[ActorClass] name=Skeleton Footman;
+-----------------------------------------Enemy Skeleton Warrior
+[ActorClass] name=Skeleton Warrior;
 ID=ari_skeletonwarrior_class_enemy;
 selectableClass=false;
 icon=icon_skeleton_footman_minion;
 journalID=ari_journal_skeletonwarrior_class;
 
-description=A long-dead footman brought back at its master's whim.;
+description=A long-dead warrior brought back at its master's whim.;
 paletteUI=pPurple;
 
 actions=ari_skeleton_warrior_charge_enemy;

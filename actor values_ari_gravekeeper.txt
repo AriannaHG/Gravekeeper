@@ -1962,7 +1962,7 @@ XPCostMultiplier = 1;
 XPCostFloorToNearest = 0;
 
 ----------------------------------------------------------------Abomination Consumption AVs
-----------------------------------------------------------------Skeleton Footman Consumption
+----------------------------------------------------------------Skeleton Warrior Consumption
 [ActorValue]
 ID=ari_consumed_warrior;
 name=Warrior Consumption;
@@ -2365,7 +2365,7 @@ XPCostIncrement = 0;
 XPCostMultiplier = 1;
 XPCostFloorToNearest = 0;
 
-----------------------------------------------------------------Skeleton Footman class AV
+----------------------------------------------------------------Skeleton Warrior class AV
 [ActorValue]
 ID=ari_summoned_undead_skeleton_warrior_AV;
 name=Risen Skeleton;

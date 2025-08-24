@@ -3186,7 +3186,7 @@ needsLoS = false; needsLoE = false; shape=7;
 	icon=icon_gravekeeper_skeletal_charge;
 	mpCost=0 * d:mpCostMult + d:mpCostMod;
 	cooldown=60;
-	tooltip=Charge forward recklessly to strike a distant foe for 70% damage.<n=>You must have consumed a Skeleton Footman<icon=icon_skeleton_footman_minion>.;
+	tooltip=Charge forward recklessly to strike a distant foe for 70% damage.<n=>You must have consumed a Skeleton Warrior<icon=icon_skeleton_footman_minion>.; --footman got renamed to warrior somewhere in dev
 	tooltipIcons=<icon=noRanged>;
 	tooltipTopRight=<icon=PhysAtk_small><icon=melee_small>;
 	
