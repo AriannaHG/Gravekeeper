@@ -114,6 +114,8 @@ ID=shana_projectile_plaguearrow; red=0; blue=0; green=0.5; alpha=0.5; size=0.1; 
 
 ----------------------------------------End Plague Bow
 
+----------------------------------------Rot related sparkles
+
 [FXData]
 ID=shana_Fast_Sparkles; cloneFrom=sparkles;
 particleID=shana_fast_sparkle;
@@ -165,7 +167,32 @@ duration=1; --was 0.3
 [drawOrderFXLight]
 ID=shana_fast_superdupersparkle; red=0; blue=0; green=0.5; alpha=0.5; size=0.15; flicker=0.01; texture=lightmask;
 
---------TODO
+--------End rot related sparkles
+
+--------Rotbound Manuscript FX
+
+[FXData]
+ID=shana_chargeSpiralFaster_big;
+particleID=pixelMovingInward;
+numParticles=20;
+rotVelocOffset=270;
+randRot=359;
+randScale=0.2;
+initialDelayIncreasePerParticle=0.05;
+percentDurationBeforeOverlapWithOtherFX=0.13;
+
+[FXData]
+ID=shana_downwardLines_quicker;
+particleID=thinVertLine;
+numParticles=8;
+posOffset=-0.5,-0.75;
+randPos=1,0;
+velocOffset=0,3;
+randVeloc=0,3;
+initialDelayIncreasePerParticle=0.05;
+percentDurationBeforeOverlapWithOtherFX=0.13;
+
+--------End Rotbound Manuscript FX
 
 [FXData]
 ID=shana_ruinping_noOverlap;
