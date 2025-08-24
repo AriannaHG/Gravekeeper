@@ -2148,7 +2148,7 @@ defaultValues=Acc = 1;
 defaultValues=moveDistance = 3;
 defaultValues=actTime = 35;
 defaultValues=ari_summoned_undead_AV = 1;
-defaultValues=ari_summoned_undead_zombie =1;
+defaultValues=ari_summoned_undead_zombie = 1;
 defaultValues=ari_foul_corpses_fuse = 0;
 defaultValues=ari_summoned_deathshield = 0;
 
