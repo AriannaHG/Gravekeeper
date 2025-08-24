@@ -706,12 +706,7 @@ ID=shana_delay_sync0; element=41002; action=shana_subsume3;
 
 -----------------------------------------------------------END BESTOW RUIN
 
------------------------------------------------------------SUBSUME (use whatever removal method drowning uses)
---todo
---This spell tracks its target, or their corpse if present. Deals <thinnerIcon=skill_Ruin><math=11212> damage. Then, if the target is dead, their corpse will be removed from combat.; --todo math
-
---todo
-
+-----------------------------------------------------------SUBSUME
 
 -- First part of Subsume.
 [Action] ID=shana_subsume;
@@ -943,7 +938,7 @@ ID=shana_delay_sync0; element=41002; action=shana_subsume3;
 	ignoreCannotTarget=true;
 
 
--- Ruin Damage. --todo defiler heartgrip + unmaker wither but black/purple?
+-- Ruin Damage.
 [AvAffecter]
 	ID=shana_subsume3;
 	actorValue=HP;
@@ -955,13 +950,21 @@ ID=shana_delay_sync0; element=41002; action=shana_subsume3;
 	chance=100;
 	element=magic;
 	element=ruin;
+	FXOnTarget=darken;
+	FXOnTargetColor=Purple;
+	FXOnTarget=ringsDownward1_noOverlap;
+	FXOnTargetColor=Black;
+	FXOnTarget=sfx_zyew;
+    FXOnTile=largePing;
+    FXOnTileColor=Black;
+    FXOnHit=medShakeHoriz;
 [AvAffecterAoE]
 	ID=shana_subsume3;
 	cloneFrom=oneTile;
 	ignoreCannotTarget=true;
 
 -- Remove from Combat if incapacitated.
-[AvAffecter] --todo on hit black smoke like night magister darkness. negative fx?
+[AvAffecter]
 	ID=shana_subsume3;
 	actorValue=removeActor;
 	magnitude=1;
@@ -969,6 +972,8 @@ ID=shana_delay_sync0; element=41002; action=shana_subsume3;
 	chance=100 * m:incapped;
 	element=magic;
 	element=ruin;
+	FXOnHit=pixelCloud_black_silent;
+	FXOnHit=lowRoar;
 [AvAffecterAoE]
 	ID=shana_subsume3;
 	cloneFrom=oneTile;
