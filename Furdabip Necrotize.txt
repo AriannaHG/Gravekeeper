@@ -591,6 +591,13 @@ ID=shana_delay_sync0; element=41002; action=shana_subsume3;
 	ID=shana_bestow_ruin3;
 	cloneFrom=oneTile;
 	ignoreCannotTarget=true;
+[AvAffecter] --VFX and screenshake
+	ID=shana_bestow_ruin3;
+    FXOnTile=shana_purpleruinscreenshake;
+[AvAffecterAoE]
+ 	ID=shana_bestow_ruin3;
+ 	cloneFrom=oneTile;
+ 	ignoreCannotTarget=true;
 
 -- Ruin Enchant part 1.
 [AvAffecter]
