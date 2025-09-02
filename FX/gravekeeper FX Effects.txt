@@ -209,7 +209,6 @@ origin=5,5;
 timePerFrame=0.05;
 duration=0.3;
 
-
 [FXData]
 ID=shana_ruinupwardLines_quick_noOverlap;
 particleID=shana_thinVertLine;
@@ -231,6 +230,18 @@ timePerFrame=0.2;
 duration=0.2;
 scaleVeloc=-2;
 scaleAccel=-5;
+
+[FXData]
+ID=shana_purpleruinscreenshake;
+particleID=pop;
+percentDurationBeforeOverlapWithOtherFX=0;
+
+[Screenshake]
+ID=shana_purpleruinscreenshake; magnitude=4; duration=0.5; xShake=true; yShake=true;
+
+[ScreenTint]
+ID=shana_purpleruinscreenshake; color=255,216,0; whiteTint=true; fadeInTime=0.2; duration=0.3; paletteOverride=pBW; darknessColor=204,204,204;
+
 
 -------------------------------Old Barrow Gate
 
