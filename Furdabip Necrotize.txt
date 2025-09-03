@@ -43,6 +43,21 @@ combineWith=furnace2_lit; toMake=bones1;
 combineWith=furnace_everlit1; toMake=bones1;
 combineWith=furnace_everlit2; toMake=bones1;
 
+[ItemType] name=Test Grimoire Essence Rupture;
+texture=gkart;
+ID=shana_grimoire_test_5; pR=p5; pG=pG; pB=overworld6;
+description=Testing Essence Rupture.;
+journalID=ari_journal_grimoire;
+sprite=1; spriteWhenHeld=0; itemCategory=weapon;
+element=ruin;
+weight=5; volume=10; value=10;
+power=0;
+action=ari_skeleton_mage_essencerupture;
+combineWith=furnace_lit; toMake=bones1;
+combineWith=furnace2_lit; toMake=bones1;
+combineWith=furnace_everlit1; toMake=bones1;
+combineWith=furnace_everlit2; toMake=bones1;
+
 --to make a new delayed, tracking skill:
 --copy testing grimoire above, replace id, description and action (the action should be shana_skill)
 --add a custom element and reaction like so, replacing the element and action to match the id

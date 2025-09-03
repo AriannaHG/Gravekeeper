@@ -1380,9 +1380,10 @@ power=10;
 	name=Essence Rupture;
 	icon=icon_gravekeeper_beyond_the_veil;
 	mpCost=4 * d:mpCostMult + d:mpCostMod;
+	chargeTime=12 * d:chargeTimeMult * d:chargeTimeMult_onlyWithMP + d:chargeTimeMod + d:chargeTimeMod_onlyWithMP;
 	harmful=true;
 	attractAttention=false;
-	tooltip=Rupture the target's soul for <icon=time>90, dealing <icon=skill_Ruin><math=d:ruinDmgDisplay(4)> and causing them to take <icon=skill_Ruin><math=3> whenever something dies.;
+	tooltip=Rupture souls within a small area, dealing <icon=skill_Ruin><math=d:ruinDmgDisplay(4)> and causing those affected to take a further <icon=skill_Ruin><math=3> damage whenever something dies for <icon=time><math=100 + d:ruinDurMax(1) + 3 * c:rank>.;
 
 	tooltipTopRight=;
 	
@@ -1398,8 +1399,7 @@ power=10;
 	casterAnimation=handsup;
 
 	FXOnCaster=magicCharge;
-	FXOnTarget=largePing;
-	FXOnTarget=tinyShakeHoriz;
+
 	
 [ActionAoE] 
 	ID=ari_skeleton_mage_essencerupture;
@@ -1421,12 +1421,11 @@ power=10;
 	magnitude=d:ruinDmg(9);
 	duration=-2;
 	chance=d:ruinAcc;
-	element=ranged;
 	element=magic;
 	element=ruin;
 [AvAffecterAoE]
 	ID=ari_skeleton_mage_essencerupture;
-	cloneFrom=oneTile;
+	cloneFrom=adjacentAndSelf;
 [AvAffecter]
 	ID=ari_skeleton_mage_essencerupture;
 	visibleMiss=false;
@@ -1434,18 +1433,20 @@ power=10;
 	actorValue=ari_ruptured_soul_status;
 	harmful=true;
 	magnitude=1;
-	duration=90;
+	duration=100 + d:ruinDurMax(1) + 3 * c:rank;
 	chance=d:ruinAcc;
+	FXOnTile=shana_ruinping_noOverlap_black;
 	FXOnTarget=upwardLines;
 	FXOnTargetColor=Purple;
 	FXOnTarget=upwardLines;
 	FXOnTargetColor=Black;
-	FXOnHit=ping;
+	FXOnHit=fx_splot;
 	FXOnHitColor=Black;
-	FXOnTile=delay_tiny;
+	FXOnHit=tinyShakeHoriz;
+--	FXOnTile=delay_tiny;
 [AvAffecterAoE]
 	ID=ari_skeleton_mage_essencerupture;
-	cloneFrom=oneTile;
+	cloneFrom=adjacentAndSelf;
 	
 ----------------------------------------------------------------Soul Bombardment Stage 1
 [Action] ID=ari_skeleton_mage_bombard_stage1; 
