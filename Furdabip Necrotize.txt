@@ -591,9 +591,12 @@ ID=shana_delay_sync0; element=41002; action=shana_subsume3;
 	ID=shana_bestow_ruin3;
 	cloneFrom=oneTile;
 	ignoreCannotTarget=true;
-[AvAffecter] --VFX and screenshake
+[AvAffecter] --VFX
 	ID=shana_bestow_ruin3;
-    FXOnTile=shana_purpleruinscreenshake;
+	chance=100;
+    visibleMiss=false;
+	FXOnTile=shana_tileLine_overlap;
+	FXOnTile=delay_minor;
 [AvAffecterAoE]
  	ID=shana_bestow_ruin3;
  	cloneFrom=oneTile;
