@@ -201,9 +201,23 @@ numParticles=1;
 percentDurationBeforeOverlapWithOtherFX=0;
 pR=p83;
 
+[FXData]
+ID=shana_ruinping_noOverlap_black;
+particleID=shana_ping_black;
+numParticles=1;
+percentDurationBeforeOverlapWithOtherFX=0;
+
 [drawOrderFX]
 ID=shana_ping;
 texture=fx_shana_ping;
+sourceRect=0,0,10,10;
+origin=5,5;
+timePerFrame=0.05;
+duration=0.3;
+
+[drawOrderFX]
+ID=shana_ping_black;
+texture=fx_shana_ping_black;
 sourceRect=0,0,10,10;
 origin=5,5;
 timePerFrame=0.05;
@@ -259,8 +273,6 @@ timePerFrame=0.5;
 duration=0.5;
 scaleVeloc=400;
 scaleAccel=-8000;
-
-
 
 -------------------------------Old Barrow Gate
 
