@@ -98,7 +98,11 @@ element=defiler;
 damageMultiplier=0.5; healMultiplier=0.5;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton;
-element=life; element=antiUndead;
+element=life; actorValue=HP;
+damageMultiplier=2; healMultiplier=-1;
+[ActorTypeReaction]
+ID=summoned_undead_skeleton;
+element=antiUndead;
 damageMultiplier=2; healMultiplier=-1;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton;
@@ -207,7 +211,11 @@ element=defiler;
 damageMultiplier=0.5; healMultiplier=0.5;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton_mage_type;
-element=life; element=antiUndead;
+element=life; actorValue=HP;
+damageMultiplier=2; healMultiplier=-1;
+[ActorTypeReaction]
+ID=summoned_undead_skeleton_mage_type;
+element=antiUndead;
 damageMultiplier=2; healMultiplier=-1;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton_mage_type;
@@ -321,7 +329,11 @@ element=defiler;
 damageMultiplier=0.5; healMultiplier=0.5;
 [ActorTypeReaction]
 ID=mindless_undead_skeleton;
-element=life; element=antiUndead;
+element=life; actorValue=HP;
+damageMultiplier=2; healMultiplier=-1;
+[ActorTypeReaction]
+ID=mindless_undead_skeleton;
+element=antiUndead;
 damageMultiplier=2; healMultiplier=-1;
 [ActorTypeReaction]
 ID=mindless_undead_skeleton;
@@ -424,7 +436,11 @@ element=ruin;
 damageMultiplier=-1; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_zombie;
-element=life; element=antiUndead;
+element=life; actorValue=HP;
+damageMultiplier=2; healMultiplier=-1;
+[ActorTypeReaction]
+ID=summoned_undead_zombie;
+element=antiUndead;
 damageMultiplier=2; healMultiplier=-1;
 [ActorTypeReaction]
 ID=summoned_undead_zombie;
@@ -543,7 +559,11 @@ element=ruin;
 damageMultiplier=-1; healMultiplier=1;
 [ActorTypeReaction]
 ID=mindless_undead_zombie;
-element=life; element=antiUndead;
+element=life; actorValue=HP;
+damageMultiplier=2; healMultiplier=-1;
+[ActorTypeReaction]
+ID=mindless_undead_zombie;
+element=antiUndead;
 damageMultiplier=2; healMultiplier=-1;
 [ActorTypeReaction]
 ID=mindless_undead_zombie;
@@ -720,7 +740,11 @@ armorPalette=pBloodyMess_slow;
 
 [ActorTypeReaction]
 ID=ari_spirit_phantom_type;
-element=life; element=antiUndead;
+element=life; actorValue=HP;
+damageMultiplier=2; healMultiplier=-1;
+[ActorTypeReaction]
+ID=ari_spirit_phantom_type;
+element=antiUndead;
 damageMultiplier=2; healMultiplier=-1;
 [ActorTypeReaction]
 ID=ari_spirit_phantom_type;
@@ -820,7 +844,11 @@ armorPalette=pBloodyMess_slow;
 
 [ActorTypeReaction]
 ID=ari_spirit_ghost_type;
-element=life; element=antiUndead;
+element=life; actorValue=HP;
+damageMultiplier=2; healMultiplier=-1;
+[ActorTypeReaction]
+ID=ari_spirit_ghost_type;
+element=antiUndead;
 damageMultiplier=2; healMultiplier=-1;
 [ActorTypeReaction]
 ID=ari_spirit_ghost_type;
@@ -920,7 +948,11 @@ armorPalette=pGhost;
 
 [ActorTypeReaction]
 ID=ari_spirit_wraith_type;
-element=life; element=antiUndead;
+element=life; actorValue=HP;
+damageMultiplier=2; healMultiplier=-1;
+[ActorTypeReaction]
+ID=ari_spirit_wraith_type;
+element=antiUndead;
 damageMultiplier=2; healMultiplier=-1;
 [ActorTypeReaction]
 ID=ari_spirit_wraith_type;
@@ -1021,7 +1053,11 @@ armorPalette=pGhost;
 
 [ActorTypeReaction]
 ID=ari_spirit_wisp_type;
-element=life; element=antiUndead;
+element=life; actorValue=HP;
+damageMultiplier=2; healMultiplier=-1;
+[ActorTypeReaction]
+ID=ari_spirit_wisp_type;
+element=antiUndead;
 damageMultiplier=2; healMultiplier=-1;
 [ActorTypeReaction]
 ID=ari_spirit_wisp_type;
@@ -1122,7 +1158,11 @@ armorPalette=pBloodyMess_slow;
 
 [ActorTypeReaction]
 ID=ari_mausoleum;
-element=life; element=antiUndead;
+element=life; actorValue=HP;
+damageMultiplier=2; healMultiplier=-1;
+[ActorTypeReaction]
+ID=ari_mausoleum;
+element=antiUndead;
 damageMultiplier=2; healMultiplier=-1;
 [ActorTypeReaction]
 ID=ari_mausoleum;
@@ -1872,7 +1912,11 @@ element=ruin;
 damageMultiplier=-1; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_abomination;
-element=life; element=antiUndead;
+element=life; actorValue=HP;
+damageMultiplier=2; healMultiplier=-1;
+[ActorTypeReaction]
+ID=summoned_undead_abomination;
+element=antiUndead;
 damageMultiplier=2; healMultiplier=-1;
 [ActorTypeReaction]
 ID=summoned_undead_abomination;
@@ -1989,7 +2033,11 @@ element=defiler;
 damageMultiplier=0.5; healMultiplier=0.5;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton_commander_version;
-element=life; element=antiUndead;
+element=life; actorValue=HP;
+damageMultiplier=2; healMultiplier=-1;
+[ActorTypeReaction]
+ID=summoned_undead_skeleton_commander_version;
+element=antiUndead;
 damageMultiplier=2; healMultiplier=-1;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton_commander_version;
@@ -2099,7 +2147,11 @@ element=defiler;
 damageMultiplier=0.5; healMultiplier=0.5;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton_commander_version_mage;
-element=life; element=antiUndead;
+element=life; actorValue=HP;
+damageMultiplier=2; healMultiplier=-1;
+[ActorTypeReaction]
+ID=summoned_undead_skeleton_commander_version_mage;
+element=antiUndead;
 damageMultiplier=2; healMultiplier=-1;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton_commander_version_mage;
@@ -2210,7 +2262,11 @@ element=defiler;
 damageMultiplier=0.5; healMultiplier=0.5;
 [ActorTypeReaction]
 ID=summoned_undead_zombie_commander_version;
-element=life; element=antiUndead;
+element=life; actorValue=HP;
+damageMultiplier=2; healMultiplier=-1;
+[ActorTypeReaction]
+ID=summoned_undead_zombie_commander_version;
+element=antiUndead;
 damageMultiplier=2; healMultiplier=-1;
 [ActorTypeReaction]
 ID=summoned_undead_zombie_commander_version;
@@ -2315,7 +2371,11 @@ element=ruin;
 damageMultiplier=-1; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_lich_actor;
-element=life; element=antiUndead;
+element=life; actorValue=HP;
+damageMultiplier=2; healMultiplier=-1;
+[ActorTypeReaction]
+ID=summoned_undead_lich_actor;
+element=antiUndead;
 damageMultiplier=2; healMultiplier=-1;
 [ActorTypeReaction]
 ID=summoned_undead_lich_actor;
@@ -5922,7 +5982,11 @@ element=defiler;
 damageMultiplier=0.5; healMultiplier=0.5;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton_enemy;
-element=life; element=antiUndead;
+element=life; actorValue=HP;
+damageMultiplier=2; healMultiplier=-1;
+[ActorTypeReaction]
+ID=summoned_undead_skeleton_enemy;
+element=antiUndead;
 damageMultiplier=2; healMultiplier=-1;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton_enemy;
@@ -6034,7 +6098,11 @@ element=defiler;
 damageMultiplier=0.5; healMultiplier=0.5;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton_mage_type_enemy;
-element=life; element=antiUndead;
+element=life; actorValue=HP;
+damageMultiplier=2; healMultiplier=-1;
+[ActorTypeReaction]
+ID=summoned_undead_skeleton_mage_type_enemy;
+element=antiUndead;
 damageMultiplier=2; healMultiplier=-1;
 [ActorTypeReaction]
 ID=summoned_undead_skeleton_mage_type_enemy;
@@ -6130,7 +6198,11 @@ element=ruin;
 damageMultiplier=-1; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_zombie_enemy;
-element=life; element=antiUndead;
+element=life; actorValue=HP;
+damageMultiplier=2; healMultiplier=-1;
+[ActorTypeReaction]
+ID=summoned_undead_zombie_enemy;
+element=antiUndead;
 damageMultiplier=2; healMultiplier=-1;
 [ActorTypeReaction]
 ID=summoned_undead_zombie_enemy;
@@ -6219,7 +6291,11 @@ armorPalette=pBloodyMess_slow;
 
 [ActorTypeReaction]
 ID=ari_spirit_phantom_type_enemy;
-element=life; element=antiUndead;
+element=life; actorValue=HP;
+damageMultiplier=2; healMultiplier=-1;
+[ActorTypeReaction]
+ID=ari_spirit_phantom_type_enemy;
+element=antiUndead;
 damageMultiplier=2; healMultiplier=-1;
 [ActorTypeReaction]
 ID=ari_spirit_phantom_type_enemy;
@@ -6313,7 +6389,11 @@ element=ruin;
 damageMultiplier=-1; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_abomination_enemy;
-element=life; element=antiUndead;
+element=life; actorValue=HP;
+damageMultiplier=2; healMultiplier=-1;
+[ActorTypeReaction]
+ID=summoned_undead_abomination_enemy;
+element=antiUndead;
 damageMultiplier=2; healMultiplier=-1;
 [ActorTypeReaction]
 ID=summoned_undead_abomination_enemy;
@@ -6453,7 +6533,11 @@ element=ruin;
 damageMultiplier=-1; healMultiplier=1;
 [ActorTypeReaction]
 ID=summoned_undead_lich_actor_enemy;
-element=life; element=antiUndead;
+element=life; actorValue=HP;
+damageMultiplier=2; healMultiplier=-1;
+[ActorTypeReaction]
+ID=summoned_undead_lich_actor_enemy;
+element=antiUndead;
 damageMultiplier=2; healMultiplier=-1;
 [ActorTypeReaction]
 ID=summoned_undead_lich_actor_enemy;

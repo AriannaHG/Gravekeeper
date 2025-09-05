@@ -1849,7 +1849,11 @@ element=defiler;
 damageMultiplier=0.5; healMultiplier=0.5;
 [SupportAbilityReaction]
 ID=shana_projectileMastery_enemy;
-element=life; element=antiUndead;
+element=life; actorValue=HP;
+damageMultiplier=2; healMultiplier=-1;
+[SupportAbilityReaction]
+ID=shana_projectileMastery_enemy;
+element=antiUndead;
 damageMultiplier=2; healMultiplier=-1;
 [SupportAbilityReaction]
 ID=shana_projectileMastery_enemy;
