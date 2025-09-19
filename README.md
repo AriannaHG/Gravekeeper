@@ -19,7 +19,7 @@ Grimoires can strike a single target up to 4 tiles away, dealing damage based on
 - **New Weapon Type:** Grimoire
 - **New Status Effect:** *Rot* — take stacking damage that can spread. If the infected dies, raises a Zombie.
 - **New Status Effect:** *Ruptured Soul* — take damage whenever something dies.
-- <details><summary>New Port City</summary> (Located at X 247, Y 373, southeast of Jascias.)</details>
+- <details><summary>New Port City</summary> (Located at X 247, Y 373, south of Jascias, off the east coast.)</details>
 - **New Adventure Zones:** One suitable for a less experienced crew, one not so much.
 - **New Enemies**
 - **New Equipment**
