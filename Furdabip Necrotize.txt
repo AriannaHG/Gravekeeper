@@ -383,7 +383,7 @@ ID=shana_delay_sync0; element=41002; action=shana_subsume3;
 [Action] ID=shana_bestow_ruin;
 	name=Bestow Ruin;
 	cooldown=50;
-	icon=icon_fire2;
+	icon=icon_bestow_ruin;
 	AIRatingBias=50;
 	mpCost=5;
 -- Although you commented this out (I assume for testing), if you did try to use this special=;, it only works on Actions set in an ActorClass's actions=; and not on Item action=;s.
@@ -737,7 +737,7 @@ ID=shana_delay_sync0; element=41002; action=shana_subsume3;
 [Action] ID=shana_subsume;
 	name=Subsume;
 	cooldown=50;
-	icon=icon_fire2;
+	icon=icon_subsume;
 	AIRatingBias=50;
 	mpCost=5;
 -- Although you commented this out (I assume for testing), if you did try to use this special=;, it only works on Actions set in an ActorClass's actions=; and not on Item action=;s.
@@ -869,7 +869,7 @@ ID=shana_delay_sync0; element=41002; action=shana_subsume3;
 --This sets the variables referred to in the damaging reaction being cast. when its initially charged, it queues the ruin3 action too
 [Action] ID=shana_subsume2set;
 	name=Subsume (set gvar);
-	icon=icon_fire2;
+	icon=icon_subsume;
 	chargeTime=20;
 	special=requiresCharging;
 	casterAnimation=shoulderbash;
@@ -904,7 +904,7 @@ ID=shana_delay_sync0; element=41002; action=shana_subsume3;
 -- The actual charging part of Subsume.
 [Action] ID=shana_subsume2;
 	name=Subsume;
-	icon=icon_fire2;
+	icon=icon_subsume;
 	chargeTime=20;
 	tooltip=This spell tracks its target, or their corpse if present. Deals <thinnerIcon=skill_Ruin><math=11212> damage. Then, if the target is dead, their corpse will be removed from combat.; --todo change math
 	special=requiresCharging;
@@ -1008,6 +1008,7 @@ ID=shana_delay_sync0; element=41002; action=shana_subsume3;
 ------------------------------------------------------------PUTRID PRISON
 
 --todo, 9999 cd
+--icon_flesh_prison --maybe recolor this so it's more putrid
 --This spell tracks its target, or their corpse if present. An Undead Abscess rises from all adjacent unoccupied tiles. If an adjacent tile is occupied, the nascent Abscess will instead detonate, dealing <massive> <fire> damage to the tile's occupant. --Range should be something like 4-8, or infinite range if not full hp. Usable once per combat, via 9999 cd. Huge ai incentive.
 
 
