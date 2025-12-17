@@ -1336,7 +1336,7 @@ nextNodeID=shana_gravekeeper_yokaze_intro_2;
 [DialogNode] ID=shana_gravekeeper_yokaze_intro_1a_livia; --cross content with Livia from Prominence's mod Mage Hunter. Bloody good time, check it out if you haven't.
 speakerOverride=mh_livia;
 animations=sad;
-statements=You... you're undead? How are you even speaking?;
+statements=You...<p><p> you're undead? How are you even speaking?;
 nextNodeID=shana_gravekeeper_yokaze_intro_2a_livia;
 
 [DialogNode] ID=shana_gravekeeper_yokaze_intro_2a_livia; --cross content with Livia from Prominence's mod Mage Hunter. Bloody good time, check it out if you haven't.
@@ -1426,10 +1426,14 @@ animations=angry;
 animations=angry;
 animations=sad;
 animations=sad;
+animations=sad;
+animations=stern;
 statements=<speed=1.2>You probably have a better idea than I do! I can't even investigate because the Rot won't let me leave this valley from either end!;
 statements=<speed=1.5>I sought a single night's lodging in that damned town on the way to Jascias, ignored the innkeeper's suggestion to lodge somewhere else - he didn't tell me why, of course, and woke up to a horde of undead!;
-statements=<speed=0.8>In hindsight, I really should have listened to him. The next thing I knew, I was forced to...<p> well...<p> to turn my ancestral bow against the fleeing citizens of Barrow.;
-statements=<speed=0.7>I tried my hardest to resist, but my body just wasn't my own.;
+statements=<speed=0.8>In hindsight, I really should have listened to him. The next thing I knew, I was forced to...<p> well...<p> to turn my ancestral bow on the fleeing citizens of Barrow. And anyone else who'd set foot in this valley, after.;
+statements=<speed=0.7>I tried my hardest to resist, but my body just wasn't my own. Still isn't, and probably won't ever be.;
+statements=<speed=0.7>Funny thing is, I used to be proud of my eyes. Better than all the other Fareems', you know? I bet you were surprised I could see you from all the way over here.;
+statements=<speed=0.4>Now, I just wish I could scratch them out.;
 specialEffect=modGlobalVar,shana_done_gravekeeper_yokaze_intro_6,1;
 nextNodeID_fReq=party:reeve;
 nextNodeID=shana_gravekeeper_yokaze_intro_6a_reeve;
@@ -1447,7 +1451,7 @@ nextNodeID=shana_gravekeeper_yokaze_intro_4a;
 
 [DialogNode] ID=shana_gravekeeper_yokaze_intro_6b_livia; --more cross content
 speakerOverride=mh_livia;
-animations=angry;
+animations=concern;
 animations=angry;
 animations=stern;
 statements=...;
@@ -1470,9 +1474,9 @@ animations=happy;
 animations=meh;
 animations=sad;
 animations=stern;
-statements=I've already heard this a few times, but it's always nice.;
+statements=I've heard this more than a few times by now, but it's always nice.;
 statements=Keeps me sane, you know?;
-statements=Honestly, I don't know if I even deserve that much anymore.;
+statements=Honestly, I don't know if I even deserve that much anymore, after all the lives I've been forced to take. Probably yours, too.;
 statements=If you end up being the one to put me to rest, please thank him for me.;
 specialEffect=modGlobalVar,shana_done_gravekeeper_yokaze_intro_taidon_message,1;
 specialEffect=modGlobalVar,shana_yokaze_reply,1;

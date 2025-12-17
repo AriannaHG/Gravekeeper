@@ -6988,7 +6988,7 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 	mpCost=4 * d:mpCostMult + d:mpCostMod;
 	applyWeaponBuffs=true;
 
-	AIRatingBias=30;
+	AIRatingBias=10;
 	cooldown=80;
 
 	maxRank=4;
