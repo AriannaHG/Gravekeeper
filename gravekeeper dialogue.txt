@@ -180,7 +180,7 @@ animations=sad;
 statements=Can't change your mind, I suppose.;
 statements=At least mark the tally on the fence before you enter, you'll know it when you see it.;
 statements=Seems like whatever's responsible for the gate doesn't mind the warning I stuck there.;
-statements=And...<p> if you happen to come across an undead Fareem in there, please tell her there's nothing to forgive.;
+statements=And...<p> if you happen to come across an undead Fareem in there, please tell her she's forgiven.;
 statements=It's not like she had a choice, being controlled by the plague and all.;
 specialEffect=setGlobalVar,shana_taidon_message,1;
 nextNodeID=shana_dialog_taidon1_anythingelse;
@@ -216,7 +216,7 @@ statements=Said something about the grapes needing time to ripen, then washed th
 statements=Useless bunch of kooks if you ask me.;
 nextNodeID=shana_dialog_taidon1_anythingelse;
 
-[DialogNode] ID=shana_dialog_taidon1a_old_barrow_worried_a;--todo option: You're not worried about living so close to Old Barrow? (main node, shana_asked_taidon_old_barrow)
+[DialogNode] ID=shana_dialog_taidon1a_old_barrow_worried_a;--You're not worried about living so close to Old Barrow? (main node, shana_asked_taidon_old_barrow)
 animations=sly;
 statements=See, that's different - bad as that night was, the place hasn't done anything to us since. Live and let live, that's what I always say.;
 nextNodeID=shana_dialog_taidon1_anythingelse;
@@ -315,12 +315,12 @@ formulaReq=g:shana_yokaze_reply;
 nodeToConnectTo=shana_dialog_taidon_reaction_yokaze_message;
 [DialogOption] text=I delivered it to her. (Lie);
 animations=meh;
-formulaReq=g:shana_yokaze_reply;
+formulaReq=1-g:shana_yokaze_reply;
 nodeToConnectTo=shana_dialog_taidon_reaction_yokaze_message_lie;
 [DialogOption] text=I didn't deliver your message.;
 animations=sigh;
+formulaReq=1-g:shana_yokaze_reply;
 nodeToConnectTo=shana_dialog_taidon1_reaction_didntdeliver;
-bottomOption=true;
 
 [DialogNode] ID=shana_dialog_taidon_reaction_yokaze_message; -- after barrow 1 if yokaze message
 animations=sad;
@@ -397,7 +397,7 @@ nextNodeID=;
 
 ----------Warning poster next to damaged Old Barrow gate-----------refer to <itemBig_low=shana_four_tally_marks> and shana_five_tally_marks, use textif to show your added mark and freq to make sure you can't add another mark
 [DialogNode] ID=shana_warning_dialog_1;
-statements=<speed=6>Yes, the gate to Old Barrow is falling apart.<n=>Yes, a child could easily smash it off its hinges.<n=>Yes, there are quicker and easier ways to die if you're so inclined.;
+statements=Yes, the gate to Old Barrow is falling apart.<n=>Yes, a child could easily smash it off its hinges.<n=>Yes, there are quicker and easier ways to die if you're so inclined.;
 [DialogOption] text=Continue reading.;
 nodeToConnectTo=shana_warning_dialog_2;
 fReq=1-g:shana_added_tally;
@@ -409,7 +409,7 @@ nodeToConnectTo=;
 bottomOption=true;
 
 [DialogNode] ID=shana_warning_dialog_2;
-statements=<speed=6>Don't throw your life away, but add a mark to the tally first if you must.<n=><n=> <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_four_tally_marks>;
+statements=Don't throw your life away, but add a mark to the tally first if you must.<n=><n=> <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_four_tally_marks>;
 [DialogOption] text=Continue reading.;
 nodeToConnectTo=shana_warning_dialog_3;
 [DialogOption] text=Go back.;
@@ -424,7 +424,7 @@ nodeToConnectTo=;
 bottomOption=true;
 
 [DialogNode] ID=shana_warning_dialog_2a;
-statements=<speed=6>Don't throw your life away, but add a mark to the tally first if you must.<n=><n=> <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks_player>;
+statements=Don't throw your life away, but add a mark to the tally first if you must.<n=><n=> <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks>   <itemBig_low=shana_five_tally_marks_player>;
 [DialogOption] text=Continue reading.;
 nodeToConnectTo=shana_warning_dialog_3;
 [DialogOption] text=Go back.;
@@ -444,7 +444,7 @@ nodeToConnectTo=;
 bottomOption=true;
 
 [DialogNode] ID=shana_warning_dialog_3;
-statements=<speed=6>P.S: If the dead are getting unruly again, I have it on good authority the source is probably lurking in the tomb to your right. Old Barrow's remained dormant so far, and I hope it stays that way.;
+statements=P.S: If the dead are getting unruly again, I have it on good authority the source is probably lurking in the tomb to your right. Old Barrow's remained dormant so far, and I hope it stays that way.;
 [DialogOption] text=Done reading.;
 nodeToConnectTo=;
 [DialogOption] text=Go back.;
@@ -1290,13 +1290,25 @@ nextNodeID=;
 
 
 --Yokaze boss dialog
+
+
+[DialogNodeOverride] ID=shana_gravekeeper_yokaze_handler; --this doesn't work for now, intro it is :p
+dialogNodeID_toOverride=shana_gravekeeper_enemy_placeholder_dialogue;
+completeOverride=true;
+overrideSpecialEffects=false;
+fReq=loc:ari_gravekeeper_city_path;
+--speakerOverride=reeve;
+nextNodeID_fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_-g:shana_gravekeeper_yokaze_already_triggered; --Does Yokaze exist, and is this the first time this node has fired? (i.e is this the first time?)
+nextNodeID=shana_gravekeeper_yokaze_intro;
+
 [DialogNode] ID=shana_gravekeeper_yokaze_intro;
+specialEffect=setGlobalVar,shana_gravekeeper_yokaze_already_triggered,1;
 nextNodeID_fReq=m:landingPartySize-1;
 nextNodeID=shana_gravekeeper_yokaze_intro_1;
 nextNodeID=shana_gravekeeper_yokaze_intro_1a_solo;
 
 [DialogNode] ID=shana_gravekeeper_yokaze_intro_1;
---speaker=shana_plaguebow_boss_ari_gravekeeper_city_path_;
+speaker=shana_plaguebow_boss_ari_gravekeeper_city_path_;
 animations=happy;
 animations=sly;
 animations=stern;
@@ -1308,7 +1320,7 @@ nextNodeID=shana_gravekeeper_yokaze_intro_1a_livia;
 nextNodeID=shana_gravekeeper_yokaze_intro_2;
 
 [DialogNode] ID=shana_gravekeeper_yokaze_intro_1a_solo; --for solo
---speaker=shana_plaguebow_boss_ari_gravekeeper_city_path_;
+speaker=shana_plaguebow_boss_ari_gravekeeper_city_path_;
 animations=happy;
 animations=sly;
 animations=stern;
@@ -1356,7 +1368,7 @@ nodeToConnectTo=shana_gravekeeper_yokaze_intro_5;
 animations=sad;
 newLineOfOptions=true;
 nodeToConnectTo=shana_gravekeeper_yokaze_intro_6;
-[DialogOption] text=I have a message from Taidon.;
+[DialogOption] text=Taidon said he forgives you.;
 animations=meh;
 newLineOfOptions=true;
 formulaReq=g:shana_taidon_message-g:shana_done_gravekeeper_yokaze_intro_taidon_message;
@@ -1458,7 +1470,7 @@ animations=happy;
 animations=meh;
 animations=sad;
 animations=stern;
-statements=I've already heard this message a few times, but it's always nice.;
+statements=I've already heard this a few times, but it's always nice.;
 statements=Keeps me sane, you know?;
 statements=Honestly, I don't know if I even deserve that much anymore.;
 statements=If you end up being the one to put me to rest, please thank him for me.;
@@ -1500,7 +1512,8 @@ nextNodeID=enemyInitiateCombat;
 
 
 
-
+---Placeholder for dialogue triggers
+[DialogNode] ID=shana_gravekeeper_enemy_placeholder_dialogue;
 
 
 ---sets gVar as 1 when triggered by actorreaction death

@@ -5964,7 +5964,7 @@ deadAnim = die;
 aggressiveness=0.7; bravery=1.0; intelligence=0.3; honor=0.2; fearless=True;
 defaultSupportAbilities=ari_enemy_resurrection_passive1;
 
-defaultDialogNode = ;
+defaultDialogNode = shana_gravekeeper_enemy_placeholder_dialogue;
 dialog_speechFont=scuri;
 randomNames=Undead Skeleton;
 
@@ -6080,7 +6080,7 @@ deadAnim = die;
 
 aggressiveness=0.7; bravery=0.3; intelligence=0.5; honor=0.2;
 
-defaultDialogNode = ;
+defaultDialogNode = shana_gravekeeper_enemy_placeholder_dialogue;
 dialog_speechFont=scuri;
 randomNames=Undead Skeleton;
 
@@ -6188,7 +6188,7 @@ aggressiveness=0.8; bravery=0.5; intelligence=0.3; honor=0.2; fearless=True;
 
 defaultSupportAbilities=ari_enemy_resurrection_passive2;
 
-defaultDialogNode = ;
+defaultDialogNode = shana_gravekeeper_enemy_placeholder_dialogue;
 dialog_speechFont=scuri;
 randomNames=Undead Zombie;
 
@@ -6281,7 +6281,7 @@ deadAnim = die;
 
 aggressiveness=0.5; bravery=0.5; intelligence=0.5; honor=0.5;
 
-defaultDialogNode = ;
+defaultDialogNode = shana_gravekeeper_enemy_placeholder_dialogue;
 dialog_speechFont=scuri;
 randomNames=Poltergeist;
 
@@ -6379,7 +6379,7 @@ deadAnim = die;
 
 aggressiveness=1.0; bravery=1.0; intelligence=0.5; honor=0.1;
 
-defaultDialogNode = ;
+defaultDialogNode = shana_gravekeeper_enemy_placeholder_dialogue;
 dialog_speechFont=scuri;
 randomNames=Hulking Abomination;
 
