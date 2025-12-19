@@ -1302,6 +1302,20 @@ nextNodeID_fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_-g:shana_gr
 nextNodeID=shana_gravekeeper_yokaze_intro;
 
 [DialogNode] ID=shana_gravekeeper_yokaze_intro;
+nextNodeID_fReq=1-g:shana_gravekeeper_yokaze_already_triggered;
+nextNodeID=shana_gravekeeper_yokaze_introb;
+nextNodeID=shana_gravekeeper_yokaze_intro_startfighta;
+
+[DialogNode] ID=shana_gravekeeper_yokaze_intro;_startfighta;
+speaker=shana_plaguebow_boss_ari_gravekeeper_city_path_;
+animations=sad;
+statements=...;
+nextNodeID=shana_gravekeeper_yokaze_intro_startfightb;
+
+[DialogNode] ID=shana_gravekeeper_yokaze_intro_startfightb;
+specialEffect=enterCombat,@X18,@Y16,99,shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+[DialogNode] ID=shana_gravekeeper_yokaze_introb;
 specialEffect=setGlobalVar,shana_gravekeeper_yokaze_already_triggered,1;
 nextNodeID_fReq=m:landingPartySize-1;
 nextNodeID=shana_gravekeeper_yokaze_intro_1;
@@ -1426,13 +1440,13 @@ animations=angry;
 animations=angry;
 animations=sad;
 animations=sad;
-animations=sad;
+animations=none;
 animations=stern;
 statements=<speed=1.2>You probably have a better idea than I do! I can't even investigate because the Rot won't let me leave this valley from either end!;
 statements=<speed=1.5>I sought a single night's lodging in that damned town on the way to Jascias, ignored the innkeeper's suggestion to lodge somewhere else - he didn't tell me why, of course, and woke up to a horde of undead!;
-statements=<speed=0.8>In hindsight, I really should have listened to him. The next thing I knew, I was forced to...<p> well...<p> to turn my ancestral bow on the fleeing citizens of Barrow. And anyone else who'd set foot in this valley, after.;
+statements=<speed=0.8>In hindsight, I really should have listened to him. The next thing I knew, I was forced to...<p> to turn my ancestral bow on the fleeing citizens of Barrow. And anyone else who'd set foot in this valley, after.;
 statements=<speed=0.7>I tried my hardest to resist, but my body just wasn't my own. Still isn't, and probably won't ever be.;
-statements=<speed=0.7>Funny thing is, I used to be proud of my eyes. Better than all the other Fareems', you know? I bet you were surprised I could see you from all the way over here.;
+statements=<speed=0.7>Funny thing is, I used to be proud of my eyes. Hell, I bet you were surprised I could see you from all the way over here.;
 statements=<speed=0.4>Now, I just wish I could scratch them out.;
 specialEffect=modGlobalVar,shana_done_gravekeeper_yokaze_intro_6,1;
 nextNodeID_fReq=party:reeve;
@@ -1483,7 +1497,7 @@ specialEffect=modGlobalVar,shana_yokaze_reply,1;
 nextNodeID=shana_gravekeeper_yokaze_intro_4a;
 
 [DialogNode] ID=shana_gravekeeper_yokaze_intro_7; --let us leave?
-animations=sigh;
+animations=none;
 statements=I'm sorry, but that isn't possible. I literally can't do that.;
 specialEffect=modGlobalVar,shana_done_gravekeeper_yokaze_intro_7,1;
 nextNodeID=shana_gravekeeper_yokaze_intro_4a;
@@ -1491,12 +1505,12 @@ nextNodeID=shana_gravekeeper_yokaze_intro_4a;
 [DialogNode] ID=shana_gravekeeper_yokaze_intro_8; --player skips
 animations=happy;
 statements=Fair enough! I'll let my arrows do the talking, then.;
-nextNodeID=enemyInitiateCombat;
+nextNodeID=shana_gravekeeper_yokaze_intro_startfightb;
 
 [DialogNode] ID=shana_gravekeeper_yokaze_intro_8a; --normal combat start
-animations=sigh;
+animations=none;
 statements=Don't hold back. I'd rather lose than win...<p> but I can't just roll over for you.;
-nextNodeID=enemyInitiateCombat;
+nextNodeID=nextNodeID=shana_gravekeeper_yokaze_intro_startfightb;
 
 
 
