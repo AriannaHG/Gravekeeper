@@ -1303,8 +1303,8 @@ nextNodeID=shana_gravekeeper_yokaze_intro;
 
 [DialogNode] ID=shana_gravekeeper_yokaze_intro;
 nextNodeID_fReq=1-g:shana_gravekeeper_yokaze_already_triggered;
-nextNodeID=shana_gravekeeper_yokaze_introb;
 nextNodeID=shana_gravekeeper_yokaze_intro_startfighta;
+nextNodeID=shana_gravekeeper_yokaze_introb;
 
 [DialogNode] ID=shana_gravekeeper_yokaze_intro;_startfighta;
 speaker=shana_plaguebow_boss_ari_gravekeeper_city_path_;
