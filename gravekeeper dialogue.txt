@@ -806,7 +806,7 @@ animations=happy;
 statements=Well, you see, I have nowhere else to go.;
 statements=I grew up in Barrow and lost my home.;
 statements=The others are in the same predicament. We're simply lost right now.;
-statements=But we try to make do with what we have, right?
+statements=But we try to make do with what we have, right?;
 [DialogOption] text=I see, thank you for telling me.;
 nodeToConnectTo=ari_gravekeeper_arianna_greeting6_intermedium;
 bottomOption=true;
@@ -1292,21 +1292,21 @@ nextNodeID=;
 --Yokaze boss dialog
 
 
-[DialogNodeOverride] ID=shana_gravekeeper_yokaze_handler; --this doesn't work for now, intro it is :p
-dialogNodeID_toOverride=shana_gravekeeper_enemy_placeholder_dialogue;
-completeOverride=true;
-overrideSpecialEffects=false;
-fReq=loc:ari_gravekeeper_city_path;
+--[DialogNodeOverride] ID=shana_gravekeeper_yokaze_handler; --this doesn't work for now, intro it is :p
+--dialogNodeID_toOverride=shana_gravekeeper_enemy_placeholder_dialogue;
+--completeOverride=true;
+--overrideSpecialEffects=false;
+--fReq=loc:ari_gravekeeper_city_path;
 --speakerOverride=reeve;
-nextNodeID_fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_-g:shana_gravekeeper_yokaze_already_triggered; --Does Yokaze exist, and is this the first time this node has fired? (i.e is this the first time?)
-nextNodeID=shana_gravekeeper_yokaze_intro;
+--nextNodeID_fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_-g:shana_gravekeeper_yokaze_already_triggered; --Does Yokaze exist, and is this the first time this node has fired? (i.e is this the first time?)
+--nextNodeID=shana_gravekeeper_yokaze_intro;
 
 [DialogNode] ID=shana_gravekeeper_yokaze_intro;
-nextNodeID_fReq=1-g:shana_gravekeeper_yokaze_already_triggered;
 nextNodeID=shana_gravekeeper_yokaze_intro_startfighta;
+nextNodeID_fReq=g:shana_gravekeeper_yokaze_already_triggered;
 nextNodeID=shana_gravekeeper_yokaze_introb;
 
-[DialogNode] ID=shana_gravekeeper_yokaze_intro;_startfighta;
+[DialogNode] ID=shana_gravekeeper_yokaze_intro_startfighta;
 speaker=shana_plaguebow_boss_ari_gravekeeper_city_path_;
 animations=sad;
 statements=...;
@@ -1317,8 +1317,8 @@ specialEffect=enterCombat,@X18,@Y16,99,shana_plaguebow_boss_ari_gravekeeper_city
 
 [DialogNode] ID=shana_gravekeeper_yokaze_introb;
 specialEffect=setGlobalVar,shana_gravekeeper_yokaze_already_triggered,1;
-nextNodeID_fReq=m:landingPartySize-1;
 nextNodeID=shana_gravekeeper_yokaze_intro_1;
+nextNodeID_fReq=m:landingPartySize-1;
 nextNodeID=shana_gravekeeper_yokaze_intro_1a_solo;
 
 [DialogNode] ID=shana_gravekeeper_yokaze_intro_1;
@@ -1440,7 +1440,7 @@ animations=angry;
 animations=angry;
 animations=sad;
 animations=sad;
-animations=none;
+animations=;
 animations=stern;
 statements=<speed=1.2>You probably have a better idea than I do! I can't even investigate because the Rot won't let me leave this valley from either end!;
 statements=<speed=1.5>I sought a single night's lodging in that damned town on the way to Jascias, ignored the innkeeper's suggestion to lodge somewhere else - he didn't tell me why, of course, and woke up to a horde of undead!;
@@ -1497,7 +1497,7 @@ specialEffect=modGlobalVar,shana_yokaze_reply,1;
 nextNodeID=shana_gravekeeper_yokaze_intro_4a;
 
 [DialogNode] ID=shana_gravekeeper_yokaze_intro_7; --let us leave?
-animations=none;
+animations=;
 statements=I'm sorry, but that isn't possible. I literally can't do that.;
 specialEffect=modGlobalVar,shana_done_gravekeeper_yokaze_intro_7,1;
 nextNodeID=shana_gravekeeper_yokaze_intro_4a;
@@ -1508,7 +1508,7 @@ statements=Fair enough! I'll let my arrows do the talking, then.;
 nextNodeID=shana_gravekeeper_yokaze_intro_startfightb;
 
 [DialogNode] ID=shana_gravekeeper_yokaze_intro_8a; --normal combat start
-animations=none;
+animations=;
 statements=Don't hold back. I'd rather lose than win...<p> but I can't just roll over for you.;
 nextNodeID=nextNodeID=shana_gravekeeper_yokaze_intro_startfightb;
 
