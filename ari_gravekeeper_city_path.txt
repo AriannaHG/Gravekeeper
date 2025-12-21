@@ -1,5 +1,5 @@
 [Zone]  ID=ari_gravekeeper_city_path; dark=True; timeUntilNewDay=1; showFogOfWar=True; fogOfWar=True; minimapEnabled=True; allowCameraPastZoneEdges=False; cantAct=False; cantGameOver=False; alwaysKeepWeaponsUnsheathed=False; peaceful=False; overseerMode=False; rollingPinStyle=False; drawSky=False; drawSky_overrideYpos=-1; boatZone=False; wind=False; overworld=False; canDropItems=True; 
- travelSong=King's Field OST - East Village; travelSongVolume=0.8; travelSongPitch=0; combatSong=west-shore; combatSongVolume=1; combatSongPitch=0; combatSongDelay=0; 
+ travelSong=Labyrinth Of Lost Dreams; travelSongVolume=1; travelSongPitch=0; combatSong=Prepare Thyself; combatSongVolume=1.1; combatSongPitch=0; combatSongDelay=0; 
 darkR=65; darkG=65; darkB=145; 
  screenWaveFreq=0; screenDarkWaveFreq=0; screenWaveAmp=0.01; screenDarkWaveAmp=0.01; screenWaveSpeed=0.2; screenWaveAmp_reflect=0.0014; 
  bgTerrainTypeID=; bgFXID=; bgFX_sineWave=0; darkenedTileTexture=darkenedTile; bgScale=1; bgParallaxRatio=1; bgMoveSpeedX=0; bgMoveSpeedY=0; 
@@ -581,10 +581,10 @@ triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelMo
 
 
 
-[Trigger] numID=24; aliasID=;
+[Trigger] numID=24; aliasID=shana_yokaze_intro_dialogue;
 topX=0;topY=5;btmX=34;btmY=36;
 triggerImmediatelyOnEnteringZone=False; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
-[TriggerEffect] numID=24; effectID=talk; sValue=shana_plaguebow_boss_ari_gravekeeper_city_path_; sValue2=shana_gravekeeper_yokaze_intro; bValue1=True; bValue2=False; fValue=0; delay=0; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_; taskString=; xValue=-1; yValue=-1;
+[TriggerEffect] numID=24; effectID=talk; sValue=shana_plaguebow_boss_ari_gravekeeper_city_path_; sValue2=shana_gravekeeper_yokaze_intro; bValue1=True; bValue2=False; fValue=0; delay=0; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_-m:combat; taskString=; xValue=-1; yValue=-1;
 
 
 
