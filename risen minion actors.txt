@@ -7135,7 +7135,7 @@ ID=shana_plaguebow_fareem_boss;
 element=HPbased;
 damageMultiplier=0.7; healMultiplier=1;
 
-[ActorTypeReaction] --- Spawns the boss loot and sets completion flag.
+[ActorTypeReaction] --- Spawns the boss loot, dispels barriers and sets completion flag.
 ID=shana_plaguebow_fareem_boss;
 element=incapacitated;
 action=shana_spawn_plaguebow;
@@ -7170,3 +7170,13 @@ action=shana_spawn_plaguebow;
 [AvAffecterAoE]
 	ID=shana_spawn_plaguebow;
 	cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_spawn_plaguebow;
+    visibleMiss=false; visibleEvaluations=false;
+    element=41011;
+    chance=100;
+[AvAffecterAoE]
+	ID=shana_spawn_plaguebow;
+	shape=8;
+	needsLoS=false;
+	needsLoE=false;
