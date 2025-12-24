@@ -1,4 +1,4 @@
-[Zone]  ID=ari_gravekeeper_city_path; dark=True; timeUntilNewDay=1; showFogOfWar=False; fogOfWar=False; minimapEnabled=True; allowCameraPastZoneEdges=False; cantAct=False; cantGameOver=False; alwaysKeepWeaponsUnsheathed=False; peaceful=False; overseerMode=False; rollingPinStyle=False; drawSky=False; drawSky_overrideYpos=-1; boatZone=False; wind=False; overworld=False; canDropItems=True; 
+[Zone]  ID=ari_gravekeeper_city_path; dark=True; timeUntilNewDay=6.904053; showFogOfWar=False; fogOfWar=False; minimapEnabled=True; allowCameraPastZoneEdges=False; cantAct=False; cantGameOver=False; alwaysKeepWeaponsUnsheathed=False; peaceful=False; overseerMode=False; rollingPinStyle=False; drawSky=False; drawSky_overrideYpos=-1; boatZone=False; wind=False; overworld=False; canDropItems=True; 
  travelSong=Labyrinth Of Lost Dreams; travelSongVolume=1; travelSongPitch=0; combatSong=Prepare Thyself; combatSongVolume=1.1; combatSongPitch=0; combatSongDelay=0; 
 darkR=65; darkG=65; darkB=145; 
  screenWaveFreq=0; screenDarkWaveFreq=0; screenWaveAmp=0.01; screenDarkWaveAmp=0.01; screenWaveSpeed=0.2; screenWaveAmp_reflect=0.0014; 
@@ -53,7 +53,6 @@ combatMode=False;
 [Item] ID=rubble; q=1; x=7; y=25;
 [Item] ID=rubble; q=1; x=7; y=26;
 [Item] ID=rocks1; q=4; x=7; y=34;
-[Item] ID=pebbles1; q=1; r=360; x=8; y=3;
 [Item] ID=loot_bone_junk; q=1; r=360; x=8; y=4;
 [Item] ID=bonePileDark; q=1; x=8; y=5;
 [Item] ID=bonePileDark; q=1; r=-90; x=8; y=7;
@@ -80,6 +79,7 @@ combatMode=False;
 [Item] ID=loot_bone_junk; q=1; r=-360; x=10; y=36;
 [Item] ID=bonePileDark; q=1; r=-90; x=11; y=4;
 [Item] ID=bugsMass_small; q=1; x=11; y=7;
+[Item] ID=loot_bone_junk; q=1; x=11; y=38;
 [Item] ID=bonePileDark; q=1; x=12; y=3;
 [Item] ID=bonePileDark; q=1; r=-180; x=12; y=5;
 [Item] ID=bugs12_small; q=1; r=360; x=12; y=25;
@@ -89,35 +89,45 @@ combatMode=False;
 [Item] ID=loot_bone_junk; q=1; r=360; x=12; y=39;
 [Item] ID=loot_bone_junk; q=1; r=90; x=12; y=39;
 [Item] ID=loot_bone_junk; q=1; r=270; x=12; y=39;
+[Item] ID=loot_bone_junk; q=1; x=12; y=40;
 [Item] ID=loot_bone_junk; q=1; r=-360; x=13; y=4;
 [Item] ID=loot_bone_junk; q=1; r=360; x=13; y=4;
 [Item] ID=bonePileDark; q=1; r=-270; x=13; y=4;
 [Item] ID=pebbles1; q=1; r=360; x=13; y=5;
 [Item] ID=bugs5_small; q=1; r=-360; x=13; y=28;
+[Item] ID=loot_bone_junk; q=1; x=13; y=40;
 [Item] ID=pebbles1; q=1; x=14; y=8;
 [Item] ID=pebbles1; q=1; x=14; y=16;
+[Item] ID=loot_bone_junk; q=1; x=14; y=37;
+[Item] ID=loot_bone_junk; q=1; r=90; x=14; y=40;
+[Item] ID=loot_bone_junk; q=1; r=270; x=14; y=40;
+[Item] ID=loot_bone_junk; q=1; x=15; y=0;
 [Item] ID=ari_eternal_light1; q=1; r=-360; x=15; y=6;
 [Item] ID=bugs5_small; q=1; r=-360; x=15; y=17;
 [Item] ID=loot_bone_junk; q=1; x=15; y=31;
 [Item] ID=pebbles2; q=1; x=15; y=32;
+[Item] ID=loot_bone_junk; q=1; x=15; y=38;
 [Item] ID=pebbles2; q=1; x=16; y=3;
 [Item] ID=ari_eternal_light1; q=1; x=16; y=17;
 [Item] ID=bugs5_small; q=1; r=360; x=16; y=18;
 [Item] ID=bugs12_small; q=1; r=360; x=16; y=24;
 [Item] ID=loot_bone_junk; q=1; r=-360; x=16; y=33;
+[Item] ID=loot_bone_junk; q=1; r=270; x=16; y=40;
 [Item] ID=pebbles2; q=1; r=-360; x=17; y=23;
 [Item] ID=loot_bone_junk; q=1; r=-360; x=17; y=32;
 [Item] ID=loot_bone_junk; q=1; r=360; x=17; y=32;
 [Item] ID=pebbles2; q=1; x=17; y=33;
 [Item] ID=pebbles1; q=1; r=-360; x=17; y=36;
-[Item] ID=pebbles2; q=1; r=-360; x=17; y=41;
 [Item] ID=pebbles2; q=1; r=-360; x=18; y=0;
 [Item] ID=bonePileDark; q=1; r=-90; x=18; y=6;
 [Item] ID=bonePileDark; q=1; r=-90; x=18; y=7;
 [Item] ID=pebbles1; q=1; r=360; x=18; y=14;
 [Item] ID=pebbles2; q=1; r=-360; x=18; y=17;
 [Item] ID=pebbles1; q=1; r=-360; x=18; y=33;
-[Item] ID=pebbles2; q=1; x=18; y=41;
+[Item] ID=loot_bone_junk; q=1; x=18; y=40;
+[Item] ID=loot_bone_junk; q=1; r=90; x=18; y=40;
+[Item] ID=loot_bone_junk; q=1; r=180; x=18; y=40;
+[Item] ID=bones2; q=1; x=18; y=40;
 [Item] ID=travelPoint_1; q=1; r=90; x=19; y=4;
 [Item] ID=bonePileDark; q=1; r=-360; x=19; y=5;
 [Item] ID=loot_bone_junk; q=1; r=90; x=19; y=6;
@@ -128,7 +138,6 @@ combatMode=False;
 [Item] ID=ari_eternal_light1; q=1; x=19; y=35;
 [Item] ID=travelPoint_0; q=1; r=270; x=19; y=39;
 [Item] ID=pebbles2; q=1; x=19; y=40;
-[Item] ID=pebbles1; q=1; x=19; y=41;
 [Item] ID=pebbles1; q=1; r=360; x=20; y=0;
 [Item] ID=pebbles2; q=1; x=20; y=2;
 [Item] ID=pebbles1; q=1; r=-360; x=20; y=4;
@@ -138,11 +147,16 @@ combatMode=False;
 [Item] ID=bugsMass_small; q=1; r=-360; x=20; y=8;
 [Item] ID=pebbles1; q=1; x=20; y=23;
 [Item] ID=pebbles1; q=1; x=20; y=25;
-[Item] ID=pebbles2; q=1; x=20; y=41;
+[Item] ID=loot_bone_junk; q=1; x=20; y=40;
+[Item] ID=loot_bone_junk; q=1; r=90; x=20; y=40;
+[Item] ID=bones1; q=1; x=20; y=40;
 [Item] ID=loot_bone_junk; q=1; r=360; x=21; y=24;
+[Item] ID=loot_bone_junk; q=1; r=360; x=21; y=40;
+[Item] ID=loot_bone_junk; q=1; r=270; x=22; y=38;
 [Item] ID=loot_bone_junk; q=1; r=360; x=23; y=13;
 [Item] ID=bonePileDark; q=1; r=270; x=23; y=13;
 [Item] ID=bugs12_small; q=1; r=-360; x=23; y=23;
+[Item] ID=loot_bone_junk; q=1; r=90; x=23; y=40;
 [Item] ID=loot_bone_junk; q=1; r=360; x=24; y=0;
 [Item] ID=bonePileDark; q=1; r=-90; x=24; y=0;
 [Item] ID=loot_bone_junk; q=1; r=360; x=24; y=12;
@@ -161,6 +175,7 @@ combatMode=False;
 [Item] ID=loot_bone_junk; q=1; r=-360; x=25; y=24;
 [Item] ID=loot_bone_junk; q=1; r=90; x=25; y=24;
 [Item] ID=bonePileDark; q=1; r=-180; x=25; y=24;
+[Item] ID=loot_bone_junk; q=1; x=25; y=40;
 [Item] ID=loot_bone_junk; q=1; r=360; x=26; y=0;
 [Item] ID=bonePileDark; q=1; r=90; x=26; y=0;
 [Item] ID=bonePileDark; q=1; r=-90; x=26; y=3;
@@ -320,9 +335,9 @@ combatMode=False;
 
 
 [Actor]ID=shana_plaguebow_boss_ari_gravekeeper_city_path_; name=Yokaze;
-actorTypeID=shana_plaguebow_fareem_boss; sprite=; actorClass=scout; secondaryClass=shana_ranger_enemy; actorClass3=ranger; actorClass4=rogue; movementSpeed=6; position=15,11; destination=-1,-1; facingRot=90; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=False; canControlFullyIfControllable=False; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=True; faction=enemy; combatTeam=enemy; clothPalette=pCBlack; skinPalette=p13; armorPalette=pBoneDark; unarmoredPalette=pUnarmored; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=True; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.3; bravery=0.2; intelligence=0.1; honor=0.8; aiRating_bonusToNotMoving=10; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
+actorTypeID=shana_plaguebow_fareem_boss; sprite=; actorClass=scout; secondaryClass=shana_ranger_enemy; actorClass3=ranger; actorClass4=rogue; movementSpeed=6; position=17,15; destination=-1,-1; facingRot=90; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=False; canControlFullyIfControllable=False; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=True; faction=enemy; combatTeam=enemy; clothPalette=pCBlack; skinPalette=p13; armorPalette=pBoneDark; unarmoredPalette=pUnarmored; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.3; bravery=0.2; intelligence=0.1; honor=0.8; aiRating_bonusToNotMoving=10; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
  headSprite=fareem_head; faceSprite=angry_face_female; legsSprite=fareem_legs_armor_heavy; armLSprite=fareem_arm; armRSprite=fareem_arm; torsoSprite=template_torso; shoulderLSprite=ranger_shoulderR; shoulderRSprite=ranger_shoulderL; backSprite=;
- supportAbilities=overeager;  supportAbilities=shana_projectileMastery_enemy;  supportAbilities=prom_scout_nowhere_to_hide_enemy; HP=123; MP=42; HPMax=123; MPMax=42; TrueHPMax=88; TrueMPMax=30; PhysDef=3; MagDef=3; skill_Bow=9; skill_Wind=3; skill_Ruin=5; overeager=1; scourge_XP=0; Ro_hide=1; rogue_XP=0; scout_XP=0; Sha_contactShot=3; ranger_XP=0; projectileMastery=1; stormshot_XP=0; stormshot_XP_stars=0; unmaker_XP_stars=0; shana_Ran_doubleTap_enemy=4; shana_Sha_multishot_enemy=3; shana_Sc_trip_enemy=3; shana_ranger_enemy_XP=0; 
+ supportAbilities=overeager;  supportAbilities=shana_projectileMastery_enemy;  supportAbilities=prom_scout_nowhere_to_hide_enemy; HP=88; MP=30; HPMax=88; MPMax=30; TrueHPMax=88; TrueMPMax=30; PhysDef=3; MagDef=3; skill_Bow=9; skill_Wind=3; skill_Ruin=5; overeager=1; scourge_XP=0; Ro_hide=1; rogue_XP=0; scout_XP=0; Sha_contactShot=3; ranger_XP=0; projectileMastery=1; stormshot_XP=0; stormshot_XP_stars=0; unmaker_XP_stars=0; shana_Ran_doubleTap_enemy=4; shana_Sha_multishot_enemy=3; shana_Sc_trip_enemy=3; shana_ranger_enemy_XP=0; 
 numRanksBought=Sha_contactShot=3; 
 numRanksBought=Ro_hide=1; 
 numRanksBought=shana_Ran_doubleTap_enemy=4; 
@@ -383,22 +398,6 @@ canSwap=False;
  actorValue=moveDistance; sourceAVAffecter=av_fareem1; hideAllEffects=True; showNoDescription=True; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
 [ActorEffect]
  actorValue=actTime; sourceAVAffecter=av_fareem2; hideAllEffects=True; showNoDescription=True; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
-[ActorEffect]
- actorValue=TrueHPMax; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=35; duration=-1;
-[ActorEffect]
- actorValue=TrueMPMax; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=12; duration=-1;
-[ActorEffect]
- actorValue=PhysAtk; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=2; duration=-1;
-[ActorEffect]
- actorValue=MagAtk; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=2; duration=-1;
-[ActorEffect]
- actorValue=PhysDef; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=2; duration=-1;
-[ActorEffect]
- actorValue=MagDef; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=2; duration=-1;
-[ActorEffect]
- actorValue=PhysAtk; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=True; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
-[ActorEffect]
- actorValue=MagAtk; sourceAVAffecter=difficultyMod; hideAllEffects=True; showNoDescription=True; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
 
 [ActorInventory]
 style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
@@ -585,6 +584,328 @@ triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelMo
 topX=0;topY=5;btmX=34;btmY=36;
 triggerImmediatelyOnEnteringZone=False; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
 [TriggerEffect] numID=24; effectID=talk; sValue=shana_plaguebow_boss_ari_gravekeeper_city_path_; sValue2=shana_gravekeeper_yokaze_intro; bValue1=True; bValue2=False; fValue=0; delay=0; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_-m:combat; taskString=; xValue=-1; yValue=-1;
+
+
+
+[Trigger] numID=25; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=8; yValue=41;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=9; yValue=41;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=10; yValue=41;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=11; yValue=41;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=12; yValue=41;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=13; yValue=41;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=14; yValue=41;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=15; yValue=41;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=16; yValue=41;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=17; yValue=41;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=18; yValue=41;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=19; yValue=41;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=20; yValue=41;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=21; yValue=41;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=22; yValue=41;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=23; yValue=41;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=24; yValue=41;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=25; yValue=41;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=26; yValue=41;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=27; yValue=41;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=28; yValue=41;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=34; yValue=32;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=34; yValue=33;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=34; yValue=34;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=34; yValue=35;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=34; yValue=36;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=9; yValue=2;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=10; yValue=2;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=11; yValue=2;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=12; yValue=2;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=13; yValue=2;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=14; yValue=2;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=15; yValue=2;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=16; yValue=2;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=17; yValue=2;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=18; yValue=2;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=19; yValue=2;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=20; yValue=2;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=21; yValue=2;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=22; yValue=2;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=23; yValue=2;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=24; yValue=2;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=25; yValue=2;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=26; yValue=2;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=27; yValue=2;
+[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=28; yValue=2;
+
+
+
+[Trigger] numID=26; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=27; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=28; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=29; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=30; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=31; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=32; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=33; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=34; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=35; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=36; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=37; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=38; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=39; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=40; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=41; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=42; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=43; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=44; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=45; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=46; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=47; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=48; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=49; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=50; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=51; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=52; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=53; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=54; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=55; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=56; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=57; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=58; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=59; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=60; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=61; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=62; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=63; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=64; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=65; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=66; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=67; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=68; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=69; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
+
+
+
+[Trigger] numID=70; aliasID=;
+topX=2;topY=43;btmX=2;btmY=43;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
 
 
 
