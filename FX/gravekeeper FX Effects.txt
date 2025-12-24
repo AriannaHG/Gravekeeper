@@ -90,6 +90,27 @@ pR=pCRedD;
 pG=;
 pB=;
 
+
+[FXData]
+ID=shana_unliving_barrier_remove;
+particleID=shana_blackpixel;
+numParticles=18;
+posOffset=-0.5,0.5;
+randPos=1,0;
+velocOffset=-1,-3;
+randVeloc=2,-3;
+initialDelayIncreasePerParticle=0.02;
+percentDurationBeforeOverlapWithOtherFX=0.2;
+
+[drawOrderFX]
+ID=shana_blackpixel;
+texture=fx_shana_blackpixel;
+sourceRect=0,0,1,1;
+timePerFrame=0;
+scaleAccel=-30;
+alphaVeloc=-10;
+ignoreDarkness=true;
+
 ----------------------------------------Plague Bow
 
 [FXData]
