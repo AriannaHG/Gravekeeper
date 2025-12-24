@@ -1,4 +1,4 @@
-[Zone]  ID=ari_gravekeeper_city_path; dark=True; timeUntilNewDay=6.904053; showFogOfWar=False; fogOfWar=False; minimapEnabled=True; allowCameraPastZoneEdges=False; cantAct=False; cantGameOver=False; alwaysKeepWeaponsUnsheathed=False; peaceful=False; overseerMode=False; rollingPinStyle=False; drawSky=False; drawSky_overrideYpos=-1; boatZone=False; wind=False; overworld=False; canDropItems=True; 
+[Zone]  ID=ari_gravekeeper_city_path; dark=True; timeUntilNewDay=9.856079; showFogOfWar=False; fogOfWar=False; minimapEnabled=True; allowCameraPastZoneEdges=False; cantAct=False; cantGameOver=False; alwaysKeepWeaponsUnsheathed=False; peaceful=False; overseerMode=False; rollingPinStyle=False; drawSky=False; drawSky_overrideYpos=-1; boatZone=False; wind=False; overworld=False; canDropItems=True; 
  travelSong=Labyrinth Of Lost Dreams; travelSongVolume=1; travelSongPitch=0; combatSong=Prepare Thyself; combatSongVolume=1.1; combatSongPitch=0; combatSongDelay=0; 
 darkR=65; darkG=65; darkB=145; 
  screenWaveFreq=0; screenDarkWaveFreq=0; screenWaveAmp=0.01; screenDarkWaveAmp=0.01; screenWaveSpeed=0.2; screenWaveAmp_reflect=0.0014; 
@@ -86,21 +86,15 @@ combatMode=False;
 [Item] ID=bugs5_small; q=1; x=12; y=30;
 [Item] ID=loot_bone_junk; q=1; r=-360; x=12; y=39;
 [Item] ID=loot_bone_junk; q=1; r=-360; x=12; y=39;
-[Item] ID=loot_bone_junk; q=1; r=360; x=12; y=39;
-[Item] ID=loot_bone_junk; q=1; r=90; x=12; y=39;
-[Item] ID=loot_bone_junk; q=1; r=270; x=12; y=39;
-[Item] ID=loot_bone_junk; q=1; x=12; y=40;
 [Item] ID=loot_bone_junk; q=1; r=-360; x=13; y=4;
 [Item] ID=loot_bone_junk; q=1; r=360; x=13; y=4;
 [Item] ID=bonePileDark; q=1; r=-270; x=13; y=4;
 [Item] ID=pebbles1; q=1; r=360; x=13; y=5;
 [Item] ID=bugs5_small; q=1; r=-360; x=13; y=28;
-[Item] ID=loot_bone_junk; q=1; x=13; y=40;
 [Item] ID=pebbles1; q=1; x=14; y=8;
 [Item] ID=pebbles1; q=1; x=14; y=16;
 [Item] ID=loot_bone_junk; q=1; x=14; y=37;
 [Item] ID=loot_bone_junk; q=1; r=90; x=14; y=40;
-[Item] ID=loot_bone_junk; q=1; r=270; x=14; y=40;
 [Item] ID=loot_bone_junk; q=1; x=15; y=0;
 [Item] ID=ari_eternal_light1; q=1; r=-360; x=15; y=6;
 [Item] ID=bugs5_small; q=1; r=-360; x=15; y=17;
@@ -118,15 +112,13 @@ combatMode=False;
 [Item] ID=loot_bone_junk; q=1; r=360; x=17; y=32;
 [Item] ID=pebbles2; q=1; x=17; y=33;
 [Item] ID=pebbles1; q=1; r=-360; x=17; y=36;
+[Item] ID=skull; q=1; x=17; y=39;
 [Item] ID=pebbles2; q=1; r=-360; x=18; y=0;
 [Item] ID=bonePileDark; q=1; r=-90; x=18; y=6;
 [Item] ID=bonePileDark; q=1; r=-90; x=18; y=7;
 [Item] ID=pebbles1; q=1; r=360; x=18; y=14;
 [Item] ID=pebbles2; q=1; r=-360; x=18; y=17;
 [Item] ID=pebbles1; q=1; r=-360; x=18; y=33;
-[Item] ID=loot_bone_junk; q=1; x=18; y=40;
-[Item] ID=loot_bone_junk; q=1; r=90; x=18; y=40;
-[Item] ID=loot_bone_junk; q=1; r=180; x=18; y=40;
 [Item] ID=bones2; q=1; x=18; y=40;
 [Item] ID=travelPoint_1; q=1; r=90; x=19; y=4;
 [Item] ID=bonePileDark; q=1; r=-360; x=19; y=5;
@@ -147,8 +139,6 @@ combatMode=False;
 [Item] ID=bugsMass_small; q=1; r=-360; x=20; y=8;
 [Item] ID=pebbles1; q=1; x=20; y=23;
 [Item] ID=pebbles1; q=1; x=20; y=25;
-[Item] ID=loot_bone_junk; q=1; x=20; y=40;
-[Item] ID=loot_bone_junk; q=1; r=90; x=20; y=40;
 [Item] ID=bones1; q=1; x=20; y=40;
 [Item] ID=loot_bone_junk; q=1; r=360; x=21; y=24;
 [Item] ID=loot_bone_junk; q=1; r=360; x=21; y=40;
@@ -164,6 +154,7 @@ combatMode=False;
 [Item] ID=bonePileDark; q=1; r=-360; x=24; y=12;
 [Item] ID=bonePileDark; q=1; r=-180; x=24; y=14;
 [Item] ID=bonePileDark; q=1; r=-90; x=24; y=23;
+[Item] ID=loot_bone_junk; q=1; x=24; y=39;
 [Item] ID=bonePileDark; q=1; r=-180; x=25; y=1;
 [Item] ID=loot_bone_junk; q=1; r=360; x=25; y=5;
 [Item] ID=bugs5_small; q=1; r=360; x=25; y=6;
@@ -615,7 +606,6 @@ triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelMo
 [TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=34; yValue=33;
 [TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=34; yValue=34;
 [TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=34; yValue=35;
-[TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=34; yValue=36;
 [TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=9; yValue=2;
 [TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=10; yValue=2;
 [TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=11; yValue=2;
@@ -900,12 +890,5 @@ triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelMo
 [Trigger] numID=69; aliasID=;
 topX=2;topY=43;btmX=2;btmY=43;
 triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
-
-
-
-[Trigger] numID=70; aliasID=;
-topX=2;topY=43;btmX=2;btmY=43;
-triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=actor:shana_plaguebow_boss_ari_gravekeeper_city_path_;
-
 
 
