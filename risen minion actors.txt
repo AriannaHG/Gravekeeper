@@ -7180,3 +7180,126 @@ action=shana_spawn_plaguebow;
 	shape=8;
 	needsLoS=false;
 	needsLoE=false;
+
+----------------Undead Abscesses. Normal one leaves a corpse and is preexisting, summmoned one is exclusive to Amalgam summon and corpse disappears + it can selfdestruct to do the same buff as amalgam's Bequeath (Bequeath Self)
+
+[ActorType] ID=shana_undead_abscess_normal;
+name=Undead Abscess;
+journalID=journal_shana_undead_abscess;
+bodyStructure=single;
+movementSpeed = 0;
+unarmedPower = 4;
+humanoid = false;
+
+noFacingRotRows=true;
+rotatedCorpse = false;
+directionless=true;
+disappearOnDeath=false;
+
+weight=500;
+
+unrevivable = false;
+bigCollisions=true;
+showAlertIcon=false;
+canUseItems=false;
+alwaysRoundFacingTo90=true;
+
+defaultValues=HP = 30;
+defaultValues=HPMax = 30;
+defaultValues=TrueHPMax = 30;
+defaultValues=MP = 30;
+defaultValues=MPMax = 30;
+defaultValues=TrueMPMax = 30;
+defaultValues=PhysAtk = 12;
+defaultValues=PhysDef = 0;
+defaultValues=PhysEva = 0;
+defaultValues=MagAtk = 12;
+defaultValues=MagDef = 12;
+defaultValues=MagEva = 0;
+defaultValues=moveDistance = 0;
+defaultValues=jumpDistance = 0;
+defaultValues=actTime = 32;
+defaultValues=skill_Ruin = 5;
+
+defaultAI=none;
+
+aggressiveness = 0.1;
+bravery = 0.6;
+honor = 0;
+intelligence = 0.1;
+
+--baseSpriteExtraHeight = 16;
+--baseSpriteExtraWidth = 16;
+adjustSpriteX = 0;
+adjustSpriteY = 0;
+
+defaultSprite = actor_shana_undead_abscess_normal;
+previewSprite = actor_shana_undead_abscess_normal;
+--unarmedAction = qp_phoenix_peck;
+--innateActions = qp_fever_flame;
+
+--skinPalette=pRed3;
+--clothPalette=p66;
+--armorPalette=pBoneDark;
+
+defaultSupportAbilities = shana_uber_instability;
+
+defaultFaction = enemy;
+
+fxOnPhysicalHPDmg = hitDust;
+fxOnDeath = hitDust_strong;
+fxOnDeath = AngryPainBlubber;
+
+idleAnim = s_idle;
+walkAnim = s_0121loop;
+jumpAnim = s_jump;
+painAnim = s_pain;
+dodgeAnim = s_idle2;
+sleepAnim = s_crouch;
+criticalAnim = s_crouch;
+frozenAnim = s_idle;
+deadAnim = s_die;
+
+randomNames=Undead Abscess;
+[ActorTypeReaction]
+ID=shana_undead_abscess_normal;
+element=ruin;
+damageMultiplier=-1; healMultiplier=1;
+[ActorTypeReaction]
+ID=shana_undead_abscess_normal;
+element=poison;
+damageMultiplier=0; healMultiplier=0;
+[ActorTypeReaction]
+ID=shana_undead_abscess_normal;
+element=defiler;
+damageMultiplier=0.5; healMultiplier=0.5;
+[ActorTypeReaction]
+ID=shana_undead_abscess_normal;
+element=life; actorValue=HP;
+damageMultiplier=2; healMultiplier=-1;
+[ActorTypeReaction]
+ID=shana_undead_abscess_normal; element=antiUndead;
+damageMultiplier=2; healMultiplier=-1;
+[ActorTypeReaction]
+ID=shana_undead_abscess_normal;
+element=bonemeld;
+damageMultiplier=5; healMultiplier=0;
+[ActorTypeReaction]
+ID=shana_undead_abscess_normal;
+actorValues=morale; actorValues=poison;
+actorValues=itchy; actorValues=decay;
+actorValues=sleep;
+actorValue=cure; actorValue=aegis; actorValue=preserve;
+damageMultiplier=0; healMultiplier=0;
+
+[ActorTypeDetectAoE]
+ID=shana_undead_abscess_normal;
+needsLoE=false;
+needsLoS=true;
+minRange=0;
+maxRange=3;
+[JournalEntry]
+ID=journal_shana_undead_abscess;
+category=creature; halfPage=true; rarity=2;
+title=Undead Abscesses;
+text=<actorBig=shana_undead_abscess_normal><title=Undead Abscess><brAdj=>          Rotting pimples on the fabric of Eral, these highly unstable, pus-filled sacks of moldering flesh may not have the infinite range and tracking abilities of their progenitors, but they're much better at making their target wish they were never born. <n=>Mature specimens are capable of casting localized, yet terrifying spells whereas freshly-spawned Abscesses take a more close-ranged approach, sacrificing themselves to significantly empower their allies should no prey be within reach. Both inflict Rot<icon=icon_gravekeeper_rot> in lieu of direct damage, cruelly putrefying their prey from inside out.;
