@@ -530,6 +530,8 @@ description=Testing.;
 paletteUI=pGreen;
 
 actions=shana_Ran_doubleTap_enemy;
+actions=shana_sleeping_sickness;
+actions=shana_psychenecrosis;
 
 supportAbilities=shana_festering_fulcrum;
 supportAbilities=shana_instability;

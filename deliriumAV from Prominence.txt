@@ -1,0 +1,209 @@
+[ActorValue]
+ID=pd_delirium;
+name=Delirium;
+icon=Delirious;
+bubbleIcon=promdeliriumStatus;
+minimum=0;
+maximum=1;
+description=-25% accuracy.  Rotate, interrupt, and reposition at the end of your turn.;
+defaultValue = 0;
+
+harmfulMagnitude = 1;
+
+
+animationOnHarmful = pain;
+
+affectsActors = true;
+
+canAffectIncapped = true;
+
+removedByNegativeMagnitude=false;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = false;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = false;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Gray;
+damageNumberColor_Negative = Gray;
+
+
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+
+elementReactionModifiesDuration = true;
+
+canBeRemovedByNonspecificAVEffectRemoval = true;
+
+recordInActorData = true;
+showEvaluationInfo = true;
+
+allowDecimalValues = false;
+percentage = false;
+
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+[ActorValueEffect]
+ID=pd_delirium;
+actorValue=Acc; magnitude=-0.25; duration=-1; 
+
+[ActorValueReaction]
+ID=pd_delirium;
+element=ruinTouch; damageMultiplier=1.3;
+
+[ActorValueReaction]
+ID=pd_delirium;
+element=endTurn; action=pd_delirium_act;
+
+
+[Action] ID=pd_delirium_act; 
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	casterAnimation=spin_unspin;
+	attractAttention=false;
+	harmful=false;
+[ActionAoE] 
+	ID=pd_delirium_act;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=pd_delirium_act; 
+	actorValue=cancel;
+	magnitude=1;
+	duration=-2;
+	chance=100;
+	FXOnHit=question;
+[AvAffecterAoE]
+	ID=pd_delirium_act;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=pd_delirium_act; 
+	actorValue=rotate;
+	magnitude=90 + m:rand * 180;
+	chance=100;
+	duration=-2;
+	FXOnTile=distractingAura;
+	FXOnHit=whirlSlash;
+	FXOnHit=sfx_tweep;
+	FXOnHit=starDonk;
+[AvAffecterAoE]
+	ID=pd_delirium_act;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=pd_delirium_act; 
+	actorValue=relocate;
+	magnitude=1;
+	duration=-2;
+	chance=100 - t:immob * 200 - 100 * m:tCancel;
+	harmful=false;
+	FXOnHit=actor_spreadPhantoms;
+[AvAffecterAoE]
+	ID=pd_delirium_act;
+	cloneFrom=oneTile;
+
+
+
+
+[ActorValue]
+ID=pd_madness;
+name=Madness;
+icon=Madness;
+bubbleIcon=prommadnessStatus;
+minimum=0;
+maximum=1;
+description=Attack yourself and all adjacent tiles at the start of your turn.;
+defaultValue = 0;
+
+harmfulMagnitude = 1;
+
+
+animationOnHarmful = pain;
+
+affectsActors = true;
+
+canAffectIncapped = true;
+
+removedByNegativeMagnitude=true;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = false;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = false;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = Gray;
+damageNumberColor_Negative = Gray;
+
+
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0.27;
+
+elementReactionModifiesDuration = true;
+
+canBeRemovedByNonspecificAVEffectRemoval = true;
+
+recordInActorData = true;
+showEvaluationInfo = true;
+
+allowDecimalValues = false;
+percentage = false;
+
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+[ActorValueReaction]
+ID=pd_madness;
+element=ruinTouch; damageMultiplier=1.3;
+
+
+[ActorValueReaction]
+ID=pd_madness;
+element=timerUp; action=pd_madness_act;
+
+
+[Action] ID=pd_madness_act; 	
+	requiredWeaponElement=melee;
+	casterAnimation=spinAttack;
+	casterAnimationSpeed=1.8;
+	casterAnimationDependsOnWeaponHand=true;
+	harmful=false;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+[ActionAoE] 
+	ID=pd_madness_act;
+	cloneFrom=oneTile;
+	canSelectStackedActors=false;
+[AvAffecter]
+	ID=pd_madness_act; 
+	actorValue=HP;
+	duration=-2;
+	magnitude=w:magnitude;
+	chance=100;
+	element=physical;
+	FXOnHit=windBlast_spidest;
+	FXOnHit=darken;
+	FXOnHit=delay;
+	FXOnHit=screenShock_instant;
+	FXOnHit=sfx_laser_blast_high;
+	FXOnTile=delay_minor;
+	FXOnTile=timeStop;
+[AvAffecterAoE]
+	ID=pd_madness_act;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=pd_madness_act; 
+	actorValue=HP;
+	duration=-2;
+	magnitude=w:magnitude;
+	chance=w:chance;
+	element=physical;
+	FXOnTile=whirlSlash_overlap;
+[AvAffecterAoE]
+	ID=pd_madness_act;
+	cloneFrom=adjacent;
+	canSelectAllies=true;

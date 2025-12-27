@@ -175,11 +175,11 @@ formula=min:1:d:grimoireConvertedHeal_tier4;
 [FormulaGlobal] ID=ruinCastDmg0;
 formula=-c:MagAtk - c:skill_Ruin - m:isItThisDayOfWeek(5) + t:MagDef;
 
+[FormulaGlobal] ID=rotCastDmgCalcpt1;
+formula=c:skill_Ruin - d:ruinDmg(x) - t:skill_Ruin; --ruindmg is negative but rot should be positive
 
-
-
-
-
+[FormulaGlobal] ID=rotCastDmgCalc;
+formula=abs:d:rotCastDmgCalcpt1(x);
 
 
 

@@ -360,7 +360,7 @@ statements=Shouldn't be particularly dangerous to you lot, at this point.;
 nextNodeID=shana_dialog_taidon1_reactionhandler;
 
 [DialogNode] ID=shana_dialog_taidon_reaction_barrow3b;--lich yeeted
-statements=Seems like we won't have to worry the undead any more, all thanks to you.
+statements=Seems like we won't have to worry the undead any more, all thanks to you.;
 statements=My old bones felt it from all the way up here! Good riddance to bad rubbish, that's what I like to say.;
 --todo increment default node? this would lead to
 nextNodeID=shana_dialog_taidon_finalhandler;

@@ -1640,7 +1640,7 @@
 	FXOnTile=delay_tiny;
 [AvAffecterAoE]
 	ID=ari_gravekeeper_foot_grave;
-	cloneFrom=oneTile
+	cloneFrom=oneTile;
 ----------Grant everything on the board +1 actTimer so that when the Reaper spawns it can act immediately as a damage spell
 [AvAffecter]
 	ID=ari_gravekeeper_foot_grave; 

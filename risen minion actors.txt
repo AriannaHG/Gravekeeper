@@ -7236,11 +7236,13 @@ adjustSpriteY = 0;
 defaultSprite = actor_shana_undead_abscess_normal;
 previewSprite = actor_shana_undead_abscess_normal;
 --unarmedAction = qp_phoenix_peck;
---innateActions = qp_fever_flame;
+innateActions = shana_sleeping_sickness;
+innateActions = shana_psychenecrosis;
 
---skinPalette=pRed3;
---clothPalette=p66;
---armorPalette=pBoneDark;
+skinPalette=pG;
+clothPalette=pB;
+armorPalette=pR;
+unarmoredPalette=pR;
 
 defaultSupportAbilities = shana_uber_instability;
 
@@ -7300,6 +7302,6 @@ minRange=0;
 maxRange=3;
 [JournalEntry]
 ID=journal_shana_undead_abscess;
-category=creature; halfPage=true; rarity=2;
+category=creature; halfPage=false; rarity=2;
 title=Undead Abscesses;
 text=<actorBig=shana_undead_abscess_normal><title=Undead Abscess><brAdj=>          Rotting pimples on the fabric of Eral, these highly unstable, pus-filled sacks of moldering flesh may not have the infinite range and tracking abilities of their progenitors, but they're much better at making their target wish they were never born. <n=>Mature specimens are capable of casting localized, yet terrifying spells whereas freshly-spawned Abscesses take a more close-ranged approach, sacrificing themselves to significantly empower their allies should no prey be within reach. Both inflict Rot<icon=icon_gravekeeper_rot> in lieu of direct damage, cruelly putrefying their prey from inside out.;

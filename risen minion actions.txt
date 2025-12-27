@@ -6977,6 +6977,171 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 	canSelectEnemies=true;
 	aoeCasterAsOrigin=true;
 
+-----------------------------------------------Undead Abscess
+[Action] ID=shana_sleeping_sickness; 
+	name=Sleeping Sickness;
+	icon=icon_De_iceblood; --TODO change this
+	mpCost=8 * d:mpCostMult * d:mpCostMult_onlyWithCT + d:mpCostMod_onlyWithCT + d:mpCostMod;
+	chargeTime=15 * d:chargeTimeMult * d:chargeTimeMult_onlyWithMP + d:chargeTimeMod + d:chargeTimeMod_onlyWithMP;
+	
+	tooltip=Infect enemy brainstem to inflict <math=d:ruinDmgDisplay(3)> stacks of Rot<icon=icon_gravekeeper_rot>, cause itching for <icon=time><math=110 + d:ruinDurMax(4)> and put to sleep for <icon=time><math=40 + d:ruinDurMax(2)>.;
+	tooltipTopRight=<icon=MagAtk_small><icon=skill_Ruin_small>;
+	
+	XPCost=150;
+	XPCost=950;
+	maxRank=2;
+	
+	special=requiresCasting;
+	casterAnimation=spellcast;
+	FXOnCaster=magicCharge;
+	
+	FXOnTarget=darken;
+	FXOnTargetColor=Green;
+	FXOnTarget=ringsDownward1_noOverlap;
+	FXOnTargetColor=Black;
+	FXOnTarget=sfx_zyew;
+
+[ActionAoE] 
+	ID=shana_sleeping_sickness; 
+	needsLoS = true;
+	needsLoE = false;
+	minRange = 1;
+	maxRange = 5;
+	airborne=true;
+	arc=true;
+	bypassAll=true;
+	occupyAll=true;
+[AvAffecter]
+	ID=shana_sleeping_sickness; 
+	actorValue=ari_rot_status;
+	magnitude=d:rotCastDmgCalc(3) * rxn:ruin * rxn:magic + t:ari_rot_status;
+	duration=80;
+	chance=d:ruinAcc;
+	FXOnTile=sfx_ruin;
+	FXOnTileColor=Green;
+--	FXOnTile=delay;
+--	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Black;
+	FXOnTile=medShakeHoriz;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=shana_sleeping_sickness;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_sleeping_sickness; 
+	actorValue=itchy;
+	visibleMiss=false;
+	magnitude= 1;
+	duration=110 + d:ruinDur(4);
+	chance=d:ruinAcc;
+	element=magic;
+	element=ruin;
+[AvAffecterAoE]
+	ID=shana_sleeping_sickness;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_sleeping_sickness; 
+	rankRequired=2;
+	actorValue=sleep;
+	visibleMiss=false;
+	magnitude= 1;
+	duration=40 + d:ruinDur(2);
+	chance=d:ruinAcc;
+	element=magic;
+	element=ruin;
+	FXOnHit=sfx_promsleep;
+[AvAffecterAoE]
+	ID=shana_sleeping_sickness;
+	cloneFrom=oneTile;
+
+
+[Action] ID=shana_psychenecrosis; 
+	name=Psychenecrosis;
+	icon=icon_De_iceblood; --TODO change this
+	mpCost=4 * d:mpCostMult * d:mpCostMult_onlyWithCT + d:mpCostMod_onlyWithCT + d:mpCostMod;
+	chargeTime=8 * d:chargeTimeMult * d:chargeTimeMult_onlyWithMP + d:chargeTimeMod + d:chargeTimeMod_onlyWithMP;
+	
+	tooltip=Infest enemy psyche with putrescent thoughts to inflict <n><math=d:ruinDmgDisplay(2)> stacks of Rot<icon=icon_gravekeeper_rot>, induce Madness and render the target Delirious for <icon=time><math=110 + d:ruinDurMax(4)>. Madness causes the afflicted to attack themself and all adjacent tiles at the start of their turn, while Delirium causes the afflicted to randomly rotate, reposition and interrupt their own actions at the end of their turn.;
+	tooltipTopRight=<icon=MagAtk_small><icon=skill_Ruin_small>;
+	
+	XPCost=150;
+	XPCost=950;
+	maxRank=2;
+	
+	special=requiresCasting;
+	casterAnimation=spellcast;
+	FXOnCaster=magicCharge;
+	
+	FXOnTarget=darken;
+	FXOnTargetColor=Purple;
+	FXOnTarget=ringsDownward1_noOverlap;
+	FXOnTargetColor=Purple;
+	FXOnTarget=sfx_zyew;
+
+[ActionAoE] 
+	ID=shana_psychenecrosis; 
+	needsLoS = true;
+	needsLoE = false;
+	minRange = 1;
+	maxRange = 5;
+	airborne=true;
+	arc=true;
+	bypassAll=true;
+	occupyAll=true;
+[AvAffecter]
+	ID=shana_psychenecrosis; 
+	actorValue=ari_rot_status;
+	magnitude=d:rotCastDmgCalc(2) * rxn:ruin * rxn:magic + t:ari_rot_status;
+	duration=80;
+	chance=d:ruinAcc;
+	FXOnTile=sfx_ruin;
+	FXOnTileColor=Green;
+--	FXOnTile=delay;
+--	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Black;
+	FXOnTile=medShakeHoriz;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=Green;
+	FXOnHit=superSparkles;
+	FXOnHitColor=Black;
+	FXOnHit=superSparkles;
+	FXOnHitColor=Purple;
+[AvAffecterAoE]
+	ID=shana_psychenecrosis;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_psychenecrosis; 
+	actorValue=pd_delirium;
+	visibleMiss=false;
+	magnitude= 1;
+	duration=110 + d:ruinDur(4);
+	chance=d:ruinAcc;
+	element=magic;
+	element=ruin;
+[AvAffecterAoE]
+	ID=shana_psychenecrosis;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_psychenecrosis; 
+	rankRequired=2;
+	actorValue=pd_madness;
+	visibleMiss=false;
+	magnitude= 1;
+	duration=110 + d:ruinDur(4);
+	chance=d:ruinAcc;
+	element=magic;
+	element=ruin;
+[AvAffecterAoE]
+	ID=shana_psychenecrosis;
+	cloneFrom=oneTile;
+
 
 -----------------------------------------------Fake double tap for Plaguebringer Yokaze
 [Action] ID=shana_Ran_doubleTap_enemy;

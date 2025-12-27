@@ -169,7 +169,7 @@ text=<itemBig=shana_barrow_warning_notice><title=Warning><brAdj=>A waterproofed 
 [ItemLight] 
 ID=shana_unliving_barrier_item; red=0; blue=0; green=0; alpha=0.6; size=0.4; flicker=0.05;
 [ItemReaction] 
-ID=shana_unliving_barrier_item; element=41011; newID=X; fx=shana_unliving_barrier_remove; --element 41011 will be pulsed on every boss kill
+ID=shana_unliving_barrier_item; element=41011; element=leavingZone; newID=X; fx=shana_unliving_barrier_remove; --element 41011 will be pulsed on every boss kill, leavingZone to stop softlocks
 [JournalEntry]
 ID=shana_unliving_barrier_item_journal;
 category=item; halfPage=true; rarity=2;
