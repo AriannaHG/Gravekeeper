@@ -1,0 +1,54 @@
+[drawOrderFX]
+ID=nothingFX;
+texture=fx_pop;
+sourceRect=0,0,16,16;
+origin=0,0;
+pR = ;
+pG = ;
+pB = ;
+
+speed=1;
+timePerFrame=0.1;
+initialDelay = 0;
+duration=0.4;
+removeAtDestination = false;
+stopAtDestination = true;
+
+flickerEveryFrame = false;
+
+veloc=0,0;
+accel=0,0;
+rotVeloc=0;
+rotAccel=0;
+scaleVeloc=0;
+scaleAccel=0;
+alphaVeloc=0;
+alphaAccel=0;
+
+addRotToTextureID = false;
+rotateBasedOnVelocity = false;
+roundRotToNearest = 0;
+useTerrainDepth = false;
+loop = true;
+ignoreDarkness = false;
+scaleLightSizeAndAlpha = false;
+loopAroundZoneEdge = false;
+drawOnlyIfRoofsAreDrawn = false;
+playWhileGameIsPaused = false;
+spawnFXatEnd =;
+spawnFXatEndColor =;
+spawnFXatEndAoEID =;
+spawnFXatEndIfActorNear =;
+spawnFXatEndIfActorNearColor =;
+spawnFXatEndIfActorNear_distance = 1;
+
+[FXData]
+ID=sfx_promsleep; 
+particleID=nothingFX; 
+numParticles=0; 
+soundName=promsleep; 
+soundVolume = 1; 
+soundPitch = 0;
+soundDistanceMult = 1;
+soundDropoffDist = 10;
+
