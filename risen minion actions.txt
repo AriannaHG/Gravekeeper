@@ -7065,7 +7065,7 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 	mpCost=4 * d:mpCostMult * d:mpCostMult_onlyWithCT + d:mpCostMod_onlyWithCT + d:mpCostMod;
 	chargeTime=8 * d:chargeTimeMult * d:chargeTimeMult_onlyWithMP + d:chargeTimeMod + d:chargeTimeMod_onlyWithMP;
 	
-	tooltip=Infest enemy psyche with putrescent thoughts to inflict <n><math=d:ruinDmgDisplay(2)> stacks of Rot<icon=icon_gravekeeper_rot>, induce Madness and render the target Delirious for <icon=time><math=110 + d:ruinDurMax(4)>. Madness causes the afflicted to attack themself and all adjacent tiles at the start of their turn, while Delirium causes the afflicted to randomly rotate, reposition and interrupt their own actions at the end of their turn.;
+	tooltip=Infest enemy psyche with putrescent thoughts to inflict <n><math=d:ruinDmgDisplay(2)> stacks of Rot<icon=icon_gravekeeper_rot>, induce Madness and render the target Delirious for <icon=time><math=110 + d:ruinDurMax(4)>. Madness causes the afflicted to attack themself and all adjacent tiles at the start of their turn, while Delirium reduces accuracy and causes the afflicted to randomly rotate, reposition and interrupt their own actions at the end of their turn.;
 	tooltipTopRight=<icon=MagAtk_small><icon=skill_Ruin_small>;
 	
 	XPCost=150;
