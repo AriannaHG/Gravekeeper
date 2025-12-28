@@ -1,0 +1,22 @@
+------------THESE DO NOT WORK AND CRASH, JUST FOR REFERENCE ONLY
+
+[Animation] ID=shana_anim_abscess_charge; duration=3; --boat_idle_noWater
+[Keyframe] ID=shana_anim_abscess_charge; frame=3; endTime=0.4;
+[Keyframe] ID=shana_anim_abscess_charge; frame=3; endTime=1.8;
+[Keyframe] ID=shana_anim_abscess_charge; frame=3; endTime=3;
+
+--the other one is s_jump_51
+
+[Animation] ID=shana_anim_abscess_cast; duration=2;
+[Keyframe] ID=shana_anim_abscess_cast; frame=3; endTime=0.4;
+[Keyframe] ID=shana_anim_abscess_cast; frame=3; endTime=0.8;
+[Keyframe] ID=shana_anim_abscess_cast; frame=3; endTime=1.2;
+[Keyframe] ID=shana_anim_abscess_cast; frame=3; endTime=1.6;
+[Keyframe] ID=shana_anim_abscess_cast; frame=3; endTime=2;
+
+[Animation] ID=shana_anim_abscess_spellcast; duration=2;
+[Keyframe] ID=shana_anim_abscess_spellcast; frame=5; endTime=0.4;
+[Keyframe] ID=shana_anim_abscess_spellcast; frame=5; endTime=0.8;
+[Keyframe] ID=shana_anim_abscess_spellcast; frame=5; endTime=1.2;
+[Keyframe] ID=shana_anim_abscess_spellcast; frame=5; endTime=1.6;
+[Keyframe] ID=shana_anim_abscess_spellcast; frame=5; endTime=2;
