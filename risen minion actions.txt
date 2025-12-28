@@ -6978,7 +6978,7 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 	aoeCasterAsOrigin=true;
 
 -----------------------------------------------Undead Abscess
-[Action] ID=shana_sleeping_sickness; 
+[Action] ID=shana_sleeping_sickness_enemy;
 	name=Sleeping Sickness;
 	icon=icon_De_iceblood; --TODO change this
 	mpCost=8 * d:mpCostMult * d:mpCostMult_onlyWithCT + d:mpCostMod_onlyWithCT + d:mpCostMod;
@@ -7002,7 +7002,7 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 	FXOnTarget=sfx_zyew;
 
 [ActionAoE] 
-	ID=shana_sleeping_sickness; 
+	ID=shana_sleeping_sickness_enemy;
 	needsLoS = true;
 	needsLoE = false;
 	minRange = 1;
@@ -7012,9 +7012,9 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 	bypassAll=true;
 	occupyAll=true;
 [AvAffecter]
-	ID=shana_sleeping_sickness; 
-	actorValue=ari_rot_status;
-	magnitude=d:rotCastDmgCalc(3) * rxn:ruin * rxn:magic + t:ari_rot_status;
+	ID=shana_sleeping_sickness_enemy;
+	actorValue=ari_rot_status_enemy;
+	magnitude=d:rotCastDmgCalc(3) * rxn:ruin * rxn:magic + t:ari_rot_status_enemy;
 	duration=80;
 	chance=d:ruinAcc;
 	FXOnTile=sfx_ruin;
@@ -7029,10 +7029,10 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=Green;
 [AvAffecterAoE]
-	ID=shana_sleeping_sickness;
+	ID=shana_sleeping_sickness_enemy;
 	cloneFrom=oneTile;
 [AvAffecter]
-	ID=shana_sleeping_sickness; 
+	ID=shana_sleeping_sickness_enemy;
 	actorValue=itchy;
 	visibleMiss=false;
 	magnitude= 1;
@@ -7041,11 +7041,10 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 	element=magic;
 	element=ruin;
 [AvAffecterAoE]
-	ID=shana_sleeping_sickness;
+	ID=shana_sleeping_sickness_enemy;
 	cloneFrom=oneTile;
 [AvAffecter]
-	ID=shana_sleeping_sickness; 
-	rankRequired=2;
+	ID=shana_sleeping_sickness_enemy;
 	actorValue=sleep;
 	visibleMiss=false;
 	magnitude= 1;
@@ -7055,17 +7054,17 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 	element=ruin;
 	FXOnHit=sfx_promsleep;
 [AvAffecterAoE]
-	ID=shana_sleeping_sickness;
+	ID=shana_sleeping_sickness_enemy;
 	cloneFrom=oneTile;
 
 
-[Action] ID=shana_psychenecrosis; 
+[Action] ID=shana_psychenecrosis_enemy;
 	name=Psychenecrosis;
 	icon=icon_De_iceblood; --TODO change this
 	mpCost=4 * d:mpCostMult * d:mpCostMult_onlyWithCT + d:mpCostMod_onlyWithCT + d:mpCostMod;
 	chargeTime=8 * d:chargeTimeMult * d:chargeTimeMult_onlyWithMP + d:chargeTimeMod + d:chargeTimeMod_onlyWithMP;
 	
-	tooltip=Infest enemy psyche with putrescent thoughts to inflict <n><math=d:ruinDmgDisplay(2)> stacks of Rot<icon=icon_gravekeeper_rot>, induce Madness and render the target Delirious for <icon=time><math=110 + d:ruinDurMax(4)>. Madness causes the afflicted to attack themself and all adjacent tiles at the start of their turn, while Delirium reduces accuracy and causes the afflicted to randomly rotate, reposition and interrupt their own actions at the end of their turn.;
+	tooltip=Infest enemy psyche with putrescent thoughts to inflict <n><math=d:ruinDmgDisplay(2)> stacks of Rot<icon=icon_gravekeeper_rot>, induce madness and plunge into delirium for <icon=time><math=110 + d:ruinDurMax(4)>. Madness causes the afflicted to attack themself and all adjacent tiles at the start of their turn, while Delirium reduces accuracy and causes the afflicted to randomly rotate, reposition and interrupt their own actions at the end of their turn.;
 	tooltipTopRight=<icon=MagAtk_small><icon=skill_Ruin_small>;
 	
 	XPCost=150;
@@ -7083,7 +7082,7 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 	FXOnTarget=sfx_zyew;
 
 [ActionAoE] 
-	ID=shana_psychenecrosis; 
+	ID=shana_psychenecrosis_enemy;
 	needsLoS = true;
 	needsLoE = false;
 	minRange = 1;
@@ -7093,9 +7092,9 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 	bypassAll=true;
 	occupyAll=true;
 [AvAffecter]
-	ID=shana_psychenecrosis; 
-	actorValue=ari_rot_status;
-	magnitude=d:rotCastDmgCalc(2) * rxn:ruin * rxn:magic + t:ari_rot_status;
+	ID=shana_psychenecrosis_enemy;
+	actorValue=ari_rot_status_enemy;
+	magnitude=d:rotCastDmgCalc(2) * rxn:ruin * rxn:magic + t:ari_rot_status_enemy;
 	duration=80;
 	chance=d:ruinAcc;
 	FXOnTile=sfx_ruin;
@@ -7114,23 +7113,10 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 	FXOnHit=superSparkles;
 	FXOnHitColor=Purple;
 [AvAffecterAoE]
-	ID=shana_psychenecrosis;
+	ID=shana_psychenecrosis_enemy;
 	cloneFrom=oneTile;
 [AvAffecter]
-	ID=shana_psychenecrosis; 
-	actorValue=pd_delirium;
-	visibleMiss=false;
-	magnitude= 1;
-	duration=110 + d:ruinDur(4);
-	chance=d:ruinAcc;
-	element=magic;
-	element=ruin;
-[AvAffecterAoE]
-	ID=shana_psychenecrosis;
-	cloneFrom=oneTile;
-[AvAffecter]
-	ID=shana_psychenecrosis; 
-	rankRequired=2;
+	ID=shana_psychenecrosis_enemy;
 	actorValue=pd_madness;
 	visibleMiss=false;
 	magnitude= 1;
@@ -7139,9 +7125,21 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 	element=magic;
 	element=ruin;
 [AvAffecterAoE]
-	ID=shana_psychenecrosis;
+	ID=shana_psychenecrosis_enemy;
 	cloneFrom=oneTile;
-
+[AvAffecter]
+	ID=shana_psychenecrosis_enemy;
+	actorValue=pd_delirium;
+	visibleMiss=false;
+	magnitude= 1;
+	duration=110 + d:ruinDur(4);
+	chance=d:ruinAcc;
+	element=magic;
+	element=ruin;
+	FXOnHit=shana_highRoar_soft;
+[AvAffecterAoE]
+	ID=shana_psychenecrosis_enemy;
+	cloneFrom=oneTile;
 
 -----------------------------------------------Fake double tap for Plaguebringer Yokaze
 [Action] ID=shana_Ran_doubleTap_enemy;

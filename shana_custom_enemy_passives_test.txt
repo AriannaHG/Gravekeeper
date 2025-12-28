@@ -369,12 +369,12 @@ ID=shana_uber_instability; element=physical; actorValue=HP; action=shana_uber_in
 [AvAffecter] --sfx only, no cd
 	ID=shana_uber_instability_act;
 	visibleMiss=false;
-	FXOnTile=tileLine_overlap;
-	FXOnTileColor=Black;
-	FXOnTile=DramaticNyeaow;
-    FXOnTileColor=Black;
-	FXOnTile=whiteExplosionSmall_rand_overlap;
-    FXOnTileColor=Black;
+--	FXOnTile=tileLine_overlap;
+--	FXOnTileColor=Black;
+--	FXOnTile=DramaticNyeaow;
+--      FXOnTileColor=Black;
+--	FXOnTile=whiteExplosionSmall_rand_overlap;
+--      FXOnTileColor=Black;
 	FXOnTile=smallShakeHoriz;
 [AvAffecterAoE]
 	ID=shana_uber_instability_act;
@@ -530,8 +530,8 @@ description=Testing.;
 paletteUI=pGreen;
 
 actions=shana_Ran_doubleTap_enemy;
-actions=shana_sleeping_sickness;
-actions=shana_psychenecrosis;
+actions=shana_sleeping_sickness_enemy;
+actions=shana_psychenecrosis_enemy;
 
 supportAbilities=shana_festering_fulcrum;
 supportAbilities=shana_instability;

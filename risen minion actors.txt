@@ -7183,7 +7183,7 @@ action=shana_spawn_plaguebow;
 
 ----------------Undead Abscesses. Normal one leaves a corpse and is preexisting, summmoned one is exclusive to Amalgam summon and corpse disappears + it can selfdestruct to do the same buff as amalgam's Bequeath (Bequeath Self)
 
-[ActorType] ID=shana_undead_abscess_normal;
+[ActorType] ID=shana_undead_abscess_normal_enemy;
 name=Undead Abscess;
 journalID=journal_shana_undead_abscess;
 bodyStructure=single;
@@ -7203,6 +7203,8 @@ bigCollisions=true;
 showAlertIcon=false;
 canUseItems=false;
 alwaysRoundFacingTo90=true;
+noFacingRotRows=true;
+lockFacingRotTo=0;
 
 defaultValues=HP = 30;
 defaultValues=HPMax = 30;
@@ -7236,8 +7238,8 @@ adjustSpriteY = 0;
 defaultSprite = actor_shana_undead_abscess_normal;
 previewSprite = actor_shana_undead_abscess_normal;
 --unarmedAction = qp_phoenix_peck;
-innateActions = shana_sleeping_sickness;
-innateActions = shana_psychenecrosis;
+innateActions = shana_sleeping_sickness_enemy;
+innateActions = shana_psychenecrosis_enemy;
 
 skinPalette=pG;
 clothPalette=pB;
@@ -7249,8 +7251,7 @@ defaultSupportAbilities = shana_uber_instability;
 defaultFaction = enemy;
 
 fxOnPhysicalHPDmg = hitDust;
-fxOnDeath = hitDust_strong;
-fxOnDeath = AngryPainBlubber;
+fxOnDeath = shana_abscess_die;
 
 idleAnim = s_idle;
 walkAnim = s_0121loop;
@@ -7261,33 +7262,36 @@ sleepAnim = s_crouch;
 criticalAnim = s_crouch;
 frozenAnim = s_idle;
 deadAnim = s_die;
+chargeAnim = boat_idle_noWater;  --this is very cursed but custom anims seem to crash or just not work
+castAnim = boat_idle_noWater;
+spellcastAnim = s_jump_51;
 
 randomNames=Undead Abscess;
 [ActorTypeReaction]
-ID=shana_undead_abscess_normal;
+ID=shana_undead_abscess_normal_enemy;
 element=ruin;
 damageMultiplier=-1; healMultiplier=1;
 [ActorTypeReaction]
-ID=shana_undead_abscess_normal;
+ID=shana_undead_abscess_normal_enemy;
 element=poison;
 damageMultiplier=0; healMultiplier=0;
 [ActorTypeReaction]
-ID=shana_undead_abscess_normal;
+ID=shana_undead_abscess_normal_enemy;
 element=defiler;
 damageMultiplier=0.5; healMultiplier=0.5;
 [ActorTypeReaction]
-ID=shana_undead_abscess_normal;
+ID=shana_undead_abscess_normal_enemy;
 element=life; actorValue=HP;
 damageMultiplier=2; healMultiplier=-1;
 [ActorTypeReaction]
-ID=shana_undead_abscess_normal; element=antiUndead;
+ID=shana_undead_abscess_normal_enemy; element=antiUndead;
 damageMultiplier=2; healMultiplier=-1;
 [ActorTypeReaction]
-ID=shana_undead_abscess_normal;
+ID=shana_undead_abscess_normal_enemy;
 element=bonemeld;
 damageMultiplier=5; healMultiplier=0;
 [ActorTypeReaction]
-ID=shana_undead_abscess_normal;
+ID=shana_undead_abscess_normal_enemy;
 actorValues=morale; actorValues=poison;
 actorValues=itchy; actorValues=decay;
 actorValues=sleep;
@@ -7295,7 +7299,7 @@ actorValue=cure; actorValue=aegis; actorValue=preserve;
 damageMultiplier=0; healMultiplier=0;
 
 [ActorTypeDetectAoE]
-ID=shana_undead_abscess_normal;
+ID=shana_undead_abscess_normal_enemy;
 needsLoE=false;
 needsLoS=true;
 minRange=0;
@@ -7304,4 +7308,4 @@ maxRange=3;
 ID=journal_shana_undead_abscess;
 category=creature; halfPage=false; rarity=2;
 title=Undead Abscesses;
-text=<actorBig=shana_undead_abscess_normal><title=Undead Abscess><brAdj=>          Rotting pimples on the fabric of Eral, these highly unstable, pus-filled sacks of moldering flesh may not have the infinite range and tracking abilities of their progenitors, but they're much better at making their targets wish they were never born. <n=>Mature specimens are capable of casting localized, yet terrifying spells whereas freshly-spawned Abscesses take a more close-ranged approach, sacrificing themselves to significantly empower their allies should no prey be within reach. Both inflict Rot<icon=icon_gravekeeper_rot> in lieu of direct damage, cruelly putrefying prey from inside out.;
+text=<actorBig=shana_undead_abscess_normal_enemy><title=Undead Abscess><brAdj=>          Rotting pimples on the fabric of Eral, these highly unstable, pus-filled sacks of moldering flesh may not have the infinite range and tracking abilities of their progenitors, but they're much better at making their targets wish they were never born. <n=>Mature specimens are capable of casting localized, yet terrifying spells whereas freshly-spawned Abscesses take a more close-ranged approach, sacrificing themselves to significantly empower their allies should no prey be within reach. Both inflict Rot<icon=icon_gravekeeper_rot> in lieu of direct damage, cruelly putrefying prey from inside out.;
