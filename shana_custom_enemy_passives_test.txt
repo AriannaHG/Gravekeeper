@@ -532,6 +532,7 @@ paletteUI=pGreen;
 actions=shana_Ran_doubleTap_enemy;
 actions=shana_sleeping_sickness_enemy;
 actions=shana_psychenecrosis_enemy;
+actions=shana_RottingPus_enemy;
 
 supportAbilities=shana_festering_fulcrum;
 supportAbilities=shana_instability;

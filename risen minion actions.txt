@@ -6983,7 +6983,8 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 	icon=icon_De_iceblood; --TODO change this
 	mpCost=8 * d:mpCostMult * d:mpCostMult_onlyWithCT + d:mpCostMod_onlyWithCT + d:mpCostMod;
 	chargeTime=15 * d:chargeTimeMult * d:chargeTimeMult_onlyWithMP + d:chargeTimeMod + d:chargeTimeMod_onlyWithMP;
-	
+	cooldown=35;
+
 	tooltip=Infect enemy brainstem to inflict <math=d:ruinDmgDisplay(3)> stacks of Rot<icon=icon_gravekeeper_rot>, cause itching for <icon=time><math=110 + d:ruinDurMax(4)> and put to sleep for <icon=time><math=40 + d:ruinDurMax(2)>.;
 	tooltipTopRight=<icon=MagAtk_small><icon=skill_Ruin_small>;
 	
@@ -7063,7 +7064,7 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 	icon=icon_De_iceblood; --TODO change this
 	mpCost=4 * d:mpCostMult * d:mpCostMult_onlyWithCT + d:mpCostMod_onlyWithCT + d:mpCostMod;
 	chargeTime=8 * d:chargeTimeMult * d:chargeTimeMult_onlyWithMP + d:chargeTimeMod + d:chargeTimeMod_onlyWithMP;
-	
+	cooldown=35;
 	tooltip=Infest enemy psyche with putrescent thoughts to inflict <n><math=d:ruinDmgDisplay(2)> stacks of Rot<icon=icon_gravekeeper_rot>, induce madness and plunge into delirium for <icon=time><math=110 + d:ruinDurMax(4)>. Madness causes the afflicted to attack themself and all adjacent tiles at the start of their turn, while Delirium reduces accuracy and causes the afflicted to randomly rotate, reposition and interrupt their own actions at the end of their turn.;
 	tooltipTopRight=<icon=MagAtk_small><icon=skill_Ruin_small>;
 	
@@ -7140,6 +7141,86 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 [AvAffecterAoE]
 	ID=shana_psychenecrosis_enemy;
 	cloneFrom=oneTile;
+
+[Action] ID=shana_RottingPus_enemy;
+	icon=icon_De_brainshock; --todo change this
+	casterAnimation=s_simplestAttack; --todo change this, I want it to open mouth when attacking too
+	name=Rotting Pus;
+	chargeTime=5 * d:chargeTimeMult * d:chargeTimeMult_onlyWithMP + d:chargeTimeMod + d:chargeTimeMod_onlyWithMP;
+	tooltip=Drench foes with reeking discharge to inflict <math=d:ruinDmgDisplay(2)> stacks of Rot<icon=icon_gravekeeper_rot>, cause itching and obliterate morale for <icon=time><math=110 + d:ruinDurMax(4)>.;
+	tooltipTopRight=<icon=MagAtk_small><icon=skill_Ruin_small>;
+	FXOnCaster=darken_minor;
+	FXOnTarget=sfx_loudSplash;
+	FXOnTarget=shana_pussen_major;
+
+	XPCost=150;
+    XPCost=950;
+    maxRank=2;
+
+[ActionAoE]
+	ID=shana_RottingPus_enemy;
+	cloneFrom=adjacent;
+[AvAffecter]
+    ID=shana_RottingPus_enemy;
+	actorValue=ari_rot_status_enemy;
+	magnitude=d:rotCastDmgCalc(2) * rxn:ruin * rxn:magic + t:ari_rot_status_enemy;
+	duration=80;
+	chance=d:ruinAcc;
+	useCasterAsOriginForDirectionalEffects=false;
+	FXOnTile=smallShockwaves_flood;
+	FXOnTileColor=99,82,0;
+	FXOnTile=smallShockwaves_flood2;
+	FXOnTileColor=38,31,0;
+	FXOnTile=delay_minor;
+	FXOnHit=chargeSpiralFast_big;
+	FXOnHitColor=Green;
+	FXOnHit=chargeSpiralFast_big;
+	FXOnHitColor=Black;
+	FXOnHit=medShakeHoriz;
+[AvAffecterAoE]
+	ID=shana_RottingPus_enemy;
+	needsLoE = true;
+	minRange = 0;
+	maxRange = 2;
+	bypassAll=true;
+	occupyAll=true;
+	airborne=true;
+	arc=true;
+	coneAngle=90;
+[AvAffecter]
+	ID=shana_RottingPus_enemy;
+	actorValue=itchy;
+	magnitude=1;
+	duration=110 + d:ruinDur(4);
+	chance=d:ruinAcc;
+	element=ruin;
+[AvAffecterAoE]
+	ID=shana_RottingPus_enemy;
+	needsLoE = true;
+	minRange = 0;
+	maxRange = 2;
+	bypassAll=true;
+	occupyAll=true;
+	airborne=true;
+	arc=true;
+	coneAngle=90;
+[AvAffecter]
+	ID=shana_RottingPus_enemy;
+	actorValue=morale;
+	magnitude=-4;
+	duration=110 + d:ruinDur(4);
+	chance=d:ruinAcc;
+	element=ruin;
+[AvAffecterAoE]
+	ID=shana_RottingPus_enemy;
+	needsLoE = true;
+	minRange = 0;
+	maxRange = 2;
+	bypassAll=true;
+	occupyAll=true;
+	airborne=true;
+	arc=true;
+	coneAngle=90;
 
 -----------------------------------------------Fake double tap for Plaguebringer Yokaze
 [Action] ID=shana_Ran_doubleTap_enemy;
