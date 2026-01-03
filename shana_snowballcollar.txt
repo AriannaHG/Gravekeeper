@@ -1,0 +1,139 @@
+[ItemType]  name=Snowball's Collar;
+ID=shana_rabbitcollar; 
+--texture=promtributeart;  sprite=72; --TODO
+sprite=779;
+description=Tattered red collar, worn as an anklet. Once per turn during combat, attacking any number of adjacent tiles without having moved last turn channels <icon=moveDistance> <icon=jumpDistance> into a violent kick against each.; 
+weight=0; volume=1; value=2000;
+itemCategory=4; 
+pR=p31;
+journalID=shana_rabbitcollar;
+[ItemEffect]  
+ID=shana_rabbitcollar; actorValue=jumpDistance; magnitude=1; duration=-1;
+[ItemReaction]
+ID=shana_rabbitcollar; element=noMoveTaken; element=combatStart; action=shana_rabbitCharge;
+[ItemReaction]
+ID=shana_rabbitcollar; element=weaponBuff; action=shana_rabbitKick;
+
+[JournalEntry]
+ID=shana_rabbitcollar;
+category=equipment; halfPage=true; rarity=3;
+title=Snowball's Collar;
+text=<itemBig=shana_rabbitcollar><title=Snowball's Collar><brAdj=>A threadbare red collar sized for a rabbit, shimmering with latent essence. The name "Snowball" is faintly visible. <n=>Once per turn during combat, if the wearer performs an attack targeting any number of adjacent tiles without having moved their previous turn, their <icon=moveDistance> <icon=jumpDistance> will be channeled into a violent kick against each that deals 20% <icon=skill_Fist> damage per <icon=moveDistance> <icon=jumpDistance> and knocks back that many tiles, but does not trigger secondary effects.;
+
+[Action] ID=shana_rabbitCharge; 
+	harmful=false;
+    special=usableEvenWhenCantAct;
+    special=usableEvenWhenReacting;
+    special=usableEvenWhenYourTurn;
+    special=dontDelayOtherActions;
+--todo: brawlers spin kick and jump
+--todo: jump sound effect
+[ActionAoE] 
+	ID=shana_rabbitCharge;
+	cloneFrom=oneTile;
+	canSelectStackedActors=false;
+[AvAffecter]
+	ID=shana_rabbitCharge; 
+	harmful=false; visibleMiss=false; affectIntangible=true;
+	actorValue=shana_rabbitKickReady;
+	magnitude=1;
+	chance=100;
+	duration=-4;
+	FXOnHit=elecBlasts_4;
+	FXOnHitColor=Silver;
+[AvAffecterAoE]
+	ID=shana_rabbitCharge;
+	aoeCasterAsOrigin=true;
+	cloneFrom=oneTile;
+
+[Action] ID=shana_rabbitKick; --todo brawler spin kick animation
+[ActionAoE] 
+    ID=shana_rabbitKick;
+    cloneFrom=oneTile;
+    maxRange=1;
+[AvAffecter]
+    ID=shana_rabbitKick; 
+    fReq=c:shana_rabbitKickReady;
+    harmful=true; visibleMiss=false;
+    actorValue=HP;
+    magnitude=d:shana_rabbitdmg*0.20*c:moveDistance + d:shana_rabbitdmg*0.20*c:jumpDistance;
+    chance=d:fistAcc;
+    duration=-2;
+    element=melee;
+    element=physical;
+    FXOnHit=delay_tiniest;;
+    FXOnHit=hitDustQuiet;
+    FXOnHit=smallShakeHoriz;
+    FXOnHit=SLAM;
+    FXOnMiss=woosh;
+[AvAffecterAoE]
+    ID=shana_rabbitKick;
+    cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_rabbitKick; 
+	fReq=c:shana_rabbitKickReady;
+	actorValue=push;
+	magnitude=c:moveDistance + c:jumpDistance;
+	duration=-2;
+	chance=d:fistAcc;
+[AvAffecterAoE]
+	ID=shana_rabbitKick;
+	cloneFrom=oneTile;
+[AvAffecter] --remove charge
+	ID=shana_rabbitKick; 
+	fReq=c:shana_rabbitKickReady;
+	harmful=false; visibleMiss=false; affectIntangible=true;
+	actorValue=shana_rabbitKickReady;
+	magnitude=-c:shana_rabbitKickReady;
+	chance=100;
+	duration=-4;
+--	FXOnTile=elecBlasts_4;
+--	FXOnTileColor=Silver;
+[AvAffecterAoE]
+	ID=shana_rabbitKick;
+	aoeCasterAsOrigin=true;
+	cloneFrom=oneTile;
+
+[FormulaGlobal] ID=shana_rabbitdmg0; --I'm making the kick behave as if the user is wielding an ironice knuckle
+formula=-7 - c:PhysAtk - c:skill_Fist + t:PhysDef;
+
+[FormulaGlobal] ID=shana_rabbitdmg;
+formula= dMaxNeg1:shana_rabbitdmg0 * d:physDefPercent * d:supportAbilWpnDmgMult - d:supportAbilWpnDmgMod;
+
+
+[ActorValue]
+ID=shana_rabbitKickReady;
+name=Power Kick!;
+icon=Power Kick!;
+bubbleIcon=icon_power_kick;
+--minimum=0;
+--maximum=1;
+removedByNegativeMagnitude=false;
+--description=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = -1;
+animationOnHarmful = pain;
+affectsActors = true;
+canAffectIncapped = true;
+showDamageNumbers = false;
+showDamageNumbersMagnitude = true;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true;
+showDamageNumbersElements = true;
+showDamageNumbersIconInTooltips = true;
+damageNumberColor_Positive = 0,230,255;
+damageNumberColor_Negative = 9,108,119;
+actorPaletteOverride = Silver;
+actorPaletteOverrideDuration = 2.5;
+elementReactionModifiesDuration = false;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+--[ActorValueReaction]
+--ID=shana_rabbitKickReady; actorValues=shana_rabbitKickReady; newID=shana_rabbitKickReady;
