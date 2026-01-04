@@ -135,6 +135,18 @@ ID=shana_projectile_plaguearrow; red=0; blue=0; green=0.5; alpha=0.5; size=0.1; 
 
 ----------------------------------------End Plague Bow
 
+----------------------------------------Rabbit Collar
+
+[FXData]
+ID=shana_silveren_minor;
+particleID=pop;
+percentDurationBeforeOverlapWithOtherFX=0;
+
+[ScreenTint]
+ID=shana_silveren_minor; color=240,248,255; fadeInTime=0.15; duration=0.2;
+
+----------------------------------------End Rabbit Collar
+
 ----------------------------------------Rot related sparkles
 
 [FXData]

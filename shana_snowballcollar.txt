@@ -2,7 +2,7 @@
 ID=shana_rabbitcollar; 
 --texture=promtributeart;  sprite=72; --TODO
 sprite=779;
-description=Tattered red collar, worn as an anklet. Once per turn during combat, attacking any number of adjacent tiles without having moved last turn channels <icon=moveDistance> <icon=jumpDistance> into a violent kick against each.; 
+description=Tattered red collar, worn as an anklet. Once per turn during combat, attacking any number of adjacent units without having moved last turn channels <icon=moveDistance> <icon=jumpDistance> into a violent kick against each.; 
 weight=0; volume=1; value=2000;
 itemCategory=4; 
 pR=p31;
@@ -18,7 +18,17 @@ ID=shana_rabbitcollar; element=weaponBuff; action=shana_rabbitKick;
 ID=shana_rabbitcollar;
 category=equipment; halfPage=true; rarity=3;
 title=Snowball's Collar;
-text=<itemBig=shana_rabbitcollar><title=Snowball's Collar><brAdj=>A threadbare red collar sized for a rabbit, shimmering with latent essence. The name "Snowball" is faintly visible. <n=>Once per turn during combat, if the wearer performs an attack targeting any number of adjacent tiles without having moved their previous turn, their <icon=moveDistance> <icon=jumpDistance> will be channeled into a violent kick against each that deals 20% <icon=skill_Fist> damage per <icon=moveDistance> <icon=jumpDistance> and knocks back that many tiles, but does not trigger secondary effects.;
+text=<itemBig=shana_rabbitcollar><title=Snowball's Collar><brAdj=>A threadbare red collar sized for a rabbit, shimmering with latent essence. The name "Snowball" is faintly visible. <n=>Once per turn during combat, if the wearer performs an attack targeting any number of adjacent units without having moved their previous turn, their <icon=moveDistance> <icon=jumpDistance> will be channeled into a violent kick against each that deals 20% <icon=skill_Fist> damage per <icon=moveDistance> <icon=jumpDistance> and knocks back that many tiles, but does not trigger secondary effects.;
+
+[Animation] ID=shana_rabbit_kick_anim; duration=0.16; --speedMod_rand=0.3; --attackKeyframe=1;
+[Keyframe] ID=shana_rabbit_kick_anim; frame=0; endTime=0.15;
+[Keyframe] ID=shana_rabbit_kick_anim; frame=0; endTime=0.16; canStopHere=true;
+
+[Keyframe] ID=shana_rabbit_kick_anim; bodyPart=torso; frame=0; endTime=0.05;
+[Keyframe] ID=shana_rabbit_kick_anim; bodyPart=torso; frame=0; endTime=0.15; offset=0,0.5;
+
+[Keyframe] ID=shana_rabbit_kick_anim; bodyPart=legs; frame=5; endTime=0.05;
+[Keyframe] ID=shana_rabbit_kick_anim; bodyPart=legs; frame=6; endTime=0.15;
 
 [Action] ID=shana_rabbitCharge; 
 	harmful=false;
@@ -26,6 +36,8 @@ text=<itemBig=shana_rabbitcollar><title=Snowball's Collar><brAdj=>A threadbare r
     special=usableEvenWhenReacting;
     special=usableEvenWhenYourTurn;
     special=dontDelayOtherActions;
+    casterAnimation=spinkick;
+    FXOnCaster=spinSlashes;
 --todo: brawlers spin kick and jump
 --todo: jump sound effect
 [ActionAoE] 
@@ -41,31 +53,67 @@ text=<itemBig=shana_rabbitcollar><title=Snowball's Collar><brAdj=>A threadbare r
 	duration=-4;
 	FXOnHit=elecBlasts_4;
 	FXOnHitColor=Silver;
+	FXOnHit=upwardLines_quick;
+	FXOnHitColor=White;
 [AvAffecterAoE]
 	ID=shana_rabbitCharge;
 	aoeCasterAsOrigin=true;
 	cloneFrom=oneTile;
 
-[Action] ID=shana_rabbitKick; --todo brawler spin kick animation
+[Action] ID=shana_rabbitKick; 
 [ActionAoE] 
     ID=shana_rabbitKick;
     cloneFrom=oneTile;
     maxRange=1;
+[AvAffecter] --animation delay for a bit less than 0.1s
+    ID=shana_rabbitKick;
+    fReq=c:shana_rabbitKickReady;
+    visibleMiss=false; visibleEvaluations=false;
+    chance=100;
+    FXOnTile=delay;
+[AvAffecterAoE]
+    ID=shana_rabbitKick;
+    cloneFrom=oneTile;
+    aoeCasterAsOrigin=true; --required so the target is caster
+[AvAffecter] --disguise the disappearing menu
+    ID=shana_rabbitKick;
+    fReq=c:shana_rabbitKickReady;
+    visibleMiss=false; visibleEvaluations=false;
+    chance=100;
+    FXOnTile=shana_silveren_minor;
+[AvAffecterAoE]
+    ID=shana_rabbitKick;
+    cloneFrom=oneTile;
+    aoeCasterAsOrigin=true; --required so the target is caster
+[AvAffecter] --this is commented out because it keeps making the action bar disappear :(
+    ID=shana_rabbitKick;
+    fReq=c:shana_rabbitKickReady;
+    visibleMiss=false; visibleEvaluations=false;
+    actorValue=task;
+    magnitude=anim,shana_rabbit_kick_anim;
+    chance=100;
+[AvAffecterAoE]
+    ID=shana_rabbitKick;
+    cloneFrom=oneTile;
+    aoeCasterAsOrigin=true; --required so the target is caster
 [AvAffecter]
     ID=shana_rabbitKick; 
     fReq=c:shana_rabbitKickReady;
-    harmful=true; visibleMiss=false;
+    harmful=true; visibleMiss=true;
     actorValue=HP;
-    magnitude=d:shana_rabbitdmg*0.20*c:moveDistance + d:shana_rabbitdmg*0.20*c:jumpDistance;
+    magnitude=d:shana_rabbitdmg*0.2*c:moveDistance + d:shana_rabbitdmg*0.2*c:jumpDistance;
     chance=d:fistAcc;
     duration=-2;
     element=melee;
     element=physical;
-    FXOnHit=delay_tiniest;;
-    FXOnHit=hitDustQuiet;
+    FXOnHit=hitDust_strong;
+    FXOnHitColor=Silver;
+--    FXOnHit=elecBlasts_4;
+--    FXOnHitColor=Silver;    
     FXOnHit=smallShakeHoriz;
     FXOnHit=SLAM;
     FXOnMiss=woosh;
+
 [AvAffecterAoE]
     ID=shana_rabbitKick;
     cloneFrom=oneTile;
