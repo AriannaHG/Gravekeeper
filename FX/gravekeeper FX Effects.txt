@@ -145,6 +145,12 @@ percentDurationBeforeOverlapWithOtherFX=0;
 [ScreenTint]
 ID=shana_silveren_minor; color=240,248,255; fadeInTime=0.15; duration=0.2;
 
+[FXData] --not actually used lol
+ID=shana_delayslightlylonger;
+particleID=pop;
+speedOffset=-0.2;
+percentDurationBeforeOverlapWithOtherFX=1;
+
 ----------------------------------------End Rabbit Collar
 
 ----------------------------------------Rot related sparkles

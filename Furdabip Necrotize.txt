@@ -43,16 +43,46 @@ combineWith=furnace2_lit; toMake=bones1;
 combineWith=furnace_everlit1; toMake=bones1;
 combineWith=furnace_everlit2; toMake=bones1;
 
-[ItemType] name=Test Grimoire Essence Rupture;
+[ItemType] name=Test Grimoire Rotting Prison;
 texture=gkart;
-ID=shana_grimoire_test_5; pR=p5; pG=pG; pB=overworld6;
-description=Testing Essence Rupture.;
+ID=shana_grimoire_test_6; pR=p5; pG=pG; pB=overworld6;
+description=Testing Rotting Prison.;
 journalID=ari_journal_grimoire;
 sprite=1; spriteWhenHeld=0; itemCategory=weapon;
 element=ruin;
 weight=5; volume=10; value=10;
 power=0;
-action=ari_skeleton_mage_essencerupture;
+action=shana_rotting_prison;
+combineWith=furnace_lit; toMake=bones1;
+combineWith=furnace2_lit; toMake=bones1;
+combineWith=furnace_everlit1; toMake=bones1;
+combineWith=furnace_everlit2; toMake=bones1;
+
+[ItemType] name=Test Grimoire Putrid Panopticon;
+texture=gkart;
+ID=shana_grimoire_test_7; pR=p5; pG=pG; pB=overworld6;
+description=Testing Putrid Panopticon.;
+journalID=ari_journal_grimoire;
+sprite=1; spriteWhenHeld=0; itemCategory=weapon;
+element=ruin;
+weight=5; volume=10; value=10;
+power=0;
+action=shana_putrid_panopticon;
+combineWith=furnace_lit; toMake=bones1;
+combineWith=furnace2_lit; toMake=bones1;
+combineWith=furnace_everlit1; toMake=bones1;
+combineWith=furnace_everlit2; toMake=bones1;
+
+[ItemType] name=Test Grimoire Expurgate;
+texture=gkart;
+ID=shana_grimoire_test_8; pR=p5; pG=pG; pB=overworld6;
+description=Testing Expurgate.;
+journalID=ari_journal_grimoire;
+sprite=1; spriteWhenHeld=0; itemCategory=weapon;
+element=life;
+weight=5; volume=10; value=10;
+power=0;
+action=shana_expurgate;
 combineWith=furnace_lit; toMake=bones1;
 combineWith=furnace2_lit; toMake=bones1;
 combineWith=furnace_everlit1; toMake=bones1;
@@ -67,7 +97,7 @@ combineWith=furnace_everlit2; toMake=bones1;
 --copy the entire Bestow Ruin, then select the copied bit. enable match case
 --ctrl r, then control r again to search in selection
 --Find and replace "Bestow Ruin" with capitalized name of skill, "bestow_ruin" with name of skill in small letters
---find and replace 41000 with the custom element triggering part 3 of the skill
+--find and replace 41001 with the custom element triggering part 3 of the skill
 
 --todo: for bestow ruin, 2 actions are queued by the first action instead of one - one that grabs the sync partner's ruin skill and puts it in a global variable, and a second queued action with the custom element that makes the synced target cast it on itself taking the global variable to get casters ruin at time of casting
 
@@ -120,6 +150,12 @@ ID=shana_delay_sync0; element=41000; action=shana_necrotize3;
 ID=shana_delay_sync0; element=41001; action=shana_bestow_ruin3;
 [ActorValueReaction]
 ID=shana_delay_sync0; element=41002; action=shana_subsume3;
+[ActorValueReaction]
+ID=shana_delay_sync0; element=41003; action=shana_rotting_prison3;
+[ActorValueReaction]
+ID=shana_delay_sync0; element=41004; action=shana_putrid_panopticon3;
+[ActorValueReaction]
+ID=shana_delay_sync0; element=41005; action=shana_expurgate3;
 
 [ActorValue] ID=shana_delay_sync1; cloneFrom=shana_delay_sync0; prefixIcon=Sync 2; -- Remove all these prefixIcon=;s after testing.
 [ActorValue] ID=shana_delay_sync2; cloneFrom=shana_delay_sync0; prefixIcon=Sync 3;
@@ -1005,17 +1041,1074 @@ ID=shana_delay_sync0; element=41002; action=shana_subsume3;
 	ignoreCannotTarget=true;
 -----------------------------------------------------------END SUBSUME
 
-------------------------------------------------------------PUTRID PRISON
+------------------------------------------------------------ROTTING PRISON
+--todo: implement
+--todo: when all testing is done canSelectAllies=false; canSelectEnemies=true;
+
+-- First part of Rotting Prison.
+[Action] ID=shana_rotting_prison;
+	name=Rotting Prison;
+	cooldown=50;
+	icon=icon_bestow_ruin;
+	AIRatingBias=50;
+	mpCost=5;
+-- Although you commented this out (I assume for testing), if you did try to use this special=;, it only works on Actions set in an ActorClass's actions=; and not on Item action=;s.
+--	special=startBattleOnCooldown;
+	casterAnimation=cast;
+-- Setting requiresCasting or requiresCharging will make this Actor play their casting/charging Animation.
+	special=requiresCharging;
+--	FXOnCaster=darken_major;
+--	FXOnCaster=delay;
+--	FXOnCaster=delay;
+--	FXOnCaster=delay;
+--	FXOnCaster=DramaticNyeaow;
+--	FXOnCaster=tileLine_topLeft_ignoreDark;
+	queueAnotherAction=shana_rotting_prison2set;
+[ActionAoE]
+	ID=shana_rotting_prison;
+-- 17 is allActors_nonIncapped.
+	shape=17;
+	needsLoS=true;
+	needsLoE=false;
+	airborne=true;
+	arc=true;
+	minRange=1;
+	maxRange=10;
+
+
+-- Calculate which AV is getting used as our ID and apply it to both the target and the caster.
+[AvAffecter]
+	ID=shana_rotting_prison;
+	actorValue=shana_delay_sync0;
+	magnitude=1;
+	duration=21;
+	chance=is:0:d:shana_delay_sync_id * 100;
+	visibleMiss=false;
+--	visibleEvaluations=false;
+--	FXOnTile=targetRet_flicker;
+--	FXOnTile=bipFlutter;
+--	FXOnTile=tileLine_overlap;
+--	FXOnTile=sfx_DramaticN_quiet;
+--	FXOnTile=whiteExplosionSmall_rand_overlap;
+--	FXOnTile=smallShakeHoriz;
+--	FXOnTile=delay_minor;
+[AvAffecterAoE]
+	ID=shana_rotting_prison;
+	cloneFrom=oneTile;
+
+
+-- These AvAffecters are the same as above, just compacted.
+[AvAffecter] ID=shana_rotting_prison; actorValue=shana_delay_sync1; magnitude=1; duration=21; chance=is:1:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_rotting_prison; cloneFrom=oneTile;
+[AvAffecter] ID=shana_rotting_prison; actorValue=shana_delay_sync2; magnitude=1; duration=21; chance=is:2:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_rotting_prison; cloneFrom=oneTile;
+[AvAffecter] ID=shana_rotting_prison; actorValue=shana_delay_sync3; magnitude=1; duration=21; chance=is:3:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_rotting_prison; cloneFrom=oneTile;
+[AvAffecter] ID=shana_rotting_prison; actorValue=shana_delay_sync4; magnitude=1; duration=21; chance=is:4:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_rotting_prison; cloneFrom=oneTile;
+[AvAffecter] ID=shana_rotting_prison; actorValue=shana_delay_sync5; magnitude=1; duration=21; chance=is:5:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_rotting_prison; cloneFrom=oneTile;
+[AvAffecter] ID=shana_rotting_prison; actorValue=shana_delay_sync6; magnitude=1; duration=21; chance=is:6:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_rotting_prison; cloneFrom=oneTile;
+[AvAffecter] ID=shana_rotting_prison; actorValue=shana_delay_sync7; magnitude=1; duration=21; chance=is:7:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_rotting_prison; cloneFrom=oneTile;
+[AvAffecter] ID=shana_rotting_prison; actorValue=shana_delay_sync8; magnitude=1; duration=21; chance=is:8:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_rotting_prison; cloneFrom=oneTile;
+[AvAffecter] ID=shana_rotting_prison; actorValue=shana_delay_sync9; magnitude=1; duration=21; chance=is:9:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_rotting_prison; cloneFrom=oneTile;
+[AvAffecter] ID=shana_rotting_prison; actorValue=shana_delay_sync10; magnitude=1; duration=21; chance=is:10:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_rotting_prison; cloneFrom=oneTile;
+
+
+[AvAffecter]
+	ID=shana_rotting_prison;
+	actorValue=shana_delay_sync0;
+	magnitude=1;
+	duration=21;
+	chance=is:0:d:shana_delay_sync_id * 100;
+	visibleMiss=false;
+--	visibleEvaluations=false;
+--	FXOnTile=targetRet_flicker;
+--	FXOnTile=bipFlutter;
+--	FXOnTile=tileLine_overlap;
+--	FXOnTile=sfx_DramaticN_quiet;
+--	FXOnTile=whiteExplosionSmall_rand_overlap;
+--	FXOnTile=smallShakeHoriz;
+--	FXOnTile=delay_minor;
+[AvAffecterAoE]
+	ID=shana_rotting_prison;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+
+
+[AvAffecter] ID=shana_rotting_prison; actorValue=shana_delay_sync1; magnitude=1; duration=21; chance=is:1:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_rotting_prison; cloneFrom=oneTile; aoeCasterAsOrigin=true;
+[AvAffecter] ID=shana_rotting_prison; actorValue=shana_delay_sync2; magnitude=1; duration=21; chance=is:2:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_rotting_prison; cloneFrom=oneTile; aoeCasterAsOrigin=true;
+[AvAffecter] ID=shana_rotting_prison; actorValue=shana_delay_sync3; magnitude=1; duration=21; chance=is:3:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_rotting_prison; cloneFrom=oneTile; aoeCasterAsOrigin=true;
+[AvAffecter] ID=shana_rotting_prison; actorValue=shana_delay_sync4; magnitude=1; duration=21; chance=is:4:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_rotting_prison; cloneFrom=oneTile; aoeCasterAsOrigin=true;
+[AvAffecter] ID=shana_rotting_prison; actorValue=shana_delay_sync5; magnitude=1; duration=21; chance=is:5:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_rotting_prison; cloneFrom=oneTile; aoeCasterAsOrigin=true;
+[AvAffecter] ID=shana_rotting_prison; actorValue=shana_delay_sync6; magnitude=1; duration=21; chance=is:6:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_rotting_prison; cloneFrom=oneTile; aoeCasterAsOrigin=true;
+[AvAffecter] ID=shana_rotting_prison; actorValue=shana_delay_sync7; magnitude=1; duration=21; chance=is:7:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_rotting_prison; cloneFrom=oneTile; aoeCasterAsOrigin=true;
+[AvAffecter] ID=shana_rotting_prison; actorValue=shana_delay_sync8; magnitude=1; duration=21; chance=is:8:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_rotting_prison; cloneFrom=oneTile; aoeCasterAsOrigin=true;
+[AvAffecter] ID=shana_rotting_prison; actorValue=shana_delay_sync9; magnitude=1; duration=21; chance=is:9:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_rotting_prison; cloneFrom=oneTile; aoeCasterAsOrigin=true;
+[AvAffecter] ID=shana_rotting_prison; actorValue=shana_delay_sync10; magnitude=1; duration=21; chance=is:10:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_rotting_prison; cloneFrom=oneTile; aoeCasterAsOrigin=true;
+
+
+-- Moved to the end to ensure chance=;s get calculated properly.
+[AvAffecter]
+	ID=shana_rotting_prison;
+	visibleMiss=false;
+	visibleEvaluations=false;
+	actorValue=trigger;
+-- Changed to modGlobalVar, since it does the same thing as calculating the gVar + 1.
+	magnitude=modGlobalVar,shana_delay_gvar,1;
+[AvAffecterAoE]
+	ID=shana_rotting_prison;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+	ignoreCannotTarget=true;
+
+
+--This sets the variables referred to in the damaging reaction being cast. when its initially charged, it queues the ruin3 action too
+[Action] ID=shana_rotting_prison2set;
+	name=Rotting Prison (set gvar);
+	icon=icon_bestow_ruin;
+	chargeTime=20;
+	special=requiresCharging;
+	casterAnimation=shoulderbash;
+--	FXOnCaster=darken_major;
+--	FXOnCaster=delay;
+--	FXOnCaster=delay;
+--	FXOnCaster=delay;
+--	FXOnCaster=DramaticNyeaow;
+--	FXOnCaster=tileLine_topLeft_ignoreDark;
+	queueAnotherAction=shana_rotting_prison2;
+[ActionAoE]
+	ID=shana_rotting_prison2set;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+
+
+[AvAffecter]
+	ID=shana_rotting_prison2set;
+-- This sets my global variable.
+    visibleMiss=false; visibleEvaluations=false;
+    actorValue=task;
+    magnitude=setGlobalVar_math,shana_rotting_prison_casterruinskill,t:skill_Ruin;
+    duration=1;
+    chance=100;
+
+[AvAffecterAoE]
+    ID=shana_rotting_prison2set;
+    cloneFrom=oneTile;
+	aoeCasterAsOrigin=true; --required so the target is caster
+
+
+-- The actual charging part of Rotting Prison.
+[Action] ID=shana_rotting_prison2;
+	name=Rotting Prison;
+	icon=icon_bestow_ruin;
+	chargeTime=20;
+	tooltip=This spell tracks its target, or their corpse if present. Deals <thinnerIcon=skill_Ruin><math=11212> damage to the target and all others in the same row, column, and diagonals, then enchants the weapons of all affected with ruinous energy.; --todo change math
+	special=requiresCharging;
+	casterAnimation=shoulderbash;
+--	FXOnCaster=darken_major;
+--	FXOnCaster=delay;
+--	FXOnCaster=delay;
+--	FXOnCaster=delay;
+--	FXOnCaster=DramaticNyeaow;
+--	FXOnCaster=tileLine_topLeft_ignoreDark;
+[ActionAoE]
+-- This Action should only hit the caster, with our AvAffecter determining which tile our target is on. We then apply a custom element to that target that causes them to react and do whatever we want.
+	ID=shana_rotting_prison2;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+
+
+[AvAffecter]
+	ID=shana_rotting_prison2;
+-- Our custom element triggers the reaction that does the actual damage.
+	element=41003;
+--	FXOnTile=targetRet_flicker;
+--	FXOnTile=bipFlutter;
+--	FXOnTile=tileLine_overlap;
+--	FXOnTile=sfx_DramaticN_quiet;
+--	FXOnTile=whiteExplosionSmall_rand_overlap;
+--	FXOnTile=smallShakeHoriz;
+--	FXOnTile=delay_minor;
+[AvAffecterAoE]
+	ID=shana_rotting_prison2;
+	shape=7;
+	minRange=0;
+	maxRange=25;
+	needsLoS=false;
+	needsLoE=false;
+	airborne=true;
+	arc=true;
+	bypassAll=true;
+	ignoreCannotTarget=true;
+	aoeCasterAsOrigin=true;
+	fReq=dMax1:shana_delay_sync_same_id - m:casterIsTarget;
+
+
+
+
+
+-- Cast by the delayed target on themself.
+[Action] ID=shana_rotting_prison3;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+[ActionAoE]
+	ID=shana_rotting_prison3;
+	cloneFrom=oneTile;
+	ignoreCannotTarget=true;
+[AvAffecter] --VFX
+	ID=shana_rotting_prison3;
+	chance=100;
+    visibleMiss=false;
+	FXOnTile=shana_tileLine_overlap;
+	FXOnTile=delay_minor;
+[AvAffecterAoE]
+ 	ID=shana_rotting_prison3;
+ 	cloneFrom=oneTile;
+ 	ignoreCannotTarget=true;
+
+-- Ruin Enchant part 1.
+[AvAffecter]
+	ID=shana_rotting_prison3;
+	actorValue=prom_ruinWpn;
+	magnitude=1;
+	duration=120;
+	element=magic;
+	chance=100;
+	harmful=false;
+	FXOnTile=sfx_DramaticN_quiet;
+	FxOnTileColor=Purple;
+	FXOnTile=shana_ruinupwardLines_quick_noOverlap;
+	FXOnTile=shana_ruinping_noOverlap;
+	FXOnHit=chargeSpiralFast;
+	FXOnHitColor=Purple;
+	FXOnHit=chargeSpiralFast_big;
+	FXOnHitColor=Black;
+	FXOnHit=risingBip;
+	FXOnHit=sfx_schwee;
+    FXOnHit=skill_Ruin;
+    FXOnHit=shadowWhirl;
+    FXOnHit=spookyOccurence;
+[AvAffecterAoE]
+	ID=shana_rotting_prison3;
+	shape=2;
+	minRange = 0;
+    maxRange = 25;
+	needsLoS=false;
+	needsLoE=false;
+	airborne=true;
+	arc=true;
+	ignoreCannotTarget=true;
+
+-- Ruin Enchant part 2.
+[AvAffecter]
+	ID=shana_rotting_prison3;
+	actorValue=prom_ruinWpn;
+	magnitude=1;
+	duration=120;
+	element=magic;
+	chance=100;
+	harmful=false;
+	FXOnTile=sfx_DramaticN_quiet;
+	FxOnTileColor=Purple;
+	FXOnTile=shana_ruinupwardLines_quick_noOverlap;
+	FXOnTile=shana_ruinping_noOverlap;
+	FXOnHit=chargeSpiralFast;
+	FXOnHitColor=Purple;
+	FXOnHit=chargeSpiralFast_big;
+	FXOnHitColor=Black;
+	FXOnHit=risingBip;
+	FXOnHit=sfx_schwee;
+    FXOnHit=skill_Ruin;
+    FXOnHit=shadowWhirl;
+    FXOnHit=spookyOccurence;
+[AvAffecterAoE]
+	ID=shana_rotting_prison3;
+	shape=25;
+	minRange = 1;
+    maxRange = 25;
+	needsLoS=false;
+	needsLoE=false;
+	airborne=true;
+	arc=true;
+	ignoreCannotTarget=true;
+
+-- Ruin Damage part 1.
+[AvAffecter]
+	ID=shana_rotting_prison3;
+	actorValue=HP;
+	magnitude=-g:shana_rotting_prison_casterruinskill;
+	duration=-2;
+--	actorValue=ari_rot_status_enemy;
+--	magnitude=t:ari_rot_status_enemy + g:shana_target_maxhp_gvar;
+--	duration=80;
+	chance=100;
+	element=magic;
+	element=ruin;
+[AvAffecterAoE]
+	ID=shana_rotting_prison3;
+	shape=2;
+	minRange = 0;
+    maxRange = 25;
+	needsLoS=false;
+	needsLoE=false;
+	airborne=true;
+	arc=true;
+	ignoreCannotTarget=true;
+
+-- Ruin Damage part 2.
+[AvAffecter]
+	ID=shana_rotting_prison3;
+	actorValue=HP;
+	magnitude=-g:shana_rotting_prison_casterruinskill;
+	duration=-2;
+--	actorValue=ari_rot_status_enemy;
+--	magnitude=t:ari_rot_status_enemy + g:shana_target_maxhp_gvar;
+--	duration=80;
+	chance=100;
+	element=magic;
+	element=ruin;
+[AvAffecterAoE]
+	ID=shana_rotting_prison3;
+	shape=25;
+	minRange = 1;
+    maxRange = 25;
+	needsLoS=false;
+	needsLoE=false;
+	airborne=true;
+	arc=true;
+	ignoreCannotTarget=true;
+
+-----------------------------------------------------------END ROTTING PRISON
+
+-----------------------------------------------------------PUTRID PANOPTICON
+--todo: implement
+--todo: when all testing is done canSelectAllies=false; canSelectEnemies=true;
+
+-- First part of Putrid Panopticon.
+[Action] ID=shana_putrid_panopticon;
+	name=Putrid Panopticon;
+	cooldown=50;
+	icon=icon_bestow_ruin;
+	AIRatingBias=50;
+	mpCost=5;
+-- Although you commented this out (I assume for testing), if you did try to use this special=;, it only works on Actions set in an ActorClass's actions=; and not on Item action=;s.
+--	special=startBattleOnCooldown;
+	casterAnimation=cast;
+-- Setting requiresCasting or requiresCharging will make this Actor play their casting/charging Animation.
+	special=requiresCharging;
+--	FXOnCaster=darken_major;
+--	FXOnCaster=delay;
+--	FXOnCaster=delay;
+--	FXOnCaster=delay;
+--	FXOnCaster=DramaticNyeaow;
+--	FXOnCaster=tileLine_topLeft_ignoreDark;
+	queueAnotherAction=shana_putrid_panopticon2set;
+[ActionAoE]
+	ID=shana_putrid_panopticon;
+-- 17 is allActors_nonIncapped.
+	shape=17;
+	needsLoS=true;
+	needsLoE=false;
+	airborne=true;
+	arc=true;
+	minRange=1;
+	maxRange=10;
+
+
+-- Calculate which AV is getting used as our ID and apply it to both the target and the caster.
+[AvAffecter]
+	ID=shana_putrid_panopticon;
+	actorValue=shana_delay_sync0;
+	magnitude=1;
+	duration=21;
+	chance=is:0:d:shana_delay_sync_id * 100;
+	visibleMiss=false;
+--	visibleEvaluations=false;
+--	FXOnTile=targetRet_flicker;
+--	FXOnTile=bipFlutter;
+--	FXOnTile=tileLine_overlap;
+--	FXOnTile=sfx_DramaticN_quiet;
+--	FXOnTile=whiteExplosionSmall_rand_overlap;
+--	FXOnTile=smallShakeHoriz;
+--	FXOnTile=delay_minor;
+[AvAffecterAoE]
+	ID=shana_putrid_panopticon;
+	cloneFrom=oneTile;
+
+
+-- These AvAffecters are the same as above, just compacted.
+[AvAffecter] ID=shana_putrid_panopticon; actorValue=shana_delay_sync1; magnitude=1; duration=21; chance=is:1:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_putrid_panopticon; cloneFrom=oneTile;
+[AvAffecter] ID=shana_putrid_panopticon; actorValue=shana_delay_sync2; magnitude=1; duration=21; chance=is:2:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_putrid_panopticon; cloneFrom=oneTile;
+[AvAffecter] ID=shana_putrid_panopticon; actorValue=shana_delay_sync3; magnitude=1; duration=21; chance=is:3:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_putrid_panopticon; cloneFrom=oneTile;
+[AvAffecter] ID=shana_putrid_panopticon; actorValue=shana_delay_sync4; magnitude=1; duration=21; chance=is:4:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_putrid_panopticon; cloneFrom=oneTile;
+[AvAffecter] ID=shana_putrid_panopticon; actorValue=shana_delay_sync5; magnitude=1; duration=21; chance=is:5:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_putrid_panopticon; cloneFrom=oneTile;
+[AvAffecter] ID=shana_putrid_panopticon; actorValue=shana_delay_sync6; magnitude=1; duration=21; chance=is:6:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_putrid_panopticon; cloneFrom=oneTile;
+[AvAffecter] ID=shana_putrid_panopticon; actorValue=shana_delay_sync7; magnitude=1; duration=21; chance=is:7:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_putrid_panopticon; cloneFrom=oneTile;
+[AvAffecter] ID=shana_putrid_panopticon; actorValue=shana_delay_sync8; magnitude=1; duration=21; chance=is:8:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_putrid_panopticon; cloneFrom=oneTile;
+[AvAffecter] ID=shana_putrid_panopticon; actorValue=shana_delay_sync9; magnitude=1; duration=21; chance=is:9:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_putrid_panopticon; cloneFrom=oneTile;
+[AvAffecter] ID=shana_putrid_panopticon; actorValue=shana_delay_sync10; magnitude=1; duration=21; chance=is:10:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_putrid_panopticon; cloneFrom=oneTile;
+
+
+[AvAffecter]
+	ID=shana_putrid_panopticon;
+	actorValue=shana_delay_sync0;
+	magnitude=1;
+	duration=21;
+	chance=is:0:d:shana_delay_sync_id * 100;
+	visibleMiss=false;
+--	visibleEvaluations=false;
+--	FXOnTile=targetRet_flicker;
+--	FXOnTile=bipFlutter;
+--	FXOnTile=tileLine_overlap;
+--	FXOnTile=sfx_DramaticN_quiet;
+--	FXOnTile=whiteExplosionSmall_rand_overlap;
+--	FXOnTile=smallShakeHoriz;
+--	FXOnTile=delay_minor;
+[AvAffecterAoE]
+	ID=shana_putrid_panopticon;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+
+
+[AvAffecter] ID=shana_putrid_panopticon; actorValue=shana_delay_sync1; magnitude=1; duration=21; chance=is:1:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_putrid_panopticon; cloneFrom=oneTile; aoeCasterAsOrigin=true;
+[AvAffecter] ID=shana_putrid_panopticon; actorValue=shana_delay_sync2; magnitude=1; duration=21; chance=is:2:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_putrid_panopticon; cloneFrom=oneTile; aoeCasterAsOrigin=true;
+[AvAffecter] ID=shana_putrid_panopticon; actorValue=shana_delay_sync3; magnitude=1; duration=21; chance=is:3:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_putrid_panopticon; cloneFrom=oneTile; aoeCasterAsOrigin=true;
+[AvAffecter] ID=shana_putrid_panopticon; actorValue=shana_delay_sync4; magnitude=1; duration=21; chance=is:4:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_putrid_panopticon; cloneFrom=oneTile; aoeCasterAsOrigin=true;
+[AvAffecter] ID=shana_putrid_panopticon; actorValue=shana_delay_sync5; magnitude=1; duration=21; chance=is:5:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_putrid_panopticon; cloneFrom=oneTile; aoeCasterAsOrigin=true;
+[AvAffecter] ID=shana_putrid_panopticon; actorValue=shana_delay_sync6; magnitude=1; duration=21; chance=is:6:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_putrid_panopticon; cloneFrom=oneTile; aoeCasterAsOrigin=true;
+[AvAffecter] ID=shana_putrid_panopticon; actorValue=shana_delay_sync7; magnitude=1; duration=21; chance=is:7:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_putrid_panopticon; cloneFrom=oneTile; aoeCasterAsOrigin=true;
+[AvAffecter] ID=shana_putrid_panopticon; actorValue=shana_delay_sync8; magnitude=1; duration=21; chance=is:8:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_putrid_panopticon; cloneFrom=oneTile; aoeCasterAsOrigin=true;
+[AvAffecter] ID=shana_putrid_panopticon; actorValue=shana_delay_sync9; magnitude=1; duration=21; chance=is:9:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_putrid_panopticon; cloneFrom=oneTile; aoeCasterAsOrigin=true;
+[AvAffecter] ID=shana_putrid_panopticon; actorValue=shana_delay_sync10; magnitude=1; duration=21; chance=is:10:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_putrid_panopticon; cloneFrom=oneTile; aoeCasterAsOrigin=true;
+
+
+-- Moved to the end to ensure chance=;s get calculated properly.
+[AvAffecter]
+	ID=shana_putrid_panopticon;
+	visibleMiss=false;
+	visibleEvaluations=false;
+	actorValue=trigger;
+-- Changed to modGlobalVar, since it does the same thing as calculating the gVar + 1.
+	magnitude=modGlobalVar,shana_delay_gvar,1;
+[AvAffecterAoE]
+	ID=shana_putrid_panopticon;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+	ignoreCannotTarget=true;
+
+
+--This sets the variables referred to in the damaging reaction being cast. when its initially charged, it queues the ruin3 action too
+[Action] ID=shana_putrid_panopticon2set;
+	name=Putrid Panopticon (set gvar);
+	icon=icon_bestow_ruin;
+	chargeTime=20;
+	special=requiresCharging;
+	casterAnimation=shoulderbash;
+--	FXOnCaster=darken_major;
+--	FXOnCaster=delay;
+--	FXOnCaster=delay;
+--	FXOnCaster=delay;
+--	FXOnCaster=DramaticNyeaow;
+--	FXOnCaster=tileLine_topLeft_ignoreDark;
+	queueAnotherAction=shana_putrid_panopticon2;
+[ActionAoE]
+	ID=shana_putrid_panopticon2set;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+
+
+[AvAffecter]
+	ID=shana_putrid_panopticon2set;
+-- This sets my global variable.
+    visibleMiss=false; visibleEvaluations=false;
+    actorValue=task;
+    magnitude=setGlobalVar_math,shana_putrid_panopticon_casterruinskill,t:skill_Ruin;
+    duration=1;
+    chance=100;
+
+[AvAffecterAoE]
+    ID=shana_putrid_panopticon2set;
+    cloneFrom=oneTile;
+	aoeCasterAsOrigin=true; --required so the target is caster
+
+
+-- The actual charging part of Putrid Panopticon.
+[Action] ID=shana_putrid_panopticon2;
+	name=Putrid Panopticon;
+	icon=icon_bestow_ruin;
+	chargeTime=20;
+	tooltip=This spell tracks its target, or their corpse if present. Deals <thinnerIcon=skill_Ruin><math=11212> damage to the target and all others in the same row, column, and diagonals, then enchants the weapons of all affected with ruinous energy.; --todo change math
+	special=requiresCharging;
+	casterAnimation=shoulderbash;
+--	FXOnCaster=darken_major;
+--	FXOnCaster=delay;
+--	FXOnCaster=delay;
+--	FXOnCaster=delay;
+--	FXOnCaster=DramaticNyeaow;
+--	FXOnCaster=tileLine_topLeft_ignoreDark;
+[ActionAoE]
+-- This Action should only hit the caster, with our AvAffecter determining which tile our target is on. We then apply a custom element to that target that causes them to react and do whatever we want.
+	ID=shana_putrid_panopticon2;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+
+
+[AvAffecter]
+	ID=shana_putrid_panopticon2;
+-- Our custom element triggers the reaction that does the actual damage.
+	element=41004;
+--	FXOnTile=targetRet_flicker;
+--	FXOnTile=bipFlutter;
+--	FXOnTile=tileLine_overlap;
+--	FXOnTile=sfx_DramaticN_quiet;
+--	FXOnTile=whiteExplosionSmall_rand_overlap;
+--	FXOnTile=smallShakeHoriz;
+--	FXOnTile=delay_minor;
+[AvAffecterAoE]
+	ID=shana_putrid_panopticon2;
+	shape=7;
+	minRange=0;
+	maxRange=25;
+	needsLoS=false;
+	needsLoE=false;
+	airborne=true;
+	arc=true;
+	bypassAll=true;
+	ignoreCannotTarget=true;
+	aoeCasterAsOrigin=true;
+	fReq=dMax1:shana_delay_sync_same_id - m:casterIsTarget;
+
+
+
+
+
+-- Cast by the delayed target on themself.
+[Action] ID=shana_putrid_panopticon3;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+[ActionAoE]
+	ID=shana_putrid_panopticon3;
+	cloneFrom=oneTile;
+	ignoreCannotTarget=true;
+[AvAffecter] --VFX
+	ID=shana_putrid_panopticon3;
+	chance=100;
+    visibleMiss=false;
+	FXOnTile=shana_tileLine_overlap;
+	FXOnTile=delay_minor;
+[AvAffecterAoE]
+ 	ID=shana_putrid_panopticon3;
+ 	cloneFrom=oneTile;
+ 	ignoreCannotTarget=true;
+
+-- Ruin Enchant part 1.
+[AvAffecter]
+	ID=shana_putrid_panopticon3;
+	actorValue=prom_ruinWpn;
+	magnitude=1;
+	duration=120;
+	element=magic;
+	chance=100;
+	harmful=false;
+	FXOnTile=sfx_DramaticN_quiet;
+	FxOnTileColor=Purple;
+	FXOnTile=shana_ruinupwardLines_quick_noOverlap;
+	FXOnTile=shana_ruinping_noOverlap;
+	FXOnHit=chargeSpiralFast;
+	FXOnHitColor=Purple;
+	FXOnHit=chargeSpiralFast_big;
+	FXOnHitColor=Black;
+	FXOnHit=risingBip;
+	FXOnHit=sfx_schwee;
+    FXOnHit=skill_Ruin;
+    FXOnHit=shadowWhirl;
+    FXOnHit=spookyOccurence;
+[AvAffecterAoE]
+	ID=shana_putrid_panopticon3;
+	shape=2;
+	minRange = 0;
+    maxRange = 25;
+	needsLoS=false;
+	needsLoE=false;
+	airborne=true;
+	arc=true;
+	ignoreCannotTarget=true;
+
+-- Ruin Enchant part 2.
+[AvAffecter]
+	ID=shana_putrid_panopticon3;
+	actorValue=prom_ruinWpn;
+	magnitude=1;
+	duration=120;
+	element=magic;
+	chance=100;
+	harmful=false;
+	FXOnTile=sfx_DramaticN_quiet;
+	FxOnTileColor=Purple;
+	FXOnTile=shana_ruinupwardLines_quick_noOverlap;
+	FXOnTile=shana_ruinping_noOverlap;
+	FXOnHit=chargeSpiralFast;
+	FXOnHitColor=Purple;
+	FXOnHit=chargeSpiralFast_big;
+	FXOnHitColor=Black;
+	FXOnHit=risingBip;
+	FXOnHit=sfx_schwee;
+    FXOnHit=skill_Ruin;
+    FXOnHit=shadowWhirl;
+    FXOnHit=spookyOccurence;
+[AvAffecterAoE]
+	ID=shana_putrid_panopticon3;
+	shape=25;
+	minRange = 1;
+    maxRange = 25;
+	needsLoS=false;
+	needsLoE=false;
+	airborne=true;
+	arc=true;
+	ignoreCannotTarget=true;
+
+-- Ruin Damage part 1.
+[AvAffecter]
+	ID=shana_putrid_panopticon3;
+	actorValue=HP;
+	magnitude=-g:shana_putrid_panopticon_casterruinskill;
+	duration=-2;
+--	actorValue=ari_rot_status_enemy;
+--	magnitude=t:ari_rot_status_enemy + g:shana_target_maxhp_gvar;
+--	duration=80;
+	chance=100;
+	element=magic;
+	element=ruin;
+[AvAffecterAoE]
+	ID=shana_putrid_panopticon3;
+	shape=2;
+	minRange = 0;
+    maxRange = 25;
+	needsLoS=false;
+	needsLoE=false;
+	airborne=true;
+	arc=true;
+	ignoreCannotTarget=true;
+
+-- Ruin Damage part 2.
+[AvAffecter]
+	ID=shana_putrid_panopticon3;
+	actorValue=HP;
+	magnitude=-g:shana_putrid_panopticon_casterruinskill;
+	duration=-2;
+--	actorValue=ari_rot_status_enemy;
+--	magnitude=t:ari_rot_status_enemy + g:shana_target_maxhp_gvar;
+--	duration=80;
+	chance=100;
+	element=magic;
+	element=ruin;
+[AvAffecterAoE]
+	ID=shana_putrid_panopticon3;
+	shape=25;
+	minRange = 1;
+    maxRange = 25;
+	needsLoS=false;
+	needsLoE=false;
+	airborne=true;
+	arc=true;
+	ignoreCannotTarget=true;
+
+-----------------------------------------------------------END PUTRID PANOPTICON
+
+-----------------------------------------------------------EXPURGATE
+--todo: implement
+--todo: when all testing is done canSelectAllies=false; canSelectEnemies=true;
+
+-- First part of Expurgate.
+[Action] ID=shana_expurgate;
+	name=Expurgate;
+	cooldown=50;
+	icon=icon_bestow_ruin;
+	AIRatingBias=50;
+	mpCost=5;
+-- Although you commented this out (I assume for testing), if you did try to use this special=;, it only works on Actions set in an ActorClass's actions=; and not on Item action=;s.
+--	special=startBattleOnCooldown;
+	casterAnimation=cast;
+-- Setting requiresCasting or requiresCharging will make this Actor play their casting/charging Animation.
+	special=requiresCharging;
+--	FXOnCaster=darken_major;
+--	FXOnCaster=delay;
+--	FXOnCaster=delay;
+--	FXOnCaster=delay;
+--	FXOnCaster=DramaticNyeaow;
+--	FXOnCaster=tileLine_topLeft_ignoreDark;
+	queueAnotherAction=shana_expurgate2set;
+[ActionAoE]
+	ID=shana_expurgate;
+-- 17 is allActors_nonIncapped.
+	shape=17;
+	needsLoS=true;
+	needsLoE=false;
+	airborne=true;
+	arc=true;
+	minRange=1;
+	maxRange=10;
+
+
+-- Calculate which AV is getting used as our ID and apply it to both the target and the caster.
+[AvAffecter]
+	ID=shana_expurgate;
+	actorValue=shana_delay_sync0;
+	magnitude=1;
+	duration=21;
+	chance=is:0:d:shana_delay_sync_id * 100;
+	visibleMiss=false;
+--	visibleEvaluations=false;
+--	FXOnTile=targetRet_flicker;
+--	FXOnTile=bipFlutter;
+--	FXOnTile=tileLine_overlap;
+--	FXOnTile=sfx_DramaticN_quiet;
+--	FXOnTile=whiteExplosionSmall_rand_overlap;
+--	FXOnTile=smallShakeHoriz;
+--	FXOnTile=delay_minor;
+[AvAffecterAoE]
+	ID=shana_expurgate;
+	cloneFrom=oneTile;
+
+
+-- These AvAffecters are the same as above, just compacted.
+[AvAffecter] ID=shana_expurgate; actorValue=shana_delay_sync1; magnitude=1; duration=21; chance=is:1:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_expurgate; cloneFrom=oneTile;
+[AvAffecter] ID=shana_expurgate; actorValue=shana_delay_sync2; magnitude=1; duration=21; chance=is:2:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_expurgate; cloneFrom=oneTile;
+[AvAffecter] ID=shana_expurgate; actorValue=shana_delay_sync3; magnitude=1; duration=21; chance=is:3:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_expurgate; cloneFrom=oneTile;
+[AvAffecter] ID=shana_expurgate; actorValue=shana_delay_sync4; magnitude=1; duration=21; chance=is:4:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_expurgate; cloneFrom=oneTile;
+[AvAffecter] ID=shana_expurgate; actorValue=shana_delay_sync5; magnitude=1; duration=21; chance=is:5:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_expurgate; cloneFrom=oneTile;
+[AvAffecter] ID=shana_expurgate; actorValue=shana_delay_sync6; magnitude=1; duration=21; chance=is:6:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_expurgate; cloneFrom=oneTile;
+[AvAffecter] ID=shana_expurgate; actorValue=shana_delay_sync7; magnitude=1; duration=21; chance=is:7:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_expurgate; cloneFrom=oneTile;
+[AvAffecter] ID=shana_expurgate; actorValue=shana_delay_sync8; magnitude=1; duration=21; chance=is:8:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_expurgate; cloneFrom=oneTile;
+[AvAffecter] ID=shana_expurgate; actorValue=shana_delay_sync9; magnitude=1; duration=21; chance=is:9:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_expurgate; cloneFrom=oneTile;
+[AvAffecter] ID=shana_expurgate; actorValue=shana_delay_sync10; magnitude=1; duration=21; chance=is:10:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_expurgate; cloneFrom=oneTile;
+
+
+[AvAffecter]
+	ID=shana_expurgate;
+	actorValue=shana_delay_sync0;
+	magnitude=1;
+	duration=21;
+	chance=is:0:d:shana_delay_sync_id * 100;
+	visibleMiss=false;
+--	visibleEvaluations=false;
+--	FXOnTile=targetRet_flicker;
+--	FXOnTile=bipFlutter;
+--	FXOnTile=tileLine_overlap;
+--	FXOnTile=sfx_DramaticN_quiet;
+--	FXOnTile=whiteExplosionSmall_rand_overlap;
+--	FXOnTile=smallShakeHoriz;
+--	FXOnTile=delay_minor;
+[AvAffecterAoE]
+	ID=shana_expurgate;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+
+
+[AvAffecter] ID=shana_expurgate; actorValue=shana_delay_sync1; magnitude=1; duration=21; chance=is:1:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_expurgate; cloneFrom=oneTile; aoeCasterAsOrigin=true;
+[AvAffecter] ID=shana_expurgate; actorValue=shana_delay_sync2; magnitude=1; duration=21; chance=is:2:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_expurgate; cloneFrom=oneTile; aoeCasterAsOrigin=true;
+[AvAffecter] ID=shana_expurgate; actorValue=shana_delay_sync3; magnitude=1; duration=21; chance=is:3:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_expurgate; cloneFrom=oneTile; aoeCasterAsOrigin=true;
+[AvAffecter] ID=shana_expurgate; actorValue=shana_delay_sync4; magnitude=1; duration=21; chance=is:4:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_expurgate; cloneFrom=oneTile; aoeCasterAsOrigin=true;
+[AvAffecter] ID=shana_expurgate; actorValue=shana_delay_sync5; magnitude=1; duration=21; chance=is:5:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_expurgate; cloneFrom=oneTile; aoeCasterAsOrigin=true;
+[AvAffecter] ID=shana_expurgate; actorValue=shana_delay_sync6; magnitude=1; duration=21; chance=is:6:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_expurgate; cloneFrom=oneTile; aoeCasterAsOrigin=true;
+[AvAffecter] ID=shana_expurgate; actorValue=shana_delay_sync7; magnitude=1; duration=21; chance=is:7:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_expurgate; cloneFrom=oneTile; aoeCasterAsOrigin=true;
+[AvAffecter] ID=shana_expurgate; actorValue=shana_delay_sync8; magnitude=1; duration=21; chance=is:8:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_expurgate; cloneFrom=oneTile; aoeCasterAsOrigin=true;
+[AvAffecter] ID=shana_expurgate; actorValue=shana_delay_sync9; magnitude=1; duration=21; chance=is:9:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_expurgate; cloneFrom=oneTile; aoeCasterAsOrigin=true;
+[AvAffecter] ID=shana_expurgate; actorValue=shana_delay_sync10; magnitude=1; duration=21; chance=is:10:d:shana_delay_sync_id * 100; visibleMiss=false; -- visibleEvaluations=false; FXOnTile=targetRet_flicker; FXOnTile=bipFlutter; FXOnTile=tileLine_overlap; FXOnTile=sfx_DramaticN_quiet; FXOnTile=whiteExplosionSmall_rand_overlap; FXOnTile=smallShakeHoriz; FXOnTile=delay_minor;
+[AvAffecterAoE] ID=shana_expurgate; cloneFrom=oneTile; aoeCasterAsOrigin=true;
+
+
+-- Moved to the end to ensure chance=;s get calculated properly.
+[AvAffecter]
+	ID=shana_expurgate;
+	visibleMiss=false;
+	visibleEvaluations=false;
+	actorValue=trigger;
+-- Changed to modGlobalVar, since it does the same thing as calculating the gVar + 1.
+	magnitude=modGlobalVar,shana_delay_gvar,1;
+[AvAffecterAoE]
+	ID=shana_expurgate;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+	ignoreCannotTarget=true;
+
+
+--This sets the variables referred to in the damaging reaction being cast. when its initially charged, it queues the ruin3 action too
+[Action] ID=shana_expurgate2set;
+	name=Expurgate (set gvar);
+	icon=icon_bestow_ruin;
+	chargeTime=20;
+	special=requiresCharging;
+	casterAnimation=shoulderbash;
+--	FXOnCaster=darken_major;
+--	FXOnCaster=delay;
+--	FXOnCaster=delay;
+--	FXOnCaster=delay;
+--	FXOnCaster=DramaticNyeaow;
+--	FXOnCaster=tileLine_topLeft_ignoreDark;
+	queueAnotherAction=shana_expurgate2;
+[ActionAoE]
+	ID=shana_expurgate2set;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+
+
+[AvAffecter]
+	ID=shana_expurgate2set;
+-- This sets my global variable.
+    visibleMiss=false; visibleEvaluations=false;
+    actorValue=task;
+    magnitude=setGlobalVar_math,shana_expurgate_casterruinskill,t:skill_Ruin;
+    duration=1;
+    chance=100;
+
+[AvAffecterAoE]
+    ID=shana_expurgate2set;
+    cloneFrom=oneTile;
+	aoeCasterAsOrigin=true; --required so the target is caster
+
+
+-- The actual charging part of Expurgate.
+[Action] ID=shana_expurgate2;
+	name=Expurgate;
+	icon=icon_bestow_ruin;
+	chargeTime=20;
+	tooltip=This spell tracks its target, or their corpse if present. Deals <thinnerIcon=skill_Ruin><math=11212> damage to the target and all others in the same row, column, and diagonals, then enchants the weapons of all affected with ruinous energy.; --todo change math
+	special=requiresCharging;
+	casterAnimation=shoulderbash;
+--	FXOnCaster=darken_major;
+--	FXOnCaster=delay;
+--	FXOnCaster=delay;
+--	FXOnCaster=delay;
+--	FXOnCaster=DramaticNyeaow;
+--	FXOnCaster=tileLine_topLeft_ignoreDark;
+[ActionAoE]
+-- This Action should only hit the caster, with our AvAffecter determining which tile our target is on. We then apply a custom element to that target that causes them to react and do whatever we want.
+	ID=shana_expurgate2;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+
+
+[AvAffecter]
+	ID=shana_expurgate2;
+-- Our custom element triggers the reaction that does the actual damage.
+	element=41005;
+--	FXOnTile=targetRet_flicker;
+--	FXOnTile=bipFlutter;
+--	FXOnTile=tileLine_overlap;
+--	FXOnTile=sfx_DramaticN_quiet;
+--	FXOnTile=whiteExplosionSmall_rand_overlap;
+--	FXOnTile=smallShakeHoriz;
+--	FXOnTile=delay_minor;
+[AvAffecterAoE]
+	ID=shana_expurgate2;
+	shape=7;
+	minRange=0;
+	maxRange=25;
+	needsLoS=false;
+	needsLoE=false;
+	airborne=true;
+	arc=true;
+	bypassAll=true;
+	ignoreCannotTarget=true;
+	aoeCasterAsOrigin=true;
+	fReq=dMax1:shana_delay_sync_same_id - m:casterIsTarget;
+
+
+
+
+
+-- Cast by the delayed target on themself.
+[Action] ID=shana_expurgate3;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+[ActionAoE]
+	ID=shana_expurgate3;
+	cloneFrom=oneTile;
+	ignoreCannotTarget=true;
+[AvAffecter] --VFX
+	ID=shana_expurgate3;
+	chance=100;
+    visibleMiss=false;
+	FXOnTile=shana_tileLine_overlap;
+	FXOnTile=delay_minor;
+[AvAffecterAoE]
+ 	ID=shana_expurgate3;
+ 	cloneFrom=oneTile;
+ 	ignoreCannotTarget=true;
+
+-- Ruin Enchant part 1.
+[AvAffecter]
+	ID=shana_expurgate3;
+	actorValue=prom_ruinWpn;
+	magnitude=1;
+	duration=120;
+	element=magic;
+	chance=100;
+	harmful=false;
+	FXOnTile=sfx_DramaticN_quiet;
+	FxOnTileColor=Purple;
+	FXOnTile=shana_ruinupwardLines_quick_noOverlap;
+	FXOnTile=shana_ruinping_noOverlap;
+	FXOnHit=chargeSpiralFast;
+	FXOnHitColor=Purple;
+	FXOnHit=chargeSpiralFast_big;
+	FXOnHitColor=Black;
+	FXOnHit=risingBip;
+	FXOnHit=sfx_schwee;
+    FXOnHit=skill_Ruin;
+    FXOnHit=shadowWhirl;
+    FXOnHit=spookyOccurence;
+[AvAffecterAoE]
+	ID=shana_expurgate3;
+	shape=2;
+	minRange = 0;
+    maxRange = 25;
+	needsLoS=false;
+	needsLoE=false;
+	airborne=true;
+	arc=true;
+	ignoreCannotTarget=true;
+
+-- Ruin Enchant part 2.
+[AvAffecter]
+	ID=shana_expurgate3;
+	actorValue=prom_ruinWpn;
+	magnitude=1;
+	duration=120;
+	element=magic;
+	chance=100;
+	harmful=false;
+	FXOnTile=sfx_DramaticN_quiet;
+	FxOnTileColor=Purple;
+	FXOnTile=shana_ruinupwardLines_quick_noOverlap;
+	FXOnTile=shana_ruinping_noOverlap;
+	FXOnHit=chargeSpiralFast;
+	FXOnHitColor=Purple;
+	FXOnHit=chargeSpiralFast_big;
+	FXOnHitColor=Black;
+	FXOnHit=risingBip;
+	FXOnHit=sfx_schwee;
+    FXOnHit=skill_Ruin;
+    FXOnHit=shadowWhirl;
+    FXOnHit=spookyOccurence;
+[AvAffecterAoE]
+	ID=shana_expurgate3;
+	shape=25;
+	minRange = 1;
+    maxRange = 25;
+	needsLoS=false;
+	needsLoE=false;
+	airborne=true;
+	arc=true;
+	ignoreCannotTarget=true;
+
+-- Ruin Damage part 1.
+[AvAffecter]
+	ID=shana_expurgate3;
+	actorValue=HP;
+	magnitude=-g:shana_expurgate_casterruinskill;
+	duration=-2;
+--	actorValue=ari_rot_status_enemy;
+--	magnitude=t:ari_rot_status_enemy + g:shana_target_maxhp_gvar;
+--	duration=80;
+	chance=100;
+	element=magic;
+	element=ruin;
+[AvAffecterAoE]
+	ID=shana_expurgate3;
+	shape=2;
+	minRange = 0;
+    maxRange = 25;
+	needsLoS=false;
+	needsLoE=false;
+	airborne=true;
+	arc=true;
+	ignoreCannotTarget=true;
+
+-- Ruin Damage part 2.
+[AvAffecter]
+	ID=shana_expurgate3;
+	actorValue=HP;
+	magnitude=-g:shana_expurgate_casterruinskill;
+	duration=-2;
+--	actorValue=ari_rot_status_enemy;
+--	magnitude=t:ari_rot_status_enemy + g:shana_target_maxhp_gvar;
+--	duration=80;
+	chance=100;
+	element=magic;
+	element=ruin;
+[AvAffecterAoE]
+	ID=shana_expurgate3;
+	shape=25;
+	minRange = 1;
+    maxRange = 25;
+	needsLoS=false;
+	needsLoE=false;
+	airborne=true;
+	arc=true;
+	ignoreCannotTarget=true;
+
+-----------------------------------------------------------END EXPURGATE
 
 --todo, 9999 cd
 --icon_flesh_prison --maybe recolor this so it's more putrid
 --This spell tracks its target, or their corpse if present. An Undead Abscess rises from all adjacent unoccupied tiles. If an adjacent tile is occupied, the nascent Abscess will instead detonate, dealing <massive> <fire> damage to the tile's occupant. --Range should be something like 4-8, or infinite range if not full hp. Usable once per combat, via 9999 cd. Huge ai incentive.
-
-
-------------------------------------------------------------Undead Abscess Skills (all 12 cast time)
-
-------------------------------------------------------------SLEEPING SICKNESS - Rot, Itchy and Sleep spell, adjacent
-
-------------------------------------------------------------PUTREFY VISION - Rot, Blind and Horrific Visions spell
-
-------------------------------------------------------------Melee action to look for is smallWaterCone; Melee (pus blast) that inflicts damage + Rot + Disable. High ai mod
