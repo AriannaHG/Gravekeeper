@@ -349,3 +349,12 @@ ID=item_ari_gk_foul_remnant;
 category=item; halfPage=true; rarity=3;
 title=Foul Remnant;
 text=<itemBig=ari_gk_foul_remnant><title=Foul Remnant><brAdj=>An overwhelming remnant of corruption left over from purging a relic of Life. While useless on its own, it seems like its tendrils flicker with power when held near an old, Dusty Book.;
+
+[ItemType] ID=shana_fakecannontablet;
+texture=icon_gate_cannon;
+name = <color=Gold>'Gate: Cannon'<color=><adjX=2> Tablet;
+weight=0; volume=0; value=20;
+itemCategory=4;
+description = Inexplicable replica of an Ability Tablet. Can be used to cast  <color=Gold>Gate: Cannon<color=>  when worn as an accessory.;
+journalID=journal_actionTablet;
+action=gate_cannon;
