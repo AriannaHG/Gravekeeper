@@ -1,11 +1,9 @@
 [ItemType]  name=Snowball's Collar;
 ID=shana_rabbitcollar; 
---texture=promtributeart;  sprite=72; --TODO
-sprite=779;
-description=Tattered red collar, worn as an anklet. Once per turn during combat, attacking any number of adjacent units without having moved last turn channels <icon=moveDistance> <icon=jumpDistance> into a violent kick against each.; 
+texture=gkart; sprite=79; enhanceDoesntAlterPalettes=true; --TODO
+description=Cherished bun's collar. Once per turn during combat, attacking any number of adjacent units without having moved last turn channels <icon=moveDistance> <icon=jumpDistance> into a violent kick against each.; 
 weight=0; volume=1; value=2000;
 itemCategory=4; 
-pR=p31;
 journalID=shana_rabbitcollar;
 [ItemEffect]  
 ID=shana_rabbitcollar; actorValue=jumpDistance; magnitude=1; duration=-1;
@@ -18,7 +16,7 @@ ID=shana_rabbitcollar; element=weaponBuff; action=shana_rabbitKick;
 ID=shana_rabbitcollar;
 category=equipment; halfPage=true; rarity=3;
 title=Snowball's Collar;
-text=<itemBig=shana_rabbitcollar><title=Snowball's Collar><brAdj=>A threadbare red collar sized for a rabbit, shimmering with latent essence. The name "Snowball" is faintly visible. <n=>Once per turn during combat, if the wearer performs an attack targeting any number of adjacent units without having moved their previous turn, their <icon=moveDistance> <icon=jumpDistance> will be channeled into a violent kick against each that deals 20% <icon=skill_Fist> damage per <icon=moveDistance> <icon=jumpDistance> and knocks back that many tiles, but does not trigger secondary effects.;
+text=<itemBig=shana_rabbitcollar><title=Snowball's Collar><brAdj=>A threadbare yet sturdy bun's collar, shimmering with latent essence. The name "Snowball" is faintly visible. <n=>Once per turn during combat, if the wearer performs an attack targeting any number of adjacent units without having moved their previous turn, their <icon=moveDistance> <icon=jumpDistance> will be channeled into a violent kick against each that deals 20% <icon=skill_Fist> damage per <icon=moveDistance> <icon=jumpDistance> and knocks back that many tiles, but does not trigger secondary effects.;
 
 [Animation] ID=shana_rabbit_kick_anim; duration=0.16; --speedMod_rand=0.3; --attackKeyframe=1;
 [Keyframe] ID=shana_rabbit_kick_anim; frame=0; endTime=0.15;

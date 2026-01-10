@@ -16,9 +16,9 @@ ID=shana_martyrs_raiment; actorValue=skill_Ruin; magnitude=2; duration=-1;
 ID=shana_martyrs_raiment;
 actorValues=HP; element=physical; action=shana_martyrs_raiment_act; aiRatingMod=8; ------the AI rating mod adds 8 hp worth of "incentive" for the AI to proc this reaction
 
---[ItemReaction]
---ID=shana_martyrs_raiment; -------------------------------------------------- commented out because game crashes on main menu if it tries to do this set shana_HPBeforeBeingHit AV on equip to initialize
---element=itemEquipped; action=shana_martyrs_raiment_set_hp_count;
+[ItemReaction]
+ID=shana_martyrs_raiment; -------------------------------------------------- commented out because game crashes on main menu if it tries to do this set shana_HPBeforeBeingHit AV on equip to initialize
+element=itemEquipped; action=shana_martyrs_raiment_set_hp_count;
 
 [ItemReaction]
 ID=shana_martyrs_raiment; -------------------------------------------------- set shana_HPBeforeBeingHit and shana_NegateBeforeBeingHit AV on combat start to initialize
