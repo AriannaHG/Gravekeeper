@@ -404,3 +404,58 @@ percentDurationBeforeOverlapWithOtherFX=0;
 
 [ScreenTint]
 ID=shana_pussen_major; color=70,72,28; fadeInTime=0.4;
+
+
+
+
+
+
+
+
+------------------Summon FX
+[drawOrderFX]
+ID=ari_gk_summon_circle;
+texture=fx_ari_gk_summon_circle;
+sourceRect=0,0,20,20;
+origin=10,10;
+timePerFrame=0.25;
+duration=1.00;
+
+[drawOrderFXLight]
+ID=fx_ari_gk_summon_circle; red=0.9; green=0.1; blue=0.6; size=0.21; flicker=0.08; texture=lightmask;
+
+
+[FXData]
+ID=ari_gk_summon_circle_Slow;
+particleID=ari_gk_summon_circle;
+numParticles=3;
+initialDelayIncreasePerParticle=0.3;
+scaleVelocOffset=1;
+percentDurationBeforeOverlapWithOtherFX=0;
+alphaVelocOffset=-500;
+useTerrainDepth=true;
+hideLight=true;
+
+------------------Blood of the Master FX
+[drawOrderFX]
+ID=ari_gk_blood_of_master_fx;
+texture=fx_ari_blood_of_master;
+sourceRect=0,0,10,20;
+origin=5,20;
+timePerFrame=0.1;
+duration=1.0;
+
+[drawOrderFXLight]
+ID=fx_ari_blood_of_master; red=0.9; green=0.1; blue=0.6; size=0.21; flicker=0.08; texture=lightmask;
+
+
+[FXData]
+ID=ari_gk_blood_of_master_fx_effect;
+particleID=ari_gk_blood_of_master_fx;
+numParticles=1;
+initialDelayIncreasePerParticle=0.3;
+scaleVelocOffset=1;
+percentDurationBeforeOverlapWithOtherFX=0;
+alphaVelocOffset=-500;
+useTerrainDepth=true;
+hideLight=true;

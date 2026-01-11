@@ -554,7 +554,7 @@ animations=stern;
 statements=Much thanks, visitor.;
 statements=Just promise me that you won't try to replicate what you've been seeing here. <n=>This kind of magic is cursed.;
 specialEffect=incDefaultNode;
-[DialogOption] text=Unlock <iconBig=classIcon_ari_gravekeeper> Gravekeeper.;
+[DialogOption] text=I'll be careful.;
 nodeToConnectTo=ari_gravekeeper_arianna_gravekeeper_accept_learn;
 bottomOption=true;
 
@@ -564,7 +564,7 @@ animations=stern;
 statements=I understand. But visitor, what you've seen here...;
 statements=Don't go trying to replicate this kind of magic. It's some cursed stuff.;
 specialEffect=incDefaultNode;
-[DialogOption] text=Unlock <iconBig=classIcon_ari_gravekeeper> Gravekeeper.;
+[DialogOption] text=I'll be careful.;
 nodeToConnectTo=ari_gravekeeper_arianna_gravekeeper_decline_learn;
 bottomOption=true;
 
@@ -668,7 +668,7 @@ animations=happy;
 statements=It's a good thing you ran across this little Port, visitor. We're few, but we truly appreciate your efforts in resolving this!;
 statements=And for that, thank you!;
 specialEffect=incDefaultNode;
-[DialogOption] text=Unlock <iconBig=icon_gravekeeper_lichdom_elite>Lichdom Elite passive.;
+[DialogOption] text=Happy to have helped.;
 nodeToConnectTo=ari_gravekeeper_arianna_lichdom_learn;
 bottomOption=true;
 

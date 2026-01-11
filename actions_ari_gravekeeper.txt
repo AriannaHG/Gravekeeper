@@ -33,10 +33,11 @@
 	
 	FXOnTarget=blackCloud;
 	FXOnTargetColor=DarkGreen;
+	FXOnTarget=ari_gk_summon_circle_Slow;
 	
 	
-	FXOnTarget=shroudExplode;
-	FXOnTargetColor=DarkGreen;
+	--FXOnTarget=shroudExplode;
+	--FXOnTargetColor=DarkGreen;
 
 --Target near you only
 [ActionAoE] 
@@ -640,6 +641,7 @@
 	chance=100;
 	FXOnHit=downwardLines;
 	FXOnHitColor=Red;
+	FXOnHit=ari_gk_blood_of_master_fx_effect;
 [AvAffecterAoE]
 	ID=ari_gravekeeper_masterblood;
 	aoeCasterAsOrigin = true;
@@ -1671,6 +1673,7 @@
 	duration=-2;
 	FXOnHit=blackCloud;
 	FXOnTile=delay_tiny;
+	FXOnHit=ari_gk_summon_circle_Slow;
 [AvAffecterAoE]
 	ID=ari_gravekeeper_foot_grave;
 	cloneFrom=adjacent+3;
@@ -2181,9 +2184,11 @@
 	chance=lessThan:2:c:ari_gravekeeper_unholy_pact_sacrifices * 100;
 	duration=-2;
 	FXOnTile=tinyShakeHoriz;
-	FXOnTile=smokeCloud;
+	FXOnTile=blackCloud;
+	FXOnTargetColor=DarkGreen;
 	FXOnTile=delay_tiny;
 	FXOnTile=delay_tiny;
+	FXOnTile=ari_gk_summon_circle_Slow;
 [AvAffecterAoE]
 	ID=ari_gravekeeper_unholy_pact_raise;
 	cloneFrom=oneTile;
