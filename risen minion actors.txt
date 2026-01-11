@@ -7181,6 +7181,23 @@ action=shana_spawn_plaguebow;
 	needsLoS=false;
 	needsLoE=false;
 
+----------------Futureproofing for Undead Abscess Animations
+
+[Animation] ID=shana_anim_abscess_charge; duration=3; --boat_idle_noWater copy
+[Keyframe] ID=shana_anim_abscess_charge; frame=3; endTime=0.4;
+[Keyframe] ID=shana_anim_abscess_charge; frame=3; endTime=1.8;
+[Keyframe] ID=shana_anim_abscess_charge; frame=3; endTime=3;
+
+
+
+[Animation] ID=shana_anim_abscess_cast; duration=2; --s_jump_51 copy
+[Keyframe] ID=shana_anim_abscess_cast; frame=3; endTime=0.4;
+[Keyframe] ID=shana_anim_abscess_cast; frame=3; endTime=0.8;
+[Keyframe] ID=shana_anim_abscess_cast; frame=3; endTime=1.2;
+[Keyframe] ID=shana_anim_abscess_cast; frame=3; endTime=1.6;
+[Keyframe] ID=shana_anim_abscess_cast; frame=3; endTime=2;
+
+
 ----------------Undead Abscesses. Normal one leaves a corpse and is preexisting, summmoned one is exclusive to Amalgam summon and corpse disappears + it can selfdestruct to do the same buff as amalgam's Bequeath (Bequeath Self)
 
 [ActorType] ID=shana_undead_abscess_normal_enemy;
@@ -7262,9 +7279,9 @@ sleepAnim = s_crouch;
 criticalAnim = s_crouch;
 frozenAnim = s_idle;
 deadAnim = s_die;
-chargeAnim = boat_idle_noWater;  --this is very cursed but custom anims seem to crash or just not work
-castAnim = boat_idle_noWater;
-spellcastAnim = s_jump_51;
+chargeAnim = shana_anim_abscess_charge;  --this is very cursed but custom anims seem to crash or just not work
+castAnim = shana_anim_abscess_charge;
+spellcastAnim = shana_anim_abscess_cast;
 
 randomNames=Undead Abscess;
 [ActorTypeReaction]
@@ -7384,9 +7401,9 @@ sleepAnim = s_crouch;
 criticalAnim = s_crouch;
 frozenAnim = s_idle;
 deadAnim = s_die;
-chargeAnim = boat_idle_noWater;  --this is very cursed but custom anims seem to crash or just not work
-castAnim = boat_idle_noWater;
-spellcastAnim = s_jump_51;
+chargeAnim = shana_anim_abscess_charge;  --this is very cursed but custom anims seem to crash or just not work
+castAnim = shana_anim_abscess_charge;
+spellcastAnim = shana_anim_abscess_cast;
 
 randomNames=Undead Abscess;
 [ActorTypeReaction]

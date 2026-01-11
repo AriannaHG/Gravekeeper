@@ -1042,14 +1042,14 @@ ID=shana_delay_sync0; element=41005; action=shana_expurgate3;
 -----------------------------------------------------------END SUBSUME
 
 ------------------------------------------------------------ROTTING PRISON
---todo: implement
+--todo: once per combat
 --todo: when all testing is done canSelectAllies=false; canSelectEnemies=true;
 
 -- First part of Rotting Prison.
 [Action] ID=shana_rotting_prison;
 	name=Rotting Prison;
 	cooldown=50;
-	icon=icon_bestow_ruin;
+	icon=icon_flesh_prison;
 	AIRatingBias=50;
 	mpCost=5;
 -- Although you commented this out (I assume for testing), if you did try to use this special=;, it only works on Actions set in an ActorClass's actions=; and not on Item action=;s.
@@ -1181,7 +1181,7 @@ ID=shana_delay_sync0; element=41005; action=shana_expurgate3;
 --This sets the variables referred to in the damaging reaction being cast. when its initially charged, it queues the ruin3 action too
 [Action] ID=shana_rotting_prison2set;
 	name=Rotting Prison (set gvar);
-	icon=icon_bestow_ruin;
+	icon=icon_flesh_prison;
 	chargeTime=20;
 	special=requiresCharging;
 	casterAnimation=shoulderbash;
@@ -1216,9 +1216,9 @@ ID=shana_delay_sync0; element=41005; action=shana_expurgate3;
 -- The actual charging part of Rotting Prison.
 [Action] ID=shana_rotting_prison2;
 	name=Rotting Prison;
-	icon=icon_bestow_ruin;
+	icon=icon_flesh_prison;
 	chargeTime=20;
-	tooltip=This spell tracks its target, or their corpse if present. Deals <thinnerIcon=skill_Ruin><math=11212> damage to the target and all others in the same row, column, and diagonals, then enchants the weapons of all affected with ruinous energy.; --todo change math
+	tooltip=This spell tracks its target, or their corpse if present. Usable once per combat. Summons an Undead Abscess on each tile adjacent to the target. Abscesses summoned on occupied tiles instead explode into gore, dealing <thinnerIcon=skill_Fire><math=11212> damage to the tile's occupant.; --todo change math, can use c:skill_Fire
 	special=requiresCharging;
 	casterAnimation=shoulderbash;
 --	FXOnCaster=darken_major;
@@ -1283,116 +1283,43 @@ ID=shana_delay_sync0; element=41005; action=shana_expurgate3;
  	cloneFrom=oneTile;
  	ignoreCannotTarget=true;
 
--- Ruin Enchant part 1.
-[AvAffecter]
+[AvAffecter] --summon abscesses in occupiable tiles
 	ID=shana_rotting_prison3;
-	actorValue=prom_ruinWpn;
-	magnitude=1;
-	duration=120;
-	element=magic;
-	chance=100;
 	harmful=false;
-	FXOnTile=sfx_DramaticN_quiet;
-	FxOnTileColor=Purple;
-	FXOnTile=shana_ruinupwardLines_quick_noOverlap;
-	FXOnTile=shana_ruinping_noOverlap;
-	FXOnHit=chargeSpiralFast;
-	FXOnHitColor=Purple;
-	FXOnHit=chargeSpiralFast_big;
-	FXOnHitColor=Black;
-	FXOnHit=risingBip;
-	FXOnHit=sfx_schwee;
-    FXOnHit=skill_Ruin;
-    FXOnHit=shadowWhirl;
-    FXOnHit=spookyOccurence;
+	actorValue=summonActor_temp;
+	magnitude=shana_undead_abscess_summoned_enemy;
+	chance=100;
+	duration=-2;
+	element=ruin;
+	FXOnTile=tinyShakeHoriz;
+	FXOnTile=delay_tiny;
 [AvAffecterAoE]
 	ID=shana_rotting_prison3;
-	shape=2;
-	minRange = 0;
-    maxRange = 25;
-	needsLoS=false;
+	minRange=1;
+	maxRange=1;
 	needsLoE=false;
 	airborne=true;
-	arc=true;
-	ignoreCannotTarget=true;
+	bypassAll=true;
+	occupyAll=true;
+	fReq=is:0:m:targetExists * m:occupiableTileTarget;
 
--- Ruin Enchant part 2.
-[AvAffecter]
-	ID=shana_rotting_prison3;
-	actorValue=prom_ruinWpn;
-	magnitude=1;
-	duration=120;
-	element=magic;
-	chance=100;
-	harmful=false;
-	FXOnTile=sfx_DramaticN_quiet;
-	FxOnTileColor=Purple;
-	FXOnTile=shana_ruinupwardLines_quick_noOverlap;
-	FXOnTile=shana_ruinping_noOverlap;
-	FXOnHit=chargeSpiralFast;
-	FXOnHitColor=Purple;
-	FXOnHit=chargeSpiralFast_big;
-	FXOnHitColor=Black;
-	FXOnHit=risingBip;
-	FXOnHit=sfx_schwee;
-    FXOnHit=skill_Ruin;
-    FXOnHit=shadowWhirl;
-    FXOnHit=spookyOccurence;
-[AvAffecterAoE]
-	ID=shana_rotting_prison3;
-	shape=25;
-	minRange = 1;
-    maxRange = 25;
-	needsLoS=false;
-	needsLoE=false;
-	airborne=true;
-	arc=true;
-	ignoreCannotTarget=true;
-
--- Ruin Damage part 1.
-[AvAffecter]
+[AvAffecter] --do big damage and have explosion vfx on unoccupiable tiles
 	ID=shana_rotting_prison3;
 	actorValue=HP;
-	magnitude=-g:shana_rotting_prison_casterruinskill;
+	magnitude=-5 * g:shana_rotting_prison_casterruinskill;
 	duration=-2;
---	actorValue=ari_rot_status_enemy;
---	magnitude=t:ari_rot_status_enemy + g:shana_target_maxhp_gvar;
---	duration=80;
 	chance=100;
 	element=magic;
-	element=ruin;
+	element=fire;
 [AvAffecterAoE]
 	ID=shana_rotting_prison3;
-	shape=2;
-	minRange = 0;
-    maxRange = 25;
-	needsLoS=false;
+	minRange=1;
+	maxRange=1;
 	needsLoE=false;
 	airborne=true;
-	arc=true;
-	ignoreCannotTarget=true;
-
--- Ruin Damage part 2.
-[AvAffecter]
-	ID=shana_rotting_prison3;
-	actorValue=HP;
-	magnitude=-g:shana_rotting_prison_casterruinskill;
-	duration=-2;
---	actorValue=ari_rot_status_enemy;
---	magnitude=t:ari_rot_status_enemy + g:shana_target_maxhp_gvar;
---	duration=80;
-	chance=100;
-	element=magic;
-	element=ruin;
-[AvAffecterAoE]
-	ID=shana_rotting_prison3;
-	shape=25;
-	minRange = 1;
-    maxRange = 25;
-	needsLoS=false;
-	needsLoE=false;
-	airborne=true;
-	arc=true;
+	bypassAll=true;
+	occupyAll=true;
+	fReq=1 - is:0:m:targetExists * m:occupiableTileTarget;
 	ignoreCannotTarget=true;
 
 -----------------------------------------------------------END ROTTING PRISON
