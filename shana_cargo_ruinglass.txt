@@ -54,7 +54,7 @@ cloneFrom=poir_plentyshroom;
 combineWith=poir_potion_gravekeeper_umbral; toMake=poir_potion_gravekeeper_umbral_bottomless; consumeOnCombine=true;
 
 [ItemType]  name=Bottomless Umbral Potion;
-description=A potion that provides a ruin enchantment on weapons and increases ruin skill.; itemCategory=1;
+description=A potion that grants a ruin enchantment to weapons and increases ruin skill.; itemCategory=1;
 journalID=journal_poir_potions_bottomless;
 weight=1; volume=3; value=9999; texture=poirart_from_Prominence; special=animateEvery100Frames;
 pR=p92;

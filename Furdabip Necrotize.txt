@@ -1292,7 +1292,7 @@ ID=shana_delay_sync0; element=41005; action=shana_expurgate3;
 	duration=-2;
 	element=ruin;
 	FXOnTile=tinyShakeHoriz;
-	FXOnTile=delay_tiny;
+	FXOnTile=shana_summoned_explode_die;
 [AvAffecterAoE]
 	ID=shana_rotting_prison3;
 	minRange=1;
@@ -1311,6 +1311,11 @@ ID=shana_delay_sync0; element=41005; action=shana_expurgate3;
 	chance=100;
 	element=magic;
 	element=fire;
+	FXOnTile=sfx_classicExplosion;
+	FXOnTile=redden_minor;
+	FXOnTile=fireburst;
+	FXOnTile=shana_summoned_explode_die;
+	FXOnTile=tinyShakeHoriz;
 [AvAffecterAoE]
 	ID=shana_rotting_prison3;
 	minRange=1;

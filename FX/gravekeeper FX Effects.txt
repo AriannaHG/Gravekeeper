@@ -352,7 +352,7 @@ alphaVeloc=-10;
 [FXData]
 ID=shana_abscess_die;
 particleID=shana_pixelPus;
-numParticles=18;
+numParticles=30;
 posOffset=-0.2,-0.2;
 randPos=0.4,0.4;
 velocOffset=-3,-3;
@@ -368,7 +368,7 @@ soundVolume=1.4;
 [FXData]
 ID=shana_abscess_summoned_die;
 particleID=shana_pixelRottingPus;
-numParticles=18;
+numParticles=30;
 posOffset=-0.2,-0.2;
 randPos=0.4,0.4;
 velocOffset=-3,-3;
@@ -380,6 +380,22 @@ randScale=2;
 percentDurationBeforeOverlapWithOtherFX=0;
 soundName=shana_abscessdie;
 soundVolume=1.4;
+
+[FXData]
+ID=shana_summoned_explode_die;
+particleID=shana_pixelRottingPus;
+numParticles=30;
+posOffset=-0.2,-0.2;
+randPos=0.4,0.4;
+velocOffset=-3,-3;
+randVeloc=6,6;
+accelOffset=0,3;
+scaleOffset=2;
+speedOffset=1.2;
+randScale=2;
+percentDurationBeforeOverlapWithOtherFX=0;
+soundName=shana_summonexplode;
+soundVolume=1.6;
 
 [FXData]
 ID=shana_highRoar_soft;
