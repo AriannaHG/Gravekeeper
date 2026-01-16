@@ -359,17 +359,17 @@ description = Inexplicable replica of an Ability Tablet. Can be used to cast  <c
 journalID=journal_actionTablet;
 action=gate_cannon;
 
-[ItemType]  name=Visceral Lump; --todo sprite
-ID=shana_trigger_rot; sprite=110; itemCategory=weapon; element=ruin;
-texture=items_weapons;
-description=Disquieting lump of viscera formed around a trigger stone. It's leaking.
+[ItemType]  name=Ichorous Lump;
+ID=shana_trigger_rot; itemCategory=weapon; element=ruin;
+texture=gkart; sprite=24; enhanceDoesntAlterPalettes=true;
+pR=pYellow4; pB=pYellow4; pG=p15;
+description=Lump of solidified effluvium with the properties of a trigger stone. It's leaking.
 <font=thickIcons><color=Black>
 <n=><icon=invIcon_sword> +Rot Attack
 <n=><icon=invIcon_armor> +1<icon=skill_Ruin>;
 journalID=shana_item_trigger_rot;
 weight=1; volume=0; value=150;
 power=3;
-pR=pPurpleD;
 special=enhanceSlots_0; special=animateEvery100Frames;
 special=cannotBeSheathed; special=unbreakable;
  action=shana_rotTriggerAttack;
@@ -382,8 +382,8 @@ ID=shana_trigger_rot; actorValue=skill_Ruin; magnitude=1; duration=-1;
 [JournalEntry]
 ID=shana_item_trigger_rot;
 category=equipment; halfPage=true; rarity=1;
-title=Visceral Lump;
-text=<itemBig=shana_trigger_rot><title=Visceral Lump><brAdj=>A dripping, ichorous lump bearing a unique odor. Inflicts contagious Rot when socketed into a weapon, dealing stacking Ruin damage over time.;
+title=Ichorous Lump;
+text=<itemBig=shana_trigger_rot><title=Ichorous Lump><brAdj=>A dripping, visceral lump bearing a unique odor. Inflicts contagious Rot when socketed into a weapon, dealing stacking Ruin damage over time and raising the dead to fight once more.;
 
 [FormulaGlobal] ID=shana_rotTriggerAttack_rotdmg; --this is a negative
 formula=d:ruinDmgWpnPower(0) - sa:stoneSavant * 2;
