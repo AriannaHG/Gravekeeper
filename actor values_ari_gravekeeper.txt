@@ -1293,6 +1293,7 @@ XPCostBase = 0;
 XPCostIncrement = 0;
 XPCostMultiplier = 1;
 XPCostFloorToNearest = 0;
+drawBubbleIconWhileIncapped = true;
 
 [ActorValueReaction]
 ID=ari_phylacteral_corpse;
