@@ -1549,3 +1549,117 @@ triggerImmediatelyOnEnteringZone=False; triggeredByElement=none; travelModeOnly=
 topX=0;topY=0;btmX=0;btmY=0;
 triggerImmediatelyOnEnteringZone=False; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
 [GlobalTriggerEffect] ID=ari_dead_ascetic_trigger; effectID=setGlobalVar; sValue=ari_dead_ascetic; sValue2=; bValue1=False; bValue2=False; fValue=1; delay=0; xValue=0; yValue=0;
+
+---Horizon's Grave bad end dialog
+
+[GlobalTrigger] numID=0; aliasID=shana_horizonsgrave_badend_travel; --this should be called in the dialogue when boss resolves Horizon's Grave.
+topX=33;topY=21;btmX=34;btmY=22;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[GlobalTriggerEffect] ID=shana_horizonsgrave_badend_travel; effectID=travel; sValue=shana_horizons_grave; sValue2=; bValue1=True; bValue2=False; fValue=0; delay=0; fReq=1; xValue=-1; yValue=-1;
+
+[GlobalTrigger] numID=0; aliasID=shana_horizonsgrave_badend_music_trigger;
+topX=0;topY=0;btmX=0;btmY=0;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[GlobalTriggerEffect] ID=shana_horizonsgrave_badend_music_trigger; effectID=playSong; sValue=Mental Vortex; sValue2=; bValue1=False; bValue2=False; fValue=1; delay=0; xValue=110; yValue=0;
+
+[GlobalTrigger] numID=0; aliasID=shana_horizonsgrave_badend_gameover_trigger;
+topX=0;topY=0;btmX=0;btmY=0;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[GlobalTriggerEffect] ID=shana_horizonsgrave_badend_gameover_trigger; effectID=gameOver; sValue=; sValue2=; bValue1=False; bValue2=False; fValue=1; delay=0; xValue=0; yValue=0;
+
+[GlobalTrigger] numID=0; aliasID=shana_horizonsgrave_badend_tq;
+topX=0;topY=0;btmX=0;btmY=0;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[GlobalTriggerEffect] ID=shana_horizonsgrave_badend_tq; effectID=tq; sValue=; sValue2=; bValue1=False; bValue2=False; fValue=1; delay=0; xValue=0; yValue=0;
+
+
+[DialogNode] ID=shana_horizonsgrave_badend_1;
+statements=<speed=0.4>You awaken, your body and mind not your own. Your crew is nowhere in sight.;
+nextNodeID=shana_horizonsgrave_badend_2;
+
+[DialogNode] ID=shana_horizonsgrave_badend_2;
+specialEffect=trigger,shana_horizonsgrave_badend_music_trigger;
+nextNodeID=shana_horizonsgrave_badend_3;
+
+[DialogNode] ID=shana_horizonsgrave_badend_3;
+statements=<speed=0.4>All you can do is shamble to the beat of the mindless force choking your veins.;
+nextNodeID=shana_horizonsgrave_badend_4;
+
+[DialogNode] ID=shana_horizonsgrave_badend_4;
+statements=<speed=0.4>Your days are now the scrubbing of a deck you once commanded.;
+nextNodeID=shana_horizonsgrave_badend_5;
+
+[DialogNode] ID=shana_horizonsgrave_badend_5;
+statements=<speed=0.4>A barmaid you dimly recognize now stands behind the wheel of your flagship, grinning with vacant eyes as she steers your legacy into the endless haze.;
+nextNodeID=shana_horizonsgrave_badend_6;
+
+[DialogNode] ID=shana_horizonsgrave_badend_6;
+statements=<speed=0.4>She doesn't know what she's doing. She doesn't need to know what she's doing, of course.;
+nextNodeID=shana_horizonsgrave_badend_7;
+
+[DialogNode] ID=shana_horizonsgrave_badend_7;
+statements=<speed=0.18>The boredom is a deeper ache than any wound.;
+nextNodeID=shana_horizonsgrave_badend_8;
+
+[DialogNode] ID=shana_horizonsgrave_badend_8;
+statements=<speed=0.4>Like all others, you...<p=3> your task is to spread and feed.;
+nextNodeID=shana_horizonsgrave_badend_9;
+
+[DialogNode] ID=shana_horizonsgrave_badend_9;
+statements=<speed=0.4>An interminable amount of time later, a hundred deaths find you.;
+nextNodeID=shana_horizonsgrave_badend_10;
+
+[DialogNode] ID=shana_horizonsgrave_badend_10;
+statements=<speed=0.4>Each more meaningless than the last, yet built upon a thousand shattered corpses, spent without count.;
+nextNodeID=shana_horizonsgrave_badend_11;
+
+[DialogNode] ID=shana_horizonsgrave_badend_11;
+statements=<speed=0.4>A sickly guard wearing scavenged armor desperately thrusts a crackling spear into your skull, unable to muster the focus for anything greater.;
+nextNodeID=shana_horizonsgrave_badend_12;
+
+[DialogNode] ID=shana_horizonsgrave_badend_12;
+statements=<speed=0.4>It doesn't take, and in your mind's eye you see Reeve rip her in half, a horrific hunger consuming both of them.;
+nextNodeID=shana_horizonsgrave_badend_13;
+
+[DialogNode] ID=shana_horizonsgrave_badend_13;
+statements=<speed=0.4>When you awaken, it is within a palace, the golden tiles crusted with unspeakable fluids.;
+nextNodeID=shana_horizonsgrave_badend_14;
+
+[DialogNode] ID=shana_horizonsgrave_badend_14;
+statements=<speed=0.4>Your hands are mismatched, one Scurio, one Fareem.;
+nextNodeID=shana_horizonsgrave_badend_15;
+
+[DialogNode] ID=shana_horizonsgrave_badend_15;
+statements=<speed=0.4>Your mouth feels chalky, the stench of spoiled wine tarring your being.;
+nextNodeID=shana_horizonsgrave_badend_16;
+
+[DialogNode] ID=shana_horizonsgrave_badend_16;
+statements=<speed=0.4>A hole is blown into your chest by trembling hands, the final retort of a scout rifle with no ammunition left to sustain it.;
+nextNodeID=shana_horizonsgrave_badend_17;
+
+[DialogNode] ID=shana_horizonsgrave_badend_17;
+statements=<speed=0.4>Above, the great airships of Seartial hang like slumbering leviathans, every last trigger shattered from overuse.;
+nextNodeID=shana_horizonsgrave_badend_18;
+
+[DialogNode] ID=shana_horizonsgrave_badend_18;
+statements=<speed=0.4>All is drowned out by gargled screams, the impromptu final gathering of Searth's Council held within a reeking bog.;
+nextNodeID=shana_horizonsgrave_badend_19;
+
+[DialogNode] ID=shana_horizonsgrave_badend_19;
+statements=<speed=0.4>Perhaps there are survivors. Perhaps there is an unlikely holdfast spared the Creeping Death, by ancestral magic or ancient technology.;
+nextNodeID=shana_horizonsgrave_badend_20;
+
+[DialogNode] ID=shana_horizonsgrave_badend_20;
+statements=<speed=0.4>Perhaps they might even carve a new life for themselves, defying the new reality they inhabit.;
+nextNodeID=shana_horizonsgrave_badend_21;
+
+[DialogNode] ID=shana_horizonsgrave_badend_21;
+statements=<speed=0.4>Your story, however, ends here.;
+nextNodeID=shana_horizonsgrave_badend_22;
+
+[DialogNode] ID=shana_horizonsgrave_badend_22;
+specialEffect=trigger,shana_horizonsgrave_badend_gameover_trigger;
+nextNodeID=shana_horizonsgrave_badend_23;
+
+[DialogNode] ID=shana_horizonsgrave_badend_23;
+specialEffect=trigger,shana_horizonsgrave_badend_tq;

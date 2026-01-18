@@ -416,9 +416,11 @@ formula=d:ruinDmg(3) * 0.34 - sa:stoneSavant - sa:empowerAugment*2;
 	FXOnTileColor=Green;
 	FXOnTile=chargeSpiralFast_big;
     FXOnTileColor=Black;
+	FXOnTile=pingBip_noOverlap;
+	FXOnTileColor=Green;
+    FXOnTile=Debuff_lowPitch;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=DarkGreen;
-	FXOnHit=bipFlutter;
 [AvAffecterAoE]
 	ID=shana_rotTriggerAttack;
 	cloneFrom=oneTile;
@@ -449,9 +451,11 @@ formula=d:ruinDmg(3) * 0.34 - sa:stoneSavant - sa:empowerAugment*2;
 	FXOnTileColor=Green;
 	FXOnTile=chargeSpiralFast_big;
     FXOnTileColor=Black;
+	FXOnTile=pingBip_noOverlap;
+	FXOnTileColor=Green;
+    FXOnTile=Debuff_lowPitch;
 	FXOnHit=downwardLinesQuick;
 	FXOnHitColor=DarkGreen;
-	FXOnHit=bipFlutter;
 [AvAffecterAoE]
 	ID=shana_rotTriggerInWeapon;
 	cloneFrom=oneTile;

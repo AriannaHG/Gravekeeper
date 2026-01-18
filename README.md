@@ -69,6 +69,7 @@ This mod alters the behavior of the vanilla Invisibility status effect such that
 - **Eldiran**: for creating a plethora of fantastic games that have some of the best modding capabilities I've ever seen
 - **From Software**: for some *King's Field* music used as BGM
 - [**Darren Curtis**](https://www.darrencurtismusic.com/): for allowing use of the tracks *Prepare Thyself* and *Labyrinth of Lost Dreams*
-- [**Zippy**](https://www.youtube.com/@zippysound) : for allowing use of the track *Schwarzwald*
+- [**Zippy**](https://www.youtube.com/@zippysound): for allowing use of the track *Schwarzwald*
+- [**Crow Shade**](https://itch.io/profile/crowshade): for allowing use of the track *Mental Vortex*
 - **Shanakor and Gab**: for providing great feedback on the *Horizon's Gate* Discord
 - **Paul and FileXX44**: for use of assets from Many Dependencies/Misc Weapons.

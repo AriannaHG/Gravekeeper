@@ -83,7 +83,7 @@ text=<itemBig=shana_rabbitcollar><title=Snowball's Collar><brAdj=>A threadbare y
     ID=shana_rabbitKick;
     cloneFrom=oneTile;
     aoeCasterAsOrigin=true; --required so the target is caster
-[AvAffecter] --this is commented out because it keeps making the action bar disappear :(
+[AvAffecter]
     ID=shana_rabbitKick;
     fReq=c:shana_rabbitKickReady;
     visibleMiss=false; visibleEvaluations=false;
