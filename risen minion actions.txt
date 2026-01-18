@@ -3992,8 +3992,8 @@ needsLoS = false; needsLoE = false; shape=7;
 [ItemType]  name=Fetid Field;
 ID=ari_fetid_field_item; itemCategory=hazard;
 journalID=journal_ari_fetid_fields; 
-texture=gkart;
-sprite=51;
+texture=ari_fk_fetid_field;
+sprite=0;
 pR=pBuralk;
 
 special=cannotBePickedUp; special=randomFlipWhenPlaced;
@@ -4002,6 +4002,7 @@ special=reactsToPressure; special=big;
 special=transparent; 
 special=ignoreDarkness;
 --special=alwaysBelowOtherItems;
+special=animatedSlow;
 
 special=timer; 
 --special=timer_advanceOnScreenOnly; 
@@ -6460,8 +6461,8 @@ ID=ari_summoned_crossbow_unloaded_enemy; element=actionUsed; element=reload; new
 [ItemType]  name=Fetid Field;
 ID=ari_fetid_field_item_enemy; itemCategory=hazard;
 journalID=journal_ari_fetid_fields; 
-texture=gkart;
-sprite=51;
+texture=ari_fk_fetid_field;
+sprite=0;
 pR=pBuralk;
 
 special=cannotBePickedUp; special=randomFlipWhenPlaced;
@@ -6470,6 +6471,7 @@ special=reactsToPressure; special=big;
 special=transparent; 
 special=ignoreDarkness;
 --special=alwaysBelowOtherItems;
+special=animatedSlow;
 
 special=timer; 
 --special=timer_advanceOnScreenOnly; 

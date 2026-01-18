@@ -893,6 +893,7 @@ description=Collected Souls.;
 defaultValue = 0; AIValue = 0;
 harmfulMagnitude = -1;
 bonusesMultiplier = 1;
+animationOnHarmful =;
 affectsActors = true;
 canAffectIncapped = true;
 showDamageNumbers = true;
@@ -960,6 +961,7 @@ description=Collected Souls.;
 defaultValue = 0; AIValue = 0;
 harmfulMagnitude = -1;
 bonusesMultiplier = 1;
+animationOnHarmful =;
 affectsActors = true;
 canAffectIncapped = false;
 showDamageNumbers = true;
@@ -1291,6 +1293,7 @@ XPCostBase = 0;
 XPCostIncrement = 0;
 XPCostMultiplier = 1;
 XPCostFloorToNearest = 0;
+drawBubbleIconWhileIncapped = true;
 
 [ActorValueReaction]
 ID=ari_phylacteral_corpse;

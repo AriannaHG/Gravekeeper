@@ -554,7 +554,7 @@ animations=stern;
 statements=Much thanks, visitor.;
 statements=Just promise me that you won't try to replicate what you've been seeing here. <n=>This kind of magic is cursed.;
 specialEffect=incDefaultNode;
-[DialogOption] text=Unlock <iconBig=classIcon_ari_gravekeeper> Gravekeeper.;
+[DialogOption] text=I'll be careful.;
 nodeToConnectTo=ari_gravekeeper_arianna_gravekeeper_accept_learn;
 bottomOption=true;
 
@@ -564,7 +564,7 @@ animations=stern;
 statements=I understand. But visitor, what you've seen here...;
 statements=Don't go trying to replicate this kind of magic. It's some cursed stuff.;
 specialEffect=incDefaultNode;
-[DialogOption] text=Unlock <iconBig=classIcon_ari_gravekeeper> Gravekeeper.;
+[DialogOption] text=I'll be careful.;
 nodeToConnectTo=ari_gravekeeper_arianna_gravekeeper_decline_learn;
 bottomOption=true;
 
@@ -668,7 +668,7 @@ animations=happy;
 statements=It's a good thing you ran across this little Port, visitor. We're few, but we truly appreciate your efforts in resolving this!;
 statements=And for that, thank you!;
 specialEffect=incDefaultNode;
-[DialogOption] text=Unlock <iconBig=icon_gravekeeper_lichdom_elite>Lichdom Elite passive.;
+[DialogOption] text=Happy to have helped.;
 nodeToConnectTo=ari_gravekeeper_arianna_lichdom_learn;
 bottomOption=true;
 
@@ -1096,6 +1096,13 @@ nodeToConnectTo=ari_gravekeeper_arianna_phylactery_destroy;
 nextNodeID=;
 bottomOption=true;
 
+
+----------------------------------------Skull time
+
+[GlobalTrigger] aliasID=ari_skullcheck_trigger;
+[GlobalTriggerEffect] ID=ari_skullcheck_trigger; effectID=script; sValue=gravekeeperSkullSubtraction; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; xValue=-1; yValue=-1;
+
+	
 [DialogNode] ID=ari_gravekeeper_arianna_phylactery_compromise;
 animations=sly;
 statements=That's right. A compromise.<n=>You fetch me some material and I'll give you a way to harness some powerful dark magic.;
@@ -1194,6 +1201,7 @@ formulaReq=moreThan:0:partyItem:ari_grimoire_divinity * moreThan:1:g:arianna_gra
 newLineOfOptions=true;
 nodeToConnectTo=ari_gravekeeper_arianna_phylactery_destroy;
 [DialogOption] text=I have nothing for you, Lich.;
+newLineOfOptions=true;
 nextNodeID=;
 bottomOption=true;
 
@@ -1211,6 +1219,7 @@ formulaReq=moreThan:0:partyItem:ari_grimoire_divinity * moreThan:1:g:arianna_gra
 newLineOfOptions=true;
 nodeToConnectTo=ari_gravekeeper_arianna_phylactery_destroy;
 [DialogOption] text=I have nothing for you, Lich.;
+newLineOfOptions=true;
 nextNodeID=;
 bottomOption=true;
 
@@ -1220,6 +1229,7 @@ animations=stern;
 statements=Ehehehe. These are perfect. <n=>Here's a little something to help you unleash a bit of that power you've got.;
 statements=Now get lost.;
 specialEffect=setGlobalVar,grimoire_unlock,4;
+specialEffect=ari_skullcheck_trigger;
 [DialogOption] text=Take <itemBig=ari_craft_grimoire> Grimoire Crafting Kit.;
 nodeToConnectTo=ari_gravekeeper_arianna_phylactery_grimoire_receipt;
 bottomOption=true;
@@ -1227,9 +1237,25 @@ bottomOption=true;
 [DialogNode] ID=ari_gravekeeper_arianna_phylactery_grimoire_receipt;
 --Spawn grimoire kit
 specialEffect=giveItem,ari_craft_grimoire,1;
-specialEffect=removeItemFromParty,skull,150;
+specialEffect=removeItemFromParty,skull,@Gari_gk_gvar_skull;
+specialEffect=removeItemFromParty,skull2,@Gari_gk_gvar_skull2;
+specialEffect=removeItemFromParty,skull_elephant1,@Gari_gk_gvar_skull_elephant1;
+specialEffect=removeItemFromParty,skull_elephant2,@Gari_gk_gvar_skull_elephant2;
+specialEffect=removeItemFromParty,skull_dog1,@Gari_gk_gvar_skull_dog1;
+specialEffect=removeItemFromParty,skull_dog2,@Gari_gk_gvar_skull_dog2;
+
+specialEffect=clearGlobalVar,ari_gk_gvar_skull;
+specialEffect=clearGlobalVar,ari_gk_gvar_skull2;
+specialEffect=clearGlobalVar,ari_gk_gvar_skull_elephant1;
+specialEffect=clearGlobalVar,ari_gk_gvar_skull_elephant2;
+specialEffect=clearGlobalVar,ari_gk_gvar_skull_dog1;
+specialEffect=clearGlobalVar,ari_gk_gvar_skull_dog2;
+
 specialEffect=setGlobalVar,grimoire_necronomicon_spawn,1;
 nextNodeID=;
+
+
+----------------------------------------Grimoire crafting kit acquired
 
 [DialogNode] ID=ari_gravekeeper_phylactery_greeting3;
 animations=;
