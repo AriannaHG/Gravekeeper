@@ -1685,7 +1685,7 @@ nextNodeID=shana_horizonsgrave_badend_22;
 
 [DialogNode] ID=shana_horizonsgrave_badend_22;
 specialEffect=trigger,shana_horizonsgrave_badend_gameover_trigger;
-nextNodeID=shana_horizonsgrave_badend_23;
-
-[DialogNode] ID=shana_horizonsgrave_badend_23;
 specialEffect=trigger,shana_horizonsgrave_badend_tq;
+--nextNodeID=shana_horizonsgrave_badend_23;
+
+--[DialogNode] ID=shana_horizonsgrave_badend_23;

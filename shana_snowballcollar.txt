@@ -36,8 +36,6 @@ text=<itemBig=shana_rabbitcollar><title=Snowball's Collar><brAdj=>A threadbare y
     special=dontDelayOtherActions;
     casterAnimation=spinkick;
     FXOnCaster=spinSlashes;
---todo: brawlers spin kick and jump
---todo: jump sound effect
 [ActionAoE] 
 	ID=shana_rabbitCharge;
 	cloneFrom=oneTile;
