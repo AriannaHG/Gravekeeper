@@ -2,7 +2,7 @@
 ID=help_status_ari_rot;
 category=help; halfPage=false; rarity=-1;
 title=Rot;
-text=<iconBig=icon_rot><icon=icon_gravekeeper_rot> <title=Rot><brAdj=>        Rot takes effect at the end of a creature's turn. When triggered, it first has a severity-dependent chance to spread a portion of itself to the host creature's allies. It then inflicts <icon=skill_Ruin> damage to the host creature equal to its stack size. Creatures infected by the Rot are reanimated as a Zombie on death, the allegiance and characteristics of which being dependant on the source of the Rot.<n=>        Rot is doubly affected by the victim's <icon=skill_Ruin> resistance, as it impacts both the amount of Rot inflicted as well as the subsequent <icon=skill_Ruin> damage taken.
+text=<iconBig=icon_rot><icon=icon_gravekeeper_rot> <title=Rot><brAdj=>        Rot takes effect at the end of a creature's turn. When triggered, it first has a severity-dependent chance to spread a portion of itself to the host creature's allies. It then inflicts <icon=skill_Ruin> damage to the host creature equal to its stack size. Creatures infected by the Rot are reanimated as a Zombie on death, the allegiance and characteristics of which being dependant on the source of the Rot.<n=>        Rot is doubly affected by the victim's <icon=skill_Ruin> resistance, as it impacts both the amount of Rot inflicted as well as the subsequent <icon=skill_Ruin> damage taken.;
 [GlobalTriggerEffect]
 ID=tLoadGame; effectID=learnJournalEntry; sValue=help_status_ari_rot; bValue2=True;
 
@@ -10,7 +10,7 @@ ID=tLoadGame; effectID=learnJournalEntry; sValue=help_status_ari_rot; bValue2=Tr
 ID=help_status_shana_creeping_death;
 category=help; halfPage=true; rarity=-1;
 title=Creeping Death;
-text=<iconBig=icon_creeping_death> <title=Creeping Death><brAdj=>        Creatures unfortunate enough to be plagued by the Creeping Death take 2 stacks of Rot at the beginning of each of their turns, and an additional stack when it is reapplied.
+text=<iconBig=icon_creeping_death> <title=Creeping Death><brAdj=>        Creatures unfortunate enough to be plagued by the Creeping Death take 2 stacks of Rot at the beginning of each of their turns, and an additional stack when it is reapplied.;
 
 [GlobalTriggerEffect]
 ID=tLoadGame; effectID=learnJournalEntry; sValue=help_status_shana_creeping_death; bValue2=True;
@@ -7288,3 +7288,79 @@ cooldown=80;
 [Action] ID=shana_Sc_trip_enemy;
 cloneFrom=Sc_trip;
 cooldown=80;
+
+------------------------------------------------Horizon's Grave Bad Ending
+[Action] ID=shana_horizons_grave;
+	name=Horizon's Grave;
+	icon=icon_horizons_grave;
+	tooltip=I surrender the lantern of my mind. I offer the clay of my body. I commit the breath of my soul. Let it all burn as kindling for the undying Rot.<n=><n=><color=Red>Should my sacrifice be completed, it shall come to pass that the Creeping Death shall be unbound, and its shadow shall fall across Eral. Behold, a great and final withering. Neither high nor low, wise nor simple, shall find refuge, for the breath of life shall be claimed from all that dwell under the sky.;
+	--rankUpTooltip=Each rank adds +5% damage (to enemies only).;
+	--tooltipTopRight=<icon=PhysAtk_small><icon=melee_small>;
+	AIRatingBias=3;
+	cooldown=80;
+	chargeTime=80;
+	maxRank=4;
+	canExceedMaxRankBy=1;
+
+
+	XPCost=220;
+	XPCost=440;
+	XPCost=880;
+	XPCost=1600;
+	special=requiresCasting;
+	casterAnimation=spellcast;
+--	casterAnimation=weapon;
+--	casterAnimationSpeed=2.4;
+	--casterAnimationLoops=1;
+	FXOnCaster=sidewardLines;
+	FXOnCaster=woosh;
+
+[ActionAoE]
+    ID=shana_horizons_grave;
+    cloneFrom=oneTile;
+
+	[AvAffecter] --spams the everloving hell out of sparkle vfx
+    	ID=shana_horizons_grave;
+    	FXOnHit=shana_badend_superSparkles;
+    	FXOnHitColor=Olive;
+    	FXOnHit=shana_badend_superSparkles;
+    	FXOnHitColor=Black;
+    [AvAffecterAoE]
+    	ID=shana_horizons_grave;
+    	cloneFrom=oneTile;
+    [AvAffecter] --9999 rot to all
+    	ID=shana_horizons_grave;
+    	actorValue=ari_rot_status_enemy;
+    	magnitude=9999;
+    	chance=100;
+    	duration=80;
+    	applyElementToTile=false;
+    	visibleMiss=false;
+    	FXOnTile=shana_chargeSpiralFaster_big;
+    	FXOnTileColor=Green;
+    	FXOnTile=shana_chargeSpiralFaster_big;
+    	FXOnTileColor=Black;
+    	FXOnHit=shana_downwardLines_quicker;
+    	FXOnHitColor=Green;
+    [AvAffecterAoE]
+    	ID=shana_horizons_grave; shape=7;
+    	needsLoS=true;
+    	needsLoE=false;
+    	arc=true;
+    	airborne=true;
+    	occupyAll=true;
+    	bypassAll=true;
+    	canSelectAllies=false;
+    	minRange=1;
+    	maxRange=22;
+
+[AvAffecter]
+    ID=shana_horizons_grave;
+    visibleMiss=false; visibleEvaluations=false;
+    actorValue=task;
+    magnitude=trigger,shana_horizonsgrave_badend_travel;
+    duration=1;
+    chance=100;
+[AvAffecterAoE]
+    ID=shana_horizons_grave;
+    cloneFrom=oneTile;

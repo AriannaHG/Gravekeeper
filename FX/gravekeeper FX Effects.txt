@@ -171,6 +171,29 @@ randVeloc=20,20;
 randScale=0.1;
 initialDelayIncreasePerParticle=0.03;
 
+[FXData]
+ID=shana_badend_superSparkles;
+particleID=shana_fast_badend_sparkle;
+numParticles=600;
+--speedOffset = 1.5;
+posOffset=-0.5,-0.5;
+randPos=1,1;
+velocOffset=-20,-25;
+randVeloc=40,40;
+scaleOffset=0.5;
+randScale=0.3;
+initialDelayIncreasePerParticle=0.005;
+percentDurationBeforeOverlapWithOtherFX=0.9;
+
+[Screenshake]
+ID=shana_badend_superSparkles; magnitude=3; duration=3.2; xShake=true; yShake=true;
+
+--[ScreenTint]
+--ID=shana_badend_superSparkles; color=Black; whiteTint=false; fadeInTime=2.2; duration=0; fadeSpeed=2; applyTintToUI=false; delay=1
+
+[ScreenTint]
+ID=shana_badend_superSparkles; color=DarkOliveGreen; whiteTint=false; fadeInTime=15; duration=999999; fadeSpeed=1.5; applyTintToUI=true; delay=0.3
+
 [drawOrderFX]
 ID=shana_fast_sparkle;
 texture=fx_sparkle;
@@ -178,6 +201,14 @@ sourceRect=0,0,5,7;
 origin=3,4;
 timePerFrame=0.1;
 duration=0.2; --was 0.3
+
+[drawOrderFX]
+ID=shana_fast_badend_sparkle;
+texture=fx_sparkle;
+sourceRect=0,0,5,7;
+origin=3,4;
+timePerFrame=0.1;
+duration=1; --was 0.3
 
 [drawOrderFXLight]
 ID=shana_fast_sparkle; red=0; blue=0; green=0.5; alpha=0.5; size=0.15; flicker=0.01; texture=lightmask;
@@ -201,7 +232,7 @@ texture=fx_sparkle;
 sourceRect=0,0,5,7;
 origin=3,4;
 timePerFrame=0.2;
-duration=1; --was 0.3
+duration=2.5; --was 0.3
 
 [drawOrderFXLight]
 ID=shana_fast_superdupersparkle; red=0; blue=0; green=0.5; alpha=0.5; size=0.15; flicker=0.01; texture=lightmask;
@@ -421,7 +452,12 @@ percentDurationBeforeOverlapWithOtherFX=0;
 [ScreenTint]
 ID=shana_pussen_major; color=70,72,28; fadeInTime=0.4;
 
-
+------------------Bad end delay fx (maybe unused)
+[FXData]
+ID=shana_delay10;
+particleID=pop;
+speedOffset=-0.9;
+percentDurationBeforeOverlapWithOtherFX=1;
 
 
 

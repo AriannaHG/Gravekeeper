@@ -1581,7 +1581,7 @@ triggerImmediatelyOnEnteringZone=False; triggeredByElement=none; travelModeOnly=
 [GlobalTrigger] numID=0; aliasID=shana_horizonsgrave_badend_travel; --this should be called in the dialogue when boss resolves Horizon's Grave.
 topX=33;topY=21;btmX=34;btmY=22;
 triggerImmediatelyOnEnteringZone=False; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
-[GlobalTriggerEffect] ID=shana_horizonsgrave_badend_travel; effectID=travel; sValue=shana_horizons_grave; sValue2=; bValue1=True; bValue2=False; fValue=0; delay=0; fReq=1; xValue=-1; yValue=-1;
+[GlobalTriggerEffect] ID=shana_horizonsgrave_badend_travel; effectID=moveToNewZone; sValue=shana_horizons_grave; sValue2=; bValue1=True; bValue2=False; fValue=0.5; delay=3.2; fReq=1; xValue=-1; yValue=-1;
 
 [GlobalTrigger] numID=0; aliasID=shana_horizonsgrave_badend_music_trigger;
 topX=0;topY=0;btmX=0;btmY=0;
@@ -1600,7 +1600,7 @@ triggerImmediatelyOnEnteringZone=False; triggeredByElement=none; travelModeOnly=
 
 
 [DialogNode] ID=shana_horizonsgrave_badend_1;
-statements=<speed=0.4>You awaken, your body and mind not your own. Your crew is nowhere in sight.;
+statements=<speed=0.3>You awaken, your body and mind not your own. Your crew is nowhere in sight.;
 nextNodeID=shana_horizonsgrave_badend_2;
 
 [DialogNode] ID=shana_horizonsgrave_badend_2;

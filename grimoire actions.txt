@@ -768,9 +768,9 @@ icon=classIcon_ari_gravekeeper;
 	FXOnHit=shana_Fast_Sparkles;
 	FXOnHitColor=Chartreuse;
 	FXOnHit=shana_Fast_superSparkles;
-	FXOnHitColor=Green;
+	FXOnHitColor=Olive;
 	FXOnHit=shana_Fast_superSparkles;
-	FXOnHitColor=Chartreuse;
+	FXOnHitColor=Black;
 [AvAffecterAoE]
 	ID=shana_deadbookact;
 	cloneFrom=oneTile; 
@@ -869,9 +869,9 @@ icon=classIcon_ari_gravekeeper;
 	FXOnHit=shana_Fast_Sparkles;
 	FXOnHitColor=Chartreuse;
 	FXOnHit=shana_Fast_superSparkles;
-	FXOnHitColor=Green;
+	FXOnHitColor=Olive;
 	FXOnHit=shana_Fast_superSparkles;
-	FXOnHitColor=Chartreuse;
+	FXOnHitColor=Black;
 [AvAffecterAoE]
 	ID=shana_deadbookact_enemy;
 	cloneFrom=oneTile; 
