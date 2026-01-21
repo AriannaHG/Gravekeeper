@@ -15,6 +15,7 @@ combatMode=False;
 topX=3;topY=8;btmX=8;btmY=8;
 triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
 [TriggerEffect] numID=0; effectID=hidep; sValue=; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+[TriggerEffect] numID=0; effectID=fx; sValue=shana_badend_enterfx; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
 [TriggerEffect] numID=0; effectID=tq; sValue=; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
 [TriggerEffect] numID=0; effectID=talk; sValue=; sValue2=shana_horizonsgrave_badend_1; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
 

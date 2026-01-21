@@ -1578,6 +1578,11 @@ triggerImmediatelyOnEnteringZone=False; triggeredByElement=none; travelModeOnly=
 
 ---Horizon's Grave bad end dialog
 
+[GlobalTrigger] numID=0; aliasID=shana_horizonsgrave_badend_stop_music; --to be called in the dialogue node when cast happens
+topX=0;topY=0;btmX=0;btmY=0;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[GlobalTriggerEffect] ID=shana_horizonsgrave_badend_stop_music; effectID=playSong; sValue=; sValue2=; bValue1=False; bValue2=True; fValue=1; delay=0; xValue=0; yValue=0;
+
 [GlobalTrigger] numID=0; aliasID=shana_horizonsgrave_badend_travel; --this should be called in the dialogue when boss resolves Horizon's Grave.
 topX=33;topY=21;btmX=34;btmY=22;
 triggerImmediatelyOnEnteringZone=False; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
@@ -1598,6 +1603,10 @@ topX=0;topY=0;btmX=0;btmY=0;
 triggerImmediatelyOnEnteringZone=False; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
 [GlobalTriggerEffect] ID=shana_horizonsgrave_badend_tq; effectID=tq; sValue=; sValue2=; bValue1=False; bValue2=False; fValue=1; delay=0; xValue=0; yValue=0;
 
+
+[DialogNode] ID=shana_horizonsgrave_bark; --unused due to dialog jank killing my other effects :(
+animations=angry;
+statements=<speed=0.3>Die.;
 
 [DialogNode] ID=shana_horizonsgrave_badend_1;
 statements=<speed=0.3>You awaken, your body and mind not your own. Your crew is nowhere in sight.;

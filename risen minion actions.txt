@@ -7319,6 +7319,33 @@ cooldown=80;
     ID=shana_horizons_grave;
     cloneFrom=oneTile;
 
+--    [AvAffecter] ID=shana_horizons_grave; --set var and trigger dialog node. This killed my screenshake and somehow makes the tint persist past loading game so it's out
+--        actorValue=trigger;
+--        magnitude=setGlobalVar_toActorID,shana_horizons_grave_caster;
+--        duration=-2;
+--        chance=100;
+--        affectGlobalAvAffecterInfo=false;
+--    [AvAffecterAoE] ID=shana_horizons_grave;
+--        cloneFrom=oneTile;
+--       aoeCasterAsOrigin=true;
+--    [AvAffecter] ID=shana_horizons_grave;
+--        actorValue=task;
+--        magnitude=talk,@Gshana_horizons_grave_caster,shana_horizonsgrave_bark,false,false;
+--        duration=-2;
+--       chance=100;
+--        affectGlobalAvAffecterInfo=false;
+--    [AvAffecterAoE] ID=shana_horizons_grave;
+--        cloneFrom=oneTile;
+    [AvAffecter]--kills music
+        ID=shana_horizons_grave;
+        visibleMiss=false; visibleEvaluations=false;
+        actorValue=task;
+        magnitude=trigger,shana_horizonsgrave_badend_stop_music;
+        duration=1;
+        chance=100;
+    [AvAffecterAoE]
+        ID=shana_horizons_grave;
+        cloneFrom=oneTile;
 	[AvAffecter] --spams the everloving hell out of sparkle vfx
     	ID=shana_horizons_grave;
     	FXOnHit=shana_badend_superSparkles;
