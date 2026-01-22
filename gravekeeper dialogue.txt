@@ -1630,66 +1630,70 @@ nextNodeID=shana_horizonsgrave_badend_6;
 
 [DialogNode] ID=shana_horizonsgrave_badend_6;
 statements=<speed=0.4>She doesn't know what she's doing. She doesn't need to know what she's doing, of course.;
-nextNodeID=shana_horizonsgrave_badend_7;
-
-[DialogNode] ID=shana_horizonsgrave_badend_7;
-statements=<speed=0.18>The boredom is a deeper ache than any wound.;
 nextNodeID=shana_horizonsgrave_badend_8;
 
 [DialogNode] ID=shana_horizonsgrave_badend_8;
-statements=<speed=0.4>Like all others, you...<p=3> your task is to spread and feed.;
+statements=<speed=0.24>The boredom is a deeper ache than any wound.;
+nextNodeID=shana_horizonsgrave_badend_8a;
+
+[DialogNode] ID=shana_horizonsgrave_badend_8a;
+statements=<speed=0.18>You are not allowed to hope. You are not allowed to dream.;
+nextNodeID=shana_horizonsgrave_badend_8b;
+
+[DialogNode] ID=shana_horizonsgrave_badend_8b;
+statements=<speed=0.18>Time loses all meaning. There is only the wait, and the work.;
 nextNodeID=shana_horizonsgrave_badend_9;
 
 [DialogNode] ID=shana_horizonsgrave_badend_9;
-statements=<speed=0.4>An interminable amount of time later, a hundred deaths find you.;
+statements=<speed=0.2>Eventually, you are rewarded with a hundred deaths.;
 nextNodeID=shana_horizonsgrave_badend_10;
 
 [DialogNode] ID=shana_horizonsgrave_badend_10;
-statements=<speed=0.4>Each more meaningless than the last, yet built upon a thousand shattered corpses, spent without count.;
+statements=<speed=0.27>Each more meaningless than the last, yet built upon a thousand corpses.;
 nextNodeID=shana_horizonsgrave_badend_11;
 
 [DialogNode] ID=shana_horizonsgrave_badend_11;
-statements=<speed=0.4>A sickly guard wearing scavenged armor desperately thrusts a crackling spear into your skull, unable to muster the focus for anything greater.;
+statements=<speed=0.5>A sickly guard wearing scavenged armor desperately thrusts a crackling spear into your skull, unable to muster the focus for anything greater.;
 nextNodeID=shana_horizonsgrave_badend_12;
 
 [DialogNode] ID=shana_horizonsgrave_badend_12;
-statements=<speed=0.4>It doesn't take, and in your mind's eye you see Reeve rip her in half, a horrific hunger consuming both of them.;
+statements=<speed=0.5>It doesn't take, and in your mind's eye you see Reeve rip her in half, a horrific hunger consuming both of them.;
 nextNodeID=shana_horizonsgrave_badend_13;
 
 [DialogNode] ID=shana_horizonsgrave_badend_13;
-statements=<speed=0.4>When you awaken, it is within a palace, the golden tiles crusted with unspeakable fluids.;
+statements=<speed=0.5>When you awaken, it is within a palace, the golden tiles crusted with unspeakable fluids.;
 nextNodeID=shana_horizonsgrave_badend_14;
 
 [DialogNode] ID=shana_horizonsgrave_badend_14;
-statements=<speed=0.4>Your hands are mismatched, one Scurio, one Fareem.;
+statements=<speed=0.5>Your hands are mismatched, one Scurio, one Fareem.;
 nextNodeID=shana_horizonsgrave_badend_15;
 
 [DialogNode] ID=shana_horizonsgrave_badend_15;
-statements=<speed=0.4>Your mouth feels chalky, the stench of spoiled wine tarring your being.;
+statements=<speed=0.5>Your mouth feels chalky, the stench of spoiled wine tarring your being.;
 nextNodeID=shana_horizonsgrave_badend_16;
 
 [DialogNode] ID=shana_horizonsgrave_badend_16;
-statements=<speed=0.4>A hole is blown into your chest by trembling hands, the final retort of a scout rifle with no ammunition left to sustain it.;
+statements=<speed=0.5>A hole is blown into your chest by trembling hands, the final retort of a scout rifle with no ammunition left to sustain it.;
 nextNodeID=shana_horizonsgrave_badend_17;
 
 [DialogNode] ID=shana_horizonsgrave_badend_17;
-statements=<speed=0.4>Above, the great airships of Seartial hang like slumbering leviathans, every last trigger shattered from overuse.;
+statements=<speed=0.5>Above, the great airships of Seartial hang like slumbering leviathans, every last trigger shattered from overuse.;
 nextNodeID=shana_horizonsgrave_badend_18;
 
 [DialogNode] ID=shana_horizonsgrave_badend_18;
-statements=<speed=0.4>All is drowned out by gargled screams, the impromptu final gathering of Searth's Council held within a reeking bog.;
+statements=<speed=0.5>All is drowned out by gargled screams, the impromptu final gathering of Searth's Council held within a reeking bog.;
 nextNodeID=shana_horizonsgrave_badend_19;
 
 [DialogNode] ID=shana_horizonsgrave_badend_19;
-statements=<speed=0.4>Perhaps there are survivors. Perhaps there is an unlikely holdfast spared the Creeping Death, by ancestral magic or ancient technology.;
+statements=<speed=0.3>Perhaps there are survivors. Perhaps there is an unlikely holdfast spared the Creeping Death, by ancestral magic or ancient technology.;
 nextNodeID=shana_horizonsgrave_badend_20;
 
 [DialogNode] ID=shana_horizonsgrave_badend_20;
-statements=<speed=0.4>Perhaps they might even carve a new life for themselves, defying the new reality they inhabit.;
+statements=<speed=0.3>Perhaps they might even carve a new life for themselves, defying the new reality they inhabit.;
 nextNodeID=shana_horizonsgrave_badend_21;
 
 [DialogNode] ID=shana_horizonsgrave_badend_21;
-statements=<speed=0.4>Your story, however, ends here.;
+statements=<speed=0.3>Your story, however, ends here.;
 nextNodeID=shana_horizonsgrave_badend_22;
 
 [DialogNode] ID=shana_horizonsgrave_badend_22;
