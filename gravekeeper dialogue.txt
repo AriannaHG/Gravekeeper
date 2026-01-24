@@ -860,7 +860,7 @@ nextNodeID=;
 
 -----------------------------Inject dialogue into NPC in a town
 [DialogOption] ID=pastor;
-fReq=loc:port8;
+--fReq=loc:port8;	--Want to eliminate the actual fReq so that this can occur at any pastor dialogue. Not sure if this has ramifications or not lol.
 text=I'm looking for help with this... Relic.;
 formulaReq=moreThan:0:partyItem:shana_deadbook * is:1:g:arianna_gravekeeper_phylactery_quest;
 newLineOfOptions=true;

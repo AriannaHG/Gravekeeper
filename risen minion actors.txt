@@ -5798,7 +5798,7 @@ style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=
 
 
 [ActorType] ID=ari_sacrificial_soul;
-name=Sacrificed Soul;
+name=Abominable Abscess;
 --journalID=md_journal_obelisk;
 bodyStructure=single;
 movementSpeed = 0;
@@ -5843,24 +5843,43 @@ bravery = 0.1;
 honor = 0;
 intelligence = 0.1;
 
+
 --baseSpriteExtraHeight = 16;
-baseSpriteExtraWidth = 16;
+--baseSpriteExtraWidth = 16;
 adjustSpriteX = 0;
+adjustSpriteY = 0;
+
+defaultSprite = actor_shana_undead_abscess_summoned;
+previewSprite = actor_shana_undead_abscess_summoned;
+
+skinPalette=pG;
+clothPalette=pB;
+armorPalette=pR;
+unarmoredPalette=pR;
+
+fxOnPhysicalHPDmg = hitDust;
+fxOnDeath = shana_abscess_die;
+
+
+
+--baseSpriteExtraHeight = 16;
+--baseSpriteExtraWidth = 16;
+--adjustSpriteX = 0;
 --adjustSpriteY = -7;
 
-defaultSprite = sacrificed_soul;
-previewSprite = sacrificed_soul;
+--defaultSprite = sacrificed_soul;
+--previewSprite = sacrificed_soul;
 unarmedAction = punch;
 
-skinPalette=overworld11;
-clothPalette=pGhost;
-armorPalette=pGhost;
+--skinPalette=overworld11;
+--clothPalette=pGhost;
+--armorPalette=pGhost;
 
 defaultSupportAbilities = ari_summoned;
 
 fxSpeech = sfx_slashingHit;
 
-idleAnim = s_0121loop_slow;
+idleAnim = s_idle;
 walkAnim = s_0121loop;
 jumpAnim = s_jump;
 painAnim = s_pain;
@@ -5870,7 +5889,7 @@ criticalAnim = s_crouch;
 frozenAnim = s_idle;
 deadAnim = s_die;
 
-randomNames=Sacrificed Soul;
+randomNames=Abominable Abscess;
 
 
 

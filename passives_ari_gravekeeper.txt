@@ -3,12 +3,15 @@
 ID=ari_gravekeeper_exhume;
 name=Exhume;
 icon=icon_exhume;
-tooltip=At the start of your turn, raise Zombies<icon=icon_zombie_minion><icon=icon_gravekeeper_risen> on all adjacent tiles containing <icon=icon_bone> and you may exhume up <icon=icon_bone>in a random area near you. Zombies<icon=icon_zombie_minion><icon=icon_gravekeeper_risen> will rapidly decay after each turn.<n=>Max. 5. Current: <math=d:ari_total_zombies_fielded>.;
+tooltip=At the start of your turn, raise Zombies<icon=icon_zombie_minion><icon=icon_gravekeeper_risen> on all adjacent tiles containing <icon=icon_bone> and you may exhume up <icon=icon_bone>in a random area near you. Zombies<icon=icon_zombie_minion><icon=icon_gravekeeper_risen> will rapidly decay after each turn.<n=>Delay <icon=time> Time to Act by 2.<n=>Max. 5. Current: <math=d:ari_total_zombies_fielded>.;
 XPCostUnlock=425;
 canBeGivenToAI=false;
 fxEvery4Frames=;
 emitFxWhileMoving=false;
 supportAbilsToReplace=;
+
+[SupportAbilityEffect]
+ID=ari_gravekeeper_exhume; actorValue=actTime; magnitude=2; duration=-1; 
 
 [SupportAbilityReaction]
 ID=ari_gravekeeper_exhume; element=timerUp; action=ari_gravekeeper_exhume_raise;
@@ -652,7 +655,7 @@ ID=ari_gravekeeper_foul_corpses; element=timerUp; action=ari_gravekeeper_corpse_
 ID=ari_gravekeeper_lichdom;
 name=Lichdom;
 icon=icon_gravekeeper_lichdom_elite;
-tooltip=<color=Crimson><textIf=(Unproficient) =1 - g:class_gravekeeper_lichdom><color=Gold>Elite. Return from death as a Risen Lich<icon=icon_gravekeeper_risen> for <icon=time>100. You may not be Revived during this time.;
+tooltip=<color=Crimson><textIf=(Inproficient) =1 - g:class_gravekeeper_lichdom><color=Gold>Elite. Return from death as a Risen Lich<icon=icon_gravekeeper_risen> for <icon=time>100. You may not be Revived during this time.;
 XPCostUnlock=2000;
 canBeGivenToAI=false;
 fxEvery4Frames=;
