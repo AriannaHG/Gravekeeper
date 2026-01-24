@@ -7290,6 +7290,7 @@ cloneFrom=Sc_trip;
 cooldown=80;
 
 ------------------------------------------------Horizon's Grave Bad Ending
+--todo check if when boss uses it camera is focused on boss
 [Action] ID=shana_horizons_grave;
 	name=Horizon's Grave;
 	icon=icon_horizons_grave;
@@ -7318,6 +7319,7 @@ cooldown=80;
 [ActionAoE]
     ID=shana_horizons_grave;
     cloneFrom=oneTile;
+    maxRange=0;
 
 --    [AvAffecter] ID=shana_horizons_grave; --set var and trigger dialog node. This killed my screenshake and somehow makes the tint persist past loading game so it's out
 --        actorValue=trigger;
@@ -7377,7 +7379,8 @@ cooldown=80;
     	airborne=true;
     	occupyAll=true;
     	bypassAll=true;
-    	canSelectAllies=false;
+ --   	canSelectAllies=false;
+ --   	canSelectEnemies=false;
     	minRange=1;
     	maxRange=22;
 

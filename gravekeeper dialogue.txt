@@ -1599,7 +1599,7 @@ triggerImmediatelyOnEnteringZone=False; triggeredByElement=none; travelModeOnly=
 [GlobalTrigger] numID=0; aliasID=shana_horizonsgrave_badend_music_trigger;
 topX=0;topY=0;btmX=0;btmY=0;
 triggerImmediatelyOnEnteringZone=False; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
-[GlobalTriggerEffect] ID=shana_horizonsgrave_badend_music_trigger; effectID=playSong; sValue=Mental Vortex; sValue2=; bValue1=False; bValue2=False; fValue=1; delay=0; xValue=110; yValue=0;
+[GlobalTriggerEffect] ID=shana_horizonsgrave_badend_music_trigger; effectID=playSong; sValue=Mental Vortex; sValue2=; bValue1=False; bValue2=False; fValue=1; delay=0; xValue=150; yValue=0;
 
 [GlobalTrigger] numID=0; aliasID=shana_horizonsgrave_badend_gameover_trigger;
 topX=0;topY=0;btmX=0;btmY=0;

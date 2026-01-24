@@ -1042,13 +1042,50 @@ ID=shana_delay_sync0; element=41005; action=shana_expurgate3;
 -----------------------------------------------------------END SUBSUME
 
 ------------------------------------------------------------ROTTING PRISON
---todo: once per combat
+
+[ActorValue] --------------------------------------------------------------- define AV to show Rotting Prison has been used already
+ID=shana_rotting_prison_used;
+name=Rotting Prison Used (this should not be visible);
+icon=;
+bubbleIcon=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = 0;
+affectsActors = true;
+canAffectIncapped = true;
+showDamageNumbers = false;
+showDamageNumbersMagnitude = false;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = false;
+showDamageNumbersElements = false;
+showDamageNumbersIconInTooltips = false;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0;
+elementReactionModifiesDuration = false;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = false;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+[ActorValueReaction] -----------------------------------------------------------------------------------------------------------------------reset
+ID=shana_rotting_prison_used;
+element=combatStart; newID=X;
+[ActorValueReaction] -----------------------------------------------------------------------------------------------------------------------reset2
+ID=shana_rotting_prison_used;
+element=combatEnd; newID=X;
 --todo: when all testing is done canSelectAllies=false; canSelectEnemies=true;
 
 -- First part of Rotting Prison.
 [Action] ID=shana_rotting_prison;
 	name=Rotting Prison;
-	cooldown=50;
+--	cooldown=50;
+	fReq=1 - c:shana_rotting_prison_used;
 	icon=icon_flesh_prison;
 	AIRatingBias=50;
 	mpCost=5;
@@ -1177,6 +1214,19 @@ ID=shana_delay_sync0; element=41005; action=shana_expurgate3;
 	aoeCasterAsOrigin=true;
 	ignoreCannotTarget=true;
 
+-- Sets the AV that prevents this skill from being used again this combat.
+[AvAffecter]
+	ID=shana_rotting_prison;
+	actorValue=shana_rotting_prison_used;
+	magnitude=1;
+	duration=-1; --infinite duration but is removed by combat start or end
+	chance=100;
+	visibleMiss=false;
+--	visibleEvaluations=false;
+[AvAffecterAoE]
+	ID=shana_rotting_prison;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
 
 --This sets the variables referred to in the damaging reaction being cast. when its initially charged, it queues the ruin3 action too
 [Action] ID=shana_rotting_prison2set;
@@ -1218,7 +1268,7 @@ ID=shana_delay_sync0; element=41005; action=shana_expurgate3;
 	name=Rotting Prison;
 	icon=icon_flesh_prison;
 	chargeTime=20;
-	tooltip=This spell tracks its target, or their corpse if present. Usable once per combat. Summons an Undead Abscess on each tile adjacent to the target. Abscesses summoned on occupied tiles instead explode into gore, dealing <thinnerIcon=skill_Fire><math=11212> damage to the tile's occupant.; --todo change math, can use c:skill_Fire
+	tooltip=This spell tracks its target, or their corpse if present. Usable once per combat. Summons an Undead Abscess on each tile adjacent to the target. Abscesses summoned on occupied tiles are immediately detonated, dealing <thinnerIcon=skill_Fire><math=11212> damage to the tile's occupant, if any.; --todo change math, can use c:skill_Fire
 	special=requiresCharging;
 	casterAnimation=shoulderbash;
 --	FXOnCaster=darken_major;
@@ -2040,7 +2090,3 @@ ID=shana_delay_sync0; element=41005; action=shana_expurgate3;
 	ignoreCannotTarget=true;
 
 -----------------------------------------------------------END EXPURGATE
-
---todo, 9999 cd
---icon_flesh_prison --maybe recolor this so it's more putrid
---This spell tracks its target, or their corpse if present. An Undead Abscess rises from all adjacent unoccupied tiles. If an adjacent tile is occupied, the nascent Abscess will instead detonate, dealing <massive> <fire> damage to the tile's occupant. --Range should be something like 4-8, or infinite range if not full hp. Usable once per combat, via 9999 cd. Huge ai incentive.
