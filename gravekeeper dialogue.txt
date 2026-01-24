@@ -460,6 +460,14 @@ fReq=g:shana_added_tally;
 -----------End Warning poster dialogue---------------------------
 
 
+-----------Rabbit poster-----------------------------------------
+
+[DialogNode] ID=shana_rabbit_poster_dialog;
+statements=Have you seen my bun, Snowball? He's small, white and fluffy, and has a collar on his neck. He's been missing since last week. If anyone helps me find him, I'll give you 240 <itemBig_low=gp> and bake you lots of sweets.<n=><n=>-Susie;
+
+-----------End Rabbit poster dialogue----------------------------
+
+
 [DialogNode] ID=ari_dialog_zombchatter;
 animations=stern;
 statements=<rand=Hey, did you notice anything sticking out of the ground near Arianna's house?/Be careful at night around here./Don't stray too close to the graveyard up north./We don't normally get visitors here...>;

@@ -149,6 +149,7 @@ text=<itemBig=ari_closed_barrow_gate><title=Gate to Old Barrow><brAdj=>Heavily d
 [ItemType]  name=Warning;
 itemCategory=mech; stackable=true;
 ID=shana_barrow_warning_notice; sprite=2025;
+journalID=shana_journal_barrow_warning_notice;
 pR=pWood;
 description=Use to read.;
 special=cannotBePickedUp; special=canHangOnWalls;
@@ -157,10 +158,45 @@ special=fullTileHitbox; special=oneClickToUse;
 ID=shana_barrow_warning_notice; element=use; action=use;
 
 [JournalEntry]
-ID=shana_barrow_warning_notice;
+ID=shana_journal_barrow_warning_notice;
 category=item; halfPage=true; rarity=0;
 title=Warning;
 text=<itemBig=shana_barrow_warning_notice><title=Warning><brAdj=>A waterproofed poster, inked by a frustrated-looking hand.;
+
+[ItemType]  name=Missing Poster;
+itemCategory=mech; stackable=true;
+ID=shana_barrow_missing_poster; sprite=2025;
+journalID=shana_journal_barrow_missing_poster;
+pR=pWood;
+description=Use to read.;
+special=cannotBePickedUp; special=canHangOnWalls;
+special=fullTileHitbox; special=oneClickToUse;
+[ItemReaction]
+ID=shana_barrow_warning_notice; element=use; action=use;
+
+[JournalEntry]
+ID=shana_journal_barrow_missing_poster;
+category=item; halfPage=true; rarity=0;
+title=Missing Poster;
+text=<itemBig=shana_barrow_missing_poster><title=Missing Poster><brAdj=>A waterproofed poster, written by a little girl missing her rabbit.;
+
+--[Trigger] numID=19; aliasID=; todo put a trigger similar to this on the item itself, this should be in old barrow proper
+--topX=11;topY=3;btmX=11;btmY=3;
+--triggerImmediatelyOnEnteringZone=False; triggeredByElement=use; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+--[TriggerEffect] numID=19; effectID=talk; sValue=; sValue2=shana_rabbit_poster_dialog; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+
+[ItemType]  name=Soiled Diary; --todo bury this in the grave with 240g and some bones in snowball arena once made
+description=The remains of a diary, fused together by unspeakable fluids. Only the last page remains legible. <color=Gold>'Look'<color=White> at it to read what you can.;
+pR=pYellow;
+pB=pBlackCloth;
+ID=shana_susies_diary; sprite=870;
+journalID=shana_journal_susies_diary;
+[JournalEntry]
+ID=shana_journal_susies_diary;
+category=item; halfPage=true;
+title=Soiled Diary;
+text=<itemBig=shana_susies_diary><title=Soiled Diary><brAdj=>...supposed to stay indoors at night, but Snowball's still missing and my parents aren't doing anything to help! Nobody's helping! I miss you, Snowball. Please don't be sick like the others...";
+
 
 [ItemType]  name=Unliving Barrier; --to use this, have a trigger that only triggers once spawn this in at start of combat if boss is alive, then have the boss pulse element 41011 out on incap via reaction (shape 8)
   ID=shana_unliving_barrier_item; texture=gkart; sprite=91; weight=0;  itemCategory=hazard;

@@ -7181,6 +7181,7 @@ action=shana_spawn_plaguebow;
 	needsLoS=false;
 	needsLoE=false;
 
+
 ----------------Futureproofing for Undead Abscess Animations
 
 [Animation] ID=shana_anim_abscess_charge; duration=3; --boat_idle_noWater copy
