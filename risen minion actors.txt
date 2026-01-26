@@ -7399,7 +7399,8 @@ defaultSprite = actor_shana_undead_abscess_summoned;
 --previewSprite = actor_shana_undead_abscess_summoned;
 --unarmedAction = qp_phoenix_peck;
 innateActions = shana_RottingPus_enemy;
-
+innateActions = shana_putrefy_vision_enemy;
+innateActions = shana_BequeathSelf_enemy;
 skinPalette=pG;
 clothPalette=pB;
 armorPalette=pR;

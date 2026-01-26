@@ -7224,13 +7224,89 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 	arc=true;
 	coneAngle=90;
 
+[Action] ID=shana_putrefy_vision_enemy;
+	name=Putrefy Vision;
+	icon=icon_De_iceblood; --TODO change this
+	mpCost=8 * d:mpCostMult * d:mpCostMult_onlyWithCT + d:mpCostMod_onlyWithCT + d:mpCostMod;
+	chargeTime=15 * d:chargeTimeMult * d:chargeTimeMult_onlyWithMP + d:chargeTimeMod + d:chargeTimeMod_onlyWithMP;
+	cooldown=35;
+
+    tooltip=Seed enemy eyes with a putrid bloom, inflicting <math=d:ruinDmgDisplay(3)> stacks of Rot<icon=icon_gravekeeper_rot> and blinding for <icon=time><math=60 + d:ruinDurMax(3)>.;
+	tooltipTopRight=<icon=MagAtk_small><icon=skill_Ruin_small>;
+
+	XPCost=150;
+	XPCost=950;
+	maxRank=2;
+
+	special=requiresCasting;
+	casterAnimation=spellcast;
+	FXOnCaster=magicCharge;
+
+	FXOnTarget=darken;
+	FXOnTargetColor=Green;
+	FXOnTarget=ringsDownward1_noOverlap;
+	FXOnTargetColor=Black;
+	FXOnTarget=sfx_zyew;
+
+[ActionAoE]
+	ID=shana_putrefy_vision_enemy;
+	needsLoS = true;
+	needsLoE = false;
+	minRange = 1;
+	maxRange = 3;
+	airborne=true;
+	arc=true;
+	bypassAll=true;
+	occupyAll=true;
+[AvAffecter]
+	ID=shana_putrefy_vision_enemy;
+	actorValue=ari_rot_status_enemy;
+	magnitude=d:rotCastDmgCalc(3) * rxn:ruin * rxn:magic + t:ari_rot_status_enemy;
+	duration=80;
+	chance=d:ruinAcc;
+	FXOnTile=sfx_ruin;
+	FXOnTileColor=Green;
+--	FXOnTile=delay;
+--	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Black;
+	FXOnTile=dust_cloud;
+    FXOnTileColor=Black;
+    FXOnTile=dust_cloud;
+    FXOnTileColor=Olive;
+	FXOnTile=dust_cloud;
+    FXOnTileColor=Black;
+    FXOnTile=dust_cloud;
+    FXOnTileColor=Olive;
+	FXOnTile=medShakeHoriz;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=shana_putrefy_vision_enemy;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_putrefy_vision_enemy;
+	actorValue=blind;
+	visibleMiss=false;
+	magnitude= 1;
+	duration=60 + d:ruinDur(3);
+	chance=d:ruinAcc;
+	element=magic;
+	element=ruin;
+	FXOnHit=Debuff_midPitchChirp;
+[AvAffecterAoE]
+	ID=shana_putrefy_vision_enemy;
+	cloneFrom=oneTile;
+
 [Action] ID=shana_BequeathSelf_enemy;
 	icon=icon_De_brainshock; --todo change this
 	casterAnimation=s_simplestAttack; --todo change this, I want it to open mouth when attacking too
 	name=Bequeath Self;
 	chargeTime=30 * d:chargeTimeMult * d:chargeTimeMult_onlyWithMP + d:chargeTimeMod + d:chargeTimeMod_onlyWithMP;
 	tooltip=Undergo dissolution to grant all allies a stacking +6 <icon=PhysAtk> and +6 <icon=skill_Ruin> for 30 <icon=time>.;
-	tooltipTopRight=<icon=MagAtk_small><icon=skill_Ruin_small>;
+--	tooltipTopRight=<icon=MagAtk_small><icon=skill_Ruin_small>;
 	special=requiresCasting;
     casterAnimation=spellcast;
     FXOnCaster=magicCharge;

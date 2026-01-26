@@ -535,7 +535,7 @@ actions=shana_BequeathSelf_enemy;
 actions=shana_sleeping_sickness_enemy;
 actions=shana_psychenecrosis_enemy;
 actions=shana_RottingPus_enemy;
-actions=shana_horizons_grave;
+actions=shana_putrefy_vision_enemy;
 
 supportAbilities=shana_festering_fulcrum;
 supportAbilities=shana_instability;
