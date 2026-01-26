@@ -445,6 +445,8 @@ tooltip=If you are hit into critical condition (25% <icon=HP> or below), grant a
 ID=shana_critical_autolyze; element=physical; element=magic; actorValues=HP; action=shana_critical_autolyze_act;
 
 [Action] ID=shana_critical_autolyze_act;
+	name=Critical Autolyze;
+	icon=icon_critical_autolyze;
 	special=usableEvenWhenCantAct;
 	special=usableEvenWhenReacting;
 	special=usableEvenWhenYourTurn;
@@ -473,7 +475,7 @@ ID=shana_critical_autolyze; element=physical; element=magic; actorValues=HP; act
 	visibleEvaluations=true;
 	visibleMiss=false;
 	harmful=false;
-	magnitude=6 + cFromSource:PhysAtk:shana_critical_autolyze_act; --stack
+	magnitude=6 + tFromSource:PhysAtk:shana_critical_autolyze_act; --stack
 	duration=30;
 	chance=100 * thisPreviousAVHit:shana_critical_autolyze_act;
 	FXOnHit=sparkles;
@@ -489,7 +491,7 @@ ID=shana_critical_autolyze; element=physical; element=magic; actorValues=HP; act
 	visibleEvaluations=true;
 	visibleMiss=false;
 	harmful=false;
-	magnitude=6 + cFromSource:skill_Ruin:shana_critical_autolyze_act;
+	magnitude=6 + tFromSource:skill_Ruin:shana_critical_autolyze_act;
 	duration=30;
 	chance=100 * thisPreviousAVHit:shana_critical_autolyze_act;
 [AvAffecterAoE]
@@ -529,7 +531,7 @@ journalID=journal_ranger2;
 description=Testing.;
 paletteUI=pGreen;
 
-actions=shana_Ran_doubleTap_enemy;
+actions=shana_BequeathSelf_enemy;
 actions=shana_sleeping_sickness_enemy;
 actions=shana_psychenecrosis_enemy;
 actions=shana_RottingPus_enemy;

@@ -7224,6 +7224,87 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 	arc=true;
 	coneAngle=90;
 
+[Action] ID=shana_BequeathSelf_enemy;
+	icon=icon_De_brainshock; --todo change this
+	casterAnimation=s_simplestAttack; --todo change this, I want it to open mouth when attacking too
+	name=Bequeath Self;
+	chargeTime=30 * d:chargeTimeMult * d:chargeTimeMult_onlyWithMP + d:chargeTimeMod + d:chargeTimeMod_onlyWithMP;
+	tooltip=Undergo dissolution to grant all allies a stacking +6 <icon=PhysAtk> and +6 <icon=skill_Ruin> for 30 <icon=time>.;
+	tooltipTopRight=<icon=MagAtk_small><icon=skill_Ruin_small>;
+	special=requiresCasting;
+    casterAnimation=spellcast;
+    FXOnCaster=magicCharge;
+	FXOnCaster=darken_minor;
+
+	XPCost=150;
+    XPCost=950;
+    maxRank=2;
+[ActionAoE]
+	ID=shana_BequeathSelf_enemy;
+	cloneFrom=oneTile;
+
+[AvAffecter]
+	ID=shana_BequeathSelf_enemy;
+	actorValue=HP;
+	magnitude=-t:HP;
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=false;
+	chance=100 * m:casterIsTarget;
+	FXOnHit=shana_Fast_superduperSparkles;
+    FXOnHitColor=Black;
+    FXOnHit=shana_Fast_superduperSparkles;
+    FXOnHitColor=Green;
+    FXOnHit=sfx_crystallize_echo;
+[AvAffecterAoE]
+	ID=shana_BequeathSelf_enemy;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+[AvAffecter]
+	ID=shana_BequeathSelf_enemy;
+	actorValue=skill_Ruin;
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=false;
+	chance=100;
+	FXOnHit=shana_Fast_superduperSparkles;
+    FXOnHitColor=Black;
+    FXOnHit=shana_Fast_superduperSparkles;
+    FXOnHitColor=Green;
+    FXOnHit=sfx_crystallize_echo;
+[AvAffecterAoE]
+	ID=shana_BequeathSelf_enemy;
+	cloneFrom=oneTile;
+	aoeCasterAsOrigin=true;
+[AvAffecter] --6 phys
+	ID=shana_BequeathSelf_enemy;
+	actorValue=PhysAtk;
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=false;
+	magnitude=6 + tFromSource:PhysAtk:shana_BequeathSelf_enemy; --stack
+	duration=30;
+	chance=100 - 100 * m:casterIsTarget;
+	FXOnHit=sparkles;
+	FXOnHitColor=Black;
+	FXOnHit=sparkles;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=shana_BequeathSelf_enemy;
+	cloneFrom=allAllies;
+[AvAffecter] --6 ruin
+	ID=shana_BequeathSelf_enemy;
+	actorValue=skill_Ruin;
+	visibleEvaluations=true;
+	visibleMiss=false;
+	harmful=false;
+	magnitude=6 + tFromSource:skill_Ruin:shana_BequeathSelf_enemy;
+	duration=30;
+	chance=100 - 100 * m:casterIsTarget;
+[AvAffecterAoE]
+	ID=shana_BequeathSelf_enemy;
+	cloneFrom=allAllies;
+
 -----------------------------------------------Fake double tap for Plaguebringer Yokaze
 [Action] ID=shana_Ran_doubleTap_enemy;
 	name=Double Tap;
@@ -7290,7 +7371,6 @@ cloneFrom=Sc_trip;
 cooldown=80;
 
 ------------------------------------------------Horizon's Grave Bad Ending
---todo check if when boss uses it camera is focused on boss
 [Action] ID=shana_horizons_grave;
 	name=Horizon's Grave;
 	icon=icon_horizons_grave;
