@@ -7422,7 +7422,7 @@ sleepAnim = s_crouch;
 criticalAnim = s_crouch;
 frozenAnim = s_idle;
 deadAnim = s_die;
-chargeAnim = shana_anim_abscess_charge;  --this is very cursed but custom anims seem to crash or just not work
+chargeAnim = shana_anim_abscess_charge;
 castAnim = shana_anim_abscess_charge;
 spellcastAnim = shana_anim_abscess_cast;
 
