@@ -271,3 +271,33 @@ formula=1 * rxn:ruin;
 
 [FormulaGlobal] ID=1rotcalc;
 formula=ceiling:d:1rotcalcpt1;
+
+------------------------------------------------------------Formulas to check if delayed spells are already queued on the target
+[FormulaGlobal] ID=shana_is_subsume_queued_on_target;
+formula=t:shana_delay_sync0 + t:shana_delay_sync1 + t:shana_delay_sync2 + t:shana_delay_sync3 + t:shana_delay_sync4 + t:shana_delay_sync5 + t:shana_delay_sync6 + t:shana_delay_sync7 + t:shana_delay_sync8 + t:shana_delay_sync9 + t:shana_delay_sync10;
+
+------------------------------------------------------------subsume EXPECTED base damage formula (can't use g:shana_subsume_casterruinskill as that's only set at time of casting), set this in terms of current character stats
+[FormulaGlobal] ID=shana_subsumebasedamage;
+formula=c:skill_Ruin;
+
+------------------------------------------------------------subsume AI rating bias
+[FormulaGlobal] ID=shana_expectedsubsumedamage;
+formula=d:shana_subsumebasedamage * rxn:magic * rxn:ruin - 999999 * t:negate;
+
+[FormulaGlobal] ID=shana_subsume_comparison; --subsume kills if this is zero or positive
+formula=d:shana_expectedsubsumedamage - t:HP;
+
+[FormulaGlobal] ID=shana_subsume_killcalc1;
+formula=is:0:d:shana_subsume_comparison;
+
+[FormulaGlobal] ID=shana_subsume_killcalc2;
+formula=moreThan:0:d:shana_subsume_comparison;
+
+[FormulaGlobal] ID=shana_will_subsume_kill; --I don't care if it returns 1 or 2
+formula=d:shana_subsume_killcalc1 + d:shana_subsume_killcalc2;
+
+[FormulaGlobal] ID=shana_is_subsume_best_to_castpt1;
+formula=m:tControllable * m:tPlayer * m:incapped + m:tControllable * m:tPlayer * d:shana_will_subsume_kill - d:shana_is_subsume_queued_on_target * 999;
+
+[FormulaGlobal] ID=shana_is_subsume_best_to_cast;
+formula=min:0:d:shana_is_subsume_best_to_castpt1;

@@ -7477,11 +7477,13 @@ text=<actorBig=shana_undead_abscess_normal_enemy><actorBig=shana_undead_abscess_
 
 --todo: fix spawned monsters being allied to player
 
---todo: fix sprite offset so tentacles are just above the targeting circle
+--todo: fix casting fx offset
 
 --todo maybe: idle anim?
 
 --todo: fix timeline description placeholder dmg
+
+--todo: fix the following: If subsume kills and then removes the last player from combat, a softlock happens. Maybe change the chance on the removal to check if that's the only player unit left
 
 [ActorType] ID=shana_undead_amalgam_enemy;
 name=Undead Amalgam;
@@ -7534,7 +7536,7 @@ intelligence = 0.1;
 baseSpriteExtraHeight = 16;
 --baseSpriteExtraWidth = 16;
 adjustSpriteX = 0;
-adjustSpriteY = 0;
+adjustSpriteY = -5;
 
 defaultSprite = actor_shana_undead_amalgam;
 --previewSprite = actor_shana_undead_amalgam;
@@ -7566,7 +7568,7 @@ sleepAnim = s_crouch;
 criticalAnim = s_crouch;
 frozenAnim = s_idle;
 deadAnim = s_die;
-chargeAnim = shana_anim_abscess_charge;  --this is very cursed but custom anims seem to crash or just not work
+chargeAnim = shana_anim_abscess_charge;
 castAnim = shana_anim_abscess_charge;
 spellcastAnim = shana_anim_abscess_cast;
 
@@ -7613,4 +7615,4 @@ maxRange=3;
 ID=journal_shana_undead_amalgam;
 category=creature; halfPage=false; rarity=2;
 title=Undead Abscesses;
-text=<actorBig=shana_undead_amalgam_enemy><title=Undead Amalgam><brAdj=>          An ambulatory trigger stone the size of an average Falpa's fist, ensconced between two sets of wickedly sharp teeth dripping reeking bile and garnished with tentacles like the world's worst sandwich.<n=>In battle, it harnesses Gate magic to barrage foes with ruinous, battlefield-altering spells from any distance with perfect tracking, and is even capable of weaponizing what passes for their reproductive cycle.<n=>Being overfilled with Essence while channeling several different types of magic tends to have rather severe drawbacks, however...;
+text=<actorBig=shana_undead_amalgam_enemy><title=Undead Amalgam><brAdj=>          A seething lump of effluvia nestled within a vitrified shell, itself ensconced between two sets of wickedly sharp teeth dripping reeking bile, garnished with tentacles like the world's worst sandwich.<n=>In battle, it harnesses Gate magic to barrage foes with ruinous, battlefield-altering spells from any distance with perfect tracking, and is even capable of weaponizing what passes for its reproductive cycle.<n=>Being overfilled with Essence while channeling several different types of magic tends to have rather severe drawbacks, however...;

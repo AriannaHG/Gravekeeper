@@ -799,6 +799,22 @@ ID=shana_delay_sync0; element=41005; action=shana_expurgate3;
 	minRange=1;
 	maxRange=10;
 
+-- Massively incentivize the AI to try and eat a party member if {incapacitated or have less hp than the damage subsume would do}, AND do NOT have subsume queued up on them.
+[AvAffecter]
+	ID=shana_subsume;
+	actorValue=HP;
+	--+ tIsLessThan:HP:g:shana_subsume_casterruinskill * 100 --need to nest formulas
+	--check if it is a crew member as well
+	--then make another formula that floors the value at 0
+	--then multiply the magnitude by that formula
+	magnitude=-999 * d:shana_is_subsume_best_to_cast;
+	duration=-2;
+	chance=100;
+	visibleMiss=false;
+	forActEvalPurposesOnly=true;
+[AvAffecterAoE]
+	ID=shana_subsume;
+	cloneFrom=oneTile;
 
 -- Calculate which AV is getting used as our ID and apply it to both the target and the caster.
 [AvAffecter]
@@ -999,7 +1015,7 @@ ID=shana_delay_sync0; element=41005; action=shana_expurgate3;
 	ignoreCannotTarget=true;
 
 
--- Ruin Damage.
+-- Ruin Damage. Note: change [FormulaGlobal] ID=shana_subsumebasedamage; if you change the damage formula here to the expected value of whatever you put down here - can't directly use the global var as it is set at casting time.
 [AvAffecter]
 	ID=shana_subsume3;
 	actorValue=HP;
@@ -1087,7 +1103,7 @@ element=combatEnd; newID=X;
 --	cooldown=50;
 	fReq=1 - c:shana_rotting_prison_used;
 	icon=icon_flesh_prison;
-	AIRatingBias=50;
+	AIRatingBias=500; --this will almost always be used by amalgams unless they can do the funny with subsume TODO: Fix this so it doesn't use it turn 1 on a rando. Ideally I'd have it only used when enemies are within a certain range, but at the AI's discretion
 	mpCost=5;
 -- Although you commented this out (I assume for testing), if you did try to use this special=;, it only works on Actions set in an ActorClass's actions=; and not on Item action=;s.
 --	special=startBattleOnCooldown;
