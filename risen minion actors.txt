@@ -7408,7 +7408,7 @@ unarmoredPalette=pR;
 
 defaultSupportAbilities = shana_uber_instability;
 
-defaultFaction = enemy;
+faction=enemy; combatTeam=;
 
 fxOnPhysicalHPDmg = hitDust;
 fxOnDeath = shana_abscess_die;
@@ -7471,19 +7471,15 @@ text=<actorBig=shana_undead_abscess_normal_enemy><actorBig=shana_undead_abscess_
 
 --todo: implement melee bite that does phys and rot damage
 
---todo: fix animation
+--todo: fix stun animation and remove shoulderbash cast animation
 
 --todo: channeling special effects
-
---todo: fix spawned monsters being allied to player
 
 --todo: fix casting fx offset
 
 --todo maybe: idle anim?
 
 --todo: fix timeline description placeholder dmg
-
---todo: fix the following: If subsume kills and then removes the last player from combat, a softlock happens. Maybe change the chance on the removal to check if that's the only player unit left
 
 [ActorType] ID=shana_undead_amalgam_enemy;
 name=Undead Amalgam;

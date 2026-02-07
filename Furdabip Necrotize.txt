@@ -1040,13 +1040,13 @@ ID=shana_delay_sync0; element=41005; action=shana_expurgate3;
 	cloneFrom=oneTile;
 	ignoreCannotTarget=true;
 
--- Remove from Combat if incapacitated.
+-- Remove from Combat if incapacitated, assuming you're not the last crewmember remaining.
 [AvAffecter]
 	ID=shana_subsume3;
 	actorValue=removeActor;
 	magnitude=1;
 	duration=-2;
-	chance=100 * m:incapped;
+	chance=100 * m:incapped * isNot:1:m:partySize;
 	element=magic;
 	element=ruin;
 	FXOnHit=pixelCloud_black_silent;
@@ -1352,7 +1352,7 @@ element=combatEnd; newID=X;
 [AvAffecter] --summon abscesses in occupiable tiles
 	ID=shana_rotting_prison3;
 	harmful=false;
-	actorValue=summonActor_temp;
+	actorValue=summonActor_defaultTeam;
 	magnitude=shana_undead_abscess_summoned_enemy;
 	chance=100;
 	duration=-2;

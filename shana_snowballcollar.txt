@@ -5,6 +5,8 @@ description=Cherished bun's collar. Once per turn during combat, attacking any n
 weight=0; volume=1; value=2000;
 itemCategory=4; 
 journalID=shana_rabbitcollar;
+[ItemEffect]
+ID=shana_rabbitcollar; actorValue=moveDistance; magnitude=1; duration=-1;
 [ItemEffect]  
 ID=shana_rabbitcollar; actorValue=jumpDistance; magnitude=1; duration=-1;
 [ItemReaction]
