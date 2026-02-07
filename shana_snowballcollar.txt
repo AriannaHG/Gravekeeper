@@ -18,7 +18,8 @@ ID=shana_rabbitcollar; element=weaponBuff; action=shana_rabbitKick;
 ID=shana_rabbitcollar;
 category=equipment; halfPage=true; rarity=3;
 title=Snowball's Collar;
-text=<itemBig=shana_rabbitcollar><title=Snowball's Collar><brAdj=>A threadbare yet sturdy bun's collar, shimmering with latent essence. The name "Snowball" is faintly visible. <n=>Once per turn during combat, if the wearer performs an attack targeting any number of adjacent units without having moved their previous turn, their <icon=moveDistance> <icon=jumpDistance> will be channeled into a violent kick against each that deals 20% <icon=skill_Fist> damage per <icon=moveDistance> <icon=jumpDistance> and knocks back that many tiles, but does not trigger secondary effects.;
+
+text=<itemBig=shana_rabbitcollar><title=Snowball's Collar><brAdj=>A threadbare yet sturdy bun's collar, shimmering with latent essence. The name "Snowball" is faintly visible. <n=>Once per turn during combat, performing an attack targeting any number of adjacent units without having moved the previous turn channels <icon=moveDistance> <icon=jumpDistance> into a violent kick against each, as though wielding a weapon of<icon=icon_shana_fakeskillFistForJournal>7. Kicks performed this way deal 20% damage per <icon=moveDistance> <icon=jumpDistance> and knock foes back that many tiles.;
 
 [Animation] ID=shana_rabbit_kick_anim; duration=0.16; --speedMod_rand=0.3; --attackKeyframe=1;
 [Keyframe] ID=shana_rabbit_kick_anim; frame=0; endTime=0.15;
