@@ -253,15 +253,15 @@ ID=pureMind; actorValues=dispel; actorValues=charging; actorValues=casting; acto
 	ID=Gu_mightyBlock;
 	cloneFrom=oneTile;
 
-[SupportAbility] ID=shana_Saudade;
-name=Saudade;
-tooltip=Gain immunity to casting interruption, most disabling effects, and Dispel. Gain 98% resistance to maxhp based effects.;
+[SupportAbility] ID=shana_hatredbeyondmeasure;
+name=Hatred Beyond Measure;
+tooltip=Gain immunity to casting interruption, most disabling effects, and Dispel. Furthermore, effects based off your maximum <icon=HP> are 2% as effective on you.;
 icon=iconP_Sa_pureMind; --todo art
 XPCostUnlock=80;
 [SupportAbilityReaction]
-ID=shana_Saudade; actorValues=dispel; actorValues=charging; actorValues=casting; actorValues=cancel; damageMultiplier=0;
+ID=shana_hatredbeyondmeasure; actorValues=dispel; actorValues=charging; actorValues=casting; actorValues=cancel; damageMultiplier=0;
 [SupportAbilityReaction]
-ID=shana_Saudade; actorValues=HPbased; damageMultiplier=0.02;
+ID=shana_hatredbeyondmeasure; actorValues=HPbased; damageMultiplier=0.02;
 
 
 
@@ -271,20 +271,22 @@ ID=shana_Saudade; actorValues=HPbased; damageMultiplier=0.02;
 
 [SupportAbility] ID=shana_Todestrieb;
 name=Todestrieb;
-tooltip=When hit into critical condition for the first time, inflict 10 stacks of Rot<icon=icon_gravekeeper_rot> to all enemies, cure all negative status effects on self, then gain Negate, Aegis and Mighty Block for 999 <icon=time>. <icon=HP> does not drop below 25% before this occurs, and when it does...;
+tooltip=When hit into critical condition for the first time, inflict 10 stacks of Rot<icon=icon_gravekeeper_rot> to all enemies and cure all negative status effects on self, then gain Negate, Aegis and Mighty Block for 999 <icon=time>. <icon=HP> does not drop below 25% before this occurs, and when it does...;
 icon=icon_Gu_mightyBlock; --todo art
 
---todo: at combat start, gain invisible salvation.
+[SupportAbilityReaction] --at zone entry for the first time, gain unkillable. todo: wording, alternative solution?
+ID=shana_Todestrieb; actorValues=combatStart; actorValues=combatEnd; actorValues=enterZone; action=shana_todestrieb_becomeunkillable;
 
---todo implement reaction with condition: hit into critical AND has salvation
+[SupportAbilityReaction] --buffs boss defensively but makes it killable when hit into critical, only works when unkillable.
+ID=shana_Todestrieb; actorValues=HP; action=shana_todestrieb_reaction;
 
 
+--Modified Salvation status from Prominence.
 
-
-[Action] ID=shana_todestrieb_reaction; --add all stuff inherent to critical reactions (castable when...)
-	name=Discipline;
-	icon=icon_Gu_discipline;
-	tooltip=inflict 10 stacks of Rot<icon=icon_gravekeeper_rot> to all enemies, cure all negative status effects on self, then gain Negate, Aegis and Mighty Block for 999 <icon=time>.;	
+[Action] ID=shana_todestrieb_becomeunkillable;
+	name=TodestriebUnkillable;
+	icon=icon_Gu_mightyBlock;
+	tooltip=This makes the boss unkillable, essentially resetting its enrage if the player somehow leaves midfight.;	
 	harmful=false;
 	attractAttention=false;
 	XPCost=70;
@@ -292,16 +294,69 @@ icon=icon_Gu_mightyBlock; --todo art
 	casterAnimation=charge_alt;
 	FXOnTarget=largePing;
 	FXOnTarget=sfx_risingBipLow;
+[AvAffecter]----------------------------------------------------------these two AvAffecters makes the target unkillable
+	ID=shana_todestrieb_becomeunkillable; 
+	harmful=false;
+	actorValue=trigger;
+	magnitude=setGlobalVar_toActorID,salvationTarget,False,False;
+	duration=1;
+	chance=100;
+	FXOnHit=pop;
+[AvAffecterAoE]
+	ID=shana_todestrieb_becomeunkillable;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_todestrieb_becomeunkillable; 
+	harmful=false;
+	actorValue=task;
+	magnitude=setActorBool,@GsalvationTarget,unkillable,1,True,False,False,False;
+	duration=-2;
+	chance=100;
+	FXOnHit=pop;
+[AvAffecterAoE]
+	ID=shana_todestrieb_becomeunkillable;
+	cloneFrom=oneTile;
+
+
+
+
+
+
+[Action] ID=shana_todestrieb_reaction;
+	name=Todestrieb;
+	icon=icon_Gu_mightyBlock;
+	tooltip=Inflict 10 stacks of Rot<icon=icon_gravekeeper_rot> to all enemies and cure all negative status effects on self, then gain Negate, Aegis and Mighty Block for 999 <icon=time>, then make self killable.;	
+	harmful=false;
+	attractAttention=false;
+	XPCost=70;
+	maxRank=1;
+	casterAnimation=charge_alt;
+	FXOnTarget=largePing;
+	FXOnTarget=sfx_risingBipLow;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+	queueAnotherAction=shana_todestrieb_reaction2;
+	fReq_queueAnotherAction=100 * c:unkillable * m:tCritical;
 [ActionAoE] 
 	ID=shana_todestrieb_reaction; 
 	cloneFrom=oneTile;
-
-[AvAffecter]
+[AvAffecter] ----------------------------------Dummy AV to see if it should go off or not.
+	ID=shana_todestrieb_reaction;
+	harmful=false;
+	chance=100 * c:unkillable * m:tCritical;
+	FXOnTile=sparkle;
+	FXOnHit=sparklesFast;
+	FXOnHit=briefAuraSound;
+[AvAffecterAoE]
+	ID=shana_todestrieb_reaction;
+	cloneFrom=oneTile;	
+[AvAffecter] ----------------------------------Rot.
 	ID=shana_todestrieb_reaction;
 	actorValue=ari_rot_status_enemy;
 	magnitude=t:ari_rot_status_enemy + 10 * rxn:ruin;
 	duration=80;
-	chance=100;
+	chance=100 * thisPreviousAVHit:shana_todestrieb_reaction;
 	FXOnTileColor=Green;
 	FXOnTile=chargeFast_overlap;
 	FXOnTileColor=Black;
@@ -328,7 +383,7 @@ icon=icon_Gu_mightyBlock; --todo art
 	actorValue=cure;
 	magnitude=1;
 	duration=-2;
-	chance=100 * m:tCurable;
+	chance=100 * thisPreviousAVHit:shana_todestrieb_reaction;
 	FXOnTile=sparkle;
 	FXOnHit=sparklesFast;
 	FXOnHit=briefAuraSound;
@@ -341,8 +396,8 @@ icon=icon_Gu_mightyBlock; --todo art
 	actorValue=negate;
 	harmful=false;
 	magnitude=1;
-	duration=80 + d:lifeDurMax(2);
-	chance=100;
+	duration=999;
+	chance=100 * thisPreviousAVHit:shana_todestrieb_reaction;
 	element=magic;
 	FXOnTile=chargeFast;
 	FXOnTileColor=White;
@@ -360,8 +415,8 @@ icon=icon_Gu_mightyBlock; --todo art
 	actorValue=aegis;
 	harmful=false;
 	magnitude=1;
-	duration=80 + d:lifeDurMax(2);
-	chance=100;
+	duration=999;
+	chance=100 * thisPreviousAVHit:shana_todestrieb_reaction;
 	element=magic;
 	element=life;
 	FXOnTile=chargeFast;
@@ -380,8 +435,8 @@ icon=icon_Gu_mightyBlock; --todo art
 	harmful=false;
 	actorValue=PhysDef;
 	magnitude=3 + dMin0:mightyBlockDef;
-	duration=-3;
-	chance=100;
+	duration=999;
+	chance=100 * thisPreviousAVHit:shana_todestrieb_reaction;
 	FXOnTarget=shields;
 	FXOnTargetColor=Gold;
 	FXOnTarget=sfx_sliceShingLow;
@@ -394,8 +449,8 @@ icon=icon_Gu_mightyBlock; --todo art
 	visibleEvaluations=false;
 	actorValue=PhysAtk;
 	magnitude=-2;
-	duration=-3;
-	chance=100;
+	duration=999;
+	chance=100 * thisPreviousAVHit:shana_todestrieb_reaction;
 [AvAffecterAoE]
 	ID=shana_todestrieb_reaction;
 	cloneFrom=oneTile;
@@ -405,17 +460,66 @@ icon=icon_Gu_mightyBlock; --todo art
 	visibleEvaluations=false;
 	actorValue=recentlyBlocked;
 	magnitude=1 + c:recentlyBlocked;
-	duration=110;
-	chance=100;
+	duration=999;
+	chance=100 * thisPreviousAVHit:shana_todestrieb_reaction;
 [AvAffecterAoE]
 	ID=shana_todestrieb_reaction;
 	cloneFrom=oneTile;
 
---todo remove my unkillable AV.
 
---todo set HP back to a quarter of max hp.
 
---todo set an freq on horizons grave that requires unkillable to not be present on the actor.
+
+
+[Action] ID=shana_todestrieb_reaction2;
+	name=Todestrieb2;
+	icon=icon_Gu_mightyBlock;
+	tooltip=Second part of todestrieb reaction;	
+	harmful=false;
+	attractAttention=false;
+	XPCost=70;
+	maxRank=1;
+	casterAnimation=charge_alt;
+	FXOnTarget=largePing;
+	FXOnTarget=sfx_risingBipLow;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+
+[AvAffecter] ------------------------------------Set HP back to a quarter of max hp.
+	ID=shana_todestrieb_reaction2;
+	harmful=false;
+	visibleEvaluations=false;
+	actorValue=HP;
+	magnitude=-c:HP + c:HPMax * 0.25;
+	duration=-2;
+	chance=100;
+[AvAffecterAoE]
+	ID=shana_todestrieb_reaction2;
+	cloneFrom=oneTile;
+[AvAffecter]----------------------------------------------------------these two AvAffecters return the boss to a killable state
+	ID=shana_todestrieb_reaction2; 
+	harmful=false;
+	actorValue=trigger;
+	magnitude=setGlobalVar_toActorID,salvationTarget,False,False;
+	duration=1;
+	chance=100;
+	FXOnHit=pop;
+[AvAffecterAoE]
+	ID=shana_todestrieb_reaction2;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_todestrieb_reaction2; 
+	harmful=false;
+	actorValue=task;
+	magnitude=setActorBool,@GsalvationTarget,unkillable,0,True,False,False,False;
+	duration=-2;
+	chance=100;
+	FXOnHit=pop;
+[AvAffecterAoE]
+	ID=shana_todestrieb_reaction2;
+	cloneFrom=oneTile;
+
+--todo see if can use actorbool in freq, if it does then can make freq for horizons grave that is "is killable" and give it 9999 aivalue.
 
 
 
