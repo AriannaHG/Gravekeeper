@@ -260,10 +260,41 @@ ID=pureMind; actorValues=dispel; actorValues=charging; actorValues=casting; acto
 		+ w:chance * t:sleep
 		+ w:chance * t:frozen
 
+--This sets the variables referred to in the damaging reaction being cast. when its initially charged, it queues the ruin3 action too
+[Action] ID=shana_bestow_ruin2set;
+name=Bestow Ruin (set gvar);
+icon=icon_bestow_ruin;
+chargeTime=20;
+special=requiresCharging;
+casterAnimation=shoulderbash;
+--	FXOnCaster=darken_major;
+--	FXOnCaster=delay;
+--	FXOnCaster=delay;
+--	FXOnCaster=delay;
+--	FXOnCaster=DramaticNyeaow;
+--	FXOnCaster=tileLine_topLeft_ignoreDark;
+queueAnotherAction=shana_bestow_ruin2;
+[ActionAoE]
+ID=shana_bestow_ruin2set;
+cloneFrom=oneTile;
+aoeCasterAsOrigin=true;
+
+
+[AvAffecter]
+ID=shana_bestow_ruin2set;
+-- This sets my global variable.
+visibleMiss=false; visibleEvaluations=false;
+actorValue=task;
+magnitude=setGlobalVar_math,shana_bestow_ruin_casterruinskill,t:skill_Ruin;
+duration=1;
+chance=100;
+
+
+
 
 [SupportAbility] ID=shana_hatredbeyondmeasure;
 name=Hatred Beyond Measure;
-tooltip=Gain immunity to casting interruption, most incapacitating effects, and Dispel. If said incapacitating effects have been inflicted on you regardless, inflict 13<icon=skill_Ice> damage to all enemies for each time this has occurred, then cure all such effects on self. Furthermore, effects based off your maximum <icon=HP> are 2% as effective on you.;
+tooltip=Gain immunity to casting interruption, most incapacitating effects, and Dispel. If any number of incapacitating effects have been inflicted on you regardless, inflict 13<icon=skill_Ice> damage to all enemies for each time this has occurred, then cure all such effects on self. Furthermore, effects based off your maximum <icon=HP> are 2% as effective on you.;
 icon=iconP_Sa_pureMind; --todo art
 XPCostUnlock=80;
 [SupportAbilityReaction] --interruption immunity
@@ -274,8 +305,10 @@ ID=shana_hatredbeyondmeasure; actorValues=disable; actorValues=immob; actorValue
 ID=shana_hatredbeyondmeasure; element=HPbased; damageMultiplier=0.02;
 [SupportAbilityReaction] --hopefully detects infliction of incapacitating status effects (transfer) and reacts accordingly
 ID=shana_hatredbeyondmeasure; element=any; action=shana_hatredbeyondmeasure_reaction;
+[SupportAbilityReaction] --this detects when the custom element is pulsed and increases hatred stacks by 1.
+ID=shana_hatredbeyondmeasure; element=42000; action=shana_hatredbeyondmeasure_increasehatred;
 
---to test case where multiple debilitating actor values are transferred at once (expected: one proc), and test case where a debilitating actor value is transferred multiple times in the same action (expected: multiple procs).
+--to test case where multiple debilitating actor values are transferred at once (expected: one proc), and test case where a debilitating actor value is transferred multiple times in the same action (hopefully 1 proc but im ok with multiple procs).
 --todo: rewrite rules text depending on interaction
 
 [ActorValue] --------------------------------------------------------------- define AV tracking how much hatred has been built
@@ -312,9 +345,9 @@ XPCostFloorToNearest = 0;
 [ActorValueReaction]
 ID=shana_hatredstacks; actorValues=shana_hatredstacks; newID=shana_hatredstacks;
 
-[ActorValueReaction] -----------------------------------------------------------------------------------------------------------------------garbage collection
-ID=shana_hatredstacks;
-element=combatEnd; newID=X;
+--[ActorValueReaction] -----------------------------------------------------------------------------------------------------------------------garbage collection
+--ID=shana_hatredstacks;
+--element=combatEnd; newID=X;
 
 [Action] ID=shana_hatredbeyondmeasure_reaction;
 	name=Hatred Beyond Measure;
@@ -336,19 +369,19 @@ element=combatEnd; newID=X;
 [AvAffecter] ----------------------------------Dummy AV to see if it should go off or not.
 	ID=shana_hatredbeyondmeasure_reaction;
 	harmful=false;
-	chance=100 * c:unkillable * m:tCritical;
+	chance=100 * c:disable + 100 * c:immob + 100 * c:stun + 100 * c:sleep + 100 * c:frozen; --todo change this
 	FXOnTile=sparkle;
 	FXOnHit=sparklesFast;
 	FXOnHit=briefAuraSound;
 [AvAffecterAoE]
 	ID=shana_hatredbeyondmeasure_reaction;
-	cloneFrom=oneTile;	
+	cloneFrom=oneTile;
 [AvAffecter] ----------------------------------Ice Damage.
 	ID=shana_hatredbeyondmeasure_reaction;
 	harmful=true; 
 	actorValue=HP;
 	visibleMiss=false;
-	magnitude=-13;
+	magnitude=-13 - 13 *;
 	duration=-2;
 	chance=100;
 	element=ice;
@@ -373,17 +406,40 @@ element=combatEnd; newID=X;
 [AvAffecterAoE]
 	ID=shana_hatredbeyondmeasure_reaction;
 	cloneFrom=oneTile;
-[AvAffecter] ----------------------------------Hatred.
+[AvAffecter] --------------------------------Pulse my custom element to increase hatred stacks.
 	ID=shana_hatredbeyondmeasure_reaction;
-	actorValue=shana_hatredstacks;
-	magnitude=t:shana_hatredstacks + 1;
-	duration=-2;
+	element=42000;
 	chance=100 * thisPreviousAVHit:shana_hatredbeyondmeasure_reaction;
 [AvAffecterAoE]
 	ID=shana_hatredbeyondmeasure_reaction;
-	cloneFrom=oneTile;
+	cloneFrom=allActors;
 
-
+[Action] ID=shana_hatredbeyondmeasure_increasehatred;
+name=Hatred Beyond Measure;
+icon=iconP_Sa_pureMind;
+tooltip=Increase hatred stacks.;
+harmful=false;
+attractAttention=false;
+XPCost=70;
+maxRank=1;
+casterAnimation=charge_alt;
+FXOnTarget=largePing;
+FXOnTarget=sfx_risingBipLow;
+special=usableEvenWhenCantAct;
+special=usableEvenWhenReacting;
+special=usableEvenWhenYourTurn;
+[ActionAoE]
+ID=shana_hatredbeyondmeasure_increasehatred;
+cloneFrom=oneTile;
+[AvAffecter] ----------------------------------Increase Hatred.
+ID=shana_hatredbeyondmeasure_reaction;
+actorValue=shana_hatredstacks;
+magnitude=t:shana_hatredstacks + 1;
+duration=-2;
+chance=100;
+[AvAffecterAoE]
+ID=shana_hatredbeyondmeasure_reaction;
+cloneFrom=oneTile;
 
 
 --Heart of the Corruption (name pending)

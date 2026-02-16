@@ -1,7 +1,10 @@
 --Consolation Prize weapon/rot bow/Plaguebringer
 
+[FormulaGlobal] ID=shana_plaguebow_rotdmg_init; --I'm giving it relatively high ruin scaling as 4 ruin for 1 rot may not be noticed
+formula=-d:bowDmg + c:skill_Ruin;
+
 [FormulaGlobal] ID=shana_plaguebow_rotdmg;
-formula=-d:bowDmg + c:skill_Ruin * 0.5;
+formula=d:shana_plaguebow_rotdmg_init * 0.5;
 
 [Action] ID=shana_yumiAttack_rot; 
 	applyWeaponBuffs=true;
@@ -24,7 +27,7 @@ formula=-d:bowDmg + c:skill_Ruin * 0.5;
 	actorValue=HP;
 	magnitude=-1;
 	duration=-2;
-	chance=d:bowAcc * 0.73 + 2 * c:PhysAtk;
+	chance=d:bowAcc * 0.8 + 2 * c:PhysAtk;
 	element=physical;
 	element=ranged;
 	FXOnTile=sfx_zyew;
@@ -41,11 +44,11 @@ formula=-d:bowDmg + c:skill_Ruin * 0.5;
 	cloneFrom=oneTile;
 
 [AvAffecter]
-	ID=shana_yumiAttack_rot; 
+	ID=shana_yumiAttack_rot;
 	actorValue=ari_rot_status;
 	magnitude=t:ari_rot_status + d:shana_plaguebow_rotdmg * rxn:ruin * rxn:physical * rxn:ranged;
 	duration=80;
-	chance=d:bowAcc * 0.73 + 2 * c:PhysAtk;
+	chance=d:bowAcc * 0.8 + 2 * c:PhysAtk;
 	FXOnTileColor=Green;
 	FXOnTile=chargeFast_overlap;
 	FXOnTileColor=Black;
@@ -66,17 +69,17 @@ journalID=shana_journal_plaguebow;
 texture=gkart;
 description=Ruinous yumi whose arrows sacrifice direct damage in favor of inflicting concentrated Rot<icon=icon_gravekeeper_rot>.;
 weight=4; volume=3; value=5000; pR=p71; pB=p41;
-power=6; 
+power=9;
 ID=shana_plaguebow; sprite=22; spriteWhenHeld=32; itemCategory=weapon; element=bow;
  special=rotate90WhenSheathed;
-special=sprite2xWidth; special=twoHanded; 
+special=sprite2xWidth; special=twoHanded;
  action=shana_yumiAttack_rot;
 
 [JournalEntry]
 ID=shana_journal_plaguebow;
 category=equipment; halfPage=false; rarity=3;
 title=Ekibyonoyumi;
-text=<itemBig=shana_plaguebow><title=Ekibyonoyumi><brAdj=>   Corrupted yumi once wielded by an eastern traveller, turned against the fleeing population of Barrow.<n=>   Arrows shot from this bow only deal token physical damage, but inflict contagious Rot equal to the full damage that would have normally been dealt. This secondary weapon effect ignores all damage multipliers from skill use, dealing damage over time and raising the infected as zombies - much to the horror of many a refugee. <n=>   The accuracy of this bow increases with <icon=PhysAtk>, while its arrows are made more potent by <icon=skill_Ruin>.;
+text=<itemBig=shana_plaguebow><title=Ekibyonoyumi><brAdj=>   Corrupted yumi once wielded by an eastern traveller, turned against the fleeing population of Barrow.<n=>   Arrows shot from this bow only deal token physical damage, but inflict contagious Rot equal to half the damage that would have normally been dealt. This secondary weapon effect ignores all damage multipliers from skill use, dealing damage over time and raising the infected as zombies - much to the horror of many a refugee. <n=>   The accuracy of this bow increases with <icon=PhysAtk>, while its arrows are made more potent by <icon=skill_Ruin>.;
 
 
 --------------------------------------ENEMY plaguebow
@@ -103,7 +106,7 @@ text=<itemBig=shana_plaguebow><title=Ekibyonoyumi><brAdj=>   Corrupted yumi once
 	actorValue=HP;
 	magnitude=-1;
 	duration=-2;
-	chance=d:bowAcc * 0.73 + 2 * c:PhysAtk;
+	chance=d:bowAcc * 0.8 + 2 * c:PhysAtk;
 	element=physical;
 	element=ranged;
 	FXOnTile=sfx_zyew;
@@ -124,7 +127,7 @@ text=<itemBig=shana_plaguebow><title=Ekibyonoyumi><brAdj=>   Corrupted yumi once
 	actorValue=ari_rot_status_enemy;
 	magnitude=t:ari_rot_status_enemy + d:shana_plaguebow_rotdmg * rxn:ruin * rxn:physical * rxn:ranged;
 	duration=80;
-	chance=d:bowAcc * 0.73 + 2 * c:PhysAtk;
+	chance=d:bowAcc * 0.8 + 2 * c:PhysAtk;
 	FXOnTileColor=Green;
 	FXOnTile=chargeFast_overlap;
 	FXOnTileColor=Black;
@@ -145,7 +148,7 @@ journalID=shana_journal_plaguebow;
 texture=gkart;
 description=Ruinous yumi whose arrows sacrifice direct damage in favor of inflicting concentrated Rot<icon=icon_gravekeeper_rot>. The Gravekeeper developers would love to know how you got your hands on the enemy-exclusive variant of this bow! Feel free to use it alongside the actual intended drop, but be warned that the Rot this inflicts spawns hostile zombies instead of friendly ones.;
 weight=4; volume=3; value=5000; pR=p71; pB=p41;
-power=6;
+power=9;
 ID=shana_plaguebow_enemy; sprite=22; spriteWhenHeld=32; itemCategory=weapon; element=bow;
  special=rotate90WhenSheathed;
 special=sprite2xWidth; special=twoHanded;
