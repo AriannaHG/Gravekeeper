@@ -83,12 +83,12 @@ are you making the dispelling action, or a passive ability that protects only fr
 for the former lua could dispel effects without interrupting
 for the latter, the way "dispel" interruption is hardcoded so can't think of a way
 Shanakor
- — 
+ ï¿½ 
 4:20 AM
 I was planning to make the latter haha
 rip
 quo
- — 
+ ï¿½ 
 4:21 AM
 and since casting an ability involves "casting" av which is dispellable... again that's something lua can go around from the dispeller side, but not really from the dispellee
 
@@ -253,40 +253,73 @@ ID=pureMind; actorValues=dispel; actorValues=charging; actorValues=casting; acto
 	ID=Gu_mightyBlock;
 	cloneFrom=oneTile;
 
+
+	chance=w:chance * t:disable 
+		+ w:chance * t:immob
+		+ w:chance * t:stun
+		+ w:chance * t:sleep
+		+ w:chance * t:frozen
+
+
 [SupportAbility] ID=shana_hatredbeyondmeasure;
 name=Hatred Beyond Measure;
-tooltip=Gain immunity to casting interruption, most disabling effects, and Dispel. Furthermore, effects based off your maximum <icon=HP> are 2% as effective on you.;
+tooltip=Gain immunity to casting interruption, most incapacitating effects, and Dispel. If said incapacitating effects have been inflicted on you regardless, inflict 13<icon=skill_Ice> damage to all enemies for each time this has occurred, then cure all such effects on self. Furthermore, effects based off your maximum <icon=HP> are 2% as effective on you.;
 icon=iconP_Sa_pureMind; --todo art
 XPCostUnlock=80;
-[SupportAbilityReaction]
+[SupportAbilityReaction] --interruption immunity
 ID=shana_hatredbeyondmeasure; actorValues=dispel; actorValues=charging; actorValues=casting; actorValues=cancel; damageMultiplier=0;
-[SupportAbilityReaction]
-ID=shana_hatredbeyondmeasure; actorValues=HPbased; damageMultiplier=0.02;
+[SupportAbilityReaction] --incap effect immunity
+ID=shana_hatredbeyondmeasure; actorValues=disable; actorValues=immob; actorValues=stun; actorValues=sleep; actorValues=frozen;
+[SupportAbilityReaction] --hpbased resistance
+ID=shana_hatredbeyondmeasure; element=HPbased; damageMultiplier=0.02;
+[SupportAbilityReaction] --hopefully detects infliction of incapacitating status effects (transfer) and reacts accordingly
+ID=shana_hatredbeyondmeasure; element=any; action=shana_hatredbeyondmeasure_reaction;
 
+--to test case where multiple debilitating actor values are transferred at once (expected: one proc), and test case where a debilitating actor value is transferred multiple times in the same action (expected: multiple procs).
+--todo: rewrite rules text depending on interaction
 
+[ActorValue] --------------------------------------------------------------- define AV tracking how much hatred has been built
+ID=shana_hatredstacks;
+name=Hatred Stacks (this should not be visible);
+icon=;
+bubbleIcon=;
 
---Heart of the Corruption (name pending)
---retaliates by spawning abscesses when hit, keystone army
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = 0;
+affectsActors = true;
+canAffectIncapped = true;
+showDamageNumbers = false;
+showDamageNumbersMagnitude = false;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = false;
+showDamageNumbersElements = false;
+showDamageNumbersIconInTooltips = false;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0;
+elementReactionModifiesDuration = false;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = false;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
 
+[ActorValueReaction]
+ID=shana_hatredstacks; actorValues=shana_hatredstacks; newID=shana_hatredstacks;
 
-[SupportAbility] ID=shana_Todestrieb;
-name=Todestrieb;
-tooltip=When hit into critical condition for the first time, inflict 10 stacks of Rot<icon=icon_gravekeeper_rot> to all enemies and cure all negative status effects on self, then gain Negate, Aegis and Mighty Block for 999 <icon=time>. <icon=HP> does not drop below 25% before this occurs, and when it does...;
-icon=icon_Gu_mightyBlock; --todo art
+[ActorValueReaction] -----------------------------------------------------------------------------------------------------------------------garbage collection
+ID=shana_hatredstacks;
+element=combatEnd; newID=X;
 
-[SupportAbilityReaction] --at zone entry for the first time, gain unkillable. todo: wording, alternative solution?
-ID=shana_Todestrieb; actorValues=combatStart; actorValues=combatEnd; actorValues=enterZone; action=shana_todestrieb_becomeunkillable;
-
-[SupportAbilityReaction] --buffs boss defensively but makes it killable when hit into critical, only works when unkillable.
-ID=shana_Todestrieb; actorValues=HP; action=shana_todestrieb_reaction;
-
-
---Modified Salvation status from Prominence.
-
-[Action] ID=shana_todestrieb_becomeunkillable;
-	name=TodestriebUnkillable;
-	icon=icon_Gu_mightyBlock;
-	tooltip=This makes the boss unkillable, essentially resetting its enrage if the player somehow leaves midfight.;	
+[Action] ID=shana_hatredbeyondmeasure_reaction;
+	name=Hatred Beyond Measure;
+	icon=iconP_Sa_pureMind;
+	tooltip=Deals ramping ice damage to all enemies and cures incapacitating effects on self.;	
 	harmful=false;
 	attractAttention=false;
 	XPCost=70;
@@ -294,31 +327,76 @@ ID=shana_Todestrieb; actorValues=HP; action=shana_todestrieb_reaction;
 	casterAnimation=charge_alt;
 	FXOnTarget=largePing;
 	FXOnTarget=sfx_risingBipLow;
-[AvAffecter]----------------------------------------------------------these two AvAffecters makes the target unkillable
-	ID=shana_todestrieb_becomeunkillable; 
-	harmful=false;
-	actorValue=trigger;
-	magnitude=setGlobalVar_toActorID,salvationTarget,False,False;
-	duration=1;
-	chance=100;
-	FXOnHit=pop;
-[AvAffecterAoE]
-	ID=shana_todestrieb_becomeunkillable;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+[ActionAoE] 
+	ID=shana_hatredbeyondmeasure_reaction; 
 	cloneFrom=oneTile;
-[AvAffecter]
-	ID=shana_todestrieb_becomeunkillable; 
+[AvAffecter] ----------------------------------Dummy AV to see if it should go off or not.
+	ID=shana_hatredbeyondmeasure_reaction;
 	harmful=false;
-	actorValue=task;
-	magnitude=setActorBool,@GsalvationTarget,unkillable,1,True,False,False,False;
+	chance=100 * c:unkillable * m:tCritical;
+	FXOnTile=sparkle;
+	FXOnHit=sparklesFast;
+	FXOnHit=briefAuraSound;
+[AvAffecterAoE]
+	ID=shana_hatredbeyondmeasure_reaction;
+	cloneFrom=oneTile;	
+[AvAffecter] ----------------------------------Ice Damage.
+	ID=shana_hatredbeyondmeasure_reaction;
+	harmful=true; 
+	actorValue=HP;
+	visibleMiss=false;
+	magnitude=-13;
 	duration=-2;
 	chance=100;
-	FXOnHit=pop;
+	element=ice;
 [AvAffecterAoE]
-	ID=shana_todestrieb_becomeunkillable;
+	ID=shana_hatredbeyondmeasure_reaction;
+	shape=7;
+	airborne=true;
+	arc=true;
+	bypassAll=true;
+	occupyAll=true;
+	canSelectAllies=false;
+[AvAffecter] ----------------------------------Cure.
+	ID=shana_hatredbeyondmeasure_reaction;
+	harmful=false;
+	actorValue=cure;
+	magnitude=1;
+	duration=-2;
+	chance=100 * thisPreviousAVHit:shana_hatredbeyondmeasure_reaction;
+	FXOnTile=sparkle;
+	FXOnHit=sparklesFast;
+	FXOnHit=briefAuraSound;
+[AvAffecterAoE]
+	ID=shana_hatredbeyondmeasure_reaction;
+	cloneFrom=oneTile;
+[AvAffecter] ----------------------------------Hatred.
+	ID=shana_hatredbeyondmeasure_reaction;
+	actorValue=shana_hatredstacks;
+	magnitude=t:shana_hatredstacks + 1;
+	duration=-2;
+	chance=100 * thisPreviousAVHit:shana_hatredbeyondmeasure_reaction;
+[AvAffecterAoE]
+	ID=shana_hatredbeyondmeasure_reaction;
 	cloneFrom=oneTile;
 
 
 
+
+--Heart of the Corruption (name pending)
+--retaliates by spawning abscesses when hit, keystone army
+
+
+[SupportAbility] ID=shana_Todestrieb; --Note: The boss has the unkillable bool inherently, this support ability just disables it. Make boss room un-leavable by normal means but no need for extensive anticheese
+name=Todestrieb;
+tooltip=When reaching critical condition for the first time, inflict 10 stacks of Rot<icon=icon_gravekeeper_rot> to all enemies and cure all negative status effects on self, then gain Negate, Aegis and Mighty Block for 999 <icon=time>. <icon=HP> does not drop below 25% before this occurs, and when it does...;
+icon=icon_Gu_mightyBlock; --todo art
+
+[SupportAbilityReaction] --buffs boss defensively but makes it killable when hit into critical, only works when unkillable.
+ID=shana_Todestrieb; actorValues=HP; action=shana_todestrieb_reaction;
 
 
 
@@ -388,11 +466,11 @@ ID=shana_Todestrieb; actorValues=HP; action=shana_todestrieb_reaction;
 	FXOnHit=sparklesFast;
 	FXOnHit=briefAuraSound;
 [AvAffecterAoE]
-	ID=Gshana_todestrieb_reaction;
+	ID=shana_todestrieb_reaction;
 	cloneFrom=oneTile;	
 
 [AvAffecter] -----------------------------------Negate.
-	ID=Wrd_negate; 
+	ID=shana_todestrieb_reaction; 
 	actorValue=negate;
 	harmful=false;
 	magnitude=1;
@@ -751,21 +829,21 @@ For you, however, it is...
 not sure it would help but cafe dialog when you start a food party has delay before it shows the dialog
 specialEffect=delayDialog,1;
 Shanakor
- — 
+ ï¿½ 
 12:55 AM
 I'll give it a whirl
 thanks!
 quo
- — 
+ ï¿½ 
 12:56 AM
 or if it's for after dialog that you want the delay, you could try adding a delay in that final trigger? or in the task string itself it would be written like this specialEffect=trigger,shana_horizonsgrave_badend_tq,@1; but I don't know if you can do delay in dialog effects or if that's a crashy bad idea
 Shanakor
- — 
+ ï¿½ 
 12:56 AM
 I'll try both of em, no biggie :cheerful:
 probably later since I have a job haha :revel:
 rcfox
- — 
+ ï¿½ 
 12:57 AM
 Should work.
 
@@ -1536,7 +1614,7 @@ The memory of <red><encounter></red> inexplicably rises within you as you rest y
 
 Challenge <description> -> Relive the battle as it originally unfolded? Experience will be granted as usual, but certain artefacts cannot be recreated by a mere memory. Any posessions left behind will be deposited on the table near the entrance.
 
-You feel a sharp tug, and then nothingness — a fleeting void before the memory of <encounter> engulfs you, pulling you back into the heat of battle.
+You feel a sharp tug, and then nothingness ï¿½ a fleeting void before the memory of <encounter> engulfs you, pulling you back into the heat of battle.
 
 Challenge <description> (Savage)
 
