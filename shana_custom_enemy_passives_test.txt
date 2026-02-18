@@ -447,13 +447,24 @@ ID=shana_critical_autolyze; element=physical; element=magic; actorValues=HP; act
 [Action] ID=shana_critical_autolyze_act;
 	name=Critical Autolyze;
 	icon=icon_critical_autolyze;
-	special=usableEvenWhenCantAct;
 	special=usableEvenWhenReacting;
 	special=usableEvenWhenYourTurn;
 [ActionAoE]
 	ID=shana_critical_autolyze_act;
 	cloneFrom=oneTile;
 	canSelectStackedActors=true;
+[AvAffecter]
+	ID=shana_critical_autolyze_act;
+	actorValue=allowReuseThisTurn;
+	visibleMiss=false;
+	harmful=false;
+	magnitude=criticalSpeed_act;
+	duration=-2;
+	chance=100 - 100 * m:cCritical - 100 * m:incapped;
+	affectGlobalAvAffecterInfo=false;
+[AvAffecterAoE]
+	ID=shana_critical_autolyze_act;
+	cloneFrom=oneTile;
 [AvAffecter]
 	ID=shana_critical_autolyze_act;
 	actorValue=skill_Ruin;
@@ -521,6 +532,167 @@ ID=shana_critical_autolyze; element=physical; element=magic; actorValues=HP; act
 --	ID=shana_critical_autolyze_act;
 --	cloneFrom=oneTile;
 
+[SupportAbility] ID=shana_hatredbeyondmeasure;
+name=Hatred Beyond Measure;
+tooltip=Gain immunity to casting interruption, most incapacitating effects, and Dispel. If any number of incapacitating effects have been inflicted on you regardless, inflict 13<icon=skill_Ice> damage to all enemies for each time this has occurred, then cure all negative effects on self. Furthermore, effects based off your maximum <icon=HP> are 2% as effective on you.;
+icon=iconP_Sa_pureMind; --todo art
+XPCostUnlock=80;
+[SupportAbilityReaction] --interruption immunity
+ID=shana_hatredbeyondmeasure; actorValues=dispel; actorValues=charging; actorValues=casting; actorValues=cancel; damageMultiplier=0;
+[SupportAbilityReaction] --incap effect immunity
+ID=shana_hatredbeyondmeasure; actorValues=disable; actorValues=immob; actorValues=stun; actorValues=sleep; actorValues=frozen; damageMultiplier=0;
+[SupportAbilityReaction] --hpbased resistance
+ID=shana_hatredbeyondmeasure; element=HPbased; damageMultiplier=0.02;
+
+
+[SupportAbilityReaction] --hopefully detects infliction of incapacitating status effects (transfer) and reacts accordingly
+--ID=shana_hatredbeyondmeasure; actorValues=transfer; actorValues=disable; actorValues=immob; actorValues=stun; actorValues=sleep; actorValues=frozen; action=shana_hatredbeyondmeasure_reaction;
+ID=shana_hatredbeyondmeasure; element=any; action=shana_hatredbeyondmeasure_reaction;
+
+
+[SupportAbilityReaction] --this detects when the custom element is pulsed and increases hatred stacks by 1.
+ID=shana_hatredbeyondmeasure; element=42000; action=shana_hatredbeyondmeasure_increasehatred;
+
+--to test case where multiple debilitating actor values are transferred at once (expected: one proc), and test case where a debilitating actor value is transferred multiple times in the same action (hopefully 1 proc but im ok with multiple procs).
+--todo: rewrite rules text depending on interaction
+
+[ActorValue] --------------------------------------------------------------- define AV tracking how much hatred has been built
+ID=shana_hatredstacks;
+name=Hatred Stacks (this should not be visible);
+icon=;
+bubbleIcon=;
+
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = 0;
+affectsActors = true;
+canAffectIncapped = false;
+showDamageNumbers = true; --to change
+showDamageNumbersMagnitude = false;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = false;
+showDamageNumbersElements = false;
+showDamageNumbersIconInTooltips = false;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0;
+elementReactionModifiesDuration = false;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true; --to change
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+[ActorValueReaction]
+ID=shana_hatredstacks; actorValues=shana_hatredstacks; newID=shana_hatredstacks;
+
+--[ActorValueReaction] -----------------------------------------------------------------------------------------------------------------------garbage collection
+--ID=shana_hatredstacks;
+--element=combatEnd; newID=X;
+
+[Action] ID=shana_hatredbeyondmeasure_reaction;
+	name=Hatred Beyond Measure;
+	icon=iconP_Sa_pureMind;
+	tooltip=Deals ramping ice damage to all enemies and cures incapacitating effects on self.;
+	harmful=true;
+	attractAttention=false;
+	XPCost=70;
+	maxRank=1;
+--	casterAnimation=charge_alt;
+-- 	FXOnTarget=sparkle;
+-- 	FXOnTarget=briefAuraSound;
+    special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+[ActionAoE]
+	ID=shana_hatredbeyondmeasure_reaction;
+	cloneFrom=oneTile;
+
+[AvAffecter] ----------------------------------Dummy AV to see if it should go off or not.
+	ID=shana_hatredbeyondmeasure_reaction;
+	harmful=false;
+	chance=100 * c:disable + 100 * c:immob + 100 * c:stun + 100 * c:sleep + 100 * c:frozen; --todo change this
+	FXOnTile=sparkle;
+    FXOnTile=briefAuraSound;
+--	FXOnHit=briefAuraSound;
+[AvAffecterAoE]
+	ID=shana_hatredbeyondmeasure_reaction;
+	cloneFrom=oneTile;
+[AvAffecter] ----------------------------------Ice Damage.
+	ID=shana_hatredbeyondmeasure_reaction;
+	harmful=true;
+	actorValue=HP;
+	visibleMiss=false;
+	magnitude=-13 - 13 * c:shana_hatredstacks;
+	duration=-2;
+	chance=100;
+	fReq=100 * c:disable + 100 * c:immob + 100 * c:stun + 100 * c:sleep + 100 * c:frozen;
+	element=ice;
+[AvAffecterAoE]
+	ID=shana_hatredbeyondmeasure_reaction;
+	shape=7;
+	airborne=true;
+	arc=true;
+	bypassAll=true;
+	occupyAll=true;
+	canSelectAllies=true; --todo change this later
+	canSelectEnemies=true;
+[AvAffecter] ----------------------------------Cure.
+	ID=shana_hatredbeyondmeasure_reaction;
+	harmful=false;
+	actorValue=cure;
+	magnitude=1;
+	duration=-2;
+--	chance=100 * thisPreviousAVHit:shana_hatredbeyondmeasure_reaction;
+    chance=100;
+	FXOnTile=sparkle;
+	FXOnHit=chk;
+[AvAffecterAoE]
+	ID=shana_hatredbeyondmeasure_reaction;
+	cloneFrom=oneTile;
+[AvAffecter] --------------------------------Pulse my custom element to increase hatred stacks.
+	ID=shana_hatredbeyondmeasure_reaction;
+	harmful=false;
+	element=42000; --actual is 42000
+	chance=100 * thisPreviousAVHit:shana_hatredbeyondmeasure_reaction;
+[AvAffecterAoE]
+	ID=shana_hatredbeyondmeasure_reaction;
+	cloneFrom=allActors;
+
+--why is the ice damage only happening to the person reacting
+
+[Action] ID=shana_hatredbeyondmeasure_increasehatred;
+name=Hatred Beyond Measure;
+icon=iconP_Sa_pureMind;
+tooltip=Increase hatred stacks.;
+harmful=false;
+attractAttention=false;
+XPCost=70;
+maxRank=1;
+casterAnimation=charge_alt;
+FXOnTarget=largePing;
+FXOnTarget=sfx_risingBipLow;
+special=usableEvenWhenCantAct;
+special=usableEvenWhenReacting;
+special=usableEvenWhenYourTurn;
+[ActionAoE]
+ID=shana_hatredbeyondmeasure_increasehatred;
+cloneFrom=oneTile;
+[AvAffecter] ----------------------------------Increase Hatred.
+ID=shana_hatredbeyondmeasure_reaction;
+actorValue=shana_hatredstacks;
+--magnitude=t:shana_hatredstacks + 1;
+magnitude=1;
+duration=-2;
+chance=100;
+[AvAffecterAoE]
+ID=shana_hatredbeyondmeasure_reaction;
+cloneFrom=oneTile;
+
 -----------------------------------------testing
 [ActorClass] name=Testing;
 ID=shana_testing;
@@ -541,5 +713,5 @@ supportAbilities=shana_festering_fulcrum;
 supportAbilities=shana_instability;
 supportAbilities=shana_uber_instability;
 supportAbilities=shana_critical_autolyze;
-
+supportAbilities=shana_hatredbeyondmeasure;
 relevantStats=TrueHPMax;
