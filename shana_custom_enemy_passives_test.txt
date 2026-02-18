@@ -534,7 +534,7 @@ ID=shana_critical_autolyze; element=physical; element=magic; actorValues=HP; act
 
 [SupportAbility] ID=shana_hatredbeyondmeasure;
 name=Hatred Beyond Measure;
-tooltip=Gain immunity to casting interruption, most incapacitating effects, and Dispel. If any number of incapacitating effects have been inflicted on you regardless, inflict 13<icon=skill_Ice> damage to all enemies for each time this has occurred, then cure all negative effects on self. Furthermore, effects based off your maximum <icon=HP> are 2% as effective on you.;
+tooltip=Gain immunity to casting interruption, most incapacitating effects, and Dispel. If any number of incapacitating effects have bypassed this immunity, inflict 13<icon=skill_Ice> damage to all enemies for each time this has occurred, then cure all negative effects on self. Furthermore, effects based off your maximum <icon=HP> are 2% as effective on you.; --todo once released, if recieve feedback that this is too obtuse, rewrite to hint more maybe?
 icon=iconP_Sa_pureMind; --todo art
 XPCostUnlock=80;
 [SupportAbilityReaction] --interruption immunity
