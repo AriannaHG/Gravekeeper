@@ -546,8 +546,8 @@ ID=shana_hatredbeyondmeasure; element=HPbased; damageMultiplier=0.02;
 
 
 [SupportAbilityReaction] --hopefully detects infliction of incapacitating status effects (transfer) and reacts accordingly
---ID=shana_hatredbeyondmeasure; actorValues=transfer; actorValues=disable; actorValues=immob; actorValues=stun; actorValues=sleep; actorValues=frozen; action=shana_hatredbeyondmeasure_reaction;
-ID=shana_hatredbeyondmeasure; element=any; action=shana_hatredbeyondmeasure_reaction;
+ID=shana_hatredbeyondmeasure; actorValues=transfer; actorValues=disable; actorValues=immob; actorValues=stun; actorValues=sleep; actorValues=frozen; action=shana_hatredbeyondmeasure_reaction;
+--ID=shana_hatredbeyondmeasure; element=any; action=shana_hatredbeyondmeasure_reaction;
 
 
 [SupportAbilityReaction] --this detects when the custom element is pulsed and increases hatred stacks by 1.
@@ -596,7 +596,7 @@ ID=shana_hatredstacks; actorValues=shana_hatredstacks; newID=shana_hatredstacks;
 
 [Action] ID=shana_hatredbeyondmeasure_reaction;
 	name=Hatred Beyond Measure;
-	icon=iconP_Sa_pureMind;
+	icon=iconP_Sa_pureMind; --todo art
 	tooltip=Deals ramping ice damage to all enemies and cures incapacitating effects on self.;
 	harmful=true;
 	attractAttention=false;
@@ -606,16 +606,16 @@ ID=shana_hatredstacks; actorValues=shana_hatredstacks; newID=shana_hatredstacks;
 -- 	FXOnTarget=sparkle;
 -- 	FXOnTarget=briefAuraSound;
     special=usableEvenWhenCantAct;
-	special=usableEvenWhenReacting;
+--	special=usableEvenWhenReacting;
 	special=usableEvenWhenYourTurn;
 [ActionAoE]
 	ID=shana_hatredbeyondmeasure_reaction;
 	cloneFrom=oneTile;
 
-[AvAffecter] ----------------------------------Dummy AV to see if it should go off or not.
+[AvAffecter] ----------------------------------Dummy AV to play vfx if it goes off.
 	ID=shana_hatredbeyondmeasure_reaction;
 	harmful=false;
-	chance=100 * c:disable + 100 * c:immob + 100 * c:stun + 100 * c:sleep + 100 * c:frozen; --todo change this
+	chance=100 * c:disable + 100 * c:immob + 100 * c:stun + 100 * c:sleep + 100 * c:frozen;
 	FXOnTile=sparkle;
     FXOnTile=briefAuraSound;
 --	FXOnHit=briefAuraSound;
@@ -635,12 +635,22 @@ ID=shana_hatredstacks; actorValues=shana_hatredstacks; newID=shana_hatredstacks;
 [AvAffecterAoE]
 	ID=shana_hatredbeyondmeasure_reaction;
 	shape=7;
+	maxRange=100;
 	airborne=true;
 	arc=true;
 	bypassAll=true;
 	occupyAll=true;
-	canSelectAllies=true; --todo change this later
+	canSelectAllies=false;
 	canSelectEnemies=true;
+[AvAffecter] --------------------------------Pulse my custom element to increase hatred stacks.
+	ID=shana_hatredbeyondmeasure_reaction;
+	harmful=false;
+	element=42000; --actual is 42000
+	chance=100;
+	fReq=100 * c:disable + 100 * c:immob + 100 * c:stun + 100 * c:sleep + 100 * c:frozen;
+[AvAffecterAoE]
+	ID=shana_hatredbeyondmeasure_reaction;
+	cloneFrom=allActors;
 [AvAffecter] ----------------------------------Cure.
 	ID=shana_hatredbeyondmeasure_reaction;
 	harmful=false;
@@ -648,22 +658,14 @@ ID=shana_hatredstacks; actorValues=shana_hatredstacks; newID=shana_hatredstacks;
 	magnitude=1;
 	duration=-2;
 --	chance=100 * thisPreviousAVHit:shana_hatredbeyondmeasure_reaction;
+	fReq=100 * c:disable + 100 * c:immob + 100 * c:stun + 100 * c:sleep + 100 * c:frozen;
     chance=100;
 	FXOnTile=sparkle;
 	FXOnHit=chk;
 [AvAffecterAoE]
 	ID=shana_hatredbeyondmeasure_reaction;
 	cloneFrom=oneTile;
-[AvAffecter] --------------------------------Pulse my custom element to increase hatred stacks.
-	ID=shana_hatredbeyondmeasure_reaction;
-	harmful=false;
-	element=42000; --actual is 42000
-	chance=100 * thisPreviousAVHit:shana_hatredbeyondmeasure_reaction;
-[AvAffecterAoE]
-	ID=shana_hatredbeyondmeasure_reaction;
-	cloneFrom=allActors;
 
---why is the ice damage only happening to the person reacting
 
 [Action] ID=shana_hatredbeyondmeasure_increasehatred;
 name=Hatred Beyond Measure;
@@ -677,7 +679,7 @@ casterAnimation=charge_alt;
 FXOnTarget=largePing;
 FXOnTarget=sfx_risingBipLow;
 special=usableEvenWhenCantAct;
-special=usableEvenWhenReacting;
+--special=usableEvenWhenReacting;
 special=usableEvenWhenYourTurn;
 [ActionAoE]
 ID=shana_hatredbeyondmeasure_increasehatred;
