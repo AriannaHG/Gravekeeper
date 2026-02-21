@@ -7305,7 +7305,7 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 	casterAnimation=s_simplestAttack; --todo change this, I want it to open mouth when attacking too
 	name=Bequeath Self;
 	chargeTime=30 * d:chargeTimeMult * d:chargeTimeMult_onlyWithMP + d:chargeTimeMod + d:chargeTimeMod_onlyWithMP;
-	tooltip=Undergo dissolution to grant all allies a stacking +6 <icon=PhysAtk> and +6 <icon=skill_Ruin> for 30 <icon=time>.;
+	tooltip=Undergo dissolution to grant all allies a stacking +6 <icon=PhysAtk> and +6 <icon=skill_Ruin> for <icon=time>30.;
 --	tooltipTopRight=<icon=MagAtk_small><icon=skill_Ruin_small>;
 	special=requiresCasting;
     casterAnimation=spellcast;

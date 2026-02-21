@@ -2,7 +2,7 @@
 ID=shana_festering_fulcrum;
 name=Festering Fulcrum;
 icon=icon_festering_fulcrum;
-tooltip=When the bearer of this ability dies, all allies are stunned for 30 <icon=time>. <n>If none remain, all allies lose their <icon=PhysDef> <icon=MagDef> and will lose a third of their maximum <icon=HP> at the end of each of their turns, rounded up.;
+tooltip=When the bearer of this ability dies, all allies are stunned for <icon=time>30. <n>If none remain, all allies lose their <icon=PhysDef> <icon=MagDef> and will lose a third of their maximum <icon=HP> at the end of each of their turns, rounded up.;
 
 ----------------------------------------------------------------------------------------------------Define Unsustainable status effect (not visible to player by design since lasts for rest of battle more or less)
 
@@ -223,7 +223,7 @@ ID=shana_festering_fulcrum; element=incapacitated; action=shana_festering_fulcru
 ID=shana_instability;
 name=Unstable Essence;
 icon=icon_unstable_essence;
-tooltip=You will be interrupted and silenced for 30 <icon=time> when hit by physical damage. <n=>If this occurs, the resulting backlash pushes and inflicts Ruin damage equal to twice your <icon=skill_Ruin> to all adjacent, and the effects of this passive are disabled for 120 <icon=time>.;
+tooltip=You will be interrupted and silenced for <icon=time>30 when hit by physical damage. <n=>If this occurs, the resulting backlash pushes and inflicts Ruin damage equal to twice your <icon=skill_Ruin> to all adjacent, and the effects of this passive are disabled for 120 <icon=time>.;
 
 ----------------------------------------------------------------Dampened Essence AV
 [ActorValue]
@@ -352,7 +352,7 @@ ID=shana_instability; element=physical; actorValue=HP; action=shana_instability_
 ID=shana_uber_instability;
 name=Very Unstable Essence;
 icon=icon_unstabler_essence;
-tooltip=You will be interrupted and silenced for 30 <icon=time> when hit by physical damage. <n=>If this occurs, the resulting backlash pushes and inflicts Ruin damage equal to twice your <icon=skill_Ruin> to all adjacent.;
+tooltip=You will be interrupted and silenced for <icon=time>30 when hit by physical damage. <n=>If this occurs, the resulting backlash pushes and inflicts Ruin damage equal to twice your <icon=skill_Ruin> to all adjacent.;
 
 [SupportAbilityReaction]
 ID=shana_uber_instability; element=physical; actorValue=HP; action=shana_uber_instability_act;
@@ -439,7 +439,7 @@ ID=shana_uber_instability; element=physical; actorValue=HP; action=shana_uber_in
 ID=shana_critical_autolyze;
 name=Critical Bequeath;
 icon=icon_critical_autolyze;
-tooltip=If you are hit into critical condition (25% <icon=HP> or below), grant all allies a stacking +6 <icon=PhysAtk><icon=skill_Ruin> for 30 <icon=time>.;
+tooltip=If you are hit into critical condition (25% <icon=HP> or below), grant all allies a stacking +6 <icon=PhysAtk><icon=skill_Ruin> for <icon=time>30.;
 
 [SupportAbilityReaction]
 ID=shana_critical_autolyze; element=physical; element=magic; actorValues=HP; action=shana_critical_autolyze_act;
@@ -705,15 +705,15 @@ cloneFrom=oneTile;
 
 --issues:
 
---1) big amount of lag whenever the equipping entity is hit
---2) I want these effects to go off when the actor is initially hit into critical, not when hit while in a critical state.
---3) I think the difference is that the critical X abilities use chance instead of freq
---4) why are my avaffecters affecting the equipped inconsistently?
---5) even when the additional action was enabled, it's not making the enemy killable
+--5) even when the additional action was enabled, it's not making the enemy killable. Once this is fixed then the passive is done!
+--consider doing the budget unkillable instead of actual unkillable (hp with duration or something) - see if the value can be t:maxhp * 0.25 or sth
+--6) before I forget, once 5 is fixed, set the freq in horizons grave
+--todo see if can use actorbool in freq, if it does then can make freq for horizons grave that is "is killable" and give it 9999 aivalue.
+
 
 [SupportAbility] ID=shana_Todestrieb; --Note: The boss should have the unkillable bool inherently, this support ability just disables it. Make boss room un-leavable by normal means but no need for extensive anticheese
 name=Todestrieb;
-tooltip=When reaching critical condition for the first time, inflict 10 stacks of Rot<icon=icon_gravekeeper_rot> to all enemies and cure all negative status effects on self, then gain Negate, Aegis and Mighty Block for 999 <icon=time>. <icon=HP> does not drop below 25% before this occurs, and when it does...;
+tooltip=When reaching critical condition for the first time, inflict 10 stacks of Rot<icon=icon_gravekeeper_rot> to all enemies and cure all negative status effects on self, then gain Negate, Aegis and 30<icon=PhysDef> for <icon=time>999. <icon=HP> does not drop below 25% before this occurs, and when it does...;
 icon=icon_Gu_mightyBlock; --todo art
 
 [SupportAbilityReaction] --buffs boss defensively but makes it killable when hit into critical, only works when unkillable.
@@ -722,7 +722,7 @@ ID=shana_Todestrieb; actorValues=HP; action=shana_todestrieb_reaction;
 [Action] ID=shana_todestrieb_reaction;
 	name=Todestrieb;
 	icon=icon_Gu_mightyBlock;
-	tooltip=Inflict 10 stacks of Rot<icon=icon_gravekeeper_rot> to all enemies and cure all negative status effects on self, then gain Negate, Aegis and Mighty Block for 999 <icon=time>, then make self killable.;
+	tooltip=Todestrieb reaction.;
 	harmful=false;
 	attractAttention=false;
 	XPCost=70;
@@ -739,28 +739,28 @@ ID=shana_Todestrieb; actorValues=HP; action=shana_todestrieb_reaction;
 	ID=shana_todestrieb_reaction;
 	harmful=false;
 	chance=100 * c:unkillable * m:cCritical;
-
 [AvAffecterAoE]
 	ID=shana_todestrieb_reaction;
 	cloneFrom=oneTile;
+
 [AvAffecter] ----------------------------------Rot.
 	ID=shana_todestrieb_reaction;
 	actorValue=ari_rot_status_enemy;
 	magnitude=t:ari_rot_status_enemy + 10 * rxn:ruin;
 	duration=80;
-	chance=100;
-	fReq=100 * c:unkillable * m:cCritical;
-	FXOnTileColor=Green;
-	FXOnTile=chargeFast_overlap;
-	FXOnTileColor=Black;
-	FXOnTile=chargeFast_overlap;
-	FXOnTileColor=Green;
-	FXOnTile=chargeSpiralFast_big;
-	FXOnTileColor=Green;
-	FXOnTile=chargeSpiralFast_big;
-    FXOnTileColor=Black;
-	FXOnHit=downwardLinesQuick;
+	chance=100 * c:unkillable * m:cCritical;
+	FXOnHitColor=Green;
+	FXOnHit=chargeFast_overlap;
+	FXOnHitColor=Black;
+	FXOnHit=chargeFast_overlap;
+	FXOnHitColor=Green;
+	FXOnHit=chargeSpiralFast_big;
+	FXOnHitColor=Green;
+	FXOnHit=chargeSpiralFast_big;
+   	FXOnHitColor=Black;
 	FXOnHitColor=DarkGreen;
+	FXOnHit=downwardLinesQuick;
+
 [AvAffecterAoE]
 	ID=shana_todestrieb_reaction;
 	shape=7;
@@ -778,21 +778,17 @@ ID=shana_Todestrieb; actorValues=HP; action=shana_todestrieb_reaction;
 	actorValue=cure;
 	magnitude=1;
 	duration=-2;
-	chance=100;
-	fReq=100 * c:unkillable * m:cCritical;
+	chance=100 * c:unkillable * m:cCritical;
 [AvAffecterAoE]
 	ID=shana_todestrieb_reaction;
 	cloneFrom=oneTile;
-
 [AvAffecter] -----------------------------------Negate.
 	ID=shana_todestrieb_reaction;
 	actorValue=negate;
 	harmful=false;
 	magnitude=1;
 	duration=999;
-	chance=100;
-	fReq=100 * c:unkillable * m:cCritical;
-	element=magic;
+	chance=100 * c:unkillable * m:cCritical;
 [AvAffecterAoE]
 	ID=shana_todestrieb_reaction;
 	cloneFrom=oneTile;
@@ -803,49 +799,22 @@ ID=shana_Todestrieb; actorValues=HP; action=shana_todestrieb_reaction;
 	harmful=false;
 	magnitude=1;
 	duration=999;
-	chance=100;
-	fReq=100 * c:unkillable * m:cCritical;
-	element=magic;
-	element=life;
+	chance=100 * c:unkillable * m:cCritical;
 [AvAffecterAoE]
 	ID=shana_todestrieb_reaction;
 	cloneFrom=oneTile;
 
-[AvAffecter] ------------------------------------Mighty Block.
+[AvAffecter] ------------------------------------30 phys def.
 	ID=shana_todestrieb_reaction;
 	harmful=false;
 	actorValue=PhysDef;
-	magnitude=3 + dMin0:mightyBlockDef;
+	magnitude=30;
 	duration=999;
-	chance=100;
-	fReq=100 * c:unkillable * m:cCritical;
+	chance=100 * c:unkillable * m:cCritical;
 [AvAffecterAoE]
 	ID=shana_todestrieb_reaction;
 	cloneFrom=oneTile;
-[AvAffecter]
-	ID=shana_todestrieb_reaction;
-	harmful=false;
-	visibleEvaluations=false;
-	actorValue=PhysAtk;
-	magnitude=-2;
-	duration=999;
-	chance=100;
-	fReq=100 * c:unkillable * m:cCritical;
-[AvAffecterAoE]
-	ID=shana_todestrieb_reaction;
-	cloneFrom=oneTile;
-[AvAffecter]
-	ID=shana_todestrieb_reaction;
-	harmful=false;
-	visibleEvaluations=false;
-	actorValue=recentlyBlocked;
-	magnitude=1 + c:recentlyBlocked;
-	duration=999;
-	chance=100;
-	fReq=100 * c:unkillable * m:cCritical;
-[AvAffecterAoE]
-	ID=shana_todestrieb_reaction;
-	cloneFrom=oneTile;
+
 
 
 
@@ -903,7 +872,6 @@ ID=shana_Todestrieb; actorValues=HP; action=shana_todestrieb_reaction;
 	ID=shana_todestrieb_reaction2;
 	cloneFrom=oneTile;
 
---todo see if can use actorbool in freq, if it does then can make freq for horizons grave that is "is killable" and give it 9999 aivalue.
 
 
 
