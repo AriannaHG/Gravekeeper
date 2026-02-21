@@ -532,21 +532,26 @@ ID=shana_critical_autolyze; element=physical; element=magic; actorValues=HP; act
 --	ID=shana_critical_autolyze_act;
 --	cloneFrom=oneTile;
 
+
+------------------------------------------------------------------------OLD BARROW ENDBOSS PASSIVES
+
+
+
 [SupportAbility] ID=shana_hatredbeyondmeasure;
 name=Hatred Beyond Measure;
-tooltip=Gain immunity to casting interruption, most incapacitating effects, and Dispel. If any number of incapacitating effects have bypassed this immunity, inflict 13<icon=skill_Ice> damage to all enemies for each time this has occurred, then cure all negative effects on self. Furthermore, effects based off your maximum <icon=HP> are 2% as effective on you.; --todo once released, if recieve feedback that this is too obtuse, rewrite to hint more maybe?
+tooltip=Gain immunity to casting interruption, most incapacitating effects, Domino and Dispel. If any number of effects have bypassed this immunity, inflict 13<icon=skill_Ice> damage to all enemies for each time this has occurred, then cure all negative effects on self. Furthermore, effects based off your maximum <icon=HP> are 2% as effective on you.; --todo once released, if recieve feedback that this is too obtuse, rewrite to hint more maybe?
 icon=iconP_Sa_pureMind; --todo art
 XPCostUnlock=80;
 [SupportAbilityReaction] --interruption immunity
 ID=shana_hatredbeyondmeasure; actorValues=dispel; actorValues=charging; actorValues=casting; actorValues=cancel; damageMultiplier=0;
 [SupportAbilityReaction] --incap effect immunity
-ID=shana_hatredbeyondmeasure; actorValues=disable; actorValues=immob; actorValues=stun; actorValues=sleep; actorValues=frozen; damageMultiplier=0;
+ID=shana_hatredbeyondmeasure; actorValues=pd_domino; actorValues=disable; actorValues=immob; actorValues=stun; actorValues=sleep; actorValues=frozen; damageMultiplier=0;
 [SupportAbilityReaction] --hpbased resistance
 ID=shana_hatredbeyondmeasure; element=HPbased; damageMultiplier=0.02;
 
 
 [SupportAbilityReaction] --hopefully detects infliction of incapacitating status effects (transfer) and reacts accordingly
-ID=shana_hatredbeyondmeasure; actorValues=transfer; actorValues=disable; actorValues=immob; actorValues=stun; actorValues=sleep; actorValues=frozen; action=shana_hatredbeyondmeasure_reaction;
+ID=shana_hatredbeyondmeasure; actorValues=transfer; actorValues=pd_domino; actorValues=disable; actorValues=immob; actorValues=stun; actorValues=sleep; actorValues=frozen; action=shana_hatredbeyondmeasure_reaction;
 --ID=shana_hatredbeyondmeasure; element=any; action=shana_hatredbeyondmeasure_reaction;
 
 
@@ -615,7 +620,7 @@ ID=shana_hatredstacks; actorValues=shana_hatredstacks; newID=shana_hatredstacks;
 [AvAffecter] ----------------------------------Dummy AV to play vfx if it goes off.
 	ID=shana_hatredbeyondmeasure_reaction;
 	harmful=false;
-	chance=100 * c:disable + 100 * c:immob + 100 * c:stun + 100 * c:sleep + 100 * c:frozen;
+	chance=100 * c:pd_domino + 100 * c:disable + 100 * c:immob + 100 * c:stun + 100 * c:sleep + 100 * c:frozen;
 	FXOnTile=sparkle;
     FXOnTile=briefAuraSound;
 --	FXOnHit=briefAuraSound;
@@ -630,7 +635,7 @@ ID=shana_hatredstacks; actorValues=shana_hatredstacks; newID=shana_hatredstacks;
 	magnitude=-13 - 13 * c:shana_hatredstacks;
 	duration=-2;
 	chance=100;
-	fReq=100 * c:disable + 100 * c:immob + 100 * c:stun + 100 * c:sleep + 100 * c:frozen;
+	fReq=100 * c:pd_domino + 100 * c:disable + 100 * c:immob + 100 * c:stun + 100 * c:sleep + 100 * c:frozen;
 	element=ice;
 [AvAffecterAoE]
 	ID=shana_hatredbeyondmeasure_reaction;
@@ -647,7 +652,7 @@ ID=shana_hatredstacks; actorValues=shana_hatredstacks; newID=shana_hatredstacks;
 	harmful=false;
 	element=42000; --actual is 42000
 	chance=100;
-	fReq=100 * c:disable + 100 * c:immob + 100 * c:stun + 100 * c:sleep + 100 * c:frozen;
+	fReq=100 * c:pd_domino + 100 * c:disable + 100 * c:immob + 100 * c:stun + 100 * c:sleep + 100 * c:frozen;
 [AvAffecterAoE]
 	ID=shana_hatredbeyondmeasure_reaction;
 	cloneFrom=allActors;
@@ -658,7 +663,7 @@ ID=shana_hatredstacks; actorValues=shana_hatredstacks; newID=shana_hatredstacks;
 	magnitude=1;
 	duration=-2;
 --	chance=100 * thisPreviousAVHit:shana_hatredbeyondmeasure_reaction;
-	fReq=100 * c:disable + 100 * c:immob + 100 * c:stun + 100 * c:sleep + 100 * c:frozen;
+	fReq=100 * c:pd_domino + 100 * c:disable + 100 * c:immob + 100 * c:stun + 100 * c:sleep + 100 * c:frozen;
     chance=100;
 	FXOnTile=sparkle;
 	FXOnHit=chk;
@@ -695,6 +700,213 @@ chance=100;
 ID=shana_hatredbeyondmeasure_reaction;
 cloneFrom=oneTile;
 
+
+--the current state is the additional action has been disabled for now.
+
+--issues:
+
+--1) big amount of lag whenever the equipping entity is hit
+--2) I want these effects to go off when the actor is initially hit into critical, not when hit while in a critical state.
+--3) I think the difference is that the critical X abilities use chance instead of freq
+--4) why are my avaffecters affecting the equipped inconsistently?
+--5) even when the additional action was enabled, it's not making the enemy killable
+
+[SupportAbility] ID=shana_Todestrieb; --Note: The boss should have the unkillable bool inherently, this support ability just disables it. Make boss room un-leavable by normal means but no need for extensive anticheese
+name=Todestrieb;
+tooltip=When reaching critical condition for the first time, inflict 10 stacks of Rot<icon=icon_gravekeeper_rot> to all enemies and cure all negative status effects on self, then gain Negate, Aegis and Mighty Block for 999 <icon=time>. <icon=HP> does not drop below 25% before this occurs, and when it does...;
+icon=icon_Gu_mightyBlock; --todo art
+
+[SupportAbilityReaction] --buffs boss defensively but makes it killable when hit into critical, only works when unkillable.
+ID=shana_Todestrieb; actorValues=HP; action=shana_todestrieb_reaction;
+
+[Action] ID=shana_todestrieb_reaction;
+	name=Todestrieb;
+	icon=icon_Gu_mightyBlock;
+	tooltip=Inflict 10 stacks of Rot<icon=icon_gravekeeper_rot> to all enemies and cure all negative status effects on self, then gain Negate, Aegis and Mighty Block for 999 <icon=time>, then make self killable.;
+	harmful=false;
+	attractAttention=false;
+	XPCost=70;
+	maxRank=1;
+	special=usableEvenWhenCantAct;
+--	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+--	queueAnotherAction=shana_todestrieb_reaction2;
+--	fReq_queueAnotherAction=100 * c:unkillable * m:cCritical;
+[ActionAoE]
+	ID=shana_todestrieb_reaction;
+	cloneFrom=oneTile;
+[AvAffecter] ----------------------------------Dummy AV to play vfx if it goes off.
+	ID=shana_todestrieb_reaction;
+	harmful=false;
+	chance=100 * c:unkillable * m:cCritical;
+
+[AvAffecterAoE]
+	ID=shana_todestrieb_reaction;
+	cloneFrom=oneTile;
+[AvAffecter] ----------------------------------Rot.
+	ID=shana_todestrieb_reaction;
+	actorValue=ari_rot_status_enemy;
+	magnitude=t:ari_rot_status_enemy + 10 * rxn:ruin;
+	duration=80;
+	chance=100;
+	fReq=100 * c:unkillable * m:cCritical;
+	FXOnTileColor=Green;
+	FXOnTile=chargeFast_overlap;
+	FXOnTileColor=Black;
+	FXOnTile=chargeFast_overlap;
+	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+	FXOnTileColor=Green;
+	FXOnTile=chargeSpiralFast_big;
+    FXOnTileColor=Black;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=DarkGreen;
+[AvAffecterAoE]
+	ID=shana_todestrieb_reaction;
+	shape=7;
+	maxRange=100;
+	airborne=true;
+	arc=true;
+	bypassAll=true;
+	occupyAll=true;
+	canSelectAllies=false;
+	canSelectEnemies=true;
+
+[AvAffecter] ----------------------------------Cure.
+	ID=shana_todestrieb_reaction;
+	harmful=false;
+	actorValue=cure;
+	magnitude=1;
+	duration=-2;
+	chance=100;
+	fReq=100 * c:unkillable * m:cCritical;
+[AvAffecterAoE]
+	ID=shana_todestrieb_reaction;
+	cloneFrom=oneTile;
+
+[AvAffecter] -----------------------------------Negate.
+	ID=shana_todestrieb_reaction;
+	actorValue=negate;
+	harmful=false;
+	magnitude=1;
+	duration=999;
+	chance=100;
+	fReq=100 * c:unkillable * m:cCritical;
+	element=magic;
+[AvAffecterAoE]
+	ID=shana_todestrieb_reaction;
+	cloneFrom=oneTile;
+
+[AvAffecter] -----------------------------------Aegis.
+	ID=shana_todestrieb_reaction;
+	actorValue=aegis;
+	harmful=false;
+	magnitude=1;
+	duration=999;
+	chance=100;
+	fReq=100 * c:unkillable * m:cCritical;
+	element=magic;
+	element=life;
+[AvAffecterAoE]
+	ID=shana_todestrieb_reaction;
+	cloneFrom=oneTile;
+
+[AvAffecter] ------------------------------------Mighty Block.
+	ID=shana_todestrieb_reaction;
+	harmful=false;
+	actorValue=PhysDef;
+	magnitude=3 + dMin0:mightyBlockDef;
+	duration=999;
+	chance=100;
+	fReq=100 * c:unkillable * m:cCritical;
+[AvAffecterAoE]
+	ID=shana_todestrieb_reaction;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_todestrieb_reaction;
+	harmful=false;
+	visibleEvaluations=false;
+	actorValue=PhysAtk;
+	magnitude=-2;
+	duration=999;
+	chance=100;
+	fReq=100 * c:unkillable * m:cCritical;
+[AvAffecterAoE]
+	ID=shana_todestrieb_reaction;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_todestrieb_reaction;
+	harmful=false;
+	visibleEvaluations=false;
+	actorValue=recentlyBlocked;
+	magnitude=1 + c:recentlyBlocked;
+	duration=999;
+	chance=100;
+	fReq=100 * c:unkillable * m:cCritical;
+[AvAffecterAoE]
+	ID=shana_todestrieb_reaction;
+	cloneFrom=oneTile;
+
+
+
+
+
+[Action] ID=shana_todestrieb_reaction2;
+	name=Todestrieb2;
+	icon=icon_Gu_mightyBlock;
+	tooltip=Second part of todestrieb reaction;
+	harmful=false;
+	attractAttention=false;
+	XPCost=70;
+	maxRank=1;
+	casterAnimation=charge_alt;
+	FXOnTarget=largePing;
+	FXOnTarget=sfx_risingBipLow;
+	special=usableEvenWhenCantAct;
+--	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+[ActionAoE]
+	ID=shana_todestrieb_reaction2;
+	cloneFrom=oneTile;
+
+[AvAffecter] ------------------------------------Set HP back to a quarter of max hp.
+	ID=shana_todestrieb_reaction2;
+	harmful=false;
+	visibleEvaluations=false;
+	actorValue=HP;
+	magnitude=-c:HP + c:HPMax * 0.25;
+	duration=-2;
+	chance=100;
+[AvAffecterAoE]
+	ID=shana_todestrieb_reaction2;
+	cloneFrom=oneTile;
+[AvAffecter]----------------------------------------------------------these two AvAffecters return the boss to a killable state
+	ID=shana_todestrieb_reaction2;
+	harmful=false;
+	actorValue=trigger;
+	magnitude=setGlobalVar_toActorID,salvationTarget,False,False;
+	duration=1;
+	chance=100;
+	FXOnHit=pop;
+[AvAffecterAoE]
+	ID=shana_todestrieb_reaction2;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_todestrieb_reaction2;
+	harmful=false;
+	actorValue=task;
+	magnitude=setActorBool,@GsalvationTarget,unkillable,0,True,False,False,False;
+	duration=-2;
+	chance=100;
+	FXOnHit=pop;
+[AvAffecterAoE]
+	ID=shana_todestrieb_reaction2;
+	cloneFrom=oneTile;
+
+--todo see if can use actorbool in freq, if it does then can make freq for horizons grave that is "is killable" and give it 9999 aivalue.
+
+
+
 -----------------------------------------testing
 [ActorClass] name=Testing;
 ID=shana_testing;
@@ -712,7 +924,7 @@ actions=shana_RottingPus_enemy;
 actions=shana_putrefy_vision_enemy;
 
 supportAbilities=shana_festering_fulcrum;
-supportAbilities=shana_instability;
+supportAbilities=shana_Todestrieb;
 supportAbilities=shana_uber_instability;
 supportAbilities=shana_critical_autolyze;
 supportAbilities=shana_hatredbeyondmeasure;
