@@ -712,8 +712,9 @@ cloneFrom=oneTile;
 
 
 [SupportAbility] ID=shana_Todestrieb; --Note: The boss should have the unkillable bool inherently, this support ability just disables it. Make boss room un-leavable by normal means but no need for extensive anticheese
+--Note 2: this only works in combat due to a softlock if it procs out of combat under certain circumstances.
 name=Todestrieb;
-tooltip=When reaching critical condition for the first time, inflict 10 stacks of Rot<icon=icon_gravekeeper_rot> to all enemies and cure all negative status effects on self, then gain Negate, Aegis and 30<icon=PhysDef> for <icon=time>999. <icon=HP> does not drop below 25% before this occurs, and when it does...;
+tooltip=When first reaching critical condition during combat, inflict 10 stacks of Rot<icon=icon_gravekeeper_rot> to all enemies and cure all negative status effects on self, then gain Negate, Aegis and 30<icon=PhysDef> for <icon=time>999. <icon=HP> does not drop below 25% before this occurs, and when it does...;
 icon=icon_Gu_mightyBlock; --todo art
 
 [SupportAbilityReaction] --buffs boss defensively but makes it killable when hit into critical, only works when unkillable.
@@ -738,7 +739,7 @@ ID=shana_Todestrieb; actorValues=HP; action=shana_todestrieb_reaction;
 [AvAffecter] ----------------------------------Dummy AV to play vfx if it goes off.
 	ID=shana_todestrieb_reaction;
 	harmful=false;
-	chance=100 * c:unkillable * m:cCritical;
+	chance=100 * c:unkillable * m:cCritical * m:combat;
 [AvAffecterAoE]
 	ID=shana_todestrieb_reaction;
 	cloneFrom=oneTile;
@@ -748,7 +749,7 @@ ID=shana_Todestrieb; actorValues=HP; action=shana_todestrieb_reaction;
 	actorValue=ari_rot_status_enemy;
 	magnitude=t:ari_rot_status_enemy + 10 * rxn:ruin;
 	duration=80;
-	chance=100 * c:unkillable * m:cCritical;
+	chance=100 * c:unkillable * m:cCritical * m:combat;
 	FXOnHitColor=Green;
 	FXOnHit=chargeFast_overlap;
 	FXOnHitColor=Black;
@@ -778,7 +779,7 @@ ID=shana_Todestrieb; actorValues=HP; action=shana_todestrieb_reaction;
 	actorValue=cure;
 	magnitude=1;
 	duration=-2;
-	chance=100 * c:unkillable * m:cCritical;
+	chance=100 * c:unkillable * m:cCritical * m:combat;
 [AvAffecterAoE]
 	ID=shana_todestrieb_reaction;
 	cloneFrom=oneTile;
@@ -788,7 +789,7 @@ ID=shana_Todestrieb; actorValues=HP; action=shana_todestrieb_reaction;
 	harmful=false;
 	magnitude=1;
 	duration=999;
-	chance=100 * c:unkillable * m:cCritical;
+	chance=100 * c:unkillable * m:cCritical * m:combat;
 [AvAffecterAoE]
 	ID=shana_todestrieb_reaction;
 	cloneFrom=oneTile;
@@ -799,7 +800,7 @@ ID=shana_Todestrieb; actorValues=HP; action=shana_todestrieb_reaction;
 	harmful=false;
 	magnitude=1;
 	duration=999;
-	chance=100 * c:unkillable * m:cCritical;
+	chance=100 * c:unkillable * m:cCritical * m:combat;
 [AvAffecterAoE]
 	ID=shana_todestrieb_reaction;
 	cloneFrom=oneTile;
@@ -810,66 +811,43 @@ ID=shana_Todestrieb; actorValues=HP; action=shana_todestrieb_reaction;
 	actorValue=PhysDef;
 	magnitude=30;
 	duration=999;
-	chance=100 * c:unkillable * m:cCritical;
+	chance=100 * c:unkillable * m:cCritical * m:combat;
 [AvAffecterAoE]
 	ID=shana_todestrieb_reaction;
 	cloneFrom=oneTile;
 
-
-
-
-
-
-[Action] ID=shana_todestrieb_reaction2;
-	name=Todestrieb2;
-	icon=icon_Gu_mightyBlock;
-	tooltip=Second part of todestrieb reaction;
-	harmful=false;
-	attractAttention=false;
-	XPCost=70;
-	maxRank=1;
-	casterAnimation=charge_alt;
-	FXOnTarget=largePing;
-	FXOnTarget=sfx_risingBipLow;
-	special=usableEvenWhenCantAct;
---	special=usableEvenWhenReacting;
-	special=usableEvenWhenYourTurn;
-[ActionAoE]
-	ID=shana_todestrieb_reaction2;
-	cloneFrom=oneTile;
-
 [AvAffecter] ------------------------------------Set HP back to a quarter of max hp.
-	ID=shana_todestrieb_reaction2;
+	ID=shana_todestrieb_reaction;
 	harmful=false;
 	visibleEvaluations=false;
 	actorValue=HP;
 	magnitude=-c:HP + c:HPMax * 0.25;
 	duration=-2;
-	chance=100;
+	chance=100 * c:unkillable * m:cCritical * m:combat;
 [AvAffecterAoE]
-	ID=shana_todestrieb_reaction2;
+	ID=shana_todestrieb_reaction;
 	cloneFrom=oneTile;
 [AvAffecter]----------------------------------------------------------these two AvAffecters return the boss to a killable state
-	ID=shana_todestrieb_reaction2;
+	ID=shana_todestrieb_reaction;
 	harmful=false;
 	actorValue=trigger;
 	magnitude=setGlobalVar_toActorID,salvationTarget,False,False;
 	duration=1;
-	chance=100;
+	chance=100 * c:unkillable * m:cCritical * m:combat;
 	FXOnHit=pop;
 [AvAffecterAoE]
-	ID=shana_todestrieb_reaction2;
+	ID=shana_todestrieb_reaction;
 	cloneFrom=oneTile;
 [AvAffecter]
-	ID=shana_todestrieb_reaction2;
+	ID=shana_todestrieb_reaction;
 	harmful=false;
 	actorValue=task;
 	magnitude=setActorBool,@GsalvationTarget,unkillable,0,True,False,False,False;
 	duration=-2;
-	chance=100;
+	chance=100 * c:unkillable * m:cCritical * m:combat;
 	FXOnHit=pop;
 [AvAffecterAoE]
-	ID=shana_todestrieb_reaction2;
+	ID=shana_todestrieb_reaction;
 	cloneFrom=oneTile;
 
 
