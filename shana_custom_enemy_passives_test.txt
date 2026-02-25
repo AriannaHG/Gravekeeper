@@ -539,8 +539,8 @@ ID=shana_critical_autolyze; element=physical; element=magic; actorValues=HP; act
 
 [SupportAbility] ID=shana_hatredbeyondmeasure;
 name=Hatred Beyond Measure;
-tooltip=Gain immunity to casting interruption, most incapacitating effects, Domino and Dispel. If any number of effects have bypassed this immunity, inflict 13<icon=skill_Ice> damage to all enemies for each time this has occurred, then cure all negative effects on self. Furthermore, effects based off your maximum <icon=HP> are 2% as effective on you.; --todo once released, if recieve feedback that this is too obtuse, rewrite to hint more maybe?
-icon=iconP_Sa_pureMind; --todo art
+tooltip=<color=Aquamarine> Corrupted. Gain immunity to casting interruption, most incapacitating effects, Domino and Dispel. If any number of effects have bypassed this immunity, inflict 13<icon=skill_Ice> damage to all enemies for each time this has occurred, then cure all negative effects on self. Furthermore, effects based off your maximum <icon=HP> are 2% as effective on you.; --todo once released, if recieve feedback that transferring a incapacitating status element to interrupt is too obtuse, rewrite to hint more maybe?
+icon=icon_hatredbeyondmeasure;
 XPCostUnlock=80;
 [SupportAbilityReaction] --interruption immunity
 ID=shana_hatredbeyondmeasure; actorValues=dispel; actorValues=charging; actorValues=casting; actorValues=cancel; damageMultiplier=0;
@@ -717,7 +717,7 @@ cloneFrom=oneTile;
 --Note 2: this only works in combat due to a softlock if it procs out of combat under certain circumstances.
 name=Todestrieb;
 tooltip=When reaching critical condition for the first time, inflict 10 stacks of Rot<icon=icon_gravekeeper_rot> to all enemies and cure all negative status effects on self, then gain Negate, Aegis and 30<icon=PhysDef> for <icon=time>999. <icon=HP> does not drop below 25% before this occurs, and when it does...;
-icon=icon_Gu_mightyBlock; --todo art
+icon=icon_todestrieb;
 
 [SupportAbilityReaction] --buffs boss defensively but makes it killable when hit into critical, only works when unkillable.
 ID=shana_Todestrieb; actorValues=HP; action=shana_todestrieb_reaction;
