@@ -7063,7 +7063,7 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 
 [Action] ID=shana_psychenecrosis_enemy;
 	name=Psychenecrosis;
-	icon=icon_De_iceblood; --TODO change this
+	icon=icon_psychenecrosis;
 	mpCost=4 * d:mpCostMult * d:mpCostMult_onlyWithCT + d:mpCostMod_onlyWithCT + d:mpCostMod;
 	chargeTime=8 * d:chargeTimeMult * d:chargeTimeMult_onlyWithMP + d:chargeTimeMod + d:chargeTimeMod_onlyWithMP;
 	cooldown=35;
