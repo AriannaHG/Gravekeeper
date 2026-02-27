@@ -207,7 +207,7 @@ formula=partyItem:skull + partyItem:skull2 + partyItem:skull_elephant1 + partyIt
 
 
 
-----------------------Manuscript of Divinity entire Life damage swap
+----------------------Divinity entire Life damage swap
 [FormulaGlobal] ID=grimoireDivinityDmg0;
 formula=-w:Power - c:MagAtk - c:skill_Life - m:isItThisDayOfWeek(4) + t:MagDef;
 

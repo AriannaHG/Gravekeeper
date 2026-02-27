@@ -698,7 +698,7 @@ icon=classIcon_ari_gravekeeper;
 	ID=ari_grimoireAttack_lowheal_yore;
 	cloneFrom=oneTile;
 
---Rotbound Manuscript doubling friendly rot
+--Pestilence doubling friendly rot
 [Action] ID=shana_grimoireAttack_deadbook; 
 	special=requiresCasting;
 	special=redoMovementAnalysis;
@@ -801,7 +801,7 @@ icon=classIcon_ari_gravekeeper;
 	minRange=1;
 	maxRange=22;
 
---ENEMY Rotbound Manuscript doubling ENEMY rot
+--ENEMY Pestilence doubling ENEMY rot
 [Action] ID=shana_grimoireAttack_deadbook_enemy; 
 	special=requiresCasting;
 	special=redoMovementAnalysis;
@@ -903,7 +903,7 @@ icon=classIcon_ari_gravekeeper;
 	maxRange=22;
 
 
----------------------------------------------------------------------manuscript of divinity, heals all allies in radius 
+---------------------------------------------------------------------Divinity, heals all allies in radius
 [Action] ID=ari_grimoire_divinity_heal;
 	harmful=false;
 	special=usableEvenWhenCantAct;
@@ -938,7 +938,7 @@ icon=classIcon_ari_gravekeeper;
 	canSelectEnemies=false;
 	maxRange=9;
 
---Manuscript of Divinity
+--Divinity
 [Action] ID=ari_grimoire_divinity_attack;
 	special=requiresCasting;
 	special=redoMovementAnalysis;

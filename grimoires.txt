@@ -584,10 +584,10 @@ ID=ari_grimoire_necronomicon; element=endTurn; action=ari_necronomicon_hungry_ta
 
 
 
-[ItemType]  name=Rotbound Manuscript;
+[ItemType]  name=Pestilence;
 ID=shana_deadbook;sprite=5; spriteWhenHeld=6; itemCategory=weapon; element=ruin;
 texture=gkart;
-description=A pestilent tome. Its profaned pages inflict the Creeping Death upon any foolish enough to darken its sight. <n=>Doubles Rot<icon=icon_gravekeeper_rot> when cast upon an enemy. <n=>Charge time of <icon=time>3.;
+description=A seething plague lies within this tome. It grants the Creeping Death to any foolish enough to darken its sight. <n=>Doubles Rot<icon=icon_gravekeeper_rot> when cast upon an enemy. <n=>Charge time of <icon=time>3.;
 journalID=shana_journal_deadbook;
 weight=1; volume=0; value=2664; power=5;
 action=shana_grimoireAttack_deadbook;
@@ -606,10 +606,10 @@ ID=shana_deadbook; element=combatStart; action=shana_deadbookact;
 [ItemReaction]
 ID=shana_deadbook; element=timerUp; action=shana_deadbookact;
 
-[ItemType]  name=Rotbound Manuscript;
+[ItemType]  name=Pestilence;
 ID=shana_deadbook_enemy;sprite=5; spriteWhenHeld=6; itemCategory=weapon; element=ruin;
 texture=gkart;
-description=You shouldn't be reading this in normal gameplay as this is the enemy variant of the Manuscript, unintended for player use. Feel free to use this alongside the actual Rotbound Manuscript, but the Rot this version inflicts will spawn an enemy zombie on death. The Gravekeeper Mod developers would love to know how this got into your inventory!;
+description=You shouldn't be reading this in normal gameplay as this is the enemy variant of Pestilence, unintended for player use. Feel free to use this alongside the actual Pestilence, but the Rot this version inflicts will spawn an enemy zombie on death. The Gravekeeper Mod developers would love to know how this got into your inventory!;
 journalID=shana_journal_deadbook;
 weight=1; volume=0; value=2664; power=7;
 action=shana_grimoireAttack_deadbook_enemy;
@@ -629,13 +629,13 @@ ID=shana_deadbook_enemy; element=timerUp; action=shana_deadbookact_enemy;
 [JournalEntry]
 ID=shana_journal_deadbook;
 category=equipment; halfPage=false; rarity=4;
-title=Rotbound Manuscript;
-text=<itemBig=shana_deadbook><title=Rotbound Manuscript><brAdj=>A plagued tome that choked the life from once-thriving Barrow. Its pages are unreadable, but every vein it blackens is a lesson on the nefarious dark arts.
+title=Pestilence;
+text=<itemBig=shana_deadbook><title=Pestilence><brAdj=>A plagued tome that choked the life from once-thriving Barrow. Each and every page is unreadable, the text within slithering and squirming and writhing as it perverts the wielder's strength to fuel the Creeping Death within.
 <n=>
-This grimore doubles the Rot of any enemy it is cast upon, ignoring their <icon=skill_Ruin> resistance. Furthermore, at the beginning of combat and the start of its wielder's turns, it afflicts all foes it can see with the Creeping Death for <icon=time>99, applying 2 stacks of Rot at the beginning of each of their turns and an additional stack whenever Creeping Death is reapplied.;
+This grimore doubles the Rot of any enemy it is cast upon, ignoring their <icon=skill_Ruin> resistance. Furthermore, at the beginning of combat and the start of its wielder's turns, it afflicts all foes it can see with the Creeping Death for <icon=time>99, applying 2 stacks of Rot at the beginning of each of their turns and an additional stack whenever the Creeping Death is reapplied.;
 
 
-[ItemType]  name=Manuscript of Divinity;
+[ItemType]  name=Divinity;
 ID=ari_grimoire_divinity; sprite=8; spriteWhenHeld=7;  pR=overworld11; pG=pBone; pB=pGold;
 itemCategory=weapon; element=life;
 texture=gkart;
@@ -658,5 +658,5 @@ ID=ari_grimoire_divinity; element=endTurn; action=ari_grimoire_divinity_heal;
 [JournalEntry]
 ID=ari_journal_grimoire_divinity;
 category=equipment; halfPage=false; rarity=4;
-title=Manuscript of Divinity;
-text=<itemBig=ari_grimoire_divinity><title=Manuscript of Divinity><brAdj=>A tome restored to its rightful glory. A pristine tome containing scriptures and hymns of praise and reverence, this tome had been carried into battles to protect and defend the citizens of Barrow.;
+title=Divinity;
+text=<itemBig=ari_grimoire_divinity><title=Divinity><brAdj=>A tome restored to its rightful glory. A pristine tome containing scriptures and hymns of praise and reverence, this tome had been carried into battles to protect and defend the citizens of Barrow.;

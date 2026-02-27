@@ -252,7 +252,7 @@ ID=shana_fast_superdupersparkle; red=0; blue=0; green=0.5; alpha=0.5; size=0.15;
 
 --------End rot related sparkles
 
---------Rotbound Manuscript FX
+--------Pestilence FX
 
 [FXData]
 ID=shana_chargeSpiralFaster_big;
@@ -275,7 +275,7 @@ randVeloc=0,3;
 initialDelayIncreasePerParticle=0.05;
 percentDurationBeforeOverlapWithOtherFX=0.13;
 
---------End Rotbound Manuscript FX
+--------End Pestilence FX
 
 [FXData]
 ID=shana_ruinping_noOverlap;
