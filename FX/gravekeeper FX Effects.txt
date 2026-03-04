@@ -465,6 +465,28 @@ percentDurationBeforeOverlapWithOtherFX=0;
 [ScreenTint]
 ID=shana_pussen_major; color=70,72,28; fadeInTime=0.4;
 
+
+[FXData]
+ID=shana_abscess_chargefx;
+particleID=shana_abscessthinVertLine;
+numParticles=13;
+posOffset=-0.35,-0.1;
+randPos=0.70,0;
+velocOffset=0,-2;
+randVeloc=0,-2.5;
+initialDelayIncreasePerParticle=0.1;
+
+[drawOrderFX]
+ID=shana_abscessthinVertLine;
+texture=fx_shana_abscessVertLine;
+sourceRect=0,0,1,3;
+origin=0,1;
+timePerFrame=0.1;
+duration=0.23;
+scaleVeloc=-2;
+scaleAccel=-5;
+
+
 ------------------Bad end delay fx (maybe unused)
 [FXData]
 ID=shana_delay10;

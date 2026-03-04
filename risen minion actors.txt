@@ -7473,10 +7473,16 @@ text=<actorBig=shana_undead_abscess_normal_enemy><actorBig=shana_undead_abscess_
 
 ----------------Futureproofing for Undead Abscess Animations
 
-[Animation] ID=shana_anim_abscess_charge; duration=3; --boat_idle_noWater copy
-[Keyframe] ID=shana_anim_abscess_charge; frame=3; endTime=0.4;
-[Keyframe] ID=shana_anim_abscess_charge; frame=3; endTime=1.8;
-[Keyframe] ID=shana_anim_abscess_charge; frame=3; endTime=3;
+[Animation] ID=shana_anim_abscess_charge; duration=3.2; --boat_idle_noWater copy
+[Keyframe] ID=shana_anim_abscess_charge; frame=3; endTime=0; fx=shana_abscess_chargefx;
+[Keyframe] ID=shana_anim_abscess_charge; frame=3; endTime=0.4; fx=shana_abscess_chargefx;
+[Keyframe] ID=shana_anim_abscess_charge; frame=3; endTime=0.8; fx=shana_abscess_chargefx;
+[Keyframe] ID=shana_anim_abscess_charge; frame=3; endTime=1.2; fx=shana_abscess_chargefx;
+[Keyframe] ID=shana_anim_abscess_charge; frame=3; endTime=1.6; fx=shana_abscess_chargefx;
+[Keyframe] ID=shana_anim_abscess_charge; frame=3; endTime=2.0; fx=shana_abscess_chargefx;
+[Keyframe] ID=shana_anim_abscess_charge; frame=3; endTime=2.4; fx=shana_abscess_chargefx;
+[Keyframe] ID=shana_anim_abscess_charge; frame=3; endTime=2.8; fx=shana_abscess_chargefx;
+[Keyframe] ID=shana_anim_abscess_charge; frame=3; endTime=3.2; fx=shana_abscess_chargefx;
 
 
 
