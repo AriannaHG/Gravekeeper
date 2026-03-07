@@ -701,19 +701,7 @@ ID=shana_hatredbeyondmeasure_reaction;
 cloneFrom=oneTile;
 
 
---the current state is the additional action has been disabled for now.
-
---issues:
-
---5) even when the additional action was enabled, it's not making the enemy killable. Once this is fixed then the passive is done!
---consider doing the budget unkillable instead of actual unkillable (hp with duration or something) - see if the value can be t:maxhp * 0.25 or sth
---6) before I forget, once 5 is fixed, set the freq in horizons grave
---todo see if can use actorbool in freq, if it does then can make freq for horizons grave that is "is killable" and give it 9999 aivalue.
-
-
---if I make an av that signifies "killable" that really does simplify things doesn't it?
-
-[SupportAbility] ID=shana_Todestrieb; --Note: The boss should have the unkillable bool inherently, this support ability just disables it. Make boss room un-leavable by normal means but no need for extensive anticheese
+[SupportAbility] ID=shana_Todestrieb; --Make boss room un-leavable by normal means but no need for extensive anticheese
 --Note 2: this only works in combat due to a softlock if it procs out of combat under certain circumstances.
 name=Todestrieb;
 tooltip=When reaching critical condition for the first time, inflict 10 stacks of Rot<icon=icon_gravekeeper_rot> to all enemies and cure all negative status effects on self, then gain Negate, Aegis and 30<icon=PhysDef> for <icon=time>999. <icon=HP> does not drop below 25% before this occurs, and when it does...;

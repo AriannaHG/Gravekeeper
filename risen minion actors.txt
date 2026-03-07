@@ -7148,6 +7148,14 @@ cloneFrom=fareem;
 disappearOnDeath=true;
 disappearOnDeath_dropItems=false;
 unarmedAction = ari_infectPunch_enemy;
+journalID=shana_journal_fareem_boss;
+[JournalEntry]
+ID=shana_journal_fareem_boss;
+category=creature; halfPage=false; rarity=4;
+title=Yokaze;
+text=<icon=classIcon_ari_gravekeeper><title=Yokaze><brAdj=>    A victim of bad timing. Formerly innocent. Undead. Her yumi inflicts Rot<icon=icon_gravekeeper_rot> in lieu of direct damage.<n>    "How dare she. How dare she flaunt her eyesight in such a manner. How dare she, a mere traveller, show her face in Barrow, and imply she can change things. Imply that she's not in any danger. They must all be punished. I will punish her. Such an insult to my abilities cannot go unanswered. Such an insult to me cannot go unanswered. I will make her see the error of her ways, and when I'm done she'll want to claw out her eyes, those bright and shining eyes, the eyes she's so proud of. Oh, but I won't let her. Let her frivolous heart endure torture without end in perfect clarity, let her see her victims beg for mercy even as her precious yumi rots them from the inside out. I won't let her leave. I can't let her leave." - Abbess Sophia;
+--todo: Make an icon similar to j_fareem in vanilla, by exporting the settings and colours of the fareem art into furdabips palette viewer, manually setting palettes, and saving as. Only do this once art is finalized because it's a pain to change afterwards
+
 
 [ActorTypeReaction]
 ID=shana_plaguebow_fareem_boss;
@@ -7456,17 +7464,8 @@ text=<actorBig=shana_undead_abscess_normal_enemy><actorBig=shana_undead_abscess_
 
 --todo: fix stun animation and remove shoulderbash cast animation...?
 
---todo: channeling special effects
-
---todo: fix casting fx offset
-
 --todo: fix timeline description placeholder dmg
 
---todo: fix facing fpr all variants (maybe expand the sprite list and see if that helps. especially on summoned undead abscess)
-
---todo: try make it so that abscesses try to move away from the player if they are one square away, but otherwise are aggro?
-
---todo: abscess animations
 
 ----------------Undead Amalgam Animations
 
