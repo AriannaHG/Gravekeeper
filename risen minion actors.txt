@@ -7148,7 +7148,7 @@ cloneFrom=fareem;
 disappearOnDeath=true;
 disappearOnDeath_dropItems=false;
 unarmedAction = ari_infectPunch_enemy;
-journalID=shana_journal_fareem_boss;
+journalID=shana_journal_rabbit_boss; --todo this is just for testing, change this back to shana_journal_fareem_boss before release
 [JournalEntry]
 ID=shana_journal_fareem_boss;
 category=creature; halfPage=false; rarity=4;
@@ -7208,6 +7208,16 @@ action=shana_spawn_plaguebow;
 	needsLoS=false;
 	needsLoE=false;
 
+
+----------------Snowball boss. todo: this is just a journal entry for now, but since I was doing lore anyway, might as well
+
+[JournalEntry]
+ID=shana_journal_rabbit_boss;
+category=creature; halfPage=false; rarity=4;
+title=Snowball;
+text=<icon=classIcon_ari_gravekeeper><title=Snowball><brAdj=>    "There is no way her love is genuine. The Bun<n><adjY=-3>is a useless creature! It is unreal and beyond<n><adjY=-3>logic. Why couldn't I... I hate it. I hate watching<n><adjY=-3>that slip of a girl love her Bun, holding it, cradling<n><adjY=-3>it with the sappiest, most useless smile on her<n><adjY=-3>face. Her love is useless. I will make her love<n><adjY=-3>useless. No, I will make the love her Bun feels into<n><adjY=-3>a chain, a chain that drags it into the abyss. Let it<n><adjY=-3>hear her screams as it consumes its mistress, its<n><adjY=-3>kitschy little teeth growing into blades to rip,<n><adjY=-3>and tear, and tear. Let it reap the life of its<n><adjY=-4>mistress from her exposed throat, the very<n><adjY=-3>throat that whispers sweet nothings into its ears<n><adjY=-3>every night. It must take accountability. It must<n><adjY=-3>know it is responsible for the suffering it will<n><adjY=-3>endure. Yes, let it wish for death, let the happy<n><adjY=-3>memories it underservedly holds be tainted by its<n><adjY=-3>own actions, let its neatly-trimmed claws rend the<n><adjY=-3>exposed flesh of its mistress. Let it know it is<n><adjY=-3>responsible for its own suffering. Let it bury the<n><adjY=-3>unidentifiable remains of her body, as is proper.<n><adjY=-3>This is what the parasite of a creature deserves,<n><adjY=-4>for the unearned affection it has garnered. It<n><adjY=-4>makes me sick." - Abbess Sophia;
+--todo: Change icon to Snowball once everything is done
+--todo: put the following into a book or something. The domesticated Bun is a distant cousin of the common Jefri, having taken a different evolutionary path without the selection pressure inherent to Eral's wilderness. They are gentle and intelligent creatures, yet lacking in self-preservation.<n>
 
 ----------------Undead Abscesses. Normal one leaves a corpse and is preexisting, summmoned one is exclusive to Amalgam summon and corpse disappears + it can selfdestruct to do the same buff as amalgam's Bequeath (Bequeath Self)
 
