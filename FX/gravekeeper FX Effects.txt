@@ -494,10 +494,15 @@ particleID=pop;
 speedOffset=-0.9;
 percentDurationBeforeOverlapWithOtherFX=1;
 
-
-
-
-
+------------------Final Boss Hatred Beyond Measure fx
+[FXData]
+ID=shana_hatred_retaliation_fx;
+particleID=pop;
+percentDurationBeforeOverlapWithOtherFX=0;
+soundName=sfx_iceSnap;
+soundVolume=4;
+[ScreenTint]
+ID=shana_hatred_retaliation_fx; color=0,191,255; fadeInTime=0.3;
 
 ------------------Summon FX
 [drawOrderFX]
