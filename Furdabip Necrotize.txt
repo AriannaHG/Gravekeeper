@@ -1284,7 +1284,7 @@ element=combatEnd; newID=X;
 	name=Rotting Prison;
 	icon=icon_flesh_prison;
 	chargeTime=20;
-	tooltip=This spell tracks its target, or their corpse if present. Usable once per combat. Summons an Undead Abscess on each tile adjacent to the target. Abscesses summoned on occupied tiles are immediately detonated, dealing <thinnerIcon=skill_Fire><math=11212> damage to the tile's occupant, if any.; --todo change math, can use c:skill_Fire
+	tooltip=This spell tracks its target, or their corpse if present. Usable once per combat. Summons an Undead Abscess on each tile adjacent to the target. <n>Abscesses that would have been summoned on obstructed tiles are detonated instead, dealing <thinnerIcon=skill_Fire><math=11212> damage to the tile's occupant, if any.; --todo change math, can use c:skill_Fire
 	special=requiresCharging;
 	casterAnimation=shoulderbash;
 --	FXOnCaster=darken_major;

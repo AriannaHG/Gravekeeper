@@ -536,10 +536,10 @@ ID=shana_critical_autolyze; element=physical; element=magic; actorValues=HP; act
 ------------------------------------------------------------------------OLD BARROW ENDBOSS PASSIVES
 
 
-
-[SupportAbility] ID=shana_hatredbeyondmeasure;
+------------------------------------------------------------------------HATRED BEYOND MEASURE
+[SupportAbility] ID=shana_hatredbeyondmeasure; --I'll be adding 2 amalgams as mooks in the boss fight
 name=Hatred Beyond Measure;
-tooltip=<color=Aquamarine> Corrupted. Gain immunity to casting interruption, most incapacitating effects, Domino and Dispel.<n>If this immunity is tested, inflict 13<icon=skill_Ice>damage to all enemies for each time this has occurred, then cure all negative effects on self. Furthermore, effects based off your maximum <icon=HP> are 2% as effective on you.; --todo once released, if recieve feedback that transferring a incapacitating status element to interrupt is too obtuse, rewrite to hint more maybe?
+tooltip=<color=Aquamarine> Corrupted. Gain immunity to casting interruption, most incapacitating effects, Domino and Dispel.<n>If this immunity is tested, inflict 7<icon=skill_Ice>damage to all enemies for each time this has occurred, then cure all negative effects on self. Furthermore, effects based off your maximum <icon=HP> are 2% as effective on you.; --todo once released, if recieve feedback that transferring a incapacitating status element to interrupt is too obtuse, rewrite to hint more maybe?
 icon=icon_hatredbeyondmeasure;
 XPCostUnlock=80;
 [SupportAbilityReaction] --interruption immunity
@@ -553,6 +553,7 @@ ID=shana_hatredbeyondmeasure; element=HPbased; damageMultiplier=0.02;
 [SupportAbilityReaction] --hopefully detects infliction of incapacitating status effects (transfer) and reacts accordingly
 ID=shana_hatredbeyondmeasure; actorValues=dispel; actorValues=cancel; actorValues=pd_domino; actorValues=disable; actorValues=immob; actorValues=stun; actorValues=sleep; actorValues=frozen; actorValues=silence; action=shana_hatredbeyondmeasure_reaction;
 
+--todo if enemies are attacking the boss, give this reaction a chonky -ive ai value
 
 [ActorValue] --------------------------------------------------------------- define AV tracking how much hatred has been built
 ID=shana_hatredstacks;
@@ -594,7 +595,7 @@ ID=shana_hatredstacks; actorValues=shana_hatredstacks; newID=shana_hatredstacks;
 
 [Action] ID=shana_hatredbeyondmeasure_reaction;
 	name=Hatred Beyond Measure;
-	icon=iconP_Sa_pureMind; --todo art
+	icon=icon_hatredbeyondmeasure; --this won't be seen lol
 	tooltip=Deals ramping ice damage to all enemies and cures incapacitating effects on self.;
 	harmful=true;
 	attractAttention=false;
@@ -634,7 +635,7 @@ ID=shana_hatredstacks; actorValues=shana_hatredstacks; newID=shana_hatredstacks;
 	harmful=true;
 	actorValue=HP;
 	visibleMiss=false;
-	magnitude=-13 * c:shana_hatredstacks;
+	magnitude=-7 * c:shana_hatredstacks;
 	duration=-2;
 	chance=100;
 --	fReq=100 * c:pd_domino + 100 * c:disable + 100 * c:immob + 100 * c:stun + 100 * c:sleep + 100 * c:frozen;
@@ -653,7 +654,7 @@ ID=shana_hatredstacks; actorValues=shana_hatredstacks; newID=shana_hatredstacks;
 
 
 
-
+----------------------------------------------------------------------------TODESTRIEB
 [SupportAbility] ID=shana_Todestrieb; --Make boss room un-leavable by normal means but no need for extensive anticheese
 --Note 2: this only works in combat due to a softlock if it procs out of combat under certain circumstances.
 name=Todestrieb;
@@ -831,6 +832,83 @@ formula=moreThan:0:d:shana_criticalconditioncalcpt1; --maxhp/4 should be strictl
 	ID=shana_todestrieb_reaction;
 	cloneFrom=oneTile;
 
+---------------------------------------------------------------------HEART OF CORRUPTION
+[SupportAbility]
+ID=shana_heart_of_corruption;
+name=Heart Of Corruption;
+icon=icon_heart_of_corruption; --todo art, probably riff off festering fulcrum
+tooltip=This passive ability counts as a copy of "Festering Fulcrum". When your <icon=HP> changes, a mature Undead Abscess will spontaneously form close by, lasting for <icon=time>90. <n>If you die, your army dies with you.;
+XPCostUnlock=425;
+
+[SupportAbilityEffect] --To make it count as a copy of Festering Fulcrum.
+ID=shana_heart_of_corruption;
+actorValue=shana_festering_fulcrum_equipped; magnitude=1; duration=-1;
+
+[SupportAbilityReaction] --last damage taken should be negative
+ID=shana_heart_of_corruption; actorValue=HP; action=shana_heart_of_corruption_react_spawn_abscess;
+
+[SupportAbilityReaction]
+ID=shana_heart_of_corruption; element=incapacitated; action=shana_heart_of_corruption_die; --allActors_nonIncapped or shape=17
+
+
+[Action] ID=shana_heart_of_corruption_react_spawn_abscess; --todo if simply adding that does not work then you would do a large "all actors" AOE after the summon that gives the timer (like bathandler action does) to any of that actortype that do not already have it
+--todo add a cloned mature abscess that does not leave a corpse
+	special=usableEvenWhenCantAct;
+--	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+[ActionAoE]
+	ID=shana_heart_of_corruption_react_spawn_abscess;
+	cloneFrom=oneTile;
+[AvAffecter] --summon abscesses in occupiable tiles
+	ID=shana_heart_of_corruption_react_spawn_abscess;
+	harmful=false;
+	actorValue=summonActor_defaultTeam;
+	magnitude=shana_undead_abscess_normal_enemy;
+	chance=100;
+--	fReq=m:cLastDmgTakenGreaterThanX(0);
+	duration=-2;
+	element=ruin;
+	FXOnTile=tinyShakeHoriz;
+	FXOnTile=shana_summoned_explode_die;
+[AvAffecterAoE]
+	ID=shana_heart_of_corruption_react_spawn_abscess;
+	cloneFrom=oneTile;
+
+
+[Action] ID=shana_heart_of_corruption_die; --remove all allies when boss dies
+	special=usableWithoutACaster;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+[ActionAoE]
+	ID=shana_heart_of_corruption_die;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_heart_of_corruption_die;
+	actorValue=removeActor;
+	magnitude=1;
+	duration=-2;
+	chance=100;
+	element=magic;
+	element=ruin;
+	FXOnHit=pixelCloud_black_silent;
+	FXOnHit=lowRoar;
+[AvAffecterAoE]
+	ID=shana_heart_of_corruption_die;
+	shape=17;
+    arc=true;
+    airborne=true;
+    needsLoE=false;
+    needsLoS=false;
+    bypassAll=true;
+    canSelectAllies=true;
+    canSelectEnemies=false;
+    minRange=1;
+    maxRange=99;
+	ignoreCannotTarget=true;
+	canSelectStackedActors=false;
+
+
 
 -----------------------------------------testing
 [ActorClass] name=Testing;
@@ -853,4 +931,5 @@ supportAbilities=shana_Todestrieb;
 supportAbilities=shana_uber_instability;
 supportAbilities=shana_critical_autolyze;
 supportAbilities=shana_hatredbeyondmeasure;
+supportAbilities=shana_heart_of_corruption;
 relevantStats=TrueHPMax;

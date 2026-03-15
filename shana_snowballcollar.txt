@@ -1,6 +1,6 @@
 [ItemType]  name=Snowball's Collar;
 ID=shana_rabbitcollar; 
-texture=gkart; sprite=79; enhanceDoesntAlterPalettes=true; --TODO
+texture=gkart; sprite=79; enhanceDoesntAlterPalettes=true;
 description=Cherished bun's collar. Once per turn during combat, attacking any number of adjacent units without having moved last turn channels <icon=moveDistance> <icon=jumpDistance> into a violent kick against each.; 
 weight=0; volume=1; value=2000;
 itemCategory=4; 
