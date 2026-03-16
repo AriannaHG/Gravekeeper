@@ -539,7 +539,7 @@ ID=shana_critical_autolyze; element=physical; element=magic; actorValues=HP; act
 ------------------------------------------------------------------------HATRED BEYOND MEASURE
 [SupportAbility] ID=shana_hatredbeyondmeasure; --I'll be adding 2 amalgams as mooks in the boss fight
 name=Hatred Beyond Measure;
-tooltip=<color=Aquamarine> Corrupted. Gain immunity to casting interruption, most incapacitating effects, Domino and Dispel.<n>If this immunity is tested, inflict 7<icon=skill_Ice>damage to all enemies for each time this has occurred, then cure all negative effects on self. Furthermore, effects based off your maximum <icon=HP> are 2% as effective on you.; --todo once released, if recieve feedback that transferring a incapacitating status element to interrupt is too obtuse, rewrite to hint more maybe?
+tooltip=<color=Aquamarine>Corrupted. Gain immunity to casting interruption, most incapacitating effects, Domino and Dispel.<n>If this immunity is tested, inflict 7<icon=skill_Ice>damage to all enemies for each time this has occurred, then cure all negative effects on self. Furthermore, effects based off your maximum <icon=HP> are 2% as effective on you.; --todo once released, if recieve feedback that transferring a incapacitating status element to interrupt is too obtuse, rewrite to hint more maybe?
 icon=icon_hatredbeyondmeasure;
 XPCostUnlock=80;
 [SupportAbilityReaction] --interruption immunity
@@ -837,33 +837,35 @@ formula=moreThan:0:d:shana_criticalconditioncalcpt1; --maxhp/4 should be strictl
 ID=shana_heart_of_corruption;
 name=Heart Of Corruption;
 icon=icon_heart_of_corruption; --todo art, probably riff off festering fulcrum
-tooltip=This passive ability counts as a copy of "Festering Fulcrum". When your <icon=HP> changes, a mature Undead Abscess will spontaneously form close by, lasting for <icon=time>90. <n>If you die, your army dies with you.;
+tooltip=This passive ability counts as a copy of "Festering Fulcrum". When your <icon=HP> changes, a mature Undead Abscess will spontaneously form close by. <n>If you die, your army dies with you.;
 XPCostUnlock=425;
 
 [SupportAbilityEffect] --To make it count as a copy of Festering Fulcrum.
 ID=shana_heart_of_corruption;
 actorValue=shana_festering_fulcrum_equipped; magnitude=1; duration=-1;
 
-[SupportAbilityReaction] --last damage taken should be negative
+[SupportAbilityReaction] --Spawn an abscess and use 41002 on self
 ID=shana_heart_of_corruption; actorValue=HP; action=shana_heart_of_corruption_react_spawn_abscess;
+
+[SupportAbilityReaction] --when reacting to 41002 add timer, this is done due to the action being unable to detect its own spawned abscess
+ID=shana_heart_of_corruption; element=41002; action=shana_heart_of_corruption_react_add_timer;
 
 [SupportAbilityReaction]
 ID=shana_heart_of_corruption; element=incapacitated; action=shana_heart_of_corruption_die; --allActors_nonIncapped or shape=17
 
 
-[Action] ID=shana_heart_of_corruption_react_spawn_abscess; --todo if simply adding that does not work then you would do a large "all actors" AOE after the summon that gives the timer (like bathandler action does) to any of that actortype that do not already have it
---todo add a cloned mature abscess that does not leave a corpse
+[Action] ID=shana_heart_of_corruption_react_spawn_abscess;
 	special=usableEvenWhenCantAct;
 --	special=usableEvenWhenReacting;
 	special=usableEvenWhenYourTurn;
 [ActionAoE]
 	ID=shana_heart_of_corruption_react_spawn_abscess;
 	cloneFrom=oneTile;
-[AvAffecter] --summon abscesses in occupiable tiles
+[AvAffecter] ------------------------------------------summon single abscess when taking damage
 	ID=shana_heart_of_corruption_react_spawn_abscess;
 	harmful=false;
 	actorValue=summonActor_defaultTeam;
-	magnitude=shana_undead_abscess_normal_enemy;
+	magnitude=shana_undead_abscess_mature_summoned_enemy;
 	chance=100;
 --	fReq=m:cLastDmgTakenGreaterThanX(0);
 	duration=-2;
@@ -873,7 +875,44 @@ ID=shana_heart_of_corruption; element=incapacitated; action=shana_heart_of_corru
 [AvAffecterAoE]
 	ID=shana_heart_of_corruption_react_spawn_abscess;
 	cloneFrom=oneTile;
+[AvAffecter] ------------------------------------------pulse custom element on self to trigger add timer reaction
+	ID=shana_heart_of_corruption_react_spawn_abscess;
+	harmful=false;
+	element=41002;
+	chance=100;
+[AvAffecterAoE]
+	ID=shana_heart_of_corruption_react_spawn_abscess;
+	cloneFrom=oneTile;
 
+[Action] ID=shana_heart_of_corruption_react_add_timer;
+	special=usableEvenWhenCantAct;
+--	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+[ActionAoE]
+	ID=shana_heart_of_corruption_react_add_timer;
+	cloneFrom=oneTile;
+[AvAffecter] ------------------------------------------removal timer
+	ID=shana_heart_of_corruption_react_add_timer;
+	visibleEvaluations=false;
+	harmful=false;
+	actorValue=removeTimer;
+	magnitude=1;
+--	chance=100;
+    chance=100 * tIsActorType:shana_undead_abscess_mature_summoned_enemy - 100 * t:removeTimer; --assigns timer if it was a final boss abscess and doesnt have a timer yet
+	duration=80;
+[AvAffecterAoE]
+    ID=shana_heart_of_corruption_react_add_timer;
+    shape=17;
+    arc=true;
+    airborne=true;
+    needsLoE=false;
+    needsLoS=false;
+    bypassAll=true;
+    canSelectAllies=true;
+    canSelectEnemies=true;
+    minRange=0;
+    maxRange=99;
+	canSelectStackedActors=false;
 
 [Action] ID=shana_heart_of_corruption_die; --remove all allies when boss dies
 	special=usableWithoutACaster;

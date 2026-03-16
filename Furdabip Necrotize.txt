@@ -1353,7 +1353,7 @@ element=combatEnd; newID=X;
 	ID=shana_rotting_prison3;
 	harmful=false;
 	actorValue=summonActor_defaultTeam;
-	magnitude=shana_undead_abscess_summoned_enemy;
+	magnitude=shana_undead_abscess_new_enemy;
 	chance=100;
 	duration=-2;
 	element=ruin;

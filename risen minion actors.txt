@@ -7219,9 +7219,9 @@ text=<icon=classIcon_ari_gravekeeper><title=Snowball><brAdj=>    "There is no wa
 --todo: Change icon to Snowball once everything is done
 --todo: put the following into a book or something. The domesticated Bun is a distant cousin of the common Jefri, having taken a different evolutionary path without the selection pressure inherent to Eral's wilderness. They are gentle and intelligent creatures, yet lacking in self-preservation.<n>
 
-----------------Undead Abscesses. Normal one leaves a corpse and is preexisting, summmoned one is exclusive to Amalgam summon and corpse disappears + it can selfdestruct to do the same buff as amalgam's Bequeath (Bequeath Self)
+----------------Undead Abscesses. 2 types - mature and new ones. Mature can be summoned, new is exclusive to Amalgam summon and corpse disappears + it can selfdestruct to do the same buff as amalgam's Bequeath (Bequeath Self)
 
-[ActorType] ID=shana_undead_abscess_normal_enemy;
+[ActorType] ID=shana_undead_abscess_mature_enemy;
 name=Undead Abscess;
 journalID=journal_shana_undead_abscess;
 bodyStructure=single;
@@ -7306,30 +7306,30 @@ spellcastAnim = shana_anim_abscess_cast;
 
 randomNames=Undead Abscess;
 [ActorTypeReaction]
-ID=shana_undead_abscess_normal_enemy;
+ID=shana_undead_abscess_mature_enemy;
 element=ruin;
 damageMultiplier=-1; healMultiplier=1;
 [ActorTypeReaction]
-ID=shana_undead_abscess_normal_enemy;
+ID=shana_undead_abscess_mature_enemy;
 element=poison;
 damageMultiplier=0; healMultiplier=0;
 [ActorTypeReaction]
-ID=shana_undead_abscess_normal_enemy;
+ID=shana_undead_abscess_mature_enemy;
 element=defiler;
 damageMultiplier=0.5; healMultiplier=0.5;
 [ActorTypeReaction]
-ID=shana_undead_abscess_normal_enemy;
+ID=shana_undead_abscess_mature_enemy;
 element=life; actorValue=HP;
 damageMultiplier=2; healMultiplier=-1;
 [ActorTypeReaction]
-ID=shana_undead_abscess_normal_enemy; element=antiUndead;
+ID=shana_undead_abscess_mature_enemy; element=antiUndead;
 damageMultiplier=2; healMultiplier=-1;
 [ActorTypeReaction]
-ID=shana_undead_abscess_normal_enemy;
+ID=shana_undead_abscess_mature_enemy;
 element=bonemeld;
 damageMultiplier=5; healMultiplier=0;
 [ActorTypeReaction]
-ID=shana_undead_abscess_normal_enemy;
+ID=shana_undead_abscess_mature_enemy;
 actorValues=morale; actorValues=poison;
 actorValues=itchy; actorValues=decay;
 actorValues=sleep;
@@ -7337,14 +7337,18 @@ actorValue=cure; actorValue=aegis; actorValue=preserve;
 damageMultiplier=0; healMultiplier=0;
 
 [ActorTypeDetectAoE]
-ID=shana_undead_abscess_normal_enemy;
+ID=shana_undead_abscess_mature_enemy;
 needsLoE=false;
 needsLoS=true;
 minRange=0;
 maxRange=3;
 
+----------------Cloned - actor type is for final boss summon so I can assign it timer without breaking stuff
+[ActorType] ID=shana_undead_abscess_mature_summoned_enemy;
+cloneFrom=shana_undead_abscess_mature_enemy;
+--disappearOnDeath=true; --commented out, if there's feedback not being able to see the timer on a corpse is ass ill uncomment this
 
-[ActorType] ID=shana_undead_abscess_summoned_enemy; --this is the one summoned by Amalgams
+[ActorType] ID=shana_undead_abscess_new_enemy; --this is the one summoned by Amalgams
 name=Undead Abscess;
 journalID=journal_shana_undead_abscess;
 bodyStructure=single;
@@ -7429,30 +7433,30 @@ spellcastAnim = shana_anim_abscess_cast;
 
 randomNames=Undead Abscess;
 [ActorTypeReaction]
-ID=shana_undead_abscess_summoned_enemy;
+ID=shana_undead_abscess_new_enemy;
 element=ruin;
 damageMultiplier=-1; healMultiplier=1;
 [ActorTypeReaction]
-ID=shana_undead_abscess_summoned_enemy;
+ID=shana_undead_abscess_new_enemy;
 element=poison;
 damageMultiplier=0; healMultiplier=0;
 [ActorTypeReaction]
-ID=shana_undead_abscess_summoned_enemy;
+ID=shana_undead_abscess_new_enemy;
 element=defiler;
 damageMultiplier=0.5; healMultiplier=0.5;
 [ActorTypeReaction]
-ID=shana_undead_abscess_summoned_enemy;
+ID=shana_undead_abscess_new_enemy;
 element=life; actorValue=HP;
 damageMultiplier=2; healMultiplier=-1;
 [ActorTypeReaction]
-ID=shana_undead_abscess_summoned_enemy; element=antiUndead;
+ID=shana_undead_abscess_new_enemy; element=antiUndead;
 damageMultiplier=2; healMultiplier=-1;
 [ActorTypeReaction]
-ID=shana_undead_abscess_summoned_enemy;
+ID=shana_undead_abscess_new_enemy;
 element=bonemeld;
 damageMultiplier=5; healMultiplier=0;
 [ActorTypeReaction]
-ID=shana_undead_abscess_summoned_enemy;
+ID=shana_undead_abscess_new_enemy;
 actorValues=morale; actorValues=poison;
 actorValues=itchy; actorValues=decay;
 actorValues=sleep;
@@ -7464,7 +7468,7 @@ damageMultiplier=0; healMultiplier=0;
 ID=journal_shana_undead_abscess;
 category=creature; halfPage=false; rarity=2;
 title=Undead Abscesses;
-text=<actorBig=shana_undead_abscess_normal_enemy><actorBig=shana_undead_abscess_summoned_enemy><title=Undead Abscess><brAdj=>          Rotting pimples on the fabric of Eral, these highly unstable, pus-filled sacks of moldering flesh may not have the infinite range and tracking abilities of their progenitors, but they're much better at making their targets wish they were never born. <n=>Mature specimens are capable of casting localized, yet terrifying spells whereas freshly-spawned Abscesses take a more close-ranged approach, sacrificing themselves to significantly empower their allies should no prey be within reach. Both inflict Rot<icon=icon_gravekeeper_rot> in lieu of direct damage, cruelly putrefying prey from inside out.;
+text=<actorBig=shana_undead_abscess_mature_enemy><actorBig=shana_undead_abscess_new_enemy><title=Undead Abscess><brAdj=>          Rotting pimples on the fabric of Eral, these highly unstable, pus-filled sacks of moldering flesh may not have the infinite range and tracking abilities of their progenitors, but they're much better at making their targets wish they were never born. <n=>Mature specimens are capable of casting localized, yet terrifying spells whereas freshly-spawned Abscesses take a more close-ranged approach, sacrificing themselves to significantly empower their allies should no prey be within reach. Both inflict Rot<icon=icon_gravekeeper_rot> in lieu of direct damage, cruelly putrefying prey from inside out.;
 
 ----------------Undead Amalgam. Slow enemies that are somewhat interruptable due to their passive, and have infinite range (artillery)
 
