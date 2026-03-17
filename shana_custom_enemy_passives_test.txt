@@ -836,8 +836,8 @@ formula=moreThan:0:d:shana_criticalconditioncalcpt1; --maxhp/4 should be strictl
 [SupportAbility]
 ID=shana_heart_of_corruption;
 name=Heart Of Corruption;
-icon=icon_heart_of_corruption; --todo art, probably riff off festering fulcrum
-tooltip=This passive ability counts as a copy of "Festering Fulcrum". When your <icon=HP> changes, a mature Undead Abscess will spontaneously form close by. <n>If you die, your army dies with you.;
+icon=icon_heart_of_corruption;
+tooltip=This passive ability counts as a copy of "Festering Fulcrum". When your <icon=HP> changes, a mature Undead Abscess will spontaneously form near you, lasting for 80<icon=time>. <n>If you die, your army dies with you.;
 XPCostUnlock=425;
 
 [SupportAbilityEffect] --To make it count as a copy of Festering Fulcrum.
