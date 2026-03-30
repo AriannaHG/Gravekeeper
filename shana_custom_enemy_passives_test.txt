@@ -539,7 +539,7 @@ ID=shana_critical_autolyze; element=physical; element=magic; actorValues=HP; act
 ------------------------------------------------------------------------HATRED BEYOND MEASURE
 [SupportAbility] ID=shana_hatredbeyondmeasure; --I'll be adding 2 amalgams as mooks in the boss fight
 name=Hatred Beyond Measure;
-tooltip=<color=Aquamarine>Corrupted. Gain immunity to casting interruption, most incapacitating effects, Domino and Dispel.<n>If this immunity is tested, inflict 7<icon=skill_Ice>damage to all enemies for each time this has occurred, then cure all negative effects on self. Furthermore, effects based off your maximum <icon=HP> are 2% as effective on you.; --todo once released, if recieve feedback that transferring a incapacitating status element to interrupt is too obtuse, rewrite to hint more maybe?
+tooltip=<color=Aquamarine>Corrupted. Gain immunity to casting interruption, most incapacitating effects, Domino and Dispel.<n>If this immunity is tested, inflict 7<icon=skill_Ice>damage to all enemies for each time this has occurred, then cure all negative effects on self. Furthermore, effects based on your maximum <icon=HP> are 2% as effective on you.; --todo once released, if recieve feedback that transferring a incapacitating status element to interrupt is too obtuse, rewrite to hint more maybe?
 icon=icon_hatredbeyondmeasure;
 XPCostUnlock=80;
 [SupportAbilityReaction] --interruption immunity
@@ -963,7 +963,8 @@ actions=shana_BequeathSelf_enemy;
 actions=shana_sleeping_sickness_enemy;
 actions=shana_psychenecrosis_enemy;
 actions=shana_RottingPus_enemy;
-actions=shana_putrefy_vision_enemy;
+actions=shana_horizons_grave;
+
 
 supportAbilities=shana_festering_fulcrum;
 supportAbilities=shana_Todestrieb;

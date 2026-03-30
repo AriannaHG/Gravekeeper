@@ -7450,7 +7450,7 @@ cooldown=80;
 [Action] ID=shana_horizons_grave;
 	name=Horizon's Grave;
 	icon=icon_horizons_grave;
-	tooltip=I surrender the lantern of my mind. I offer the clay of my body. I commit the breath of my soul. Let it all burn as kindling for the undying Rot.<n=><n=><color=Red>Should my sacrifice be completed, it shall come to pass that the Creeping Death shall be unbound, and its shadow shall fall across Eral. Behold, a great and final withering. Neither high nor low, wise nor simple, shall find refuge, for the breath of life shall be claimed from all that dwell under the sky.;
+	tooltip=<color=Red>The Creeping Death will consume all.;
 	--rankUpTooltip=Each rank adds +5% damage (to enemies only).;
 	--tooltipTopRight=<icon=PhysAtk_small><icon=melee_small>;
 	AIRatingBias=999;
