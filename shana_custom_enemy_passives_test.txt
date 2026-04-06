@@ -533,6 +533,9 @@ ID=shana_critical_autolyze; element=physical; element=magic; actorValues=HP; act
 --	cloneFrom=oneTile;
 
 
+------------------------------------------------------------------------OLD BARROW GATEMASTER BOSS PASSIVES
+
+
 ------------------------------------------------------------------------OLD BARROW ENDBOSS PASSIVES
 
 

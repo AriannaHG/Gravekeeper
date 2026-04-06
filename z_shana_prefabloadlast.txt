@@ -1,0 +1,16 @@
+----------------------------------------------------------------------Enemy Prefab for Undead Amalgams (with drop).
+[ActorPrefab]ID=shana_undead_amalgam_enemy_prefab_with_loot; name=Undead Amalgam;
+actorTypeID=shana_undead_amalgam_enemy_base; sprite=actor_shana_undead_amalgam; actorClass=; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=2; position=32,10; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pB; skinPalette=pG; armorPalette=pR; unarmoredPalette=pR; equipmentDoesntChangeArmorPalette=False; aiScript=none; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.1; bravery=0.6; intelligence=0.1; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=flying;
+
+supportAbilities=shana_critical_autolyze;  supportAbilities=shana_instability;  supportAbilities=shana_festering_fulcrum;
+
+[ActorState]
+canSwap=False;
+
+--[ActorEffect]
+--actorValue=shana_festering_fulcrum_equipped; sourceAVAffecter=shana_festering_fulcrum; sourceType=supportAbility; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+
+[ActorInventory]
+style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9;
+
+[ActorItem] ID=shana_trigger_rot; cSlot=4; containerID=4;

@@ -7140,7 +7140,6 @@ canSwap=False;
 style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9;
 
 
-
 ----------------------------------------------------------------------Cloned Fareem Actor Type for Yokaze - resistances are handled by cloned Projectile Mastery
 
 [ActorType] ID=shana_plaguebow_fareem_boss;
@@ -7523,7 +7522,7 @@ text=<actorBig=shana_undead_abscess_mature_enemy><actorBig=shana_undead_abscess_
 [Keyframe] ID=shana_amalgamdodge; frame=2; endTime=0.4;
 [Keyframe] ID=shana_amalgamdodge; frame=2; endTime=0.6; canStopHere=true;
 
-[ActorType] ID=shana_undead_amalgam_enemy;
+[ActorType] ID=shana_undead_amalgam_enemy_base; --this does not have a drop
 name=Undead Amalgam;
 journalID=journal_shana_undead_amalgam;
 bodyStructure=single;
@@ -7614,30 +7613,30 @@ spellcastAnim = shana_anim_abscess_cast;
 
 randomNames=Undead Amalgam;
 [ActorTypeReaction]
-ID=shana_undead_amalgam_enemy;
+ID=shana_undead_amalgam_enemy_base;
 element=ruin;
 damageMultiplier=-1; healMultiplier=1;
 [ActorTypeReaction]
-ID=shana_undead_amalgam_enemy;
+ID=shana_undead_amalgam_enemy_base;
 element=poison;
 damageMultiplier=0; healMultiplier=0;
 [ActorTypeReaction]
-ID=shana_undead_amalgam_enemy;
+ID=shana_undead_amalgam_enemy_base;
 element=defiler;
 damageMultiplier=0.5; healMultiplier=0.5;
 [ActorTypeReaction]
-ID=shana_undead_amalgam_enemy;
+ID=shana_undead_amalgam_enemy_base;
 element=life; actorValue=HP;
 damageMultiplier=2; healMultiplier=-1;
 [ActorTypeReaction]
-ID=shana_undead_amalgam_enemy; element=antiUndead;
+ID=shana_undead_amalgam_enemy_base; element=antiUndead;
 damageMultiplier=2; healMultiplier=-1;
 [ActorTypeReaction]
-ID=shana_undead_amalgam_enemy;
+ID=shana_undead_amalgam_enemy_base;
 element=bonemeld;
 damageMultiplier=5; healMultiplier=0;
 [ActorTypeReaction]
-ID=shana_undead_amalgam_enemy;
+ID=shana_undead_amalgam_enemy_base;
 actorValues=morale; actorValues=poison;
 actorValues=itchy; actorValues=decay;
 actorValues=sleep;
@@ -7645,7 +7644,7 @@ actorValue=cure; actorValue=aegis; actorValue=preserve;
 damageMultiplier=0; healMultiplier=0;
 
 [ActorTypeDetectAoE]
-ID=shana_undead_amalgam_enemy;
+ID=shana_undead_amalgam_enemy_base;
 needsLoE=false;
 needsLoS=true;
 minRange=0;
@@ -7655,4 +7654,5 @@ maxRange=3;
 ID=journal_shana_undead_amalgam;
 category=creature; halfPage=false; rarity=2;
 title=Undead Abscesses;
-text=<actorBig=shana_undead_amalgam_enemy><title=Undead Amalgam><brAdj=>          A seething lump of effluvia nestled within a vitrified shell, itself ensconced between two sets of wickedly sharp teeth dripping reeking bile, garnished with tentacles like the world's worst sandwich.<n=>In battle, it harnesses Gate magic to barrage foes with ruinous, battlefield-altering spells from any distance with perfect tracking, and is even capable of weaponizing what passes for its reproductive cycle.<n=>Being overfilled with Essence while channeling several different types of magic tends to have rather severe drawbacks, however...;
+text=<actorBig=shana_undead_amalgam_enemy_base><title=Undead Amalgam><brAdj=>          A seething lump of effluvia nestled within a vitrified shell, itself ensconced between two sets of wickedly sharp teeth dripping reeking bile, garnished with tentacles like the world's worst sandwich.<n=>In battle, it harnesses Gate magic to barrage foes with ruinous, battlefield-altering spells from any distance with perfect tracking, and is even capable of weaponizing what passes for its reproductive cycle.<n=>Being overfilled with Essence while channeling several different types of magic tends to have rather severe drawbacks, however...;
+
