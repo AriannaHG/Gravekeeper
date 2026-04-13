@@ -534,7 +534,288 @@ ID=shana_critical_autolyze; element=physical; element=magic; actorValues=HP; act
 
 
 ------------------------------------------------------------------------OLD BARROW GATEMASTER BOSS PASSIVES
+------------------------------------------------------------------------GATE: RECKONING (im reckoning with my hubris rn why did i think this was a good idea aaaaaaaaaaaaaaaa) --todo reckoning mark works but the actual other transfer and stuff doesn't, also you need to define the actual charge av for the cannon (shana_gate_reckoning_charging)
+[SupportAbility]
+ID=shana_gate_reckoning;
+name=Gate: Reckoning;
+icon=icon_shana_gate_reckoning;
+tooltip=<color=Aquamarine> Corrupted. Gain a stack of Reckoning<icon=icon_shana_gate_reckoning_charging> whenever an enemy starts their turn. If you have 13 stacks of Reckoning<icon=icon_shana_gate_reckoning_charging> at any point, you must spend it all to instantly cast Gate:Cannon<icon=icon_gate_cannon> for free on the currently acting enemy. <n=>If any of your enemies are commissioned with Seartial, this occurs when you have 7 stacks of Reckoning<icon=icon_shana_gate_reckoning_charging> instead.;
 
+[SupportAbilityReaction]
+ID=shana_gate_reckoning; element=any; action=shana_propagate_reckoning_mark_to_enemy;
+
+[SupportAbilityReaction]
+ID=shana_gate_reckoning; element=42002; action=shana_increase_reckoning_then_cannon;
+
+
+-----------------------------------------Propagate Reckoning Mark Enemy - the action that inflicts shana_reckoning_mark on all enemies (this is the supportabil shana_gate_reckoning reaction to any)
+
+[Action] ID=shana_propagate_reckoning_mark_to_enemy;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+[ActionAoE]
+	ID=shana_propagate_reckoning_mark_to_enemy;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_propagate_reckoning_mark_to_enemy;
+	actorValue=shana_reckoning_mark;
+	magnitude=1;
+	chance=100;
+	duration=999; --todo change this to -99 after finish testing so its invisible
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=shana_propagate_reckoning_mark_to_enemy; shape=7;
+	needsLoS=false;
+	needsLoE=false;
+	arc=true;
+	airborne=true;
+	occupyAll=true;
+	bypassAll=true;
+	canSelectAllies=false;
+	canSelectEnemies=true;
+	minRange=1;
+	maxRange=99;
+
+
+-----------------------------------------Propagate Reckoning Mark Allies - the action that inflicts shana_reckoning_mark on all allies (this is the actorvalue shana_reckoning_mark reaction to any)
+
+[Action] ID=shana_propagate_reckoning_mark_to_allies;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+[ActionAoE]
+	ID=shana_propagate_reckoning_mark_to_allies;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_propagate_reckoning_mark_to_allies;
+	actorValue=shana_reckoning_mark;
+	magnitude=1;
+	chance=100;
+	duration=999; --todo change this to -99 after finish testing so its invisible
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=shana_propagate_reckoning_mark_to_allies; shape=7;
+	needsLoS=false;
+	needsLoE=false;
+	arc=true;
+	airborne=true;
+	occupyAll=true;
+	bypassAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=false;
+	minRange=1;
+	maxRange=99;
+
+-----------------------------------------Pulse Element to add Reckoning Stack - the action that pulses my custom element at end of turn (this is the actorvalue shana_reckoning_mark reaction to timerUp)
+
+[Action] ID=shana_pulse_element_to_add_reckoning_stack;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+[ActionAoE]
+	ID=shana_pulse_element_to_add_reckoning_stack;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_pulse_element_to_add_reckoning_stack;
+	chance=100;
+        element=42002;
+	visibleMiss=false;
+[AvAffecterAoE]
+	ID=shana_pulse_element_to_add_reckoning_stack; shape=7;
+	needsLoS=false;
+	needsLoE=false;
+	arc=true;
+	airborne=true;
+	occupyAll=true;
+	bypassAll=true;
+	canSelectAllies=true;
+	canSelectEnemies=true;
+	minRange=1;
+	maxRange=99;
+
+
+[ActorValue] -----------------------------------------Reckoning Mark - actor value that lasts ideally for the combat. Should have a reaction to any that triggers shana_propagate_reckoning_mark_to_allies and a reaction to timerUp that triggers shana_pulse_element_to_add_reckoning_stack
+ID=shana_reckoning_mark;
+name=Counts for Reckoning (you should not see this);
+--icon=;
+--bubbleIcon=;
+icon= Counts for Reckoning (you should not see this);
+bubbleIcon=;
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = 0;
+affectsActors = true;
+canAffectIncapped = true;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true; --todo set to false when done testing
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true; --todo set to false when done testing
+showDamageNumbersElements = false;
+showDamageNumbersIconInTooltips = true; --todo set to false when done testing
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0;
+elementReactionModifiesDuration = false;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true; --todo set to false when done testing
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+[ActorValueReaction] -----------------------------------------------------------------------------------------------------------------------spread the mark to all allies
+ID=shana_reckoning_mark; element=timerUp; action=shana_propagate_reckoning_mark_to_allies;
+
+[ActorValueReaction] -----------------------------------------------------------------------------------------------------------------------pulse custom element to add reckoning stack to boss
+ID=shana_reckoning_mark; element=any; action=shana_pulse_element_to_add_reckoning_stack;
+
+
+-----------------------------------------Increase Reckoning then Cannon - the action that increases reckoning stacks on self, then checks if it's past a certain threshold. If it is, immediately blast the currently acting actor with gate:cannon. This should be an fReq, and it should check on 6/12 instead of 7/13.
+
+[Action] ID=shana_increase_reckoning_then_cannon;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+[ActionAoE]
+	ID=shana_increase_reckoning_then_cannon;
+  	shape=17;
+        arc=true;
+    	airborne=true;
+    	needsLoE=false;
+    	needsLoS=false;
+    	bypassAll=true;
+    	canSelectAllies=true;
+   	canSelectEnemies=true;
+   	minRange=0;
+   	maxRange=99;
+[AvAffecter] -----------------------------------------------------add reckoning stack, todo vfx
+	ID=shana_increase_reckoning_then_cannon;
+	harmful=false;
+	actorValue=shana_gate_reckoning_charging;
+	magnitude=1 + t:shana_gate_reckoning_charging;
+	chance=100 * m:casterIsTarget;
+	duration=9999;
+--      visibleMiss=false;
+[AvAffecterAoE]
+	ID=shana_increase_reckoning_then_cannon;
+	cloneFrom=oneTile;
+[AvAffecter] -----------------------------------------------------cannon.
+	ID=shana_increase_reckoning_then_cannon;
+	fReq=d:shana_gate_reckoning_check;
+	visibleEvaluations=false;
+	useCasterAsOriginForDirectionalEffects=false;
+	FXOnTile=gateOpen_above;
+	FXOnTile=gate_above;
+	FXOnTile=delay;
+	FXOnTile=gate_above;
+	FXOnTile=delay;
+	FXOnTile=LongAmbientMurmur;
+	FXOnTile=magicHum;
+	FXOnTile=gate_cannon_in;
+	FXOnTile=gate_above;
+	FXOnTile=delay;
+	FXOnTile=w_risingDust_short;
+	FXOnTile=gate_above;
+	FXOnTile=gate_cannon_chargeSound;
+	FXOnTile=delay;
+	FXOnTile=w_suddenSparks;
+	FXOnTile=chargeSpiralMany_huge_below;
+	FXOnTile=cannon_chargeup_light1;
+	FXOnTile=w_suddenSparks;
+	FXOnTile=gate_above;
+	FXOnTile=delay;
+	FXOnTile=gate_above;
+	FXOnTile=delay;
+	FXOnTile=w_suddenSparks;
+	FXOnTile=gate_above;
+	FXOnTile=delay;
+	FXOnTile=gate_above;
+	FXOnTile=cannon_chargeup_light2;
+	FXOnTile=delay;
+	FXOnTile=delay;
+	FXOnTile=delay;
+	FXOnTile=gate_above;
+	FXOnTile=delay;
+	FXOnTile=delay;
+	FXOnTile=delay;
+	FXOnTile=gate_above;
+	FXOnTile=delay;
+	FXOnTile=delay;
+	FXOnTile=delay;
+	FXOnTile=gate_above;
+	FXOnTile=laser_start;
+	FXOnTile=laser_flash;
+	FXOnTile=gate_above;
+	FXOnTile=laser_loop;
+	FXOnTile=laser_end;
+[AvAffecterAoE]
+	ID=shana_increase_reckoning_then_cannon;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_increase_reckoning_then_cannon;
+	fReq=d:shana_gate_reckoning_check;
+	visibleMiss=false;
+	actorValue=breakArmor;
+	magnitude=1;
+	duration=-2;
+	chance=d:magicAcc;
+	useCasterAsOriginForDirectionalEffects=false;
+	element=gateCannon;
+[AvAffecterAoE]
+	ID=shana_increase_reckoning_then_cannon; shape=2;
+	needsLoS = false;
+	needsLoE = false;
+	airborne=true;
+	arc=true;
+	minRange = 2;
+	maxRange = 12;
+	canFloatMidair=true;
+	coneAngle=1;
+	forcedRot=90;
+	occupyAll=true;
+	bypassAll=true;
+[AvAffecter]
+	ID=shana_increase_reckoning_then_cannon;
+	fReq=d:shana_gate_reckoning_check;
+	actorValue=HP;
+	magnitude=d:magicDmg20Scale(70);
+	duration=-2;
+	chance=d:magicAcc;
+	element=magic;
+	element=gateCannon;
+	useCasterAsOriginForDirectionalEffects=false;
+[AvAffecterAoE]
+	ID=shana_increase_reckoning_then_cannon; shape=2;
+	needsLoS = false;
+	needsLoE = false;
+	airborne=true;
+	arc=true;
+	minRange = 2;
+	maxRange = 14;
+	canFloatMidair=true;
+	coneAngle=1;
+	forcedRot=90;
+	occupyAll=true;
+	bypassAll=true;
+--todo avaffecter that removes all charge with the fReq=d:shana_gate_reckoning_check;.
+
+------------------------------------------------------Gate:Reckoning check, only true if caster has 13 or more charge and targetIsCurrentActor OR caster has 7 or more charge, targetiscurrentactor and playerFaction is "searth". Use 12/6 instead of 13/7 because the "state" doesnt update until after the action, and 11/5 because only morethan is available :v use d: for formulas
+
+[FormulaGlobal] ID=shana_gate_reckoning_7ormore;
+formula=moreThan:5:c:shana_gate_reckoning_charging;
+
+[FormulaGlobal] ID=shana_gate_reckoning_13ormore;
+formula=moreThan:11:c:shana_gate_reckoning_charging;
+
+[FormulaGlobal] ID=shana_gate_reckoning_playerisSearth;
+formula=gIs:playerFaction:searth;
+
+[FormulaGlobal] ID=shana_gate_reckoning_check; --final check
+formula=m:targetIsCurrentActor * d:shana_gate_reckoning_7ormore * d:shana_gate_reckoning_playerisSearth + m:targetIsCurrentActor * d:shana_gate_reckoning_13ormore;
 
 ------------------------------------------------------------------------OLD BARROW ENDBOSS PASSIVES
 
@@ -975,4 +1256,5 @@ supportAbilities=shana_uber_instability;
 supportAbilities=shana_critical_autolyze;
 supportAbilities=shana_hatredbeyondmeasure;
 supportAbilities=shana_heart_of_corruption;
+supportAbilities=shana_gate_reckoning;
 relevantStats=TrueHPMax;

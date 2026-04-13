@@ -58,6 +58,9 @@ Will your legions overrun the enemy, or will you succumb to the demands of the d
 ## DISCLAIMER
 This mod alters the behavior of the vanilla Invisibility status effect such that it is removed by Dispel (which will not change your experience if you are subscribed to Prominence's excellent mods) and Purge (which might change your experience as of the time of writing). 
 
+## CONTENT WARNING
+<details><summary>This mod has dialogue that mentions non-consent. If you wish to avoid this,</summary> do not ask PLACEHOLDER if he's controlled by the Abbess.</details>
+
 ---
 
 ## *Credits*
