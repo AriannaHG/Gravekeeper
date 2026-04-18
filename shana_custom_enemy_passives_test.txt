@@ -534,7 +534,7 @@ ID=shana_critical_autolyze; element=physical; element=magic; actorValues=HP; act
 
 
 ------------------------------------------------------------------------OLD BARROW GATEMASTER BOSS PASSIVES
-------------------------------------------------------------------------GATE: RECKONING (im reckoning with my hubris rn why did i think this was a good idea aaaaaaaaaaaaaaaa) --todo reckoning mark works but the actual other transfer and stuff doesn't, also you need to define the actual charge av for the cannon (shana_gate_reckoning_charging)
+------------------------------------------------------------------------GATE: RECKONING (im reckoning with my hubris rn why did i think this was a good idea aaaaaaaaaaaaaaaa) --todo cannon fx is offset, also the actual cannon avaffecter isn't happening, only the cannon fx
 [SupportAbility]
 ID=shana_gate_reckoning;
 name=Gate: Reckoning;
@@ -546,6 +546,41 @@ ID=shana_gate_reckoning; element=any; action=shana_propagate_reckoning_mark_to_e
 
 [SupportAbilityReaction]
 ID=shana_gate_reckoning; element=42002; action=shana_increase_reckoning_then_cannon;
+
+[SupportAbilityEffect]
+ID=shana_gate_reckoning;
+actorValue=shana_gate_reckoning_equipped; magnitude=1; duration=-1;
+
+[ActorValue] --------------------------------------------------------------- define shana_gate_reckoning_equipped AV
+ID=shana_gate_reckoning_equipped;
+name=Gate Reckoning Equipped (this should not be visible);
+icon=;
+bubbleIcon=;
+
+defaultValue = 0; AIValue = 0;
+harmfulMagnitude = 0;
+affectsActors = true;
+canAffectIncapped = true;
+showDamageNumbers = false;
+showDamageNumbersMagnitude = false;
+showDamageNumbersSign = false;
+showDamageNumbersIcon = false;
+showDamageNumbersElements = false;
+showDamageNumbersIconInTooltips = false;
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0;
+elementReactionModifiesDuration = false;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = false;
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
 
 
 -----------------------------------------Propagate Reckoning Mark Enemy - the action that inflicts shana_reckoning_mark on all enemies (this is the supportabil shana_gate_reckoning reaction to any)
@@ -562,7 +597,7 @@ ID=shana_gate_reckoning; element=42002; action=shana_increase_reckoning_then_can
 	actorValue=shana_reckoning_mark;
 	magnitude=1;
 	chance=100;
-	duration=999; --todo change this to -99 after finish testing so its invisible
+	duration=999; --todo change this to -1 after finish testing so its invisible
 	visibleMiss=false;
 [AvAffecterAoE]
 	ID=shana_propagate_reckoning_mark_to_enemy; shape=7;
@@ -592,7 +627,7 @@ ID=shana_gate_reckoning; element=42002; action=shana_increase_reckoning_then_can
 	actorValue=shana_reckoning_mark;
 	magnitude=1;
 	chance=100;
-	duration=999; --todo change this to -99 after finish testing so its invisible
+	duration=999; --todo change this to -1 after finish testing so its invisible
 	visibleMiss=false;
 [AvAffecterAoE]
 	ID=shana_propagate_reckoning_mark_to_allies; shape=7;
@@ -619,8 +654,9 @@ ID=shana_gate_reckoning; element=42002; action=shana_increase_reckoning_then_can
 [AvAffecter]
 	ID=shana_pulse_element_to_add_reckoning_stack;
 	chance=100;
-        element=42002;
+    element=42002;
 	visibleMiss=false;
+	FXOnTile=viralShroud;
 [AvAffecterAoE]
 	ID=shana_pulse_element_to_add_reckoning_stack; shape=7;
 	needsLoS=false;
@@ -635,7 +671,7 @@ ID=shana_gate_reckoning; element=42002; action=shana_increase_reckoning_then_can
 	maxRange=99;
 
 
-[ActorValue] -----------------------------------------Reckoning Mark - actor value that lasts ideally for the combat. Should have a reaction to any that triggers shana_propagate_reckoning_mark_to_allies and a reaction to timerUp that triggers shana_pulse_element_to_add_reckoning_stack
+[ActorValue] -----------------------------------------Reckoning Mark - actor value that lasts ideally for the combat. Should have a reaction to any that triggers shana_propagate_reckoning_mark_to_allies and a reaction to timerUp that triggers shana_pulse_element_to_add_reckoning_stack. also make the mark duration as permanent
 ID=shana_reckoning_mark;
 name=Counts for Reckoning (you should not see this);
 --icon=;
@@ -643,6 +679,7 @@ name=Counts for Reckoning (you should not see this);
 icon= Counts for Reckoning (you should not see this);
 bubbleIcon=;
 defaultValue = 0; AIValue = 0;
+maximum=1; --max of 1 means the av is hardcoded to replace itself
 harmfulMagnitude = 0;
 affectsActors = true;
 canAffectIncapped = true;
@@ -668,10 +705,49 @@ XPCostMultiplier = 1;
 XPCostFloorToNearest = 0;
 
 [ActorValueReaction] -----------------------------------------------------------------------------------------------------------------------spread the mark to all allies
-ID=shana_reckoning_mark; element=timerUp; action=shana_propagate_reckoning_mark_to_allies;
+ID=shana_reckoning_mark; element=any; action=shana_propagate_reckoning_mark_to_allies;
 
 [ActorValueReaction] -----------------------------------------------------------------------------------------------------------------------pulse custom element to add reckoning stack to boss
-ID=shana_reckoning_mark; element=any; action=shana_pulse_element_to_add_reckoning_stack;
+ID=shana_reckoning_mark; element=timerUp; action=shana_pulse_element_to_add_reckoning_stack;
+
+[ActorValueReaction] -----------------------------------------------------------------------------------------------------------------------garbage collection
+ID=shana_reckoning_mark; element=combatEnd; newID=X;
+
+[ActorValue] -----------------------------------------Reckoning Charge - actor value that shows charge.
+ID=shana_gate_reckoning_charging;
+name=Reckoning;
+--icon=;
+--bubbleIcon=;
+icon=<icon=icon_shana_gate_reckoning_charging>;
+bubbleIcon=;
+defaultValue = 0; AIValue = 0;
+--maximum=13;
+harmfulMagnitude = 0;
+affectsActors = true;
+canAffectIncapped = true;
+showDamageNumbers = true;
+showDamageNumbersMagnitude = true; --todo set to false when done testing
+showDamageNumbersSign = false;
+showDamageNumbersIcon = true; --todo set to false when done testing
+showDamageNumbersElements = false;
+showDamageNumbersIconInTooltips = true; --todo set to false when done testing
+damageNumberColor_Positive = Green;
+damageNumberColor_Negative = Green;
+actorPaletteOverride =;
+actorPaletteOverrideDuration = 0;
+elementReactionModifiesDuration = false;
+canBeRemovedByNonspecificAVEffectRemoval = false;
+recordInActorData = true;
+showEvaluationInfo = true; --todo set to false when done testing
+allowDecimalValues = false;
+percentage = false;
+XPCostBase = 0;
+XPCostIncrement = 0;
+XPCostMultiplier = 1;
+XPCostFloorToNearest = 0;
+
+[ActorValueReaction]
+ID=shana_gate_reckoning_charging; actorValues=shana_gate_reckoning_charging; newID=shana_gate_reckoning_charging;
 
 
 -----------------------------------------Increase Reckoning then Cannon - the action that increases reckoning stacks on self, then checks if it's past a certain threshold. If it is, immediately blast the currently acting actor with gate:cannon. This should be an fReq, and it should check on 6/12 instead of 7/13.
@@ -683,26 +759,36 @@ ID=shana_reckoning_mark; element=any; action=shana_pulse_element_to_add_reckonin
 [ActionAoE]
 	ID=shana_increase_reckoning_then_cannon;
   	shape=17;
-        arc=true;
-    	airborne=true;
-    	needsLoE=false;
-    	needsLoS=false;
-    	bypassAll=true;
-    	canSelectAllies=true;
+    arc=true;
+    airborne=true;
+    needsLoE=false;
+    needsLoS=false;
+    bypassAll=true;
+    canSelectAllies=true;
    	canSelectEnemies=true;
    	minRange=0;
    	maxRange=99;
-[AvAffecter] -----------------------------------------------------add reckoning stack, todo vfx
+[AvAffecter] -----------------------------------------------------add reckoning stack to whoever has gate:reckoning equipped
 	ID=shana_increase_reckoning_then_cannon;
 	harmful=false;
 	actorValue=shana_gate_reckoning_charging;
 	magnitude=1 + t:shana_gate_reckoning_charging;
-	chance=100 * m:casterIsTarget;
+	chance=100 * t:shana_gate_reckoning_equipped;
 	duration=9999;
---      visibleMiss=false;
+--  visibleMiss=true;
+	FXOnTile=tileLine_overlap;
 [AvAffecterAoE]
 	ID=shana_increase_reckoning_then_cannon;
-	cloneFrom=oneTile;
+  	shape=17;
+    arc=true;
+    airborne=true;
+    needsLoE=false;
+    needsLoS=false;
+    bypassAll=true;
+    canSelectAllies=true;
+   	canSelectEnemies=true;
+   	minRange=0;
+   	maxRange=99;
 [AvAffecter] -----------------------------------------------------cannon.
 	ID=shana_increase_reckoning_then_cannon;
 	fReq=d:shana_gate_reckoning_check;
@@ -801,7 +887,7 @@ ID=shana_reckoning_mark; element=any; action=shana_pulse_element_to_add_reckonin
 	forcedRot=90;
 	occupyAll=true;
 	bypassAll=true;
---todo avaffecter that removes all charge with the fReq=d:shana_gate_reckoning_check;.
+--todo avaffecter that removes all reckoning stacks on self with the fReq=d:shana_gate_reckoning_check;.
 
 ------------------------------------------------------Gate:Reckoning check, only true if caster has 13 or more charge and targetIsCurrentActor OR caster has 7 or more charge, targetiscurrentactor and playerFaction is "searth". Use 12/6 instead of 13/7 because the "state" doesnt update until after the action, and 11/5 because only morethan is available :v use d: for formulas
 
@@ -942,7 +1028,7 @@ ID=shana_hatredstacks; actorValues=shana_hatredstacks; newID=shana_hatredstacks;
 [SupportAbility] ID=shana_Todestrieb; --Make boss room un-leavable by normal means but no need for extensive anticheese
 --Note 2: this only works in combat due to a softlock if it procs out of combat under certain circumstances.
 name=Todestrieb;
-tooltip=When reaching critical condition for the first time, inflict 10 stacks of Rot<icon=icon_gravekeeper_rot> to all enemies and cure all negative status effects on self, then gain Negate, Aegis and 30<icon=PhysDef> for <icon=time>999. <icon=HP> does not drop below 25% before this occurs, and when it does...;
+tooltip=When reaching critical condition for the first time, inflict 10 stacks of Rot<icon=icon_gravekeeper_rot> on all enemies and cure all negative status effects on self, then gain Negate, Aegis and 30<icon=PhysDef> for <icon=time>999. <icon=HP> does not drop below 25% before this occurs, and when it does...;
 icon=icon_todestrieb;
 
 [SupportAbilityReaction] --buffs boss defensively but makes it killable when hit into critical, only works when unkillable.
