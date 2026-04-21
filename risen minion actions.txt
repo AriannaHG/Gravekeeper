@@ -7300,7 +7300,7 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 	ID=shana_putrefy_vision_enemy;
 	cloneFrom=oneTile;
 
-[Action] ID=shana_BequeathSelf_enemy;
+[Action] ID=shana_BequeathSelf_enemy; --todo give this a huge ai bonus and a freq that makes it only cast this when no enemy is in range
 	icon=icon_bequeath_self;
 	casterAnimation=s_simplestAttack; --todo change this, I want it to open mouth when attacking too
 	name=Bequeath Self;
