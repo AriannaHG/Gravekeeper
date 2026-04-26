@@ -534,7 +534,7 @@ ID=shana_critical_autolyze; element=physical; element=magic; actorValues=HP; act
 
 
 ------------------------------------------------------------------------OLD BARROW GATEMASTER BOSS PASSIVES
-------------------------------------------------------------------------GATE: RECKONING (im reckoning with my hubris rn why did i think this was a good idea aaaaaaaaaaaaaaaa) --todo cannon fx is offset, it'd be in the form of originOffset=<myVector2>;, right? in the avaffecteraoe
+------------------------------------------------------------------------GATE: RECKONING (im reckoning with my hubris rn why did i think this was a good idea aaaaaaaaaaaaaaaa) --functionality has been implemented todo polish, add some way for player to keep track of reckoning stacks w/o mouseover maybe
 [SupportAbility]
 ID=shana_gate_reckoning;
 name=Gate: Reckoning;
@@ -589,7 +589,7 @@ XPCostFloorToNearest = 0;
 	special=usableEvenWhenCantAct;
 	special=usableEvenWhenReacting;
 	special=usableEvenWhenYourTurn;
---	fReq=; --todo when done testing make this only happen in combat
+	fReq=m:combat;
 [ActionAoE]
 	ID=shana_propagate_reckoning_mark_to_enemy;
 	cloneFrom=oneTile;
@@ -620,6 +620,7 @@ XPCostFloorToNearest = 0;
 	special=usableEvenWhenCantAct;
 	special=usableEvenWhenReacting;
 	special=usableEvenWhenYourTurn;
+	fReq=m:combat;
 [ActionAoE]
 	ID=shana_propagate_reckoning_mark_to_allies;
 	cloneFrom=oneTile;
@@ -789,15 +790,68 @@ ID=shana_gate_reckoning_charging; actorValues=shana_gate_reckoning_charging; new
    	canSelectEnemies=true;
    	minRange=0;
    	maxRange=99;
+[AvAffecter] -----------------------------------------------------cannon fx offset 2 squares up
+	ID=shana_increase_reckoning_then_cannon;
+	fReq=d:shana_gate_reckoning_check_cannonfx;
+	visibleEvaluations=false;
+	useCasterAsOriginForDirectionalEffects=false;
+	FXOnTile=gateOpen_above;
+	FXOnTile=gate_above;
+	FXOnTile=delay;
+	FXOnTile=gate_above;
+	FXOnTile=delay;
+	FXOnTile=LongAmbientMurmur;
+	FXOnTile=magicHum;
+	FXOnTile=gate_cannon_in;
+	FXOnTile=gate_above;
+	FXOnTile=delay;
+	FXOnTile=w_risingDust_short;
+	FXOnTile=gate_above;
+	FXOnTile=gate_cannon_chargeSound;
+	FXOnTile=delay;
+	FXOnTile=w_suddenSparks;
+	FXOnTile=chargeSpiralMany_huge_below;
+	FXOnTile=cannon_chargeup_light1;
+	FXOnTile=w_suddenSparks;
+	FXOnTile=gate_above;
+	FXOnTile=delay;
+	FXOnTile=gate_above;
+	FXOnTile=delay;
+	FXOnTile=w_suddenSparks;
+	FXOnTile=gate_above;
+	FXOnTile=delay;
+	FXOnTile=gate_above;
+	FXOnTile=cannon_chargeup_light2;
+	FXOnTile=delay;
+	FXOnTile=delay;
+	FXOnTile=delay;
+	FXOnTile=gate_above;
+	FXOnTile=delay;
+	FXOnTile=delay;
+	FXOnTile=delay;
+	FXOnTile=gate_above;
+	FXOnTile=delay;
+	FXOnTile=delay;
+	FXOnTile=delay;
+	FXOnTile=gate_above;
+	FXOnTile=laser_start;
+	FXOnTile=laser_flash;
+	FXOnTile=gate_above;
+	FXOnTile=laser_loop;
+	FXOnTile=laser_end;
+[AvAffecterAoE]
+	ID=shana_increase_reckoning_then_cannon;
+	cloneFrom=oneTile;
+    originOffset=2,0;
 
-[AvAffecter] --first tile as the chance only seems to work on that first one, armorbreak
+[AvAffecter] -----------------------------------------------------break armor
 	ID=shana_increase_reckoning_then_cannon;
 	visibleMiss=false;
 	actorValue=breakArmor;
 	harmful=true; --maybe
 	magnitude=1;
 	duration=-2;
-	chance=100 * d:shana_gate_reckoning_check;
+	chance=100 * d:shana_gate_reckoning_check_othertargets;
 	useCasterAsOriginForDirectionalEffects=false;
 	element=gateCannon;
 [AvAffecterAoE]
@@ -807,31 +861,6 @@ ID=shana_gate_reckoning_charging; actorValues=shana_gate_reckoning_charging; new
 	airborne=true;
 	arc=true;
 	minRange = 0; --subtracting 2 from range 2-12 of og cannon to match how im offsetting the cannon vfx by 32 px
-	maxRange = 0;
-	canFloatMidair=true;
-	coneAngle=1;
-	forcedRot=90;
-	occupyAll=true;
-	bypassAll=true;
-	canSelectAllies=true;
-    canSelectEnemies=true;
-[AvAffecter]
-	ID=shana_increase_reckoning_then_cannon;
-	visibleMiss=false;
-	actorValue=breakArmor;
-	harmful=true; --maybe
-	magnitude=1;
-	duration=-2;
-	chance=100 * d:shana_gate_reckoning_check_othertargets;
-	useCasterAsOriginForDirectionalEffects=false;
-	element=gateCannon;
-[AvAffecterAoE]
-	ID=shana_increase_reckoning_then_cannon; shape=2;
-	needsLoS = false;
-	needsLoE = false;
-	airborne=true;
-	arc=true;
-	minRange = 1; --subtracting 2 from range 2-12 of og cannon to match how im offsetting the cannon vfx by 32 px
 	maxRange = 10;
 	canFloatMidair=true;
 	coneAngle=1;
@@ -840,35 +869,8 @@ ID=shana_gate_reckoning_charging; actorValues=shana_gate_reckoning_charging; new
 	bypassAll=true;
 	canSelectAllies=true;
     canSelectEnemies=true;
-[AvAffecter] --first tile yadda yadda you know the drill, hp
-	ID=shana_increase_reckoning_then_cannon;
-	actorValue=HP;
-	harmful=true;
-	magnitude=d:magicDmg20Scale(70);
-	--magnitude=-99;
-	duration=-2;
-	--chance=d:magicAcc;
-	chance=100 * d:shana_gate_reckoning_check;
-	element=magic;
-	element=gateCannon;
-	useCasterAsOriginForDirectionalEffects=false;
-	FXOnTile=whiteExplosionSmall_rand_overlap;
-[AvAffecterAoE]
-	ID=shana_increase_reckoning_then_cannon; shape=2;
-	needsLoS = false;
-	needsLoE = false;
-	airborne=true;
-	arc=true;
-	minRange = 0; --subtracting 2 from range to match how im offsetting the cannon vfx by 32 px. Did you know that the armor break and hp avaffecters of the og cannon are different? lmao
-	maxRange = 0;
-	canFloatMidair=true;
-	coneAngle=1;
-	forcedRot=90;
-	occupyAll=true;
-	bypassAll=true;
-	canSelectAllies=true;
-    canSelectEnemies=true;
-[AvAffecter]
+
+[AvAffecter] -----------------------------------------------------hp damage
 	ID=shana_increase_reckoning_then_cannon;
 	actorValue=HP;
 	harmful=true;
@@ -880,14 +882,14 @@ ID=shana_gate_reckoning_charging; actorValues=shana_gate_reckoning_charging; new
 	element=magic;
 	element=gateCannon;
 	useCasterAsOriginForDirectionalEffects=false;
-	FXOnTile=whiteExplosionSmall_rand_overlap;
+--	FXOnTile=whiteExplosionSmall_rand_overlap;
 [AvAffecterAoE]
 	ID=shana_increase_reckoning_then_cannon; shape=2;
 	needsLoS = false;
 	needsLoE = false;
 	airborne=true;
 	arc=true;
-	minRange = 1; --subtracting 2 from range to match how im offsetting the cannon vfx by 32 px
+	minRange = 0; --subtracting 2 from range 2-14 to match how im offsetting the cannon vfx by 32 px
 	maxRange = 12;
 	canFloatMidair=true;
 	coneAngle=1;
@@ -897,24 +899,52 @@ ID=shana_gate_reckoning_charging; actorValues=shana_gate_reckoning_charging; new
 	canSelectAllies=true;
     canSelectEnemies=true;
 
---todo avaffecter that removes all reckoning stacks on self with the fReq=d:shana_gate_reckoning_check;.
+[AvAffecter] -----------------------------------------------------remove all reckoning stacks on self
+	ID=shana_increase_reckoning_then_cannon;
+	harmful=false;
+	actorValue=shana_gate_reckoning_charging;
+	magnitude=0;
+	chance=100 * m:casterIsTarget * d:shana_gate_reckoning_check_othertargets; --todo
+	duration=9999;
+    visibleMiss=false;
+[AvAffecterAoE]
+	ID=shana_increase_reckoning_then_cannon;
+  	shape=17;
+    arc=true;
+    airborne=true;
+    needsLoE=false;
+    needsLoS=false;
+    bypassAll=true;
+    canSelectAllies=true;
+   	canSelectEnemies=true;
+   	minRange=0;
+   	maxRange=99;
 
 ------------------------------------------------------Gate:Reckoning check, only true if caster has 13 or more charge and targetIsCurrentActor OR caster has 7 or more charge, targetiscurrentactor and playerFaction is "searth". Use 12/6 instead of 13/7 because only morethan is available :v use d: for formulas
 
+[FormulaGlobal] ID=shana_gate_reckoning_6ormore;
+formula=moreThan:5:c:shana_gate_reckoning_charging;
+
 [FormulaGlobal] ID=shana_gate_reckoning_7ormore;
 formula=moreThan:6:c:shana_gate_reckoning_charging;
+
+[FormulaGlobal] ID=shana_gate_reckoning_12ormore;
+formula=moreThan:11:c:shana_gate_reckoning_charging;
 
 [FormulaGlobal] ID=shana_gate_reckoning_13ormore;
 formula=moreThan:12:c:shana_gate_reckoning_charging;
 
 [FormulaGlobal] ID=shana_gate_reckoning_playerisSearth;
-formula=gIs:playerFaction:searth;
+formula=gIs:playerFaction:seartial;
 
 [FormulaGlobal] ID=shana_gate_reckoning_check;
 formula=m:targetIsCurrentActor * d:shana_gate_reckoning_7ormore * d:shana_gate_reckoning_playerisSearth + m:targetIsCurrentActor * d:shana_gate_reckoning_13ormore;
 
 [FormulaGlobal] ID=shana_gate_reckoning_check_othertargets; --for when target isn't current actor
 formula=d:shana_gate_reckoning_7ormore * d:shana_gate_reckoning_playerisSearth + d:shana_gate_reckoning_13ormore;
+
+[FormulaGlobal] ID=shana_gate_reckoning_check_cannonfx; --bruh
+formula=d:shana_gate_reckoning_6ormore * d:shana_gate_reckoning_playerisSearth + d:shana_gate_reckoning_12ormore;
 
 ------------------------------------------------------------------------OLD BARROW ENDBOSS PASSIVES
 

@@ -1050,7 +1050,7 @@ ID=shana_delay_sync0; element=41005; action=shana_expurgate3;
 	element=magic;
 	element=ruin;
 	FXOnHit=pixelCloud_black_silent;
-	FXOnHit=lowRoar;
+	FXOnHit=lowRoar; --todo make this louder maybe
 [AvAffecterAoE]
 	ID=shana_subsume3;
 	cloneFrom=oneTile;
