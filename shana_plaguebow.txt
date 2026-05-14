@@ -67,7 +67,7 @@ formula=d:shana_plaguebow_rotdmg_init * 0.5;
 [ItemType]  name=Ekibyonoyumi;
 journalID=shana_journal_plaguebow;
 texture=gkart;
-description=Ruinous yumi whose arrows sacrifice direct damage in favor of inflicting concentrated Rot<icon=icon_gravekeeper_rot>.;
+description=Ruinous yumi whose arrows convert damage dealt into Rot<icon=icon_gravekeeper_rot> at half efficiency.;
 weight=4; volume=3; value=5000; pR=p71; pB=p41;
 power=9;
 ID=shana_plaguebow; sprite=22; spriteWhenHeld=32; itemCategory=weapon; element=bow;
