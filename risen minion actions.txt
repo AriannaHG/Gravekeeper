@@ -7300,11 +7300,13 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 	ID=shana_putrefy_vision_enemy;
 	cloneFrom=oneTile;
 
-[Action] ID=shana_BequeathSelf_enemy; --todo give this a huge ai bonus and a freq that makes it only cast this when no enemy is in range
+[Action] ID=shana_BequeathSelf_enemy; --Since putrefy vision has 3 or less range, I need there to be no enemies within 3 range for it to be castable.
 	icon=icon_bequeath_self;
 	casterAnimation=s_simplestAttack; --todo change this, I want it to open mouth when attacking too
 	name=Bequeath Self;
 	chargeTime=30 * d:chargeTimeMult * d:chargeTimeMult_onlyWithMP + d:chargeTimeMod + d:chargeTimeMod_onlyWithMP;
+	fReq=1-m:numEnemiesNearTargetWithin(3);
+	AIRatingBias=999;
 	tooltip=Undergo dissolution to grant all allies a stacking +6 <icon=PhysAtk> and +6 <icon=skill_Ruin> for <icon=time>30.;
 --	tooltipTopRight=<icon=MagAtk_small><icon=skill_Ruin_small>;
 	special=requiresCasting;
@@ -7450,7 +7452,7 @@ cooldown=80;
 [Action] ID=shana_horizons_grave;
 	name=Horizon's Grave;
 	icon=icon_horizons_grave;
-	tooltip=<color=Red>The Creeping Death will consume all.;
+	tooltip=<color=Red>The Creeping Death consumes all.;
 	--rankUpTooltip=Each rank adds +5% damage (to enemies only).;
 	--tooltipTopRight=<icon=PhysAtk_small><icon=melee_small>;
 	AIRatingBias=999;
