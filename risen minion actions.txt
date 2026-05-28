@@ -21,7 +21,7 @@ ID=tLoadGame; effectID=learnJournalEntry; sValue=help_status_shana_creeping_deat
 [ItemType]  name=Corroded Sword;
 texture=items_weapons; 
 ID=ari_summoned_sword; pR=p5; pG=pCBlack; pB=p5;
-description=A sword rusted with time. It has a chance to infect the target with a stack of Rot<icon=icon_gravekeeper_rot> to the target for <icon=time>40.;
+description=A sword rusted with time. It has a chance to infect the target with a stack of Rot<icon=icon_gravekeeper_rot>.;
 journalID=journal_sword;
 weight=3; volume=10; value=0;
 power=2;
@@ -261,7 +261,7 @@ power=10;
 ----------------------------------------------------------------Infection
 [Action] ID=ari_infectPunch; 
 	applyWeaponBuffs=true;
-	tooltip=A mundane punch that has a high chance to infect the target with a stack of Rot<icon=icon_gravekeeper_rot> for <icon=time>40.;
+	tooltip=A mundane punch that has a high chance to infect the target with a stack of Rot<icon=icon_gravekeeper_rot>.;
 	casterAnimation=punch;
 	casterAnimationDependsOnWeaponHand=true;
 	requiredWeaponElement=fist;
@@ -306,7 +306,7 @@ power=10;
 	icon=icon_gravekeeper_skeletal_charge;
 	mpCost=0 * d:mpCostMult + d:mpCostMod;
 	cooldown=60;
-	tooltip=Recklessly charge forward to strike a distant foe with your weapon for 50% damage. It has a high chance to infect the target with a stack of Rot<icon=icon_gravekeeper_rot> for <icon=time>40.;
+	tooltip=Recklessly charge forward to strike a distant foe with your weapon for 50% damage. It has a high chance to infect the target with a stack of Rot<icon=icon_gravekeeper_rot>.;
 	tooltipIcons=<icon=noRanged>;
 	tooltipTopRight=<icon=PhysAtk_small><icon=melee_small>;
 	
@@ -734,7 +734,7 @@ power=10;
 	mpCost=0 * d:mpCostMult + d:mpCostMod;
 	harmful=false;
 	attractAttention=false;
-	tooltip=Cleave enemies in front of you with your foul, rusted greatsword for <icon=HP><math=-d:gswordDmg - d:ruinDmgWpnPower(1) * 0.1>. Inflict two stacks of Rot<icon=icon_gravekeeper_rot> to enemies for <icon=time>40.<n=>After the first strike, begin charging a powerful stabbing attack that consumes up to five stacks of Rot<icon=icon_gravekeeper_rot> to deal additional damage.;
+	tooltip=Cleave enemies in front of you with your foul, rusted greatsword for <icon=HP><math=-d:gswordDmg - d:ruinDmgWpnPower(1) * 0.1>. Inflicts two stacks of Rot<icon=icon_gravekeeper_rot>.<n=>After the first strike, begin charging a powerful stabbing attack that consumes up to five stacks of Rot<icon=icon_gravekeeper_rot> to deal additional damage.;
 
 	tooltipTopRight=;
 	
@@ -956,7 +956,7 @@ power=10;
 	cooldown=50;
 	--harmful=false;
 	attractAttention=false;
-	tooltip=Use pieces of loose bone to shower your foes with razor sharp shrapnel, shredding them for <math=d:ruinDmg20LessScaleDisplay(3)> damage but harming yourself for 1<icon=HP> in the process. Targets hit are infected with a stack of Rot<icon=icon_gravekeeper_rot> for <icon=time>40.;
+	tooltip=Use pieces of loose bone to shower your foes with razor sharp shrapnel, shredding them for <math=d:ruinDmg20LessScaleDisplay(3)> damage but harming yourself for 1<icon=HP> in the process. Targets hit are infected with a stack of Rot<icon=icon_gravekeeper_rot>.;
 
 	tooltipTopRight=;
 	
@@ -1640,7 +1640,7 @@ power=10;
 	cooldown=60;
 	harmful=false;
 	attractAttention=false;
-	tooltip=Spew disgusting bile from your decaying innards, dealing <icon=skill_Ruin><math=c:skill_Ruin * 0.2 + 1> damage to enemies in a cone in front of you and infecting targets with three stacks of Rot<icon=icon_gravekeeper_rot> for <icon=time>40.;
+	tooltip=Spew disgusting bile from your decaying innards, dealing <icon=skill_Ruin><math=c:skill_Ruin * 0.2 + 1> damage to enemies in a cone in front of you and infecting targets with three stacks of Rot<icon=icon_gravekeeper_rot>.;
 
 	tooltipTopRight=;
 	
@@ -1723,7 +1723,7 @@ power=10;
 	cooldown=120;
 	harmful=false;
 	attractAttention=false;
-	tooltip=Sacrifice 30% maximum<icon=HP> to expel nearly all of your bodily fluids and douse nearby targets in disease, dealing <icon=skill_Ruin><math=c:skill_Ruin * 0.3 + 5>, reducing to <icon=skill_Ruin><math=c:skill_Ruin * 0.2 + 2> against targets further away from you. Infects closer targets with two stacks of Rot<icon=icon_gravekeeper_rot> for <icon=time>40.;
+	tooltip=Sacrifice 30% maximum<icon=HP> to expel nearly all of your bodily fluids and douse nearby targets in disease, dealing <icon=skill_Ruin><math=c:skill_Ruin * 0.3 + 5>, reducing to <icon=skill_Ruin><math=c:skill_Ruin * 0.2 + 2> against targets further away from you. Infects closer targets with two stacks of Rot<icon=icon_gravekeeper_rot>.;
 
 	tooltipTopRight=;
 	
@@ -1931,7 +1931,7 @@ power=10;
 	cooldown=50;
 	harmful=false;
 	attractAttention=false;
-	tooltip=As if having their own mind, your appendages flail about and strike a target near you, dealing <math=c:PhysAtk * 0.3 + 1> damage and pulling them one tile towards you. The appendages infect the target with a stack of Rot <icon=icon_gravekeeper_rot> for <icon=time>40. <n=>This does not consume an action in combat.;
+	tooltip=As if having their own mind, your appendages flail about and strike a target near you, dealing <math=c:PhysAtk * 0.3 + 1> damage and pulling them one tile towards you. The appendages infect the target with a stack of Rot <icon=icon_gravekeeper_rot>. <n=>This does not consume an action in combat.;
 
 	tooltipTopRight=;
 	
@@ -2007,7 +2007,7 @@ power=10;
 	cooldown=25;
 	harmful=false;
 	attractAttention=false;
-	tooltip=Slam down a hulking fist with vile, serrated splinters protruding from it in front of you, dealing <math=c:skill_Ruin * 0.4 + 5> damage to everything in an area.<n=>Infects the target with a stack of Rot<icon=icon_gravekeeper_rot> for <icon=time>40, and if a target has more than four stacks of Rot<icon=icon_gravekeeper_rot>, Corpse Slam reduces the target's defenses.;
+	tooltip=Slam down a hulking fist with vile, serrated splinters protruding from it in front of you, dealing <math=c:skill_Ruin * 0.4 + 5> damage to everything in an area.<n=>Infects the target with a stack of Rot<icon=icon_gravekeeper_rot>, and if a target has more than four stacks of Rot<icon=icon_gravekeeper_rot>, Corpse Slam reduces the target's defenses.;
 
 	tooltipTopRight=;
 	
@@ -3470,7 +3470,7 @@ needsLoS = false; needsLoE = false; shape=7;
 	mpCost=0 * d:mpCostMult + d:mpCostMod;
 	harmful=false;
 	attractAttention=false;
-	tooltip=Cleave those in front of you with your mighty appendages for <icon=HP><math=c:skill_Ruin * 0.6 + 6>. Inflict two stacks of Rot<icon=icon_gravekeeper_rot> to enemies for <icon=time>40.<n=>After the first strike, attempt to impale an enemy in a powerful stabbing attack that consumes up to five stacks of Rot<icon=icon_gravekeeper_rot> to deal additional damage.<n=>You must have consumed a Skeleton Knight<icon=icon_skeleton_knight_minion>.;
+	tooltip=Cleave those in front of you with your mighty appendages for <icon=HP><math=c:skill_Ruin * 0.6 + 6>. Inflicts two stacks of Rot<icon=icon_gravekeeper_rot>.<n=>After the first strike, attempt to impale an enemy in a powerful stabbing attack that consumes up to five stacks of Rot<icon=icon_gravekeeper_rot> to deal additional damage.<n=>You must have consumed a Skeleton Knight<icon=icon_skeleton_knight_minion>.;
 
 	tooltipTopRight=;
 	
@@ -3624,7 +3624,7 @@ needsLoS = false; needsLoE = false; shape=7;
 	mpCost=0 * d:mpCostMult + d:mpCostMod;
 	harmful=false;
 	attractAttention=false;
-	tooltip=Spew repugnant bile from within, dealing <math=c:skill_Ruin * 0.3 + 2> damage to enemies in a cone in front of you and infecting targets with three stacks of Rot<icon=icon_gravekeeper_rot> for <icon=time>40.<n=>You must have consumed a Zombie<icon=icon_zombie_minion>.;
+	tooltip=Spew repugnant bile from within, dealing <math=c:skill_Ruin * 0.3 + 2> damage to enemies in a cone in front of you and infecting targets with three stacks of Rot<icon=icon_gravekeeper_rot>.<n=>You must have consumed a Zombie<icon=icon_zombie_minion>.;
 
 	tooltipTopRight=;
 	
@@ -3859,7 +3859,7 @@ needsLoS = false; needsLoE = false; shape=7;
 	cooldown=50;
 	harmful=true;
 	attractAttention=false;
-	tooltip=Blast all targets in a line with pure necrotic energies, infecting them with eight stacks of Rot<icon=> for <icon=time>40.;
+	tooltip=Blast all targets in a line with pure necrotic energies, infecting them with eight stacks of Rot<icon=icon_gravekeeper_rot>.;
 
 	tooltipTopRight=;
 	
@@ -5886,7 +5886,7 @@ ID=ari_cold_spot_chill_weak;
 	cooldown=90;
 	harmful=true;
 	attractAttention=false;
-	tooltip=Blast a target with the power of pure Ruin, dealing 50% current<icon=HP> as <icon=skill_Ruin> damage and infecting the target with three stacks of Rot for <icon=time>120.;
+	tooltip=Blast a target with the power of pure Ruin, dealing 50% of their current<icon=HP> as <icon=skill_Ruin> damage and infecting the target with seven stacks of Rot.;
 
 	tooltipTopRight=;
 	
@@ -6020,7 +6020,7 @@ ID=ari_cold_spot_chill_weak;
 [ItemType]  name=Corroded Sword;
 texture=items_weapons; 
 ID=ari_summoned_sword_enemy; pR=p5; pG=pCBlack; pB=p5;
-description=A sword rusted with time. It has a chance to infect the target with a stack of Rot<icon=icon_gravekeeper_rot> to the target for <icon=time>40.;
+description=A sword rusted with time. It has a chance to infect the target with a stack of Rot<icon=icon_gravekeeper_rot>.;
 journalID=journal_sword;
 weight=3; volume=10; value=0;
 power=2;
@@ -6104,7 +6104,7 @@ ID=ari_summoned_crossbow_unloaded_enemy; element=actionUsed; element=reload; new
 ----------------------------------------------------------------Infection
 [Action] ID=ari_infectPunch_enemy; 
 	applyWeaponBuffs=true;
-	tooltip=A mundane punch that has a high chance to infect the target with a stack of Rot<icon=icon_gravekeeper_rot> for <icon=time>40.;
+	tooltip=A mundane punch that has a high chance to infect the target with a stack of Rot<icon=icon_gravekeeper_rot>.;
 	casterAnimation=punch;
 	casterAnimationDependsOnWeaponHand=true;
 	requiredWeaponElement=fist;
@@ -6150,7 +6150,7 @@ ID=ari_summoned_crossbow_unloaded_enemy; element=actionUsed; element=reload; new
 	cooldown=60;
 	harmful=false;
 	attractAttention=false;
-	tooltip=Spew disgusting bile from your decaying innards, dealing <icon=skill_Ruin><math=d:ruinDmgDisplay(3)-d:fistDmg*0.5> damage to enemies in a cone in front of you and infecting targets with three stacks of Rot<icon=icon_gravekeeper_rot> for <icon=time>40.;
+	tooltip=Spew disgusting bile from your decaying innards, dealing <icon=skill_Ruin><math=d:ruinDmgDisplay(3)-d:fistDmg*0.5> damage to enemies in a cone in front of you and infecting targets with three stacks of Rot<icon=icon_gravekeeper_rot>.;
 
 	tooltipTopRight=;
 	
@@ -6235,7 +6235,7 @@ ID=ari_summoned_crossbow_unloaded_enemy; element=actionUsed; element=reload; new
 	cooldown=120;
 	harmful=false;
 	attractAttention=false;
-	tooltip=Sacrifice 30% maximum<icon=HP> to expel nearly all of your bodily fluids and douse nearby targets in disease, dealing <icon=skill_Ruin><math=c:skill_Ruin * 0.3 + 5>, reducing to <icon=skill_Ruin><math=c:skill_Ruin * 0.2 + 2> against targets further away from you. Infects closer targets with two stacks of Rot<icon=icon_gravekeeper_rot> for <icon=time>40.;
+	tooltip=Sacrifice 30% maximum<icon=HP> to expel nearly all of your bodily fluids and douse nearby targets in disease, dealing <icon=skill_Ruin><math=c:skill_Ruin * 0.3 + 5>, reducing to <icon=skill_Ruin><math=c:skill_Ruin * 0.2 + 2> against targets further away from you. Infects closer targets with two stacks of Rot<icon=icon_gravekeeper_rot>.;
 
 	tooltipTopRight=;
 	
@@ -6323,7 +6323,7 @@ ID=ari_summoned_crossbow_unloaded_enemy; element=actionUsed; element=reload; new
 	icon=icon_gravekeeper_skeletal_charge;
 	mpCost=0 * d:mpCostMult + d:mpCostMod;
 	cooldown=60;
-	tooltip=Recklessly charge forward to strike a distant foe with your weapon for 50% damage. It has a high chance to infect the target with a stack of Rot<icon=icon_gravekeeper_rot> for <icon=time>40.;
+	tooltip=Recklessly charge forward to strike a distant foe with your weapon for 50% damage. It has a high chance to infect the target with a stack of Rot<icon=icon_gravekeeper_rot>.;
 	tooltipIcons=<icon=noRanged>;
 	tooltipTopRight=<icon=PhysAtk_small><icon=melee_small>;
 	
@@ -6637,7 +6637,7 @@ ID=ari_fetid_field_spread_enemy;
 	cooldown=50;
 	harmful=false;
 	attractAttention=false;
-	tooltip=As if having their own mind, your appendages flail about and strike a target near you, dealing <math=c:PhysAtk * 0.3 + 1> damage and pulling them one tile towards you. The appendages infect the target with a stack of Rot <icon=icon_gravekeeper_rot> for <icon=time>40. <n=>This does not consume an action in combat.;
+	tooltip=As if having their own mind, your appendages flail about and strike a target near you, dealing <math=c:PhysAtk * 0.3 + 1> damage and pulling them one tile towards you. The appendages infect the target with a stack of Rot <icon=icon_gravekeeper_rot>. <n=>This does not consume an action in combat.;
 
 	tooltipTopRight=;
 	
@@ -6712,7 +6712,7 @@ ID=ari_fetid_field_spread_enemy;
 	cooldown=25;
 	harmful=false;
 	attractAttention=false;
-	tooltip=Slam down a hulking fist with vile, serrated splinters protruding from it in front of you, dealing <math=c:skill_Ruin * 0.4 + 5> damage to everything in an area.<n=>Infects the target with a stack of Rot<icon=icon_gravekeeper_rot> for <icon=time>40, and if a target has more than four stacks of Rot<icon=icon_gravekeeper_rot>, Corpse Slam reduces the target's defenses.;
+	tooltip=Slam down a hulking fist with vile, serrated splinters protruding from it in front of you, dealing <math=c:skill_Ruin * 0.4 + 5> damage to everything in an area.<n=>Infects the target with a stack of Rot<icon=icon_gravekeeper_rot>, and if a target has more than four stacks of Rot<icon=icon_gravekeeper_rot>, Corpse Slam reduces the target's defenses.;
 
 	tooltipTopRight=;
 	
@@ -7382,6 +7382,52 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 [AvAffecterAoE]
 	ID=shana_BequeathSelf_enemy;
 	cloneFrom=allAllies;
+
+-----------------------------------------------Undead Amalgam unarmed attack (the rest of the moves are in the furdabip necrotizee file)
+----------------------------------------------------------------Enemy Amalgam Bite Attack
+[Action] ID=shana_amalgambiteStorm_enemy;
+	applyWeaponBuffs=true;
+	tooltip=Shred any foolish enough to enter your range with a whirling storm of teeth. Hits up to 5 times at half damage and accuracy, each successful hit infecting your target with three stacks of Rot<icon=icon_gravekeeper_rot>.;
+	name=Bite Storm;
+	icon=icon_bequeath_self; --todo change
+--	casterAnimation=shoulderbash;
+	FXOnTarget=medShakeHoriz;
+[ActionAoE]
+	ID=shana_amalgambiteStorm_enemy;
+	cloneFrom=adjacent;
+[AvAffecter]
+	ID=shana_amalgambiteStorm_enemy;
+	actorValue=HP;
+	useSeparateChanceRoll=true;
+	weaponAvAffecter=true;
+	magnitude=-100;
+	chance=100;
+	duration=-2;
+	FXOnTile=pummel;
+	FXOnTile=slash;
+	element=physical;
+	element=melee;
+	element=slash;
+[AvAffecterAoE] --todo issue - this doesn't work, the chance is always zero
+	ID=shana_amalgambiteStorm_enemy;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_amalgambiteStorm_enemy;
+	actorValue=ari_rot_status_enemy;
+	magnitude=d:1rotcalc + 3 * rxn:ruin + t:ari_rot_status_enemy;
+	duration=80;
+	chance=myPreviousAVHit:shana_amalgambiteStorm_enemy;
+	FXOnHit=chargeSpiralFast_big;
+	FXOnHitColor=Green;
+	FXOnHit=chargeSpiralFast_big;
+	FXOnHitColor=Black;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=shana_amalgambiteStorm_enemy;
+	cloneFrom=oneTile;
+
+
 
 -----------------------------------------------Fake double tap for Plaguebringer Yokaze
 [Action] ID=shana_Ran_doubleTap_enemy;

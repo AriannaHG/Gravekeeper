@@ -7577,7 +7577,7 @@ adjustSpriteY = -5;
 
 defaultSprite = actor_shana_undead_amalgam;
 --previewSprite = actor_shana_undead_amalgam;
---unarmedAction = qp_phoenix_peck;
+innateActions = shana_amalgambiteStorm_enemy;
 innateActions = shana_rotting_prison;
 innateActions = shana_subsume;
 innateActions = shana_bestow_ruin;
@@ -7653,6 +7653,6 @@ maxRange=3;
 [JournalEntry]
 ID=journal_shana_undead_amalgam;
 category=creature; halfPage=false; rarity=3;
-title=Undead Abscesses;
+title=Undead Amalgam;
 text=<actorBig=shana_undead_amalgam_enemy_base><title=Undead Amalgam><brAdj=>          A seething lump of effluvia nestled within a vitrified shell, itself ensconced between two sets of wickedly sharp teeth dripping reeking bile, garnished with tentacles like the world's worst sandwich.<n=>In battle, it harnesses Gate magic to barrage foes with ruinous, battlefield-altering spells from any distance with perfect tracking, and is even capable of weaponizing what passes for its reproductive cycle.<n=>Being overfilled with Essence while channeling several different types of magic tends to have rather severe drawbacks, however...;
 
