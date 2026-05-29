@@ -7390,8 +7390,11 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 	tooltip=Shred any foolish enough to enter your range with a whirling storm of teeth. Hits up to 5 times at half damage and accuracy, each successful hit infecting your target with three stacks of Rot<icon=icon_gravekeeper_rot>.;
 	name=Bite Storm;
 	icon=icon_bequeath_self; --todo change
---	casterAnimation=shoulderbash;
+	casterAnimation=shoulderbash;
 	FXOnTarget=medShakeHoriz;
+	XPCost=150;
+    XPCost=950;
+    maxRank=2;
 [ActionAoE]
 	ID=shana_amalgambiteStorm_enemy;
 	cloneFrom=adjacent;
@@ -7400,23 +7403,23 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 	actorValue=HP;
 	useSeparateChanceRoll=true;
 	weaponAvAffecter=true;
-	magnitude=-100;
-	chance=100;
+	magnitude=d:fistDmg * 0.5;
+	chance=d:fistAcc * 0.5;
 	duration=-2;
-	FXOnTile=pummel;
-	FXOnTile=slash;
+	FXOnTile=triSlash;
 	element=physical;
 	element=melee;
 	element=slash;
-[AvAffecterAoE] --todo issue - this doesn't work, the chance is always zero
+[AvAffecterAoE]
 	ID=shana_amalgambiteStorm_enemy;
 	cloneFrom=oneTile;
-[AvAffecter]
+[AvAffecter] --actual rot infliction
 	ID=shana_amalgambiteStorm_enemy;
+	hideActEval=true;
 	actorValue=ari_rot_status_enemy;
 	magnitude=d:1rotcalc + 3 * rxn:ruin + t:ari_rot_status_enemy;
 	duration=80;
-	chance=myPreviousAVHit:shana_amalgambiteStorm_enemy;
+	chance=m:previousAVHit * 100;
 	FXOnHit=chargeSpiralFast_big;
 	FXOnHitColor=Green;
 	FXOnHit=chargeSpiralFast_big;
@@ -7426,7 +7429,180 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 [AvAffecterAoE]
 	ID=shana_amalgambiteStorm_enemy;
 	cloneFrom=oneTile;
-
+[AvAffecter] --eval window fake
+	ID=shana_amalgambiteStorm_enemy;
+    forActEvalPurposesOnly=true;
+	actorValue=ari_rot_status_enemy;
+	magnitude=d:1rotcalc + 3 * rxn:ruin + t:ari_rot_status_enemy;
+	duration=80;
+	chance=d:fistAcc * 0.5;
+[AvAffecterAoE]
+	ID=shana_amalgambiteStorm_enemy;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_amalgambiteStorm_enemy;
+	actorValue=HP;
+	useSeparateChanceRoll=true;
+	weaponAvAffecter=true;
+	magnitude=d:fistDmg * 0.5;
+	chance=d:fistAcc * 0.5;
+	duration=-2;
+	FXOnTile=triSlash;
+	element=physical;
+	element=melee;
+	element=slash;
+[AvAffecterAoE]
+	ID=shana_amalgambiteStorm_enemy;
+	cloneFrom=oneTile;
+[AvAffecter] --actual rot infliction
+	ID=shana_amalgambiteStorm_enemy;
+	hideActEval=true;
+	actorValue=ari_rot_status_enemy;
+	magnitude=d:1rotcalc + 3 * rxn:ruin + t:ari_rot_status_enemy;
+	duration=80;
+	chance=m:previousAVHit * 100;
+	FXOnHit=chargeSpiralFast_big;
+	FXOnHitColor=Green;
+	FXOnHit=chargeSpiralFast_big;
+	FXOnHitColor=Black;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=shana_amalgambiteStorm_enemy;
+	cloneFrom=oneTile;
+[AvAffecter] --eval window fake
+	ID=shana_amalgambiteStorm_enemy;
+    forActEvalPurposesOnly=true;
+	actorValue=ari_rot_status_enemy;
+	magnitude=d:1rotcalc + 3 * rxn:ruin + t:ari_rot_status_enemy;
+	duration=80;
+	chance=d:fistAcc * 0.5;
+[AvAffecterAoE]
+	ID=shana_amalgambiteStorm_enemy;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_amalgambiteStorm_enemy;
+	actorValue=HP;
+	useSeparateChanceRoll=true;
+	weaponAvAffecter=true;
+	magnitude=d:fistDmg * 0.5;
+	chance=d:fistAcc * 0.5;
+	duration=-2;
+	FXOnTile=triSlash;
+	element=physical;
+	element=melee;
+	element=slash;
+[AvAffecterAoE]
+	ID=shana_amalgambiteStorm_enemy;
+	cloneFrom=oneTile;
+[AvAffecter] --actual rot infliction
+	ID=shana_amalgambiteStorm_enemy;
+	hideActEval=true;
+	actorValue=ari_rot_status_enemy;
+	magnitude=d:1rotcalc + 3 * rxn:ruin + t:ari_rot_status_enemy;
+	duration=80;
+	chance=m:previousAVHit * 100;
+	FXOnHit=chargeSpiralFast_big;
+	FXOnHitColor=Green;
+	FXOnHit=chargeSpiralFast_big;
+	FXOnHitColor=Black;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=shana_amalgambiteStorm_enemy;
+	cloneFrom=oneTile;
+[AvAffecter] --eval window fake
+	ID=shana_amalgambiteStorm_enemy;
+    forActEvalPurposesOnly=true;
+	actorValue=ari_rot_status_enemy;
+	magnitude=d:1rotcalc + 3 * rxn:ruin + t:ari_rot_status_enemy;
+	duration=80;
+	chance=d:fistAcc * 0.5;
+[AvAffecterAoE]
+	ID=shana_amalgambiteStorm_enemy;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_amalgambiteStorm_enemy;
+	actorValue=HP;
+	useSeparateChanceRoll=true;
+	weaponAvAffecter=true;
+	magnitude=d:fistDmg * 0.5;
+	chance=d:fistAcc * 0.5;
+	duration=-2;
+	FXOnTile=triSlash;
+	element=physical;
+	element=melee;
+	element=slash;
+[AvAffecterAoE]
+	ID=shana_amalgambiteStorm_enemy;
+	cloneFrom=oneTile;
+[AvAffecter] --actual rot infliction
+	ID=shana_amalgambiteStorm_enemy;
+	hideActEval=true;
+	actorValue=ari_rot_status_enemy;
+	magnitude=d:1rotcalc + 3 * rxn:ruin + t:ari_rot_status_enemy;
+	duration=80;
+	chance=m:previousAVHit * 100;
+	FXOnHit=chargeSpiralFast_big;
+	FXOnHitColor=Green;
+	FXOnHit=chargeSpiralFast_big;
+	FXOnHitColor=Black;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=shana_amalgambiteStorm_enemy;
+	cloneFrom=oneTile;
+[AvAffecter] --eval window fake
+	ID=shana_amalgambiteStorm_enemy;
+    forActEvalPurposesOnly=true;
+	actorValue=ari_rot_status_enemy;
+	magnitude=d:1rotcalc + 3 * rxn:ruin + t:ari_rot_status_enemy;
+	duration=80;
+	chance=d:fistAcc * 0.5;
+[AvAffecterAoE]
+	ID=shana_amalgambiteStorm_enemy;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_amalgambiteStorm_enemy;
+	actorValue=HP;
+	useSeparateChanceRoll=true;
+	weaponAvAffecter=true;
+	magnitude=d:fistDmg * 0.5;
+	chance=d:fistAcc * 0.5;
+	duration=-2;
+	FXOnTile=triSlash;
+	element=physical;
+	element=melee;
+	element=slash;
+[AvAffecterAoE]
+	ID=shana_amalgambiteStorm_enemy;
+	cloneFrom=oneTile;
+[AvAffecter] --actual rot infliction
+	ID=shana_amalgambiteStorm_enemy;
+	hideActEval=true;
+	actorValue=ari_rot_status_enemy;
+	magnitude=d:1rotcalc + 3 * rxn:ruin + t:ari_rot_status_enemy;
+	duration=80;
+	chance=m:previousAVHit * 100;
+	FXOnHit=chargeSpiralFast_big;
+	FXOnHitColor=Green;
+	FXOnHit=chargeSpiralFast_big;
+	FXOnHitColor=Black;
+	FXOnHit=downwardLinesQuick;
+	FXOnHitColor=Green;
+[AvAffecterAoE]
+	ID=shana_amalgambiteStorm_enemy;
+	cloneFrom=oneTile;
+[AvAffecter] --eval window fake
+	ID=shana_amalgambiteStorm_enemy;
+    forActEvalPurposesOnly=true;
+	actorValue=ari_rot_status_enemy;
+	magnitude=d:1rotcalc + 3 * rxn:ruin + t:ari_rot_status_enemy;
+	duration=80;
+	chance=d:fistAcc * 0.5;
+[AvAffecterAoE]
+	ID=shana_amalgambiteStorm_enemy;
+	cloneFrom=oneTile;
 
 
 -----------------------------------------------Fake double tap for Plaguebringer Yokaze

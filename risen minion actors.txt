@@ -7483,7 +7483,11 @@ text=<actorBig=shana_undead_abscess_mature_enemy><actorBig=shana_undead_abscess_
 
 --note: try to make it want to stay still unless enemy is close, where it will try to move in
 
---todo: implement melee bite that does phys and rot damage, maybe add shoulderbash once the facing issues are fixed?
+--todo: fix shoulderbash facing issue
+
+--todo: add on miss fx to bite storm
+
+--todo: bite storm icon
 
 --todo: fix stun animation and remove shoulderbash cast animation...?
 
