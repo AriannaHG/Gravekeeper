@@ -7386,11 +7386,12 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 -----------------------------------------------Undead Amalgam unarmed attack (the rest of the moves are in the furdabip necrotizee file)
 ----------------------------------------------------------------Enemy Amalgam Bite Attack
 [Action] ID=shana_amalgambiteStorm_enemy;
-	applyWeaponBuffs=true;
-	tooltip=Shred any foolish enough to enter your range with a whirling storm of teeth. Hits up to 5 times at half damage and accuracy, each successful hit infecting your target with three stacks of Rot<icon=icon_gravekeeper_rot>.;
-	name=Bite Storm;
+--	applyWeaponBuffs=true;
+	tooltip=Shred your target with horrific jaws. Hits up to 5 times at half damage and accuracy, each successful hit inflicting three stacks of Rot<icon=icon_gravekeeper_rot>.;
+	name=Whirling Maw;
 	icon=icon_bequeath_self; --todo change
-	casterAnimation=shoulderbash;
+	casterAnimation=shana_anim_abscess_bitestorm;
+	casterAnimationDependsOnFacingRot=true;
 	FXOnTarget=medShakeHoriz;
 	XPCost=150;
     XPCost=950;
@@ -7406,7 +7407,9 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 	magnitude=d:fistDmg * 0.5;
 	chance=d:fistAcc * 0.5;
 	duration=-2;
+	FXOnTile=chk;
 	FXOnTile=triSlash;
+	FXOnTile=delay_minor;
 	element=physical;
 	element=melee;
 	element=slash;
@@ -7417,7 +7420,8 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 	ID=shana_amalgambiteStorm_enemy;
 	hideActEval=true;
 	actorValue=ari_rot_status_enemy;
-	magnitude=d:1rotcalc + 3 * rxn:ruin + t:ari_rot_status_enemy;
+	visibleMiss=false;
+magnitude=d:1rotcalc + 2 * rxn:ruin + t:ari_rot_status_enemy;
 	duration=80;
 	chance=m:previousAVHit * 100;
 	FXOnHit=chargeSpiralFast_big;
@@ -7433,7 +7437,7 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 	ID=shana_amalgambiteStorm_enemy;
     forActEvalPurposesOnly=true;
 	actorValue=ari_rot_status_enemy;
-	magnitude=d:1rotcalc + 3 * rxn:ruin + t:ari_rot_status_enemy;
+magnitude=d:1rotcalc + 2 * rxn:ruin + t:ari_rot_status_enemy;
 	duration=80;
 	chance=d:fistAcc * 0.5;
 [AvAffecterAoE]
@@ -7447,7 +7451,9 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 	magnitude=d:fistDmg * 0.5;
 	chance=d:fistAcc * 0.5;
 	duration=-2;
+	FXOnTile=chk;
 	FXOnTile=triSlash;
+	FXOnTile=delay_minor;
 	element=physical;
 	element=melee;
 	element=slash;
@@ -7458,7 +7464,8 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 	ID=shana_amalgambiteStorm_enemy;
 	hideActEval=true;
 	actorValue=ari_rot_status_enemy;
-	magnitude=d:1rotcalc + 3 * rxn:ruin + t:ari_rot_status_enemy;
+	visibleMiss=false;
+magnitude=d:1rotcalc + 2 * rxn:ruin + t:ari_rot_status_enemy;
 	duration=80;
 	chance=m:previousAVHit * 100;
 	FXOnHit=chargeSpiralFast_big;
@@ -7474,7 +7481,7 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 	ID=shana_amalgambiteStorm_enemy;
     forActEvalPurposesOnly=true;
 	actorValue=ari_rot_status_enemy;
-	magnitude=d:1rotcalc + 3 * rxn:ruin + t:ari_rot_status_enemy;
+magnitude=d:1rotcalc + 2 * rxn:ruin + t:ari_rot_status_enemy;
 	duration=80;
 	chance=d:fistAcc * 0.5;
 [AvAffecterAoE]
@@ -7488,7 +7495,9 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 	magnitude=d:fistDmg * 0.5;
 	chance=d:fistAcc * 0.5;
 	duration=-2;
+	FXOnTile=chk;
 	FXOnTile=triSlash;
+	FXOnTile=delay_minor;
 	element=physical;
 	element=melee;
 	element=slash;
@@ -7499,7 +7508,8 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 	ID=shana_amalgambiteStorm_enemy;
 	hideActEval=true;
 	actorValue=ari_rot_status_enemy;
-	magnitude=d:1rotcalc + 3 * rxn:ruin + t:ari_rot_status_enemy;
+	visibleMiss=false;
+magnitude=d:1rotcalc + 2 * rxn:ruin + t:ari_rot_status_enemy;
 	duration=80;
 	chance=m:previousAVHit * 100;
 	FXOnHit=chargeSpiralFast_big;
@@ -7515,7 +7525,7 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 	ID=shana_amalgambiteStorm_enemy;
     forActEvalPurposesOnly=true;
 	actorValue=ari_rot_status_enemy;
-	magnitude=d:1rotcalc + 3 * rxn:ruin + t:ari_rot_status_enemy;
+magnitude=d:1rotcalc + 2 * rxn:ruin + t:ari_rot_status_enemy;
 	duration=80;
 	chance=d:fistAcc * 0.5;
 [AvAffecterAoE]
@@ -7529,7 +7539,9 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 	magnitude=d:fistDmg * 0.5;
 	chance=d:fistAcc * 0.5;
 	duration=-2;
+	FXOnTile=chk;
 	FXOnTile=triSlash;
+	FXOnTile=delay_minor;
 	element=physical;
 	element=melee;
 	element=slash;
@@ -7540,7 +7552,8 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 	ID=shana_amalgambiteStorm_enemy;
 	hideActEval=true;
 	actorValue=ari_rot_status_enemy;
-	magnitude=d:1rotcalc + 3 * rxn:ruin + t:ari_rot_status_enemy;
+	visibleMiss=false;
+magnitude=d:1rotcalc + 2 * rxn:ruin + t:ari_rot_status_enemy;
 	duration=80;
 	chance=m:previousAVHit * 100;
 	FXOnHit=chargeSpiralFast_big;
@@ -7556,7 +7569,7 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 	ID=shana_amalgambiteStorm_enemy;
     forActEvalPurposesOnly=true;
 	actorValue=ari_rot_status_enemy;
-	magnitude=d:1rotcalc + 3 * rxn:ruin + t:ari_rot_status_enemy;
+magnitude=d:1rotcalc + 2 * rxn:ruin + t:ari_rot_status_enemy;
 	duration=80;
 	chance=d:fistAcc * 0.5;
 [AvAffecterAoE]
@@ -7570,7 +7583,9 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 	magnitude=d:fistDmg * 0.5;
 	chance=d:fistAcc * 0.5;
 	duration=-2;
+	FXOnTile=chk;
 	FXOnTile=triSlash;
+	FXOnTile=delay_minor;
 	element=physical;
 	element=melee;
 	element=slash;
@@ -7581,7 +7596,8 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 	ID=shana_amalgambiteStorm_enemy;
 	hideActEval=true;
 	actorValue=ari_rot_status_enemy;
-	magnitude=d:1rotcalc + 3 * rxn:ruin + t:ari_rot_status_enemy;
+	visibleMiss=false;
+magnitude=d:1rotcalc + 2 * rxn:ruin + t:ari_rot_status_enemy;
 	duration=80;
 	chance=m:previousAVHit * 100;
 	FXOnHit=chargeSpiralFast_big;
@@ -7597,7 +7613,7 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 	ID=shana_amalgambiteStorm_enemy;
     forActEvalPurposesOnly=true;
 	actorValue=ari_rot_status_enemy;
-	magnitude=d:1rotcalc + 3 * rxn:ruin + t:ari_rot_status_enemy;
+magnitude=d:1rotcalc + 2 * rxn:ruin + t:ari_rot_status_enemy;
 	duration=80;
 	chance=d:fistAcc * 0.5;
 [AvAffecterAoE]

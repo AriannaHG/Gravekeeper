@@ -7483,10 +7483,6 @@ text=<actorBig=shana_undead_abscess_mature_enemy><actorBig=shana_undead_abscess_
 
 --note: try to make it want to stay still unless enemy is close, where it will try to move in
 
---todo: fix shoulderbash facing issue
-
---todo: add on miss fx to bite storm
-
 --todo: bite storm icon
 
 --todo: fix stun animation and remove shoulderbash cast animation...?
@@ -7498,6 +7494,71 @@ text=<actorBig=shana_undead_abscess_mature_enemy><actorBig=shana_undead_abscess_
 
 
 ----------------Futureproofing for Undead Abscess Animations
+
+--Animation for Whirling Maw (bitestorm) with casterAnimationDependsOnFacingRot=true;
+[Animation] ID=shana_anim_abscess_bitestorm90; duration=1.4; attackKeyframe=5; --facing down, --offset=0,5; if facing left or right to align, if you can swing it
+[Keyframe] ID=shana_anim_abscess_bitestorm90; frame=1; endTime=0.1;  directionalOffset=0,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm90; frame=1; endTime=0.2; offset=0,0; directionalOffset=-2,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm90; frame=1; endTime=0.30; offset=0,0; directionalOffset=-2,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm90; frame=2; endTime=0.33; offset=0,0; directionalOffset=7,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm90; frame=2; endTime=0.34; offset=0.5,0; directionalOffset=8,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm90; frame=2; endTime=0.35; offset=-0.5,0; directionalOffset=8,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm90; frame=2; endTime=0.36; offset=0.5,0; directionalOffset=8,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm90; frame=2; endTime=0.37; offset=-0.5,0; directionalOffset=8,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm90; frame=2; endTime=0.38; offset=0.5,0; directionalOffset=8,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm90; frame=2; endTime=0.87; offset=0,0; directionalOffset=8,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm90; frame=2; endTime=0.98; offset=0,0; directionalOffset=8,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm90; frame=2; endTime=1.06; offset=0,0; directionalOffset=7,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm90; frame=1; endTime=1.18; offset=0,0; directionalOffset=7,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm90; frame=0; endTime=1.4;
+
+[Animation] ID=shana_anim_abscess_bitestorm270; duration=1.4; attackKeyframe=5; --facing up, --offset=0,5; if facing left or right to align, if you can swing it
+[Keyframe] ID=shana_anim_abscess_bitestorm270; frame=1; endTime=0.1;  directionalOffset=0,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm270; frame=1; endTime=0.2; offset=0,0; directionalOffset=-2,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm270; frame=1; endTime=0.30; offset=0,0; directionalOffset=-2,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm270; frame=2; endTime=0.33; offset=0,0; directionalOffset=7,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm270; frame=2; endTime=0.34; offset=0.5,0; directionalOffset=8,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm270; frame=2; endTime=0.35; offset=-0.5,0; directionalOffset=8,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm270; frame=2; endTime=0.36; offset=0.5,0; directionalOffset=8,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm270; frame=2; endTime=0.37; offset=-0.5,0; directionalOffset=8,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm270; frame=2; endTime=0.38; offset=0.5,0; directionalOffset=8,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm270; frame=2; endTime=0.87; offset=0,0; directionalOffset=8,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm270; frame=2; endTime=0.98; offset=0,0; directionalOffset=8,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm270; frame=2; endTime=1.06; offset=0,0; directionalOffset=7,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm270; frame=1; endTime=1.18; offset=0,0; directionalOffset=7,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm270; frame=0; endTime=1.4;
+
+[Animation] ID=shana_anim_abscess_bitestorm0; duration=1.4; attackKeyframe=5; --facing left, --offset=0,5; if facing left or right to align, if you can swing it
+[Keyframe] ID=shana_anim_abscess_bitestorm0; frame=1; endTime=0.1;  directionalOffset=0,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm0; frame=1; endTime=0.2; offset=0,5; directionalOffset=-2,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm0; frame=1; endTime=0.30; offset=0,5; directionalOffset=-2,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm0; frame=2; endTime=0.33; offset=0,5; directionalOffset=7,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm0; frame=2; endTime=0.34; offset=0.5,5; directionalOffset=8,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm0; frame=2; endTime=0.35; offset=-0.5,5; directionalOffset=8,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm0; frame=2; endTime=0.36; offset=0.5,5; directionalOffset=8,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm0; frame=2; endTime=0.37; offset=-0.5,5; directionalOffset=8,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm0; frame=2; endTime=0.38; offset=0.5,5; directionalOffset=8,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm0; frame=2; endTime=0.87; offset=0,5; directionalOffset=8,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm0; frame=2; endTime=0.98; offset=0,5; directionalOffset=8,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm0; frame=2; endTime=1.06; offset=0,5; directionalOffset=7,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm0; frame=1; endTime=1.18; offset=0,5; directionalOffset=7,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm0; frame=0; endTime=1.4;
+
+[Animation] ID=shana_anim_abscess_bitestorm180; duration=1.4; attackKeyframe=5; --facing left, --offset=0,5; if facing left or right to align, if you can swing it
+[Keyframe] ID=shana_anim_abscess_bitestorm180; frame=1; endTime=0.1;  directionalOffset=0,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm180; frame=1; endTime=0.2; offset=0,5; directionalOffset=-2,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm180; frame=1; endTime=0.30; offset=0,5; directionalOffset=-2,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm180; frame=2; endTime=0.33; offset=0,5; directionalOffset=7,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm180; frame=2; endTime=0.34; offset=0.5,5; directionalOffset=8,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm180; frame=2; endTime=0.35; offset=-0.5,5; directionalOffset=8,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm180; frame=2; endTime=0.36; offset=0.5,5; directionalOffset=8,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm180; frame=2; endTime=0.37; offset=-0.5,5; directionalOffset=8,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm180; frame=2; endTime=0.38; offset=0.5,5; directionalOffset=8,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm180; frame=2; endTime=0.87; offset=0,5; directionalOffset=8,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm180; frame=2; endTime=0.98; offset=0,5; directionalOffset=8,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm180; frame=2; endTime=1.06; offset=0,5; directionalOffset=7,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm180; frame=1; endTime=1.18; offset=0,5; directionalOffset=7,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm180; frame=0; endTime=1.4;
 
 [Animation] ID=shana_anim_abscess_charge; duration=3.2; --boat_idle_noWater copy
 [Keyframe] ID=shana_anim_abscess_charge; frame=3; endTime=0; fx=shana_abscess_chargefx;
@@ -7548,7 +7609,7 @@ showAlertIcon=false;
 canUseItems=false;
 alwaysRoundFacingTo90=true;
 noFacingRotRows=true;
-lockFacingRotTo=0;
+--lockFacingRotTo=0;
 
 defaultValues=HP = 120;
 defaultValues=HPMax = 120;
