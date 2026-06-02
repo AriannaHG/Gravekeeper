@@ -7483,10 +7483,6 @@ text=<actorBig=shana_undead_abscess_mature_enemy><actorBig=shana_undead_abscess_
 
 --note: try to make it want to stay still unless enemy is close, where it will try to move in
 
---todo: bite storm icon
-
---todo: fix stun animation and remove shoulderbash cast animation...?
-
 --todo: fix timeline description placeholder dmg
 
 

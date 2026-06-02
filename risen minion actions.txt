@@ -7395,7 +7395,7 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 	FXOnTarget=medShakeHoriz;
 	XPCost=150;
     XPCost=950;
-    maxRank=2;
+    maxRank=1;
 [ActionAoE]
 	ID=shana_amalgambiteStorm_enemy;
 	cloneFrom=adjacent;
