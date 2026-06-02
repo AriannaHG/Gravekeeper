@@ -7509,7 +7509,7 @@ text=<actorBig=shana_undead_abscess_mature_enemy><actorBig=shana_undead_abscess_
 [Keyframe] ID=shana_anim_abscess_bitestorm90; frame=2; endTime=0.87; offset=0,0; directionalOffset=8,0;
 [Keyframe] ID=shana_anim_abscess_bitestorm90; frame=2; endTime=0.98; offset=0,0; directionalOffset=8,0;
 [Keyframe] ID=shana_anim_abscess_bitestorm90; frame=2; endTime=1.06; offset=0,0; directionalOffset=7,0;
-[Keyframe] ID=shana_anim_abscess_bitestorm90; frame=1; endTime=1.18; offset=0,0; directionalOffset=7,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm90; frame=2; endTime=1.18; offset=0,0; directionalOffset=7,0;
 [Keyframe] ID=shana_anim_abscess_bitestorm90; frame=0; endTime=1.4;
 
 [Animation] ID=shana_anim_abscess_bitestorm270; duration=1.4; attackKeyframe=5; --facing up, --offset=0,5; if facing left or right to align, if you can swing it
@@ -7525,7 +7525,7 @@ text=<actorBig=shana_undead_abscess_mature_enemy><actorBig=shana_undead_abscess_
 [Keyframe] ID=shana_anim_abscess_bitestorm270; frame=2; endTime=0.87; offset=0,0; directionalOffset=8,0;
 [Keyframe] ID=shana_anim_abscess_bitestorm270; frame=2; endTime=0.98; offset=0,0; directionalOffset=8,0;
 [Keyframe] ID=shana_anim_abscess_bitestorm270; frame=2; endTime=1.06; offset=0,0; directionalOffset=7,0;
-[Keyframe] ID=shana_anim_abscess_bitestorm270; frame=1; endTime=1.18; offset=0,0; directionalOffset=7,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm270; frame=2; endTime=1.18; offset=0,0; directionalOffset=7,0;
 [Keyframe] ID=shana_anim_abscess_bitestorm270; frame=0; endTime=1.4;
 
 [Animation] ID=shana_anim_abscess_bitestorm0; duration=1.4; attackKeyframe=5; --facing left, --offset=0,5; if facing left or right to align, if you can swing it
@@ -7541,7 +7541,7 @@ text=<actorBig=shana_undead_abscess_mature_enemy><actorBig=shana_undead_abscess_
 [Keyframe] ID=shana_anim_abscess_bitestorm0; frame=2; endTime=0.87; offset=0,5; directionalOffset=8,0;
 [Keyframe] ID=shana_anim_abscess_bitestorm0; frame=2; endTime=0.98; offset=0,5; directionalOffset=8,0;
 [Keyframe] ID=shana_anim_abscess_bitestorm0; frame=2; endTime=1.06; offset=0,5; directionalOffset=7,0;
-[Keyframe] ID=shana_anim_abscess_bitestorm0; frame=1; endTime=1.18; offset=0,5; directionalOffset=7,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm0; frame=2; endTime=1.18; offset=0,5; directionalOffset=7,0;
 [Keyframe] ID=shana_anim_abscess_bitestorm0; frame=0; endTime=1.4;
 
 [Animation] ID=shana_anim_abscess_bitestorm180; duration=1.4; attackKeyframe=5; --facing left, --offset=0,5; if facing left or right to align, if you can swing it
@@ -7557,7 +7557,7 @@ text=<actorBig=shana_undead_abscess_mature_enemy><actorBig=shana_undead_abscess_
 [Keyframe] ID=shana_anim_abscess_bitestorm180; frame=2; endTime=0.87; offset=0,5; directionalOffset=8,0;
 [Keyframe] ID=shana_anim_abscess_bitestorm180; frame=2; endTime=0.98; offset=0,5; directionalOffset=8,0;
 [Keyframe] ID=shana_anim_abscess_bitestorm180; frame=2; endTime=1.06; offset=0,5; directionalOffset=7,0;
-[Keyframe] ID=shana_anim_abscess_bitestorm180; frame=1; endTime=1.18; offset=0,5; directionalOffset=7,0;
+[Keyframe] ID=shana_anim_abscess_bitestorm180; frame=2; endTime=1.18; offset=0,5; directionalOffset=7,0;
 [Keyframe] ID=shana_anim_abscess_bitestorm180; frame=0; endTime=1.4;
 
 [Animation] ID=shana_anim_abscess_charge; duration=3.2; --boat_idle_noWater copy
@@ -7642,10 +7642,10 @@ adjustSpriteY = -5;
 
 defaultSprite = actor_shana_undead_amalgam;
 --previewSprite = actor_shana_undead_amalgam;
-innateActions = shana_amalgambiteStorm_enemy;
 innateActions = shana_rotting_prison;
 innateActions = shana_subsume;
 innateActions = shana_bestow_ruin;
+innateActions = shana_amalgambiteStorm_enemy;
 
 skinPalette=pG;
 clothPalette=pB;

@@ -7389,7 +7389,7 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 --	applyWeaponBuffs=true;
 	tooltip=Shred your target with horrific jaws. Hits up to 5 times at half damage and accuracy, each successful hit inflicting three stacks of Rot<icon=icon_gravekeeper_rot>.;
 	name=Whirling Maw;
-	icon=icon_bequeath_self; --todo change
+	icon=icon_gravekeeper_whirlingmaw;
 	casterAnimation=shana_anim_abscess_bitestorm;
 	casterAnimationDependsOnFacingRot=true;
 	FXOnTarget=medShakeHoriz;
