@@ -7144,7 +7144,7 @@ text=<itemBig=ari_death_curse_item><title=Bone Spear Explosion><brAdj=>Bone Spea
 	cloneFrom=oneTile;
 
 [Action] ID=shana_RottingPus_enemy;
-	icon=icon_De_brainshock; --todo change this
+	icon=icon_gravekeeper_rotting_pus;
 	casterAnimation=s_simplestAttack; --todo change this, I want it to open mouth when attacking too
 	name=Rotting Pus;
 	chargeTime=5 * d:chargeTimeMult * d:chargeTimeMult_onlyWithMP + d:chargeTimeMod + d:chargeTimeMod_onlyWithMP;

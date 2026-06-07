@@ -1665,7 +1665,19 @@ statements=<speed=0.5>A sickly guard wearing scavenged armor desperately thrusts
 nextNodeID=shana_horizonsgrave_badend_12;
 
 [DialogNode] ID=shana_horizonsgrave_badend_12;
-statements=<speed=0.5>It doesn't take, and in your mind's eye you see Reeve rip her in half, a horrific hunger consuming both of them.;
+statements=<speed=0.5>It doesn't take, and in your mind's eye you see Reeve rip her in half, a horrific hunger consuming them both.;
+nextNodeID=shana_horizonsgrave_badend_12a;
+
+[DialogNode] ID=shana_horizonsgrave_badend_12a;
+statements=<speed=0.5>Her eyes are dull, horror and regret long since sublimated into a bleak helplessness.;
+nextNodeID=shana_horizonsgrave_badend_12b;
+
+[DialogNode] ID=shana_horizonsgrave_badend_12b;
+statements=<speed=0.5>The guard's companion rushes at you, his face contorted in anguish. He screams, bringing an iron hammer down with all his might.;
+nextNodeID=shana_horizonsgrave_badend_12c;
+
+[DialogNode] ID=shana_horizonsgrave_badend_12c;
+statements=<speed=0.5>It is sufficient. You hear a crunch, feel your skull give way, and know no more.;
 nextNodeID=shana_horizonsgrave_badend_13;
 
 [DialogNode] ID=shana_horizonsgrave_badend_13;
@@ -1674,6 +1686,10 @@ nextNodeID=shana_horizonsgrave_badend_14;
 
 [DialogNode] ID=shana_horizonsgrave_badend_14;
 statements=<speed=0.5>Your hands are mismatched, one Scurio, one Fareem.;
+nextNodeID=shana_horizonsgrave_badend_14a;
+
+[DialogNode] ID=shana_horizonsgrave_badend_14a;
+statements=<speed=0.35>You don't recognize your own face.;
 nextNodeID=shana_horizonsgrave_badend_15;
 
 [DialogNode] ID=shana_horizonsgrave_badend_15;
@@ -1681,7 +1697,11 @@ statements=<speed=0.5>Your mouth feels chalky, the stench of spoiled wine tarrin
 nextNodeID=shana_horizonsgrave_badend_16;
 
 [DialogNode] ID=shana_horizonsgrave_badend_16;
-statements=<speed=0.5>A hole is blown into your chest by trembling hands, the final retort of a scout rifle with no ammunition left to sustain it.;
+statements=<speed=0.5>A nation has fallen, with another soon to follow.;
+nextNodeID=shana_horizonsgrave_badend_16a;
+
+[DialogNode] ID=shana_horizonsgrave_badend_16a;
+statements=<speed=0.5>A hole is blown into your chest by trembling hands, the final retort of a scout rifle with no remaining ammunition.;
 nextNodeID=shana_horizonsgrave_badend_17;
 
 [DialogNode] ID=shana_horizonsgrave_badend_17;
