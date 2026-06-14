@@ -1669,7 +1669,7 @@ statements=<speed=0.5>It doesn't take, and in your mind's eye you see Reeve rip 
 nextNodeID=shana_horizonsgrave_badend_12a;
 
 [DialogNode] ID=shana_horizonsgrave_badend_12a;
-statements=<speed=0.5>Her eyes are dull, horror and regret long since sublimated into a bleak helplessness.;
+statements=<speed=0.5>Her eyes are dull, loathing and regret long since sublimated into a bleak helplessness.;
 nextNodeID=shana_horizonsgrave_badend_12b;
 
 [DialogNode] ID=shana_horizonsgrave_badend_12b;

@@ -388,7 +388,7 @@ text=<itemBig=ari_gk_foul_remnant><title=Foul Remnant><brAdj=>An overwhelming re
 
 [ItemType] ID=shana_fakecannontablet;
 texture=icon_gate_cannon;
-name = <color=Gold>'Gate: Cannon'<color=><adjX=2> Tablet;
+name = Replica <color=Gold>'Gate: Cannon'<color=><adjX=2> Tablet;
 weight=0; volume=0; value=20;
 itemCategory=4;
 description = Inexplicable replica of an Ability Tablet. Cannot be socketed into gear, but can be used to cast  <color=Gold>Gate: Cannon<color=>  when worn as an accessory.;
