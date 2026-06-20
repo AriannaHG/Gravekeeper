@@ -1682,6 +1682,10 @@ nextNodeID=shana_horizonsgrave_badend_13;
 
 [DialogNode] ID=shana_horizonsgrave_badend_13;
 statements=<speed=0.5>When you awaken, it is within a palace, the golden tiles crusted with unspeakable fluids.;
+nextNodeID=shana_horizonsgrave_badend_13a;
+
+[DialogNode] ID=shana_horizonsgrave_badend_13a;
+statements=<speed=0.5>The dead lie in heaps, great and small alike picked clean and scattered among the gilded filth like discarded offerings.;
 nextNodeID=shana_horizonsgrave_badend_14;
 
 [DialogNode] ID=shana_horizonsgrave_badend_14;
@@ -1701,7 +1705,11 @@ statements=<speed=0.5>A nation has fallen, with another soon to follow.;
 nextNodeID=shana_horizonsgrave_badend_16a;
 
 [DialogNode] ID=shana_horizonsgrave_badend_16a;
-statements=<speed=0.5>A hole is blown into your chest by trembling hands, the final retort of a scout rifle with no remaining ammunition.;
+statements=<speed=0.5>A soldier blows a hole through your chest with trembling hands, the final retort of a scout rifle with no remaining ammunition.;
+nextNodeID=shana_horizonsgrave_badend_16b;
+
+[DialogNode] ID=shana_horizonsgrave_badend_16b;
+statements=<speed=0.5>She collapses, small hands seizing her ankles as the children she couldn't protect from the Creeping Death rip her throat out.;
 nextNodeID=shana_horizonsgrave_badend_17;
 
 [DialogNode] ID=shana_horizonsgrave_badend_17;

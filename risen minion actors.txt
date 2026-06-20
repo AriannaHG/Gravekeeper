@@ -7227,7 +7227,7 @@ journalID=shana_journal_gatemaster_boss;
 ID=shana_journal_gatemaster_boss;
 category=creature; halfPage=false; rarity=3;
 title=Gatemaster Magnus;
-text=<icon=classIcon_ari_gravekeeper><title=Gatemaster Magnus><brAdj=>    A bereaved husband and father, he only lives to nurse his grievance into ruin. He will see Seartial ground to dust, regardless of how many families he has to destroy to settle accounts.<n>"At last, a truly honest person with a worldview that doesn't make me want to vomit, one who hasn't deluded himself with the senseless rot of so-called morality, yet holds that same spark of genius that resides within myself! How rare it is to find another who knows, who truly understands how this world of ours works, and doesn't shy away from doing what has to be done! Our goals and actions are truly aligned, and nothing will stand in our way." - Abbess Sophia;
+text=<icon=classIcon_ari_gravekeeper><title=Gatemaster Magnus><brAdj=>    A bereaved husband and father, he only lives to nurse his grievance into ruin. He will see Seartial ground to dust, regardless of how many families he has to destroy to settle accounts.<n>    "At last, a truly honest soul worthy of my respect, one who hasn't deluded himself with the senseless rot of so-called morality, yet holds that selfsame spark of genius residing within myself! How rare it is to find another who knows, who truly understands how this world of ours works, who doesn't shy away from doing must be done to make those who've wronged us suffer, and suffer, and suffer, until each and every one of them, and their sisters and brothers, and their fathers and mothers, and their children, and their children's children scream themselves raw, begging for a death that just won't come!" - Abbess Sophia;
 
 [ActorTypeReaction]
 ID=shana_gatemaster_boss;
@@ -7248,17 +7248,30 @@ action=shana_spawn_faketablet;
 [ActionAoE]
     ID=shana_spawn_faketablet;
     cloneFrom=oneTile;
-[AvAffecter]
+[AvAffecter] --set the id to magnus
 	ID=shana_spawn_faketablet;
-	actorValue=summonItem;
-	magnitude=shana_fakecannontablet;
-	duration=1;
-	chance=100;
-	FXOnHit=sparkles;
-	FXOnHitColor=Black;
+    actorValue=task;
+    magnitude=setGlobalVar_toActorID,shana_tabletVar;
+    duration=-2;
+    chance=100;
+    FXOnHit=sparkles;
+    FXOnHitColor=Black;
 [AvAffecterAoE]
 	ID=shana_spawn_faketablet;
-	cloneFrom=oneTile;
+    cloneFrom=oneTile;
+    aoeCasterAsOrigin=true;
+[AvAffecter]
+	ID=shana_spawn_faketablet;
+    actorValue=task;
+    magnitude=addItem,1,shana_fakecannontablet,@Gshana_tabletVar;
+    duration=-2;
+    chance=100;
+    FXOnHit=sparkles;
+    FXOnHitColor=Black;
+[AvAffecterAoE]
+	ID=shana_spawn_faketablet;
+    cloneFrom=oneTile;
+    aoeCasterAsOrigin=true;
 [AvAffecter]
 	ID=shana_spawn_faketablet;
     visibleMiss=false; visibleEvaluations=false;
@@ -7303,6 +7316,8 @@ title=Abbess Sophia;
 text=<icon=classIcon_ari_gravekeeper><title=Abbess Sophia><brAdj=>    "Everyone wears a mask, a duplicitous, ugly mask, a disgusting, performative mask that makes me want to vomit every time I see someone pretend to be a good person. When I unbind the Creeping Death, I shall be no more, but this is a small price to pay. Oh yes, this is a small price to pay for ugly, pointless trifles like love and friendship to be forgotten as they should be, people embracing their true, greedy, rotting selves, revealed as they feed, and feed, and feed on their so-called loved ones, unrestrained by the ugly lies they tell themselves. Oh, they still supposedly feel their pathetic emotions, they even make me feel them when I see through their eyes, but they're all lies, lies I can ensure they shall never tell again, even if I need to make them hurt like I did, to make sure they can never defy the natural way of things ever again. Never again!"<n>- Abbess Sophia;
 
 --todo: Change icon to Abbess Sophia once everything is done
+
+--todo: abbess sophia dialogue should say that she isn't ready yet, and that she won't be able to control the Creeping Death like she hoped, but it's still enough to make the world suffer.
 
 ----------------Undead Abscesses. 2 types - mature and new ones. Mature can be summoned, new is exclusive to Amalgam summon and corpse disappears + it can selfdestruct to do the same buff as amalgam's Bequeath (Bequeath Self)
 
