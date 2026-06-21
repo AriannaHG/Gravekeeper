@@ -7307,17 +7307,101 @@ action=shana_spawn_faketablet;
 --todo: change arena
 --todo: Change icon to Magnus once everything is done
 
-----------------Abbess Sophia final boss. todo: this is just a journal entry for now, but since I was doing lore anyway, might as well
+----------------Abbess Sophia final boss. todo: actually implement and consider a custom sprite
 
+[ActorType] ID=shana_abbess_boss;
+cloneFrom=human;
+journalID=shana_journal_abbess_boss;
+disappearOnDeath=true;
+disappearOnDeath_dropItems=false;
 [JournalEntry]
 ID=shana_journal_abbess_boss;
 category=creature; halfPage=false; rarity=4;
 title=Abbess Sophia;
 text=<icon=classIcon_ari_gravekeeper><title=Abbess Sophia><brAdj=>    "Everyone wears a mask, a duplicitous, ugly mask, a disgusting, performative mask that makes me want to vomit every time I see someone pretend to be a good person. When I unbind the Creeping Death, I shall be no more, but this is a small price to pay. Oh yes, this is a small price to pay for ugly, pointless trifles like love and friendship to be forgotten as they should be, people embracing their true, greedy, rotting selves, revealed as they feed, and feed, and feed on their so-called loved ones, unrestrained by the ugly lies they tell themselves. Oh, they still supposedly feel their pathetic emotions, they even make me feel them when I see through their eyes, but they're all lies, lies I can ensure they shall never tell again, even if I need to make them hurt like I did, to make sure they can never defy the natural way of things ever again. Never again!"<n>- Abbess Sophia;
 
+[ActorTypeReaction]
+ID=shana_abbess_boss;
+element=ruin;
+damageMultiplier=-1; healMultiplier=1;
+[ActorTypeReaction]
+ID=shana_abbess_boss;
+element=poison; actorValue=HP;
+damageMultiplier=-1; healMultiplier=1;
+[ActorTypeReaction]
+ID=shana_abbess_boss;
+element=defiler;
+damageMultiplier=0.5; healMultiplier=0.5;
+[ActorTypeReaction]
+ID=shana_abbess_boss;
+element=life; actorValue=HP;
+damageMultiplier=2; healMultiplier=-1;
+[ActorTypeReaction]
+ID=shana_abbess_boss;
+element=antiUndead;
+damageMultiplier=2; healMultiplier=-1;
+[ActorTypeReaction]
+ID=shana_abbess_boss;
+element=bonemeld;
+damageMultiplier=5; healMultiplier=0;
+[ActorTypeReaction]
+ID=shana_abbess_boss;
+actorValues=morale; actorValues=poison;
+actorValues=itchy; actorValues=decay;
+actorValues=sleep;
+damageMultiplier=0; healMultiplier=0;
+
+[ActorTypeReaction] --- Spawns the boss loot, dispels barriers and sets completion flag.
+ID=shana_abbess_boss;
+element=incapacitated;
+action=shana_spawn_deadbook;
+
+[Action] ID=shana_spawn_deadbook; --todo effects, maybe trigger death scene?
+    special=usableEvenWhenCantAct;
+    special=usableEvenWhenReacting;
+    special=usableEvenWhenYourTurn;
+    special=dontDelayOtherActions;
+	FXOnTarget=blackCloud;
+[ActionAoE]
+    ID=shana_spawn_deadbook;
+    cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_spawn_deadbook;
+	actorValue=summonItem;
+	magnitude=shana_deadbook;
+	duration=1;
+	chance=100;
+	FXOnHit=sparkles;
+	FXOnHitColor=Black;
+[AvAffecterAoE]
+	ID=shana_spawn_deadbook;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_spawn_deadbook;
+    visibleMiss=false; visibleEvaluations=false;
+    actorValue=task;
+    magnitude=setGlobalVar,shana_barrow_1_clear,1;
+    duration=1;
+    chance=100;
+[AvAffecterAoE]
+	ID=shana_spawn_deadbook;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_spawn_deadbook;
+    visibleMiss=false; visibleEvaluations=false;
+    element=41011;
+    chance=100;
+[AvAffecterAoE]
+	ID=shana_spawn_deadbook;
+	shape=8;
+	needsLoS=false;
+	needsLoE=false;
+
 --todo: Change icon to Abbess Sophia once everything is done
 
---todo: abbess sophia dialogue should say that she isn't ready yet, and that she won't be able to control the Creeping Death like she hoped, but it's still enough to make the world suffer.
+--todo: abbess sophia dialogue on enrage should say that she isn't ready yet, and that she won't be able to control the Creeping Death like she hoped, but it's still enough to make the world suffer.
+
+--todo: death cutscene maybe
 
 ----------------Undead Abscesses. 2 types - mature and new ones. Mature can be summoned, new is exclusive to Amalgam summon and corpse disappears + it can selfdestruct to do the same buff as amalgam's Bequeath (Bequeath Self)
 
