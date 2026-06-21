@@ -1,0 +1,82 @@
+[SupportAbility]
+ID=shanafakegatemaster_alertness;
+name=Alertness;
+tooltip=Gain +3 <icon=time> at the start of combat.;
+icon=iconP_shanafakegatemaster_alertness;
+XPCostUnlock=325;
+[SupportAbilityReaction]
+ID=shanafakegatemaster_alertness;
+element=combatStart; action=shanafakegatemaster_alertness_act;
+
+[Action] ID=shanafakegatemaster_alertness_act; 
+	harmful=false;
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+[ActionAoE] 
+	ID=shanafakegatemaster_alertness_act;
+	cloneFrom=oneTile;
+	canSelectStackedActors=false;
+[AvAffecter]
+	ID=shanafakegatemaster_alertness_act; 
+	actorValue=actTimer;
+	harmful=false;
+	magnitude=3;
+	duration=-2;
+	chance=100;
+	FXOnTile=upwardLines_quick;
+	FXOnTile=risingBip;
+[AvAffecterAoE]
+	ID=shanafakegatemaster_alertness_act;
+	cloneFrom=oneTile;
+	
+
+[SupportAbility]
+ID=shanafakegatemaster_windAura;
+name =Wind Aura;
+tooltip =At the start of your turn, adjacent enemies are pushed away.;
+icon=iconP_shanafakegatemaster_windAura;
+XPCostUnlock = 500;
+fxEvery4Frames=tempestAura;
+emitFxWhileMoving = false;
+[SupportAbilityReaction]
+ID=shanafakegatemaster_windAura;
+element=timerUp; action=shanafakegatemaster_windAura_act;
+
+[Action] ID=shanafakegatemaster_windAura_act; 
+	special=usableEvenWhenCantAct;
+	special=usableEvenWhenReacting;
+	special=usableEvenWhenYourTurn;
+[ActionAoE] 
+	ID=shanafakegatemaster_windAura_act;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=shanafakegatemaster_windAura_act; 
+	actorValue=push;
+	magnitude=1;
+	chance=100;
+	duration=-2;
+	element=wind;
+	FXOnTile=tempestAura;
+	FXOnHit=slash;
+	FXOnHit=whirlSlash_big;
+	FXOnHit=woosh;
+	FXOnMiss=slash;
+	FXOnMiss=whirlSlash_big;
+	FXOnMiss=woosh;
+[AvAffecterAoE]
+	ID=shanafakegatemaster_windAura_act;
+	canSelectAllies=false;
+	cloneFrom=adjacent;
+	
+
+[SupportAbility]
+ID=shanafakegatemaster_multiscale;
+name=Multiscale;
+tooltip=Incoming damage is reduced by half of all previous damage taken that turn.;
+icon=iconP_shanafakegatemaster_multiscale;
+XPCostUnlock=999;
+[SupportAbilityEffect]
+ID=shanafakegatemaster_multiscale;
+actorValue=multihitDefense; magnitude=50; duration=-1;
+

@@ -113,8 +113,8 @@ combatMode=False;
 [Item] ID=bonePileDark; q=1; r=180; x=11; y=23;
 [Item] ID=bonePileDark; q=1; r=90; x=11; y=23;
 [Item] ID=shana_prayer_bench; q=1; x=11; y=24;
-[Item] ID=dirt_sandy2; q=2; r=180; x=11; y=26;
 [Item] ID=secretPassage; q=1; x=11; y=31;
+[Item] ID=dirt_sandy2; q=2; r=180; x=11; y=31;
 [Item] ID=secretPassage; q=1; x=11; y=32;
 [Item] ID=secretPassage; q=1; x=12; y=6;
 [Item] ID=secretPassage; q=1; x=12; y=7;
@@ -128,8 +128,8 @@ combatMode=False;
 [Item] ID=bonePileDark; q=1; r=-90; x=12; y=22;
 [Item] ID=skull_dog2; q=1; r=-360; x=12; y=23;
 [Item] ID=shana_prayer_bench; q=1; x=12; y=24;
-[Item] ID=dirt_sandy2; q=2; x=12; y=26;
-[Item] ID=dirt_sandy1; q=1; r=360; x=12; y=27;
+[Item] ID=dirt_sandy2; q=2; x=12; y=31;
+[Item] ID=dirt_sandy1; q=1; r=360; x=12; y=32;
 [Item] ID=secretPassage; q=1; x=13; y=6;
 [Item] ID=secretPassage; q=1; x=13; y=7;
 [Item] ID=bonePileDark; q=1; r=90; x=13; y=12;
@@ -326,7 +326,6 @@ combatMode=False;
 [Item] ID=bonePileDark; q=1; r=360; x=26; y=6;
 [Item] ID=bonePileDark; q=1; r=-180; oX=0; oY=8; x=26; y=8;
 [Item] ID=table_right2; q=1; x=26; y=8;
-[Item] ID=table_small2; q=1; x=26; y=9;
 [Item] ID=bonePileDark; q=1; r=-90; x=26; y=10;
 [Item] ID=bugs12_small; q=1; r=-360; x=26; y=12;
 [Item] ID=stone_pole2_noJ; q=1; x=26; y=15;
@@ -592,7 +591,7 @@ style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=
 [Actor]ID=ari_gravekeeper_single_skelarcher10_ari_gravekeeper_city_church_interior_; name=Undead Skeleton;
 actorTypeID=summoned_undead_skeleton_archer_type_enemy; sprite=; actorClass=ari_skeletonarcher_class_enemy; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=3; position=15,18; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=True; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=enemy; clothPalette=pBlack; skinPalette=pCorpryst; armorPalette=pIron; unarmoredPalette=pIron; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.6; bravery=0.8; intelligence=0.5; honor=0.2; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
  headSprite=ari_dadzioskeleton_head1; faceSprite=; legsSprite=dadzioskeleton_legs1; armLSprite=dadzioskeleton_arm1; armRSprite=knight_arm; torsoSprite=dadzioskeleton_torso1; shoulderLSprite=; shoulderRSprite=; backSprite=;
- supportAbilities=ari_enemy_resurrection_passive1;  supportAbilities=;  supportAbilities=; HP=27; HPMax=27; TrueHPMax=27; ari_skeleton_archer_bonespear=0; 
+ supportAbilities=ari_enemy_resurrection_passive1;  supportAbilities=;  supportAbilities=; HP=27; HPMax=27; TrueHPMax=27; 
 numRanksBought=ari_skeleton_archer_bonespear=1; 
 numRanksBought=TrueHPMax=2; 
 numRanksBought=TrueMPMax=0; 
@@ -626,7 +625,7 @@ style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=
 [Actor]ID=ari_gravekeeper_single_skelarcher10_ari_gravekeeper_city_church_interior_0; name=Undead Skeleton;
 actorTypeID=summoned_undead_skeleton_archer_type_enemy; sprite=; actorClass=ari_skeletonarcher_class_enemy; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=3; position=31,17; destination=-1,-1; facingRot=90; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=True; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=enemy; clothPalette=pBlack; skinPalette=pCorpryst; armorPalette=pIron; unarmoredPalette=pIron; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.6; bravery=0.8; intelligence=0.5; honor=0.2; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
  headSprite=ari_dadzioskeleton_head1; faceSprite=; legsSprite=dadzioskeleton_legs1; armLSprite=dadzioskeleton_arm1; armRSprite=knight_arm; torsoSprite=dadzioskeleton_torso1; shoulderLSprite=; shoulderRSprite=; backSprite=;
- supportAbilities=ari_enemy_resurrection_passive1;  supportAbilities=;  supportAbilities=; HP=27; HPMax=27; TrueHPMax=27; ari_skeleton_archer_bonespear=0; 
+ supportAbilities=ari_enemy_resurrection_passive1;  supportAbilities=;  supportAbilities=; HP=27; HPMax=27; TrueHPMax=27; 
 numRanksBought=ari_skeleton_archer_bonespear=1; 
 numRanksBought=TrueHPMax=2; 
 numRanksBought=TrueMPMax=0; 
@@ -728,7 +727,7 @@ style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=
 [Actor]ID=ari_gravekeeper_single_skelarcher10_ari_gravekeeper_city_church_interior_1; name=Undead Skeleton;
 actorTypeID=summoned_undead_skeleton_archer_type_enemy; sprite=; actorClass=ari_skeletonarcher_class_enemy; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=3; position=12,18; destination=-1,-1; facingRot=64; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=True; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=enemy; clothPalette=pBlack; skinPalette=pCorpryst; armorPalette=pIron; unarmoredPalette=pIron; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.6; bravery=0.8; intelligence=0.5; honor=0.2; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
  headSprite=ari_dadzioskeleton_head1; faceSprite=; legsSprite=dadzioskeleton_legs1; armLSprite=dadzioskeleton_arm1; armRSprite=knight_arm; torsoSprite=dadzioskeleton_torso1; shoulderLSprite=; shoulderRSprite=; backSprite=;
- supportAbilities=ari_enemy_resurrection_passive1;  supportAbilities=;  supportAbilities=; HP=26; HPMax=26; TrueHPMax=26; ari_skeleton_archer_bone_shards=0; 
+ supportAbilities=ari_enemy_resurrection_passive1;  supportAbilities=;  supportAbilities=; HP=26; HPMax=26; TrueHPMax=26; 
 numRanksBought=ari_skeleton_archer_bone_shards=1; 
 numRanksBought=TrueHPMax=1; 
 numRanksBought=TrueMPMax=0; 
@@ -762,7 +761,7 @@ style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=
 [Actor]ID=ari_gravekeeper_single_skelarcher10_ari_gravekeeper_city_church_interior_2; name=Undead Skeleton;
 actorTypeID=summoned_undead_skeleton_archer_type_enemy; sprite=; actorClass=ari_skeletonarcher_class_enemy; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=3; position=35,17; destination=-1,-1; facingRot=180; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=True; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=enemy; clothPalette=pBlack; skinPalette=pCorpryst; armorPalette=pIron; unarmoredPalette=pIron; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.6; bravery=0.8; intelligence=0.5; honor=0.2; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
  headSprite=ari_dadzioskeleton_head1; faceSprite=; legsSprite=dadzioskeleton_legs1; armLSprite=dadzioskeleton_arm1; armRSprite=knight_arm; torsoSprite=dadzioskeleton_torso1; shoulderLSprite=; shoulderRSprite=; backSprite=;
- supportAbilities=ari_enemy_resurrection_passive1;  supportAbilities=;  supportAbilities=; HP=27; HPMax=27; TrueHPMax=27; ari_skeleton_archer_bone_shards=0; 
+ supportAbilities=ari_enemy_resurrection_passive1;  supportAbilities=;  supportAbilities=; HP=27; HPMax=27; TrueHPMax=27; 
 numRanksBought=ari_skeleton_archer_bone_shards=1; 
 numRanksBought=TrueHPMax=2; 
 numRanksBought=TrueMPMax=0; 
@@ -841,6 +840,7 @@ canSwap=False;
 style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
  
 
+[ActorItem] ID=table_small2; cSlot=8;
 
 
 [Actor]ID=shana_undead_abscess_mature_enemy_ari_gravekeeper_city_church_interior_0; name=Undead Abscess;
@@ -1036,7 +1036,7 @@ actorTypeID=summoned_undead_abomination_enemy; sprite=; actorClass=ari_risenmini
  headSprite=abomination_head; faceSprite=; legsSprite=abomination_legs; armLSprite=abomination_arm; armRSprite=abomination_arm; torsoSprite=abomination_torso; shoulderLSprite=; shoulderRSprite=; backSprite=;
 partSpritesThatTakePriorityOverClass=torso; 
 
- supportAbilities=ari_abomination_blood_nova;  supportAbilities=ari_abomination_horrific_presence;  supportAbilities=; HP=120; MP=15; HPMax=120; MPMax=15; TrueHPMax=120; TrueMPMax=15; sailor_XP_stars=0; warrior_XP_stars=0; ari_abomination_consume=1; ari_abomination_corpse_slam=1; ari_abomination_amalgamated_limb=1; ari_abomination_charge=1; ari_abomination_bonespear=1; ari_abomination_gravestrike=1; ari_abomination_infectious_bile=1; ari_abomination_corpse_expulsion=1; ari_abomination_class_XP=0; ari_abomination_class_XP_stars=0; 
+ supportAbilities=ari_abomination_blood_nova;  supportAbilities=ari_abomination_horrific_presence;  supportAbilities=; HP=120; MP=15; HPMax=120; MPMax=15; TrueHPMax=120; TrueMPMax=15; ari_abomination_consume=1; ari_abomination_corpse_slam=1; ari_abomination_amalgamated_limb=1; ari_abomination_charge=1; ari_abomination_bonespear=1; ari_abomination_gravestrike=1; ari_abomination_infectious_bile=1; ari_abomination_corpse_expulsion=1; 
 numRanksBought=ari_abomination_corpse_slam=1; 
 numRanksBought=ari_abomination_amalgamated_limb=1; 
 numRanksBought=ari_abomination_consume=1; 
@@ -1063,7 +1063,7 @@ actorTypeID=summoned_undead_abomination_enemy; sprite=; actorClass=ari_risenmini
  headSprite=abomination_head; faceSprite=; legsSprite=abomination_legs; armLSprite=abomination_arm; armRSprite=abomination_arm; torsoSprite=abomination_torso; shoulderLSprite=; shoulderRSprite=; backSprite=;
 partSpritesThatTakePriorityOverClass=torso; 
 
- supportAbilities=ari_abomination_blood_nova;  supportAbilities=ari_abomination_horrific_presence;  supportAbilities=; HP=120; MP=15; HPMax=120; MPMax=15; TrueHPMax=120; TrueMPMax=15; sailor_XP_stars=0; warrior_XP_stars=0; ari_abomination_consume=1; ari_abomination_corpse_slam=1; ari_abomination_amalgamated_limb=1; ari_abomination_charge=1; ari_abomination_bonespear=1; ari_abomination_gravestrike=1; ari_abomination_infectious_bile=1; ari_abomination_corpse_expulsion=1; ari_abomination_class_XP=0; ari_abomination_class_XP_stars=0; 
+ supportAbilities=ari_abomination_blood_nova;  supportAbilities=ari_abomination_horrific_presence;  supportAbilities=; HP=120; MP=15; HPMax=120; MPMax=15; TrueHPMax=120; TrueMPMax=15; ari_abomination_consume=1; ari_abomination_corpse_slam=1; ari_abomination_amalgamated_limb=1; ari_abomination_charge=1; ari_abomination_bonespear=1; ari_abomination_gravestrike=1; ari_abomination_infectious_bile=1; ari_abomination_corpse_expulsion=1; 
 numRanksBought=ari_abomination_corpse_slam=1; 
 numRanksBought=ari_abomination_amalgamated_limb=1; 
 numRanksBought=ari_abomination_consume=1; 
@@ -1086,11 +1086,10 @@ style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=
 
 
 [Actor]ID=shana_gatemaster_boss_ari_gravekeeper_city_church_interior_; name=Magnus;
-actorTypeID=shana_gatemaster_boss; sprite=; actorClass=gatemaster; secondaryClass=balancer; actorClass3=tactician; actorClass4=gatewarder; movementSpeed=6; position=22,12; destination=-1,-1; facingRot=90; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=True; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=none; combatTeam=; clothPalette=pCBlack; skinPalette=pHuman8; armorPalette=pPurple; unarmoredPalette=pUnarmored; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=auto; aggressiveness=0.5; bravery=0.5; intelligence=0.5; honor=0.4; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
- headSprite=human_head_sideburns_male; faceSprite=shades_face; legsSprite=legs_heavyBoots; armLSprite=gatemaster_armL; armRSprite=gatemaster_armR; torsoSprite=gatemaster_torso; shoulderLSprite=gatemaster_shoulderL; shoulderRSprite=gatemaster_shoulderR; backSprite=;
- supportAbilities=shana_gate_reckoning;  supportAbilities=pureMind;  supportAbilities=gatemaster_multiscale; action0=gate_hellfire; action1=gate_gale; action2=gate_ash; action3=gate_plasma_bombs; action4=gate_cannon; action5=Tac_command; action6=gateW_gateSwap; HP=150; MP=90; HPMax=150; MPMax=90; TrueHPMax=150; TrueMPMax=90; MagAtk=9; MagDef=5; MagEva=20; gate_hellfire=1; gatemaster_XP=0; gate_gale=1; gate_ash=1; Ba_stonefoot=3; balancer_XP=0; Ba_warmth=4; Tac_masterstroke=1; tactician_XP=0; gateW_void=1; gatewarder_XP=0; shana_gate_reckoning=1; shana_testing_XP=0; pureMind=1; sage_XP=0; gatemaster_multiscale=1; 
+actorTypeID=shana_gatemaster_boss; sprite=; actorClass=shanafakegatemaster; secondaryClass=balancer; actorClass3=tactician; actorClass4=gatewarder; movementSpeed=6; position=22,12; destination=-1,-1; facingRot=90; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=none; combatTeam=; clothPalette=pCBlack; skinPalette=pHuman8; armorPalette=pPurple; unarmoredPalette=pUnarmored; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=auto; aggressiveness=0.5; bravery=0.5; intelligence=0.5; honor=0.4; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
+ headSprite=human_head_sideburns_male; faceSprite=shades_face; legsSprite=legs_heavyBoots; armLSprite=shanafakegatemaster_armL; armRSprite=shanafakegatemaster_armR; torsoSprite=shanafakegatemaster_torso; shoulderLSprite=shanafakegatemaster_shoulderL; shoulderRSprite=shanafakegatemaster_shoulderR; backSprite=;
+ supportAbilities=shana_gate_reckoning;  supportAbilities=pureMind;  supportAbilities=shanafakegatemaster_multiscale; HP=150; MP=90; HPMax=150; MPMax=90; TrueHPMax=150; TrueMPMax=90; MagAtk=9; MagDef=5; MagEva=20; skill_Fire=5; skill_Ice=5; skill_Wind=4; skill_Ruin=5; pureMind=1; sage_XP=0; Tac_masterstroke=1; tactician_XP=0; Ba_stonefoot=3; Ba_warmth=4; balancer_XP=0; gateW_void=1; gatewarder_XP=0; gate_hellfire=1; gate_gale=1; gate_ash=1; shana_gate_reckoning=1; shana_testing_XP=0; 
 numRanksBought=gate_hellfire=1; 
-numRanksBought=gate_gale=1; 
 numRanksBought=gate_ash=1; 
 numRanksBought=Ba_stonefoot=3; 
 numRanksBought=Ba_warmth=4; 
@@ -1100,39 +1099,15 @@ numRanksBought=shana_gate_reckoning=1;
 numRanksBought=pureMind=1; 
 numRanksBought=gatemaster_multiscale=1; 
 chosenAbilityOfEachClass=gatemaster=gate_hellfire; 
-chosenAbilityOfEachClass=balancer=Ba_stonefoot; 
-chosenAbilityOfEachClass=tactician=Tac_command; 
-chosenAbilityOfEachClass=gatewarder=gateW_gateSwap; 
+chosenAbilityOfEachClass=balancer=Ba_warmth; 
+chosenAbilityOfEachClass=tactician=Tac_masterstroke; 
+chosenAbilityOfEachClass=gatewarder=gateW_void; 
 
 [ActorState]
 canSwap=False;
 
 [ActorEffect]
  actorValue=shana_gate_reckoning_equipped; sourceAVAffecter=shana_gate_reckoning; sourceType=supportAbility; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
-[ActorEffect]
- actorValue=multihitDefense; sourceAVAffecter=gatemaster_multiscale; sourceType=supportAbility; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=50; duration=-1;
-[ActorEffect]
- actorValue=PhysAtk; sourceAVAffecter=gatemaster; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
-[ActorEffect]
- actorValue=MagAtk; sourceAVAffecter=gatemaster; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
-[ActorEffect]
- actorValue=MagDef; sourceAVAffecter=gatemaster; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
-[ActorEffect]
- actorValue=PhysEva; sourceAVAffecter=gatemaster; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
-[ActorEffect]
- actorValue=MagEva; sourceAVAffecter=gatemaster; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=15; duration=-1;
-[ActorEffect]
- actorValue=skill_Fire; sourceAVAffecter=gatemaster; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
-[ActorEffect]
- actorValue=skill_Ice; sourceAVAffecter=gatemaster; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
-[ActorEffect]
- actorValue=skill_Elec; sourceAVAffecter=gatemaster; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
-[ActorEffect]
- actorValue=skill_Wind; sourceAVAffecter=gatemaster; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
-[ActorEffect]
- actorValue=skill_Life; sourceAVAffecter=gatemaster; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
-[ActorEffect]
- actorValue=skill_Ruin; sourceAVAffecter=gatemaster; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
 [ActorEffect]
  actorValue=PhysDef; sourceAVAffecter=armor_purp; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
 [ActorEffect]
@@ -1151,6 +1126,28 @@ canSwap=False;
  actorValue=skill_Wind; sourceAVAffecter=trigger_wind_light; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
 [ActorEffect]
  actorValue=MagDef; sourceAVAffecter=necklace_spellcatcher; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=2; duration=-1;
+[ActorEffect]
+ actorValue=PhysAtk; sourceAVAffecter=shanafakegatemaster; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=MagAtk; sourceAVAffecter=shanafakegatemaster; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=MagDef; sourceAVAffecter=shanafakegatemaster; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=PhysEva; sourceAVAffecter=shanafakegatemaster; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
+[ActorEffect]
+ actorValue=MagEva; sourceAVAffecter=shanafakegatemaster; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=15; duration=-1;
+[ActorEffect]
+ actorValue=skill_Fire; sourceAVAffecter=shanafakegatemaster; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=skill_Ice; sourceAVAffecter=shanafakegatemaster; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=skill_Elec; sourceAVAffecter=shanafakegatemaster; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=skill_Wind; sourceAVAffecter=shanafakegatemaster; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=skill_Life; sourceAVAffecter=shanafakegatemaster; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=skill_Ruin; sourceAVAffecter=shanafakegatemaster; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
 
 [ActorInventory]
 style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 

@@ -1,0 +1,55 @@
+[ActorClass] name=Gatemaster;
+ID=shanafakegatemaster;
+selectableClass=False;
+icon=classIcon_gatemaster;
+journalID=journal_shanafakegatemaster;
+
+description=Lord of Gate magic.;
+paletteUI=pPurple;
+
+actions=gate_hellfire;
+actions=gate_gale;
+actions=gate_ash;
+actions=gate_plasma_bombs;
+actions=gate_cannon;
+
+supportAbilities=shanafakegatemaster_alertness;
+supportAbilities=shanafakegatemaster_windAura;
+supportAbilities=shanafakegatemaster_multiscale;
+
+
+relevantStats=TrueHPMax;
+relevantStats=TrueMPMax;
+relevantStats=skill_Fire;
+relevantStats=skill_Ice;
+relevantStats=skill_Elec;
+relevantStats=skill_Wind;
+relevantStats=skill_Ruin;
+relevantStats=skill_Life;
+
+requiredStat=gatekeeper_XP_total;
+requiredAmt=999;
+
+
+bodyPartSprites=armR=shanafakegatemaster_armR;
+bodyPartSprites=armL=shanafakegatemaster_armL;
+bodyPartSprites=torso=shanafakegatemaster_torso;
+bodyPartSprites=shoulderR=shanafakegatemaster_shoulderR;
+bodyPartSprites=shoulderL=shanafakegatemaster_shoulderL;
+[ActorClassEffect]  ID=shanafakegatemaster; actorValue=PhysAtk; magnitude=1; duration=-1;
+[ActorClassEffect]  ID=shanafakegatemaster; actorValue=MagAtk; magnitude=1; duration=-1;
+[ActorClassEffect]  ID=shanafakegatemaster; actorValue=MagDef; magnitude=1; duration=-1;
+[ActorClassEffect]  ID=shanafakegatemaster; actorValue=PhysEva; magnitude=5; duration=-1;
+[ActorClassEffect]  ID=shanafakegatemaster; actorValue=MagEva; magnitude=15; duration=-1;
+[ActorClassEffect]  ID=shanafakegatemaster; actorValue=skill_Fire; magnitude=1; duration=-1;
+[ActorClassEffect]  ID=shanafakegatemaster; actorValue=skill_Ice; magnitude=1; duration=-1;
+[ActorClassEffect]  ID=shanafakegatemaster; actorValue=skill_Elec; magnitude=1; duration=-1;
+[ActorClassEffect]  ID=shanafakegatemaster; actorValue=skill_Wind; magnitude=1; duration=-1;
+[ActorClassEffect]  ID=shanafakegatemaster; actorValue=skill_Life; magnitude=1; duration=-1;
+[ActorClassEffect]  ID=shanafakegatemaster; actorValue=skill_Ruin; magnitude=1; duration=-1;
+
+[JournalEntry]
+ID=journal_shanafakegatemaster;
+category=actorClass; halfPage=true; rarity=3;
+title=Gatemaster;
+text=<icon=classIcon_gatemaster><title=Gatemaster><brAdj=>Gatekeeper of amazing skill & power. Can summon energy and essence in amounts normal Gatekeepers couldn't dream of.;

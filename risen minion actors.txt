@@ -7146,6 +7146,8 @@ style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=
 cloneFrom=fareem;
 disappearOnDeath=true;
 disappearOnDeath_dropItems=false;
+playerUsable=false;
+playerUnlockable=false;
 unarmedAction = ari_infectPunch_enemy;
 journalID=shana_journal_fareem_boss;
 [JournalEntry]
@@ -7222,6 +7224,8 @@ text=<icon=classIcon_ari_gravekeeper><title=Snowball><brAdj=>    "There is no wa
 
 [ActorType] ID=shana_gatemaster_boss;
 cloneFrom=human;
+playerUsable=false;
+playerUnlockable=false;
 journalID=shana_journal_gatemaster_boss;
 [JournalEntry]
 ID=shana_journal_gatemaster_boss;
@@ -7311,9 +7315,11 @@ action=shana_spawn_faketablet;
 
 [ActorType] ID=shana_abbess_boss;
 cloneFrom=human;
-journalID=shana_journal_abbess_boss;
 disappearOnDeath=true;
 disappearOnDeath_dropItems=false;
+playerUsable=false;
+playerUnlockable=false;
+journalID=shana_journal_abbess_boss;
 [JournalEntry]
 ID=shana_journal_abbess_boss;
 category=creature; halfPage=false; rarity=4;

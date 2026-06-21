@@ -13,6 +13,10 @@ locationItem=port_bighouses5;
 
 wealthLevel=52;
 
+--Support for Liminal Warmth's Difficulty Indicators++
+tags=diPP_rating_3;
+tags=diPP_rating_5;
+
 --Here's where I'm putting the cargo I've chosen, and the cafe food.
 tradeGood_itemTypeID=shana_cargo_ruinglass;
 cafeFood_itemTypeID=shana_food_coffee;
