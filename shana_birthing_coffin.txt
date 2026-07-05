@@ -1,0 +1,612 @@
+[ItemType]  name=Birthing Coffin Base; --todo Implement descriptions of summoning actions, make the name the same regardless of what stage it starts at, probably replace the 2x abom with 3x skelemage? also implement better spawn and destroy fx, also maybe change the palette depending on prog? definitely want to make it go crazy before it spawns 4 blodweavers
+itemCategory=hazard;
+description=Do not use, this is a base the actual coffins are cloned from.;
+ID=shana_birthing_coffin_base; sprite=563;
+journalID=shana_journal_birthing_coffin;
+weight=500; volume=10000000; pR=zoneStoneDark;
+special=huge; special=cannotBePickedUp; special=sprite2xHeight;
+blockWalking=true; blockJumping=true; depthMod=1050;
+[ItemReaction]
+ID=shana_birthing_coffin_base; element=life; element=dispel; element=combatEnd; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon; newID=X; --considering trigger on element=41011 i.e boss kill but decided against it
+
+[JournalEntry]
+ID=shana_journal_birthing_coffin;
+category=item; halfPage=true; rarity=2;
+title=Birthing Coffin;
+text=<itemBig=shana_birthing_coffin_1><title=Birthing Coffin><brAdj=>Blasphemous coffin that births undead horrors. Becomes significantly more dangerous as the battle wears on, and will likely overwhelm any foe if left to its own devices for long enough. Despite this, will eventually burn itself out. Is rendered inert by heavy weapon attacks, explosions, life magic, dispelling energies and certain extremely powerful instances of Gate magic.;
+
+[ItemType]  name=Birthing Coffin 1;
+cloneFrom=shana_birthing_coffin_base;
+description=Birthing Coffin 1;
+ID=shana_birthing_coffin_1;
+special=timer; timer=25;
+[ItemReaction]
+ID=shana_birthing_coffin_1; element=life; element=dispel; element=combatEnd; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon; newID=X; fx=shana_gate_dust; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
+[ItemReaction]
+ID=shana_birthing_coffin_1; element=timerUp; newID=shana_birthing_coffin_2; fx=shana_gate_dust; action=shana_birthing_coffin_spawn_1;
+
+[Action] ID=shana_birthing_coffin_spawn_1; --pathetic zombie
+[ActionAoE]
+	ID=shana_birthing_coffin_spawn_1;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_birthing_coffin_spawn_1;
+	fReq=m:inCombat;
+	visibleEvaluations=false;
+	actorValue=relocate;
+	magnitude=1;
+	duration=-2;
+	chance=100;
+	FXOnTile= delay_mid;
+[AvAffecterAoE]
+	ID=shana_birthing_coffin_spawn_1;
+	fReq=m:inCombat;
+	cloneFrom=oneTile;
+	maxRange=0;
+	needsLoE=false;
+	occupyAll=true;
+[AvAffecter]
+	ID=shana_birthing_coffin_spawn_1;
+	fReq=m:inCombat;
+	harmful=false;
+	actorValue=summonActor;
+	magnitude=summoned_undead_zombie_minion_enemy;
+	duration=-2;
+	chance=100;
+	FXOnTile= manySplatter_overlap;
+	FXOnTileColor= Purple;
+	FXOnTile= manySplatter_overlap;
+	FXOnTileColor= Purple;
+[AvAffecterAoE]
+	ID=shana_birthing_coffin_spawn_1;
+	fReq=m:inCombat;
+	cloneFrom=oneTile;
+	maxRange=0;
+	needsLoE=true;
+	occupyAll=true;
+
+
+[ItemType]  name=Birthing Coffin 2; --melee skeleton
+cloneFrom=shana_birthing_coffin_base;
+description=Birthing Coffin 2;
+ID=shana_birthing_coffin_2;
+special=timer; timer=25;
+[ItemReaction]
+ID=shana_birthing_coffin_2; element=life; element=dispel; element=combatEnd; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon; newID=X; fx=shana_gate_dust; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
+[ItemReaction]
+ID=shana_birthing_coffin_2; element=timerUp; newID=shana_birthing_coffin_3; fx=shana_gate_dust; action=shana_birthing_coffin_spawn_2;
+
+[Action] ID=shana_birthing_coffin_spawn_2;
+[ActionAoE]
+	ID=shana_birthing_coffin_spawn_2;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_birthing_coffin_spawn_2;
+	fReq=m:inCombat;
+	visibleEvaluations=false;
+	actorValue=relocate;
+	magnitude=1;
+	duration=-2;
+	chance=100;
+	FXOnTile= delay_mid;
+[AvAffecterAoE]
+	ID=shana_birthing_coffin_spawn_2;
+	fReq=m:inCombat;
+	cloneFrom=oneTile;
+	maxRange=0;
+	needsLoE=false;
+	occupyAll=true;
+[AvAffecter]
+	ID=shana_birthing_coffin_spawn_2;
+	fReq=m:inCombat;
+	harmful=false;
+	actorValue=summonActor;
+	magnitude=summoned_undead_skeletonmelee_enemy;
+	duration=-2;
+	chance=100;
+	FXOnTile= manySplatter_overlap;
+	FXOnTileColor= Purple;
+	FXOnTile= manySplatter_overlap;
+	FXOnTileColor= Purple;
+[AvAffecterAoE]
+	ID=shana_birthing_coffin_spawn_2;
+	fReq=m:inCombat;
+	cloneFrom=oneTile;
+	maxRange=0;
+	needsLoE=true;
+	occupyAll=true;
+
+[ItemType]  name=Birthing Coffin 3; --Skeleton Archer
+cloneFrom=shana_birthing_coffin_base;
+description=Birthing Coffin 3;
+ID=shana_birthing_coffin_3;
+special=timer; timer=25;
+[ItemReaction]
+ID=shana_birthing_coffin_3; element=life; element=dispel; element=combatEnd; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon; newID=X; fx=shana_gate_dust; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
+[ItemReaction]
+ID=shana_birthing_coffin_3; element=timerUp; newID=shana_birthing_coffin_4; fx=shana_gate_dust; action=shana_birthing_coffin_spawn_3;
+
+[Action] ID=shana_birthing_coffin_spawn_3;
+[ActionAoE]
+	ID=shana_birthing_coffin_spawn_3;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_birthing_coffin_spawn_3;
+	fReq=m:inCombat;
+	visibleEvaluations=false;
+	actorValue=relocate;
+	magnitude=1;
+	duration=-2;
+	chance=100;
+	FXOnTile= delay_mid;
+[AvAffecterAoE]
+	ID=shana_birthing_coffin_spawn_3;
+	fReq=m:inCombat;
+	cloneFrom=oneTile;
+	maxRange=0;
+	needsLoE=false;
+	occupyAll=true;
+[AvAffecter]
+	ID=shana_birthing_coffin_spawn_3;
+	fReq=m:inCombat;
+	harmful=false;
+	actorValue=summonActor;
+	magnitude=summoned_undead_skeletonbow_enemy;
+	duration=-2;
+	chance=100;
+	FXOnTile= manySplatter_overlap;
+	FXOnTileColor= Purple;
+	FXOnTile= manySplatter_overlap;
+	FXOnTileColor= Purple;
+[AvAffecterAoE]
+	ID=shana_birthing_coffin_spawn_3;
+	fReq=m:inCombat;
+	cloneFrom=oneTile;
+	maxRange=0;
+	needsLoE=true;
+	occupyAll=true;
+
+[ItemType]  name=Birthing Coffin 4; --Skeleton Mage
+cloneFrom=shana_birthing_coffin_base;
+description=Birthing Coffin 4;
+ID=shana_birthing_coffin_4;
+special=timer; timer=25;
+[ItemReaction]
+ID=shana_birthing_coffin_4; element=life; element=dispel; element=combatEnd; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon; newID=X; fx=shana_gate_dust; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
+[ItemReaction]
+ID=shana_birthing_coffin_4; element=timerUp; newID=shana_birthing_coffin_5; fx=shana_gate_dust; action=shana_birthing_coffin_spawn_4;
+
+[Action] ID=shana_birthing_coffin_spawn_4;
+[ActionAoE]
+	ID=shana_birthing_coffin_spawn_4;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_birthing_coffin_spawn_4;
+	fReq=m:inCombat;
+	visibleEvaluations=false;
+	actorValue=relocate;
+	magnitude=1;
+	duration=-2;
+	chance=100;
+	FXOnTile= delay_mid;
+[AvAffecterAoE]
+	ID=shana_birthing_coffin_spawn_4;
+	fReq=m:inCombat;
+	cloneFrom=oneTile;
+	maxRange=0;
+	needsLoE=false;
+	occupyAll=true;
+[AvAffecter]
+	ID=shana_birthing_coffin_spawn_4;
+	fReq=m:inCombat;
+	harmful=false;
+	actorValue=summonActor;
+	magnitude=summoned_undead_skeletonmage_enemy;
+	duration=-2;
+	chance=100;
+	FXOnTile= manySplatter_overlap;
+	FXOnTileColor= Purple;
+	FXOnTile= manySplatter_overlap;
+	FXOnTileColor= Purple;
+[AvAffecterAoE]
+	ID=shana_birthing_coffin_spawn_4;
+	fReq=m:inCombat;
+	cloneFrom=oneTile;
+	maxRange=0;
+	needsLoE=true;
+	occupyAll=true;
+
+[ItemType]  name=Birthing Coffin 5; --Abomination
+cloneFrom=shana_birthing_coffin_base;
+description=Birthing Coffin 5;
+ID=shana_birthing_coffin_5;
+special=timer; timer=25;
+[ItemReaction]
+ID=shana_birthing_coffin_5; element=life; element=dispel; element=combatEnd; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon; newID=X; fx=shana_gate_dust; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
+[ItemReaction]
+ID=shana_birthing_coffin_5; element=timerUp; newID=shana_birthing_coffin_6; fx=shana_gate_dust; action=shana_birthing_coffin_spawn_5;
+
+[Action] ID=shana_birthing_coffin_spawn_5;
+[ActionAoE]
+	ID=shana_birthing_coffin_spawn_5;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_birthing_coffin_spawn_5;
+	fReq=m:inCombat;
+	visibleEvaluations=false;
+	actorValue=relocate;
+	magnitude=1;
+	duration=-2;
+	chance=100;
+	FXOnTile= delay_mid;
+[AvAffecterAoE]
+	ID=shana_birthing_coffin_spawn_5;
+	fReq=m:inCombat;
+	cloneFrom=oneTile;
+	maxRange=0;
+	needsLoE=false;
+	occupyAll=true;
+[AvAffecter]
+	ID=shana_birthing_coffin_spawn_5;
+	fReq=m:inCombat;
+	harmful=false;
+	actorValue=summonActor;
+	magnitude=summoned_undead_abomination_enemy;
+	duration=-2;
+	chance=100;
+	FXOnTile= manySplatter_overlap;
+	FXOnTileColor= Purple;
+	FXOnTile= manySplatter_overlap;
+	FXOnTileColor= Purple;
+[AvAffecterAoE]
+	ID=shana_birthing_coffin_spawn_5;
+	fReq=m:inCombat;
+	cloneFrom=oneTile;
+	maxRange=0;
+	needsLoE=true;
+	occupyAll=true;
+
+[ItemType]  name=Birthing Coffin 6; -- Undead bloodweaver
+cloneFrom=shana_birthing_coffin_base;
+description=Birthing Coffin 6;
+ID=shana_birthing_coffin_6;
+special=timer; timer=25;
+[ItemReaction]
+ID=shana_birthing_coffin_6; element=life; element=dispel; element=combatEnd; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon; newID=X; fx=shana_gate_dust; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
+[ItemReaction]
+ID=shana_birthing_coffin_6; element=timerUp; newID=shana_birthing_coffin_7; fx=shana_gate_dust; action=shana_birthing_coffin_spawn_6;
+
+[Action] ID=shana_birthing_coffin_spawn_6;
+[ActionAoE]
+	ID=shana_birthing_coffin_spawn_6;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_birthing_coffin_spawn_6;
+	fReq=m:inCombat;
+	visibleEvaluations=false;
+	actorValue=relocate;
+	magnitude=1;
+	duration=-2;
+	chance=100;
+	FXOnTile= delay_mid;
+[AvAffecterAoE]
+	ID=shana_birthing_coffin_spawn_6;
+	fReq=m:inCombat;
+	cloneFrom=oneTile;
+	maxRange=0;
+	needsLoE=false;
+	occupyAll=true;
+[AvAffecter]
+	ID=shana_birthing_coffin_spawn_6;
+	fReq=m:inCombat;
+	harmful=false;
+	actorValue=summonActor;
+	magnitude=shana_undead_bweaver;
+	duration=-2;
+	chance=100;
+	FXOnTile= manySplatter_overlap;
+	FXOnTileColor= Purple;
+	FXOnTile= manySplatter_overlap;
+	FXOnTileColor= Purple;
+[AvAffecterAoE]
+	ID=shana_birthing_coffin_spawn_6;
+	fReq=m:inCombat;
+	cloneFrom=oneTile;
+	maxRange=0;
+	needsLoE=true;
+	occupyAll=true;
+
+[ItemType]  name=Birthing Coffin 7; --Two Abominations
+cloneFrom=shana_birthing_coffin_base;
+description=Birthing Coffin 7;
+ID=shana_birthing_coffin_7;
+special=timer; timer=25;
+[ItemReaction]
+ID=shana_birthing_coffin_7; element=life; element=dispel; element=combatEnd; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon; newID=X; fx=shana_gate_dust; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
+[ItemReaction]
+ID=shana_birthing_coffin_7; element=timerUp; newID=shana_birthing_coffin_8; fx=shana_gate_dust; action=shana_birthing_coffin_spawn_7;
+
+[Action] ID=shana_birthing_coffin_spawn_7;
+[ActionAoE]
+	ID=shana_birthing_coffin_spawn_7;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_birthing_coffin_spawn_7;
+	fReq=m:inCombat;
+	visibleEvaluations=false;
+	actorValue=relocate;
+	magnitude=1;
+	duration=-2;
+	chance=100;
+	FXOnTile= delay_mid;
+[AvAffecterAoE]
+	ID=shana_birthing_coffin_spawn_7;
+	fReq=m:inCombat;
+	cloneFrom=oneTile;
+	maxRange=0;
+	needsLoE=false;
+	occupyAll=true;
+[AvAffecter]
+	ID=shana_birthing_coffin_spawn_7;
+	fReq=m:inCombat;
+	harmful=false;
+	actorValue=summonActor;
+	magnitude=summoned_undead_abomination_enemy;
+	duration=-2;
+	chance=100;
+	FXOnTile= manySplatter_overlap;
+	FXOnTileColor= Purple;
+	FXOnTile= manySplatter_overlap;
+	FXOnTileColor= Purple;
+[AvAffecterAoE]
+	ID=shana_birthing_coffin_spawn_7;
+	fReq=m:inCombat;
+	cloneFrom=oneTile;
+	maxRange=0;
+	needsLoE=true;
+	occupyAll=true;
+[AvAffecter]
+	ID=shana_birthing_coffin_spawn_7;
+	fReq=m:inCombat;
+	harmful=false;
+	actorValue=summonActor;
+	magnitude=summoned_undead_abomination_enemy;
+	duration=-2;
+	chance=100;
+	FXOnTile= manySplatter_overlap;
+	FXOnTileColor= Purple;
+	FXOnTile= manySplatter_overlap;
+	FXOnTileColor= Purple;
+[AvAffecterAoE]
+	ID=shana_birthing_coffin_spawn_7;
+	fReq=m:inCombat;
+	cloneFrom=oneTile;
+	maxRange=0;
+	needsLoE=true;
+	occupyAll=true;
+
+[ItemType]  name=Birthing Coffin 8; --two undead amalgams
+cloneFrom=shana_birthing_coffin_base;
+description=Birthing Coffin 8;
+ID=shana_birthing_coffin_8;
+special=timer; timer=25;
+[ItemReaction]
+ID=shana_birthing_coffin_8; element=life; element=dispel; element=combatEnd; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon; newID=X; fx=shana_gate_dust; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
+[ItemReaction]
+ID=shana_birthing_coffin_8; element=timerUp; newID=shana_birthing_coffin_9; fx=shana_gate_dust; action=shana_birthing_coffin_spawn_8;
+
+[Action] ID=shana_birthing_coffin_spawn_8;
+[ActionAoE]
+	ID=shana_birthing_coffin_spawn_8;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_birthing_coffin_spawn_8;
+	fReq=m:inCombat;
+	visibleEvaluations=false;
+	actorValue=relocate;
+	magnitude=1;
+	duration=-2;
+	chance=100;
+	FXOnTile= delay_mid;
+[AvAffecterAoE]
+	ID=shana_birthing_coffin_spawn_8;
+	fReq=m:inCombat;
+	cloneFrom=oneTile;
+	maxRange=0;
+	needsLoE=false;
+	occupyAll=true;
+[AvAffecter]
+	ID=shana_birthing_coffin_spawn_8;
+	fReq=m:inCombat;
+	harmful=false;
+	actorValue=summonActor;
+	magnitude=shana_undead_amalgam_enemy_prefab_with_loot;
+	duration=-2;
+	chance=100;
+	FXOnTile= manySplatter_overlap;
+	FXOnTileColor= Purple;
+	FXOnTile= manySplatter_overlap;
+	FXOnTileColor= Purple;
+[AvAffecterAoE]
+	ID=shana_birthing_coffin_spawn_8;
+	fReq=m:inCombat;
+	cloneFrom=oneTile;
+	maxRange=0;
+	needsLoE=true;
+	occupyAll=true;
+[AvAffecter]
+	ID=shana_birthing_coffin_spawn_8;
+	fReq=m:inCombat;
+	harmful=false;
+	actorValue=summonActor;
+	magnitude=shana_undead_amalgam_enemy_prefab_with_loot;
+	duration=-2;
+	chance=100;
+	FXOnTile= manySplatter_overlap;
+	FXOnTileColor= Purple;
+	FXOnTile= manySplatter_overlap;
+	FXOnTileColor= Purple;
+[AvAffecterAoE]
+	ID=shana_birthing_coffin_spawn_8;
+	fReq=m:inCombat;
+	cloneFrom=oneTile;
+	maxRange=0;
+	needsLoE=true;
+	occupyAll=true;
+
+[ItemType]  name=Birthing Coffin 9; --4 undead bloodweavers
+cloneFrom=shana_birthing_coffin_base;
+description=Birthing Coffin 9;
+ID=shana_birthing_coffin_9;
+special=timer; timer=25;
+[ItemReaction]
+ID=shana_birthing_coffin_9; element=life; element=dispel; element=combatEnd; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon; newID=X; fx=shana_gate_dust; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
+[ItemReaction]
+ID=shana_birthing_coffin_9; element=timerUp; newID=X; fx=shana_gate_dust; action=shana_birthing_coffin_spawn_9;
+
+[Action] ID=shana_birthing_coffin_spawn_9;
+[ActionAoE]
+	ID=shana_birthing_coffin_spawn_9;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_birthing_coffin_spawn_9;
+	fReq=m:inCombat;
+	visibleEvaluations=false;
+	actorValue=relocate;
+	magnitude=1;
+	duration=-2;
+	chance=100;
+	FXOnTile= delay_mid;
+[AvAffecterAoE]
+	ID=shana_birthing_coffin_spawn_9;
+	fReq=m:inCombat;
+	cloneFrom=oneTile;
+	maxRange=0;
+	needsLoE=false;
+	occupyAll=true;
+[AvAffecter]
+	ID=shana_birthing_coffin_spawn_9;
+	fReq=m:inCombat;
+	harmful=false;
+	actorValue=summonActor;
+	magnitude=shana_undead_bweaver;
+	duration=-2;
+	chance=100;
+	FXOnTile= manySplatter_overlap;
+	FXOnTileColor= Purple;
+	FXOnTile= manySplatter_overlap;
+	FXOnTileColor= Purple;
+[AvAffecterAoE]
+	ID=shana_birthing_coffin_spawn_9;
+	fReq=m:inCombat;
+	cloneFrom=oneTile;
+	maxRange=0;
+	needsLoE=true;
+	occupyAll=true;
+[AvAffecter]
+	ID=shana_birthing_coffin_spawn_9;
+	fReq=m:inCombat;
+	harmful=false;
+	actorValue=summonActor;
+	magnitude=shana_undead_bweaver;
+	duration=-2;
+	chance=100;
+	FXOnTile= manySplatter_overlap;
+	FXOnTileColor= Purple;
+	FXOnTile= manySplatter_overlap;
+	FXOnTileColor= Purple;
+[AvAffecterAoE]
+	ID=shana_birthing_coffin_spawn_9;
+	fReq=m:inCombat;
+	cloneFrom=oneTile;
+	maxRange=0;
+	needsLoE=true;
+	occupyAll=true;
+[AvAffecter]
+	ID=shana_birthing_coffin_spawn_9;
+	fReq=m:inCombat;
+	harmful=false;
+	actorValue=summonActor;
+	magnitude=shana_undead_bweaver;
+	duration=-2;
+	chance=100;
+	FXOnTile= manySplatter_overlap;
+	FXOnTileColor= Purple;
+	FXOnTile= manySplatter_overlap;
+	FXOnTileColor= Purple;
+[AvAffecterAoE]
+	ID=shana_birthing_coffin_spawn_9;
+	fReq=m:inCombat;
+	cloneFrom=oneTile;
+	maxRange=0;
+	needsLoE=true;
+	occupyAll=true;
+[AvAffecter]
+	ID=shana_birthing_coffin_spawn_9;
+	fReq=m:inCombat;
+	harmful=false;
+	actorValue=summonActor;
+	magnitude=shana_undead_bweaver;
+	duration=-2;
+	chance=100;
+	FXOnTile= manySplatter_overlap;
+	FXOnTileColor= Purple;
+	FXOnTile= manySplatter_overlap;
+	FXOnTileColor= Purple;
+[AvAffecterAoE]
+	ID=shana_birthing_coffin_spawn_9;
+	fReq=m:inCombat;
+	cloneFrom=oneTile;
+	maxRange=0;
+	needsLoE=true;
+	occupyAll=true;
+
+[ItemType]  name=Birthing Coffin 10; --unused
+cloneFrom=shana_birthing_coffin_base;
+description=Unused;
+ID=shana_birthing_coffin_10;
+special=timer; timer=25;
+[ItemReaction]
+ID=shana_birthing_coffin_10; element=life; element=dispel; element=combatEnd; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon; newID=X; fx=shana_gate_dust; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
+[ItemReaction]
+ID=shana_birthing_coffin_10; element=timerUp; newID=X; fx=shana_gate_dust; action=shana_birthing_coffin_spawn_10;
+
+[Action] ID=shana_birthing_coffin_spawn_10;
+[ActionAoE]
+	ID=shana_birthing_coffin_spawn_10;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_birthing_coffin_spawn_10;
+	fReq=m:inCombat;
+	visibleEvaluations=false;
+	actorValue=relocate;
+	magnitude=1;
+	duration=-2;
+	chance=100;
+	FXOnTile= delay_mid;
+[AvAffecterAoE]
+	ID=shana_birthing_coffin_spawn_10;
+	fReq=m:inCombat;
+	cloneFrom=oneTile;
+	maxRange=0;
+	needsLoE=false;
+	occupyAll=true;
+[AvAffecter]
+	ID=shana_birthing_coffin_spawn_10;
+	fReq=m:inCombat;
+	harmful=false;
+	actorValue=summonActor;
+	magnitude=shana_undead_abscess_mature_summoned_enemy;
+	duration=-2;
+	chance=100;
+	FXOnTile= manySplatter_overlap;
+	FXOnTileColor= Purple;
+	FXOnTile= manySplatter_overlap;
+	FXOnTileColor= Purple;
+[AvAffecterAoE]
+	ID=shana_birthing_coffin_spawn_10;
+	fReq=m:inCombat;
+	cloneFrom=oneTile;
+	maxRange=0;
+	needsLoE=true;
+	occupyAll=true;

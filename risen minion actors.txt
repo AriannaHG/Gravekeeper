@@ -7140,6 +7140,89 @@ canSwap=False;
 style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9;
 
 
+----------------------------------------------------------------------Cloned Bloodweaver
+[ActorType]
+ID=shana_undead_bweaver;
+cloneFrom=bweaver;
+journalID=shana_journal_undead_bweaver;
+
+--skinPalette = p41;
+--armorPalette = p40;
+--clothPalette = pSilver;
+
+defaultValues=HP = 80;
+defaultValues=HPMax = 80;
+defaultValues=TrueHPMax = 80;
+defaultValues=MP = 22;
+defaultValues=MPMax = 22;
+defaultValues=TrueMPMax = 22;
+defaultValues=PhysAtk = 13;
+defaultValues=PhysDef = 0;
+defaultValues=PhysEva = 12;
+defaultValues=MagAtk = 6;
+defaultValues=MagDef = 0;
+defaultValues=MagEva = 0;
+defaultValues=moveDistance = 5;
+defaultValues=jumpDistance = 5;
+defaultValues=actTime = 27;
+defaultValues=skill_Fist = 2;
+
+--skinPalette=pBloodyMess_slow;
+--armorPalette=pHuman3;
+--clothPalette=pShroom_dim;
+
+skinPalette=pMeat;
+armorPalette=pAsh_still;
+clothPalette=pBone;
+
+
+[JournalEntry]
+ID=shana_journal_undead_bweaver;
+name=Bloodweaver?;
+category=creature; halfPage=true; rarity=4;
+title=Bloodweaver?;
+text=<actorBig=shana_undead_bweaver><title=Bloodweaver?><brAdj=>         A compressed, reanimated slurry of damaged flesh, spilled blood and fused bone forced into the approximate size and shape of a Bloodweaver. Much like the other denizens of Old Barrow, it is not allowed to menace nearby civilization, instead keeping a low profile within. Rather tellingly, it doesn't seem to mind the chill.;
+
+
+[ActorTypeReaction]
+ID=shana_undead_bweaver;
+element=ruin;
+damageMultiplier=-1; healMultiplier=1;
+[ActorTypeReaction]
+ID=shana_undead_bweaver;
+element=poison; actorValue=HP;
+damageMultiplier=-1; healMultiplier=1;
+[ActorTypeReaction]
+ID=shana_undead_bweaver;
+element=defiler;
+damageMultiplier=0.5; healMultiplier=0.5;
+[ActorTypeReaction]
+ID=shana_undead_bweaver;
+element=life; actorValue=HP;
+damageMultiplier=2; healMultiplier=-1;
+[ActorTypeReaction]
+ID=shana_undead_bweaver;
+element=antiUndead;
+damageMultiplier=2; healMultiplier=-1;
+[ActorTypeReaction]
+ID=shana_undead_bweaver;
+element=bonemeld;
+damageMultiplier=5; healMultiplier=0;
+[ActorTypeReaction]
+ID=shana_undead_bweaver;
+actorValues=morale; actorValues=poison;
+actorValues=itchy; actorValues=decay;
+actorValues=sleep;
+damageMultiplier=0; healMultiplier=0;
+[ActorTypeReaction]
+ID=shana_undead_bweaver;
+element=ice;
+damageMultiplier=0.33; healMultiplier=1;
+[ActorTypeReaction]
+ID=shana_undead_bweaver;
+actorValues=chilled; actorValues=frozen;
+damageMultiplier=0; healMultiplier=0;
+
 ----------------------------------------------------------------------Cloned Fareem Actor Type for Yokaze - resistances are handled by cloned Projectile Mastery
 
 [ActorType] ID=shana_plaguebow_fareem_boss;
@@ -7537,6 +7620,7 @@ maxRange=3;
 [ActorType] ID=shana_undead_abscess_mature_summoned_enemy;
 cloneFrom=shana_undead_abscess_mature_enemy;
 --disappearOnDeath=true; --commented out, if there's feedback not being able to see the timer on a corpse is ass ill uncomment this
+
 
 [ActorType] ID=shana_undead_abscess_new_enemy; --this is the one summoned by Amalgams
 name=Undead Abscess;
