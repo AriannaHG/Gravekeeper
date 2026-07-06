@@ -1713,11 +1713,19 @@ statements=<speed=0.5>She collapses, small hands seizing her ankles as the child
 nextNodeID=shana_horizonsgrave_badend_17;
 
 [DialogNode] ID=shana_horizonsgrave_badend_17;
-statements=<speed=0.5>Above, the great airships of Seartial hang like slumbering leviathans, every last trigger shattered from overuse.;
+statements=<speed=0.5>All is drowned out by gargled screams.;
 nextNodeID=shana_horizonsgrave_badend_18;
 
 [DialogNode] ID=shana_horizonsgrave_badend_18;
-statements=<speed=0.5>All is drowned out by gargled screams, the impromptu final gathering of Searth's Council held within a reeking bog.;
+statements=<speed=0.5>Above, a terrible squelching fills the air. The great airships of Seartial hang like overripe fruit, unable to stem the oncoming tide of undead Bloodweavers.;
+nextNodeID=shana_horizonsgrave_badend_18a;
+
+[DialogNode] ID=shana_horizonsgrave_badend_18a;
+statements=<speed=0.5>Inside, faint screams rise and gutter out as cockpits are transformed into birthing pits, the charnel remains of Seartial's finest given new purpose.;
+nextNodeID=shana_horizonsgrave_badend_18b;
+
+[DialogNode] ID=shana_horizonsgrave_badend_18b;
+statements=<speed=0.5>One by one, each hive-ship peels away from its fellows, every hull pocked with clustered, oozing apertures weeping infection onto the lands and seas below.;
 nextNodeID=shana_horizonsgrave_badend_19;
 
 [DialogNode] ID=shana_horizonsgrave_badend_19;

@@ -53,6 +53,8 @@ Grimoires can be crafted from [Gossamer](https://steamcommunity.com/sharedfiles/
 
 **Place this mod above New Enchantments** to ensure future changes made to Prominence's Ruin enchantment are reflected ingame.
 
+**Place this mod above True Beastmaster (TamerPlus)** to benefit from cross-compatibility added on its end.
+
 Will your legions overrun the enemy, or will you succumb to the demands of the dead?
 
 ## DISCLAIMER
