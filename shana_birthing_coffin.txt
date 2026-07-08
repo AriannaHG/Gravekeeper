@@ -1,9 +1,9 @@
 [ItemType]  name=Birthing Coffin Base; --todo Implement descriptions of summoning actions, make the name the same regardless of what stage it starts at, probably replace the 2x abom with 3x skelemage? also implement better spawn and destroy fx, also maybe change the palette depending on prog? definitely want to make it go crazy before it spawns 4 blodweavers
 itemCategory=hazard;
 description=Do not use, this is a base the actual coffins are cloned from.;
-ID=shana_birthing_coffin_base; sprite=563;
+ID=shana_birthing_coffin_base; sprite=28; texture=gkart;
 journalID=shana_journal_birthing_coffin;
-weight=500; volume=10000000; pR=zoneStoneDark;
+weight=500; volume=10000000; pR=pDead; pB=pBloodyMess_slow;
 special=huge; special=cannotBePickedUp; special=sprite2xHeight;
 blockWalking=true; blockJumping=true; depthMod=1050;
 [ItemReaction]
@@ -18,6 +18,7 @@ text=<itemBig=shana_birthing_coffin_1><title=Birthing Coffin><brAdj=>Blasphemous
 [ItemType]  name=Birthing Coffin 1;
 cloneFrom=shana_birthing_coffin_base;
 description=Birthing Coffin 1;
+pB=pAsh;
 ID=shana_birthing_coffin_1;
 special=timer; timer=25;
 [ItemReaction]
@@ -269,6 +270,7 @@ ID=shana_birthing_coffin_5; element=timerUp; newID=shana_birthing_coffin_6; fx=s
 [ItemType]  name=Birthing Coffin 6; -- Undead bloodweaver
 cloneFrom=shana_birthing_coffin_base;
 description=Birthing Coffin 6;
+pB=pBloodyMess;
 ID=shana_birthing_coffin_6;
 special=timer; timer=25;
 [ItemReaction]
@@ -319,6 +321,7 @@ ID=shana_birthing_coffin_6; element=timerUp; newID=shana_birthing_coffin_7; fx=s
 [ItemType]  name=Birthing Coffin 7; --Two Abominations
 cloneFrom=shana_birthing_coffin_base;
 description=Birthing Coffin 7;
+pB=pBloodyMess;
 ID=shana_birthing_coffin_7;
 special=timer; timer=25;
 [ItemReaction]
@@ -388,6 +391,7 @@ ID=shana_birthing_coffin_7; element=timerUp; newID=shana_birthing_coffin_8; fx=s
 [ItemType]  name=Birthing Coffin 8; --two undead amalgams
 cloneFrom=shana_birthing_coffin_base;
 description=Birthing Coffin 8;
+pB=pBloodyMess;
 ID=shana_birthing_coffin_8;
 special=timer; timer=25;
 [ItemReaction]
@@ -457,6 +461,7 @@ ID=shana_birthing_coffin_8; element=timerUp; newID=shana_birthing_coffin_9; fx=s
 [ItemType]  name=Birthing Coffin 9; --4 undead bloodweavers
 cloneFrom=shana_birthing_coffin_base;
 description=Birthing Coffin 9;
+pB=pBloodyMess;
 ID=shana_birthing_coffin_9;
 special=timer; timer=25;
 [ItemReaction]
