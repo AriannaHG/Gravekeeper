@@ -1,4 +1,4 @@
-[Zone]  ID=ari_gravekeeper_city_church_interior; dark=True; timeUntilNewDay=1; showFogOfWar=True; fogOfWar=True; minimapEnabled=True; allowCameraPastZoneEdges=False; cantAct=False; cantGameOver=False; alwaysKeepWeaponsUnsheathed=False; peaceful=False; overseerMode=False; rollingPinStyle=False; drawSky=False; drawSky_overrideYpos=-1; boatZone=False; wind=False; overworld=False; canDropItems=True; 
+[Zone]  ID=ari_gravekeeper_city_church_interior; dark=False; timeUntilNewDay=1; showFogOfWar=True; fogOfWar=True; minimapEnabled=True; allowCameraPastZoneEdges=False; cantAct=False; cantGameOver=False; alwaysKeepWeaponsUnsheathed=False; peaceful=False; overseerMode=False; rollingPinStyle=False; drawSky=False; drawSky_overrideYpos=-1; boatZone=False; wind=False; overworld=False; canDropItems=True; 
  travelSong=Labyrinth Of Lost Dreams; travelSongVolume=1; travelSongPitch=0; combatSong=Prepare Thyself; combatSongVolume=1.1; combatSongPitch=0; combatSongDelay=0; 
 darkR=25; darkG=25; darkB=100; 
  screenWaveFreq=0; screenDarkWaveFreq=0; screenWaveAmp=0.01; screenDarkWaveAmp=0.01; screenWaveSpeed=0.2; screenWaveAmp_reflect=0.0014; 
@@ -8,510 +8,484 @@ lockCameraAtX=-1; lockCameraAtY=-1;
 
 combatMode=False; 
 
-[Item] ID=bonePileDark; q=1; r=-90; x=3; y=6;
-[Item] ID=bonePileDark; q=1; r=360; x=3; y=6;
-[Item] ID=ribs2; q=1; r=360; x=3; y=6;
-[Item] ID=dirt_sandy1; q=1; r=270; x=3; y=8;
-[Item] ID=bonePileDark; q=1; r=-180; x=3; y=8;
-[Item] ID=bugs5_small; q=1; x=3; y=9;
-[Item] ID=dirt_sandy2; q=1; r=90; x=3; y=10;
-[Item] ID=bonePileDark; q=1; r=-360; x=3; y=11;
-[Item] ID=bonePileDark; q=1; r=-180; x=3; y=13;
-[Item] ID=bonePileDark; q=1; r=-90; x=3; y=13;
-[Item] ID=bonePileDark; q=1; r=-90; x=3; y=14;
-[Item] ID=dirt_sandy1; q=1; r=270; x=3; y=16;
-[Item] ID=bonePileDark; q=1; r=-90; x=3; y=16;
-[Item] ID=pebbles1; q=1; x=3; y=17;
-[Item] ID=bugsMass_small; q=1; r=-360; x=3; y=17;
-[Item] ID=bonePileDark; q=1; x=3; y=18;
-[Item] ID=dirt_sandy2; q=2; r=90; x=3; y=18;
-[Item] ID=bone; q=1; x=3; y=21;
-[Item] ID=bonePileDark; q=1; r=180; x=3; y=22;
-[Item] ID=dirt_sandy2; q=3; r=180; x=3; y=23;
-[Item] ID=dirt_sandy1; q=1; r=180; x=3; y=24;
-[Item] ID=rocks1; q=1; r=-360; x=3; y=25;
-[Item] ID=bugs5_small; q=1; r=-360; x=3; y=25;
-[Item] ID=dirt_sandy1; q=1; r=90; x=3; y=26;
-[Item] ID=bonePileDark; q=1; r=-360; x=3; y=27;
-[Item] ID=skull_dog1; q=1; r=360; x=3; y=28;
-[Item] ID=bonePileDark; q=1; r=180; x=3; y=29;
-[Item] ID=bonePileDark; q=1; r=-90; x=3; y=29;
-[Item] ID=dirt_sandy2; q=1; x=3; y=30;
-[Item] ID=dirt_sandy1; q=1; x=3; y=31;
-[Item] ID=dirt_sandy2; q=3; x=3; y=32;
-[Item] ID=bonePileDark; q=1; r=-180; x=4; y=7;
-[Item] ID=bonePileDark; q=1; r=90; x=4; y=7;
-[Item] ID=bone_dust; q=1; r=-360; x=4; y=7;
-[Item] ID=bugs5_small; q=1; x=4; y=8;
-[Item] ID=dirt_sandy2; q=2; r=360; x=4; y=9;
-[Item] ID=rocks1; q=4; x=4; y=10;
-[Item] ID=bugs12_small; q=1; r=-360; x=4; y=10;
-[Item] ID=dirt_sandy2; q=3; r=90; x=4; y=11;
-[Item] ID=bonePileDark; q=1; r=360; x=4; y=12;
-[Item] ID=bonePileDark; q=1; r=90; x=4; y=12;
-[Item] ID=bonePileDark; q=1; r=360; x=4; y=15;
-[Item] ID=bonePileDark; q=1; r=180; x=4; y=15;
-[Item] ID=bonePileDark; q=1; r=-180; x=4; y=17;
-[Item] ID=ribs2; q=1; r=-360; x=4; y=18;
-[Item] ID=bonePileDark; q=1; r=90; x=4; y=19;
-[Item] ID=bonePileDark; q=1; r=-360; x=4; y=20;
-[Item] ID=bonePileDark; q=1; r=-270; x=4; y=20;
-[Item] ID=bugs12_small; q=1; x=4; y=20;
-[Item] ID=bonePileDark; q=1; r=180; x=4; y=22;
-[Item] ID=dirt_sandy2; q=1; r=270; x=4; y=22;
-[Item] ID=rocks1; q=2; r=-360; x=4; y=23;
-[Item] ID=bugs5_small; q=1; r=-360; x=4; y=23;
-[Item] ID=pebbles1; q=1; r=-360; x=4; y=24;
-[Item] ID=bugsMass_small; q=1; x=4; y=24;
-[Item] ID=dirt_sandy2; q=2; r=90; x=4; y=25;
-[Item] ID=skull2; q=1; r=-360; x=4; y=26;
-[Item] ID=bonePileDark; q=1; r=90; x=4; y=28;
-[Item] ID=bonePileDark; q=1; r=-360; x=4; y=28;
-[Item] ID=bonePileDark; q=1; r=-180; x=4; y=30;
-[Item] ID=bugsMass_small; q=1; r=-360; x=4; y=31;
-[Item] ID=bonePileDark; q=1; r=90; x=5; y=6;
-[Item] ID=bugsMass_small; q=1; r=360; x=5; y=7;
-[Item] ID=secretPassage; q=1; x=5; y=31;
-[Item] ID=secretPassage; q=1; x=5; y=32;
-[Item] ID=secretPassage; q=1; x=6; y=6;
-[Item] ID=secretPassage; q=1; x=6; y=7;
-[Item] ID=secretPassage; q=1; x=6; y=31;
-[Item] ID=secretPassage; q=1; x=6; y=32;
-[Item] ID=secretPassage; q=1; x=7; y=6;
-[Item] ID=secretPassage; q=1; x=7; y=7;
-[Item] ID=secretPassage; q=1; x=7; y=31;
-[Item] ID=secretPassage; q=1; x=7; y=32;
-[Item] ID=secretPassage; q=1; x=8; y=6;
-[Item] ID=secretPassage; q=1; x=8; y=7;
-[Item] ID=secretPassage; q=1; x=8; y=31;
-[Item] ID=secretPassage; q=1; x=8; y=32;
-[Item] ID=secretPassage; q=1; x=9; y=6;
-[Item] ID=secretPassage; q=1; x=9; y=7;
-[Item] ID=sunbeam; q=1; x=9; y=7;
-[Item] ID=secretPassage; q=1; x=9; y=31;
-[Item] ID=secretPassage; q=1; x=9; y=32;
-[Item] ID=secretPassage; q=1; x=10; y=6;
-[Item] ID=secretPassage; q=1; x=10; y=7;
-[Item] ID=shana_prayer_bench; q=1; x=10; y=16;
-[Item] ID=bonePileDark; q=1; oX=0; oY=8; x=10; y=20;
-[Item] ID=shana_prayer_bench; q=1; x=10; y=20;
-[Item] ID=bonePileDark; q=1; r=180; oX=0; oY=8; x=10; y=24;
-[Item] ID=shana_prayer_bench; q=1; x=10; y=24;
-[Item] ID=crate_small_damaged; q=1; x=10; y=27; containerID=0;
-[Item] ID=secretPassage; q=1; x=10; y=31;
-[Item] ID=secretPassage; q=1; x=10; y=32;
-[Item] ID=secretPassage; q=1; x=11; y=6;
-[Item] ID=secretPassage; q=1; x=11; y=7;
-[Item] ID=bugs5_small; q=1; x=11; y=12;
-[Item] ID=pebbles1; q=1; x=11; y=13;
-[Item] ID=dirt_sandy1; q=1; r=90; x=11; y=14;
-[Item] ID=sunbeam_circle_small; q=1; x=11; y=15;
-[Item] ID=shana_prayer_bench; q=1; x=11; y=16;
-[Item] ID=shana_prayer_bench; q=1; x=11; y=20;
-[Item] ID=bonePileDark; q=1; r=90; x=11; y=21;
-[Item] ID=bonePileDark; q=1; x=11; y=21;
-[Item] ID=bonePileDark; q=1; r=180; x=11; y=23;
-[Item] ID=bonePileDark; q=1; r=90; x=11; y=23;
-[Item] ID=shana_prayer_bench; q=1; x=11; y=24;
-[Item] ID=secretPassage; q=1; x=11; y=31;
-[Item] ID=dirt_sandy2; q=2; r=180; x=11; y=31;
-[Item] ID=secretPassage; q=1; x=11; y=32;
-[Item] ID=secretPassage; q=1; x=12; y=6;
-[Item] ID=secretPassage; q=1; x=12; y=7;
-[Item] ID=bone_dust; q=1; r=-360; x=12; y=12;
-[Item] ID=bonePileDark; q=1; r=180; x=12; y=13;
-[Item] ID=bonePileDark; q=1; oX=0; oY=8; x=12; y=16;
-[Item] ID=shana_prayer_bench; q=1; x=12; y=16;
-[Item] ID=bonePileDark; q=1; r=180; x=12; y=18;
-[Item] ID=bonePileDark; q=1; r=90; x=12; y=18;
-[Item] ID=shana_prayer_bench; q=1; x=12; y=20;
-[Item] ID=bonePileDark; q=1; r=-90; x=12; y=22;
-[Item] ID=skull_dog2; q=1; r=-360; x=12; y=23;
-[Item] ID=shana_prayer_bench; q=1; x=12; y=24;
-[Item] ID=dirt_sandy2; q=2; x=12; y=31;
-[Item] ID=dirt_sandy1; q=1; r=360; x=12; y=32;
-[Item] ID=secretPassage; q=1; x=13; y=6;
-[Item] ID=secretPassage; q=1; x=13; y=7;
-[Item] ID=bonePileDark; q=1; r=90; x=13; y=12;
-[Item] ID=shana_prayer_bench; q=1; x=13; y=16;
-[Item] ID=bonePileDark; q=1; r=-270; x=13; y=17;
-[Item] ID=shana_prayer_bench; q=1; x=13; y=20;
-[Item] ID=bonePileDark; q=1; x=13; y=21;
-[Item] ID=bonePileDark; q=1; r=180; x=13; y=23;
-[Item] ID=shana_prayer_bench; q=1; x=13; y=24;
-[Item] ID=bonePileDark; q=1; r=-90; x=13; y=26;
-[Item] ID=secretPassage; q=1; x=14; y=6;
-[Item] ID=secretPassage; q=1; x=14; y=7;
-[Item] ID=shana_prayer_bench; q=1; x=14; y=16;
-[Item] ID=shana_prayer_bench; q=1; x=14; y=20;
-[Item] ID=bonePileDark; q=1; r=90; x=14; y=22;
-[Item] ID=shana_prayer_bench; q=1; x=14; y=24;
-[Item] ID=pebbles1; q=1; r=-360; x=14; y=25;
-[Item] ID=bonePileDark; q=1; x=14; y=25;
-[Item] ID=bone; q=1; r=360; x=14; y=26;
-[Item] ID=bonePileDark; q=1; r=-180; x=14; y=27;
-[Item] ID=secretPassage; q=1; x=15; y=6;
-[Item] ID=secretPassage; q=1; x=15; y=7;
-[Item] ID=shana_prayer_bench; q=1; x=15; y=16;
-[Item] ID=shana_prayer_bench; q=1; x=15; y=20;
-[Item] ID=shana_prayer_bench; q=1; x=15; y=24;
-[Item] ID=bonePileDark; q=1; r=90; x=15; y=26;
-[Item] ID=secretPassage; q=1; x=16; y=6;
-[Item] ID=secretPassage; q=1; x=16; y=7;
-[Item] ID=shana_prayer_bench; q=1; x=16; y=16;
-[Item] ID=shana_prayer_bench; q=1; x=16; y=20;
-[Item] ID=shana_prayer_bench; q=1; x=16; y=24;
-[Item] ID=skull2; q=1; r=-360; x=16; y=25;
-[Item] ID=skull_elephant1; q=1; r=360; x=17; y=8;
-[Item] ID=bonePileDark; q=1; r=180; x=17; y=9;
-[Item] ID=bonePileDark; q=1; r=270; x=17; y=10;
-[Item] ID=bonePileDark; q=1; r=-360; x=17; y=10;
-[Item] ID=tusk; q=1; r=-360; x=17; y=10;
-[Item] ID=bonePileDark; q=1; r=180; x=17; y=12;
-[Item] ID=shana_prayer_bench; q=1; x=17; y=16;
-[Item] ID=shana_prayer_bench; q=1; x=17; y=20;
-[Item] ID=shana_prayer_bench; q=1; x=17; y=24;
-[Item] ID=bones2; q=1; r=-360; x=17; y=27;
-[Item] ID=bonePileDark; q=1; r=90; x=18; y=7;
-[Item] ID=bonePileDark; q=1; r=-180; x=18; y=7;
-[Item] ID=bonePileDark; q=1; r=90; x=18; y=8;
-[Item] ID=bonePileDark; q=1; r=-360; x=18; y=9;
-[Item] ID=bone; q=1; r=-360; x=18; y=11;
-[Item] ID=bonePileDark; q=1; r=180; x=18; y=12;
-[Item] ID=bugs12_small; q=1; r=360; x=18; y=12;
-[Item] ID=rocks1; q=2; r=-360; x=18; y=16;
-[Item] ID=dirt_sandy2; q=2; r=270; x=18; y=21;
-[Item] ID=dirt_sandy1; q=1; r=180; x=18; y=24;
-[Item] ID=rocks1; q=2; r=-360; x=18; y=28;
-[Item] ID=bonePileDark; q=1; r=-270; x=19; y=6;
-[Item] ID=bone_dust; q=1; r=-360; x=19; y=6;
-[Item] ID=table_left2; q=1; x=19; y=8;
-[Item] ID=table_small2; q=1; x=19; y=9;
-[Item] ID=bonePileDark; q=1; r=-270; x=19; y=10;
-[Item] ID=bonePileDark; q=1; r=90; x=19; y=11;
-[Item] ID=bones1; q=1; r=-360; x=19; y=12;
-[Item] ID=stone_pole2_noJ; q=1; x=19; y=15;
-[Item] ID=skull_dog2; q=1; r=360; x=19; y=16;
-[Item] ID=bonePileDark; q=1; r=-90; x=19; y=17;
-[Item] ID=stone_pole2_noJ; q=1; x=19; y=18;
-[Item] ID=stone_pole2_noJ; q=1; x=19; y=20;
-[Item] ID=dirt_sandy2; q=3; r=360; x=19; y=22;
-[Item] ID=stone_pole2_noJ; q=1; x=19; y=23;
-[Item] ID=stone_pole2_noJ; q=1; x=19; y=25;
-[Item] ID=stone_pole2_noJ; q=1; x=19; y=28;
-[Item] ID=rocks1; q=1; x=19; y=29;
-[Item] ID=bugs12_small; q=1; r=-360; x=19; y=34;
-[Item] ID=bonePileDark; q=1; r=270; x=20; y=6;
-[Item] ID=table_left2; q=1; x=20; y=7;
-[Item] ID=table_right2; q=1; x=20; y=8;
-[Item] ID=rug_corner2; q=1; x=20; y=10;
-[Item] ID=bugs12_small; q=1; x=20; y=10;
-[Item] ID=rug_edge2; q=1; r=270; x=20; y=11;
-[Item] ID=rug_edge2; q=1; r=270; x=20; y=12;
-[Item] ID=rug_corner2; q=1; r=270; x=20; y=13;
-[Item] ID=rocks1; q=1; r=360; x=20; y=15;
-[Item] ID=bonePileDark; q=1; r=360; x=20; y=16;
-[Item] ID=bonePileDark; q=1; r=270; x=20; y=16;
-[Item] ID=shana_prayer_bench; q=1; x=20; y=16;
-[Item] ID=bonePileDark; q=1; r=-180; x=20; y=18;
-[Item] ID=shana_prayer_bench; q=1; x=20; y=19;
-[Item] ID=pebbles1; q=1; r=-360; x=20; y=21;
-[Item] ID=rocks1; q=1; r=-360; x=20; y=23;
-[Item] ID=shana_prayer_bench; q=1; x=20; y=24;
-[Item] ID=rocks1; q=3; r=360; x=20; y=29;
-[Item] ID=stone_pole2_noJ; q=1; x=20; y=31;
-[Item] ID=bugs12_small; q=1; x=20; y=36;
-[Item] ID=mount_item; q=1; x=21; y=4;
-[Item] ID=bonePileDark; q=1; r=-180; oX=0; oY=8; x=21; y=7;
-[Item] ID=table_mid2; q=1; x=21; y=7;
-[Item] ID=tableclothL2; q=1; x=21; y=7;
-[Item] ID=bone_spine; q=1; x=21; y=8;
-[Item] ID=rug_corner2; q=1; x=21; y=9;
-[Item] ID=skull_elephant2; q=1; r=-360; x=21; y=9;
-[Item] ID=bugs12_small; q=1; x=21; y=9;
-[Item] ID=rug_corner_inner1; q=1; x=21; y=10;
-[Item] ID=rug_mid2; q=1; x=21; y=11;
-[Item] ID=rug_mid2; q=1; x=21; y=12;
-[Item] ID=rug_corner_inner1; q=1; r=270; x=21; y=13;
-[Item] ID=rug_corner2; q=1; r=270; x=21; y=14;
-[Item] ID=bonePileDark; q=1; r=-360; x=21; y=15;
-[Item] ID=shana_prayer_bench; q=1; x=21; y=16;
-[Item] ID=bones1; q=1; r=-360; x=21; y=17;
-[Item] ID=bonePileDark; q=1; r=180; x=21; y=18;
-[Item] ID=shana_prayer_bench; q=1; x=21; y=19;
-[Item] ID=shana_prayer_bench; q=1; x=21; y=24;
-[Item] ID=bonePileDark; q=1; r=-180; oX=0; oY=8; x=22; y=7;
-[Item] ID=table_mid2; q=1; x=22; y=7;
-[Item] ID=tableclothM2; q=1; x=22; y=7;
-[Item] ID=rug_edge2; q=1; x=22; y=9;
-[Item] ID=rug_mid2; q=1; x=22; y=10;
-[Item] ID=rug_mid2; q=1; x=22; y=11;
-[Item] ID=rug_mid2; q=1; x=22; y=12;
-[Item] ID=rug_frayed2; q=1; x=22; y=13;
-[Item] ID=rug_edge2; q=1; r=180; x=22; y=14;
-[Item] ID=bonePileDark; q=1; r=-270; x=22; y=16;
-[Item] ID=shana_prayer_bench; q=1; x=22; y=16;
-[Item] ID=dirt_sandy2; q=2; r=180; x=22; y=17;
-[Item] ID=bonePileDark; q=1; r=90; x=22; y=17;
-[Item] ID=dirt_sandy2; q=1; r=180; x=22; y=18;
-[Item] ID=shana_prayer_bench; q=1; x=22; y=19;
-[Item] ID=shana_prayer_bench; q=1; x=22; y=24;
-[Item] ID=travelPoint_0; q=1; r=270; x=22; y=35;
-[Item] ID=bonePileDark; q=1; r=-270; x=23; y=6;
-[Item] ID=table_mid2; q=1; x=23; y=7;
-[Item] ID=tableclothM2; q=1; x=23; y=7;
-[Item] ID=rug_edge2; q=1; x=23; y=9;
-[Item] ID=rug_frayed2; q=1; r=90; x=23; y=10;
-[Item] ID=rug_mid2; q=1; x=23; y=11;
-[Item] ID=rug_mid2; q=1; x=23; y=12;
-[Item] ID=rug_mid2; q=1; x=23; y=13;
-[Item] ID=rug_edge2; q=1; r=180; x=23; y=14;
-[Item] ID=dirt_sandy1; q=1; r=270; x=23; y=16;
-[Item] ID=shana_prayer_bench; q=1; x=23; y=16;
-[Item] ID=shana_prayer_bench; q=1; x=23; y=19;
-[Item] ID=bonePileDark; q=1; r=270; x=23; y=22;
-[Item] ID=skull; q=1; r=360; x=23; y=23;
-[Item] ID=shana_prayer_bench; q=1; x=23; y=24;
-[Item] ID=dirt_sandy2; q=1; r=180; x=23; y=27;
-[Item] ID=barrel_broken; q=1; x=24; y=6; containerID=1;
-[Item] ID=bonePileDark; q=1; r=-90; oX=0; oY=6; x=24; y=7;
-[Item] ID=table_mid2; q=1; x=24; y=7;
-[Item] ID=tableclothR2; q=1; x=24; y=7;
-[Item] ID=crate_small_damaged; q=1; r=-360; x=24; y=8; containerID=2;
-[Item] ID=rug_corner2; q=1; r=90; x=24; y=9;
-[Item] ID=rug_corner_inner1; q=1; r=90; x=24; y=10;
-[Item] ID=rug_frayed2; q=1; x=24; y=11;
-[Item] ID=bugs12_small; q=1; r=-360; x=24; y=11;
-[Item] ID=rug_mid2; q=1; x=24; y=12;
-[Item] ID=rug_corner_inner1; q=1; r=180; x=24; y=13;
-[Item] ID=rug_corner2; q=1; r=180; x=24; y=14;
-[Item] ID=shana_prayer_bench; q=1; x=24; y=16;
-[Item] ID=rocks1; q=2; x=24; y=17;
-[Item] ID=dirt_sandy2; q=1; r=90; x=24; y=19;
-[Item] ID=bugsMass_small; q=1; x=24; y=19;
-[Item] ID=shana_prayer_bench; q=1; x=24; y=19;
-[Item] ID=bonePileDark; q=1; r=-360; x=24; y=21;
-[Item] ID=tusk; q=1; r=-360; x=24; y=22;
-[Item] ID=bonePileDark; q=1; r=-180; x=24; y=23;
-[Item] ID=bonePileDark; q=1; r=270; x=24; y=23;
-[Item] ID=bugs12_small; q=1; x=24; y=24;
-[Item] ID=shana_prayer_bench; q=1; x=24; y=24;
-[Item] ID=dirt_sandy1; q=1; r=270; x=24; y=25;
-[Item] ID=rocks1; q=4; r=-360; x=24; y=27;
-[Item] ID=dirt_sandy1; q=1; r=90; x=24; y=28;
-[Item] ID=bugs12_small; q=1; r=-360; x=24; y=34;
-[Item] ID=bonePileDark; q=1; x=25; y=6;
-[Item] ID=mount_item; q=1; r=90; x=25; y=6;
-[Item] ID=table_right2; q=1; x=25; y=7;
-[Item] ID=bonePileDark; q=1; r=180; oX=0; oY=8; x=25; y=8;
-[Item] ID=table_left2; q=1; x=25; y=8;
-[Item] ID=rug_corner2; q=1; r=90; x=25; y=10;
-[Item] ID=rug_edge2; q=1; r=90; x=25; y=11;
-[Item] ID=rug_edge2; q=1; r=90; x=25; y=12;
-[Item] ID=rug_corner2; q=1; r=180; x=25; y=13;
-[Item] ID=skull2; q=1; r=-360; x=25; y=13;
-[Item] ID=shana_prayer_bench; q=1; x=25; y=16;
-[Item] ID=dirt_sandy2; q=2; x=25; y=17;
-[Item] ID=dirt_sandy2; q=2; r=90; x=25; y=19;
-[Item] ID=shana_prayer_bench; q=1; x=25; y=19;
-[Item] ID=bonePileDark; q=1; r=360; x=25; y=22;
-[Item] ID=bonePileDark; q=1; r=-270; x=25; y=22;
-[Item] ID=bonePileDark; q=1; r=180; x=25; y=24;
-[Item] ID=shana_prayer_bench; q=1; x=25; y=24;
-[Item] ID=dirt_sandy2; q=2; x=25; y=26;
-[Item] ID=rocks1; q=2; r=360; x=25; y=27;
-[Item] ID=rocks1; q=1; r=360; x=25; y=28;
-[Item] ID=dirt_sandy1; q=1; r=90; x=25; y=29;
+[Item] ID=shana_birthing_coffin_1; q=1; x=4; y=28;
+[Item] ID=shana_birthing_coffin_1; q=1; x=4; y=34;
+[Item] ID=bonePileDark; q=1; r=-90; x=7; y=11;
+[Item] ID=bonePileDark; q=1; r=360; x=7; y=11;
+[Item] ID=dirt_sandy1; q=1; r=270; x=7; y=13;
+[Item] ID=bonePileDark; q=1; r=-180; x=7; y=13;
+[Item] ID=xpDust; q=1; r=-360; x=7; y=14;
+[Item] ID=xpGemBig; q=1; r=-360; bu=True; x=7; y=14;
+[Item] ID=dirt_sandy2; q=1; r=90; x=7; y=15;
+[Item] ID=bonePileDark; q=1; r=-360; x=7; y=16;
+[Item] ID=bonePileDark; q=1; r=-180; x=7; y=18;
+[Item] ID=bonePileDark; q=1; r=-90; x=7; y=18;
+[Item] ID=bonePileDark; q=1; r=-90; x=7; y=19;
+[Item] ID=dirt_sandy1; q=1; r=270; x=7; y=21;
+[Item] ID=bonePileDark; q=1; r=-90; x=7; y=21;
+[Item] ID=pebbles1; q=1; x=7; y=22;
+[Item] ID=bugsMass_small; q=1; r=-360; x=7; y=22;
+[Item] ID=bonePileDark; q=1; x=7; y=23;
+[Item] ID=dirt_sandy2; q=2; r=90; x=7; y=23;
+[Item] ID=bonePileDark; q=1; r=-180; x=8; y=12;
+[Item] ID=bonePileDark; q=1; r=90; x=8; y=12;
+[Item] ID=bone_dust; q=1; r=-360; x=8; y=12;
+[Item] ID=bugs5_small; q=1; x=8; y=13;
+[Item] ID=dirt_sandy2; q=2; r=360; x=8; y=14;
+[Item] ID=rocks1; q=4; x=8; y=15;
+[Item] ID=bugs12_small; q=1; r=-360; x=8; y=15;
+[Item] ID=dirt_sandy2; q=3; r=90; x=8; y=16;
+[Item] ID=bonePileDark; q=1; r=360; x=8; y=17;
+[Item] ID=bonePileDark; q=1; r=90; x=8; y=17;
+[Item] ID=bonePileDark; q=1; r=360; x=8; y=20;
+[Item] ID=bonePileDark; q=1; r=180; x=8; y=20;
+[Item] ID=bonePileDark; q=1; r=-180; x=8; y=22;
+[Item] ID=ribs2; q=1; r=-360; x=8; y=23;
+[Item] ID=bonePileDark; q=1; r=90; x=8; y=25;
+[Item] ID=bonePileDark; q=1; r=90; x=9; y=11;
+[Item] ID=ribs2; q=1; r=360; x=9; y=11;
+[Item] ID=bugsMass_small; q=1; r=360; x=9; y=12;
+[Item] ID=secretPassage; q=1; x=10; y=11;
+[Item] ID=secretPassage; q=1; x=10; y=12;
+[Item] ID=shana_birthing_coffin_1; q=1; x=10; y=28;
+[Item] ID=shana_birthing_coffin_1; q=1; x=10; y=34;
+[Item] ID=xpDust; q=1; r=-360; x=10; y=40;
+[Item] ID=xpGemBig; q=1; r=-360; bu=True; x=10; y=40;
+[Item] ID=secretPassage; q=1; x=11; y=11;
+[Item] ID=secretPassage; q=1; x=11; y=12;
+[Item] ID=secretPassage; q=1; x=12; y=11;
+[Item] ID=secretPassage; q=1; x=12; y=12;
+[Item] ID=dirt_sandy2; q=2; r=-270; x=12; y=31;
+[Item] ID=secretPassage; q=1; x=13; y=8;
+[Item] ID=secretPassage; q=1; x=13; y=9;
+[Item] ID=sunbeam; q=1; x=13; y=9;
+[Item] ID=dirt_sandy2; q=2; r=-270; x=13; y=31;
+[Item] ID=secretPassage; q=1; x=14; y=8;
+[Item] ID=secretPassage; q=1; x=14; y=9;
+[Item] ID=bonePileDark; q=1; r=270; x=14; y=18;
+[Item] ID=bonePileDark; q=1; r=270; x=14; y=19;
+[Item] ID=dirt_sandy2; q=2; r=-270; x=14; y=31;
+[Item] ID=barrier_strong; q=1; r=-360; x=14; y=36;
+[Item] ID=barrier_strong; q=1; r=-360; x=14; y=37;
+[Item] ID=barrier_strong; q=1; r=-360; x=14; y=38;
+[Item] ID=barrier_strong; q=1; r=-360; x=14; y=39;
+[Item] ID=barrier_strong; q=1; r=-360; x=14; y=40;
+[Item] ID=barrier_strong; q=1; r=-360; x=14; y=41;
+[Item] ID=barrier_strong; q=1; r=-360; x=14; y=42;
+[Item] ID=secretPassage; q=1; x=15; y=8;
+[Item] ID=secretPassage; q=1; x=15; y=9;
+[Item] ID=bugs5_small; q=1; x=15; y=14;
+[Item] ID=pebbles1; q=1; x=15; y=15;
+[Item] ID=dirt_sandy1; q=1; r=90; x=15; y=16;
+[Item] ID=bonePileDark; q=1; r=360; x=15; y=17;
+[Item] ID=sunbeam_circle_small; q=1; x=15; y=18;
+[Item] ID=bonePileDark; q=1; r=180; x=15; y=20;
+[Item] ID=dirt_sandy2; q=2; r=-270; x=15; y=31;
+[Item] ID=barrier_strong; q=1; r=-360; x=15; y=36;
+[Item] ID=barrier_strong; q=1; r=-360; x=15; y=42;
+[Item] ID=secretPassage; q=1; x=16; y=8;
+[Item] ID=secretPassage; q=1; x=16; y=9;
+[Item] ID=bone_dust; q=1; r=-360; x=16; y=14;
+[Item] ID=bonePileDark; q=1; r=180; x=16; y=15;
+[Item] ID=bonePileDark; q=1; r=360; x=16; y=17;
+[Item] ID=bonePileDark; q=1; r=180; x=16; y=19;
+[Item] ID=bonePileDark; q=1; r=90; x=16; y=19;
+[Item] ID=dirt_sandy2; q=3; r=-270; x=16; y=28;
+[Item] ID=rocks1; q=2; r=-360; x=16; y=29;
+[Item] ID=rocks1; q=3; r=360; x=16; y=31;
+[Item] ID=dirt_sandy2; q=2; r=-180; x=16; y=32;
+[Item] ID=dirt_sandy2; q=3; r=-180; x=16; y=33;
+[Item] ID=dirt_sandy2; q=3; r=-180; x=16; y=34;
+[Item] ID=dirt_sandy2; q=2; r=-180; x=16; y=35;
+[Item] ID=rocks1; q=4; r=360; x=16; y=36;
+[Item] ID=shana_birthing_coffin_1; q=1; r=-360; x=16; y=40;
+[Item] ID=secretPassage; q=1; x=17; y=8;
+[Item] ID=secretPassage; q=1; x=17; y=9;
+[Item] ID=bonePileDark; q=1; r=90; x=17; y=14;
+[Item] ID=bonePileDark; q=1; r=-270; x=17; y=18;
+[Item] ID=rocks1; q=2; r=-360; x=17; y=28;
+[Item] ID=bugs5_small; q=1; r=360; x=17; y=29;
+[Item] ID=rocks1; q=2; r=360; x=17; y=35;
+[Item] ID=rocks1; q=4; r=360; x=17; y=37;
+[Item] ID=sunbeam_circle_big_dull; q=1; r=-360; x=17; y=39;
+[Item] ID=secretPassage; q=1; x=18; y=8;
+[Item] ID=secretPassage; q=1; x=18; y=9;
+[Item] ID=dirt_sandy2; q=2; r=-270; x=18; y=27;
+[Item] ID=dirt_sandy1; q=1; r=-90; x=18; y=29;
+[Item] ID=bonePileDark; q=1; r=-90; x=18; y=29;
+[Item] ID=bonePileDark; q=1; r=-90; x=18; y=30;
+[Item] ID=dirt_sandy2; q=2; r=-360; x=18; y=32;
+[Item] ID=dirt_sandy2; q=2; r=-360; x=18; y=33;
+[Item] ID=dirt_sandy2; q=2; r=-360; x=18; y=34;
+[Item] ID=dirt_sandy2; q=2; r=-360; x=18; y=35;
+[Item] ID=shana_birthing_coffin_1; q=1; r=-360; x=18; y=40;
+[Item] ID=secretPassage; q=1; x=19; y=8;
+[Item] ID=secretPassage; q=1; x=19; y=9;
+[Item] ID=bonePileDark; q=1; r=-360; x=19; y=27;
+[Item] ID=tusk; q=1; r=-360; x=19; y=28;
+[Item] ID=dirt_sandy2; q=2; r=-270; x=19; y=31;
+[Item] ID=bonePileDark; q=1; r=-180; x=19; y=31;
+[Item] ID=barrier_strong; q=1; r=-360; x=19; y=36;
+[Item] ID=barrier_strong; q=1; r=-360; x=19; y=42;
+[Item] ID=secretPassage; q=1; x=20; y=8;
+[Item] ID=secretPassage; q=1; x=20; y=9;
+[Item] ID=bonePileDark; q=1; r=-360; x=20; y=27;
+[Item] ID=skull; q=1; r=360; x=20; y=29;
+[Item] ID=bonePileDark; q=1; r=-180; x=20; y=30;
+[Item] ID=bonePileDark; q=1; r=-270; x=20; y=30;
+[Item] ID=dirt_sandy2; q=2; r=-270; x=20; y=31;
+[Item] ID=barrier_strong; q=1; r=-360; x=20; y=36;
+[Item] ID=barrier_strong; q=1; r=-360; x=20; y=37;
+[Item] ID=barrier_strong; q=1; r=-360; x=20; y=38;
+[Item] ID=barrier_strong; q=1; r=-360; x=20; y=39;
+[Item] ID=barrier_strong; q=1; r=-360; x=20; y=40;
+[Item] ID=barrier_strong; q=1; r=-360; x=20; y=41;
+[Item] ID=barrier_strong; q=1; r=-360; x=20; y=42;
+[Item] ID=skull_elephant1; q=1; r=360; x=21; y=10;
+[Item] ID=bonePileDark; q=1; r=180; x=21; y=11;
+[Item] ID=bonePileDark; q=1; r=270; x=21; y=12;
+[Item] ID=bonePileDark; q=1; r=-360; x=21; y=12;
+[Item] ID=tusk; q=1; r=-360; x=21; y=12;
+[Item] ID=bonePileDark; q=1; r=180; x=21; y=14;
+[Item] ID=bonePileDark; q=1; r=-270; x=21; y=28;
+[Item] ID=bonePileDark; q=1; r=-270; x=21; y=29;
+[Item] ID=bonePileDark; q=1; r=90; x=22; y=9;
+[Item] ID=bonePileDark; q=1; r=-180; x=22; y=9;
+[Item] ID=bonePileDark; q=1; r=90; x=22; y=10;
+[Item] ID=bonePileDark; q=1; r=-360; x=22; y=11;
+[Item] ID=bone; q=1; r=-360; x=22; y=13;
+[Item] ID=bonePileDark; q=1; r=180; x=22; y=14;
+[Item] ID=bugs12_small; q=1; r=360; x=22; y=14;
+[Item] ID=rocks1; q=2; r=-360; x=22; y=18;
+[Item] ID=shana_prayer_bench; q=1; x=22; y=21;
+[Item] ID=bonePileDark; q=1; r=-270; x=23; y=8;
+[Item] ID=bone_dust; q=1; r=-360; x=23; y=8;
+[Item] ID=table_left2; q=1; x=23; y=10;
+[Item] ID=tableclothL1; q=1; x=23; y=10;
+[Item] ID=table_small2; q=1; x=23; y=11;
+[Item] ID=tablecloth2; q=1; x=23; y=11;
+[Item] ID=bonePileDark; q=1; r=-270; x=23; y=12;
+[Item] ID=bonePileDark; q=1; r=90; x=23; y=13;
+[Item] ID=bones1; q=1; r=-360; x=23; y=14;
+[Item] ID=stone_pole2_noJ; q=1; x=23; y=17;
+[Item] ID=skull_dog2; q=1; r=360; x=23; y=18;
+[Item] ID=bonePileDark; q=1; r=-90; x=23; y=19;
+[Item] ID=stone_pole2_noJ; q=1; x=23; y=20;
+[Item] ID=shana_prayer_bench; q=1; x=23; y=21;
+[Item] ID=bonePileDark; q=1; r=270; x=24; y=8;
+[Item] ID=table_left2; q=1; x=24; y=9;
+[Item] ID=table_right2; q=1; x=24; y=10;
+[Item] ID=tableclothR1; q=1; x=24; y=10;
+[Item] ID=rug_corner2; q=1; x=24; y=12;
+[Item] ID=bugs12_small; q=1; x=24; y=12;
+[Item] ID=rug_edge2; q=1; r=270; x=24; y=13;
+[Item] ID=rug_edge2; q=1; r=270; x=24; y=14;
+[Item] ID=rug_corner2; q=1; r=270; x=24; y=15;
+[Item] ID=rocks1; q=1; r=360; x=24; y=17;
+[Item] ID=bonePileDark; q=1; r=360; x=24; y=18;
+[Item] ID=bonePileDark; q=1; r=270; x=24; y=18;
+[Item] ID=bonePileDark; q=1; r=-180; x=24; y=20;
+[Item] ID=shana_prayer_bench; q=1; x=24; y=21;
+[Item] ID=stone_pole2_noJ; q=1; x=24; y=23;
+[Item] ID=shana_prayer_bench; q=1; x=24; y=25;
+[Item] ID=stone_pole2_noJ; q=1; x=24; y=26;
+[Item] ID=pebbles1; q=1; r=-360; x=24; y=27;
+[Item] ID=rocks1; q=1; r=-360; x=24; y=29;
+[Item] ID=stone_pole2_noJ; q=1; x=24; y=29;
+[Item] ID=mount_item; q=1; x=25; y=6;
+[Item] ID=bonePileDark; q=1; r=-180; oX=0; oY=8; x=25; y=9;
+[Item] ID=table_mid2; q=1; x=25; y=9;
+[Item] ID=tableclothL2; q=1; x=25; y=9;
+[Item] ID=bone_spine; q=1; x=25; y=10;
+[Item] ID=rug_corner2; q=1; x=25; y=11;
+[Item] ID=skull_elephant2; q=1; r=-360; x=25; y=11;
+[Item] ID=bugs12_small; q=1; x=25; y=11;
+[Item] ID=rug_corner_inner1; q=1; x=25; y=12;
+[Item] ID=rug_mid2; q=1; x=25; y=13;
+[Item] ID=rug_mid2; q=1; x=25; y=14;
+[Item] ID=rug_corner_inner1; q=1; r=270; x=25; y=15;
+[Item] ID=rug_corner2; q=1; r=270; x=25; y=16;
+[Item] ID=bonePileDark; q=1; r=-360; x=25; y=17;
+[Item] ID=bones1; q=1; r=-360; x=25; y=19;
+[Item] ID=bonePileDark; q=1; r=180; x=25; y=20;
+[Item] ID=shana_prayer_bench; q=1; x=25; y=21;
+[Item] ID=shana_prayer_bench; q=1; x=25; y=25;
 [Item] ID=stone_pole2_noJ; q=1; x=25; y=31;
-[Item] ID=bonePileDark; q=1; r=360; x=26; y=6;
-[Item] ID=bonePileDark; q=1; r=-180; oX=0; oY=8; x=26; y=8;
-[Item] ID=table_right2; q=1; x=26; y=8;
-[Item] ID=bonePileDark; q=1; r=-90; x=26; y=10;
-[Item] ID=bugs12_small; q=1; r=-360; x=26; y=12;
-[Item] ID=stone_pole2_noJ; q=1; x=26; y=15;
-[Item] ID=stone_pole2_noJ; q=1; x=26; y=18;
-[Item] ID=dirt_sandy2; q=2; r=360; x=26; y=19;
-[Item] ID=stone_pole2_noJ; q=1; x=26; y=20;
-[Item] ID=bonePileDark; q=1; r=90; x=26; y=23;
-[Item] ID=stone_pole2_noJ; q=1; x=26; y=23;
-[Item] ID=stone_pole2_noJ; q=1; x=26; y=25;
-[Item] ID=stone_pole2_noJ; q=1; x=26; y=28;
-[Item] ID=rocks1; q=2; r=-360; x=26; y=29;
-[Item] ID=rocks1; q=4; r=-360; x=26; y=32;
-[Item] ID=bonePileDark; q=1; r=360; x=27; y=6;
-[Item] ID=bonePileDark; q=1; r=270; x=27; y=6;
-[Item] ID=bonePileDark; q=1; r=180; x=27; y=8;
-[Item] ID=bugs12_small; q=1; r=-360; x=27; y=8;
-[Item] ID=bonePileDark; q=1; r=-360; x=27; y=9;
-[Item] ID=skull2; q=1; r=360; x=27; y=10;
-[Item] ID=bonePileDark; q=1; r=180; x=27; y=11;
-[Item] ID=dirt_sandy1; q=1; r=180; x=27; y=15;
-[Item] ID=dirt_sandy1; q=1; r=90; x=27; y=17;
-[Item] ID=rocks1; q=4; r=-360; x=27; y=28;
-[Item] ID=bones2; q=1; r=360; x=28; y=6;
-[Item] ID=bonePileDark; q=1; r=90; x=28; y=7;
-[Item] ID=bonePileDark; q=1; r=180; x=28; y=7;
-[Item] ID=barrel_broken; q=1; r=-360; x=28; y=8; containerID=3;
-[Item] ID=crate_small_damaged; q=1; x=28; y=9; containerID=4;
-[Item] ID=bonePileDark; q=1; r=90; x=28; y=10;
-[Item] ID=dirt_sandy2; q=3; r=270; x=28; y=14;
-[Item] ID=shana_prayer_bench; q=1; x=28; y=16;
-[Item] ID=shana_prayer_bench; q=1; x=28; y=20;
-[Item] ID=shana_prayer_bench; q=1; x=28; y=24;
-[Item] ID=dirt_sandy2; q=1; r=180; x=28; y=30;
-[Item] ID=shana_prayer_bench; q=1; x=29; y=16;
-[Item] ID=shana_prayer_bench; q=1; x=29; y=20;
-[Item] ID=dirt_sandy2; q=3; r=180; x=29; y=22;
-[Item] ID=shana_prayer_bench; q=1; x=29; y=24;
-[Item] ID=dirt_sandy1; q=1; r=180; x=30; y=14;
-[Item] ID=shana_prayer_bench; q=1; x=30; y=16;
-[Item] ID=shana_prayer_bench; q=1; x=30; y=20;
-[Item] ID=dirt_sandy2; q=2; r=90; x=30; y=23;
-[Item] ID=shana_prayer_bench; q=1; x=30; y=24;
-[Item] ID=dirt_sandy2; q=2; x=30; y=30;
-[Item] ID=rocks1; q=1; x=31; y=14;
-[Item] ID=bugs12_small; q=1; x=31; y=15;
-[Item] ID=shana_prayer_bench; q=1; x=31; y=16;
-[Item] ID=shana_prayer_bench; q=1; x=31; y=20;
-[Item] ID=dirt_sandy2; q=2; r=270; x=31; y=21;
-[Item] ID=rocks1; q=1; r=-360; x=31; y=22;
-[Item] ID=bugs5_small; q=1; r=-360; x=31; y=22;
-[Item] ID=dirt_sandy1; q=1; r=90; x=31; y=23;
-[Item] ID=shana_prayer_bench; q=1; x=31; y=24;
-[Item] ID=shana_prayer_bench; q=1; x=32; y=16;
-[Item] ID=shana_prayer_bench; q=1; x=32; y=20;
-[Item] ID=rocks1; q=1; r=360; x=32; y=23;
-[Item] ID=dirt_sandy1; q=1; r=90; x=32; y=24;
-[Item] ID=shana_prayer_bench; q=1; x=32; y=24;
-[Item] ID=barrel_broken; q=1; x=33; y=12; containerID=5;
-[Item] ID=dirt_sandy1; q=1; r=360; x=33; y=13;
-[Item] ID=shana_prayer_bench; q=1; x=33; y=16;
-[Item] ID=bonePileDark; q=1; r=270; x=33; y=18;
-[Item] ID=shana_prayer_bench; q=1; x=33; y=20;
-[Item] ID=dirt_sandy2; q=3; r=270; x=33; y=22;
-[Item] ID=rocks1; q=2; r=360; x=33; y=23;
-[Item] ID=shana_prayer_bench; q=1; x=33; y=24;
-[Item] ID=dirt_sandy2; q=2; r=180; x=33; y=25;
-[Item] ID=bonePileDark; q=1; r=270; x=34; y=12;
-[Item] ID=shana_prayer_bench; q=1; x=34; y=16;
-[Item] ID=bonePileDark; q=1; r=-360; x=34; y=17;
-[Item] ID=bonePileDark; q=1; r=180; x=34; y=19;
-[Item] ID=shana_prayer_bench; q=1; x=34; y=20;
-[Item] ID=shana_prayer_bench; q=1; x=34; y=24;
-[Item] ID=rocks1; q=3; r=-360; x=34; y=25;
-[Item] ID=bonePileDark; q=1; r=-180; x=35; y=13;
-[Item] ID=bonePileDark; q=1; r=-90; x=35; y=13;
-[Item] ID=ribs2; q=1; r=360; x=35; y=15;
-[Item] ID=shana_prayer_bench; q=1; x=35; y=16;
-[Item] ID=bonePileDark; q=1; r=90; x=35; y=18;
-[Item] ID=shana_prayer_bench; q=1; x=35; y=20;
-[Item] ID=dirt_sandy2; q=1; r=360; x=35; y=23;
-[Item] ID=sunbeam_circle_small; q=1; x=35; y=23;
-[Item] ID=dirt_sandy2; q=1; r=360; x=35; y=24;
-[Item] ID=shana_prayer_bench; q=1; x=35; y=24;
-[Item] ID=bone_dust; q=1; r=360; x=36; y=12;
-[Item] ID=bonePileDark; q=1; r=180; x=36; y=14;
-[Item] ID=shana_prayer_bench; q=1; x=36; y=16;
-[Item] ID=shana_prayer_bench; q=1; x=36; y=20;
-[Item] ID=shana_prayer_bench; q=1; x=36; y=24;
-[Item] ID=barrel_broken; q=1; r=-360; x=36; y=25; containerID=6;
-[Item] ID=sunbeam; q=1; r=-180; x=37; y=15;
+[Item] ID=stone_pole2_noJ; q=1; x=25; y=34;
+[Item] ID=stone_pole2_noJ; q=1; x=25; y=37;
+[Item] ID=stone_pole2_noJ; q=1; x=25; y=40;
+[Item] ID=stone_pole2_noJ; q=1; x=25; y=43;
+[Item] ID=bonePileDark; q=1; r=-180; oX=0; oY=8; x=26; y=9;
+[Item] ID=table_mid2; q=1; x=26; y=9;
+[Item] ID=tableclothM2; q=1; x=26; y=9;
+[Item] ID=rug_edge2; q=1; x=26; y=11;
+[Item] ID=rug_mid2; q=1; x=26; y=12;
+[Item] ID=rug_mid2; q=1; x=26; y=13;
+[Item] ID=rug_mid2; q=1; x=26; y=14;
+[Item] ID=rug_frayed2; q=1; x=26; y=15;
+[Item] ID=rug_edge2; q=1; r=180; x=26; y=16;
+[Item] ID=bonePileDark; q=1; r=-270; x=26; y=18;
+[Item] ID=bonePileDark; q=1; r=90; x=26; y=19;
+[Item] ID=travelPoint_0; q=1; r=270; x=26; y=46;
+[Item] ID=bonePileDark; q=1; r=-270; x=27; y=8;
+[Item] ID=table_mid2; q=1; x=27; y=9;
+[Item] ID=tableclothM2; q=1; x=27; y=9;
+[Item] ID=rug_edge2; q=1; x=27; y=11;
+[Item] ID=rug_frayed2; q=1; r=90; x=27; y=12;
+[Item] ID=rug_mid2; q=1; x=27; y=13;
+[Item] ID=rug_mid2; q=1; x=27; y=14;
+[Item] ID=rug_mid2; q=1; x=27; y=15;
+[Item] ID=rug_edge2; q=1; r=180; x=27; y=16;
+[Item] ID=bonePileDark; q=1; r=270; x=27; y=28;
+[Item] ID=dirt_sandy1; q=2; r=180; x=27; y=32;
+[Item] ID=dirt_sandy2; q=1; r=180; x=27; y=33;
+[Item] ID=barrel_broken; q=1; x=28; y=8; containerID=0;
+[Item] ID=bonePileDark; q=1; r=-90; oX=0; oY=6; x=28; y=9;
+[Item] ID=table_mid2; q=1; x=28; y=9;
+[Item] ID=tableclothR2; q=1; x=28; y=9;
+[Item] ID=crate_small_damaged; q=1; r=-360; x=28; y=10; containerID=1;
+[Item] ID=xpGemBig; q=1; containedIn=1; cSlot=0;
+[Item] ID=rug_corner2; q=1; r=90; x=28; y=11;
+[Item] ID=rug_corner_inner1; q=1; r=90; x=28; y=12;
+[Item] ID=rug_frayed2; q=1; x=28; y=13;
+[Item] ID=bugs12_small; q=1; r=-360; x=28; y=13;
+[Item] ID=rug_mid2; q=1; x=28; y=14;
+[Item] ID=rug_corner_inner1; q=1; r=180; x=28; y=15;
+[Item] ID=rug_corner2; q=1; r=180; x=28; y=16;
+[Item] ID=rocks1; q=2; x=28; y=19;
+[Item] ID=shana_prayer_bench; q=1; x=28; y=21;
+[Item] ID=dirt_sandy2; q=1; r=90; x=28; y=25;
+[Item] ID=bugsMass_small; q=1; x=28; y=25;
+[Item] ID=shana_prayer_bench; q=1; x=28; y=25;
+[Item] ID=bonePileDark; q=1; r=-360; x=28; y=27;
+[Item] ID=bonePileDark; q=1; r=-180; x=28; y=29;
+[Item] ID=bonePileDark; q=1; r=270; x=28; y=29;
+[Item] ID=dirt_sandy1; q=1; r=270; x=28; y=31;
+[Item] ID=stone_pole2_noJ; q=1; x=28; y=31;
+[Item] ID=rocks1; q=2; r=360; x=28; y=32;
+[Item] ID=rocks1; q=4; r=-360; x=28; y=33;
+[Item] ID=dirt_sandy1; q=1; r=90; x=28; y=34;
+[Item] ID=stone_pole2_noJ; q=1; x=28; y=34;
+[Item] ID=stone_pole2_noJ; q=1; x=28; y=37;
+[Item] ID=stone_pole2_noJ; q=1; x=28; y=40;
+[Item] ID=stone_pole2_noJ; q=1; x=28; y=43;
+[Item] ID=bonePileDark; q=1; x=29; y=8;
+[Item] ID=mount_item; q=1; r=90; x=29; y=8;
+[Item] ID=table_right2; q=1; x=29; y=9;
+[Item] ID=bonePileDark; q=1; r=180; oX=0; oY=8; x=29; y=10;
+[Item] ID=table_left2; q=1; x=29; y=10;
+[Item] ID=tableclothL1; q=1; x=29; y=10;
+[Item] ID=rug_corner2; q=1; r=90; x=29; y=12;
+[Item] ID=rug_edge2; q=1; r=90; x=29; y=13;
+[Item] ID=rug_edge2; q=1; r=90; x=29; y=14;
+[Item] ID=rug_corner2; q=1; r=180; x=29; y=15;
+[Item] ID=skull2; q=1; r=-360; x=29; y=15;
+[Item] ID=dirt_sandy2; q=2; x=29; y=19;
+[Item] ID=shana_prayer_bench; q=1; x=29; y=21;
+[Item] ID=stone_pole2_noJ; q=1; r=-360; x=29; y=23;
+[Item] ID=dirt_sandy2; q=2; r=90; x=29; y=25;
+[Item] ID=shana_prayer_bench; q=1; x=29; y=25;
+[Item] ID=stone_pole2_noJ; q=1; x=29; y=26;
+[Item] ID=bonePileDark; q=1; r=360; x=29; y=28;
+[Item] ID=bonePileDark; q=1; r=-270; x=29; y=28;
+[Item] ID=skull; q=1; r=360; x=29; y=28;
+[Item] ID=bonePileDark; q=1; x=29; y=28;
+[Item] ID=stone_pole2_noJ; q=1; x=29; y=29;
+[Item] ID=bonePileDark; q=1; r=-180; x=29; y=30;
+[Item] ID=dirt_sandy2; q=1; x=29; y=32;
+[Item] ID=dirt_sandy2; q=1; x=29; y=33;
+[Item] ID=bonePileDark; q=1; r=360; x=30; y=8;
+[Item] ID=bonePileDark; q=1; r=-180; oX=0; oY=8; x=30; y=10;
+[Item] ID=table_right2; q=1; x=30; y=10;
+[Item] ID=tableclothR1; q=1; x=30; y=10;
+[Item] ID=table_small2; q=1; x=30; y=11;
+[Item] ID=tablecloth1; q=1; x=30; y=11;
+[Item] ID=bonePileDark; q=1; r=-90; x=30; y=12;
+[Item] ID=bugs12_small; q=1; r=-360; x=30; y=14;
+[Item] ID=stone_pole2_noJ; q=1; x=30; y=17;
+[Item] ID=stone_pole2_noJ; q=1; x=30; y=20;
+[Item] ID=shana_prayer_bench; q=1; x=30; y=21;
+[Item] ID=dirt_sandy2; q=2; r=360; x=30; y=25;
+[Item] ID=tusk; q=1; r=-360; x=30; y=28;
+[Item] ID=bonePileDark; q=1; r=90; x=30; y=29;
+[Item] ID=bonePileDark; q=1; r=360; x=31; y=8;
+[Item] ID=bonePileDark; q=1; r=270; x=31; y=8;
+[Item] ID=bonePileDark; q=1; r=180; x=31; y=10;
+[Item] ID=bugs12_small; q=1; r=-360; x=31; y=10;
+[Item] ID=bonePileDark; q=1; r=-360; x=31; y=11;
+[Item] ID=skull2; q=1; r=360; x=31; y=12;
+[Item] ID=bonePileDark; q=1; r=180; x=31; y=13;
+[Item] ID=dirt_sandy1; q=1; r=180; x=31; y=17;
+[Item] ID=dirt_sandy1; q=1; r=90; x=31; y=19;
+[Item] ID=shana_prayer_bench; q=1; x=31; y=21;
+[Item] ID=bones2; q=1; r=360; x=32; y=8;
+[Item] ID=bonePileDark; q=1; r=90; x=32; y=9;
+[Item] ID=bonePileDark; q=1; r=180; x=32; y=9;
+[Item] ID=barrel_broken; q=1; r=-360; x=32; y=10; containerID=2;
+[Item] ID=crate_small_damaged; q=1; x=32; y=11; containerID=3;
+[Item] ID=bonePileDark; q=1; r=90; x=32; y=12;
+[Item] ID=dirt_sandy2; q=3; r=270; x=32; y=16;
+[Item] ID=dirt_sandy2; q=3; r=180; x=33; y=28;
+[Item] ID=dirt_sandy2; q=2; r=270; x=33; y=31;
+[Item] ID=barrier_strong; q=1; x=33; y=36;
+[Item] ID=barrier_strong; q=1; x=33; y=37;
+[Item] ID=barrier_strong; q=1; x=33; y=38;
+[Item] ID=barrier_strong; q=1; x=33; y=39;
+[Item] ID=barrier_strong; q=1; x=33; y=40;
+[Item] ID=barrier_strong; q=1; x=33; y=41;
+[Item] ID=barrier_strong; q=1; x=33; y=42;
+[Item] ID=dirt_sandy1; q=1; r=180; x=34; y=16;
+[Item] ID=dirt_sandy2; q=2; r=90; x=34; y=29;
+[Item] ID=dirt_sandy2; q=2; r=270; x=34; y=31;
+[Item] ID=barrier_strong; q=1; x=34; y=36;
+[Item] ID=rocks1; q=4; r=-360; x=34; y=38;
+[Item] ID=rocks1; q=2; r=-360; x=34; y=39;
+[Item] ID=barrier_strong; q=1; x=34; y=42;
+[Item] ID=rocks1; q=1; x=35; y=16;
+[Item] ID=bugs12_small; q=1; x=35; y=17;
+[Item] ID=dirt_sandy2; q=2; r=270; x=35; y=27;
+[Item] ID=xpDust; q=1; x=35; y=28;
+[Item] ID=xpGemBig; q=1; bu=True; x=35; y=28;
+[Item] ID=dirt_sandy1; q=1; r=90; x=35; y=29;
+[Item] ID=dirt_sandy2; q=2; r=360; x=35; y=32;
+[Item] ID=dirt_sandy2; q=2; r=360; x=35; y=33;
+[Item] ID=dirt_sandy2; q=2; r=360; x=35; y=34;
+[Item] ID=dirt_sandy2; q=2; r=360; x=35; y=35;
+[Item] ID=rocks1; q=4; r=-360; x=35; y=37;
+[Item] ID=shana_birthing_coffin_1; q=1; x=35; y=40;
+[Item] ID=rocks1; q=2; r=360; x=36; y=28;
+[Item] ID=bugs5_small; q=1; r=-360; x=36; y=29;
+[Item] ID=sunbeam_circle_big_dull; q=1; x=36; y=39;
+[Item] ID=barrel_broken; q=1; x=37; y=14; containerID=4;
+[Item] ID=dirt_sandy1; q=1; r=360; x=37; y=15;
+[Item] ID=bonePileDark; q=1; r=270; x=37; y=20;
+[Item] ID=dirt_sandy2; q=3; r=270; x=37; y=28;
+[Item] ID=rocks1; q=2; r=360; x=37; y=29;
+[Item] ID=rocks1; q=3; r=-360; x=37; y=31;
+[Item] ID=dirt_sandy2; q=2; r=180; x=37; y=32;
+[Item] ID=dirt_sandy2; q=3; r=180; x=37; y=33;
+[Item] ID=dirt_sandy2; q=3; r=180; x=37; y=34;
+[Item] ID=dirt_sandy2; q=2; r=180; x=37; y=35;
+[Item] ID=shana_birthing_coffin_1; q=1; x=37; y=40;
+[Item] ID=bonePileDark; q=1; r=270; x=38; y=14;
+[Item] ID=bonePileDark; q=1; r=-360; x=38; y=19;
+[Item] ID=bonePileDark; q=1; r=180; x=38; y=22;
+[Item] ID=dirt_sandy2; q=2; r=270; x=38; y=31;
+[Item] ID=barrier_strong; q=1; x=38; y=36;
+[Item] ID=barrier_strong; q=1; x=38; y=42;
+[Item] ID=bonePileDark; q=1; r=-180; x=39; y=15;
+[Item] ID=bonePileDark; q=1; r=-90; x=39; y=15;
+[Item] ID=ribs2; q=1; r=360; x=39; y=17;
+[Item] ID=bonePileDark; q=1; r=90; x=39; y=20;
+[Item] ID=dirt_sandy2; q=2; r=270; x=39; y=31;
+[Item] ID=barrier_strong; q=1; x=39; y=36;
+[Item] ID=barrier_strong; q=1; x=39; y=37;
+[Item] ID=barrier_strong; q=1; x=39; y=38;
+[Item] ID=barrier_strong; q=1; x=39; y=39;
+[Item] ID=barrier_strong; q=1; x=39; y=40;
+[Item] ID=barrier_strong; q=1; x=39; y=41;
+[Item] ID=barrier_strong; q=1; x=39; y=42;
+[Item] ID=bone_dust; q=1; r=360; x=40; y=14;
+[Item] ID=bonePileDark; q=1; r=180; x=40; y=16;
+[Item] ID=dirt_sandy2; q=2; r=270; x=40; y=31;
+[Item] ID=dirt_sandy2; q=2; r=270; x=41; y=31;
+[Item] ID=chest_stone2; q=1; x=43; y=1; containerID=5;
+[Item] ID=shana_trigger_rot; q=1; containedIn=5; cSlot=1;
+[Item] ID=loot6; q=1; containedIn=5; cSlot=5;
+[Item] ID=loot_bone; q=1; containedIn=5; cSlot=6;
+[Item] ID=shana_trigger_rot; q=1; containedIn=5; cSlot=7;
+[Item] ID=shana_trigger_rot; q=1; containedIn=5; cSlot=8;
+[Item] ID=loot_bone; q=1; containedIn=5; cSlot=9;
+[Item] ID=loot5; q=1; containedIn=5; cSlot=10;
+[Item] ID=shana_trigger_rot; q=1; containedIn=5; cSlot=14;
+[Item] ID=shana_birthing_coffin_1; q=1; x=43; y=4;
+[Item] ID=sunbeam_circle_small; q=1; r=-360; x=43; y=7;
+[Item] ID=shana_birthing_coffin_1; q=1; x=43; y=28;
+[Item] ID=shana_birthing_coffin_1; q=1; x=43; y=34;
+[Item] ID=ghost_grub; q=1; x=43; y=39;
+[Item] ID=barrel_broken; q=1; r=-360; x=43; y=39; containerID=6;
+[Item] ID=notes_useless; q=1; containedIn=6; cSlot=0;
+[Item] ID=loot4; q=1; containedIn=6; cSlot=1;
+[Item] ID=cargo_gold; q=6; containedIn=6; cSlot=2;
+[Item] ID=lost_docs; q=6; containedIn=6; cSlot=4;
+[Item] ID=cargo_pearls; q=6; containedIn=6; cSlot=5;
+[Item] ID=shana_cargo_ruinglass; q=6; containedIn=6; cSlot=6;
+[Item] ID=loot3; q=1; containedIn=6; cSlot=7;
+[Item] ID=sunbeam; q=1; r=-180; x=46; y=20;
+[Item] ID=shana_birthing_coffin_1; q=1; x=49; y=28;
+[Item] ID=shana_birthing_coffin_1; q=1; x=49; y=34;
 
 
-[Actor]ID=ari_gravekeeper_single_zombie10_ari_gravekeeper_city_church_interior_; name=Undead Zombie;
-actorTypeID=summoned_undead_zombie_enemy; sprite=; actorClass=ari_zombie_class_enemy; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=2; position=18,22; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=True; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=enemy; clothPalette=pHuman12; skinPalette=p18; armorPalette=pBloodyMess_slow; unarmoredPalette=pBloodyMess_slow; equipmentDoesntChangeArmorPalette=False; aiScript=wander_leash1_slow; aiTarget=; aiVarX=20; aiVarY=21; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.8; bravery=0.5; intelligence=0.3; honor=0.2; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
- headSprite=zombie_head; faceSprite=; legsSprite=zombie_legs; armLSprite=zombie_arm; armRSprite=zombie_arm; torsoSprite=zombie_body; shoulderLSprite=; shoulderRSprite=; backSprite=;
- supportAbilities=ari_enemy_resurrection_passive2;  supportAbilities=;  supportAbilities=; ari_zombie_infectious_bile_enemy=1; 
-numRanksBought=ari_zombie_infectious_bile_enemy=1; 
-numRanksBought=TrueHPMax=0; 
-numRanksBought=TrueMPMax=0; 
+[Actor]ID=shana_undead_abscess_mature_summoned_enemy_ari_gravekeeper_city_church_interior_0; name=Undead Abscess;
+actorTypeID=shana_undead_abscess_mature_summoned_enemy; sprite=actor_shana_undead_abscess_normal; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=0; position=37,37; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pB; skinPalette=pG; armorPalette=pR; unarmoredPalette=pR; equipmentDoesntChangeArmorPalette=False; aiScript=none; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.1; bravery=0.6; intelligence=0.1; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
+
+ supportAbilities=shana_uber_instability;  supportAbilities=;  supportAbilities=; shana_sleeping_sickness_enemy=1; shana_psychenecrosis_enemy=1; 
 
 [ActorState]
 canSwap=False;
 
-[ActorEffect]
- actorValue=skill_Fist; sourceAVAffecter=ari_zombie_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=2; duration=-1;
-[ActorEffect]
- actorValue=skill_Ruin; sourceAVAffecter=ari_zombie_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=3; duration=-1;
 
 [ActorInventory]
 style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
  
 
-[ActorItem] ID=gp; q=2; cSlot=8;
 
 
-[Actor]ID=ari_gravekeeper_single_zombie10_ari_gravekeeper_city_church_interior_0; name=Undead Zombie;
-actorTypeID=summoned_undead_zombie_enemy; sprite=; actorClass=ari_zombie_class_enemy; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=2; position=16,17; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=True; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=enemy; clothPalette=pHuman12; skinPalette=p18; armorPalette=pBloodyMess_slow; unarmoredPalette=pBloodyMess_slow; equipmentDoesntChangeArmorPalette=False; aiScript=wander_leash1_slow; aiTarget=; aiVarX=19; aiVarY=17; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.8; bravery=0.5; intelligence=0.3; honor=0.2; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
- headSprite=zombie_head; faceSprite=; legsSprite=zombie_legs; armLSprite=zombie_arm; armRSprite=zombie_arm; torsoSprite=zombie_body; shoulderLSprite=; shoulderRSprite=; backSprite=;
- supportAbilities=ari_enemy_resurrection_passive2;  supportAbilities=;  supportAbilities=; HP=26; HPMax=26; TrueHPMax=26; ari_enemy_zombie_corpse_expulsion=1; 
-numRanksBought=ari_enemy_zombie_corpse_expulsion=1; 
-numRanksBought=TrueHPMax=1; 
-numRanksBought=TrueMPMax=0; 
+[Actor]ID=shana_undead_bweaver_ari_gravekeeper_city_church_interior_; name=Azure;
+actorTypeID=shana_undead_bweaver; sprite=actor_bweaver; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=7; position=41,2; destination=-1,-1; facingRot=90; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pBone; skinPalette=pMeat; armorPalette=pAsh_still; unarmoredPalette=pAsh_still; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=1; bravery=1; intelligence=0.3; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=flyjump;
+
+ supportAbilities=;  supportAbilities=;  supportAbilities=; 
 
 [ActorState]
 canSwap=False;
 
-[ActorEffect]
- actorValue=skill_Fist; sourceAVAffecter=ari_zombie_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=2; duration=-1;
-[ActorEffect]
- actorValue=skill_Ruin; sourceAVAffecter=ari_zombie_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=3; duration=-1;
 
 [ActorInventory]
 style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
  
 
-[ActorItem] ID=gp; q=2; cSlot=8;
 
 
-[Actor]ID=ari_gravekeeper_single_zombie10_ari_gravekeeper_city_church_interior_1; name=Undead Zombie;
-actorTypeID=summoned_undead_zombie_enemy; sprite=; actorClass=ari_zombie_class_enemy; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=2; position=17,15; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=True; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=enemy; clothPalette=pHuman12; skinPalette=p18; armorPalette=pBloodyMess_slow; unarmoredPalette=pBloodyMess_slow; equipmentDoesntChangeArmorPalette=False; aiScript=wander_leash1_slow; aiTarget=; aiVarX=19; aiVarY=14; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.8; bravery=0.5; intelligence=0.3; honor=0.2; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
- headSprite=zombie_head; faceSprite=; legsSprite=zombie_legs; armLSprite=zombie_arm; armRSprite=zombie_arm; torsoSprite=zombie_body; shoulderLSprite=; shoulderRSprite=; backSprite=;
- supportAbilities=ari_enemy_resurrection_passive2;  supportAbilities=;  supportAbilities=; HP=26; HPMax=26; TrueHPMax=26; ari_enemy_zombie_corpse_expulsion=1; 
-numRanksBought=ari_enemy_zombie_corpse_expulsion=1; 
-numRanksBought=TrueHPMax=1; 
-numRanksBought=TrueMPMax=0; 
+[Actor]ID=summoned_undead_skeletonmage_enemy_ari_gravekeeper_city_church_interior_; name=Undead Skeleton;
+actorTypeID=summoned_undead_skeleton_mage_type_enemy; sprite=; actorClass=ari_skeletonmage_class_enemy; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=2; position=36,41; destination=-1,-1; facingRot=1170; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=False; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pBlack; skinPalette=pCorpryst; armorPalette=pIron; unarmoredPalette=pUnarmored; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=False; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.5; bravery=0.4; intelligence=0.6; honor=0.1; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
+ headSprite=ari_dadzioskeleton_head1; faceSprite=; legsSprite=dadzioskeleton_legs1; armLSprite=dadzioskeleton_arm1; armRSprite=dadzioskeleton_arm1; torsoSprite=dadzioskeleton_torso1; shoulderLSprite=; shoulderRSprite=; backSprite=;
+partSpritesThatTakePriorityOverClass=torso; 
 
-[ActorState]
-canSwap=False;
-
-[ActorEffect]
- actorValue=skill_Fist; sourceAVAffecter=ari_zombie_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=2; duration=-1;
-[ActorEffect]
- actorValue=skill_Ruin; sourceAVAffecter=ari_zombie_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=3; duration=-1;
-
-[ActorInventory]
-style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
- 
-
-[ActorItem] ID=gp; q=2; cSlot=8;
-
-
-[Actor]ID=ari_gravekeeper_single_zombie10_ari_gravekeeper_city_church_interior_2; name=Undead Zombie;
-actorTypeID=summoned_undead_zombie_enemy; sprite=; actorClass=ari_zombie_class_enemy; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=2; position=29,14; destination=-1,-1; facingRot=90; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=True; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=enemy; clothPalette=pHuman12; skinPalette=p18; armorPalette=pBloodyMess_slow; unarmoredPalette=pBloodyMess_slow; equipmentDoesntChangeArmorPalette=False; aiScript=wander_leash1_slow; aiTarget=; aiVarX=30; aiVarY=14; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.8; bravery=0.5; intelligence=0.3; honor=0.2; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
- headSprite=zombie_head; faceSprite=; legsSprite=zombie_legs; armLSprite=zombie_arm; armRSprite=zombie_arm; torsoSprite=zombie_body; shoulderLSprite=; shoulderRSprite=; backSprite=;
- supportAbilities=ari_enemy_resurrection_passive2;  supportAbilities=;  supportAbilities=; HP=27; HPMax=27; TrueHPMax=27; ari_enemy_zombie_corpse_expulsion=1; 
-numRanksBought=ari_enemy_zombie_corpse_expulsion=1; 
-numRanksBought=TrueHPMax=2; 
-numRanksBought=TrueMPMax=0; 
+ supportAbilities=ari_enemy_resurrection_passive1;  supportAbilities=;  supportAbilities=; MP=15; MPMax=15; TrueMPMax=15; skill_Ruin=3; ari_skeleton_mage_essencerupture=1; ari_enemy_skeleton_mage_bombard_stage1=1; 
+numRanksBought=ari_skeleton_mage_essencerupture=1; 
+numRanksBought=ari_enemy_skeleton_mage_bombard_stage1=1; 
+numRanksBought=skill_Ruin=3; 
 
 [ActorState]
 canSwap=False;
 
 [ActorEffect]
- actorValue=skill_Fist; sourceAVAffecter=ari_zombie_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=2; duration=-1;
-[ActorEffect]
- actorValue=skill_Ruin; sourceAVAffecter=ari_zombie_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=3; duration=-1;
+ actorValue=skill_Ruin; sourceAVAffecter=ari_skeletonmage_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=6; duration=-1;
 
 [ActorInventory]
 style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
  
 
-[ActorItem] ID=gp; q=2; cSlot=8;
+[ActorItem] ID=ari_grimoire_forbidden; cSlot=0; containerID=0;
+
+
+[Actor]ID=shana_undead_bweaver_ari_gravekeeper_city_church_interior_0; name=Seai;
+actorTypeID=shana_undead_bweaver; sprite=actor_bweaver; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=7; position=45,2; destination=-1,-1; facingRot=90; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pBone; skinPalette=pMeat; armorPalette=pAsh_still; unarmoredPalette=pAsh_still; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=1; bravery=1; intelligence=0.3; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=flyjump;
+
+ supportAbilities=;  supportAbilities=;  supportAbilities=; 
+
+[ActorState]
+canSwap=False;
+
+
+[ActorInventory]
+style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
+ 
+
 
 
 [Actor]ID=summoned_undead_abomination_enemy_ari_gravekeeper_city_church_interior_; name=Hulking Abomination;
-actorTypeID=summoned_undead_abomination_enemy; sprite=; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=3; position=31,22; destination=-1,-1; facingRot=90; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=none; combatTeam=; clothPalette=pHuman7; skinPalette=p54; armorPalette=pGreen; unarmoredPalette=pGreen; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=shana_gravekeeper_enemy_placeholder_dialogue; aggressiveness=1; bravery=1; intelligence=0.5; honor=0.1; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
+actorTypeID=summoned_undead_abomination_enemy; sprite=; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=3; position=28,20; destination=-1,-1; facingRot=90; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=none; combatTeam=; clothPalette=pHuman7; skinPalette=p54; armorPalette=pGreen; unarmoredPalette=pGreen; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=shana_gravekeeper_enemy_placeholder_dialogue; aggressiveness=1; bravery=1; intelligence=0.5; honor=0.1; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
  headSprite=abomination_head; faceSprite=; legsSprite=abomination_legs; armLSprite=abomination_arm; armRSprite=abomination_arm; torsoSprite=abomination_torso; shoulderLSprite=; shoulderRSprite=; backSprite=;
  supportAbilities=ari_abomination_blood_nova;  supportAbilities=ari_abomination_horrific_presence;  supportAbilities=; 
 
@@ -525,295 +499,8 @@ style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=
 
 
 
-[Actor]ID=summoned_undead_abomination_enemy_quest_ari_gravekeeper_city_church_interior_; name=Hulking Abomination;
-actorTypeID=summoned_undead_abomination_enemy_quest; sprite=; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=3; position=15,22; destination=-1,-1; facingRot=90; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=none; combatTeam=; clothPalette=pHuman7; skinPalette=p54; armorPalette=pGreen; unarmoredPalette=pGreen; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=shana_gravekeeper_enemy_placeholder_dialogue; aggressiveness=1; bravery=1; intelligence=0.5; honor=0.1; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
- headSprite=abomination_head; faceSprite=; legsSprite=abomination_legs; armLSprite=abomination_arm; armRSprite=abomination_arm; torsoSprite=abomination_torso; shoulderLSprite=; shoulderRSprite=; backSprite=;
- supportAbilities=ari_abomination_blood_nova;  supportAbilities=ari_abomination_horrific_presence;  supportAbilities=; 
-
-[ActorState]
-canSwap=False;
-
-
-[ActorInventory]
-style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
- 
-
-
-
-[Actor]ID=ari_gravekeeper_single_skelmage10_ari_gravekeeper_city_church_interior_; name=Undead Skeleton;
-actorTypeID=summoned_undead_skeleton_mage_type_enemy; sprite=; actorClass=ari_skeletonmage_class_enemy; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=3; position=13,14; destination=-1,-1; facingRot=64; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=True; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=enemy; clothPalette=pBlack; skinPalette=pCorpryst; armorPalette=pUnarmored; unarmoredPalette=pUnarmored; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.7; bravery=0.3; intelligence=0.5; honor=0.2; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
- headSprite=ari_dadzioskeleton_head1; faceSprite=; legsSprite=dadzioskeleton_legs1; armLSprite=dadzioskeleton_arm1; armRSprite=dadzioskeleton_arm1; torsoSprite=dadzioskeleton_torso1; shoulderLSprite=; shoulderRSprite=; backSprite=;
- supportAbilities=;  supportAbilities=;  supportAbilities=; MP=27; MPMax=27; TrueMPMax=27; ari_skeleton_mage_essencerupture=3; ari_enemy_skeleton_mage_bombard_stage1=1; 
-numRanksBought=ari_enemy_skeleton_mage_bombard_stage1=98; 
-numRanksBought=TrueHPMax=0; 
-numRanksBought=TrueMPMax=2; 
-numRanksBought=ari_skeleton_mage_essencerupture=3; 
-
-[ActorState]
-canSwap=False;
-
-[ActorEffect]
- actorValue=skill_Ruin; sourceAVAffecter=ari_grimoire_skulls; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
-[ActorEffect]
- actorValue=skill_Ruin; sourceAVAffecter=ari_skeletonmage_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=6; duration=-1;
-
-[ActorInventory]
-style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
- 
-
-[ActorItem] ID=ari_grimoire_skulls; cSlot=0; containerID=0;
-
-
-[Actor]ID=ari_gravekeeper_single_skelmage10_ari_gravekeeper_city_church_interior_0; name=Undead Skeleton;
-actorTypeID=summoned_undead_skeleton_mage_type_enemy; sprite=; actorClass=ari_skeletonmage_class_enemy; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=3; position=31,13; destination=-1,-1; facingRot=90; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=True; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=enemy; clothPalette=pBlack; skinPalette=pCorpryst; armorPalette=pUnarmored; unarmoredPalette=pUnarmored; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.7; bravery=0.3; intelligence=0.5; honor=0.2; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
- headSprite=ari_dadzioskeleton_head1; faceSprite=; legsSprite=dadzioskeleton_legs1; armLSprite=dadzioskeleton_arm1; armRSprite=dadzioskeleton_arm1; torsoSprite=dadzioskeleton_torso1; shoulderLSprite=; shoulderRSprite=; backSprite=;
- supportAbilities=;  supportAbilities=;  supportAbilities=; ari_skeleton_mage_essencerupture=3; ari_enemy_skeleton_mage_bombard_stage1=1; 
-numRanksBought=ari_skeleton_mage_essencerupture=3; 
-numRanksBought=TrueHPMax=0; 
-numRanksBought=TrueMPMax=0; 
-numRanksBought=ari_enemy_skeleton_mage_bombard_stage1=99; 
-
-[ActorState]
-canSwap=False;
-
-[ActorEffect]
- actorValue=skill_Ruin; sourceAVAffecter=ari_grimoire_skulls; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
-[ActorEffect]
- actorValue=skill_Ruin; sourceAVAffecter=ari_skeletonmage_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=6; duration=-1;
-
-[ActorInventory]
-style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
- 
-
-[ActorItem] ID=ari_grimoire_skulls; cSlot=0; containerID=0;
-
-
-[Actor]ID=ari_gravekeeper_single_skelarcher10_ari_gravekeeper_city_church_interior_; name=Undead Skeleton;
-actorTypeID=summoned_undead_skeleton_archer_type_enemy; sprite=; actorClass=ari_skeletonarcher_class_enemy; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=3; position=15,18; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=True; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=enemy; clothPalette=pBlack; skinPalette=pCorpryst; armorPalette=pIron; unarmoredPalette=pIron; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.6; bravery=0.8; intelligence=0.5; honor=0.2; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
- headSprite=ari_dadzioskeleton_head1; faceSprite=; legsSprite=dadzioskeleton_legs1; armLSprite=dadzioskeleton_arm1; armRSprite=knight_arm; torsoSprite=dadzioskeleton_torso1; shoulderLSprite=; shoulderRSprite=; backSprite=;
- supportAbilities=ari_enemy_resurrection_passive1;  supportAbilities=;  supportAbilities=; HP=27; HPMax=27; TrueHPMax=27; 
-numRanksBought=ari_skeleton_archer_bonespear=1; 
-numRanksBought=TrueHPMax=2; 
-numRanksBought=TrueMPMax=0; 
-
-[ActorState]
-canSwap=False;
-
-[ActorEffect]
- actorValue=PhysEva; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=6; duration=-1;
-[ActorEffect]
- actorValue=PhysDef; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
-[ActorEffect]
- actorValue=priority; sourceAVAffecter=ari_skeletonarcher_class; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=-0.5; duration=-1;
-[ActorEffect]
- actorValue=skill_Aim; sourceAVAffecter=ari_skeletonarcher_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=4; duration=-1;
-[ActorEffect]
- actorValue=skill_Shield; sourceAVAffecter=ari_skeletonarcher_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=2; duration=-1;
-[ActorEffect]
- actorValue=skill_Ruin; sourceAVAffecter=ari_skeletonarcher_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
-[ActorEffect]
- actorValue=PhysEva; sourceAVAffecter=shieldBonus; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=6; duration=-1;
-
-[ActorInventory]
-style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
- 
-
-[ActorItem] ID=ari_summoned_crossbow_enemy; cSlot=0; containerID=0;
-[ActorItem] ID=ari_summoned_shield; cSlot=1; containerID=1;
-
-
-[Actor]ID=ari_gravekeeper_single_skelarcher10_ari_gravekeeper_city_church_interior_0; name=Undead Skeleton;
-actorTypeID=summoned_undead_skeleton_archer_type_enemy; sprite=; actorClass=ari_skeletonarcher_class_enemy; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=3; position=31,17; destination=-1,-1; facingRot=90; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=True; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=enemy; clothPalette=pBlack; skinPalette=pCorpryst; armorPalette=pIron; unarmoredPalette=pIron; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.6; bravery=0.8; intelligence=0.5; honor=0.2; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
- headSprite=ari_dadzioskeleton_head1; faceSprite=; legsSprite=dadzioskeleton_legs1; armLSprite=dadzioskeleton_arm1; armRSprite=knight_arm; torsoSprite=dadzioskeleton_torso1; shoulderLSprite=; shoulderRSprite=; backSprite=;
- supportAbilities=ari_enemy_resurrection_passive1;  supportAbilities=;  supportAbilities=; HP=27; HPMax=27; TrueHPMax=27; 
-numRanksBought=ari_skeleton_archer_bonespear=1; 
-numRanksBought=TrueHPMax=2; 
-numRanksBought=TrueMPMax=0; 
-
-[ActorState]
-canSwap=False;
-
-[ActorEffect]
- actorValue=PhysEva; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=6; duration=-1;
-[ActorEffect]
- actorValue=PhysDef; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
-[ActorEffect]
- actorValue=priority; sourceAVAffecter=ari_skeletonarcher_class; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=-0.5; duration=-1;
-[ActorEffect]
- actorValue=skill_Aim; sourceAVAffecter=ari_skeletonarcher_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=4; duration=-1;
-[ActorEffect]
- actorValue=skill_Shield; sourceAVAffecter=ari_skeletonarcher_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=2; duration=-1;
-[ActorEffect]
- actorValue=skill_Ruin; sourceAVAffecter=ari_skeletonarcher_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
-[ActorEffect]
- actorValue=PhysEva; sourceAVAffecter=shieldBonus; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=6; duration=-1;
-
-[ActorInventory]
-style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
- 
-
-[ActorItem] ID=ari_summoned_crossbow_enemy; cSlot=0; containerID=0;
-[ActorItem] ID=ari_summoned_shield; cSlot=1; containerID=1;
-
-
-[Actor]ID=ari_gravekeeper_single_skelwarr10_ari_gravekeeper_city_church_interior_; name=Undead Skeleton;
-actorTypeID=summoned_undead_skeleton_enemy; sprite=; actorClass=ari_skeletonwarrior_class_enemy; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=3; position=21,18; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=True; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=enemy; clothPalette=pBlack; skinPalette=pCorpryst; armorPalette=pIron; unarmoredPalette=pIron; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.7; bravery=1; intelligence=0.3; honor=0.2; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
- headSprite=ari_dadzioskeleton_head1; faceSprite=; legsSprite=dadzioskeleton_legs1; armLSprite=knight_arm; armRSprite=knight_arm; torsoSprite=guardian_torso; shoulderLSprite=guardian_shoulder; shoulderRSprite=guardian_shoulder; backSprite=;
- supportAbilities=ari_enemy_resurrection_passive1;  supportAbilities=;  supportAbilities=; HP=26; HPMax=31; TrueHPMax=26; ari_skeleton_warrior_charge_enemy=1; 
-numRanksBought=ari_skeleton_warrior_charge_enemy=1; 
-numRanksBought=TrueHPMax=1; 
-numRanksBought=TrueMPMax=0; 
-
-[ActorState]
-canSwap=False;
-
-[ActorEffect]
- actorValue=PhysEva; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=6; duration=-1;
-[ActorEffect]
- actorValue=PhysDef; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
-[ActorEffect]
- actorValue=TrueHPMax; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
-[ActorEffect]
- actorValue=skill_Sword; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=3; duration=-1;
-[ActorEffect]
- actorValue=skill_Shield; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=3; duration=-1;
-[ActorEffect]
- actorValue=skill_Ruin; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
-[ActorEffect]
- actorValue=PhysEva; sourceAVAffecter=shieldBonus; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=9; duration=-1;
-
-[ActorInventory]
-style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
- 
-
-[ActorItem] ID=ari_summoned_sword_enemy; cSlot=0; containerID=0;
-[ActorItem] ID=ari_summoned_shield; cSlot=1; containerID=1;
-
-
-[Actor]ID=ari_gravekeeper_single_skelwarr10_ari_gravekeeper_city_church_interior_0; name=Undead Skeleton;
-actorTypeID=summoned_undead_skeleton_enemy; sprite=; actorClass=ari_skeletonwarrior_class_enemy; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=3; position=25,17; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=True; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=enemy; clothPalette=pBlack; skinPalette=pCorpryst; armorPalette=pIron; unarmoredPalette=pIron; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.7; bravery=1; intelligence=0.3; honor=0.2; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
- headSprite=ari_dadzioskeleton_head1; faceSprite=; legsSprite=dadzioskeleton_legs1; armLSprite=knight_arm; armRSprite=knight_arm; torsoSprite=guardian_torso; shoulderLSprite=guardian_shoulder; shoulderRSprite=guardian_shoulder; backSprite=;
- supportAbilities=ari_enemy_resurrection_passive1;  supportAbilities=;  supportAbilities=; HP=26; HPMax=31; TrueHPMax=26; ari_skeleton_warrior_charge_enemy=1; 
-numRanksBought=ari_skeleton_warrior_charge_enemy=1; 
-numRanksBought=TrueHPMax=1; 
-numRanksBought=TrueMPMax=0; 
-
-[ActorState]
-canSwap=False;
-
-[ActorEffect]
- actorValue=PhysEva; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=6; duration=-1;
-[ActorEffect]
- actorValue=PhysDef; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
-[ActorEffect]
- actorValue=TrueHPMax; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
-[ActorEffect]
- actorValue=skill_Sword; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=3; duration=-1;
-[ActorEffect]
- actorValue=skill_Shield; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=3; duration=-1;
-[ActorEffect]
- actorValue=skill_Ruin; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
-[ActorEffect]
- actorValue=PhysEva; sourceAVAffecter=shieldBonus; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=9; duration=-1;
-
-[ActorInventory]
-style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
- 
-
-[ActorItem] ID=ari_summoned_sword_enemy; cSlot=0; containerID=0;
-[ActorItem] ID=ari_summoned_shield; cSlot=1; containerID=1;
-
-
-[Actor]ID=ari_gravekeeper_single_skelarcher10_ari_gravekeeper_city_church_interior_1; name=Undead Skeleton;
-actorTypeID=summoned_undead_skeleton_archer_type_enemy; sprite=; actorClass=ari_skeletonarcher_class_enemy; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=3; position=12,18; destination=-1,-1; facingRot=64; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=True; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=enemy; clothPalette=pBlack; skinPalette=pCorpryst; armorPalette=pIron; unarmoredPalette=pIron; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.6; bravery=0.8; intelligence=0.5; honor=0.2; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
- headSprite=ari_dadzioskeleton_head1; faceSprite=; legsSprite=dadzioskeleton_legs1; armLSprite=dadzioskeleton_arm1; armRSprite=knight_arm; torsoSprite=dadzioskeleton_torso1; shoulderLSprite=; shoulderRSprite=; backSprite=;
- supportAbilities=ari_enemy_resurrection_passive1;  supportAbilities=;  supportAbilities=; HP=26; HPMax=26; TrueHPMax=26; 
-numRanksBought=ari_skeleton_archer_bone_shards=1; 
-numRanksBought=TrueHPMax=1; 
-numRanksBought=TrueMPMax=0; 
-
-[ActorState]
-canSwap=False;
-
-[ActorEffect]
- actorValue=PhysEva; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=6; duration=-1;
-[ActorEffect]
- actorValue=PhysDef; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
-[ActorEffect]
- actorValue=priority; sourceAVAffecter=ari_skeletonarcher_class; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=-0.5; duration=-1;
-[ActorEffect]
- actorValue=skill_Aim; sourceAVAffecter=ari_skeletonarcher_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=4; duration=-1;
-[ActorEffect]
- actorValue=skill_Shield; sourceAVAffecter=ari_skeletonarcher_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=2; duration=-1;
-[ActorEffect]
- actorValue=skill_Ruin; sourceAVAffecter=ari_skeletonarcher_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
-[ActorEffect]
- actorValue=PhysEva; sourceAVAffecter=shieldBonus; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=6; duration=-1;
-
-[ActorInventory]
-style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
- 
-
-[ActorItem] ID=ari_summoned_crossbow_enemy; cSlot=0; containerID=0;
-[ActorItem] ID=ari_summoned_shield; cSlot=1; containerID=1;
-
-
-[Actor]ID=ari_gravekeeper_single_skelarcher10_ari_gravekeeper_city_church_interior_2; name=Undead Skeleton;
-actorTypeID=summoned_undead_skeleton_archer_type_enemy; sprite=; actorClass=ari_skeletonarcher_class_enemy; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=3; position=35,17; destination=-1,-1; facingRot=180; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=True; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=enemy; clothPalette=pBlack; skinPalette=pCorpryst; armorPalette=pIron; unarmoredPalette=pIron; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.6; bravery=0.8; intelligence=0.5; honor=0.2; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
- headSprite=ari_dadzioskeleton_head1; faceSprite=; legsSprite=dadzioskeleton_legs1; armLSprite=dadzioskeleton_arm1; armRSprite=knight_arm; torsoSprite=dadzioskeleton_torso1; shoulderLSprite=; shoulderRSprite=; backSprite=;
- supportAbilities=ari_enemy_resurrection_passive1;  supportAbilities=;  supportAbilities=; HP=27; HPMax=27; TrueHPMax=27; 
-numRanksBought=ari_skeleton_archer_bone_shards=1; 
-numRanksBought=TrueHPMax=2; 
-numRanksBought=TrueMPMax=0; 
-
-[ActorState]
-canSwap=False;
-
-[ActorEffect]
- actorValue=PhysEva; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=6; duration=-1;
-[ActorEffect]
- actorValue=PhysDef; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
-[ActorEffect]
- actorValue=priority; sourceAVAffecter=ari_skeletonarcher_class; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=-0.5; duration=-1;
-[ActorEffect]
- actorValue=skill_Aim; sourceAVAffecter=ari_skeletonarcher_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=4; duration=-1;
-[ActorEffect]
- actorValue=skill_Shield; sourceAVAffecter=ari_skeletonarcher_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=2; duration=-1;
-[ActorEffect]
- actorValue=skill_Ruin; sourceAVAffecter=ari_skeletonarcher_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
-[ActorEffect]
- actorValue=PhysEva; sourceAVAffecter=shieldBonus; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=6; duration=-1;
-
-[ActorInventory]
-style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
- 
-
-[ActorItem] ID=ari_summoned_crossbow_enemy; cSlot=0; containerID=0;
-[ActorItem] ID=ari_summoned_shield; cSlot=1; containerID=1;
-
-
-[Actor]ID=ari_gravekeeper_single_abomination10_ari_gravekeeper_city_church_interior_; name=Hulking Abomination;
-actorTypeID=summoned_undead_abomination_enemy; sprite=; actorClass=ari_abomination_class_enemy; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=3; position=23,14; destination=-1,-1; facingRot=90; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=True; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=enemy; clothPalette=pHuman7; skinPalette=p54; armorPalette=pGreen; unarmoredPalette=pGreen; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=1; bravery=1; intelligence=0.5; honor=0.1; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
- headSprite=abomination_head; faceSprite=; legsSprite=abomination_legs; armLSprite=abomination_arm; armRSprite=abomination_arm; torsoSprite=abomination_torso; shoulderLSprite=; shoulderRSprite=; backSprite=;
- supportAbilities=ari_abomination_blood_nova;  supportAbilities=ari_abomination_horrific_presence;  supportAbilities=; ari_enemy_abomination_hurl_zombie=1; ari_enemy_abomination_amalgamated_limb=1; ari_enemy_abomination_corpse_slam=2; 
-numRanksBought=ari_enemy_abomination_corpse_slam=1; 
-
-[ActorState]
-canSwap=False;
-
-[ActorEffect]
- actorValue=skill_Fist; sourceAVAffecter=ari_abomination_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=8; duration=-1;
-[ActorEffect]
- actorValue=skill_Ruin; sourceAVAffecter=ari_abomination_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=6; duration=-1;
-
-[ActorInventory]
-style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
- 
-
-
-
-[Actor]ID=shana_undead_abscess_mature_enemy_ari_gravekeeper_city_church_interior_2; name=Undead Abscess;
-actorTypeID=shana_undead_abscess_mature_enemy; sprite=actor_shana_undead_abscess_normal; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=0; position=25,14; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pB; skinPalette=pG; armorPalette=pR; unarmoredPalette=pR; equipmentDoesntChangeArmorPalette=False; aiScript=none; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.1; bravery=0.6; intelligence=0.1; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
+[Actor]ID=shana_undead_abscess_mature_enemy_ari_gravekeeper_city_church_interior_ari_gravekeeper_city_church_interior_; name=Undead Abscess;
+actorTypeID=shana_undead_abscess_mature_enemy; sprite=actor_shana_undead_abscess_normal; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=0; position=16,37; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pB; skinPalette=pG; armorPalette=pR; unarmoredPalette=pR; equipmentDoesntChangeArmorPalette=False; aiScript=none; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.1; bravery=0.6; intelligence=0.1; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
 
  supportAbilities=shana_uber_instability;  supportAbilities=;  supportAbilities=; shana_sleeping_sickness_enemy=1; shana_psychenecrosis_enemy=1; 
 
@@ -827,8 +514,23 @@ style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=
 
 
 
-[Actor]ID=shana_undead_abscess_mature_enemy_ari_gravekeeper_city_church_interior_; name=Undead Abscess;
-actorTypeID=shana_undead_abscess_mature_enemy; sprite=actor_shana_undead_abscess_normal; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=0; position=25,9; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pB; skinPalette=pG; armorPalette=pR; unarmoredPalette=pR; equipmentDoesntChangeArmorPalette=False; aiScript=none; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.1; bravery=0.6; intelligence=0.1; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
+[Actor]ID=shana_undead_bweaver_ari_gravekeeper_city_church_interior_1; name=Kraw;
+actorTypeID=shana_undead_bweaver; sprite=actor_bweaver; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=7; position=43,6; destination=-1,-1; facingRot=90; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pBone; skinPalette=pMeat; armorPalette=pAsh_still; unarmoredPalette=pAsh_still; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=1; bravery=1; intelligence=0.3; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=flyjump;
+
+ supportAbilities=;  supportAbilities=;  supportAbilities=; 
+
+[ActorState]
+canSwap=False;
+
+
+[ActorInventory]
+style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
+ 
+
+
+
+[Actor]ID=shana_undead_abscess_mature_enemy_ari_gravekeeper_city_church_interior_0_ari_gravekeeper_city_church_interior_ari_gravekeeper_city_church_interior_; name=Undead Abscess;
+actorTypeID=shana_undead_abscess_mature_enemy; sprite=actor_shana_undead_abscess_normal; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=0; position=29,16; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pB; skinPalette=pG; armorPalette=pR; unarmoredPalette=pR; equipmentDoesntChangeArmorPalette=False; aiScript=none; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.1; bravery=0.6; intelligence=0.1; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
 
  supportAbilities=shana_uber_instability;  supportAbilities=;  supportAbilities=; shana_sleeping_sickness_enemy=1; shana_psychenecrosis_enemy=1; 
 
@@ -840,11 +542,48 @@ canSwap=False;
 style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
  
 
-[ActorItem] ID=table_small2; cSlot=8;
+
+
+[Actor]ID=summoned_undead_skeletonmage_enemy_ari_gravekeeper_city_church_interior_ari_gravekeeper_city_church_interior_; name=Undead Skeleton;
+actorTypeID=summoned_undead_skeleton_mage_type_enemy; sprite=; actorClass=ari_skeletonmage_class_enemy; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=2; position=17,41; destination=-1,-1; facingRot=1170; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=False; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pBlack; skinPalette=pCorpryst; armorPalette=pIron; unarmoredPalette=pUnarmored; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=False; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.5; bravery=0.4; intelligence=0.6; honor=0.1; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
+ headSprite=ari_dadzioskeleton_head1; faceSprite=; legsSprite=dadzioskeleton_legs1; armLSprite=dadzioskeleton_arm1; armRSprite=dadzioskeleton_arm1; torsoSprite=dadzioskeleton_torso1; shoulderLSprite=; shoulderRSprite=; backSprite=;
+partSpritesThatTakePriorityOverClass=torso; 
+
+ supportAbilities=ari_enemy_resurrection_passive1;  supportAbilities=;  supportAbilities=; MP=15; MPMax=15; TrueMPMax=15; skill_Ruin=3; ari_skeleton_mage_essencerupture=1; ari_enemy_skeleton_mage_bombard_stage1=1; 
+numRanksBought=ari_skeleton_mage_essencerupture=1; 
+numRanksBought=ari_enemy_skeleton_mage_bombard_stage1=1; 
+numRanksBought=skill_Ruin=3; 
+
+[ActorState]
+canSwap=False;
+
+[ActorEffect]
+ actorValue=skill_Ruin; sourceAVAffecter=ari_skeletonmage_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=6; duration=-1;
+
+[ActorInventory]
+style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
+ 
+
+[ActorItem] ID=ari_grimoire_forbidden; cSlot=0; containerID=0;
+
+
+[Actor]ID=shana_undead_abscess_mature_enemy_ari_gravekeeper_city_church_interior_0_ari_gravekeeper_city_church_interior_; name=Undead Abscess;
+actorTypeID=shana_undead_abscess_mature_enemy; sprite=actor_shana_undead_abscess_normal; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=0; position=29,11; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pB; skinPalette=pG; armorPalette=pR; unarmoredPalette=pR; equipmentDoesntChangeArmorPalette=False; aiScript=none; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.1; bravery=0.6; intelligence=0.1; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
+
+ supportAbilities=shana_uber_instability;  supportAbilities=;  supportAbilities=; shana_sleeping_sickness_enemy=1; shana_psychenecrosis_enemy=1; 
+
+[ActorState]
+canSwap=False;
+
+
+[ActorInventory]
+style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
+ 
+
 
 
 [Actor]ID=shana_undead_abscess_mature_enemy_ari_gravekeeper_city_church_interior_0; name=Undead Abscess;
-actorTypeID=shana_undead_abscess_mature_enemy; sprite=actor_shana_undead_abscess_normal; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=0; position=20,9; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pB; skinPalette=pG; armorPalette=pR; unarmoredPalette=pR; equipmentDoesntChangeArmorPalette=False; aiScript=none; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.1; bravery=0.6; intelligence=0.1; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
+actorTypeID=shana_undead_abscess_mature_enemy; sprite=actor_shana_undead_abscess_normal; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=0; position=24,11; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pB; skinPalette=pG; armorPalette=pR; unarmoredPalette=pR; equipmentDoesntChangeArmorPalette=False; aiScript=none; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.1; bravery=0.6; intelligence=0.1; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
 
  supportAbilities=shana_uber_instability;  supportAbilities=;  supportAbilities=; shana_sleeping_sickness_enemy=1; shana_psychenecrosis_enemy=1; 
 
@@ -859,7 +598,7 @@ style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=
 
 
 [Actor]ID=shana_undead_abscess_mature_enemy_ari_gravekeeper_city_church_interior_1; name=Undead Abscess;
-actorTypeID=shana_undead_abscess_mature_enemy; sprite=actor_shana_undead_abscess_normal; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=0; position=20,14; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pB; skinPalette=pG; armorPalette=pR; unarmoredPalette=pR; equipmentDoesntChangeArmorPalette=False; aiScript=none; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.1; bravery=0.6; intelligence=0.1; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
+actorTypeID=shana_undead_abscess_mature_enemy; sprite=actor_shana_undead_abscess_normal; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=0; position=24,16; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pB; skinPalette=pG; armorPalette=pR; unarmoredPalette=pR; equipmentDoesntChangeArmorPalette=False; aiScript=none; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.1; bravery=0.6; intelligence=0.1; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
 
  supportAbilities=shana_uber_instability;  supportAbilities=;  supportAbilities=; shana_sleeping_sickness_enemy=1; shana_psychenecrosis_enemy=1; 
 
@@ -873,76 +612,8 @@ style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=
 
 
 
-[Actor]ID=shana_undead_amalgam_enemy_base_ari_gravekeeper_city_church_interior_; name=Undead Amalgam;
-actorTypeID=shana_undead_amalgam_enemy_base; sprite=actor_shana_undead_amalgam; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=2; position=12,14; destination=-1,-1; facingRot=90; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pB; skinPalette=pG; armorPalette=pR; unarmoredPalette=pR; equipmentDoesntChangeArmorPalette=False; aiScript=none; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.1; bravery=0.6; intelligence=0.1; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=flying;
-
- supportAbilities=shana_critical_autolyze;  supportAbilities=shana_instability;  supportAbilities=shana_festering_fulcrum; shana_amalgambiteStorm_enemy=1; 
-
-[ActorState]
-canSwap=False;
-
-[ActorEffect]
- actorValue=shana_festering_fulcrum_equipped; sourceAVAffecter=shana_festering_fulcrum; sourceType=supportAbility; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
-
-[ActorInventory]
-style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
- 
-
-
-
-[Actor]ID=shana_undead_amalgam_enemy_base_ari_gravekeeper_city_church_interior_0; name=Undead Amalgam;
-actorTypeID=shana_undead_amalgam_enemy_base; sprite=actor_shana_undead_amalgam; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=2; position=34,13; destination=-1,-1; facingRot=90; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pB; skinPalette=pG; armorPalette=pR; unarmoredPalette=pR; equipmentDoesntChangeArmorPalette=False; aiScript=none; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.1; bravery=0.6; intelligence=0.1; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=flying;
-
- supportAbilities=shana_critical_autolyze;  supportAbilities=shana_instability;  supportAbilities=shana_festering_fulcrum; shana_amalgambiteStorm_enemy=1; 
-
-[ActorState]
-canSwap=False;
-
-[ActorEffect]
- actorValue=shana_festering_fulcrum_equipped; sourceAVAffecter=shana_festering_fulcrum; sourceType=supportAbility; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
-
-[ActorInventory]
-style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
- 
-
-
-
-[Actor]ID=shana_undead_amalgam_enemy_base_ari_gravekeeper_city_church_interior_1; name=Undead Amalgam;
-actorTypeID=shana_undead_amalgam_enemy_base; sprite=actor_shana_undead_amalgam; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=2; position=13,27; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pB; skinPalette=pG; armorPalette=pR; unarmoredPalette=pR; equipmentDoesntChangeArmorPalette=False; aiScript=none; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.1; bravery=0.6; intelligence=0.1; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=flying;
-
- supportAbilities=shana_critical_autolyze;  supportAbilities=shana_instability;  supportAbilities=shana_festering_fulcrum; shana_amalgambiteStorm_enemy=1; 
-
-[ActorState]
-canSwap=False;
-
-[ActorEffect]
- actorValue=shana_festering_fulcrum_equipped; sourceAVAffecter=shana_festering_fulcrum; sourceType=supportAbility; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
-
-[ActorInventory]
-style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
- 
-
-
-
-[Actor]ID=shana_undead_amalgam_enemy_base_ari_gravekeeper_city_church_interior_2; name=Undead Amalgam;
-actorTypeID=shana_undead_amalgam_enemy_base; sprite=actor_shana_undead_amalgam; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=2; position=31,27; destination=-1,-1; facingRot=270; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pB; skinPalette=pG; armorPalette=pR; unarmoredPalette=pR; equipmentDoesntChangeArmorPalette=False; aiScript=none; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.1; bravery=0.6; intelligence=0.1; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=flying;
-
- supportAbilities=shana_critical_autolyze;  supportAbilities=shana_instability;  supportAbilities=shana_festering_fulcrum; shana_amalgambiteStorm_enemy=1; 
-
-[ActorState]
-canSwap=False;
-
-[ActorEffect]
- actorValue=shana_festering_fulcrum_equipped; sourceAVAffecter=shana_festering_fulcrum; sourceType=supportAbility; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
-
-[ActorInventory]
-style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
- 
-
-
-
-[Actor]ID=shana_undead_abscess_mature_enemy_ari_gravekeeper_city_church_interior_3; name=Undead Abscess;
-actorTypeID=shana_undead_abscess_mature_enemy; sprite=actor_shana_undead_abscess_normal; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=0; position=18,19; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pB; skinPalette=pG; armorPalette=pR; unarmoredPalette=pR; equipmentDoesntChangeArmorPalette=False; aiScript=none; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.1; bravery=0.6; intelligence=0.1; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
+[Actor]ID=shana_undead_abscess_mature_enemy_ari_gravekeeper_city_church_interior_; name=Undead Abscess;
+actorTypeID=shana_undead_abscess_mature_enemy; sprite=actor_shana_undead_abscess_normal; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=0; position=35,37; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pB; skinPalette=pG; armorPalette=pR; unarmoredPalette=pR; equipmentDoesntChangeArmorPalette=False; aiScript=none; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.1; bravery=0.6; intelligence=0.1; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
 
  supportAbilities=shana_uber_instability;  supportAbilities=;  supportAbilities=; shana_sleeping_sickness_enemy=1; shana_psychenecrosis_enemy=1; 
 
@@ -956,8 +627,8 @@ style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=
 
 
 
-[Actor]ID=shana_undead_abscess_mature_enemy_ari_gravekeeper_city_church_interior_4; name=Undead Abscess;
-actorTypeID=shana_undead_abscess_mature_enemy; sprite=actor_shana_undead_abscess_normal; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=0; position=27,19; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pB; skinPalette=pG; armorPalette=pR; unarmoredPalette=pR; equipmentDoesntChangeArmorPalette=False; aiScript=none; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.1; bravery=0.6; intelligence=0.1; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
+[Actor]ID=shana_undead_abscess_mature_enemy_ari_gravekeeper_city_church_interior_2_ari_gravekeeper_city_church_interior_; name=Undead Abscess;
+actorTypeID=shana_undead_abscess_mature_enemy; sprite=actor_shana_undead_abscess_normal; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=0; position=7,31; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pB; skinPalette=pG; armorPalette=pR; unarmoredPalette=pR; equipmentDoesntChangeArmorPalette=False; aiScript=none; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.1; bravery=0.6; intelligence=0.1; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
 
  supportAbilities=shana_uber_instability;  supportAbilities=;  supportAbilities=; shana_sleeping_sickness_enemy=1; shana_psychenecrosis_enemy=1; 
 
@@ -971,8 +642,8 @@ style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=
 
 
 
-[Actor]ID=shana_undead_abscess_mature_enemy_ari_gravekeeper_city_church_interior_5; name=Undead Abscess;
-actorTypeID=shana_undead_abscess_mature_enemy; sprite=actor_shana_undead_abscess_normal; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=0; position=18,23; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pB; skinPalette=pG; armorPalette=pR; unarmoredPalette=pR; equipmentDoesntChangeArmorPalette=False; aiScript=none; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.1; bravery=0.6; intelligence=0.1; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
+[Actor]ID=shana_undead_abscess_mature_enemy_ari_gravekeeper_city_church_interior_ari_gravekeeper_city_church_interior_ari_gravekeeper_city_church_interior_; name=Undead Abscess;
+actorTypeID=shana_undead_abscess_mature_enemy; sprite=actor_shana_undead_abscess_normal; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=0; position=18,37; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pB; skinPalette=pG; armorPalette=pR; unarmoredPalette=pR; equipmentDoesntChangeArmorPalette=False; aiScript=none; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.1; bravery=0.6; intelligence=0.1; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
 
  supportAbilities=shana_uber_instability;  supportAbilities=;  supportAbilities=; shana_sleeping_sickness_enemy=1; shana_psychenecrosis_enemy=1; 
 
@@ -986,8 +657,24 @@ style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=
 
 
 
-[Actor]ID=shana_undead_abscess_mature_enemy_ari_gravekeeper_city_church_interior_6; name=Undead Abscess;
-actorTypeID=shana_undead_abscess_mature_enemy; sprite=actor_shana_undead_abscess_normal; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=0; position=27,23; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pB; skinPalette=pG; armorPalette=pR; unarmoredPalette=pR; equipmentDoesntChangeArmorPalette=False; aiScript=none; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.1; bravery=0.6; intelligence=0.1; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
+[Actor]ID=shana_undead_amalgam_enemy_prefab_with_loot_ari_gravekeeper_city_church_interior_; name=Undead Amalgam;
+actorTypeID=shana_undead_amalgam_enemy_base; sprite=actor_shana_undead_amalgam; actorClass=; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=2; position=27,13; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pB; skinPalette=pG; armorPalette=pR; unarmoredPalette=pR; equipmentDoesntChangeArmorPalette=False; aiScript=none; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.1; bravery=0.6; intelligence=0.1; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=flying;
+
+ supportAbilities=shana_critical_autolyze;  supportAbilities=shana_instability;  supportAbilities=shana_festering_fulcrum; 
+
+[ActorState]
+canSwap=False;
+
+
+[ActorInventory]
+style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
+ 
+
+[ActorItem] ID=shana_trigger_rot; cSlot=4;
+
+
+[Actor]ID=shana_undead_abscess_mature_enemy_ari_gravekeeper_city_church_interior_2; name=Undead Abscess;
+actorTypeID=shana_undead_abscess_mature_enemy; sprite=actor_shana_undead_abscess_normal; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=0; position=46,31; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pB; skinPalette=pG; armorPalette=pR; unarmoredPalette=pR; equipmentDoesntChangeArmorPalette=False; aiScript=none; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.1; bravery=0.6; intelligence=0.1; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
 
  supportAbilities=shana_uber_instability;  supportAbilities=;  supportAbilities=; shana_sleeping_sickness_enemy=1; shana_psychenecrosis_enemy=1; 
 
@@ -1001,79 +688,10 @@ style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=
 
 
 
-[Actor]ID=shana_undead_abscess_mature_enemy_ari_gravekeeper_city_church_interior_7; name=Undead Abscess;
-actorTypeID=shana_undead_abscess_mature_enemy; sprite=actor_shana_undead_abscess_normal; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=0; position=18,16; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pB; skinPalette=pG; armorPalette=pR; unarmoredPalette=pR; equipmentDoesntChangeArmorPalette=False; aiScript=none; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.1; bravery=0.6; intelligence=0.1; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
-
- supportAbilities=shana_uber_instability;  supportAbilities=;  supportAbilities=; shana_sleeping_sickness_enemy=1; shana_psychenecrosis_enemy=1; 
-
-[ActorState]
-canSwap=False;
-
-
-[ActorInventory]
-style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
- 
-
-
-
-[Actor]ID=shana_undead_abscess_mature_enemy_ari_gravekeeper_city_church_interior_8; name=Undead Abscess;
-actorTypeID=shana_undead_abscess_mature_enemy; sprite=actor_shana_undead_abscess_normal; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=0; position=27,16; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pB; skinPalette=pG; armorPalette=pR; unarmoredPalette=pR; equipmentDoesntChangeArmorPalette=False; aiScript=none; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.1; bravery=0.6; intelligence=0.1; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
-
- supportAbilities=shana_uber_instability;  supportAbilities=;  supportAbilities=; shana_sleeping_sickness_enemy=1; shana_psychenecrosis_enemy=1; 
-
-[ActorState]
-canSwap=False;
-
-
-[ActorInventory]
-style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
- 
-
-
-
-[Actor]ID=ari_undead_abomination_enemy_ari_gravekeeper_city_church_interior_0; name=Hulking Abomination;
-actorTypeID=summoned_undead_abomination_enemy; sprite=; actorClass=ari_risenminion_class; secondaryClass=ari_abomination_class; actorClass3=; actorClass4=; movementSpeed=3; position=30,28; destination=-1,-1; facingRot=1170; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=False; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pHuman7; skinPalette=p54; armorPalette=pGreen; unarmoredPalette=pGreen; equipmentDoesntChangeArmorPalette=False; aiScript=wander_leash5_slow; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=False; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.6; bravery=1; intelligence=0.5; honor=0.4; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
+[Actor]ID=summoned_undead_abomination_enemy_ari_gravekeeper_city_church_interior_ari_gravekeeper_city_church_interior_; name=Hulking Abomination;
+actorTypeID=summoned_undead_abomination_enemy; sprite=; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=3; position=25,20; destination=-1,-1; facingRot=90; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=none; combatTeam=; clothPalette=pHuman7; skinPalette=p54; armorPalette=pGreen; unarmoredPalette=pGreen; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=shana_gravekeeper_enemy_placeholder_dialogue; aggressiveness=1; bravery=1; intelligence=0.5; honor=0.1; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
  headSprite=abomination_head; faceSprite=; legsSprite=abomination_legs; armLSprite=abomination_arm; armRSprite=abomination_arm; torsoSprite=abomination_torso; shoulderLSprite=; shoulderRSprite=; backSprite=;
-partSpritesThatTakePriorityOverClass=torso; 
-
- supportAbilities=ari_abomination_blood_nova;  supportAbilities=ari_abomination_horrific_presence;  supportAbilities=; HP=120; MP=15; HPMax=120; MPMax=15; TrueHPMax=120; TrueMPMax=15; ari_abomination_consume=1; ari_abomination_corpse_slam=1; ari_abomination_amalgamated_limb=1; ari_abomination_charge=1; ari_abomination_bonespear=1; ari_abomination_gravestrike=1; ari_abomination_infectious_bile=1; ari_abomination_corpse_expulsion=1; 
-numRanksBought=ari_abomination_corpse_slam=1; 
-numRanksBought=ari_abomination_amalgamated_limb=1; 
-numRanksBought=ari_abomination_consume=1; 
-numRanksBought=ari_abomination_gravestrike=1; 
-numRanksBought=ari_abomination_charge=1; 
-numRanksBought=ari_abomination_bonespear=1; 
-numRanksBought=ari_abomination_infectious_bile=1; 
-numRanksBought=ari_abomination_corpse_expulsion=1; 
-numRanksBought=ari_abomination_blood_nova=1; 
-numRanksBought=ari_abomination_horrific_presence=1; 
-
-[ActorState]
-canSwap=False;
-
-
-[ActorInventory]
-style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
- 
-
-
-
-[Actor]ID=ari_undead_abomination_enemy_ari_gravekeeper_city_church_interior_; name=Hulking Abomination;
-actorTypeID=summoned_undead_abomination_enemy; sprite=; actorClass=ari_risenminion_class; secondaryClass=ari_abomination_class; actorClass3=; actorClass4=; movementSpeed=3; position=14,28; destination=-1,-1; facingRot=1170; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=False; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pHuman7; skinPalette=p54; armorPalette=pGreen; unarmoredPalette=pGreen; equipmentDoesntChangeArmorPalette=False; aiScript=wander_leash5_slow; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=False; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.6; bravery=1; intelligence=0.5; honor=0.4; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
- headSprite=abomination_head; faceSprite=; legsSprite=abomination_legs; armLSprite=abomination_arm; armRSprite=abomination_arm; torsoSprite=abomination_torso; shoulderLSprite=; shoulderRSprite=; backSprite=;
-partSpritesThatTakePriorityOverClass=torso; 
-
- supportAbilities=ari_abomination_blood_nova;  supportAbilities=ari_abomination_horrific_presence;  supportAbilities=; HP=120; MP=15; HPMax=120; MPMax=15; TrueHPMax=120; TrueMPMax=15; ari_abomination_consume=1; ari_abomination_corpse_slam=1; ari_abomination_amalgamated_limb=1; ari_abomination_charge=1; ari_abomination_bonespear=1; ari_abomination_gravestrike=1; ari_abomination_infectious_bile=1; ari_abomination_corpse_expulsion=1; 
-numRanksBought=ari_abomination_corpse_slam=1; 
-numRanksBought=ari_abomination_amalgamated_limb=1; 
-numRanksBought=ari_abomination_consume=1; 
-numRanksBought=ari_abomination_gravestrike=1; 
-numRanksBought=ari_abomination_charge=1; 
-numRanksBought=ari_abomination_bonespear=1; 
-numRanksBought=ari_abomination_infectious_bile=1; 
-numRanksBought=ari_abomination_corpse_expulsion=1; 
-numRanksBought=ari_abomination_blood_nova=1; 
-numRanksBought=ari_abomination_horrific_presence=1; 
+ supportAbilities=ari_abomination_blood_nova;  supportAbilities=ari_abomination_horrific_presence;  supportAbilities=; 
 
 [ActorState]
 canSwap=False;
@@ -1086,9 +704,9 @@ style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=
 
 
 [Actor]ID=shana_gatemaster_boss_ari_gravekeeper_city_church_interior_; name=Magnus;
-actorTypeID=shana_gatemaster_boss; sprite=; actorClass=shanafakegatemaster; secondaryClass=balancer; actorClass3=tactician; actorClass4=gatewarder; movementSpeed=6; position=22,12; destination=-1,-1; facingRot=90; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=none; combatTeam=; clothPalette=pCBlack; skinPalette=pHuman8; armorPalette=pPurple; unarmoredPalette=pUnarmored; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=auto; aggressiveness=0.5; bravery=0.5; intelligence=0.5; honor=0.4; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
+actorTypeID=shana_gatemaster_boss; sprite=; actorClass=shanafakegatemaster; secondaryClass=balancer; actorClass3=tactician; actorClass4=gatewarder; movementSpeed=6; position=26,14; destination=-1,-1; facingRot=90; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=none; combatTeam=; clothPalette=pCBlack; skinPalette=pHuman8; armorPalette=pPurple; unarmoredPalette=pUnarmored; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=auto; aggressiveness=0.5; bravery=0.5; intelligence=0.5; honor=0.4; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
  headSprite=human_head_sideburns_male; faceSprite=shades_face; legsSprite=legs_heavyBoots; armLSprite=shanafakegatemaster_armL; armRSprite=shanafakegatemaster_armR; torsoSprite=shanafakegatemaster_torso; shoulderLSprite=shanafakegatemaster_shoulderL; shoulderRSprite=shanafakegatemaster_shoulderR; backSprite=;
- supportAbilities=shana_gate_reckoning;  supportAbilities=pureMind;  supportAbilities=shanafakegatemaster_multiscale; HP=150; MP=90; HPMax=150; MPMax=90; TrueHPMax=150; TrueMPMax=90; MagAtk=9; MagDef=5; MagEva=20; skill_Fire=5; skill_Ice=5; skill_Wind=4; skill_Ruin=5; pureMind=1; sage_XP=0; Tac_masterstroke=1; tactician_XP=0; Ba_stonefoot=3; Ba_warmth=4; balancer_XP=0; gateW_void=1; gatewarder_XP=0; gate_hellfire=1; gate_gale=1; gate_ash=1; shana_gate_reckoning=1; shana_testing_XP=0; 
+ supportAbilities=shana_gate_reckoning;  supportAbilities=pureMind;  supportAbilities=shanafakegatemaster_multiscale; HP=300; MP=90; HPMax=300; MPMax=90; TrueHPMax=300; TrueMPMax=90; MagAtk=9; MagDef=5; MagEva=20; skill_Fire=5; skill_Ice=5; skill_Wind=4; skill_Ruin=5; pureMind=1; sage_XP=0; Tac_masterstroke=1; tactician_XP=0; Ba_stonefoot=3; Ba_warmth=4; balancer_XP=0; gateW_void=1; gatewarder_XP=0; gate_hellfire=1; gate_gale=1; gate_ash=1; shana_gate_reckoning=1; shana_testing_XP=0; 
 numRanksBought=gate_hellfire=1; 
 numRanksBought=gate_ash=1; 
 numRanksBought=Ba_stonefoot=3; 
@@ -1162,128 +780,24 @@ style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=
 
 
 [Trigger] numID=0; aliasID=leave_to_gk_city;
-topX=16;topY=38;btmX=29;btmY=39;
+topX=20;topY=47;btmX=33;btmY=48;
 triggerImmediatelyOnEnteringZone=False; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
-[TriggerEffect] numID=0; effectID=travel_point; sValue=ari_graveyard_city_outskirts; sValue2=; bValue1=False; bValue2=False; fValue=1; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+[TriggerEffect] numID=0; effectID=travel_point; sValue=ari_graveyard_city_outskirts; sValue2=; bValue1=False; bValue2=False; fValue=1; delay=0; fReq=1; taskString=; xValue=28; yValue=48;
 
 
-
-[Trigger] numID=1; aliasID=spawn_zombie1_gk_church;
-topX=17;topY=21;btmX=18;btmY=22;
-triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
-[TriggerEffect] numID=1; effectID=spawn; sValue=ari_gravekeeper_single_zombie1; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
-
+[Trigger] numID=20; aliasID=shana_area_creeping_death_combatStart;
+topX=1;topY=1;btmX=1;btmY=1;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=True; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1-g:ari_dead_ascetic;
+[TriggerEffect] numID=20; effectID=action; sValue=shana_areacreepingdeathact; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=1; yValue=1;
 
 
-[Trigger] numID=2; aliasID=spawn_zombie2_gk_church;
-topX=17;topY=17;btmX=18;btmY=18;
-triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
-[TriggerEffect] numID=2; effectID=spawn; sValue=ari_gravekeeper_single_zombie1; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
+[Trigger] numID=21; aliasID=shana_area_creeping_death_startTurn;
+topX=2;topY=2;btmX=2;btmY=2;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=startTurn; travelModeOnly=False; triggerOnPlayerActorOnly=True; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1-g:ari_dead_ascetic;
+[TriggerEffect] numID=21; effectID=action; sValue=shana_areacreepingdeathact; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=2; yValue=2;
 
 
-
-[Trigger] numID=3; aliasID=spawn_zombie3_gk_church;
-topX=17;topY=13;btmX=18;btmY=14;
-triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
-[TriggerEffect] numID=3; effectID=spawn; sValue=ari_gravekeeper_single_zombie1; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
-
-
-
-[Trigger] numID=4; aliasID=spawn_zombie4_gk_church;
-topX=27;topY=13;btmX=28;btmY=14;
-triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
-[TriggerEffect] numID=4; effectID=spawn; sValue=ari_gravekeeper_single_zombie1; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
-
-
-
-[Trigger] numID=5; aliasID=spawn_zombie5_gk_church;
-topX=27;topY=17;btmX=28;btmY=18;
-triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
-[TriggerEffect] numID=5; effectID=spawn; sValue=ari_gravekeeper_single_zombie1; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
-
-
-
-[Trigger] numID=6; aliasID=spawn_zombie6_gk_church;
-topX=27;topY=21;btmX=28;btmY=22;
-triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
-[TriggerEffect] numID=6; effectID=spawn; sValue=ari_gravekeeper_single_zombie1; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
-
-
-
-[Trigger] numID=7; aliasID=spawn_mage1_gk_church;
-topX=13;topY=13;btmX=14;btmY=14;
-triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
-[TriggerEffect] numID=7; effectID=spawn; sValue=ari_gravekeeper_single_skelmage1; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
-
-
-
-[Trigger] numID=8; aliasID=spawn_mage2_gk_church;
-topX=31;topY=13;btmX=32;btmY=14;
-triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
-[TriggerEffect] numID=8; effectID=spawn; sValue=ari_gravekeeper_single_skelmage1; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
-
-
-
-[Trigger] numID=9; aliasID=spawn_archer1_gk_church;
-topX=14;topY=17;btmX=15;btmY=18;
-triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
-[TriggerEffect] numID=9; effectID=spawn; sValue=ari_gravekeeper_single_skelarcher1; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
-
-
-
-[Trigger] numID=10; aliasID=spawn_archer2_gk_church;
-topX=30;topY=17;btmX=31;btmY=18;
-triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
-[TriggerEffect] numID=10; effectID=spawn; sValue=ari_gravekeeper_single_skelarcher1; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
-
-
-
-[Trigger] numID=11; aliasID=spawn_warrior1_gk_church;
-topX=20;topY=19;btmX=21;btmY=20;
-triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
-[TriggerEffect] numID=11; effectID=spawn; sValue=ari_gravekeeper_single_skelwarr1; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
-
-
-
-[Trigger] numID=12; aliasID=spawn_warrior2_gk_church;
-topX=24;topY=19;btmX=25;btmY=20;
-triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
-[TriggerEffect] numID=12; effectID=spawn; sValue=ari_gravekeeper_single_skelwarr1; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
-
-
-
-[Trigger] numID=13; aliasID=spawn_archer3_gk_church;
-topX=9;topY=17;btmX=10;btmY=18;
-triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
-[TriggerEffect] numID=13; effectID=spawn; sValue=ari_gravekeeper_single_skelarcher1; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
-
-
-
-[Trigger] numID=14; aliasID=spawn_archer4_gk_church;
-topX=35;topY=17;btmX=36;btmY=18;
-triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
-[TriggerEffect] numID=14; effectID=spawn; sValue=ari_gravekeeper_single_skelarcher1; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
-
-
-
-[Trigger] numID=15; aliasID=spawn_abom1_gk_church;
-topX=22;topY=13;btmX=23;btmY=14;
-triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
-[TriggerEffect] numID=15; effectID=spawn; sValue=ari_gravekeeper_single_abomination1; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
-
-
-
-[Trigger] numID=16; aliasID=spawn_ascetic_gk_church;
-topX=22;topY=11;btmX=23;btmY=12;
-triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
-[TriggerEffect] numID=16; effectID=spawn; sValue=ari_gravekeeper_single_quest_ascetic1; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
-
-
-
-[Trigger] numID=17; aliasID=spawn_rot_manuscript_onwin;
-topX=22;topY=7;btmX=22;btmY=7;
-triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatWon; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=True; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
-[TriggerEffect] numID=17; effectID=spawnItem; sValue=shana_deadbook; sValue2=; bValue1=False; bValue2=False; fValue=1; delay=0; fReq=g:ari_dead_ascetic; taskString=; xValue=-1; yValue=-1;
-
-
-
+[Trigger] numID=23; aliasID=shana_area_creeping_death_combat_start_dialog;
+topX=4;topY=4;btmX=4;btmY=4;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1-g:ari_dead_ascetic;
+[TriggerEffect] numID=23; effectID=talk; sValue=; sValue2=shana_creeping_death_combat_start_message; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;

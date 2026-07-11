@@ -13,7 +13,7 @@ ID=shana_birthing_coffin_base; element=life; element=dispel; element=combatEnd; 
 ID=shana_journal_birthing_coffin;
 category=item; halfPage=true; rarity=2;
 title=Birthing Coffin;
-text=<itemBig=shana_birthing_coffin_1><title=Birthing Coffin><brAdj=>Blasphemous coffin that births undead horrors. Becomes significantly more dangerous as the battle wears on, and will likely overwhelm any foe if left to its own devices for long enough. Despite this, will eventually burn itself out. Is rendered inert by heavy weapon attacks, explosions, life magic, dispelling energies and certain extremely powerful instances of Gate magic.;
+text=<itemBig=shana_birthing_coffin_2><title=Birthing Coffin><brAdj=>Blasphemous coffin that births undead horrors. Becomes significantly more dangerous as the battle wears on, and will likely overwhelm any foe if left to its own devices for long enough. Despite this, will eventually burn itself out. Is rendered inert by heavy weapon attacks, explosions, life magic, dispelling energies and certain extremely powerful instances of Gate magic.;
 
 [ItemType]  name=Birthing Coffin 1;
 cloneFrom=shana_birthing_coffin_base;
