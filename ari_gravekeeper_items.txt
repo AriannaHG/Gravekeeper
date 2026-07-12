@@ -147,6 +147,7 @@ title=Gate to Old Barrow;
 text=<itemBig=ari_closed_barrow_gate><title=Gate to Old Barrow><brAdj=>Heavily damaged gate that crumbles when met with the slightest force, only to make its inexplicable return the following day. <n=>Highly effective at luring the adventurous in, but rather ineffective at keeping intruders out.;
 
 [ItemType]  name=Warning;
+special=canUseWithoutConsumingAction;
 itemCategory=mech; stackable=true;
 ID=shana_barrow_warning_notice; sprite=2025;
 journalID=shana_journal_barrow_warning_notice;
@@ -164,6 +165,7 @@ title=Warning;
 text=<itemBig=shana_barrow_warning_notice><title=Warning><brAdj=>A waterproofed poster, inked by a frustrated-looking hand.;
 
 [ItemType]  name=Missing Poster;
+special=canUseWithoutConsumingAction;
 itemCategory=mech; stackable=true;
 ID=shana_barrow_missing_poster; sprite=2025;
 journalID=shana_journal_barrow_missing_poster;
@@ -172,7 +174,7 @@ description=Use to read.;
 special=cannotBePickedUp; special=canHangOnWalls;
 special=fullTileHitbox; special=oneClickToUse;
 [ItemReaction]
-ID=shana_barrow_warning_notice; element=use; action=use;
+ID=shana_barrow_missing_poster; element=use; action=use;
 
 [JournalEntry]
 ID=shana_journal_barrow_missing_poster;

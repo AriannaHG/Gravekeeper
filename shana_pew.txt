@@ -9,7 +9,7 @@ special=moveCostOverride_2; special=cannotBePickedUp;
 blockWalking=true; 
 
 [ItemReaction] 
-ID=shana_prayer_bench; element=heavySlash; element=smash; newID=debris_wood_dark; fx=shana_pewbreak;
+ID=shana_prayer_bench; element=heavySlash; element=smash; element=gateCannon; newID=debris_wood_dark; fx=shana_pewbreak;
 
 [ItemReaction] 
 ID=shana_prayer_bench; element=fire; element=explode; newID=debris_wood_dark; fx=shana_pewbreak; spawnItem=fire;
