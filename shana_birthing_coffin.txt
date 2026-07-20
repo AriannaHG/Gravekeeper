@@ -29,7 +29,7 @@ cloneFrom=shana_birthing_coffin_base;
 description=Birthing Coffin 1;
 pB=pAsh;
 ID=shana_birthing_coffin_1;
-special=timer; timer=25;
+special=timer; timer=100;
 [ItemReaction]
 ID=shana_birthing_coffin_1; element=life; element=dispel; element=combatEnd; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon; fx=shana_gate_dust; newID=X; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
 [ItemReaction]
@@ -80,7 +80,7 @@ ID=shana_birthing_coffin_1; element=timerUp; newID=shana_birthing_coffin_2; fx=s
 cloneFrom=shana_birthing_coffin_base;
 description=Birthing Coffin 2;
 ID=shana_birthing_coffin_2;
-special=timer; timer=25;
+special=timer; timer=80;
 [ItemReaction]
 ID=shana_birthing_coffin_2; element=life; element=dispel; element=combatEnd; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon;  fx=shana_gate_dust; newID=X; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
 [ItemReaction]
@@ -130,7 +130,7 @@ ID=shana_birthing_coffin_2; element=timerUp; newID=shana_birthing_coffin_3; fx=s
 cloneFrom=shana_birthing_coffin_base;
 description=Birthing Coffin 3;
 ID=shana_birthing_coffin_3;
-special=timer; timer=25;
+special=timer; timer=60;
 [ItemReaction]
 ID=shana_birthing_coffin_3; element=life; element=dispel; element=combatEnd; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon;  fx=shana_gate_dust; newID=X; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
 [ItemReaction]
@@ -180,7 +180,7 @@ ID=shana_birthing_coffin_3; element=timerUp; newID=shana_birthing_coffin_4; fx=s
 cloneFrom=shana_birthing_coffin_base;
 description=Birthing Coffin 4;
 ID=shana_birthing_coffin_4;
-special=timer; timer=25;
+special=timer; timer=40;
 [ItemReaction]
 ID=shana_birthing_coffin_4; element=life; element=dispel; element=combatEnd; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon;  fx=shana_gate_dust; newID=X; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
 [ItemReaction]
@@ -230,7 +230,7 @@ ID=shana_birthing_coffin_4; element=timerUp; newID=shana_birthing_coffin_5; fx=s
 cloneFrom=shana_birthing_coffin_base;
 description=Birthing Coffin 5;
 ID=shana_birthing_coffin_5;
-special=timer; timer=25;
+special=timer; timer=35;
 [ItemReaction]
 ID=shana_birthing_coffin_5; element=life; element=dispel; element=combatEnd; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon;  fx=shana_gate_dust; newID=X; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
 [ItemReaction]
@@ -281,7 +281,7 @@ cloneFrom=shana_birthing_coffin_base;
 description=Birthing Coffin 6;
 pB=pBloodyMess;
 ID=shana_birthing_coffin_6;
-special=timer; timer=25;
+special=timer; timer=30;
 [ItemReaction]
 ID=shana_birthing_coffin_6; element=life; element=dispel; element=combatEnd; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon;  fx=shana_gate_dust; newID=X; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
 [ItemReaction]
@@ -402,7 +402,7 @@ cloneFrom=shana_birthing_coffin_base;
 description=Birthing Coffin 8;
 pB=pBloodyMess;
 ID=shana_birthing_coffin_8;
-special=timer; timer=25;
+special=timer; timer=20;
 [ItemReaction]
 ID=shana_birthing_coffin_8; element=life; element=dispel; element=combatEnd; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon;  fx=shana_gate_dust; newID=X; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
 [ItemReaction]
@@ -472,7 +472,7 @@ cloneFrom=shana_birthing_coffin_base;
 description=Birthing Coffin 9;
 pB=pBloodyMess;
 ID=shana_birthing_coffin_9;
-special=timer; timer=25;
+special=timer; timer=15;
 [ItemReaction]
 ID=shana_birthing_coffin_9; element=life; element=dispel; element=combatEnd; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon;  fx=shana_gate_dust; newID=X; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
 [ItemReaction]

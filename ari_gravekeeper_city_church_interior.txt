@@ -8,542 +8,608 @@ lockCameraAtX=-1; lockCameraAtY=-1;
 
 combatMode=False; 
 
-[Item] ID=dirt_sandy1; q=1; r=270; x=0; y=39;
-[Item] ID=shana_birthing_coffin_0; q=1; x=4; y=34;
-[Item] ID=shana_birthing_coffin_0; q=1; x=4; y=40;
-[Item] ID=bonePileDark; q=1; r=-90; x=7; y=10;
-[Item] ID=bonePileDark; q=1; r=360; x=7; y=10;
-[Item] ID=dirt_sandy1; q=1; r=270; x=7; y=12;
-[Item] ID=bonePileDark; q=1; r=-180; x=7; y=12;
-[Item] ID=xpDust; q=1; r=-360; x=7; y=13;
-[Item] ID=xpGemBig; q=1; r=-360; bu=True; x=7; y=13;
-[Item] ID=dirt_sandy2; q=1; r=90; x=7; y=14;
-[Item] ID=bonePileDark; q=1; r=-360; x=7; y=15;
-[Item] ID=bonePileDark; q=1; r=-180; x=7; y=17;
+[Item] ID=dirt_sandy1; q=1; r=270; x=0; y=46;
+[Item] ID=shana_birthing_coffin_0; q=1; x=4; y=41;
+[Item] ID=shana_birthing_coffin_0; q=1; x=4; y=47;
 [Item] ID=bonePileDark; q=1; r=-90; x=7; y=17;
-[Item] ID=bonePileDark; q=1; r=-90; x=7; y=18;
-[Item] ID=bonePileDark; q=1; r=-90; x=7; y=20;
-[Item] ID=pebbles1; q=1; x=7; y=21;
-[Item] ID=bugsMass_small; q=1; r=-360; x=7; y=21;
-[Item] ID=bonePileDark; q=1; x=7; y=22;
-[Item] ID=dirt_sandy2; q=2; r=90; x=7; y=22;
+[Item] ID=bonePileDark; q=1; r=360; x=7; y=17;
+[Item] ID=dirt_sandy1; q=1; r=270; x=7; y=19;
+[Item] ID=bonePileDark; q=1; r=-180; x=7; y=19;
+[Item] ID=xpDust; q=1; r=-360; x=7; y=20;
+[Item] ID=xpGemBig; q=1; r=-360; bu=True; x=7; y=20;
+[Item] ID=dirt_sandy2; q=1; r=90; x=7; y=21;
+[Item] ID=bonePileDark; q=1; r=-360; x=7; y=22;
 [Item] ID=bonePileDark; q=1; r=-180; x=7; y=24;
 [Item] ID=bonePileDark; q=1; r=-90; x=7; y=24;
 [Item] ID=bonePileDark; q=1; r=-90; x=7; y=25;
-[Item] ID=dirt_sandy1; q=1; r=270; x=7; y=27;
 [Item] ID=bonePileDark; q=1; r=-90; x=7; y=27;
 [Item] ID=pebbles1; q=1; x=7; y=28;
 [Item] ID=bugsMass_small; q=1; r=-360; x=7; y=28;
 [Item] ID=bonePileDark; q=1; x=7; y=29;
 [Item] ID=dirt_sandy2; q=2; r=90; x=7; y=29;
-[Item] ID=bonePileDark; q=1; r=-180; x=8; y=11;
-[Item] ID=bonePileDark; q=1; r=90; x=8; y=11;
-[Item] ID=bone_dust; q=1; r=-360; x=8; y=11;
-[Item] ID=bugs5_small; q=1; x=8; y=12;
-[Item] ID=dirt_sandy2; q=2; r=360; x=8; y=13;
-[Item] ID=rocks1; q=4; x=8; y=14;
-[Item] ID=bugs12_small; q=1; r=-360; x=8; y=14;
-[Item] ID=dirt_sandy2; q=3; r=90; x=8; y=15;
-[Item] ID=bonePileDark; q=1; r=360; x=8; y=16;
-[Item] ID=bonePileDark; q=1; r=90; x=8; y=16;
-[Item] ID=bonePileDark; q=1; r=360; x=8; y=19;
-[Item] ID=bonePileDark; q=1; r=180; x=8; y=19;
-[Item] ID=bonePileDark; q=1; r=-180; x=8; y=21;
-[Item] ID=ribs2; q=1; r=-360; x=8; y=22;
+[Item] ID=bonePileDark; q=1; r=-180; x=7; y=31;
+[Item] ID=bonePileDark; q=1; r=-90; x=7; y=31;
+[Item] ID=bonePileDark; q=1; r=-90; x=7; y=32;
+[Item] ID=dirt_sandy1; q=1; r=270; x=7; y=34;
+[Item] ID=bonePileDark; q=1; r=-90; x=7; y=34;
+[Item] ID=pebbles1; q=1; x=7; y=35;
+[Item] ID=bugsMass_small; q=1; r=-360; x=7; y=35;
+[Item] ID=bonePileDark; q=1; x=7; y=36;
+[Item] ID=dirt_sandy2; q=2; r=90; x=7; y=36;
+[Item] ID=bonePileDark; q=1; r=180; x=7; y=39;
+[Item] ID=bonePileDark; q=1; r=-180; x=8; y=18;
+[Item] ID=bonePileDark; q=1; r=90; x=8; y=18;
+[Item] ID=bone_dust; q=1; r=-360; x=8; y=18;
+[Item] ID=bugs5_small; q=1; x=8; y=19;
+[Item] ID=dirt_sandy2; q=2; r=360; x=8; y=20;
+[Item] ID=rocks1; q=4; x=8; y=21;
+[Item] ID=bugs12_small; q=1; r=-360; x=8; y=21;
+[Item] ID=dirt_sandy2; q=3; r=90; x=8; y=22;
 [Item] ID=bonePileDark; q=1; r=360; x=8; y=23;
 [Item] ID=bonePileDark; q=1; r=90; x=8; y=23;
 [Item] ID=bonePileDark; q=1; r=360; x=8; y=26;
 [Item] ID=bonePileDark; q=1; r=180; x=8; y=26;
 [Item] ID=bonePileDark; q=1; r=-180; x=8; y=28;
 [Item] ID=ribs2; q=1; r=-360; x=8; y=29;
-[Item] ID=bonePileDark; q=1; r=90; x=8; y=31;
-[Item] ID=bonePileDark; q=1; r=90; x=9; y=10;
-[Item] ID=ribs2; q=1; r=360; x=9; y=10;
-[Item] ID=bugsMass_small; q=1; r=360; x=9; y=11;
-[Item] ID=shana_birthing_coffin_0; q=1; x=10; y=34;
-[Item] ID=shana_birthing_coffin_0; q=1; x=10; y=40;
-[Item] ID=dirt_sandy2; q=2; r=-270; x=10; y=45;
-[Item] ID=xpDust; q=1; r=-360; x=10; y=46;
-[Item] ID=xpGemBig; q=1; r=-360; bu=True; x=10; y=46;
-[Item] ID=dirt_sandy2; q=2; r=-180; x=11; y=46;
-[Item] ID=dirt_sandy2; q=2; r=-270; x=12; y=37;
-[Item] ID=secretPassage; q=1; x=13; y=7;
-[Item] ID=secretPassage; q=1; x=13; y=8;
-[Item] ID=sunbeam; q=1; x=13; y=8;
-[Item] ID=dirt_sandy2; q=2; r=-270; x=13; y=37;
-[Item] ID=secretPassage; q=1; x=14; y=7;
-[Item] ID=secretPassage; q=1; x=14; y=8;
-[Item] ID=bonePileDark; q=1; r=270; x=14; y=17;
-[Item] ID=bonePileDark; q=1; r=270; x=14; y=18;
+[Item] ID=bonePileDark; q=1; r=360; x=8; y=30;
+[Item] ID=bonePileDark; q=1; r=90; x=8; y=30;
+[Item] ID=bonePileDark; q=1; r=360; x=8; y=33;
+[Item] ID=bonePileDark; q=1; r=180; x=8; y=33;
+[Item] ID=bonePileDark; q=1; r=-180; x=8; y=35;
+[Item] ID=ribs2; q=1; r=-360; x=8; y=36;
+[Item] ID=bonePileDark; q=1; r=90; x=8; y=37;
+[Item] ID=bonePileDark; q=1; r=90; x=8; y=38;
+[Item] ID=bonePileDark; q=1; r=90; x=9; y=17;
+[Item] ID=ribs2; q=1; r=360; x=9; y=17;
+[Item] ID=bugsMass_small; q=1; r=360; x=9; y=18;
+[Item] ID=shana_birthing_coffin_0; q=1; x=10; y=41;
+[Item] ID=shana_birthing_coffin_0; q=1; x=10; y=47;
+[Item] ID=dirt_sandy2; q=2; r=-270; x=10; y=52;
+[Item] ID=xpDust; q=1; r=-360; x=10; y=53;
+[Item] ID=xpGemBig; q=1; r=-360; bu=True; x=10; y=53;
+[Item] ID=dirt_sandy1; q=1; r=180; x=11; y=43;
+[Item] ID=dirt_sandy2; q=2; r=-180; x=11; y=53;
+[Item] ID=dirt_sandy2; q=1; r=270; x=12; y=40;
+[Item] ID=dirt_sandy2; q=1; r=270; x=12; y=42;
+[Item] ID=dirt_sandy2; q=2; r=270; x=12; y=44;
+[Item] ID=dirt_sandy1; q=1; r=90; x=12; y=44;
+[Item] ID=dirt_sandy2; q=1; r=270; x=13; y=40;
+[Item] ID=dirt_sandy2; q=3; r=360; x=13; y=43;
+[Item] ID=dirt_sandy2; q=2; r=-270; x=13; y=44;
 [Item] ID=bonePileDark; q=1; r=270; x=14; y=24;
 [Item] ID=bonePileDark; q=1; r=270; x=14; y=25;
-[Item] ID=dirt_sandy2; q=2; r=-270; x=14; y=37;
-[Item] ID=barrier_strong; q=1; r=-360; x=14; y=42;
-[Item] ID=barrier_strong; q=1; r=-360; x=14; y=43;
-[Item] ID=barrier_strong; q=1; r=-360; x=14; y=44;
-[Item] ID=barrier_strong; q=1; r=-360; x=14; y=45;
-[Item] ID=barrier_strong; q=1; r=-360; x=14; y=46;
-[Item] ID=barrier_strong; q=1; r=-360; x=14; y=47;
-[Item] ID=barrier_strong; q=1; r=-360; x=14; y=48;
-[Item] ID=secretPassage; q=1; x=15; y=7;
-[Item] ID=secretPassage; q=1; x=15; y=8;
-[Item] ID=pebbles1; q=1; x=15; y=14;
-[Item] ID=bugs5_small; q=1; x=15; y=14;
-[Item] ID=dirt_sandy1; q=1; r=90; x=15; y=15;
-[Item] ID=bonePileDark; q=1; r=360; x=15; y=16;
-[Item] ID=sunbeam_circle_small; q=1; x=15; y=17;
-[Item] ID=shana_prayer_bench; q=1; x=15; y=17;
-[Item] ID=bonePileDark; q=1; r=180; x=15; y=19;
-[Item] ID=shana_prayer_bench; q=1; x=15; y=19;
-[Item] ID=shana_prayer_bench; q=1; x=15; y=21;
+[Item] ID=bonePileDark; q=1; r=270; x=14; y=31;
+[Item] ID=bonePileDark; q=1; r=270; x=14; y=32;
+[Item] ID=dirt_sandy2; q=3; r=180; x=14; y=43;
+[Item] ID=dirt_sandy2; q=2; r=-270; x=14; y=44;
+[Item] ID=barrier_strong; q=1; r=-360; x=14; y=49;
+[Item] ID=barrier_strong; q=1; r=-360; x=14; y=50;
+[Item] ID=barrier_strong; q=1; r=-360; x=14; y=51;
+[Item] ID=barrier_strong; q=1; r=-360; x=14; y=52;
+[Item] ID=barrier_strong; q=1; r=-360; x=14; y=53;
+[Item] ID=barrier_strong; q=1; r=-360; x=14; y=54;
+[Item] ID=barrier_strong; q=1; r=-360; x=14; y=55;
+[Item] ID=pebbles1; q=1; x=15; y=21;
+[Item] ID=bugs5_small; q=1; x=15; y=21;
+[Item] ID=dirt_sandy1; q=1; r=90; x=15; y=22;
 [Item] ID=bonePileDark; q=1; r=360; x=15; y=23;
-[Item] ID=shana_prayer_bench; q=1; x=15; y=23;
 [Item] ID=sunbeam_circle_small; q=1; x=15; y=24;
-[Item] ID=shana_prayer_bench; q=1; x=15; y=25;
+[Item] ID=shana_prayer_bench; q=1; x=15; y=24;
 [Item] ID=bonePileDark; q=1; r=180; x=15; y=26;
-[Item] ID=shana_prayer_bench; q=1; x=15; y=27;
-[Item] ID=dirt_sandy2; q=2; r=-270; x=15; y=37;
-[Item] ID=barrier_strong; q=1; r=-360; x=15; y=42;
-[Item] ID=barrier_strong; q=1; r=-360; x=15; y=48;
-[Item] ID=secretPassage; q=1; x=16; y=7;
-[Item] ID=secretPassage; q=1; x=16; y=8;
-[Item] ID=bone_dust; q=1; r=-360; x=16; y=13;
-[Item] ID=bonePileDark; q=1; r=360; x=16; y=16;
-[Item] ID=shana_prayer_bench; q=1; x=16; y=17;
-[Item] ID=bonePileDark; q=1; r=180; x=16; y=18;
-[Item] ID=bonePileDark; q=1; r=90; x=16; y=18;
-[Item] ID=shana_prayer_bench; q=1; x=16; y=19;
-[Item] ID=shana_prayer_bench; q=1; x=16; y=21;
+[Item] ID=shana_prayer_bench; q=1; x=15; y=26;
+[Item] ID=shana_prayer_bench; q=1; x=15; y=28;
+[Item] ID=bonePileDark; q=1; r=360; x=15; y=30;
+[Item] ID=shana_prayer_bench; q=1; x=15; y=30;
+[Item] ID=sunbeam_circle_small; q=1; x=15; y=31;
+[Item] ID=shana_prayer_bench; q=1; x=15; y=32;
+[Item] ID=bonePileDark; q=1; r=180; x=15; y=33;
+[Item] ID=shana_prayer_bench; q=1; x=15; y=34;
+[Item] ID=dirt_sandy2; q=2; r=-270; x=15; y=44;
+[Item] ID=dirt_sandy1; q=1; r=90; x=15; y=44;
+[Item] ID=barrier_strong; q=1; r=-360; x=15; y=49;
+[Item] ID=barrier_strong; q=1; r=-360; x=15; y=55;
+[Item] ID=bone_dust; q=1; r=-360; x=16; y=20;
 [Item] ID=bonePileDark; q=1; r=360; x=16; y=23;
-[Item] ID=shana_prayer_bench; q=1; x=16; y=23;
+[Item] ID=shana_prayer_bench; q=1; x=16; y=24;
 [Item] ID=bonePileDark; q=1; r=180; x=16; y=25;
 [Item] ID=bonePileDark; q=1; r=90; x=16; y=25;
-[Item] ID=shana_prayer_bench; q=1; x=16; y=25;
-[Item] ID=shana_prayer_bench; q=1; x=16; y=27;
-[Item] ID=dirt_sandy2; q=3; r=-270; x=16; y=34;
-[Item] ID=rocks1; q=2; r=-360; x=16; y=35;
-[Item] ID=rocks1; q=3; r=360; x=16; y=37;
-[Item] ID=dirt_sandy2; q=2; r=-180; x=16; y=38;
-[Item] ID=dirt_sandy2; q=3; r=-180; x=16; y=39;
-[Item] ID=dirt_sandy2; q=3; r=-180; x=16; y=40;
-[Item] ID=dirt_sandy2; q=2; r=-180; x=16; y=41;
-[Item] ID=rocks1; q=4; r=360; x=16; y=42;
-[Item] ID=shana_birthing_coffin_0; q=1; r=-360; x=16; y=46;
-[Item] ID=secretPassage; q=1; x=17; y=7;
-[Item] ID=secretPassage; q=1; x=17; y=8;
-[Item] ID=bonePileDark; q=1; r=90; x=17; y=13;
-[Item] ID=bonePileDark; q=1; r=-270; x=17; y=17;
-[Item] ID=shana_prayer_bench; q=1; x=17; y=17;
-[Item] ID=shana_prayer_bench; q=1; x=17; y=19;
-[Item] ID=shana_prayer_bench; q=1; x=17; y=21;
-[Item] ID=shana_prayer_bench; q=1; x=17; y=23;
+[Item] ID=shana_prayer_bench; q=1; x=16; y=26;
+[Item] ID=shana_prayer_bench; q=1; x=16; y=28;
+[Item] ID=bonePileDark; q=1; r=360; x=16; y=30;
+[Item] ID=shana_prayer_bench; q=1; x=16; y=30;
+[Item] ID=bonePileDark; q=1; r=180; x=16; y=32;
+[Item] ID=bonePileDark; q=1; r=90; x=16; y=32;
+[Item] ID=shana_prayer_bench; q=1; x=16; y=32;
+[Item] ID=shana_prayer_bench; q=1; x=16; y=34;
+[Item] ID=dirt_sandy2; q=3; r=-270; x=16; y=41;
+[Item] ID=rocks1; q=2; r=-360; x=16; y=41;
+[Item] ID=rocks1; q=2; r=-360; x=16; y=42;
+[Item] ID=dirt_sandy1; q=1; r=90; x=16; y=43;
+[Item] ID=rocks1; q=3; r=360; x=16; y=44;
+[Item] ID=dirt_sandy2; q=2; r=-180; x=16; y=45;
+[Item] ID=dirt_sandy2; q=3; r=-180; x=16; y=46;
+[Item] ID=dirt_sandy2; q=3; r=-180; x=16; y=47;
+[Item] ID=dirt_sandy2; q=2; r=-180; x=16; y=48;
+[Item] ID=rocks1; q=4; r=360; x=16; y=49;
+[Item] ID=shana_birthing_coffin_0; q=1; r=-360; x=16; y=53;
+[Item] ID=sunbeam; q=1; x=17; y=13;
+[Item] ID=bonePileDark; q=1; r=90; x=17; y=20;
 [Item] ID=bonePileDark; q=1; r=-270; x=17; y=24;
-[Item] ID=shana_prayer_bench; q=1; x=17; y=25;
-[Item] ID=shana_prayer_bench; q=1; x=17; y=27;
-[Item] ID=rocks1; q=2; r=-360; x=17; y=34;
-[Item] ID=bugs5_small; q=1; r=360; x=17; y=35;
-[Item] ID=rocks1; q=2; r=360; x=17; y=41;
-[Item] ID=rocks1; q=4; r=360; x=17; y=43;
-[Item] ID=sunbeam_circle_big_dull; q=1; r=-360; x=17; y=45;
-[Item] ID=secretPassage; q=1; x=18; y=7;
-[Item] ID=secretPassage; q=1; x=18; y=8;
-[Item] ID=shana_prayer_bench; q=1; x=18; y=17;
-[Item] ID=shana_prayer_bench; q=1; x=18; y=19;
-[Item] ID=shana_prayer_bench; q=1; x=18; y=21;
-[Item] ID=shana_prayer_bench; q=1; x=18; y=23;
-[Item] ID=shana_prayer_bench; q=1; x=18; y=25;
-[Item] ID=shana_prayer_bench; q=1; x=18; y=27;
-[Item] ID=dirt_sandy2; q=2; r=-270; x=18; y=33;
-[Item] ID=dirt_sandy1; q=1; r=-90; x=18; y=35;
-[Item] ID=bonePileDark; q=1; r=-90; x=18; y=35;
-[Item] ID=bonePileDark; q=1; r=-90; x=18; y=36;
-[Item] ID=dirt_sandy2; q=2; r=-360; x=18; y=38;
-[Item] ID=dirt_sandy2; q=2; r=-360; x=18; y=39;
-[Item] ID=dirt_sandy2; q=2; r=-360; x=18; y=40;
-[Item] ID=dirt_sandy2; q=2; r=-360; x=18; y=41;
-[Item] ID=shana_birthing_coffin_0; q=1; r=-360; x=18; y=46;
-[Item] ID=secretPassage; q=1; x=19; y=7;
-[Item] ID=secretPassage; q=1; x=19; y=8;
-[Item] ID=shana_prayer_bench; q=1; x=19; y=17;
-[Item] ID=shana_prayer_bench; q=1; x=19; y=19;
-[Item] ID=shana_prayer_bench; q=1; x=19; y=21;
-[Item] ID=shana_prayer_bench; q=1; x=19; y=23;
-[Item] ID=shana_prayer_bench; q=1; x=19; y=25;
-[Item] ID=shana_prayer_bench; q=1; x=19; y=27;
-[Item] ID=bonePileDark; q=1; r=-360; x=19; y=33;
-[Item] ID=tusk; q=1; r=-360; x=19; y=34;
-[Item] ID=dirt_sandy2; q=2; r=-270; x=19; y=37;
-[Item] ID=bonePileDark; q=1; r=-180; x=19; y=37;
-[Item] ID=barrier_strong; q=1; r=-360; x=19; y=42;
-[Item] ID=barrier_strong; q=1; r=-360; x=19; y=48;
-[Item] ID=secretPassage; q=1; x=20; y=7;
-[Item] ID=secretPassage; q=1; x=20; y=8;
-[Item] ID=bonePileDark; q=1; r=-360; x=20; y=33;
-[Item] ID=skull; q=1; r=360; x=20; y=35;
-[Item] ID=bonePileDark; q=1; r=-180; x=20; y=36;
-[Item] ID=bonePileDark; q=1; r=-270; x=20; y=36;
-[Item] ID=dirt_sandy2; q=2; r=-270; x=20; y=37;
-[Item] ID=barrier_strong; q=1; r=-360; x=20; y=42;
-[Item] ID=barrier_strong; q=1; r=-360; x=20; y=43;
-[Item] ID=barrier_strong; q=1; r=-360; x=20; y=44;
-[Item] ID=barrier_strong; q=1; r=-360; x=20; y=45;
-[Item] ID=barrier_strong; q=1; r=-360; x=20; y=46;
-[Item] ID=barrier_strong; q=1; r=-360; x=20; y=47;
-[Item] ID=barrier_strong; q=1; r=-360; x=20; y=48;
-[Item] ID=skull_elephant1; q=1; r=360; x=21; y=9;
-[Item] ID=bonePileDark; q=1; r=180; x=21; y=10;
-[Item] ID=bonePileDark; q=1; r=270; x=21; y=11;
-[Item] ID=bonePileDark; q=1; r=-360; x=21; y=11;
-[Item] ID=tusk; q=1; r=-360; x=21; y=11;
-[Item] ID=bonePileDark; q=1; r=180; x=21; y=13;
-[Item] ID=shana_prayer_bench; q=1; x=21; y=17;
-[Item] ID=shana_prayer_bench; q=1; x=21; y=19;
-[Item] ID=shana_prayer_bench; q=1; x=21; y=21;
-[Item] ID=shana_prayer_bench; q=1; x=21; y=23;
-[Item] ID=shana_prayer_bench; q=1; x=21; y=25;
-[Item] ID=shana_prayer_bench; q=1; x=21; y=27;
-[Item] ID=shana_prayer_bench; q=1; x=21; y=29;
-[Item] ID=bonePileDark; q=1; r=-270; x=21; y=34;
-[Item] ID=bonePileDark; q=1; r=-270; x=21; y=35;
-[Item] ID=bonePileDark; q=1; r=90; x=22; y=8;
-[Item] ID=bonePileDark; q=1; r=-180; x=22; y=8;
-[Item] ID=bonePileDark; q=1; r=90; x=22; y=9;
-[Item] ID=bonePileDark; q=1; r=-360; x=22; y=10;
-[Item] ID=bone; q=1; r=-360; x=22; y=12;
-[Item] ID=bonePileDark; q=1; r=180; x=22; y=13;
-[Item] ID=bugs12_small; q=1; r=360; x=22; y=13;
-[Item] ID=shana_prayer_bench; q=1; x=22; y=17;
-[Item] ID=shana_prayer_bench; q=1; x=22; y=19;
-[Item] ID=shana_prayer_bench; q=1; x=22; y=21;
-[Item] ID=shana_prayer_bench; q=1; x=22; y=23;
-[Item] ID=rocks1; q=2; r=-360; x=22; y=24;
-[Item] ID=shana_prayer_bench; q=1; x=22; y=25;
-[Item] ID=shana_prayer_bench; q=1; x=22; y=27;
-[Item] ID=shana_prayer_bench; q=1; x=22; y=29;
-[Item] ID=bonePileDark; q=1; r=-270; x=23; y=7;
-[Item] ID=bone_dust; q=1; r=-360; x=23; y=7;
-[Item] ID=table_left2; q=1; x=23; y=9;
-[Item] ID=tableclothL1; q=1; x=23; y=9;
-[Item] ID=table_small2; q=1; x=23; y=10;
-[Item] ID=tablecloth2; q=1; x=23; y=10;
-[Item] ID=bonePileDark; q=1; r=-270; x=23; y=11;
-[Item] ID=bonePileDark; q=1; r=90; x=23; y=12;
-[Item] ID=bones1; q=1; r=-360; x=23; y=13;
-[Item] ID=stone_pole2_noJ; q=1; x=23; y=16;
-[Item] ID=shana_prayer_bench; q=1; x=23; y=17;
-[Item] ID=bonePileDark; q=1; r=-90; x=23; y=18;
-[Item] ID=shana_prayer_bench; q=1; x=23; y=19;
-[Item] ID=shana_prayer_bench; q=1; x=23; y=21;
-[Item] ID=shana_prayer_bench; q=1; x=23; y=23;
-[Item] ID=skull_dog2; q=1; r=360; x=23; y=24;
+[Item] ID=shana_prayer_bench; q=1; x=17; y=24;
+[Item] ID=shana_prayer_bench; q=1; x=17; y=26;
+[Item] ID=shana_prayer_bench; q=1; x=17; y=28;
+[Item] ID=shana_prayer_bench; q=1; x=17; y=30;
+[Item] ID=bonePileDark; q=1; r=-270; x=17; y=31;
+[Item] ID=shana_prayer_bench; q=1; x=17; y=32;
+[Item] ID=shana_prayer_bench; q=1; x=17; y=34;
+[Item] ID=dirt_sandy1; q=2; r=270; x=17; y=41;
+[Item] ID=bugs5_small; q=1; r=360; x=17; y=42;
+[Item] ID=dirt_sandy1; q=2; r=90; x=17; y=43;
+[Item] ID=rocks1; q=2; r=360; x=17; y=48;
+[Item] ID=rocks1; q=4; r=360; x=17; y=50;
+[Item] ID=sunbeam_circle_big_dull; q=1; r=-360; x=17; y=52;
+[Item] ID=shana_prayer_bench; q=1; x=18; y=24;
+[Item] ID=shana_prayer_bench; q=1; x=18; y=26;
+[Item] ID=shana_prayer_bench; q=1; x=18; y=28;
+[Item] ID=shana_prayer_bench; q=1; x=18; y=30;
+[Item] ID=shana_prayer_bench; q=1; x=18; y=32;
+[Item] ID=shana_prayer_bench; q=1; x=18; y=34;
+[Item] ID=dirt_sandy2; q=2; r=-270; x=18; y=40;
+[Item] ID=dirt_sandy1; q=1; r=-90; x=18; y=42;
+[Item] ID=bonePileDark; q=1; r=-90; x=18; y=42;
+[Item] ID=bonePileDark; q=1; r=-90; x=18; y=43;
+[Item] ID=dirt_sandy2; q=2; r=-360; x=18; y=45;
+[Item] ID=dirt_sandy2; q=2; r=-360; x=18; y=46;
+[Item] ID=dirt_sandy2; q=2; r=-360; x=18; y=47;
+[Item] ID=dirt_sandy2; q=2; r=-360; x=18; y=48;
+[Item] ID=shana_birthing_coffin_0; q=1; r=-360; x=18; y=53;
+[Item] ID=shana_prayer_bench; q=1; x=19; y=24;
+[Item] ID=shana_prayer_bench; q=1; x=19; y=26;
+[Item] ID=shana_prayer_bench; q=1; x=19; y=28;
+[Item] ID=shana_prayer_bench; q=1; x=19; y=30;
+[Item] ID=shana_prayer_bench; q=1; x=19; y=32;
+[Item] ID=shana_prayer_bench; q=1; x=19; y=34;
+[Item] ID=bonePileDark; q=1; r=-360; x=19; y=40;
+[Item] ID=tusk; q=1; r=-360; x=19; y=41;
+[Item] ID=dirt_sandy2; q=2; r=-270; x=19; y=44;
+[Item] ID=bonePileDark; q=1; r=-180; x=19; y=44;
+[Item] ID=barrier_strong; q=1; r=-360; x=19; y=49;
+[Item] ID=barrier_strong; q=1; r=-360; x=19; y=55;
+[Item] ID=bonePileDark; q=1; r=-360; x=20; y=40;
+[Item] ID=skull; q=1; r=360; x=20; y=42;
+[Item] ID=bonePileDark; q=1; r=-270; x=20; y=43;
+[Item] ID=bonePileDark; q=1; r=-180; x=20; y=43;
+[Item] ID=dirt_sandy2; q=2; r=-270; x=20; y=44;
+[Item] ID=barrier_strong; q=1; r=-360; x=20; y=49;
+[Item] ID=barrier_strong; q=1; r=-360; x=20; y=50;
+[Item] ID=barrier_strong; q=1; r=-360; x=20; y=51;
+[Item] ID=barrier_strong; q=1; r=-360; x=20; y=52;
+[Item] ID=barrier_strong; q=1; r=-360; x=20; y=53;
+[Item] ID=barrier_strong; q=1; r=-360; x=20; y=54;
+[Item] ID=barrier_strong; q=1; r=-360; x=20; y=55;
+[Item] ID=skull_elephant1; q=1; r=360; x=21; y=16;
+[Item] ID=bonePileDark; q=1; r=180; x=21; y=17;
+[Item] ID=bonePileDark; q=1; r=270; x=21; y=18;
+[Item] ID=bonePileDark; q=1; r=-360; x=21; y=18;
+[Item] ID=tusk; q=1; r=-360; x=21; y=18;
+[Item] ID=bonePileDark; q=1; r=180; x=21; y=20;
+[Item] ID=shana_prayer_bench; q=1; x=21; y=24;
+[Item] ID=shana_prayer_bench; q=1; x=21; y=26;
+[Item] ID=shana_prayer_bench; q=1; x=21; y=28;
+[Item] ID=shana_prayer_bench; q=1; x=21; y=30;
+[Item] ID=shana_prayer_bench; q=1; x=21; y=32;
+[Item] ID=shana_prayer_bench; q=1; x=21; y=34;
+[Item] ID=shana_prayer_bench; q=1; x=21; y=36;
+[Item] ID=bonePileDark; q=1; r=-270; x=21; y=41;
+[Item] ID=bonePileDark; q=1; r=-270; x=21; y=42;
+[Item] ID=bonePileDark; q=1; r=90; x=22; y=15;
+[Item] ID=bonePileDark; q=1; r=-180; x=22; y=15;
+[Item] ID=bonePileDark; q=1; r=90; x=22; y=16;
+[Item] ID=bonePileDark; q=1; r=-360; x=22; y=17;
+[Item] ID=bone; q=1; r=-360; x=22; y=19;
+[Item] ID=bonePileDark; q=1; r=180; x=22; y=20;
+[Item] ID=bugs12_small; q=1; r=360; x=22; y=20;
+[Item] ID=shana_prayer_bench; q=1; x=22; y=24;
+[Item] ID=shana_prayer_bench; q=1; x=22; y=26;
+[Item] ID=shana_prayer_bench; q=1; x=22; y=28;
+[Item] ID=shana_prayer_bench; q=1; x=22; y=30;
+[Item] ID=rocks1; q=2; r=-360; x=22; y=31;
+[Item] ID=shana_prayer_bench; q=1; x=22; y=32;
+[Item] ID=shana_prayer_bench; q=1; x=22; y=34;
+[Item] ID=shana_prayer_bench; q=1; x=22; y=36;
+[Item] ID=bonePileDark; q=1; r=-270; x=23; y=14;
+[Item] ID=bone_dust; q=1; r=-360; x=23; y=14;
+[Item] ID=table_left2; q=1; x=23; y=16;
+[Item] ID=tableclothL1; q=1; x=23; y=16;
+[Item] ID=table_small2; q=1; x=23; y=17;
+[Item] ID=tablecloth2; q=1; x=23; y=17;
+[Item] ID=bonePileDark; q=1; r=-270; x=23; y=18;
+[Item] ID=bonePileDark; q=1; r=90; x=23; y=19;
+[Item] ID=bones1; q=1; r=-360; x=23; y=20;
+[Item] ID=stone_pole2_noJ; q=1; x=23; y=23;
+[Item] ID=shana_prayer_bench; q=1; x=23; y=24;
 [Item] ID=bonePileDark; q=1; r=-90; x=23; y=25;
-[Item] ID=shana_prayer_bench; q=1; x=23; y=25;
-[Item] ID=shana_prayer_bench; q=1; x=23; y=27;
-[Item] ID=shana_prayer_bench; q=1; x=23; y=29;
-[Item] ID=bonePileDark; q=1; r=270; x=24; y=7;
-[Item] ID=table_left2; q=1; x=24; y=8;
-[Item] ID=table_right2; q=1; x=24; y=9;
-[Item] ID=tableclothR1; q=1; x=24; y=9;
-[Item] ID=rug_corner2; q=1; x=24; y=11;
-[Item] ID=bugs12_small; q=1; x=24; y=11;
-[Item] ID=rug_edge2; q=1; r=270; x=24; y=12;
-[Item] ID=rug_edge2; q=1; r=270; x=24; y=13;
-[Item] ID=rug_corner2; q=1; r=270; x=24; y=14;
-[Item] ID=rocks1; q=1; r=360; x=24; y=16;
-[Item] ID=shana_prayer_bench; q=1; x=24; y=17;
-[Item] ID=bonePileDark; q=1; r=-180; x=24; y=19;
-[Item] ID=shana_prayer_bench; q=1; x=24; y=19;
-[Item] ID=shana_prayer_bench; q=1; x=24; y=21;
+[Item] ID=shana_prayer_bench; q=1; x=23; y=26;
+[Item] ID=shana_prayer_bench; q=1; x=23; y=28;
+[Item] ID=shana_prayer_bench; q=1; x=23; y=30;
+[Item] ID=skull_dog2; q=1; r=360; x=23; y=31;
+[Item] ID=bonePileDark; q=1; r=-90; x=23; y=32;
+[Item] ID=shana_prayer_bench; q=1; x=23; y=32;
+[Item] ID=shana_prayer_bench; q=1; x=23; y=34;
+[Item] ID=shana_prayer_bench; q=1; x=23; y=36;
+[Item] ID=bonePileDark; q=1; r=270; x=24; y=14;
+[Item] ID=table_left2; q=1; x=24; y=15;
+[Item] ID=table_right2; q=1; x=24; y=16;
+[Item] ID=tableclothR1; q=1; x=24; y=16;
+[Item] ID=rug_corner2; q=1; x=24; y=18;
+[Item] ID=bugs12_small; q=1; x=24; y=18;
+[Item] ID=rug_edge2; q=1; r=270; x=24; y=19;
+[Item] ID=rug_edge2; q=1; r=270; x=24; y=20;
+[Item] ID=rug_corner2; q=1; r=270; x=24; y=21;
 [Item] ID=rocks1; q=1; r=360; x=24; y=23;
-[Item] ID=shana_prayer_bench; q=1; x=24; y=23;
-[Item] ID=bonePileDark; q=1; r=360; x=24; y=24;
-[Item] ID=bonePileDark; q=1; r=270; x=24; y=24;
-[Item] ID=shana_prayer_bench; q=1; x=24; y=25;
+[Item] ID=shana_prayer_bench; q=1; x=24; y=24;
 [Item] ID=bonePileDark; q=1; r=-180; x=24; y=26;
-[Item] ID=shana_prayer_bench; q=1; x=24; y=27;
-[Item] ID=shana_prayer_bench; q=1; x=24; y=29;
-[Item] ID=stone_pole2_noJ; q=1; x=24; y=32;
-[Item] ID=pebbles1; q=1; r=-360; x=24; y=33;
-[Item] ID=rocks1; q=1; r=-360; x=24; y=35;
-[Item] ID=stone_pole2_noJ; q=1; x=24; y=35;
-[Item] ID=mount_item; q=1; x=25; y=5;
-[Item] ID=skull_dog1; q=1; x=25; y=5;
-[Item] ID=bonePileDark; q=1; r=-180; oX=0; oY=8; x=25; y=8;
-[Item] ID=table_mid2; q=1; x=25; y=8;
-[Item] ID=tableclothL2; q=1; x=25; y=8;
-[Item] ID=bone_spine; q=1; x=25; y=9;
-[Item] ID=rug_corner2; q=1; x=25; y=10;
-[Item] ID=skull_elephant2; q=1; r=-360; x=25; y=10;
-[Item] ID=bugs12_small; q=1; x=25; y=10;
-[Item] ID=rug_corner_inner1; q=1; x=25; y=11;
-[Item] ID=rug_mid2; q=1; x=25; y=12;
-[Item] ID=rug_mid2; q=1; x=25; y=13;
-[Item] ID=rug_corner_inner1; q=1; r=270; x=25; y=14;
-[Item] ID=rug_corner2; q=1; r=270; x=25; y=15;
-[Item] ID=bonePileDark; q=1; r=-360; x=25; y=16;
-[Item] ID=shana_prayer_bench; q=1; x=25; y=17;
-[Item] ID=bones1; q=1; r=-360; x=25; y=18;
-[Item] ID=bonePileDark; q=1; r=180; x=25; y=19;
-[Item] ID=shana_prayer_bench; q=1; x=25; y=19;
-[Item] ID=shana_prayer_bench; q=1; x=25; y=21;
+[Item] ID=shana_prayer_bench; q=1; x=24; y=26;
+[Item] ID=shana_prayer_bench; q=1; x=24; y=28;
+[Item] ID=rocks1; q=1; r=360; x=24; y=30;
+[Item] ID=shana_prayer_bench; q=1; x=24; y=30;
+[Item] ID=bonePileDark; q=1; r=360; x=24; y=31;
+[Item] ID=bonePileDark; q=1; r=270; x=24; y=31;
+[Item] ID=shana_prayer_bench; q=1; x=24; y=32;
+[Item] ID=bonePileDark; q=1; r=-180; x=24; y=33;
+[Item] ID=shana_prayer_bench; q=1; x=24; y=34;
+[Item] ID=shana_prayer_bench; q=1; x=24; y=36;
+[Item] ID=dirt_sandy2; q=2; r=270; x=24; y=38;
+[Item] ID=stone_pole2_noJ; q=1; x=24; y=39;
+[Item] ID=dirt_sandy2; q=2; r=90; x=24; y=40;
+[Item] ID=pebbles1; q=1; r=-360; x=24; y=40;
+[Item] ID=rocks1; q=1; r=-360; x=24; y=42;
+[Item] ID=stone_pole2_noJ; q=1; x=24; y=43;
+[Item] ID=mount_item; q=1; x=25; y=12;
+[Item] ID=skull_dog1; q=1; x=25; y=12;
+[Item] ID=bonePileDark; q=1; r=-180; oX=0; oY=8; x=25; y=15;
+[Item] ID=table_mid2; q=1; x=25; y=15;
+[Item] ID=tableclothL2; q=1; x=25; y=15;
+[Item] ID=bone_spine; q=1; x=25; y=16;
+[Item] ID=rug_corner2; q=1; x=25; y=17;
+[Item] ID=skull_elephant2; q=1; r=-360; x=25; y=17;
+[Item] ID=bugs12_small; q=1; x=25; y=17;
+[Item] ID=rug_corner_inner1; q=1; x=25; y=18;
+[Item] ID=rug_mid2; q=1; x=25; y=19;
+[Item] ID=rug_mid2; q=1; x=25; y=20;
+[Item] ID=rug_corner_inner1; q=1; r=270; x=25; y=21;
+[Item] ID=rug_corner2; q=1; r=270; x=25; y=22;
 [Item] ID=bonePileDark; q=1; r=-360; x=25; y=23;
-[Item] ID=shana_prayer_bench; q=1; x=25; y=23;
+[Item] ID=shana_prayer_bench; q=1; x=25; y=24;
 [Item] ID=bones1; q=1; r=-360; x=25; y=25;
-[Item] ID=shana_prayer_bench; q=1; x=25; y=25;
 [Item] ID=bonePileDark; q=1; r=180; x=25; y=26;
-[Item] ID=shana_prayer_bench; q=1; x=25; y=27;
-[Item] ID=shana_prayer_bench; q=1; x=25; y=29;
-[Item] ID=stone_pole2_noJ; q=1; x=25; y=37;
-[Item] ID=stone_pole2_noJ; q=1; x=25; y=40;
-[Item] ID=stone_pole2_noJ; q=1; x=25; y=43;
-[Item] ID=stone_pole2_noJ; q=1; x=25; y=46;
-[Item] ID=stone_pole2_noJ; q=1; x=25; y=49;
-[Item] ID=bonePileDark; q=1; r=-180; oX=0; oY=8; x=26; y=8;
-[Item] ID=table_mid2; q=1; x=26; y=8;
-[Item] ID=tableclothM2; q=1; x=26; y=8;
-[Item] ID=rug_edge2; q=1; x=26; y=10;
-[Item] ID=rug_mid2; q=1; x=26; y=11;
-[Item] ID=rug_mid2; q=1; x=26; y=12;
-[Item] ID=rug_mid2; q=1; x=26; y=13;
-[Item] ID=rug_frayed2; q=1; x=26; y=14;
-[Item] ID=rug_edge2; q=1; r=180; x=26; y=15;
-[Item] ID=bonePileDark; q=1; r=-270; x=26; y=17;
-[Item] ID=bonePileDark; q=1; r=90; x=26; y=18;
+[Item] ID=shana_prayer_bench; q=1; x=25; y=26;
+[Item] ID=shana_prayer_bench; q=1; x=25; y=28;
+[Item] ID=bonePileDark; q=1; r=-360; x=25; y=30;
+[Item] ID=shana_prayer_bench; q=1; x=25; y=30;
+[Item] ID=bones1; q=1; r=-360; x=25; y=32;
+[Item] ID=shana_prayer_bench; q=1; x=25; y=32;
+[Item] ID=bonePileDark; q=1; r=180; x=25; y=33;
+[Item] ID=shana_prayer_bench; q=1; x=25; y=34;
+[Item] ID=shana_prayer_bench; q=1; x=25; y=36;
+[Item] ID=dirt_sandy2; q=2; r=360; x=25; y=39;
+[Item] ID=stone_pole2_noJ; q=1; x=25; y=44;
+[Item] ID=stone_pole2_noJ; q=1; x=25; y=47;
+[Item] ID=stone_pole2_noJ; q=1; x=25; y=50;
+[Item] ID=stone_pole2_noJ; q=1; x=25; y=53;
+[Item] ID=stone_pole2_noJ; q=1; x=25; y=56;
+[Item] ID=bonePileDark; q=1; r=-180; oX=0; oY=8; x=26; y=15;
+[Item] ID=table_mid2; q=1; x=26; y=15;
+[Item] ID=tableclothM2; q=1; x=26; y=15;
+[Item] ID=rug_edge2; q=1; x=26; y=17;
+[Item] ID=rug_mid2; q=1; x=26; y=18;
+[Item] ID=rug_mid2; q=1; x=26; y=19;
+[Item] ID=rug_mid2; q=1; x=26; y=20;
+[Item] ID=rug_frayed2; q=1; x=26; y=21;
+[Item] ID=rug_edge2; q=1; r=180; x=26; y=22;
 [Item] ID=bonePileDark; q=1; r=-270; x=26; y=24;
-[Item] ID=bonePileDark; q=1; r=90; x=26; y=25;
-[Item] ID=travelPoint_0; q=1; r=270; x=26; y=52;
-[Item] ID=bonePileDark; q=1; r=-270; x=27; y=7;
-[Item] ID=table_mid2; q=1; x=27; y=8;
-[Item] ID=tableclothM2; q=1; x=27; y=8;
-[Item] ID=rug_edge2; q=1; x=27; y=10;
-[Item] ID=rug_frayed2; q=1; r=90; x=27; y=11;
-[Item] ID=rug_mid2; q=1; x=27; y=12;
-[Item] ID=rug_mid2; q=1; x=27; y=13;
-[Item] ID=rug_mid2; q=1; x=27; y=14;
-[Item] ID=rug_edge2; q=1; r=180; x=27; y=15;
-[Item] ID=bonePileDark; q=1; r=270; x=27; y=34;
-[Item] ID=dirt_sandy1; q=2; r=180; x=27; y=38;
-[Item] ID=dirt_sandy2; q=1; r=180; x=27; y=39;
-[Item] ID=barrel_broken; q=1; x=28; y=7; containerID=0;
-[Item] ID=bonePileDark; q=1; r=-90; oX=0; oY=6; x=28; y=8;
-[Item] ID=table_mid2; q=1; x=28; y=8;
-[Item] ID=tableclothR2; q=1; x=28; y=8;
-[Item] ID=crate_small_damaged; q=1; r=-360; x=28; y=9; containerID=1;
+[Item] ID=bonePileDark; q=1; r=-270; x=26; y=25;
+[Item] ID=bonePileDark; q=1; r=-270; x=26; y=31;
+[Item] ID=bonePileDark; q=1; r=90; x=26; y=32;
+[Item] ID=travelPoint_0; q=1; r=270; x=26; y=59;
+[Item] ID=bonePileDark; q=1; r=-270; x=27; y=14;
+[Item] ID=table_mid2; q=1; x=27; y=15;
+[Item] ID=tableclothM2; q=1; x=27; y=15;
+[Item] ID=rug_edge2; q=1; x=27; y=17;
+[Item] ID=rug_frayed2; q=1; r=90; x=27; y=18;
+[Item] ID=rug_mid2; q=1; x=27; y=19;
+[Item] ID=rug_mid2; q=1; x=27; y=20;
+[Item] ID=rug_mid2; q=1; x=27; y=21;
+[Item] ID=rug_edge2; q=1; r=180; x=27; y=22;
+[Item] ID=bonePileDark; q=1; r=270; x=27; y=41;
+[Item] ID=dirt_sandy1; q=2; r=180; x=27; y=45;
+[Item] ID=dirt_sandy2; q=1; r=180; x=27; y=46;
+[Item] ID=barrel_broken; q=1; x=28; y=14; containerID=0;
+[Item] ID=bonePileDark; q=1; r=-90; oX=0; oY=6; x=28; y=15;
+[Item] ID=table_mid2; q=1; x=28; y=15;
+[Item] ID=tableclothR2; q=1; x=28; y=15;
+[Item] ID=crate_small_damaged; q=1; r=-360; x=28; y=16; containerID=1;
 [Item] ID=xpGemBig; q=1; containedIn=1; cSlot=0;
-[Item] ID=rug_corner2; q=1; r=90; x=28; y=10;
-[Item] ID=rug_corner_inner1; q=1; r=90; x=28; y=11;
-[Item] ID=rug_frayed2; q=1; x=28; y=12;
-[Item] ID=bugs12_small; q=1; r=-360; x=28; y=12;
-[Item] ID=rug_mid2; q=1; x=28; y=13;
-[Item] ID=rug_corner_inner1; q=1; r=180; x=28; y=14;
-[Item] ID=rug_corner2; q=1; r=180; x=28; y=15;
-[Item] ID=shana_prayer_bench; q=1; x=28; y=17;
-[Item] ID=rocks1; q=2; x=28; y=18;
-[Item] ID=shana_prayer_bench; q=1; x=28; y=19;
-[Item] ID=shana_prayer_bench; q=1; x=28; y=21;
-[Item] ID=shana_prayer_bench; q=1; x=28; y=23;
+[Item] ID=rug_corner2; q=1; r=90; x=28; y=17;
+[Item] ID=rug_corner_inner1; q=1; r=90; x=28; y=18;
+[Item] ID=rug_frayed2; q=1; x=28; y=19;
+[Item] ID=bugs12_small; q=1; r=-360; x=28; y=19;
+[Item] ID=rug_mid2; q=1; x=28; y=20;
+[Item] ID=rug_corner_inner1; q=1; r=180; x=28; y=21;
+[Item] ID=rug_corner2; q=1; r=180; x=28; y=22;
+[Item] ID=shana_prayer_bench; q=1; x=28; y=24;
 [Item] ID=rocks1; q=2; x=28; y=25;
-[Item] ID=shana_prayer_bench; q=1; x=28; y=25;
-[Item] ID=shana_prayer_bench; q=1; x=28; y=27;
-[Item] ID=shana_prayer_bench; q=1; x=28; y=29;
-[Item] ID=dirt_sandy2; q=1; r=90; x=28; y=31;
-[Item] ID=bugsMass_small; q=1; x=28; y=31;
-[Item] ID=bonePileDark; q=1; r=-360; x=28; y=33;
-[Item] ID=bonePileDark; q=1; r=-180; x=28; y=35;
-[Item] ID=bonePileDark; q=1; r=270; x=28; y=35;
-[Item] ID=dirt_sandy1; q=1; r=270; x=28; y=37;
-[Item] ID=stone_pole2_noJ; q=1; x=28; y=37;
-[Item] ID=rocks1; q=2; r=360; x=28; y=38;
-[Item] ID=rocks1; q=4; r=-360; x=28; y=39;
-[Item] ID=dirt_sandy1; q=1; r=90; x=28; y=40;
-[Item] ID=stone_pole2_noJ; q=1; x=28; y=40;
-[Item] ID=stone_pole2_noJ; q=1; x=28; y=43;
-[Item] ID=stone_pole2_noJ; q=1; x=28; y=46;
-[Item] ID=stone_pole2_noJ; q=1; x=28; y=49;
-[Item] ID=bonePileDark; q=1; x=29; y=7;
-[Item] ID=mount_item; q=1; r=90; x=29; y=7;
-[Item] ID=skull_dog1; q=1; r=90; x=29; y=7;
-[Item] ID=table_right2; q=1; x=29; y=8;
-[Item] ID=bonePileDark; q=1; r=180; oX=0; oY=8; x=29; y=9;
-[Item] ID=table_left2; q=1; x=29; y=9;
-[Item] ID=tableclothL1; q=1; x=29; y=9;
-[Item] ID=rug_corner2; q=1; r=90; x=29; y=11;
-[Item] ID=rug_edge2; q=1; r=90; x=29; y=12;
-[Item] ID=rug_edge2; q=1; r=90; x=29; y=13;
-[Item] ID=rug_corner2; q=1; r=180; x=29; y=14;
-[Item] ID=skull2; q=1; r=-360; x=29; y=14;
-[Item] ID=shana_prayer_bench; q=1; x=29; y=17;
-[Item] ID=dirt_sandy2; q=2; x=29; y=18;
-[Item] ID=shana_prayer_bench; q=1; x=29; y=19;
-[Item] ID=shana_prayer_bench; q=1; x=29; y=21;
-[Item] ID=shana_prayer_bench; q=1; x=29; y=23;
+[Item] ID=shana_prayer_bench; q=1; x=28; y=26;
+[Item] ID=shana_prayer_bench; q=1; x=28; y=28;
+[Item] ID=shana_prayer_bench; q=1; x=28; y=30;
+[Item] ID=rocks1; q=2; x=28; y=32;
+[Item] ID=shana_prayer_bench; q=1; x=28; y=32;
+[Item] ID=shana_prayer_bench; q=1; x=28; y=34;
+[Item] ID=shana_prayer_bench; q=1; x=28; y=36;
+[Item] ID=dirt_sandy2; q=2; r=90; x=28; y=38;
+[Item] ID=bugsMass_small; q=1; x=28; y=38;
+[Item] ID=dirt_sandy2; q=2; r=180; x=28; y=39;
+[Item] ID=bonePileDark; q=1; r=-360; x=28; y=40;
+[Item] ID=bonePileDark; q=1; r=-180; x=28; y=42;
+[Item] ID=bonePileDark; q=1; r=270; x=28; y=42;
+[Item] ID=dirt_sandy1; q=1; r=270; x=28; y=44;
+[Item] ID=stone_pole2_noJ; q=1; x=28; y=44;
+[Item] ID=rocks1; q=2; r=360; x=28; y=45;
+[Item] ID=rocks1; q=4; r=-360; x=28; y=46;
+[Item] ID=dirt_sandy1; q=1; r=90; x=28; y=47;
+[Item] ID=stone_pole2_noJ; q=1; x=28; y=47;
+[Item] ID=stone_pole2_noJ; q=1; x=28; y=50;
+[Item] ID=stone_pole2_noJ; q=1; x=28; y=53;
+[Item] ID=stone_pole2_noJ; q=1; x=28; y=56;
+[Item] ID=bonePileDark; q=1; x=29; y=14;
+[Item] ID=mount_item; q=1; r=90; x=29; y=14;
+[Item] ID=skull_dog1; q=1; r=90; x=29; y=14;
+[Item] ID=table_right2; q=1; x=29; y=15;
+[Item] ID=bonePileDark; q=1; r=180; oX=0; oY=8; x=29; y=16;
+[Item] ID=table_left2; q=1; x=29; y=16;
+[Item] ID=tableclothL1; q=1; x=29; y=16;
+[Item] ID=rug_corner2; q=1; r=90; x=29; y=18;
+[Item] ID=rug_edge2; q=1; r=90; x=29; y=19;
+[Item] ID=rug_edge2; q=1; r=90; x=29; y=20;
+[Item] ID=rug_corner2; q=1; r=180; x=29; y=21;
+[Item] ID=skull2; q=1; r=-360; x=29; y=21;
+[Item] ID=shana_prayer_bench; q=1; x=29; y=24;
 [Item] ID=dirt_sandy2; q=2; x=29; y=25;
-[Item] ID=shana_prayer_bench; q=1; x=29; y=25;
-[Item] ID=shana_prayer_bench; q=1; x=29; y=27;
-[Item] ID=shana_prayer_bench; q=1; x=29; y=29;
-[Item] ID=dirt_sandy2; q=2; r=90; x=29; y=31;
-[Item] ID=stone_pole2_noJ; q=1; x=29; y=32;
-[Item] ID=bonePileDark; q=1; r=360; x=29; y=34;
-[Item] ID=bonePileDark; q=1; r=-270; x=29; y=34;
-[Item] ID=skull; q=1; r=360; x=29; y=34;
-[Item] ID=bonePileDark; q=1; x=29; y=34;
-[Item] ID=stone_pole2_noJ; q=1; x=29; y=35;
-[Item] ID=bonePileDark; q=1; r=-180; x=29; y=36;
-[Item] ID=dirt_sandy2; q=1; x=29; y=38;
-[Item] ID=dirt_sandy2; q=1; x=29; y=39;
-[Item] ID=bonePileDark; q=1; r=360; x=30; y=7;
-[Item] ID=bonePileDark; q=1; r=-180; oX=0; oY=8; x=30; y=9;
-[Item] ID=table_right2; q=1; x=30; y=9;
-[Item] ID=tableclothR1; q=1; x=30; y=9;
-[Item] ID=table_small2; q=1; x=30; y=10;
-[Item] ID=tablecloth1; q=1; x=30; y=10;
-[Item] ID=bonePileDark; q=1; r=-90; x=30; y=11;
-[Item] ID=stone_pole2_noJ; q=1; x=30; y=16;
-[Item] ID=shana_prayer_bench; q=1; x=30; y=17;
-[Item] ID=shana_prayer_bench; q=1; x=30; y=19;
-[Item] ID=shana_prayer_bench; q=1; x=30; y=21;
-[Item] ID=shana_prayer_bench; q=1; x=30; y=23;
-[Item] ID=dirt_sandy1; q=1; r=180; x=30; y=24;
-[Item] ID=shana_prayer_bench; q=1; x=30; y=25;
-[Item] ID=shana_prayer_bench; q=1; x=30; y=27;
-[Item] ID=shana_prayer_bench; q=1; x=30; y=29;
-[Item] ID=dirt_sandy2; q=2; r=360; x=30; y=31;
-[Item] ID=tusk; q=1; r=-360; x=30; y=34;
-[Item] ID=bonePileDark; q=1; r=90; x=30; y=35;
-[Item] ID=bonePileDark; q=1; r=360; x=31; y=7;
-[Item] ID=bonePileDark; q=1; r=270; x=31; y=7;
-[Item] ID=bonePileDark; q=1; r=180; x=31; y=9;
-[Item] ID=bugs12_small; q=1; r=-360; x=31; y=9;
-[Item] ID=bonePileDark; q=1; r=-360; x=31; y=10;
-[Item] ID=skull2; q=1; r=360; x=31; y=11;
-[Item] ID=bonePileDark; q=1; r=180; x=31; y=12;
-[Item] ID=bugs12_small; q=1; r=-360; x=31; y=13;
-[Item] ID=dirt_sandy1; q=1; r=180; x=31; y=16;
-[Item] ID=shana_prayer_bench; q=1; x=31; y=17;
-[Item] ID=dirt_sandy1; q=1; r=90; x=31; y=18;
-[Item] ID=shana_prayer_bench; q=1; x=31; y=19;
-[Item] ID=shana_prayer_bench; q=1; x=31; y=21;
-[Item] ID=shana_prayer_bench; q=1; oX=0; oY=2; x=31; y=23;
+[Item] ID=shana_prayer_bench; q=1; x=29; y=26;
+[Item] ID=shana_prayer_bench; q=1; x=29; y=28;
+[Item] ID=shana_prayer_bench; q=1; x=29; y=30;
+[Item] ID=dirt_sandy2; q=2; x=29; y=32;
+[Item] ID=shana_prayer_bench; q=1; x=29; y=32;
+[Item] ID=dirt_sandy1; q=1; x=29; y=33;
+[Item] ID=shana_prayer_bench; q=1; x=29; y=34;
+[Item] ID=shana_prayer_bench; q=1; x=29; y=36;
+[Item] ID=xpGemBig; q=1; bu=True; x=29; y=38;
+[Item] ID=xpDust; q=1; x=29; y=38;
+[Item] ID=stone_pole2_noJ; q=1; x=29; y=39;
+[Item] ID=dirt_sandy2; q=2; r=90; x=29; y=40;
+[Item] ID=bonePileDark; q=1; r=360; x=29; y=41;
+[Item] ID=bonePileDark; q=1; r=-270; x=29; y=41;
+[Item] ID=skull; q=1; r=360; x=29; y=41;
+[Item] ID=bonePileDark; q=1; x=29; y=41;
+[Item] ID=stone_pole2_noJ; q=1; x=29; y=42;
+[Item] ID=bonePileDark; q=1; r=-180; x=29; y=43;
+[Item] ID=dirt_sandy2; q=1; r=270; x=29; y=43;
+[Item] ID=bonePileDark; q=1; r=360; x=30; y=14;
+[Item] ID=bonePileDark; q=1; r=-180; oX=0; oY=8; x=30; y=16;
+[Item] ID=table_right2; q=1; x=30; y=16;
+[Item] ID=tableclothR1; q=1; x=30; y=16;
+[Item] ID=table_small2; q=1; x=30; y=17;
+[Item] ID=tablecloth1; q=1; x=30; y=17;
+[Item] ID=bonePileDark; q=1; r=-90; x=30; y=18;
+[Item] ID=stone_pole2_noJ; q=1; x=30; y=23;
+[Item] ID=shana_prayer_bench; q=1; x=30; y=24;
+[Item] ID=shana_prayer_bench; q=1; x=30; y=26;
+[Item] ID=shana_prayer_bench; q=1; x=30; y=28;
+[Item] ID=shana_prayer_bench; q=1; x=30; y=30;
+[Item] ID=dirt_sandy1; q=1; r=180; x=30; y=31;
+[Item] ID=shana_prayer_bench; q=1; x=30; y=32;
+[Item] ID=shana_prayer_bench; q=1; x=30; y=34;
+[Item] ID=shana_prayer_bench; q=1; x=30; y=36;
+[Item] ID=dirt_sandy2; q=2; r=360; x=30; y=37;
+[Item] ID=dirt_sandy2; q=3; r=360; x=30; y=38;
+[Item] ID=tusk; q=1; r=-360; x=30; y=41;
+[Item] ID=bonePileDark; q=1; r=90; x=30; y=42;
+[Item] ID=dirt_sandy2; q=1; r=270; x=30; y=43;
+[Item] ID=bonePileDark; q=1; r=270; x=31; y=14;
+[Item] ID=bonePileDark; q=1; r=360; x=31; y=14;
+[Item] ID=bonePileDark; q=1; r=180; x=31; y=16;
+[Item] ID=bugs12_small; q=1; r=-360; x=31; y=16;
+[Item] ID=bonePileDark; q=1; r=-360; x=31; y=17;
+[Item] ID=skull2; q=1; r=360; x=31; y=18;
+[Item] ID=bonePileDark; q=1; r=180; x=31; y=19;
+[Item] ID=bugs12_small; q=1; r=-360; x=31; y=20;
+[Item] ID=dirt_sandy1; q=1; r=180; x=31; y=23;
+[Item] ID=shana_prayer_bench; q=1; x=31; y=24;
 [Item] ID=dirt_sandy1; q=1; r=90; x=31; y=25;
-[Item] ID=shana_prayer_bench; q=1; x=31; y=25;
-[Item] ID=shana_prayer_bench; q=1; x=31; y=27;
-[Item] ID=shana_prayer_bench; q=1; x=31; y=29;
-[Item] ID=bones2; q=1; r=360; x=32; y=7;
-[Item] ID=bonePileDark; q=1; r=90; x=32; y=8;
-[Item] ID=bonePileDark; q=1; r=180; x=32; y=8;
-[Item] ID=barrel_broken; q=1; r=-360; x=32; y=9; containerID=2;
-[Item] ID=crate_small_damaged; q=1; x=32; y=10; containerID=3;
-[Item] ID=bonePileDark; q=1; r=90; x=32; y=11;
-[Item] ID=dirt_sandy2; q=3; r=270; x=32; y=15;
-[Item] ID=shana_prayer_bench; q=1; x=32; y=17;
-[Item] ID=shana_prayer_bench; q=1; x=32; y=19;
-[Item] ID=shana_prayer_bench; q=1; x=32; y=21;
-[Item] ID=shana_prayer_bench; q=1; oX=0; oY=2; x=32; y=23;
-[Item] ID=shana_prayer_bench; q=1; x=32; y=25;
-[Item] ID=shana_prayer_bench; q=1; x=32; y=27;
-[Item] ID=shana_prayer_bench; q=1; x=32; y=29;
-[Item] ID=dirt_sandy2; q=3; r=180; x=33; y=34;
-[Item] ID=dirt_sandy2; q=2; r=270; x=33; y=37;
-[Item] ID=barrier_strong; q=1; x=33; y=42;
-[Item] ID=barrier_strong; q=1; x=33; y=43;
-[Item] ID=barrier_strong; q=1; x=33; y=44;
-[Item] ID=barrier_strong; q=1; x=33; y=45;
-[Item] ID=barrier_strong; q=1; x=33; y=46;
-[Item] ID=barrier_strong; q=1; x=33; y=47;
-[Item] ID=barrier_strong; q=1; x=33; y=48;
-[Item] ID=dirt_sandy1; q=1; r=180; x=34; y=15;
-[Item] ID=shana_prayer_bench; q=1; x=34; y=17;
-[Item] ID=shana_prayer_bench; q=1; x=34; y=19;
-[Item] ID=shana_prayer_bench; q=1; x=34; y=21;
-[Item] ID=shana_prayer_bench; q=1; x=34; y=23;
-[Item] ID=shana_prayer_bench; q=1; x=34; y=25;
-[Item] ID=shana_prayer_bench; q=1; x=34; y=27;
-[Item] ID=dirt_sandy2; q=2; r=90; x=34; y=35;
-[Item] ID=dirt_sandy2; q=2; r=270; x=34; y=37;
-[Item] ID=barrier_strong; q=1; x=34; y=42;
-[Item] ID=rocks1; q=4; r=-360; x=34; y=44;
-[Item] ID=rocks1; q=2; r=-360; x=34; y=45;
-[Item] ID=barrier_strong; q=1; x=34; y=48;
-[Item] ID=rocks1; q=1; x=35; y=15;
-[Item] ID=bugs12_small; q=1; x=35; y=16;
-[Item] ID=shana_prayer_bench; q=1; x=35; y=17;
-[Item] ID=shana_prayer_bench; q=1; x=35; y=19;
-[Item] ID=shana_prayer_bench; q=1; x=35; y=21;
+[Item] ID=shana_prayer_bench; q=1; x=31; y=26;
+[Item] ID=shana_prayer_bench; q=1; x=31; y=28;
+[Item] ID=shana_prayer_bench; q=1; oX=0; oY=2; x=31; y=30;
+[Item] ID=dirt_sandy1; q=1; r=90; x=31; y=32;
+[Item] ID=shana_prayer_bench; q=1; x=31; y=32;
+[Item] ID=shana_prayer_bench; q=1; x=31; y=34;
+[Item] ID=shana_prayer_bench; q=1; x=31; y=36;
+[Item] ID=dirt_sandy2; q=1; r=270; x=31; y=43;
+[Item] ID=bones2; q=1; r=360; x=32; y=14;
+[Item] ID=dirt_sandy1; q=1; r=180; x=32; y=15;
+[Item] ID=bonePileDark; q=1; r=90; x=32; y=15;
+[Item] ID=bonePileDark; q=1; r=180; x=32; y=15;
+[Item] ID=barrel_broken; q=1; r=-360; x=32; y=16; containerID=2;
+[Item] ID=crate_small_damaged; q=1; x=32; y=17; containerID=3;
+[Item] ID=bonePileDark; q=1; r=90; x=32; y=18;
+[Item] ID=dirt_sandy2; q=3; r=270; x=32; y=22;
+[Item] ID=rocks1; q=1; x=32; y=23;
+[Item] ID=shana_prayer_bench; q=1; x=32; y=24;
+[Item] ID=shana_prayer_bench; q=1; x=32; y=26;
+[Item] ID=shana_prayer_bench; q=1; x=32; y=28;
+[Item] ID=shana_prayer_bench; q=1; oX=0; oY=2; x=32; y=30;
+[Item] ID=shana_prayer_bench; q=1; x=32; y=32;
+[Item] ID=shana_prayer_bench; q=1; x=32; y=34;
+[Item] ID=shana_prayer_bench; q=1; x=32; y=36;
+[Item] ID=dirt_sandy2; q=1; r=270; x=32; y=43;
+[Item] ID=secretPassage; q=1; x=33; y=14;
+[Item] ID=secretPassage; q=1; x=33; y=15;
+[Item] ID=dirt_sandy2; q=3; r=270; x=33; y=22;
+[Item] ID=rocks1; q=1; x=33; y=23;
+[Item] ID=pebbles1; q=1; x=33; y=23;
+[Item] ID=dirt_sandy2; q=2; r=90; x=33; y=24;
+[Item] ID=dirt_sandy2; q=3; r=180; x=33; y=41;
+[Item] ID=dirt_sandy2; q=2; r=270; x=33; y=44;
+[Item] ID=barrier_strong; q=1; x=33; y=49;
+[Item] ID=barrier_strong; q=1; x=33; y=50;
+[Item] ID=barrier_strong; q=1; x=33; y=51;
+[Item] ID=barrier_strong; q=1; x=33; y=52;
+[Item] ID=barrier_strong; q=1; x=33; y=53;
+[Item] ID=barrier_strong; q=1; x=33; y=54;
+[Item] ID=barrier_strong; q=1; x=33; y=55;
+[Item] ID=secretPassage; q=1; x=34; y=14;
+[Item] ID=secretPassage; q=1; x=34; y=15;
+[Item] ID=dirt_sandy1; q=1; r=180; x=34; y=22;
+[Item] ID=shana_prayer_bench; q=1; x=34; y=24;
+[Item] ID=shana_prayer_bench; q=1; x=34; y=26;
+[Item] ID=shana_prayer_bench; q=1; x=34; y=28;
+[Item] ID=shana_prayer_bench; q=1; x=34; y=30;
+[Item] ID=shana_prayer_bench; q=1; x=34; y=32;
+[Item] ID=shana_prayer_bench; q=1; x=34; y=34;
+[Item] ID=dirt_sandy2; q=2; r=90; x=34; y=42;
+[Item] ID=dirt_sandy1; q=1; r=90; x=34; y=42;
+[Item] ID=dirt_sandy2; q=2; r=270; x=34; y=44;
+[Item] ID=barrier_strong; q=1; x=34; y=49;
+[Item] ID=rocks1; q=4; r=-360; x=34; y=51;
+[Item] ID=rocks1; q=2; r=-360; x=34; y=52;
+[Item] ID=barrier_strong; q=1; x=34; y=55;
+[Item] ID=secretPassage; q=1; x=35; y=14;
+[Item] ID=secretPassage; q=1; x=35; y=15;
+[Item] ID=rocks1; q=1; x=35; y=22;
 [Item] ID=bugs12_small; q=1; x=35; y=23;
-[Item] ID=shana_prayer_bench; q=1; x=35; y=23;
-[Item] ID=shana_prayer_bench; q=1; x=35; y=25;
-[Item] ID=shana_prayer_bench; q=1; x=35; y=27;
-[Item] ID=dirt_sandy2; q=2; r=270; x=35; y=33;
-[Item] ID=xpDust; q=1; x=35; y=34;
-[Item] ID=xpGemBig; q=1; bu=True; x=35; y=34;
-[Item] ID=dirt_sandy1; q=1; r=90; x=35; y=35;
-[Item] ID=dirt_sandy2; q=2; r=360; x=35; y=38;
-[Item] ID=dirt_sandy2; q=2; r=360; x=35; y=39;
-[Item] ID=dirt_sandy2; q=2; r=360; x=35; y=40;
-[Item] ID=dirt_sandy2; q=2; r=360; x=35; y=41;
-[Item] ID=rocks1; q=4; r=-360; x=35; y=43;
-[Item] ID=shana_birthing_coffin_0; q=1; x=35; y=46;
-[Item] ID=shana_prayer_bench; q=1; x=36; y=17;
-[Item] ID=shana_prayer_bench; q=1; x=36; y=19;
-[Item] ID=shana_prayer_bench; q=1; x=36; y=21;
-[Item] ID=shana_prayer_bench; q=1; x=36; y=23;
-[Item] ID=shana_prayer_bench; q=1; x=36; y=25;
-[Item] ID=shana_prayer_bench; q=1; x=36; y=27;
-[Item] ID=rocks1; q=2; r=360; x=36; y=34;
-[Item] ID=bugs5_small; q=1; r=-360; x=36; y=35;
-[Item] ID=sunbeam_circle_big_dull; q=1; x=36; y=45;
-[Item] ID=barrel_broken; q=1; x=37; y=13; containerID=4;
-[Item] ID=dirt_sandy1; q=1; r=360; x=37; y=14;
-[Item] ID=shana_prayer_bench; q=1; x=37; y=17;
-[Item] ID=bonePileDark; q=1; r=270; x=37; y=19;
-[Item] ID=shana_prayer_bench; q=1; x=37; y=19;
-[Item] ID=shana_prayer_bench; q=1; x=37; y=21;
-[Item] ID=shana_prayer_bench; q=1; x=37; y=23;
-[Item] ID=shana_prayer_bench; q=1; x=37; y=25;
+[Item] ID=shana_prayer_bench; q=1; x=35; y=24;
+[Item] ID=shana_prayer_bench; q=1; x=35; y=26;
+[Item] ID=shana_prayer_bench; q=1; x=35; y=28;
+[Item] ID=bugs12_small; q=1; x=35; y=30;
+[Item] ID=shana_prayer_bench; q=1; x=35; y=30;
+[Item] ID=shana_prayer_bench; q=1; x=35; y=32;
+[Item] ID=shana_prayer_bench; q=1; x=35; y=34;
+[Item] ID=dirt_sandy2; q=2; r=270; x=35; y=40;
+[Item] ID=xpDust; q=1; x=35; y=41;
+[Item] ID=xpGemBig; q=1; bu=True; x=35; y=41;
+[Item] ID=dirt_sandy2; q=2; r=360; x=35; y=45;
+[Item] ID=dirt_sandy2; q=2; r=360; x=35; y=46;
+[Item] ID=dirt_sandy2; q=2; r=360; x=35; y=47;
+[Item] ID=dirt_sandy2; q=2; r=360; x=35; y=48;
+[Item] ID=rocks1; q=4; r=-360; x=35; y=50;
+[Item] ID=shana_birthing_coffin_0; q=1; x=35; y=53;
+[Item] ID=secretPassage; q=1; x=36; y=14;
+[Item] ID=secretPassage; q=1; x=36; y=15;
+[Item] ID=dirt_sandy2; q=2; r=360; x=36; y=23;
+[Item] ID=shana_prayer_bench; q=1; x=36; y=24;
+[Item] ID=shana_prayer_bench; q=1; x=36; y=26;
+[Item] ID=shana_prayer_bench; q=1; x=36; y=28;
+[Item] ID=shana_prayer_bench; q=1; x=36; y=30;
+[Item] ID=shana_prayer_bench; q=1; x=36; y=32;
+[Item] ID=shana_prayer_bench; q=1; x=36; y=34;
+[Item] ID=dirt_sandy2; q=3; r=270; x=36; y=41;
+[Item] ID=rocks1; q=2; r=360; x=36; y=41;
+[Item] ID=bugs5_small; q=1; r=-360; x=36; y=42;
+[Item] ID=dirt_sandy2; q=3; r=90; x=36; y=43;
+[Item] ID=sunbeam_circle_big_dull; q=1; x=36; y=52;
+[Item] ID=secretPassage; q=1; x=37; y=14;
+[Item] ID=secretPassage; q=1; x=37; y=15;
+[Item] ID=barrel_broken; q=1; x=37; y=20; containerID=4;
+[Item] ID=bonePileDark; q=1; r=270; x=37; y=21;
+[Item] ID=dirt_sandy1; q=1; r=360; x=37; y=21;
+[Item] ID=dirt_sandy2; q=2; r=360; x=37; y=22;
+[Item] ID=shana_prayer_bench; q=1; x=37; y=24;
 [Item] ID=bonePileDark; q=1; r=270; x=37; y=26;
-[Item] ID=shana_prayer_bench; q=1; x=37; y=27;
-[Item] ID=dirt_sandy2; q=3; r=270; x=37; y=34;
-[Item] ID=rocks1; q=2; r=360; x=37; y=35;
-[Item] ID=rocks1; q=3; r=-360; x=37; y=37;
-[Item] ID=dirt_sandy2; q=2; r=180; x=37; y=38;
-[Item] ID=dirt_sandy2; q=3; r=180; x=37; y=39;
-[Item] ID=dirt_sandy2; q=3; r=180; x=37; y=40;
-[Item] ID=dirt_sandy2; q=2; r=180; x=37; y=41;
-[Item] ID=shana_birthing_coffin_0; q=1; x=37; y=46;
-[Item] ID=bonePileDark; q=1; r=270; x=38; y=13;
-[Item] ID=shana_prayer_bench; q=1; x=38; y=17;
-[Item] ID=bonePileDark; q=1; r=-360; x=38; y=18;
-[Item] ID=shana_prayer_bench; q=1; x=38; y=19;
-[Item] ID=bonePileDark; q=1; r=180; x=38; y=21;
-[Item] ID=shana_prayer_bench; q=1; x=38; y=21;
-[Item] ID=shana_prayer_bench; q=1; x=38; y=23;
+[Item] ID=shana_prayer_bench; q=1; x=37; y=26;
+[Item] ID=bonePileDark; q=1; r=270; x=37; y=27;
+[Item] ID=shana_prayer_bench; q=1; x=37; y=28;
+[Item] ID=shana_prayer_bench; q=1; x=37; y=30;
+[Item] ID=shana_prayer_bench; q=1; x=37; y=32;
+[Item] ID=bonePileDark; q=1; r=270; x=37; y=33;
+[Item] ID=shana_prayer_bench; q=1; x=37; y=34;
+[Item] ID=dirt_sandy2; q=3; r=270; x=37; y=41;
+[Item] ID=rocks1; q=2; r=360; x=37; y=42;
+[Item] ID=dirt_sandy2; q=3; r=90; x=37; y=43;
+[Item] ID=rocks1; q=3; r=-360; x=37; y=44;
+[Item] ID=dirt_sandy2; q=2; r=180; x=37; y=45;
+[Item] ID=dirt_sandy2; q=3; r=180; x=37; y=46;
+[Item] ID=dirt_sandy2; q=3; r=180; x=37; y=47;
+[Item] ID=dirt_sandy2; q=2; r=180; x=37; y=48;
+[Item] ID=shana_birthing_coffin_0; q=1; x=37; y=53;
+[Item] ID=secretPassage; q=1; x=38; y=9;
+[Item] ID=secretPassage; q=1; x=38; y=10;
+[Item] ID=secretPassage; q=1; x=38; y=11;
+[Item] ID=secretPassage; q=1; x=38; y=12;
+[Item] ID=secretPassage; q=1; x=38; y=13;
+[Item] ID=secretPassage; q=1; x=38; y=14;
+[Item] ID=secretPassage; q=1; x=38; y=14;
+[Item] ID=secretPassage; q=1; x=38; y=15;
+[Item] ID=bonePileDark; q=1; r=360; x=38; y=20;
+[Item] ID=bonePileDark; q=1; r=270; x=38; y=20;
+[Item] ID=loot_bone_junk; q=1; x=38; y=21;
+[Item] ID=bonePileDark; q=1; r=180; x=38; y=22;
+[Item] ID=shana_prayer_bench; q=1; x=38; y=24;
 [Item] ID=bonePileDark; q=1; r=-360; x=38; y=25;
-[Item] ID=shana_prayer_bench; q=1; x=38; y=25;
-[Item] ID=shana_prayer_bench; q=1; x=38; y=27;
+[Item] ID=shana_prayer_bench; q=1; x=38; y=26;
 [Item] ID=bonePileDark; q=1; r=180; x=38; y=28;
-[Item] ID=dirt_sandy2; q=2; r=270; x=38; y=37;
-[Item] ID=barrier_strong; q=1; x=38; y=42;
-[Item] ID=barrier_strong; q=1; x=38; y=48;
-[Item] ID=bonePileDark; q=1; r=-180; x=39; y=14;
-[Item] ID=bonePileDark; q=1; r=-90; x=39; y=14;
-[Item] ID=ribs2; q=1; r=360; x=39; y=16;
-[Item] ID=bonePileDark; q=1; r=90; x=39; y=19;
+[Item] ID=shana_prayer_bench; q=1; x=38; y=28;
+[Item] ID=shana_prayer_bench; q=1; x=38; y=30;
+[Item] ID=bonePileDark; q=1; r=-360; x=38; y=32;
+[Item] ID=shana_prayer_bench; q=1; x=38; y=32;
+[Item] ID=shana_prayer_bench; q=1; x=38; y=34;
+[Item] ID=bonePileDark; q=1; r=180; x=38; y=35;
+[Item] ID=dirt_sandy2; q=2; r=270; x=38; y=44;
+[Item] ID=dirt_sandy1; q=1; r=90; x=38; y=44;
+[Item] ID=barrier_strong; q=1; x=38; y=49;
+[Item] ID=barrier_strong; q=1; x=38; y=55;
+[Item] ID=secretPassage; q=1; x=39; y=9;
+[Item] ID=secretPassage; q=1; x=39; y=10;
+[Item] ID=secretPassage; q=1; x=39; y=10;
+[Item] ID=secretPassage; q=1; x=39; y=11;
+[Item] ID=secretPassage; q=1; x=39; y=12;
+[Item] ID=secretPassage; q=1; x=39; y=13;
+[Item] ID=secretPassage; q=1; x=39; y=14;
+[Item] ID=secretPassage; q=1; x=39; y=15;
+[Item] ID=secretPassage; q=1; x=39; y=15;
+[Item] ID=loot_bone_junk; q=1; x=39; y=20;
+[Item] ID=bonePileDark; q=1; r=-180; x=39; y=22;
 [Item] ID=ribs2; q=1; r=360; x=39; y=23;
 [Item] ID=bonePileDark; q=1; r=90; x=39; y=26;
-[Item] ID=dirt_sandy2; q=2; r=270; x=39; y=37;
-[Item] ID=barrier_strong; q=1; x=39; y=42;
-[Item] ID=barrier_strong; q=1; x=39; y=43;
-[Item] ID=barrier_strong; q=1; x=39; y=44;
-[Item] ID=barrier_strong; q=1; x=39; y=45;
-[Item] ID=barrier_strong; q=1; x=39; y=46;
-[Item] ID=barrier_strong; q=1; x=39; y=47;
-[Item] ID=barrier_strong; q=1; x=39; y=48;
-[Item] ID=dirt_sandy2; q=2; r=270; x=40; y=37;
-[Item] ID=dirt_sandy2; q=2; r=270; x=41; y=37;
-[Item] ID=shana_birthing_coffin_0; q=1; x=43; y=34;
-[Item] ID=shana_birthing_coffin_0; q=1; x=43; y=40;
-[Item] ID=ghost_grub; q=1; x=43; y=45;
-[Item] ID=barrel_broken; q=1; r=-360; x=43; y=45; containerID=5;
+[Item] ID=bonePileDark; q=1; r=90; x=39; y=27;
+[Item] ID=ribs2; q=1; r=360; x=39; y=30;
+[Item] ID=bonePileDark; q=1; r=90; x=39; y=33;
+[Item] ID=dirt_sandy2; q=1; x=39; y=43;
+[Item] ID=dirt_sandy2; q=2; r=270; x=39; y=44;
+[Item] ID=barrier_strong; q=1; x=39; y=49;
+[Item] ID=barrier_strong; q=1; x=39; y=50;
+[Item] ID=barrier_strong; q=1; x=39; y=51;
+[Item] ID=barrier_strong; q=1; x=39; y=52;
+[Item] ID=barrier_strong; q=1; x=39; y=53;
+[Item] ID=barrier_strong; q=1; x=39; y=54;
+[Item] ID=barrier_strong; q=1; x=39; y=55;
+[Item] ID=secretPassage; q=1; x=40; y=9;
+[Item] ID=secretPassage; q=1; x=40; y=10;
+[Item] ID=bonePileDark; q=1; r=90; x=40; y=20;
+[Item] ID=bonePileDark; q=1; r=90; x=40; y=21;
+[Item] ID=dirt_sandy2; q=1; r=180; x=40; y=43;
+[Item] ID=dirt_sandy2; q=2; r=270; x=40; y=44;
+[Item] ID=secretPassage; q=1; x=41; y=9;
+[Item] ID=secretPassage; q=1; x=41; y=10;
+[Item] ID=dirt_sandy2; q=2; r=270; x=41; y=44;
+[Item] ID=dirt_sandy1; q=1; r=90; x=41; y=44;
+[Item] ID=secretPassage; q=1; x=42; y=9;
+[Item] ID=secretPassage; q=1; x=42; y=10;
+[Item] ID=dirt_sandy2; q=1; r=360; x=42; y=43;
+[Item] ID=secretPassage; q=1; x=43; y=9;
+[Item] ID=secretPassage; q=1; x=43; y=10;
+[Item] ID=shana_birthing_coffin_0; q=1; x=43; y=41;
+[Item] ID=shana_birthing_coffin_0; q=1; x=43; y=47;
+[Item] ID=ghost_grub; q=1; x=43; y=52;
+[Item] ID=barrel_broken; q=1; r=-360; x=43; y=52; containerID=5;
 [Item] ID=notes_useless; q=1; containedIn=5; cSlot=0;
 [Item] ID=loot4; q=1; containedIn=5; cSlot=1;
 [Item] ID=cargo_gold; q=6; containedIn=5; cSlot=2;
@@ -551,11 +617,50 @@ combatMode=False;
 [Item] ID=cargo_pearls; q=6; containedIn=5; cSlot=5;
 [Item] ID=shana_cargo_ruinglass; q=6; containedIn=5; cSlot=6;
 [Item] ID=loot3; q=1; containedIn=5; cSlot=7;
-[Item] ID=shana_birthing_coffin_0; q=1; x=49; y=34;
-[Item] ID=shana_birthing_coffin_0; q=1; x=49; y=40;
-[Item] ID=bone_dust; q=1; r=360; x=50; y=20;
-[Item] ID=bonePileDark; q=1; r=180; x=50; y=22;
-[Item] ID=chest_stone2; q=1; x=53; y=7; containerID=6;
+[Item] ID=secretPassage; q=1; x=44; y=9;
+[Item] ID=secretPassage; q=1; x=44; y=10;
+[Item] ID=secretPassage; q=1; x=45; y=9;
+[Item] ID=secretPassage; q=1; x=45; y=10;
+[Item] ID=secretPassage; q=1; x=46; y=9;
+[Item] ID=secretPassage; q=1; x=46; y=10;
+[Item] ID=secretPassage; q=1; x=47; y=9;
+[Item] ID=secretPassage; q=1; x=47; y=10;
+[Item] ID=bonePileDark; q=1; r=270; x=47; y=27;
+[Item] ID=secretPassage; q=1; x=48; y=9;
+[Item] ID=secretPassage; q=1; x=48; y=10;
+[Item] ID=bonePileDark; q=1; r=180; x=48; y=28;
+[Item] ID=secretPassage; q=1; x=49; y=9;
+[Item] ID=secretPassage; q=1; x=49; y=10;
+[Item] ID=loot_bone_junk; q=1; x=49; y=27;
+[Item] ID=bonePileDark; q=1; r=180; x=49; y=28;
+[Item] ID=bonePileDark; q=1; r=270; x=49; y=28;
+[Item] ID=shana_birthing_coffin_0; q=1; x=49; y=41;
+[Item] ID=shana_birthing_coffin_0; q=1; x=49; y=47;
+[Item] ID=secretPassage; q=1; x=50; y=9;
+[Item] ID=secretPassage; q=1; x=50; y=10;
+[Item] ID=bone_dust; q=1; x=50; y=17;
+[Item] ID=loot_bone_junk; q=1; x=50; y=18;
+[Item] ID=bone_dust; q=1; r=360; x=50; y=27;
+[Item] ID=loot_bone_junk; q=1; x=50; y=28;
+[Item] ID=bonePileDark; q=1; r=180; x=50; y=29;
+[Item] ID=secretPassage; q=1; x=51; y=9;
+[Item] ID=secretPassage; q=1; x=51; y=10;
+[Item] ID=loot_bone_junk; q=1; x=51; y=17;
+[Item] ID=loot_bone_junk; q=1; x=51; y=18;
+[Item] ID=loot_bone_junk; q=1; x=51; y=19;
+[Item] ID=bones2; q=1; x=51; y=27;
+[Item] ID=bonePileDark; q=1; r=180; x=51; y=29;
+[Item] ID=secretPassage; q=1; x=52; y=9;
+[Item] ID=secretPassage; q=1; x=52; y=10;
+[Item] ID=bonePileDark; q=1; r=360; x=52; y=24;
+[Item] ID=bonePileDark; q=1; r=90; x=52; y=24;
+[Item] ID=loot_bone_junk; q=1; x=52; y=26;
+[Item] ID=loot_bone_junk; q=1; x=52; y=27;
+[Item] ID=bonePileDark; q=1; r=180; x=52; y=28;
+[Item] ID=bonePileDark; q=1; r=90; x=52; y=28;
+[Item] ID=secretPassage; q=1; x=53; y=9;
+[Item] ID=secretPassage; q=1; x=53; y=10;
+[Item] ID=chest_stone2; q=1; x=53; y=14; containerID=6;
 [Item] ID=shana_trigger_rot; q=1; containedIn=6; cSlot=0;
 [Item] ID=loot6; q=1; containedIn=6; cSlot=1;
 [Item] ID=loot5; q=1; containedIn=6; cSlot=2;
@@ -564,13 +669,63 @@ combatMode=False;
 [Item] ID=gem_big2; q=1; containedIn=6; cSlot=5;
 [Item] ID=book_research_v1; q=1; containedIn=6; cSlot=6;
 [Item] ID=shana_trigger_rot; q=1; containedIn=6; cSlot=7;
-[Item] ID=shana_birthing_coffin_0; q=1; x=53; y=10;
-[Item] ID=sunbeam_circle_small; q=1; r=-360; x=53; y=13;
-[Item] ID=sunbeam; q=1; r=-180; x=56; y=26;
+[Item] ID=shana_birthing_coffin_0; q=1; x=53; y=16;
+[Item] ID=sunbeam_circle_small; q=1; r=-360; x=53; y=20;
+[Item] ID=bonePileDark; q=1; r=90; x=53; y=25;
+[Item] ID=bonePileDark; q=1; r=360; x=53; y=25;
+[Item] ID=loot_bone_junk; q=1; x=53; y=26;
+[Item] ID=dirt_sandy1; q=1; r=90; x=53; y=27;
+[Item] ID=bonePileDark; q=1; r=180; x=53; y=27;
+[Item] ID=bonePileDark; q=1; r=90; x=53; y=27;
+[Item] ID=secretPassage; q=1; x=54; y=9;
+[Item] ID=secretPassage; q=1; x=54; y=10;
+[Item] ID=dirt_sandy2; q=4; r=270; x=54; y=26;
+[Item] ID=bonePileDark; q=1; r=90; x=54; y=26;
+[Item] ID=dirt_sandy1; q=1; r=-90; x=54; y=27;
+[Item] ID=secretPassage; q=1; x=55; y=9;
+[Item] ID=secretPassage; q=1; x=55; y=10;
+[Item] ID=loot_bone_junk; q=1; x=55; y=17;
+[Item] ID=loot_bone_junk; q=1; x=55; y=18;
+[Item] ID=secretPassage; q=1; x=56; y=9;
+[Item] ID=secretPassage; q=1; x=56; y=10;
+[Item] ID=loot_bone_junk; q=1; x=56; y=17;
+[Item] ID=bone_dust; q=1; x=56; y=18;
+[Item] ID=loot_bone_junk; q=1; x=56; y=19;
+[Item] ID=sunbeam; q=1; r=-180; x=56; y=33;
+[Item] ID=secretPassage; q=1; x=57; y=9;
+[Item] ID=secretPassage; q=1; x=57; y=10;
+[Item] ID=secretPassage; q=1; x=58; y=9;
+[Item] ID=secretPassage; q=1; x=58; y=10;
+[Item] ID=secretPassage; q=1; x=59; y=9;
+[Item] ID=secretPassage; q=1; x=59; y=10;
+[Item] ID=secretPassage; q=1; x=60; y=9;
+[Item] ID=secretPassage; q=1; x=60; y=10;
+[Item] ID=secretPassage; q=1; x=61; y=9;
+[Item] ID=secretPassage; q=1; x=61; y=10;
+[Item] ID=secretPassage; q=1; x=62; y=9;
+[Item] ID=secretPassage; q=1; x=62; y=10;
+[Item] ID=secretPassage; q=1; x=63; y=9;
+[Item] ID=secretPassage; q=1; x=63; y=10;
+[Item] ID=secretPassage; q=1; x=64; y=9;
+[Item] ID=secretPassage; q=1; x=64; y=10;
+[Item] ID=secretPassage; q=1; x=65; y=9;
+[Item] ID=secretPassage; q=1; x=65; y=10;
+[Item] ID=secretPassage; q=1; x=66; y=9;
+[Item] ID=secretPassage; q=1; x=66; y=10;
+[Item] ID=secretPassage; q=1; x=67; y=9;
+[Item] ID=secretPassage; q=1; x=67; y=10;
+[Item] ID=secretPassage; q=1; x=68; y=9;
+[Item] ID=secretPassage; q=1; x=68; y=10;
+[Item] ID=secretPassage; q=1; x=69; y=9;
+[Item] ID=secretPassage; q=1; x=69; y=10;
+[Item] ID=secretPassage; q=1; x=70; y=9;
+[Item] ID=secretPassage; q=1; x=70; y=10;
+[Item] ID=secretPassage; q=1; x=71; y=9;
+[Item] ID=secretPassage; q=1; x=71; y=10;
 
 
 [Actor]ID=shana_undead_abscess_mature_summoned_enemy_ari_gravekeeper_city_church_interior_0; name=Undead Abscess;
-actorTypeID=shana_undead_abscess_mature_summoned_enemy; sprite=actor_shana_undead_abscess_normal; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=0; position=37,43; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pB; skinPalette=pG; armorPalette=pR; unarmoredPalette=pR; equipmentDoesntChangeArmorPalette=False; aiScript=none; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.1; bravery=0.6; intelligence=0.1; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
+actorTypeID=shana_undead_abscess_mature_summoned_enemy; sprite=actor_shana_undead_abscess_normal; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=0; position=37,50; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pB; skinPalette=pG; armorPalette=pR; unarmoredPalette=pR; equipmentDoesntChangeArmorPalette=False; aiScript=none; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.1; bravery=0.6; intelligence=0.1; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
 
  supportAbilities=shana_uber_instability;  supportAbilities=;  supportAbilities=; shana_sleeping_sickness_enemy=1; shana_psychenecrosis_enemy=1; 
 
@@ -585,7 +740,7 @@ style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=
 
 
 [Actor]ID=shana_undead_bweaver_ari_gravekeeper_city_church_interior_; name=Azure;
-actorTypeID=shana_undead_bweaver; sprite=actor_bweaver; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=7; position=51,8; destination=-1,-1; facingRot=90; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pBone; skinPalette=pMeat; armorPalette=pAsh_still; unarmoredPalette=pAsh_still; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=1; bravery=1; intelligence=0.3; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=flyjump;
+actorTypeID=shana_undead_bweaver; sprite=actor_bweaver; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=7; position=51,15; destination=-1,-1; facingRot=90; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pBone; skinPalette=pMeat; armorPalette=pAsh_still; unarmoredPalette=pAsh_still; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=1; bravery=1; intelligence=0.3; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=flyjump;
 
  supportAbilities=;  supportAbilities=;  supportAbilities=; 
 
@@ -600,7 +755,7 @@ style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=
 
 
 [Actor]ID=summoned_undead_skeletonmage_enemy_ari_gravekeeper_city_church_interior_; name=Undead Skeleton;
-actorTypeID=summoned_undead_skeleton_mage_type_enemy; sprite=; actorClass=ari_skeletonmage_class_enemy; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=2; position=36,47; destination=-1,-1; facingRot=1170; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=False; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pBlack; skinPalette=pCorpryst; armorPalette=pIron; unarmoredPalette=pUnarmored; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=False; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.5; bravery=0.4; intelligence=0.6; honor=0.1; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
+actorTypeID=summoned_undead_skeleton_mage_type_enemy; sprite=; actorClass=ari_skeletonmage_class_enemy; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=2; position=36,54; destination=-1,-1; facingRot=1170; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=False; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pBlack; skinPalette=pCorpryst; armorPalette=pIron; unarmoredPalette=pUnarmored; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=False; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.5; bravery=0.4; intelligence=0.6; honor=0.1; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
  headSprite=ari_dadzioskeleton_head1; faceSprite=; legsSprite=dadzioskeleton_legs1; armLSprite=dadzioskeleton_arm1; armRSprite=dadzioskeleton_arm1; torsoSprite=dadzioskeleton_torso1; shoulderLSprite=; shoulderRSprite=; backSprite=;
 partSpritesThatTakePriorityOverClass=torso; 
 
@@ -623,7 +778,7 @@ style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=
 
 
 [Actor]ID=shana_undead_bweaver_ari_gravekeeper_city_church_interior_0; name=Seai;
-actorTypeID=shana_undead_bweaver; sprite=actor_bweaver; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=7; position=55,8; destination=-1,-1; facingRot=90; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pBone; skinPalette=pMeat; armorPalette=pAsh_still; unarmoredPalette=pAsh_still; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=1; bravery=1; intelligence=0.3; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=flyjump;
+actorTypeID=shana_undead_bweaver; sprite=actor_bweaver; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=7; position=55,15; destination=-1,-1; facingRot=90; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pBone; skinPalette=pMeat; armorPalette=pAsh_still; unarmoredPalette=pAsh_still; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=1; bravery=1; intelligence=0.3; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=flyjump;
 
  supportAbilities=;  supportAbilities=;  supportAbilities=; 
 
@@ -638,7 +793,7 @@ style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=
 
 
 [Actor]ID=shana_undead_abscess_mature_enemy_ari_gravekeeper_city_church_interior_ari_gravekeeper_city_church_interior_; name=Undead Abscess;
-actorTypeID=shana_undead_abscess_mature_enemy; sprite=actor_shana_undead_abscess_normal; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=0; position=16,43; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pB; skinPalette=pG; armorPalette=pR; unarmoredPalette=pR; equipmentDoesntChangeArmorPalette=False; aiScript=none; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.1; bravery=0.6; intelligence=0.1; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
+actorTypeID=shana_undead_abscess_mature_enemy; sprite=actor_shana_undead_abscess_normal; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=0; position=16,50; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pB; skinPalette=pG; armorPalette=pR; unarmoredPalette=pR; equipmentDoesntChangeArmorPalette=False; aiScript=none; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.1; bravery=0.6; intelligence=0.1; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
 
  supportAbilities=shana_uber_instability;  supportAbilities=;  supportAbilities=; shana_sleeping_sickness_enemy=1; shana_psychenecrosis_enemy=1; 
 
@@ -653,7 +808,7 @@ style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=
 
 
 [Actor]ID=shana_undead_bweaver_ari_gravekeeper_city_church_interior_1; name=Kraw;
-actorTypeID=shana_undead_bweaver; sprite=actor_bweaver; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=7; position=53,12; destination=-1,-1; facingRot=90; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pBone; skinPalette=pMeat; armorPalette=pAsh_still; unarmoredPalette=pAsh_still; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=1; bravery=1; intelligence=0.3; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=flyjump;
+actorTypeID=shana_undead_bweaver; sprite=actor_bweaver; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=7; position=52,19; destination=-1,-1; facingRot=90; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pBone; skinPalette=pMeat; armorPalette=pAsh_still; unarmoredPalette=pAsh_still; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=1; bravery=1; intelligence=0.3; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=flyjump;
 
  supportAbilities=;  supportAbilities=;  supportAbilities=; 
 
@@ -668,7 +823,7 @@ style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=
 
 
 [Actor]ID=summoned_undead_skeletonmage_enemy_ari_gravekeeper_city_church_interior_ari_gravekeeper_city_church_interior_; name=Undead Skeleton;
-actorTypeID=summoned_undead_skeleton_mage_type_enemy; sprite=; actorClass=ari_skeletonmage_class_enemy; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=2; position=17,47; destination=-1,-1; facingRot=1170; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=False; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pBlack; skinPalette=pCorpryst; armorPalette=pIron; unarmoredPalette=pUnarmored; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=False; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.5; bravery=0.4; intelligence=0.6; honor=0.1; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
+actorTypeID=summoned_undead_skeleton_mage_type_enemy; sprite=; actorClass=ari_skeletonmage_class_enemy; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=2; position=17,54; destination=-1,-1; facingRot=1170; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=False; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pBlack; skinPalette=pCorpryst; armorPalette=pIron; unarmoredPalette=pUnarmored; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=False; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.5; bravery=0.4; intelligence=0.6; honor=0.1; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
  headSprite=ari_dadzioskeleton_head1; faceSprite=; legsSprite=dadzioskeleton_legs1; armLSprite=dadzioskeleton_arm1; armRSprite=dadzioskeleton_arm1; torsoSprite=dadzioskeleton_torso1; shoulderLSprite=; shoulderRSprite=; backSprite=;
 partSpritesThatTakePriorityOverClass=torso; 
 
@@ -691,7 +846,7 @@ style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=
 
 
 [Actor]ID=shana_undead_abscess_mature_enemy_ari_gravekeeper_city_church_interior_; name=Undead Abscess;
-actorTypeID=shana_undead_abscess_mature_enemy; sprite=actor_shana_undead_abscess_normal; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=0; position=35,43; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pB; skinPalette=pG; armorPalette=pR; unarmoredPalette=pR; equipmentDoesntChangeArmorPalette=False; aiScript=none; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.1; bravery=0.6; intelligence=0.1; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
+actorTypeID=shana_undead_abscess_mature_enemy; sprite=actor_shana_undead_abscess_normal; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=0; position=35,50; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pB; skinPalette=pG; armorPalette=pR; unarmoredPalette=pR; equipmentDoesntChangeArmorPalette=False; aiScript=none; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.1; bravery=0.6; intelligence=0.1; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
 
  supportAbilities=shana_uber_instability;  supportAbilities=;  supportAbilities=; shana_sleeping_sickness_enemy=1; shana_psychenecrosis_enemy=1; 
 
@@ -706,7 +861,7 @@ style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=
 
 
 [Actor]ID=shana_undead_abscess_mature_enemy_ari_gravekeeper_city_church_interior_2_ari_gravekeeper_city_church_interior_; name=Undead Abscess;
-actorTypeID=shana_undead_abscess_mature_enemy; sprite=actor_shana_undead_abscess_normal; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=0; position=7,37; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pB; skinPalette=pG; armorPalette=pR; unarmoredPalette=pR; equipmentDoesntChangeArmorPalette=False; aiScript=none; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.1; bravery=0.6; intelligence=0.1; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
+actorTypeID=shana_undead_abscess_mature_enemy; sprite=actor_shana_undead_abscess_normal; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=0; position=7,44; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pB; skinPalette=pG; armorPalette=pR; unarmoredPalette=pR; equipmentDoesntChangeArmorPalette=False; aiScript=none; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.1; bravery=0.6; intelligence=0.1; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
 
  supportAbilities=shana_uber_instability;  supportAbilities=;  supportAbilities=; shana_sleeping_sickness_enemy=1; shana_psychenecrosis_enemy=1; 
 
@@ -721,7 +876,7 @@ style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=
 
 
 [Actor]ID=shana_undead_abscess_mature_enemy_ari_gravekeeper_city_church_interior_ari_gravekeeper_city_church_interior_ari_gravekeeper_city_church_interior_; name=Undead Abscess;
-actorTypeID=shana_undead_abscess_mature_enemy; sprite=actor_shana_undead_abscess_normal; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=0; position=18,43; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pB; skinPalette=pG; armorPalette=pR; unarmoredPalette=pR; equipmentDoesntChangeArmorPalette=False; aiScript=none; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.1; bravery=0.6; intelligence=0.1; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
+actorTypeID=shana_undead_abscess_mature_enemy; sprite=actor_shana_undead_abscess_normal; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=0; position=18,50; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pB; skinPalette=pG; armorPalette=pR; unarmoredPalette=pR; equipmentDoesntChangeArmorPalette=False; aiScript=none; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.1; bravery=0.6; intelligence=0.1; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
 
  supportAbilities=shana_uber_instability;  supportAbilities=;  supportAbilities=; shana_sleeping_sickness_enemy=1; shana_psychenecrosis_enemy=1; 
 
@@ -736,7 +891,7 @@ style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=
 
 
 [Actor]ID=shana_undead_amalgam_enemy_prefab_with_loot_ari_gravekeeper_city_church_interior_; name=Undead Amalgam;
-actorTypeID=shana_undead_amalgam_enemy_base; sprite=actor_shana_undead_amalgam; actorClass=; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=2; position=27,12; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pB; skinPalette=pG; armorPalette=pR; unarmoredPalette=pR; equipmentDoesntChangeArmorPalette=False; aiScript=none; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.1; bravery=0.6; intelligence=0.1; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=flying;
+actorTypeID=shana_undead_amalgam_enemy_base; sprite=actor_shana_undead_amalgam; actorClass=; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=2; position=27,19; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pB; skinPalette=pG; armorPalette=pR; unarmoredPalette=pR; equipmentDoesntChangeArmorPalette=False; aiScript=none; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.1; bravery=0.6; intelligence=0.1; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=flying;
 
  supportAbilities=shana_critical_autolyze;  supportAbilities=shana_instability;  supportAbilities=shana_festering_fulcrum; 
 
@@ -752,7 +907,7 @@ style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=
 
 
 [Actor]ID=shana_undead_abscess_mature_enemy_ari_gravekeeper_city_church_interior_2; name=Undead Abscess;
-actorTypeID=shana_undead_abscess_mature_enemy; sprite=actor_shana_undead_abscess_normal; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=0; position=46,37; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pB; skinPalette=pG; armorPalette=pR; unarmoredPalette=pR; equipmentDoesntChangeArmorPalette=False; aiScript=none; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.1; bravery=0.6; intelligence=0.1; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
+actorTypeID=shana_undead_abscess_mature_enemy; sprite=actor_shana_undead_abscess_normal; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=0; position=46,44; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pB; skinPalette=pG; armorPalette=pR; unarmoredPalette=pR; equipmentDoesntChangeArmorPalette=False; aiScript=none; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.1; bravery=0.6; intelligence=0.1; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
 
  supportAbilities=shana_uber_instability;  supportAbilities=;  supportAbilities=; shana_sleeping_sickness_enemy=1; shana_psychenecrosis_enemy=1; 
 
@@ -767,9 +922,9 @@ style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=
 
 
 [Actor]ID=shana_gatemaster_boss_ari_gravekeeper_city_church_interior_; name=Magnus;
-actorTypeID=shana_gatemaster_boss; sprite=; actorClass=shanafakegatemaster; secondaryClass=balancer; actorClass3=tactician; actorClass4=gatewarder; movementSpeed=6; position=26,13; destination=-1,-1; facingRot=90; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=none; combatTeam=; clothPalette=pCBlack; skinPalette=pHuman8; armorPalette=pPurple; unarmoredPalette=pUnarmored; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=auto; aggressiveness=0.5; bravery=0.5; intelligence=0.5; honor=0.4; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
+actorTypeID=shana_gatemaster_boss; sprite=; actorClass=shanafakegatemaster; secondaryClass=balancer; actorClass3=tactician; actorClass4=gatewarder; movementSpeed=6; position=26,20; destination=-1,-1; facingRot=90; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=none; combatTeam=; clothPalette=pCBlack; skinPalette=pHuman8; armorPalette=pPurple; unarmoredPalette=pUnarmored; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=auto; aggressiveness=0.5; bravery=0.5; intelligence=0.5; honor=0.4; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
  headSprite=human_head_sideburns_male; faceSprite=shades_face; legsSprite=legs_heavyBoots; armLSprite=shanafakegatemaster_armL; armRSprite=shanafakegatemaster_armR; torsoSprite=shanafakegatemaster_torso; shoulderLSprite=shanafakegatemaster_shoulderL; shoulderRSprite=shanafakegatemaster_shoulderR; backSprite=;
- supportAbilities=shana_gate_reckoning;  supportAbilities=pureMind;  supportAbilities=shanafakegatemaster_multiscale; HP=200; MP=90; HPMax=200; MPMax=90; TrueHPMax=300; TrueMPMax=90; MagAtk=9; MagDef=5; MagEva=20; skill_Fire=5; skill_Ice=5; skill_Wind=4; skill_Ruin=5; pureMind=1; sage_XP=0; Tac_masterstroke=1; tactician_XP=0; Ba_stonefoot=3; Ba_warmth=4; balancer_XP=0; gateW_void=1; gatewarder_XP=0; gate_hellfire=1; gate_gale=1; gate_ash=1; shana_gate_reckoning=1; shana_testing_XP=0;
+ supportAbilities=shana_gate_reckoning;  supportAbilities=pureMind;  supportAbilities=shanafakegatemaster_multiscale; HP=300; MP=90; HPMax=300; MPMax=90; TrueHPMax=300; TrueMPMax=90; MagAtk=9; MagDef=5; MagEva=20; skill_Fire=5; skill_Ice=5; skill_Wind=4; skill_Ruin=5; pureMind=1; sage_XP=0; Tac_masterstroke=1; tactician_XP=0; Ba_stonefoot=3; Ba_warmth=4; balancer_XP=0; gateW_void=1; gatewarder_XP=0; gate_hellfire=1; gate_gale=1; gate_ash=1; shana_gate_reckoning=1; shana_testing_XP=0; 
 numRanksBought=gate_hellfire=1; 
 numRanksBought=gate_ash=1; 
 numRanksBought=Ba_stonefoot=3; 
@@ -841,32 +996,415 @@ style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=
 [ActorItem] ID=necklace_spellcatcher; cSlot=4;
 
 
+[Actor]ID=shana_undead_bweaver_ari_gravekeeper_city_church_interior_2; name=Liaess;
+actorTypeID=shana_undead_bweaver; sprite=actor_bweaver; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=7; position=54,19; destination=-1,-1; facingRot=90; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pBone; skinPalette=pMeat; armorPalette=pAsh_still; unarmoredPalette=pAsh_still; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=1; bravery=1; intelligence=0.3; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=flyjump;
+
+ supportAbilities=;  supportAbilities=;  supportAbilities=; 
+
+[ActorState]
+canSwap=False;
+
+
+[ActorInventory]
+style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
+ 
+
+
+
+[Actor]ID=summoned_undead_skeletonbow_enemy_ari_gravekeeper_city_church_interior_; name=Undead Skeleton;
+actorTypeID=summoned_undead_skeleton_enemy; sprite=; actorClass=ari_skeletonarcher_class; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=3; position=33,33; destination=-1,-1; facingRot=1170; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=False; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pBlack; skinPalette=pCorpryst; armorPalette=pIron; unarmoredPalette=pIron; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=False; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.6; bravery=0.8; intelligence=0.5; honor=0.2; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
+ headSprite=ari_dadzioskeleton_head1; faceSprite=; legsSprite=dadzioskeleton_legs1; armLSprite=dadzioskeleton_arm1; armRSprite=knight_arm; torsoSprite=dadzioskeleton_torso1; shoulderLSprite=; shoulderRSprite=guardian_shoulder; backSprite=;
+partSpritesThatTakePriorityOverClass=torso; 
+
+ supportAbilities=ari_enemy_resurrection_passive1;  supportAbilities=;  supportAbilities=; skill_Shield=1; 
+numRanksBought=skill_Crossbow=2; 
+numRanksBought=skill_Shield=1; 
+
+[ActorState]
+canSwap=False;
+
+[ActorEffect]
+ actorValue=priority; sourceAVAffecter=ari_skeletonarcher_class; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=-0.5; duration=-1;
+[ActorEffect]
+ actorValue=PhysEva; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=6; duration=-1;
+[ActorEffect]
+ actorValue=PhysDef; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=PhysEva; sourceAVAffecter=shieldBonus; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=3; duration=-1;
+
+[ActorInventory]
+style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
+ 
+
+[ActorItem] ID=ari_summoned_crossbow_enemy; cSlot=0; containerID=0;
+[ActorItem] ID=ari_summoned_shield; cSlot=1; containerID=1;
+
+
+[Actor]ID=summoned_undead_skeletonbow_enemy_ari_gravekeeper_city_church_interior_0; name=Undead Skeleton;
+actorTypeID=summoned_undead_skeleton_enemy; sprite=; actorClass=ari_skeletonarcher_class; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=3; position=31,31; destination=-1,-1; facingRot=1170; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=False; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pBlack; skinPalette=pCorpryst; armorPalette=pIron; unarmoredPalette=pIron; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=False; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.6; bravery=0.8; intelligence=0.5; honor=0.2; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
+ headSprite=ari_dadzioskeleton_head1; faceSprite=; legsSprite=dadzioskeleton_legs1; armLSprite=dadzioskeleton_arm1; armRSprite=knight_arm; torsoSprite=dadzioskeleton_torso1; shoulderLSprite=; shoulderRSprite=guardian_shoulder; backSprite=;
+partSpritesThatTakePriorityOverClass=torso; 
+
+ supportAbilities=ari_enemy_resurrection_passive1;  supportAbilities=;  supportAbilities=; skill_Shield=1; 
+numRanksBought=skill_Crossbow=2; 
+numRanksBought=skill_Shield=1; 
+
+[ActorState]
+canSwap=False;
+
+[ActorEffect]
+ actorValue=priority; sourceAVAffecter=ari_skeletonarcher_class; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=-0.5; duration=-1;
+[ActorEffect]
+ actorValue=PhysEva; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=6; duration=-1;
+[ActorEffect]
+ actorValue=PhysDef; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=PhysEva; sourceAVAffecter=shieldBonus; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=3; duration=-1;
+
+[ActorInventory]
+style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
+ 
+
+[ActorItem] ID=ari_summoned_crossbow_enemy; cSlot=0; containerID=0;
+[ActorItem] ID=ari_summoned_shield; cSlot=1; containerID=1;
+
+
+[Actor]ID=summoned_undead_skeletonmelee_enemy_ari_gravekeeper_city_church_interior_; name=Undead Skeleton;
+actorTypeID=summoned_undead_skeleton_enemy; sprite=; actorClass=ari_skeletonwarrior_class_enemy; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=3; position=32,37; destination=-1,-1; facingRot=1170; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=False; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pBlack; skinPalette=pCorpryst; armorPalette=pIron; unarmoredPalette=pIron; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=False; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.7; bravery=1; intelligence=0.3; honor=0.2; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
+ headSprite=ari_dadzioskeleton_head1; faceSprite=; legsSprite=dadzioskeleton_legs1; armLSprite=knight_arm; armRSprite=knight_arm; torsoSprite=guardian_torso; shoulderLSprite=guardian_shoulder; shoulderRSprite=guardian_shoulder; backSprite=;
+partSpritesThatTakePriorityOverClass=torso; 
+
+ supportAbilities=ari_enemy_resurrection_passive1;  supportAbilities=;  supportAbilities=; HPMax=30; skill_Sword=3; skill_Shield=3; ari_skeleton_warrior_charge_enemy=1; 
+numRanksBought=ari_skeleton_warrior_charge_enemy=1; 
+numRanksBought=skill_Sword=3; 
+numRanksBought=skill_Shield=3; 
+
+[ActorState]
+canSwap=False;
+
+[ActorEffect]
+ actorValue=TrueHPMax; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
+[ActorEffect]
+ actorValue=skill_Sword; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=3; duration=-1;
+[ActorEffect]
+ actorValue=skill_Shield; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=3; duration=-1;
+[ActorEffect]
+ actorValue=skill_Ruin; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
+[ActorEffect]
+ actorValue=PhysEva; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=6; duration=-1;
+[ActorEffect]
+ actorValue=PhysDef; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=PhysEva; sourceAVAffecter=shieldBonus; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=18; duration=-1;
+
+[ActorInventory]
+style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
+ 
+
+[ActorItem] ID=ari_summoned_sword_enemy; cSlot=0; containerID=0;
+[ActorItem] ID=ari_summoned_shield; cSlot=1; containerID=1;
+
+
+[Actor]ID=summoned_undead_abomination_enemy_ari_gravekeeper_city_church_interior_; name=Hulking Abomination;
+actorTypeID=summoned_undead_abomination_enemy; sprite=; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=3; position=19,29; destination=-1,-1; facingRot=90; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=none; combatTeam=; clothPalette=pHuman7; skinPalette=p54; armorPalette=pGreen; unarmoredPalette=pGreen; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=shana_gravekeeper_enemy_placeholder_dialogue; aggressiveness=1; bravery=1; intelligence=0.5; honor=0.1; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
+ headSprite=abomination_head; faceSprite=; legsSprite=abomination_legs; armLSprite=abomination_arm; armRSprite=abomination_arm; torsoSprite=abomination_torso; shoulderLSprite=; shoulderRSprite=; backSprite=;
+ supportAbilities=ari_abomination_blood_nova;  supportAbilities=ari_abomination_horrific_presence;  supportAbilities=; 
+
+[ActorState]
+canSwap=False;
+
+
+[ActorInventory]
+style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
+ 
+
+
+
+[Actor]ID=summoned_undead_skeletonmage_enemy_ari_gravekeeper_city_church_interior_0; name=Undead Skeleton;
+actorTypeID=summoned_undead_skeleton_mage_type_enemy; sprite=; actorClass=ari_skeletonmage_class_enemy; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=2; position=18,27; destination=-1,-1; facingRot=1170; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=False; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pBlack; skinPalette=pCorpryst; armorPalette=pIron; unarmoredPalette=pUnarmored; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=False; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.5; bravery=0.4; intelligence=0.6; honor=0.1; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
+ headSprite=ari_dadzioskeleton_head1; faceSprite=; legsSprite=dadzioskeleton_legs1; armLSprite=dadzioskeleton_arm1; armRSprite=dadzioskeleton_arm1; torsoSprite=dadzioskeleton_torso1; shoulderLSprite=; shoulderRSprite=; backSprite=;
+partSpritesThatTakePriorityOverClass=torso; 
+
+ supportAbilities=ari_enemy_resurrection_passive1;  supportAbilities=;  supportAbilities=; MP=15; MPMax=15; TrueMPMax=15; skill_Ruin=3; ari_skeleton_mage_essencerupture=1; ari_enemy_skeleton_mage_bombard_stage1=1; 
+numRanksBought=ari_skeleton_mage_essencerupture=1; 
+numRanksBought=ari_enemy_skeleton_mage_bombard_stage1=1; 
+numRanksBought=skill_Ruin=3; 
+
+[ActorState]
+canSwap=False;
+
+[ActorEffect]
+ actorValue=skill_Ruin; sourceAVAffecter=ari_skeletonmage_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=6; duration=-1;
+
+[ActorInventory]
+style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
+ 
+
+[ActorItem] ID=ari_grimoire_forbidden; cSlot=0; containerID=0;
+
+
+[Actor]ID=summoned_undead_skeletonmage_enemy_ari_gravekeeper_city_church_interior_1; name=Undead Skeleton;
+actorTypeID=summoned_undead_skeleton_mage_type_enemy; sprite=; actorClass=ari_skeletonmage_class_enemy; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=2; position=17,25; destination=-1,-1; facingRot=1170; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=False; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pBlack; skinPalette=pCorpryst; armorPalette=pIron; unarmoredPalette=pUnarmored; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=False; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.5; bravery=0.4; intelligence=0.6; honor=0.1; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
+ headSprite=ari_dadzioskeleton_head1; faceSprite=; legsSprite=dadzioskeleton_legs1; armLSprite=dadzioskeleton_arm1; armRSprite=dadzioskeleton_arm1; torsoSprite=dadzioskeleton_torso1; shoulderLSprite=; shoulderRSprite=; backSprite=;
+partSpritesThatTakePriorityOverClass=torso; 
+
+ supportAbilities=ari_enemy_resurrection_passive1;  supportAbilities=;  supportAbilities=; MP=15; MPMax=15; TrueMPMax=15; skill_Ruin=3; ari_skeleton_mage_essencerupture=1; ari_enemy_skeleton_mage_bombard_stage1=1; 
+numRanksBought=ari_skeleton_mage_essencerupture=1; 
+numRanksBought=ari_enemy_skeleton_mage_bombard_stage1=1; 
+numRanksBought=skill_Ruin=3; 
+
+[ActorState]
+canSwap=False;
+
+[ActorEffect]
+ actorValue=skill_Ruin; sourceAVAffecter=ari_skeletonmage_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=6; duration=-1;
+
+[ActorInventory]
+style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
+ 
+
+[ActorItem] ID=ari_grimoire_forbidden; cSlot=0; containerID=0;
+
+
+[Actor]ID=summoned_undead_skeletonmelee_enemy_ari_gravekeeper_city_church_interior_0; name=Undead Skeleton;
+actorTypeID=summoned_undead_skeleton_enemy; sprite=; actorClass=ari_skeletonwarrior_class_enemy; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=3; position=5,43; destination=-1,-1; facingRot=1170; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=False; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pBlack; skinPalette=pCorpryst; armorPalette=pIron; unarmoredPalette=pIron; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=False; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.7; bravery=1; intelligence=0.3; honor=0.2; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
+ headSprite=ari_dadzioskeleton_head1; faceSprite=; legsSprite=dadzioskeleton_legs1; armLSprite=knight_arm; armRSprite=knight_arm; torsoSprite=guardian_torso; shoulderLSprite=guardian_shoulder; shoulderRSprite=guardian_shoulder; backSprite=;
+partSpritesThatTakePriorityOverClass=torso; 
+
+ supportAbilities=ari_enemy_resurrection_passive1;  supportAbilities=;  supportAbilities=; HPMax=30; skill_Sword=3; skill_Shield=3; ari_skeleton_warrior_charge_enemy=1; 
+numRanksBought=ari_skeleton_warrior_charge_enemy=1; 
+numRanksBought=skill_Sword=3; 
+numRanksBought=skill_Shield=3; 
+
+[ActorState]
+canSwap=False;
+
+[ActorEffect]
+ actorValue=TrueHPMax; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
+[ActorEffect]
+ actorValue=skill_Sword; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=3; duration=-1;
+[ActorEffect]
+ actorValue=skill_Shield; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=3; duration=-1;
+[ActorEffect]
+ actorValue=skill_Ruin; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
+[ActorEffect]
+ actorValue=PhysEva; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=6; duration=-1;
+[ActorEffect]
+ actorValue=PhysDef; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=PhysEva; sourceAVAffecter=shieldBonus; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=18; duration=-1;
+
+[ActorInventory]
+style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
+ 
+
+[ActorItem] ID=ari_summoned_sword_enemy; cSlot=0; containerID=0;
+[ActorItem] ID=ari_summoned_shield; cSlot=1; containerID=1;
+
+
+[Actor]ID=summoned_undead_skeletonmelee_enemy_ari_gravekeeper_city_church_interior_0_ari_gravekeeper_city_church_interior_; name=Undead Skeleton;
+actorTypeID=summoned_undead_skeleton_enemy; sprite=; actorClass=ari_skeletonwarrior_class_enemy; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=3; position=5,45; destination=-1,-1; facingRot=1170; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=False; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pBlack; skinPalette=pCorpryst; armorPalette=pIron; unarmoredPalette=pIron; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=False; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.7; bravery=1; intelligence=0.3; honor=0.2; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
+ headSprite=ari_dadzioskeleton_head1; faceSprite=; legsSprite=dadzioskeleton_legs1; armLSprite=knight_arm; armRSprite=knight_arm; torsoSprite=guardian_torso; shoulderLSprite=guardian_shoulder; shoulderRSprite=guardian_shoulder; backSprite=;
+partSpritesThatTakePriorityOverClass=torso; 
+
+ supportAbilities=ari_enemy_resurrection_passive1;  supportAbilities=;  supportAbilities=; HPMax=30; skill_Sword=3; skill_Shield=3; ari_skeleton_warrior_charge_enemy=1; 
+numRanksBought=ari_skeleton_warrior_charge_enemy=1; 
+numRanksBought=skill_Sword=3; 
+numRanksBought=skill_Shield=3; 
+
+[ActorState]
+canSwap=False;
+
+[ActorEffect]
+ actorValue=TrueHPMax; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
+[ActorEffect]
+ actorValue=skill_Sword; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=3; duration=-1;
+[ActorEffect]
+ actorValue=skill_Shield; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=3; duration=-1;
+[ActorEffect]
+ actorValue=skill_Ruin; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
+[ActorEffect]
+ actorValue=PhysEva; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=6; duration=-1;
+[ActorEffect]
+ actorValue=PhysDef; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=PhysEva; sourceAVAffecter=shieldBonus; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=18; duration=-1;
+
+[ActorInventory]
+style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
+ 
+
+[ActorItem] ID=ari_summoned_sword_enemy; cSlot=0; containerID=0;
+[ActorItem] ID=ari_summoned_shield; cSlot=1; containerID=1;
+
+
+[Actor]ID=summoned_undead_skeletonmelee_enemy_ari_gravekeeper_city_church_interior_0_ari_gravekeeper_city_church_interior_ari_gravekeeper_city_church_interior_; name=Undead Skeleton;
+actorTypeID=summoned_undead_skeleton_enemy; sprite=; actorClass=ari_skeletonwarrior_class_enemy; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=3; position=48,45; destination=-1,-1; facingRot=1170; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=False; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pBlack; skinPalette=pCorpryst; armorPalette=pIron; unarmoredPalette=pIron; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=False; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.7; bravery=1; intelligence=0.3; honor=0.2; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
+ headSprite=ari_dadzioskeleton_head1; faceSprite=; legsSprite=dadzioskeleton_legs1; armLSprite=knight_arm; armRSprite=knight_arm; torsoSprite=guardian_torso; shoulderLSprite=guardian_shoulder; shoulderRSprite=guardian_shoulder; backSprite=;
+partSpritesThatTakePriorityOverClass=torso; 
+
+ supportAbilities=ari_enemy_resurrection_passive1;  supportAbilities=;  supportAbilities=; HPMax=30; skill_Sword=3; skill_Shield=3; ari_skeleton_warrior_charge_enemy=1; 
+numRanksBought=ari_skeleton_warrior_charge_enemy=1; 
+numRanksBought=skill_Sword=3; 
+numRanksBought=skill_Shield=3; 
+
+[ActorState]
+canSwap=False;
+
+[ActorEffect]
+ actorValue=TrueHPMax; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
+[ActorEffect]
+ actorValue=skill_Sword; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=3; duration=-1;
+[ActorEffect]
+ actorValue=skill_Shield; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=3; duration=-1;
+[ActorEffect]
+ actorValue=skill_Ruin; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
+[ActorEffect]
+ actorValue=PhysEva; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=6; duration=-1;
+[ActorEffect]
+ actorValue=PhysDef; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=PhysEva; sourceAVAffecter=shieldBonus; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=18; duration=-1;
+
+[ActorInventory]
+style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
+ 
+
+[ActorItem] ID=ari_summoned_sword_enemy; cSlot=0; containerID=0;
+[ActorItem] ID=ari_summoned_shield; cSlot=1; containerID=1;
+
+
+[Actor]ID=summoned_undead_skeletonmelee_enemy_ari_gravekeeper_city_church_interior_0_ari_gravekeeper_city_church_interior_ari_gravekeeper_city_church_interior_ari_gravekeeper_city_church_interior_; name=Undead Skeleton;
+actorTypeID=summoned_undead_skeleton_enemy; sprite=; actorClass=ari_skeletonwarrior_class_enemy; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=3; position=48,43; destination=-1,-1; facingRot=1170; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=False; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pBlack; skinPalette=pCorpryst; armorPalette=pIron; unarmoredPalette=pIron; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=False; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.7; bravery=1; intelligence=0.3; honor=0.2; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
+ headSprite=ari_dadzioskeleton_head1; faceSprite=; legsSprite=dadzioskeleton_legs1; armLSprite=knight_arm; armRSprite=knight_arm; torsoSprite=guardian_torso; shoulderLSprite=guardian_shoulder; shoulderRSprite=guardian_shoulder; backSprite=;
+partSpritesThatTakePriorityOverClass=torso; 
+
+ supportAbilities=ari_enemy_resurrection_passive1;  supportAbilities=;  supportAbilities=; HPMax=30; skill_Sword=3; skill_Shield=3; ari_skeleton_warrior_charge_enemy=1; 
+numRanksBought=ari_skeleton_warrior_charge_enemy=1; 
+numRanksBought=skill_Sword=3; 
+numRanksBought=skill_Shield=3; 
+
+[ActorState]
+canSwap=False;
+
+[ActorEffect]
+ actorValue=TrueHPMax; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
+[ActorEffect]
+ actorValue=skill_Sword; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=3; duration=-1;
+[ActorEffect]
+ actorValue=skill_Shield; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=3; duration=-1;
+[ActorEffect]
+ actorValue=skill_Ruin; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
+[ActorEffect]
+ actorValue=PhysEva; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=6; duration=-1;
+[ActorEffect]
+ actorValue=PhysDef; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=PhysEva; sourceAVAffecter=shieldBonus; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=18; duration=-1;
+
+[ActorInventory]
+style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
+ 
+
+[ActorItem] ID=ari_summoned_sword_enemy; cSlot=0; containerID=0;
+[ActorItem] ID=ari_summoned_shield; cSlot=1; containerID=1;
+
+
+[Actor]ID=shana_undead_abscess_mature_enemy_ari_gravekeeper_city_church_interior_ari_gravekeeper_city_church_interior_0; name=Undead Abscess;
+actorTypeID=shana_undead_abscess_mature_enemy; sprite=actor_shana_undead_abscess_normal; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=0; position=35,42; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pB; skinPalette=pG; armorPalette=pR; unarmoredPalette=pR; equipmentDoesntChangeArmorPalette=False; aiScript=none; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.1; bravery=0.6; intelligence=0.1; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=True; movementType=;
+
+ supportAbilities=shana_uber_instability;  supportAbilities=;  supportAbilities=; shana_sleeping_sickness_enemy=1; shana_psychenecrosis_enemy=1; 
+
+[ActorState]
+canSwap=False;
+
+
+[ActorInventory]
+style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
+ 
+
+
+
+[Actor]ID=shana_undead_abscess_mature_enemy_ari_gravekeeper_city_church_interior_ari_gravekeeper_city_church_interior_0_ari_gravekeeper_city_church_interior_; name=Undead Abscess;
+actorTypeID=shana_undead_abscess_mature_enemy; sprite=actor_shana_undead_abscess_normal; actorClass=none; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=0; position=18,42; destination=-1,-1; facingRot=0; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=True; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=False; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pB; skinPalette=pG; armorPalette=pR; unarmoredPalette=pR; equipmentDoesntChangeArmorPalette=False; aiScript=none; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=True; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.1; bravery=0.6; intelligence=0.1; honor=0; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
+
+ supportAbilities=shana_uber_instability;  supportAbilities=;  supportAbilities=; shana_sleeping_sickness_enemy=1; shana_psychenecrosis_enemy=1; 
+
+[ActorState]
+canSwap=False;
+
+
+[ActorInventory]
+style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
+ 
+
+
+
+[Actor]ID=summoned_undead_skeletonmelee_enemy_ari_gravekeeper_city_church_interior_ari_gravekeeper_city_church_interior_; name=Undead Skeleton;
+actorTypeID=summoned_undead_skeleton_enemy; sprite=; actorClass=ari_skeletonwarrior_class_enemy; secondaryClass=; actorClass3=; actorClass4=; movementSpeed=3; position=21,37; destination=-1,-1; facingRot=1170; actualRot=0; incapacitated=False; canSwap=False; canAttractAttention=True; givesXP=True; canDespawn=False; canEditAppearance=True; canLootCorpse=False; canControlFullyIfControllable=True; controllable=False; playerCanOpenInv=False; alreadyKOdOnce=False; canManipCorpse=True; idleAnimOverride=; combatMusicOverride=; statementPrefix=; hostile=True; fearless=True; unkillable=False; factionBoss=False; faction=enemy; combatTeam=; clothPalette=pBlack; skinPalette=pCorpryst; armorPalette=pIron; unarmoredPalette=pIron; equipmentDoesntChangeArmorPalette=False; aiScript=idle; aiTarget=; aiVarX=0; aiVarY=0; aiVarX2=0; aiVarY2=0; canApplyDifficultyMods=False; difficultyModeSupportAbilAdded=False; favoredHand=0; incapacitated=False; dialogNodeID=; aggressiveness=0.7; bravery=1; intelligence=0.3; honor=0.2; aiRating_bonusToNotMoving=0; aiRating_priorityMult=1; ai_extraTime=0; totalXP=0; damageTaken=0; timesKOd=0; mountedOn=; mountedBy=; male=False; movementType=;
+ headSprite=ari_dadzioskeleton_head1; faceSprite=; legsSprite=dadzioskeleton_legs1; armLSprite=knight_arm; armRSprite=knight_arm; torsoSprite=guardian_torso; shoulderLSprite=guardian_shoulder; shoulderRSprite=guardian_shoulder; backSprite=;
+partSpritesThatTakePriorityOverClass=torso; 
+
+ supportAbilities=ari_enemy_resurrection_passive1;  supportAbilities=;  supportAbilities=; HPMax=30; skill_Sword=3; skill_Shield=3; ari_skeleton_warrior_charge_enemy=1; 
+numRanksBought=ari_skeleton_warrior_charge_enemy=1; 
+numRanksBought=skill_Sword=3; 
+numRanksBought=skill_Shield=3; 
+
+[ActorState]
+canSwap=False;
+
+[ActorEffect]
+ actorValue=TrueHPMax; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
+[ActorEffect]
+ actorValue=skill_Sword; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=3; duration=-1;
+[ActorEffect]
+ actorValue=skill_Shield; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=3; duration=-1;
+[ActorEffect]
+ actorValue=skill_Ruin; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
+[ActorEffect]
+ actorValue=PhysEva; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=6; duration=-1;
+[ActorEffect]
+ actorValue=PhysDef; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=PhysEva; sourceAVAffecter=shieldBonus; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=18; duration=-1;
+
+[ActorInventory]
+style=; maxWeight=100000; maxVolume=99; canContainAnything=False; infiniteStock=False; shopContainer=False; canOnlyContainItemsWithThisProperty=none; capacity=9; 
+ 
+
+[ActorItem] ID=ari_summoned_sword_enemy; cSlot=0; containerID=0;
+[ActorItem] ID=ari_summoned_shield; cSlot=1; containerID=1;
+
+
 
 [Trigger] numID=0; aliasID=leave_to_gk_city;
-topX=20;topY=53;btmX=33;btmY=54;
+topX=20;topY=60;btmX=33;btmY=61;
 triggerImmediatelyOnEnteringZone=False; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
 [TriggerEffect] numID=0; effectID=travel_point; sValue=ari_graveyard_city_outskirts; sValue2=; bValue1=False; bValue2=False; fValue=1; delay=0; fReq=1; taskString=; xValue=28; yValue=48;
 
 
 
 [Trigger] numID=20; aliasID=shana_area_creeping_death_combatStart;
-topX=1;topY=7;btmX=1;btmY=7;
+topX=1;topY=14;btmX=1;btmY=14;
 triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=True; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1-g:ari_dead_ascetic;
 [TriggerEffect] numID=20; effectID=action; sValue=shana_areacreepingdeathact; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=1; yValue=1;
 
 
 
 [Trigger] numID=21; aliasID=shana_area_creeping_death_startTurn;
-topX=2;topY=8;btmX=2;btmY=8;
+topX=2;topY=15;btmX=2;btmY=15;
 triggerImmediatelyOnEnteringZone=False; triggeredByElement=startTurn; travelModeOnly=False; triggerOnPlayerActorOnly=True; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1-g:ari_dead_ascetic;
 [TriggerEffect] numID=21; effectID=action; sValue=shana_areacreepingdeathact; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=2; yValue=2;
 
 
 
 [Trigger] numID=23; aliasID=shana_area_creeping_death_combat_start_dialog;
-topX=4;topY=10;btmX=4;btmY=10;
+topX=4;topY=17;btmX=4;btmY=17;
 triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1-g:ari_dead_ascetic;
 [TriggerEffect] numID=23; effectID=talk; sValue=; sValue2=shana_creeping_death_combat_start_message; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
 
 
 
+
+
+[HeightMap]h=3, 40, 2;h=3, 41, 2;h=3, 42, 2;h=3, 43, 2;h=3, 44, 2;h=3, 45, 2;h=3, 46, 2;h=3, 47, 2;h=3, 48, 2;h=4, 40, 2;h=4, 41, 2;h=4, 42, 2;h=4, 43, 2;h=4, 44, 2;h=4, 45, 2;h=4, 46, 2;h=4, 47, 2;h=4, 48, 2;h=5, 40, 2;h=5, 41, 2;h=5, 42, 2;h=5, 43, 2;h=5, 44, 2;h=5, 45, 2;h=5, 46, 2;h=5, 47, 2;h=5, 48, 2;h=6, 40, 2;h=6, 41, 2;h=6, 42, 2;h=6, 43, 2;h=6, 44, 2;h=6, 45, 2;h=6, 46, 2;h=6, 47, 2;h=6, 48, 2;h=7, 40, 2;h=7, 41, 2;h=7, 42, 2;h=7, 43, 2;h=7, 44, 2;h=7, 45, 2;h=7, 46, 2;h=7, 47, 2;h=7, 48, 2;h=8, 20, 1;h=8, 40, 2;h=8, 41, 2;h=8, 42, 2;h=8, 43, 2;h=8, 44, 2;h=8, 45, 2;h=8, 46, 2;h=8, 47, 2;h=8, 48, 2;h=9, 40, 2;h=9, 41, 2;h=9, 42, 2;h=9, 43, 2;h=9, 44, 2;h=9, 45, 2;h=9, 46, 2;h=9, 47, 2;h=9, 48, 2;h=10, 40, 2;h=10, 41, 2;h=10, 42, 2;h=10, 43, 2;h=10, 44, 2;h=10, 45, 2;h=10, 46, 2;h=10, 47, 2;h=10, 48, 2;h=11, 40, 2;h=11, 41, 2;h=11, 42, 2;h=11, 43, 2;h=11, 44, 2;h=11, 45, 2;h=11, 46, 2;h=11, 47, 2;h=11, 48, 2;h=12, 40, 2;h=12, 43, 2;h=12, 44, 2;h=13, 40, 2;h=13, 43, 2;h=13, 44, 2;h=14, 22, 2;h=14, 23, 2;h=14, 24, 2;h=14, 25, 2;h=14, 26, 2;h=14, 27, 2;h=14, 28, 2;h=14, 29, 2;h=14, 30, 2;h=14, 31, 2;h=14, 32, 2;h=14, 33, 2;h=14, 34, 2;h=14, 35, 2;h=14, 36, 2;h=14, 37, 2;h=14, 38, 2;h=14, 43, 2;h=14, 44, 2;h=14, 49, 2;h=14, 50, 2;h=14, 51, 2;h=14, 52, 2;h=14, 53, 2;h=14, 54, 2;h=14, 55, 2;h=15, 22, 2;h=15, 23, 2;h=15, 24, 2;h=15, 25, 2;h=15, 26, 2;h=15, 27, 2;h=15, 28, 2;h=15, 29, 2;h=15, 30, 2;h=15, 31, 2;h=15, 32, 2;h=15, 33, 2;h=15, 34, 2;h=15, 35, 2;h=15, 36, 2;h=15, 37, 2;h=15, 43, 2;h=15, 44, 2;h=15, 49, 2;h=15, 50, 2;h=15, 51, 2;h=15, 52, 2;h=15, 53, 2;h=15, 54, 2;h=15, 55, 2;h=16, 22, 2;h=16, 23, 2;h=16, 24, 2;h=16, 25, 2;h=16, 26, 2;h=16, 27, 2;h=16, 28, 2;h=16, 29, 2;h=16, 30, 2;h=16, 31, 2;h=16, 32, 2;h=16, 33, 2;h=16, 34, 2;h=16, 35, 2;h=16, 36, 2;h=16, 37, 2;h=16, 40, 2;h=16, 41, 2;h=16, 42, 2;h=16, 43, 2;h=16, 44, 2;h=16, 45, 2;h=16, 46, 2;h=16, 47, 2;h=16, 48, 2;h=16, 49, 2;h=16, 50, 2;h=16, 51, 2;h=16, 52, 2;h=16, 53, 2;h=16, 54, 2;h=16, 55, 2;h=17, 22, 2;h=17, 23, 2;h=17, 24, 2;h=17, 25, 2;h=17, 26, 2;h=17, 27, 2;h=17, 28, 2;h=17, 29, 2;h=17, 30, 2;h=17, 31, 2;h=17, 32, 2;h=17, 33, 2;h=17, 34, 2;h=17, 35, 2;h=17, 36, 2;h=17, 40, 2;h=17, 41, 2;h=17, 42, 2;h=17, 43, 2;h=17, 44, 2;h=17, 45, 2;h=17, 46, 2;h=17, 47, 2;h=17, 48, 2;h=17, 49, 2;h=17, 50, 2;h=17, 51, 2;h=17, 52, 2;h=17, 53, 2;h=17, 54, 2;h=17, 55, 2;h=18, 22, 2;h=18, 23, 2;h=18, 24, 2;h=18, 25, 2;h=18, 26, 2;h=18, 27, 2;h=18, 28, 2;h=18, 29, 2;h=18, 30, 2;h=18, 31, 2;h=18, 32, 2;h=18, 33, 2;h=18, 34, 2;h=18, 35, 2;h=18, 36, 2;h=18, 40, 2;h=18, 41, 2;h=18, 42, 2;h=18, 43, 2;h=18, 44, 2;h=18, 45, 2;h=18, 46, 2;h=18, 47, 2;h=18, 48, 2;h=18, 49, 2;h=18, 50, 2;h=18, 51, 2;h=18, 52, 2;h=18, 53, 2;h=18, 54, 2;h=18, 55, 2;h=19, 22, 2;h=19, 23, 2;h=19, 24, 2;h=19, 25, 2;h=19, 26, 2;h=19, 27, 2;h=19, 28, 2;h=19, 29, 2;h=19, 30, 2;h=19, 31, 2;h=19, 32, 2;h=19, 33, 2;h=19, 34, 2;h=19, 35, 2;h=19, 36, 2;h=19, 40, 2;h=19, 41, 2;h=19, 42, 2;h=19, 43, 2;h=19, 44, 2;h=19, 49, 2;h=19, 50, 2;h=19, 51, 2;h=19, 52, 2;h=19, 53, 2;h=19, 54, 2;h=19, 55, 2;h=20, 22, 2;h=20, 23, 2;h=20, 24, 2;h=20, 25, 2;h=20, 26, 2;h=20, 27, 2;h=20, 28, 2;h=20, 29, 2;h=20, 30, 2;h=20, 31, 2;h=20, 32, 2;h=20, 33, 2;h=20, 34, 2;h=20, 35, 2;h=20, 36, 2;h=20, 37, 2;h=20, 40, 2;h=20, 41, 2;h=20, 42, 2;h=20, 43, 2;h=20, 44, 2;h=20, 49, 2;h=20, 50, 2;h=20, 51, 2;h=20, 52, 2;h=20, 53, 2;h=20, 54, 2;h=20, 55, 2;h=21, 14, 2;h=21, 15, 2;h=21, 16, 2;h=21, 17, 2;h=21, 18, 2;h=21, 19, 2;h=21, 20, 2;h=21, 21, 2;h=21, 22, 2;h=21, 23, 2;h=21, 24, 2;h=21, 25, 2;h=21, 26, 2;h=21, 27, 2;h=21, 28, 2;h=21, 29, 2;h=21, 31, 2;h=21, 32, 2;h=21, 33, 2;h=21, 34, 2;h=21, 35, 2;h=21, 36, 2;h=21, 37, 2;h=21, 41, 2;h=21, 42, 2;h=21, 43, 2;h=22, 14, 2;h=22, 15, 2;h=22, 16, 2;h=22, 17, 2;h=22, 18, 2;h=22, 19, 2;h=22, 20, 2;h=22, 21, 2;h=22, 22, 2;h=22, 23, 2;h=22, 24, 2;h=22, 25, 2;h=22, 26, 2;h=22, 27, 2;h=22, 28, 2;h=22, 29, 2;h=22, 31, 2;h=22, 32, 2;h=22, 33, 2;h=22, 34, 2;h=22, 35, 2;h=22, 36, 2;h=22, 37, 2;h=22, 38, 2;h=22, 41, 2;h=22, 42, 2;h=22, 43, 2;h=23, 14, 2;h=23, 15, 2;h=23, 16, 2;h=23, 17, 2;h=23, 18, 2;h=23, 19, 2;h=23, 20, 2;h=23, 21, 2;h=23, 22, 2;h=23, 23, 2;h=23, 24, 2;h=23, 25, 2;h=23, 26, 2;h=23, 27, 2;h=23, 28, 2;h=23, 29, 2;h=23, 31, 2;h=23, 32, 2;h=23, 33, 2;h=23, 34, 2;h=23, 35, 2;h=23, 36, 2;h=23, 37, 2;h=23, 38, 2;h=23, 41, 2;h=23, 42, 2;h=23, 43, 2;h=24, 14, 2;h=24, 15, 2;h=24, 16, 2;h=24, 17, 2;h=24, 18, 2;h=24, 19, 2;h=24, 20, 2;h=24, 21, 2;h=24, 22, 2;h=24, 23, 2;h=24, 24, 2;h=24, 25, 2;h=24, 26, 2;h=24, 27, 2;h=24, 28, 2;h=24, 29, 2;h=24, 31, 2;h=24, 32, 2;h=24, 33, 2;h=24, 34, 2;h=24, 35, 2;h=24, 36, 2;h=24, 37, 2;h=24, 38, 2;h=24, 39, 2;h=24, 40, 2;h=24, 41, 2;h=24, 43, 2;h=25, 14, 2;h=25, 15, 2;h=25, 16, 2;h=25, 17, 2;h=25, 18, 2;h=25, 19, 2;h=25, 20, 2;h=25, 21, 2;h=25, 22, 2;h=25, 23, 2;h=25, 24, 2;h=25, 25, 2;h=25, 26, 2;h=25, 27, 2;h=25, 28, 2;h=25, 29, 2;h=25, 31, 2;h=25, 32, 2;h=25, 33, 2;h=25, 34, 2;h=25, 35, 2;h=25, 36, 2;h=25, 37, 2;h=25, 38, 2;h=25, 39, 2;h=25, 40, 2;h=25, 41, 2;h=25, 42, 2;h=25, 43, 2;h=25, 44, 2;h=25, 45, 2;h=25, 46, 2;h=25, 47, 2;h=25, 48, 2;h=25, 49, 2;h=25, 50, 2;h=25, 51, 2;h=25, 52, 2;h=25, 53, 2;h=25, 54, 2;h=25, 55, 2;h=25, 56, 2;h=25, 57, 2;h=25, 58, 2;h=25, 59, 2;h=26, 14, 2;h=26, 15, 2;h=26, 16, 2;h=26, 17, 2;h=26, 18, 2;h=26, 19, 2;h=26, 20, 2;h=26, 21, 2;h=26, 22, 2;h=26, 23, 2;h=26, 42, 2;h=26, 43, 2;h=26, 44, 2;h=26, 45, 2;h=26, 46, 2;h=26, 47, 2;h=26, 48, 2;h=26, 49, 2;h=26, 50, 2;h=26, 51, 2;h=26, 52, 2;h=26, 53, 2;h=26, 54, 2;h=26, 55, 2;h=26, 56, 2;h=26, 57, 2;h=26, 58, 2;h=26, 59, 2;h=27, 14, 2;h=27, 15, 2;h=27, 16, 2;h=27, 17, 2;h=27, 18, 2;h=27, 19, 2;h=27, 20, 2;h=27, 21, 2;h=27, 22, 2;h=27, 23, 2;h=27, 42, 2;h=27, 43, 2;h=27, 44, 2;h=27, 45, 2;h=27, 46, 2;h=27, 47, 2;h=27, 48, 2;h=27, 49, 2;h=27, 50, 2;h=27, 51, 2;h=27, 52, 2;h=27, 53, 2;h=27, 54, 2;h=27, 55, 2;h=27, 56, 2;h=27, 57, 2;h=27, 58, 2;h=27, 59, 2;h=28, 14, 2;h=28, 15, 2;h=28, 16, 2;h=28, 17, 2;h=28, 18, 2;h=28, 19, 2;h=28, 20, 2;h=28, 21, 2;h=28, 22, 2;h=28, 23, 2;h=28, 24, 2;h=28, 25, 2;h=28, 26, 2;h=28, 27, 2;h=28, 28, 2;h=28, 29, 2;h=28, 30, 2;h=28, 31, 2;h=28, 32, 2;h=28, 33, 2;h=28, 34, 2;h=28, 35, 2;h=28, 37, 2;h=28, 39, 2;h=28, 40, 2;h=28, 41, 2;h=28, 42, 2;h=28, 43, 2;h=28, 45, 2;h=28, 46, 2;h=28, 47, 2;h=28, 48, 2;h=28, 49, 2;h=28, 50, 2;h=28, 51, 2;h=28, 52, 2;h=28, 53, 2;h=28, 54, 2;h=28, 55, 2;h=28, 56, 2;h=28, 57, 2;h=28, 58, 2;h=28, 59, 2;h=29, 14, 2;h=29, 15, 2;h=29, 16, 2;h=29, 17, 2;h=29, 18, 2;h=29, 19, 2;h=29, 20, 2;h=29, 21, 2;h=29, 22, 2;h=29, 23, 2;h=29, 24, 2;h=29, 25, 2;h=29, 26, 2;h=29, 27, 2;h=29, 28, 2;h=29, 29, 2;h=29, 30, 2;h=29, 31, 2;h=29, 32, 2;h=29, 33, 2;h=29, 34, 2;h=29, 35, 2;h=29, 37, 2;h=29, 38, 2;h=29, 39, 2;h=29, 40, 2;h=29, 41, 2;h=29, 42, 2;h=29, 43, 2;h=30, 14, 2;h=30, 15, 2;h=30, 16, 2;h=30, 17, 2;h=30, 18, 2;h=30, 19, 2;h=30, 20, 2;h=30, 21, 2;h=30, 22, 2;h=30, 23, 2;h=30, 24, 2;h=30, 25, 2;h=30, 26, 2;h=30, 27, 2;h=30, 28, 2;h=30, 29, 2;h=30, 30, 2;h=30, 31, 2;h=30, 32, 2;h=30, 33, 2;h=30, 34, 2;h=30, 35, 2;h=30, 37, 2;h=30, 38, 2;h=30, 41, 2;h=30, 42, 2;h=30, 43, 2;h=31, 14, 2;h=31, 15, 2;h=31, 16, 2;h=31, 17, 2;h=31, 18, 2;h=31, 19, 2;h=31, 20, 2;h=31, 21, 2;h=31, 22, 2;h=31, 23, 2;h=31, 24, 2;h=31, 25, 2;h=31, 26, 2;h=31, 27, 2;h=31, 28, 2;h=31, 29, 2;h=31, 30, 2;h=31, 31, 2;h=31, 32, 2;h=31, 33, 2;h=31, 34, 2;h=31, 35, 2;h=31, 37, 2;h=31, 38, 2;h=31, 41, 2;h=31, 42, 2;h=31, 43, 2;h=32, 14, 2;h=32, 15, 2;h=32, 16, 2;h=32, 17, 2;h=32, 18, 2;h=32, 19, 2;h=32, 20, 2;h=32, 21, 2;h=32, 22, 2;h=32, 23, 2;h=32, 24, 2;h=32, 25, 2;h=32, 26, 2;h=32, 27, 2;h=32, 28, 2;h=32, 29, 2;h=32, 30, 2;h=32, 31, 2;h=32, 32, 2;h=32, 33, 2;h=32, 34, 2;h=32, 35, 2;h=32, 37, 2;h=32, 41, 2;h=32, 42, 2;h=32, 43, 2;h=33, 20, 2;h=33, 21, 2;h=33, 22, 2;h=33, 23, 2;h=33, 24, 2;h=33, 25, 2;h=33, 26, 2;h=33, 27, 2;h=33, 28, 2;h=33, 29, 2;h=33, 30, 2;h=33, 31, 2;h=33, 32, 2;h=33, 33, 2;h=33, 34, 2;h=33, 35, 2;h=33, 36, 2;h=33, 37, 2;h=33, 40, 2;h=33, 41, 2;h=33, 42, 2;h=33, 43, 2;h=33, 44, 2;h=33, 49, 2;h=33, 50, 2;h=33, 51, 2;h=33, 52, 2;h=33, 53, 2;h=33, 54, 2;h=33, 55, 2;h=34, 20, 2;h=34, 21, 2;h=34, 22, 2;h=34, 23, 2;h=34, 24, 2;h=34, 25, 2;h=34, 26, 2;h=34, 27, 2;h=34, 28, 2;h=34, 29, 2;h=34, 30, 2;h=34, 31, 2;h=34, 32, 2;h=34, 33, 2;h=34, 34, 2;h=34, 35, 2;h=34, 36, 2;h=34, 40, 2;h=34, 41, 2;h=34, 42, 2;h=34, 43, 2;h=34, 44, 2;h=34, 49, 2;h=34, 50, 2;h=34, 51, 2;h=34, 52, 2;h=34, 53, 2;h=34, 54, 2;h=34, 55, 2;h=35, 20, 2;h=35, 21, 2;h=35, 22, 2;h=35, 23, 2;h=35, 24, 2;h=35, 25, 2;h=35, 26, 2;h=35, 27, 2;h=35, 28, 2;h=35, 29, 2;h=35, 30, 2;h=35, 31, 2;h=35, 32, 2;h=35, 33, 2;h=35, 34, 2;h=35, 35, 2;h=35, 36, 2;h=35, 40, 2;h=35, 41, 2;h=35, 42, 2;h=35, 43, 2;h=35, 44, 2;h=35, 45, 2;h=35, 46, 2;h=35, 47, 2;h=35, 48, 2;h=35, 49, 2;h=35, 50, 2;h=35, 51, 2;h=35, 52, 2;h=35, 53, 2;h=35, 54, 2;h=35, 55, 2;h=36, 20, 2;h=36, 21, 2;h=36, 22, 2;h=36, 23, 2;h=36, 24, 2;h=36, 25, 2;h=36, 26, 2;h=36, 27, 2;h=36, 28, 2;h=36, 29, 2;h=36, 30, 2;h=36, 31, 2;h=36, 32, 2;h=36, 33, 2;h=36, 34, 2;h=36, 35, 2;h=36, 36, 2;h=36, 40, 2;h=36, 41, 2;h=36, 42, 2;h=36, 43, 2;h=36, 44, 2;h=36, 45, 2;h=36, 46, 2;h=36, 47, 2;h=36, 48, 2;h=36, 49, 2;h=36, 50, 2;h=36, 51, 2;h=36, 52, 2;h=36, 53, 2;h=36, 54, 2;h=36, 55, 2;h=37, 20, 2;h=37, 21, 2;h=37, 22, 2;h=37, 23, 2;h=37, 24, 2;h=37, 25, 2;h=37, 26, 2;h=37, 27, 2;h=37, 28, 2;h=37, 29, 2;h=37, 30, 2;h=37, 31, 2;h=37, 32, 2;h=37, 33, 2;h=37, 34, 2;h=37, 35, 2;h=37, 36, 2;h=37, 37, 2;h=37, 40, 2;h=37, 41, 2;h=37, 42, 2;h=37, 43, 2;h=37, 44, 2;h=37, 45, 2;h=37, 46, 2;h=37, 47, 2;h=37, 48, 2;h=37, 49, 2;h=37, 50, 2;h=37, 51, 2;h=37, 52, 2;h=37, 53, 2;h=37, 54, 2;h=37, 55, 2;h=38, 20, 2;h=38, 21, 2;h=38, 22, 2;h=38, 23, 2;h=38, 24, 2;h=38, 25, 2;h=38, 26, 2;h=38, 27, 2;h=38, 28, 2;h=38, 29, 2;h=38, 30, 2;h=38, 31, 2;h=38, 32, 2;h=38, 33, 2;h=38, 34, 2;h=38, 35, 2;h=38, 36, 2;h=38, 37, 2;h=38, 43, 2;h=38, 44, 2;h=38, 49, 2;h=38, 50, 2;h=38, 51, 2;h=38, 52, 2;h=38, 53, 2;h=38, 54, 2;h=38, 55, 2;h=39, 20, 2;h=39, 21, 2;h=39, 22, 2;h=39, 23, 2;h=39, 24, 2;h=39, 25, 2;h=39, 26, 2;h=39, 27, 2;h=39, 28, 2;h=39, 29, 2;h=39, 30, 2;h=39, 31, 2;h=39, 32, 2;h=39, 33, 2;h=39, 34, 2;h=39, 35, 2;h=39, 36, 2;h=39, 37, 2;h=39, 38, 2;h=39, 43, 2;h=39, 44, 2;h=39, 49, 2;h=39, 50, 2;h=39, 51, 2;h=39, 52, 2;h=39, 53, 2;h=39, 54, 2;h=39, 55, 2;h=40, 25, 2;h=40, 31, 2;h=40, 32, 2;h=40, 40, 2;h=40, 43, 2;h=40, 44, 2;h=41, 31, 2;h=41, 32, 2;h=41, 40, 2;h=41, 43, 2;h=41, 44, 2;h=42, 31, 2;h=42, 32, 2;h=42, 40, 2;h=42, 41, 2;h=42, 42, 2;h=42, 43, 2;h=42, 44, 2;h=42, 45, 2;h=42, 46, 2;h=42, 47, 2;h=42, 48, 2;h=43, 31, 2;h=43, 32, 2;h=43, 40, 2;h=43, 41, 2;h=43, 42, 2;h=43, 43, 2;h=43, 44, 2;h=43, 45, 2;h=43, 46, 2;h=43, 47, 2;h=43, 48, 2;h=44, 31, 2;h=44, 32, 2;h=44, 40, 2;h=44, 41, 2;h=44, 42, 2;h=44, 43, 2;h=44, 44, 2;h=44, 45, 2;h=44, 46, 2;h=44, 47, 2;h=44, 48, 2;h=45, 31, 2;h=45, 32, 2;h=45, 40, 2;h=45, 41, 2;h=45, 42, 2;h=45, 43, 2;h=45, 44, 2;h=45, 45, 2;h=45, 46, 2;h=45, 47, 2;h=45, 48, 2;h=46, 31, 2;h=46, 32, 2;h=46, 40, 2;h=46, 41, 2;h=46, 42, 2;h=46, 43, 2;h=46, 45, 2;h=46, 46, 2;h=46, 47, 2;h=46, 48, 2;h=47, 31, 2;h=47, 32, 2;h=47, 40, 2;h=47, 41, 2;h=47, 42, 2;h=47, 43, 2;h=47, 44, 2;h=47, 45, 2;h=47, 46, 2;h=47, 47, 2;h=47, 48, 2;h=48, 27, 2;h=48, 28, 2;h=48, 31, 2;h=48, 32, 2;h=48, 40, 2;h=48, 41, 2;h=48, 42, 2;h=48, 43, 2;h=48, 44, 2;h=48, 45, 2;h=48, 46, 2;h=48, 47, 2;h=48, 48, 2;h=49, 27, 2;h=49, 28, 2;h=49, 31, 2;h=49, 32, 2;h=49, 40, 2;h=49, 41, 2;h=49, 42, 2;h=49, 43, 2;h=49, 44, 2;h=49, 45, 2;h=49, 46, 2;h=49, 47, 2;h=49, 48, 2;h=50, 27, 2;h=50, 28, 2;h=50, 29, 2;h=50, 30, 2;h=50, 31, 2;h=50, 32, 2;h=50, 33, 2;h=50, 34, 2;h=50, 35, 2;h=50, 36, 2;h=50, 40, 2;h=50, 41, 2;h=50, 42, 2;h=50, 43, 2;h=50, 44, 2;h=50, 45, 2;h=50, 46, 2;h=50, 47, 2;h=50, 48, 2;h=51, 27, 2;h=51, 28, 2;h=51, 29, 2;h=51, 30, 2;h=51, 31, 2;h=51, 32, 2;h=51, 33, 2;h=51, 34, 2;h=51, 35, 2;h=51, 36, 2;h=52, 27, 2;h=52, 28, 2;h=52, 29, 2;h=52, 30, 2;h=52, 31, 2;h=52, 32, 2;h=52, 33, 2;h=52, 34, 2;h=52, 35, 2;h=52, 36, 2;h=53, 27, 2;h=53, 28, 2;h=53, 29, 2;h=53, 30, 2;h=53, 31, 2;h=53, 32, 2;h=53, 33, 2;h=53, 34, 2;h=53, 35, 2;h=53, 36, 2;h=54, 27, 2;h=54, 28, 2;h=54, 29, 2;h=54, 30, 2;h=54, 31, 2;h=54, 32, 2;h=54, 33, 2;h=54, 34, 2;h=54, 35, 2;h=54, 36, 2;h=55, 27, 2;h=55, 28, 2;h=55, 29, 2;h=55, 30, 2;h=55, 31, 2;h=55, 32, 2;h=55, 33, 2;h=55, 34, 2;h=55, 35, 2;h=55, 36, 2;h=56, 27, 2;h=56, 28, 2;h=56, 29, 2;h=56, 30, 2;h=56, 31, 2;h=56, 32, 2;h=56, 33, 2;h=56, 34, 2;h=56, 35, 2;h=56, 36, 2;
