@@ -667,7 +667,7 @@ combatMode=False;
 [Item] ID=shana_trigger_rot; q=1; containedIn=6; cSlot=3;
 [Item] ID=shana_trigger_rot; q=1; containedIn=6; cSlot=4;
 [Item] ID=gem_big2; q=1; containedIn=6; cSlot=5;
-[Item] ID=book_research_v1; q=1; containedIn=6; cSlot=6;
+[Item] ID=shana_blackmail_book; q=1; containedIn=6; cSlot=6;
 [Item] ID=shana_trigger_rot; q=1; containedIn=6; cSlot=7;
 [Item] ID=shana_birthing_coffin_0; q=1; x=53; y=16;
 [Item] ID=sunbeam_circle_small; q=1; r=-360; x=53; y=20;
@@ -1024,11 +1024,11 @@ numRanksBought=skill_Shield=1;
 canSwap=False;
 
 [ActorEffect]
- actorValue=priority; sourceAVAffecter=ari_skeletonarcher_class; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=-0.5; duration=-1;
-[ActorEffect]
  actorValue=PhysEva; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=6; duration=-1;
 [ActorEffect]
  actorValue=PhysDef; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=priority; sourceAVAffecter=ari_skeletonarcher_class; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=-0.5; duration=-1;
 [ActorEffect]
  actorValue=PhysEva; sourceAVAffecter=shieldBonus; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=3; duration=-1;
 
@@ -1053,11 +1053,11 @@ numRanksBought=skill_Shield=1;
 canSwap=False;
 
 [ActorEffect]
- actorValue=priority; sourceAVAffecter=ari_skeletonarcher_class; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=-0.5; duration=-1;
-[ActorEffect]
  actorValue=PhysEva; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=6; duration=-1;
 [ActorEffect]
  actorValue=PhysDef; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
+ actorValue=priority; sourceAVAffecter=ari_skeletonarcher_class; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=-0.5; duration=-1;
 [ActorEffect]
  actorValue=PhysEva; sourceAVAffecter=shieldBonus; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=3; duration=-1;
 
@@ -1083,6 +1083,10 @@ numRanksBought=skill_Shield=3;
 canSwap=False;
 
 [ActorEffect]
+ actorValue=PhysEva; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=6; duration=-1;
+[ActorEffect]
+ actorValue=PhysDef; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
  actorValue=TrueHPMax; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
 [ActorEffect]
  actorValue=skill_Sword; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=3; duration=-1;
@@ -1090,10 +1094,6 @@ canSwap=False;
  actorValue=skill_Shield; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=3; duration=-1;
 [ActorEffect]
  actorValue=skill_Ruin; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
-[ActorEffect]
- actorValue=PhysEva; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=6; duration=-1;
-[ActorEffect]
- actorValue=PhysDef; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
 [ActorEffect]
  actorValue=PhysEva; sourceAVAffecter=shieldBonus; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=18; duration=-1;
 
@@ -1180,6 +1180,10 @@ numRanksBought=skill_Shield=3;
 canSwap=False;
 
 [ActorEffect]
+ actorValue=PhysEva; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=6; duration=-1;
+[ActorEffect]
+ actorValue=PhysDef; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
  actorValue=TrueHPMax; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
 [ActorEffect]
  actorValue=skill_Sword; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=3; duration=-1;
@@ -1187,10 +1191,6 @@ canSwap=False;
  actorValue=skill_Shield; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=3; duration=-1;
 [ActorEffect]
  actorValue=skill_Ruin; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
-[ActorEffect]
- actorValue=PhysEva; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=6; duration=-1;
-[ActorEffect]
- actorValue=PhysDef; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
 [ActorEffect]
  actorValue=PhysEva; sourceAVAffecter=shieldBonus; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=18; duration=-1;
 
@@ -1216,6 +1216,10 @@ numRanksBought=skill_Shield=3;
 canSwap=False;
 
 [ActorEffect]
+ actorValue=PhysEva; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=6; duration=-1;
+[ActorEffect]
+ actorValue=PhysDef; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
  actorValue=TrueHPMax; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
 [ActorEffect]
  actorValue=skill_Sword; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=3; duration=-1;
@@ -1223,10 +1227,6 @@ canSwap=False;
  actorValue=skill_Shield; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=3; duration=-1;
 [ActorEffect]
  actorValue=skill_Ruin; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
-[ActorEffect]
- actorValue=PhysEva; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=6; duration=-1;
-[ActorEffect]
- actorValue=PhysDef; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
 [ActorEffect]
  actorValue=PhysEva; sourceAVAffecter=shieldBonus; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=18; duration=-1;
 
@@ -1252,6 +1252,10 @@ numRanksBought=skill_Shield=3;
 canSwap=False;
 
 [ActorEffect]
+ actorValue=PhysEva; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=6; duration=-1;
+[ActorEffect]
+ actorValue=PhysDef; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
  actorValue=TrueHPMax; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
 [ActorEffect]
  actorValue=skill_Sword; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=3; duration=-1;
@@ -1259,10 +1263,6 @@ canSwap=False;
  actorValue=skill_Shield; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=3; duration=-1;
 [ActorEffect]
  actorValue=skill_Ruin; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
-[ActorEffect]
- actorValue=PhysEva; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=6; duration=-1;
-[ActorEffect]
- actorValue=PhysDef; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
 [ActorEffect]
  actorValue=PhysEva; sourceAVAffecter=shieldBonus; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=18; duration=-1;
 
@@ -1288,6 +1288,10 @@ numRanksBought=skill_Shield=3;
 canSwap=False;
 
 [ActorEffect]
+ actorValue=PhysEva; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=6; duration=-1;
+[ActorEffect]
+ actorValue=PhysDef; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
  actorValue=TrueHPMax; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
 [ActorEffect]
  actorValue=skill_Sword; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=3; duration=-1;
@@ -1295,10 +1299,6 @@ canSwap=False;
  actorValue=skill_Shield; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=3; duration=-1;
 [ActorEffect]
  actorValue=skill_Ruin; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
-[ActorEffect]
- actorValue=PhysEva; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=6; duration=-1;
-[ActorEffect]
- actorValue=PhysDef; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
 [ActorEffect]
  actorValue=PhysEva; sourceAVAffecter=shieldBonus; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=18; duration=-1;
 
@@ -1354,6 +1354,10 @@ numRanksBought=skill_Shield=3;
 canSwap=False;
 
 [ActorEffect]
+ actorValue=PhysEva; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=6; duration=-1;
+[ActorEffect]
+ actorValue=PhysDef; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
+[ActorEffect]
  actorValue=TrueHPMax; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
 [ActorEffect]
  actorValue=skill_Sword; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=3; duration=-1;
@@ -1361,10 +1365,6 @@ canSwap=False;
  actorValue=skill_Shield; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=3; duration=-1;
 [ActorEffect]
  actorValue=skill_Ruin; sourceAVAffecter=ari_skeletonwarrior_class_enemy; sourceType=class; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=5; duration=-1;
-[ActorEffect]
- actorValue=PhysEva; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=6; duration=-1;
-[ActorEffect]
- actorValue=PhysDef; sourceAVAffecter=ari_summoned_shield; sourceType=item; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=1; duration=-1;
 [ActorEffect]
  actorValue=PhysEva; sourceAVAffecter=shieldBonus; hideAllEffects=False; showNoDescription=False; durationIsWorldtimeDays=False; magnitude=18; duration=-1;
 

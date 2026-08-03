@@ -399,7 +399,17 @@ action=gate_cannon;
 [ItemEffect]
 ID=shana_fakecannontablet; actorValue=gate_cannon; magnitude=1; duration=-1;
 
-
+--Blackmail Book. Todo: implement the actual blackmail sequence, todo: implement vault item
+[ItemType]  name=Acceptance;
+description=A handwritten book putting names and faces to a massacre. Many people in high places would be interested in this.;
+ID=shana_blackmail_book; sprite=869; value=0;
+pR=p67;
+pB=p28;
+[JournalEntry]
+ID=shana_blackmail_book;
+category=artifact; halfPage=true; rarity=0;
+title=Acceptance;
+text=<itemBig=book_research_v1><title=Key to the Vaults><brAdj=>"A husband's tear-stained accusation detailing the death of his loved ones (and many other innocents) at the metaphorical hands of Searth's finest during the Voidspire debacle. The faces of those responsible, sketched with painstaking, obsessive accuracy lie within. If this were to be released to the public, things would become rather inconvenient for certain people.<n=>   The enterprising captain may foster a mutually beneficial relationship by allowing them to get ahead of the story in exchange for a monthly stipend, payable in perpetuity. Alternatively, they may curry significant amounts of favor should they deliver this tome to their geopolitical rivals.";
 
 [ItemType]  name=Ichorous Lump;
 ID=shana_trigger_rot; itemCategory=weapon; element=ruin;
