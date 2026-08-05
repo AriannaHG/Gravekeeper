@@ -409,7 +409,96 @@ pB=p28;
 ID=shana_blackmail_book;
 category=artifact; halfPage=true; rarity=0;
 title=Acceptance;
-text=<itemBig=book_research_v1><title=Key to the Vaults><brAdj=>"A husband's tear-stained accusation detailing the death of his loved ones (and many other innocents) at the metaphorical hands of Searth's finest during the Voidspire debacle. The faces of those responsible, sketched with painstaking, obsessive accuracy lie within. If this were to be released to the public, things would become rather inconvenient for certain people.<n=>   The enterprising captain may foster a mutually beneficial relationship by allowing them to get ahead of the story in exchange for a monthly stipend, payable in perpetuity. Alternatively, they may curry significant amounts of favor should they deliver this tome to their geopolitical rivals.";
+text=<itemBig=shana_blackmail_book><title=Acceptance><brAdj=>"A husband's tear-stained accusation detailing the death of his loved ones (and many other innocents) at the metaphorical hands of Searth's finest during the Voidspire debacle. The faces of those responsible, sketched with painstaking, obsessive accuracy, lie within. If this were to be released to the public, things would become rather inconvenient for certain people.<n=>   The enterprising captain may foster a mutually beneficial relationship by allowing them to get ahead of the story in exchange for a monthly stipend, payable in perpetuity. Alternatively, they may extract some small measure of justice for the author while currying significant amounts of favor, should they deliver this tome to other interested parties.";
+
+[ItemType]  name=Perpetual Pension; --todo implement dialogue and ovarr giving you this item, also have it set g:shana_blackmail_flag to 1 to activate item.
+description=A sack that stores the dues you are owed. --todo fix text
+	<finalTextIf==1 - g:shana_blackmail_flag> <n=>It is currently inactive. (If you're seeing this in normal gameplay, please send a bug report!)
+	<finalTextIf==1 - g:shana_blackmail_months_counter> <n=>It is currently empty, but will not remain so.
+	<finalTextIf==g:shana_blackmail_flag * g:shana_blackmail_months_counter> <n=>Use to disgorge the <math=5000 * g:shana_blackmail_months_counter><icon=gp> within.;
+
+ID=shana_blackmail_sack; sprite=736; value=10;
+pR=p26;
+pB=pPurple2;
+action=shana_blackmail_sack_collect;
+
+[JournalEntry]
+ID=shana_blackmail_sack;
+category=artifact; halfPage=true; rarity=0;
+title=Perpetual Pension;
+text=<itemBig=shana_blackmail_sack><title=Perpetual Pension><brAdj=>"Sacks like this are how the Council pay their unrighteous dues without attracting scrutiny. Its depths are impenetrable to the eye, and no jingling escapes its nigh-indestructible confines. Inexplicably, it gets exactly 5000<icon=gp> heavier every month.";
+
+
+[Action] ID=shana_blackmail_sack_collect;
+	name=Disgorge Dues;
+	icon=gp;
+	harmful=false;
+	fReq=g:shana_blackmail_flag * g:shana_blackmail_months_counter;
+[ActionAoE]
+	ID=shana_blackmail_sack_collect;
+	cloneFrom=adjacent;
+[AvAffecter] --SFX gate sound todo make a custom delay that covers this sound or otherwise block other things from happening
+	ID=shana_blackmail_sack_collect;
+	chance=100;
+    visibleMiss=false;
+	FXOnTile=magicHum;
+[AvAffecterAoE]
+ 	ID=shana_blackmail_sack_collect;
+ 	cloneFrom=oneTile;
+ 	ignoreCannotTarget=true;
+[AvAffecter] --delay
+	ID=shana_blackmail_sack_collect;
+	chance=100;
+    visibleMiss=false;
+	FXOnTile=delay2;
+[AvAffecterAoE]
+ 	ID=shana_blackmail_sack_collect;
+ 	cloneFrom=oneTile;
+ 	ignoreCannotTarget=true;
+[AvAffecter] --SFX coin
+	ID=shana_blackmail_sack_collect;
+	chance=100;
+    visibleMiss=false;
+	FXOnTile=sfx_coin;
+[AvAffecterAoE]
+ 	ID=shana_blackmail_sack_collect;
+ 	cloneFrom=oneTile;
+ 	ignoreCannotTarget=true;
+[AvAffecter] --VFX sparkly todo maybe put this after spawn gold
+	ID=shana_blackmail_sack_collect;
+	chance=100;
+	FXOnTile=dust_rise_gold;
+[AvAffecterAoE]
+ 	ID=shana_blackmail_sack_collect;
+ 	cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_blackmail_sack_collect;
+	actorValue=summonItem;
+	magnitude=gp;
+	duration=5000 * g:shana_blackmail_months_counter;
+	chance=100;
+[AvAffecterAoE]
+	ID=shana_blackmail_sack_collect;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_blackmail_sack_collect;
+	harmful=false; affectIntangible=true; useSeparateChanceRoll=true;
+	visibleEvaluations=false; hideAllEffects=true; visibleMiss=false;
+	actorValue=trigger;
+	magnitude=shana_blackmail_reset_months_trigger;
+	duration=-2;
+	chance=100;
+[AvAffecterAoE]
+	ID=shana_blackmail_sack_collect;
+	cloneFrom=oneTile;
+
+[GlobalTrigger] numID=0; aliasID=shana_blackmail_reset_months_trigger;
+topX=0;topY=0;btmX=0;btmY=0;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=1;
+[GlobalTriggerEffect] ID=shana_blackmail_reset_months_trigger; effectID=setGlobalVar; sValue=shana_blackmail_months_counter; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; xValue=0; yValue=0;
+
+[GlobalTriggerEffect] --all credit to quo and Devonmartino for this, they're wizards! increment months counter at start of month if flag is set
+ID=tNewDay; effectID=executeDialogEffect; sValue=setGlobalVar,shana_blackmail_months_counter,@Rg:shana_blackmail_months_counter + 1; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=g:shana_blackmail_flag * not:m:time_days(2); taskString=; xValue=-1; yValue=-1;
 
 [ItemType]  name=Ichorous Lump;
 ID=shana_trigger_rot; itemCategory=weapon; element=ruin;
