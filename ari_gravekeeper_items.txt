@@ -401,7 +401,7 @@ ID=shana_fakecannontablet; actorValue=gate_cannon; magnitude=1; duration=-1;
 
 --Blackmail Book. Todo: implement the actual blackmail sequence
 [ItemType]  name=Acceptance;
-description=A handwritten book putting names and faces to a massacre. Many people in high places would be interested in this.;
+description=A handwritten journal putting names and faces to a massacre.<textIf= Many people in high places would be interested in this.=1 - g:shana_blackmail_book_used> <textIf= You've already sworn yourself to silence. Best not to get greedy.=g:shana_blackmail_book_used>;
 ID=shana_blackmail_book; sprite=869; value=0;
 pR=p67;
 pB=p28;
@@ -426,7 +426,7 @@ formula=-1 + g:shana_blackmail_flag + d:shana_blackmail_months_0;
 formula=is:1:d:shana_calc_blackmail_active_but_months_0;
 
 [ItemType]  name=Perpetual Pension; --todo implement dialogue and ovarr giving you this item, also have it set g:shana_blackmail_flag to 1 to activate item.
-description=A sack that stores the dues you are owed. <textIf= It is currently inactive. (If you're seeing this in normal gameplay, please send a bug report!)=d:shana_blackmail_not_active><textIf= It is currently empty, but will not remain so.=d:shana_blackmail_active_but_months_0> Use to disgorge the <math=5000 * g:shana_blackmail_months_counter><icon=gp> within.;
+description=A sack that stores the dues you are owed. <textIf= It is currently inactive. (If you're seeing this in normal gameplay, please send a bug report!) =d:shana_blackmail_not_active><textIf= It is currently empty, but will not remain so.=d:shana_blackmail_active_but_months_0> Use to disgorge the <math=5000 * g:shana_blackmail_months_counter><icon=gp> within.;
 
 --<math=5000 * g:shana_blackmail_months_counter><icon=gp>
 --<finalTextIf=asshole=1 - g:shana_blackmail_flag * g:shana_blackmail_months_counter>Use to disgorge the <math=5000 * g:shana_blackmail_months_counter><icon=gp> within.
@@ -448,6 +448,7 @@ text=<itemBig=shana_blackmail_sack><title=Perpetual Pension><brAdj=>Sacks like t
 	name=Disgorge Dues;
 	icon=gp;
 	harmful=false;
+	fReq=g:shana_blackmail_flag;
 [ActionAoE]
 	ID=shana_blackmail_sack_collect;
 	cloneFrom=adjacent;

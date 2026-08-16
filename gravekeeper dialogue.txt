@@ -463,7 +463,7 @@ fReq=g:shana_added_tally;
 -----------Rabbit poster-----------------------------------------
 
 [DialogNode] ID=shana_rabbit_poster_dialog;
-statements=Have you seen my bun, Snowball? He's small, white and fluffy, and has a collar on his neck. He's been missing since last week. If anyone helps me find him, I'll give you 240 <itemBig_low=gp> and bake you lots of sweets.<n=><n=>-Susie;
+statements=Have you seen my bun, Snowball? He's small, white and fluffy, and has a collar on his neck. He's been missing since last week. If anyone helps me find him, I'll give you $240 and bake you lots of sweets.<n=><n=>-Susie;
 
 -----------End Rabbit poster dialogue----------------------------
 
@@ -1546,9 +1546,106 @@ animations=;
 statements=Don't hold back. I'd rather lose than win...<p> but I can't just roll over for you.;
 nextNodeID=nextNodeID=shana_gravekeeper_yokaze_intro_startfightb;
 
+--------------------------------------------------Blackmail Dialogue todo: option for council, jasce, rumane, arion maybe
+-----------------------------Inject dialogue into Admin Ovarr NPC (Blackmail Searth)
+[DialogOption] ID=royal_questgiver;
+text=I believe this <itemBig_low=shana_blackmail_book>journal may be of concern to you.;
+formulaReq=moreThan:0:partyItem:shana_blackmail_book * is:0:g:shana_blackmail_book_used * is:0:g:shana_blackmail_considering_options_searth; --Has Acceptance in inventory AND has not blackmailed before AND first time.
+newLineOfOptions=true;
+nodeToConnectTo=shana_royal_blackmail_1;
+
+
+[DialogOption] ID=royal_questgiver;
+text=About the <itemBig_low=shana_blackmail_book>journal...;
+formulaReq=moreThan:0:partyItem:shana_blackmail_book * is:0:g:shana_blackmail_book_used * is:1:g:shana_blackmail_considering_options_searth; --Has Acceptance in inventory AND has not blackmailed before AND has declined once..
+newLineOfOptions=true;
+nodeToConnectTo=shana_royal_blackmail_considering_options;
 
 
 
+[DialogNode] ID=shana_royal_blackmail_1;
+animations=scared;
+animations=angry;
+statements=...!;
+statements=What is the meaning of this.;
+[DialogOption] text=I'm just trying to help. (Explain.); --3a
+animation=concern;
+newLineOfOptions=false;
+nodeToConnectTo=shana_royal_blackmail_3a;
+[DialogOption] text=We both know what this is. My silence is expensive, you know?; --3b
+animation=happy;
+newLineOfOptions=false;
+nodeToConnectTo=shana_royal_blackmail_3b;
+
+
+[DialogNode] ID=shana_royal_blackmail_3a;
+animations=sigh;
+animations=sigh;
+animations=sad;
+animations=;
+animations=sly;
+animations=happy;
+animations=happy;
+statements=If what you say is true, you have done Seartial a great service.;
+statements=The Council, esteemed as they may be, are not infallible.; --sigh
+statements=I won't deny that they have done horrible things in the service of our ideals.;
+statements=Despite this, they wish to set old grudges to rest without making new ones.;
+statements=Although the author of this book is already dead, I believe we can still enter a mutually beneficial arrangement.;
+statements=<pfullname=>! Swear yourself to silence, and the Council will pay you $5000 monthly for the rest of your life. <color=Red>You won't find a better deal anywhere else.<color=>;
+statements=The payment will be made regardless of your standing with Seartial, of course. We have a system for that.;
+[DialogOption] text=Accept the offer.;
+newLineOfOptions=false;
+nodeToConnectTo=shana_royal_blackmail_accept;
+[DialogOption] text=Decline the offer.;
+newLineOfOptions=false;
+nodeToConnectTo=shana_royal_blackmail_decline;
+
+
+[DialogNode] ID=shana_royal_blackmail_3b;
+animations=angry;
+animations=stern;
+animations=meh;
+animations=meh;
+statements=You play a dangerous game, <pfullname=>.;
+statements=If the Council didn't have standing orders on how to handle their... past indescretions, I'd shoot you here and now.;
+statements=Very well. Swear yourself to silence, and the Council will pay you $5000 monthly for the rest of your life. <color=Red>You won't find a better deal anywhere else.<color=>;
+statements=The payment will be made regardless of your standing with Seartial, of course. We have a system for that.;
+[DialogOption] text=Accept the offer.;
+newLineOfOptions=false;
+nodeToConnectTo=shana_royal_blackmail_accept;
+[DialogOption] text=Decline the offer.;
+newLineOfOptions=false;
+nodeToConnectTo=shana_royal_blackmail_decline;
+
+
+[DialogNode] ID=shana_royal_blackmail_considering_options; --return after
+animations=;
+animations=sly;
+animations=sly;
+statements=I see you're still considering your options, <pfullname=>.;
+statements=As a reminder, the Council will buy your silence for a monthly stipend of $5000. <color=Red>You won't find a better deal anywhere else.<color=>;
+statements=The payment will be made regardless of your standing with Seartial, of course. We have a system for that.;
+[DialogOption] text=Accept the offer.;
+newLineOfOptions=false;
+nodeToConnectTo=shana_royal_blackmail_accept;
+[DialogOption] text=Decline the offer.;
+newLineOfOptions=false;
+nodeToConnectTo=shana_royal_blackmail_decline;
+
+
+[DialogNode] ID=shana_royal_blackmail_accept;
+statements=I see we have a deal. Take this sack, and don't lose it. I won't provide a replacement if you do.;
+specialEffect=fx,longGoodAuraSound;
+specialEffect=giveItem,shana_blackmail_sack,1;
+specialEffect=setGlobalVar,shana_blackmail_flag,1;
+specialEffect=setGlobalVar,shana_blackmail_months_counter,1;
+specialEffect=setGlobalVar,shana_blackmail_book_used,1;
+
+
+[DialogNode] ID=shana_royal_blackmail_decline;
+animations=;
+statements=Very well. Come back if you change your mind, but know that my offer is only open as long as you've kept your silence.;
+specialEffect=setGlobalVar,shana_blackmail_considering_options_searth,1;
 
 
 
