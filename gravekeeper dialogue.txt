@@ -1607,7 +1607,7 @@ animations=stern;
 animations=meh;
 animations=meh;
 statements=You play a dangerous game, <pfullname=>.;
-statements=If the Council didn't have standing orders on how to handle their... past indescretions, I'd shoot you here and now.;
+statements=If the Council didn't have standing orders on how to handle...<p=2> past indiscretions, I'd shoot you here and now.;
 statements=Very well. Swear yourself to silence, and the Council will pay you $5000 monthly for the rest of your life. <color=Red>You won't find a better deal anywhere else.<color=>;
 statements=The payment will be made regardless of your standing with Seartial, of course. We have a system for that.;
 [DialogOption] text=Accept the offer.;
@@ -1647,10 +1647,30 @@ animations=;
 statements=Very well. Come back if you change your mind, but know that my offer is only open as long as you've kept your silence.;
 specialEffect=setGlobalVar,shana_blackmail_considering_options_searth,1;
 
+-----------------------------Inject dialogue into Council NPC (Blackmail Searth)
+[DialogOption] ID=royal1;
+text=I believe this <itemBig_low=shana_blackmail_book>journal may be of concern to you.;
+formulaReq=moreThan:0:partyItem:shana_blackmail_book * is:0:g:shana_blackmail_book_used; --Has Acceptance in inventory AND has not blackmailed before.
+newLineOfOptions=true;
+nodeToConnectTo=shana_royal_council_blackmail_1;
 
 
-
-
+[DialogNode] ID=shana_royal_council_blackmail_1;
+animations=cringe;
+animations=sigh;
+animations=sly;
+animations=sly;
+animations=meh;
+animations=meh;
+animations=stern;
+statements=...;
+statements=The Council cannot officially comment on this, <pname=>.;
+statements=Plausible deniability, you understand.;
+statements=Admin Ovarr will ensure you are properly compensated for an oath of discretion, if you so desire.
+statements=The Council protects its own, even that...<p=2> disgrace.;
+statements=Just between us, however, no retribution will come your way should you decide to sell this information elsewhere.;
+statements=We do not condone playing soldier to slake one's bloodlust.;
+nodeToConnectTo=royal1;
 
 
 
