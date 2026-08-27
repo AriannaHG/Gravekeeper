@@ -1546,22 +1546,19 @@ animations=;
 statements=Don't hold back. I'd rather lose than win...<p> but I can't just roll over for you.;
 nextNodeID=nextNodeID=shana_gravekeeper_yokaze_intro_startfightb;
 
---------------------------------------------------Blackmail Dialogue todo: option for council, jasce, rumane, arion maybe
+--------------------------------------------------Blackmail Dialogue todo: option for jascias, jasce, rumane king, arion maybe
 -----------------------------Inject dialogue into Admin Ovarr NPC (Blackmail Searth)
 [DialogOption] ID=royal_questgiver;
 text=I believe this <itemBig_low=shana_blackmail_book>journal may be of concern to you.;
-formulaReq=moreThan:0:partyItem:shana_blackmail_book * is:0:g:shana_blackmail_book_used * is:0:g:shana_blackmail_considering_options_searth; --Has Acceptance in inventory AND has not blackmailed before AND first time.
+formulaReq=moreThan:0:partyItem:shana_blackmail_book * is:0:g:shana_blackmail_book_used * is:0:g:shana_blackmail_considering_options_searth * talker:admin; --Has Acceptance in inventory AND has not blackmailed before AND first time AND searth admin.
 newLineOfOptions=true;
 nodeToConnectTo=shana_royal_blackmail_1;
 
-
 [DialogOption] ID=royal_questgiver;
 text=About the <itemBig_low=shana_blackmail_book>journal...;
-formulaReq=moreThan:0:partyItem:shana_blackmail_book * is:0:g:shana_blackmail_book_used * is:1:g:shana_blackmail_considering_options_searth; --Has Acceptance in inventory AND has not blackmailed before AND has declined once..
+formulaReq=moreThan:0:partyItem:shana_blackmail_book * is:0:g:shana_blackmail_book_used * is:1:g:shana_blackmail_considering_options_searth * talker:admin; --Has Acceptance in inventory AND has not blackmailed before AND has declined once AND searth admin.
 newLineOfOptions=true;
 nodeToConnectTo=shana_royal_blackmail_considering_options;
-
-
 
 [DialogNode] ID=shana_royal_blackmail_1;
 animations=scared;
@@ -1576,7 +1573,6 @@ nodeToConnectTo=shana_royal_blackmail_3a;
 animation=happy;
 newLineOfOptions=false;
 nodeToConnectTo=shana_royal_blackmail_3b;
-
 
 [DialogNode] ID=shana_royal_blackmail_3a;
 animations=sigh;
@@ -1600,7 +1596,6 @@ nodeToConnectTo=shana_royal_blackmail_accept;
 newLineOfOptions=false;
 nodeToConnectTo=shana_royal_blackmail_decline;
 
-
 [DialogNode] ID=shana_royal_blackmail_3b;
 animations=angry;
 animations=stern;
@@ -1608,30 +1603,28 @@ animations=meh;
 animations=meh;
 statements=You play a dangerous game, <pfullname=>.;
 statements=If the Council didn't have standing orders on how to handle...<p=2> past indiscretions, I'd shoot you here and now.;
-statements=Very well. Swear yourself to silence, and the Council will pay you $5000 monthly for the rest of your life. <color=Red>You won't find a better deal anywhere else.<color=>;
+statements=Fine. Swear yourself to silence, and the Council will pay you $5000 monthly for the rest of your life. You won't find a better deal anywhere else.;
 statements=The payment will be made regardless of your standing with Seartial, of course. We have a system for that.;
 [DialogOption] text=Accept the offer.;
 newLineOfOptions=false;
 nodeToConnectTo=shana_royal_blackmail_accept;
 [DialogOption] text=Decline the offer.;
-newLineOfOptions=false;
+newLineOfOptions=true;
 nodeToConnectTo=shana_royal_blackmail_decline;
-
 
 [DialogNode] ID=shana_royal_blackmail_considering_options; --return after
 animations=;
 animations=sly;
 animations=sly;
 statements=I see you're still considering your options, <pfullname=>.;
-statements=As a reminder, the Council will buy your silence for a monthly stipend of $5000. <color=Red>You won't find a better deal anywhere else.<color=>;
+statements=As a reminder, the Council will buy your silence for a monthly stipend of $5000. You won't find a better deal anywhere else.;
 statements=The payment will be made regardless of your standing with Seartial, of course. We have a system for that.;
 [DialogOption] text=Accept the offer.;
 newLineOfOptions=false;
 nodeToConnectTo=shana_royal_blackmail_accept;
 [DialogOption] text=Decline the offer.;
-newLineOfOptions=false;
+newLineOfOptions=true;
 nodeToConnectTo=shana_royal_blackmail_decline;
-
 
 [DialogNode] ID=shana_royal_blackmail_accept;
 statements=I see we have a deal. Take this sack, and don't lose it. I won't provide a replacement if you do.;
@@ -1641,19 +1634,18 @@ specialEffect=setGlobalVar,shana_blackmail_flag,1;
 specialEffect=setGlobalVar,shana_blackmail_months_counter,1;
 specialEffect=setGlobalVar,shana_blackmail_book_used,1;
 
-
 [DialogNode] ID=shana_royal_blackmail_decline;
 animations=;
-statements=Very well. Come back if you change your mind, but know that my offer is only open as long as you've kept your silence.;
+statements=Very well. Come back if you change your mind, but know that the Council's offer is only open as long as you've kept your silence.;
 specialEffect=setGlobalVar,shana_blackmail_considering_options_searth,1;
+nextNodeID=royal_questgiver;
 
------------------------------Inject dialogue into Council NPC (Blackmail Searth)
+-----------------------------Inject dialogue into Chairman NPC (Blackmail Searth)
 [DialogOption] ID=royal1;
 text=I believe this <itemBig_low=shana_blackmail_book>journal may be of concern to you.;
-formulaReq=moreThan:0:partyItem:shana_blackmail_book * is:0:g:shana_blackmail_book_used; --Has Acceptance in inventory AND has not blackmailed before.
+formulaReq=moreThan:0:partyItem:shana_blackmail_book * is:0:g:shana_blackmail_book_used * talker:chairman; --Has Acceptance in inventory AND has not blackmailed before AND talker is chairman.
 newLineOfOptions=true;
 nodeToConnectTo=shana_royal_council_blackmail_1;
-
 
 [DialogNode] ID=shana_royal_council_blackmail_1;
 animations=cringe;
@@ -1666,14 +1658,83 @@ animations=stern;
 statements=...;
 statements=The Council cannot officially comment on this, <pname=>.;
 statements=Plausible deniability, you understand.;
-statements=Admin Ovarr will ensure you are properly compensated for an oath of discretion, if you so desire.
+statements=Admin Ovarr will ensure you are properly compensated for an oath of discretion, if you so desire.;
 statements=The Council protects its own, even that...<p=2> disgrace.;
 statements=Just between us, however, no retribution will come your way should you decide to sell this information elsewhere.;
 statements=We do not condone playing soldier to slake one's bloodlust.;
-nodeToConnectTo=royal1;
+nextNodeID=royal1;
 
+-----------------------------Inject dialogue into Viceroy Lyn NPC (Blackmail Searth)
+[DialogOption] ID=royal_questgiver;
+text=I believe this <itemBig_low=shana_blackmail_book>journal may be of concern to you.;
+formulaReq=moreThan:0:partyItem:shana_blackmail_book * is:0:g:shana_blackmail_book_used * is:0:g:shana_blackmail_considering_options_rumane * talker:viceroy; --Has Acceptance in inventory AND has not blackmailed before AND first time AND rumane viceroy.
+newLineOfOptions=true;
+nodeToConnectTo=shana_royal_blackmail_rumane_1;
 
+[DialogOption] ID=royal_questgiver;
+text=About the <itemBig_low=shana_blackmail_book>journal...;
+formulaReq=moreThan:0:partyItem:shana_blackmail_book * is:0:g:shana_blackmail_book_used * is:1:g:shana_blackmail_considering_options_rumane * talker:viceroy; --Has Acceptance in inventory AND has not blackmailed before AND has declined once AND rumane viceroy.
+newLineOfOptions=true;
+nodeToConnectTo=shana_royal_blackmail_rumane_considering_options_1;
 
+[DialogNode] ID=shana_royal_blackmail_rumane_1;
+animations=happy;
+animations=sly;
+statements=Well, now.;
+statements=In return for the information within that journal, and an oath of silence...;
+nextNodeID=shana_royal_blackmail_rumane_1a;
+
+[DialogNode] ID=shana_royal_blackmail_rumane_1a;
+animations=sly;
+statements=His Majesty would be willing to offer you a fleet of three Glaciers.;
+[DialogOption] text=Accept the offer.;
+newLineOfOptions=false;
+nodeToConnectTo=shana_royal_blackmail_rumane_accept;
+[DialogOption] text=<iconBig=ui_questionmark>;
+includeSymbol=false;
+nodeToConnectTo=view_glacier;
+[DialogOption] text=Decline the offer.;
+newLineOfOptions=true;
+nodeToConnectTo=shana_royal_blackmail_rumane_decline;
+
+[DialogNode] ID=shana_royal_blackmail_rumane_considering_options_1; --return after
+animations=;
+animations=sly;
+statements=I see you're still considering your options, <pfullname=>.;
+statements=As a reminder, in return for the information within that journal, and an oath of silence...;
+nextNodeID=shana_royal_blackmail_rumane_considering_options_1a;
+
+[DialogNode] ID=shana_royal_blackmail_rumane_considering_options_1a;
+animations=sly;
+statements=His Majesty would be willing to offer you a fleet of three Glaciers.;
+[DialogOption] text=Accept the offer.;
+newLineOfOptions=false;
+nodeToConnectTo=shana_royal_blackmail_rumane_accept;
+[DialogOption] text=<iconBig=ui_questionmark>;
+includeSymbol=false;
+nodeToConnectTo=view_glacier;
+[DialogOption] text=Decline the offer.;
+newLineOfOptions=true;
+nodeToConnectTo=shana_royal_blackmail_rumane_decline;
+
+[DialogNode] ID=shana_royal_blackmail_rumane_accept;
+animations=happy;
+animations=;
+animations=;
+statements=I see you've made the right choice, <pfullname=>.;
+statements=Your fleet will be unstoppable.;
+statements=If you do not have enough sailors to crew your new ships, feel free to drop them off at the harbor for the time being.;
+specialEffect=fx,longGoodAuraSound;
+specialEffect=giveShip,glacier;
+specialEffect=giveShip,glacier;
+specialEffect=giveShip,glacier;
+specialEffect=setGlobalVar,shana_blackmail_book_used,1;
+
+[DialogNode] ID=shana_royal_blackmail_rumane_decline;
+animations=;
+statements=Very well. You may return if you change your mind, but know that His Majesty's offer is only open as long as you've kept your silence.;
+specialEffect=setGlobalVar,shana_blackmail_considering_options_rumane,1;
+nextNodeID=royal_questgiver;
 
 
 
@@ -1842,7 +1903,7 @@ statements=<speed=0.5>Inside, faint screams rise and gutter out as cockpits are 
 nextNodeID=shana_horizonsgrave_badend_18b;
 
 [DialogNode] ID=shana_horizonsgrave_badend_18b;
-statements=<speed=0.5>One by one, each hive-ship peels away from its fellows, every hull pocked with clustered, oozing apertures weeping infection onto the lands and seas below.;
+statements=<speed=0.5>One by one, each of them peels away from its fellows, every hull pocked with clustered, oozing apertures weeping infection onto the lands and seas below.;
 nextNodeID=shana_horizonsgrave_badend_19;
 
 [DialogNode] ID=shana_horizonsgrave_badend_19;
