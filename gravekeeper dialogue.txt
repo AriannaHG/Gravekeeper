@@ -1720,7 +1720,7 @@ nodeToConnectTo=shana_royal_blackmail_rumane_decline;
 [DialogNode] ID=shana_royal_blackmail_rumane_accept;
 animations=happy;
 animations=;
-animations=;
+animations=sly;
 statements=I see you've made the right choice, <pfullname=>.;
 statements=Your fleet will be unstoppable.;
 statements=If you do not have enough sailors to crew your new ships, feel free to drop them off at the harbor for the time being.;
@@ -1736,6 +1736,29 @@ statements=Very well. You may return if you change your mind, but know that His 
 specialEffect=setGlobalVar,shana_blackmail_considering_options_rumane,1;
 nextNodeID=royal_questgiver;
 
+-----------------------------Inject dialogue into King NPC (Blackmail Searth)
+[DialogOption] ID=royal1;
+text=I believe this <itemBig_low=shana_blackmail_book>journal may be of concern to you.;
+formulaReq=moreThan:0:partyItem:shana_blackmail_book * is:0:g:shana_blackmail_book_used * talker:king; --Has Acceptance in inventory AND has not blackmailed before AND talker is king.
+newLineOfOptions=true;
+nodeToConnectTo=shana_royal_king_blackmail_1;
+
+[DialogNode] ID=shana_royal_king_blackmail_1;
+animations=;
+animations=happy;
+animations=happy;
+animations=stern;
+animations=;
+animations=;
+animations=;
+statements=...;
+statements=Very well done, <pfullname=>! We know it can't have been easy to get your hands on that journal.;
+statements=The thought of seeing those treacherous dastards brought low by their own actions warms Our heart.;
+statements=One of them in particular has done regrettable things to the Clanlands before your time.;
+statements=The Viceroy handles matters of statecraft. He will ensure that you are very well compensated for your efforts, but you will have to keep your discretion after.;
+statements=Should you decide to sell this information elsewhere, We have no objections.;
+statements=The outcome would be much the same in Our eyes.;
+nextNodeID=royal1;
 
 
 
