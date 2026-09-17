@@ -1760,6 +1760,87 @@ statements=Should you decide to sell this information elsewhere, We have no obje
 statements=The outcome would be much the same in Our eyes.;
 nextNodeID=royal1;
 
+-----------------------------Inject dialogue into Auspex (Blackmail Searth)
+[DialogOption] ID=royal_questgiver;
+text=I believe this <itemBig_low=shana_blackmail_book>journal may be of concern to you.;
+formulaReq=moreThan:0:partyItem:shana_blackmail_book * is:0:g:shana_blackmail_book_used * is:0:g:shana_blackmail_considering_options_jasce * talker:auspex; --Has Acceptance in inventory AND has not blackmailed before AND first time AND jasce auspex.
+newLineOfOptions=true;
+nodeToConnectTo=shana_royal_blackmail_jasce_1;
+
+[DialogOption] ID=royal_questgiver;
+text=About the <itemBig_low=shana_blackmail_book>journal...;
+formulaReq=moreThan:0:partyItem:shana_blackmail_book * is:0:g:shana_blackmail_book_used * is:1:g:shana_blackmail_considering_options_jasce * talker:auspex; --Has Acceptance in inventory AND has not blackmailed before AND has declined once AND jasce auspex.
+newLineOfOptions=true;
+nodeToConnectTo=shana_royal_blackmail_jasce_considering_options_1;
+
+[DialogNode] ID=shana_royal_blackmail_jasce_1;
+animations=happy;
+animations=;
+animations=sly;
+animations=sly;
+statements=How fortituous.;
+statements=Jasce's coffers are vast, <pfullname=>.;
+statements=For a secret such as this, and an oath of silence...;
+statements=$150000 would be a trifling sum indeed.;
+[DialogOption] text=Accept the offer.;
+newLineOfOptions=false;
+nodeToConnectTo=shana_royal_blackmail_jasce_accept;
+[DialogOption] text=Decline the offer.;
+newLineOfOptions=true;
+nodeToConnectTo=shana_royal_blackmail_jasce_decline;
+
+[DialogNode] ID=shana_royal_blackmail_jasce_considering_options_1; --return after
+animations=;
+animations=sly;
+statements=I see you're still considering your options, <pfullname=>.;
+statements=As a reminder, for a secret such as this, and an oath of silence...;
+statements=$150000 would be a trifling sum indeed.;
+[DialogOption] text=Accept the offer.;
+newLineOfOptions=false;
+nodeToConnectTo=shana_royal_blackmail_jasce_accept;
+[DialogOption] text=Decline the offer.;
+newLineOfOptions=true;
+nodeToConnectTo=shana_royal_blackmail_jasce_decline;
+
+[DialogNode] ID=shana_royal_blackmail_jasce_accept;
+animations=happy;
+animations=stern;
+animations=stern;
+statements=Enjoy your earthly riches, <pfullname=>.;
+statements=Oh, and should you renege on your oath...;
+statements=Great suffering will surely await you in the afterlife.;
+specialEffect=fx,longGoodAuraSound;
+specialEffect=addgp,,150000;
+specialEffect=setGlobalVar,shana_blackmail_book_used,1;
+
+[DialogNode] ID=shana_royal_blackmail_jasce_decline;
+animations=stern;
+statements=Hmph. You may return if you change your mind, but know that Jasce's patience only lasts so long as you've kept your silence.;
+specialEffect=setGlobalVar,shana_blackmail_considering_options_jasce,1;
+nextNodeID=royal_questgiver;
+
+-----------------------------Inject dialogue into Jasce NPC (Blackmail Searth)
+[DialogOption] ID=royal1;
+text=I believe this <itemBig_low=shana_blackmail_book>journal may be of concern to you.;
+formulaReq=moreThan:0:partyItem:shana_blackmail_book * is:0:g:shana_blackmail_book_used * talker:jasce; --Has Acceptance in inventory AND has not blackmailed before AND talker is jasce.
+newLineOfOptions=true;
+nodeToConnectTo=shana_royal_jasce_blackmail_1;
+
+[DialogNode] ID=shana_royal_jasce_blackmail_1;
+animations=;
+animations=stern;
+animations=stern;
+animations=sigh;
+animations=sly;
+animations=sly;
+statements=How fitting.;
+statements=They clung to false promises of rescue, much like the false idols they worshipped.;
+statements=The bitter harvest they reaped was truly deserved, for they turned their backs on the one true God.;
+statements=Their deaths need not be in vain, however.;
+statements=Speak to the Auspex should you wish to exchange your secret for a king's ransom.;
+statements=We will spread word of Seartial's perfidy, and many a soul shall be saved in the process.;
+nextNodeID=royal1;
+
 
 
 
