@@ -753,7 +753,7 @@ ID=shana_gate_reckoning_charging; actorValues=shana_gate_reckoning_charging; new
 
 
 -----------------------------------------Increase Reckoning then Cannon - the action that increases reckoning stacks on self, then checks if it's past a certain threshold. If it is, immediately blast the currently acting actor with gate:cannon. This should be an fReq, and it should check on 6/12 instead of 7/13.
-
+--Yes, it's jank. I had to do the multiple damage numbers because it seems that the system just eats spaces, sp I have to render one damage number per word. At least it has aura lmao. edit: It's possible to do with lua but I already implemented this before the script arrived and the separate lines really help with the aurafarming so leaving it asis
 [Action] ID=shana_increase_reckoning_then_cannon;
 	special=usableEvenWhenCantAct;
 	special=usableEvenWhenReacting;
@@ -770,6 +770,107 @@ ID=shana_gate_reckoning_charging; actorValues=shana_gate_reckoning_charging; new
    	canSelectEnemies=true;
    	minRange=0;
    	maxRange=99;
+[AvAffecter] -----------------------------------------------------Set turns remaining gvar if player is NOT searth aligned --todo finish this
+	ID=shana_increase_reckoning_then_cannon;
+	fReq=1-d:shana_gate_reckoning_playerisSearth;
+    visibleMiss=false; visibleEvaluations=false;
+    actorValue=task;
+    magnitude=setGlobalVar_math,shana_reckoning_turns_remaining,12 - c:shana_gate_reckoning_charging;
+    duration=1;
+    chance=100;
+[AvAffecterAoE]
+    ID=shana_increase_reckoning_then_cannon;
+    cloneFrom=oneTile;
+	aoeCasterAsOrigin=true; --required so the target is caster
+[AvAffecter] -----------------------------------------------------Set turns remaining gvar if player is searth aligned
+	ID=shana_increase_reckoning_then_cannon;
+	fReq=d:shana_gate_reckoning_playerisSearth;
+    visibleMiss=false; visibleEvaluations=false;
+    actorValue=task;
+    magnitude=setGlobalVar_math,shana_reckoning_turns_remaining,6 - c:shana_gate_reckoning_charging;
+    duration=1;
+    chance=100;
+[AvAffecterAoE]
+    ID=shana_increase_reckoning_then_cannon;
+    cloneFrom=oneTile;
+	aoeCasterAsOrigin=true; --required so the target is caster
+[AvAffecter] -----------------------------------------------------Set display gvar
+	ID=shana_increase_reckoning_then_cannon;
+    visibleMiss=false; visibleEvaluations=false;
+    actorValue=task;
+    magnitude=setGlobalVar,shana_reckoning_display,@Gshana_reckoning_turns_remaining;
+    duration=1;
+    chance=100;
+[AvAffecterAoE]
+    ID=shana_increase_reckoning_then_cannon;
+    cloneFrom=oneTile;
+	aoeCasterAsOrigin=true; --required so the target is caster
+[AvAffecter] -----------------------------------------------------Append to display gvar
+	ID=shana_increase_reckoning_then_cannon;
+    visibleMiss=false; visibleEvaluations=false;
+    actorValue=task;
+    magnitude=appendToGlobalVar_string,shana_reckoning_display,...;
+    duration=1;
+    chance=100;
+[AvAffecterAoE]
+    ID=shana_increase_reckoning_then_cannon;
+    cloneFrom=oneTile;
+	aoeCasterAsOrigin=true; --required so the target is caster
+[AvAffecter] -----------------------------------------------------Damage Number Popup to show how many turns remaining if more than 1
+    ID=shana_increase_reckoning_then_cannon;
+	fReq=d:shana_gate_reckoning_playerisNotSearth * d:shana_gate_reckoning_10orless + d:shana_gate_reckoning_playerisSearth * d:shana_gate_reckoning_4orless;
+    visibleMiss=false; visibleEvaluations=false;
+    actorValue=task;
+    magnitude=damageNumber,3,127,255,212,@Gshana_reckoning_display;
+    duration=1;
+    chance=100;
+[AvAffecterAoE]
+    ID=shana_increase_reckoning_then_cannon;
+    cloneFrom=oneTile;
+[AvAffecter] -----------------------------------------------------Damage Number Popup to show how many turns remaining if more than 1
+    ID=shana_increase_reckoning_then_cannon;
+	fReq=d:shana_gate_reckoning_playerisNotSearth * d:shana_gate_reckoning_10orless + d:shana_gate_reckoning_playerisSearth * d:shana_gate_reckoning_4orless;
+    visibleMiss=false; visibleEvaluations=false;
+    actorValue=task;
+    magnitude=damageNumber,3,160,180,185,in;
+    duration=1;
+    chance=100;
+[AvAffecterAoE]
+    ID=shana_increase_reckoning_then_cannon;
+    cloneFrom=oneTile;
+[AvAffecter] -----------------------------------------------------Damage Number Popup to show how many turns remaining if more than 1
+    ID=shana_increase_reckoning_then_cannon;
+	fReq=d:shana_gate_reckoning_playerisNotSearth * d:shana_gate_reckoning_10orless + d:shana_gate_reckoning_playerisSearth * d:shana_gate_reckoning_4orless;
+    visibleMiss=false; visibleEvaluations=false;
+    actorValue=task;
+    magnitude=damageNumber,3,0,165,180,Reckoning;
+    duration=1;
+    chance=100;
+[AvAffecterAoE]
+    ID=shana_increase_reckoning_then_cannon;
+    cloneFrom=oneTile;
+[AvAffecter] -----------------------------------------------------Damage Number Popup to show 1 turn remaining
+    ID=shana_increase_reckoning_then_cannon;
+    fReq=d:shana_gate_reckoning_playerisNotSearth * d:shana_gate_reckoning_is11 + d:shana_gate_reckoning_playerisSearth * d:shana_gate_reckoning_is5;
+    visibleMiss=false; visibleEvaluations=false;
+    actorValue=task;
+    magnitude=damageNumber,3,127,255,212,imminent.;
+    duration=1;
+    chance=100;
+[AvAffecterAoE]
+    ID=shana_increase_reckoning_then_cannon;
+    cloneFrom=oneTile;
+[AvAffecter] -----------------------------------------------------Damage Number Popup to show 1 turn remaining
+    ID=shana_increase_reckoning_then_cannon;
+    fReq=d:shana_gate_reckoning_playerisNotSearth * d:shana_gate_reckoning_is11 + d:shana_gate_reckoning_playerisSearth * d:shana_gate_reckoning_is5;
+    visibleMiss=false; visibleEvaluations=false;
+    actorValue=task;
+    magnitude=damageNumber,3,0,165,180,Reckoning;
+    duration=1;
+    chance=100;
+[AvAffecterAoE]
+    ID=shana_increase_reckoning_then_cannon;
+    cloneFrom=oneTile;
 [AvAffecter] -----------------------------------------------------add reckoning stack to whoever has gate:reckoning equipped
 	ID=shana_increase_reckoning_then_cannon;
 	harmful=false;
@@ -792,7 +893,7 @@ ID=shana_gate_reckoning_charging; actorValues=shana_gate_reckoning_charging; new
    	maxRange=99;
 [AvAffecter] -----------------------------------------------------cannon fx offset 2 squares up
 	ID=shana_increase_reckoning_then_cannon;
-	fReq=d:shana_gate_reckoning_check_cannonfx;
+	fReq=d:shana_gate_reckoning_check_cannonfx; --disable this for testing
 	visibleEvaluations=false;
 	useCasterAsOriginForDirectionalEffects=false;
 	FXOnTile=gateOpen_above;
@@ -842,7 +943,7 @@ ID=shana_gate_reckoning_charging; actorValues=shana_gate_reckoning_charging; new
 [AvAffecterAoE]
 	ID=shana_increase_reckoning_then_cannon;
 	cloneFrom=oneTile;
-    originOffset=2,0;
+    originOffset=-2,0;
 
 [AvAffecter] -----------------------------------------------------break armor
 	ID=shana_increase_reckoning_then_cannon;
@@ -937,6 +1038,9 @@ formula=moreThan:12:c:shana_gate_reckoning_charging;
 [FormulaGlobal] ID=shana_gate_reckoning_playerisSearth;
 formula=gIs:playerFaction:seartial;
 
+[FormulaGlobal] ID=shana_gate_reckoning_playerisNotSearth;
+formula=1-d:shana_gate_reckoning_playerisSearth;
+
 [FormulaGlobal] ID=shana_gate_reckoning_check;
 formula=m:targetIsCurrentActor * d:shana_gate_reckoning_7ormore * d:shana_gate_reckoning_playerisSearth + m:targetIsCurrentActor * d:shana_gate_reckoning_13ormore;
 
@@ -945,6 +1049,18 @@ formula=d:shana_gate_reckoning_7ormore * d:shana_gate_reckoning_playerisSearth +
 
 [FormulaGlobal] ID=shana_gate_reckoning_check_cannonfx; --bruh
 formula=d:shana_gate_reckoning_6ormore * d:shana_gate_reckoning_playerisSearth + d:shana_gate_reckoning_12ormore;
+
+[FormulaGlobal] ID=shana_gate_reckoning_10orless;
+formula=lessThan:11:c:shana_gate_reckoning_charging;
+
+[FormulaGlobal] ID=shana_gate_reckoning_is11;
+formula=is:11:c:shana_gate_reckoning_charging;
+
+[FormulaGlobal] ID=shana_gate_reckoning_4orless;
+formula=moreThan:12:c:shana_gate_reckoning_charging;
+
+[FormulaGlobal] ID=shana_gate_reckoning_is5;
+formula=is:5:c:shana_gate_reckoning_charging;
 
 ------------------------------------------------------------------------OLD BARROW ENDBOSS PASSIVES
 
