@@ -1546,7 +1546,353 @@ animations=;
 statements=Don't hold back. I'd rather lose than win...<p> but I can't just roll over for you.;
 nextNodeID=nextNodeID=shana_gravekeeper_yokaze_intro_startfightb;
 
---------------------------------------------------Blackmail Dialogue todo: option for jascias, jasce, rumane king, arion maybe
+--------------------------------------------------Gatemaster Magnus intro --todo this is unimplemented. Implement and test this ingame
+[DialogNode] ID=shana_gravekeeper_magnus_intro_handler;
+nextNodeID_fReq=gIs:playerFaction:seartial;
+nextNodeID=shana_magnus_playerIsSearth;
+nextNodeID_fReq=gIsNot:playerFaction:seartial;
+nextNodeID=shana_gravekeeper_magnus_intro_normal;
+
+[DialogNode] ID=shana_gravekeeper_magnus_intro_playerIsSearth;
+animations=stern;
+animations=angry;
+statements=So, it seems the dogs of Seartial have clawed their way inland.;
+statements=I have nothing to say to you and your ilk.<p=2> Die.;
+nextNodeID=shana_gravekeeper_magnus_intro_combat_start_immediate;
+
+[DialogNode] ID=shana_gravekeeper_magnus_intro_normal;
+speakerOverride=shana_gatemaster_boss_ari_gravekeeper_city_church_interior_;
+animations=none;
+statements=Greetings. Not many make it this far in.;
+
+[DialogOption] text=Are you being controlled too?;
+animations=sigh;
+nodeToConnectTo=shana_gravekeeper_magnus_intro_controlled;
+
+[DialogOption] text=Why are you doing this?;
+animations=none;
+newLineOfOptions=true;
+formulaReq=g:shana_magnus_asked_if_controlled;
+nodeToConnectTo=shana_gravekeeper_magnus_intro_why;
+
+[DialogOption] text=How did you end up here?;
+animations=meh;
+newLineOfOptions=true;
+formulaReq=g:shana_magnus_asked_why_doing;
+nodeToConnectTo=shana_gravekeeper_magnus_intro_how;
+
+[DialogOption] text=Surely there must be another way to get justice?;
+animations=none;
+newLineOfOptions=true;
+formulaReq=g:shana_magnus_asked_how;
+nodeToConnectTo=shana_gravekeeper_magnus_intro_anotherway;
+
+[DialogOption] text=If you want revenge so bad, why not do it yourself?;
+animations=sly;
+newLineOfOptions=true;
+formulaReq=g:shana_magnus_asked_how;
+nodeToConnectTo=shana_gravekeeper_magnus_intro_doyourself;
+
+[DialogOption] text=Who is this Abbess, and what is she plotting?;
+animations=sly;
+newLineOfOptions=true;
+formulaReq=g:shana_magnus_asked_how;
+nodeToConnectTo=shana_gravekeeper_magnus_intro_plans;
+
+[DialogOption] text=The Abbess is using you!;
+animations=stern;
+newLineOfOptions=true;
+formulaReq=g:shana_magnus_asked_how;
+nodeToConnectTo=shana_gravekeeper_magnus_intro_using;
+
+[DialogOption] text=Don't you care about collateral damage?;
+animations=concern;
+newLineOfOptions=true;
+formulaReq=g:shana_magnus_asked_how;
+nodeToConnectTo=shana_gravekeeper_magnus_intro_collateral;
+
+[DialogOption] text=It's been a very nice conversation, but I'd like to leave for now.;
+animations=scared;
+newLineOfOptions=true;
+formulaReq=g:shana_magnus_asked_if_controlled;
+nodeToConnectTo=shana_gravekeeper_magnus_intro_ask_leave;
+
+[DialogOption] text=I can't let this continue.;
+animations=stern;
+newLineOfOptions=true;
+formulaReq=g:shana_magnus_asked_if_controlled;
+nodeToConnectTo=shana_gravekeeper_magnus_intro_start_fight;
+
+[DialogOption] text=I don't speak to the undead.;
+animations=stern;
+newLineOfOptions=true;
+formulaReq=1-g:shana_magnus_asked_if_controlled;
+nodeToConnectTo=shana_gravekeeper_magnus_intro_dont_speak;
+
+[DialogNode] ID=shana_gravekeeper_magnus_intro_controlled;
+statements=Perish the thought! Unlike the others, I serve of my own volition.;
+animations=none;
+specialEffect=setGlobalVar,shana_magnus_asked_if_controlled,1;
+nodeToConnectTo=previous;
+
+[DialogNode] ID=shana_gravekeeper_magnus_intro_why;
+statements=Curious, aren't you? Very well. I suppose I can take some time out of my day to educate you on recent history.;
+statements=My knowledge of what happened back then is fragmented, so you'll have to forgive any inaccuracies.;
+statements=It's not like anyone else would be willing or able to talk about what happened back then in any detail.;
+statements=A brilliant mind that went by the name of Ekrast was hired to do research by some of the higher-ups in Seartial. Research on Gate magic, because what else would it have been?;
+statements=He went rogue, and used the fruits of his research to raise a tower, one which would be called the Voidspire in the years to come.;
+statements=This shouldn't have mattered to me, to us. I was just a Gatekeeper in training at the time, with a loving husband and a child we adopted.;
+statements=I was so excited to show them the practical results of the experiments I'd done in secret. ;
+statements=The use of Gate magic to see, and even communicate, over long distances with the assistance of amalgamated trigger stones, and...;
+statements=Well, I won't bore you with the details.;
+statements=You see, I'd fashioned an amulet as a proof of concept: one that, when worn, would allow me to see and hear from their perspectives at a distance.;
+statements=The day I gave it to them was the same day the Voidspire grabbed a good chunk of Searth and moved it all the way to what we now know as the Shredded Lands.;
+statements=In a way, the prototype exceeded my wildest expectations. I was still able to see and hear through their eyes, despite the greatly increased distance.;
+statements=Even if agitating for their rescue was...<p> not as successful as I would have liked.;
+statements=I still held out hope, and my heart soared when we finally saw one of our own airships, only for the unthinkable to happen.;
+statements=My son was blown to pieces by a bomb they dropped. My husband was butchered by a soldier, one of the very people who swore an oath to guard us.;
+statements=All I could think about for a time was that smirk, that sadistic grin as she said she was ordered to make sure there were no survivors.;
+statements=She seemed to take great pleasure from the notion that she'd get to go back and see her own family in Searth, as if she'd done no wrong, while...;
+statements=<speed=0.3>while...;
+statements=<speed=0.1>...;
+statements=The official story was that they fell victim to a monster attack.;
+statements=I suppose that's true, from a certain point of view.;
+animations=sly;
+animations=sigh;
+animations=meh;
+animations=none;
+animations=none;
+animations=happy;
+animations=happy;
+animations=none;
+animations=none;
+animations=none;
+animations=none;
+animations=none;
+animations=sigh;
+animations=none;
+animations=angry;
+animations=angry;
+animations=angry;
+animations=sad;
+animations=sad;
+animations=sad;
+animations=sad;
+specialEffect=setGlobalVar,shana_magnus_asked_why_doing,1;
+nodeToConnectTo=previous;
+
+
+[DialogNode] ID=shana_gravekeeper_magnus_intro_how;
+statements=I wandered for a time, under an assumed name. It was surprisingly easy to slip away, and I had a name and a rough location to work with.;
+statements=If those animals were willing to stage a massacre to even slightly increase the chance of getting at Ekrast's research, surely there must have been something worth taking.;
+statements=As the weeks wore on, I began to despair. Most of what was extracted was heavily guarded, and the few sheets of parchment I was able to get my hands on were useless to me.;
+statements=I doubted that my life, such as it was, had any meaning.;
+statements=Just as I was about to give up on it all, fortune saw fit to smile on me. An airship had stopped to resupply, bursting with research recovered from the Voidspire after Ekrast's demise.;
+statements=I almost didn't take the opportunity. I was so tired, and there was nothing left for me to return to.;
+statements=I told myself that if nothing came from this, I'd simply walk into the nearest den of monsters and let them do as they would.;
+statements=As it happened, the quartermaster had a gambling debt that I paid with the last of my coin, in exchange for being let into the cargo hold relatively unsupervised.;
+statements=She even said she'd let me take as much of it as I could carry.;
+statements=When I was about to leave, however, she grabbed me and forced me to my knees, saying there was a change of plans.;
+statements=She said she liked the look of me, and would only allow me to go in exchange for a...<p> service, which I had no choice but to provide.;
+statements=To her, and her companions.;
+statements=No, I will not elaborate. Suffice it to say, I found the act profoundly unpleasant.;
+statements=I'd say I came out ahead, regardless. Notes on impossibly advanced applications of Gate magic, generations ahead of what I had back in Searth.;
+statements=All hidden behind a thin veil of metaphor even a neophyte like myself could pierce.;
+statements=Once I'd ensured everything was in order, I planned to wring every secret I could from my bounty before launching an assault on the halls of power, one I knew I wasn't coming back from. It was then I met Abbess Sophia, the mistress of these lands.;
+statements=I'm sure you can piece the rest together.;
+animations=none;
+animations=none;
+animations=sigh;
+animations=sigh;
+animations=none;
+animations=none;
+animations=meh;
+animations=none;
+animations=none;
+animations=stern;
+animations=angry;
+animations=angry;
+animations=none;
+animations=happy;
+animations=none;
+animations=none;
+specialEffect=setGlobalVar,shana_magnus_asked_how,1;
+nodeToConnectTo=previous;
+
+
+[DialogNode] ID=shana_gravekeeper_magnus_intro_anotherway;
+statements=I doubt it. Trying to obtain justice from within their system would have been a fool's errand at best, and likely to have gotten me killed.;
+animations=meh;
+nodeToConnectTo=previous;
+
+
+[DialogNode] ID=shana_gravekeeper_magnus_intro_doyourself;
+statements=Well, it's a matter of feasibility, quite frankly.;
+statements=Even if you assumed I was bulletproof and immune to all the magic Seartial could bring to bear. ;
+statements=Even if you assumed I'd be able to waltz into the Council's chambers and vaporize them all, perhaps surrounded by a horde of undead.;
+statements=Even if you assumed I knew the name and appearance of every man and woman responsible, which I don't.;
+statements=There would be the matter of the guilty, and those dearest to them fleeing.;
+statements=I've spent my life advancing the Abbess's plans to this end, and I dare say they wouldn't have been practical in the slightest without my contribution.;
+statements=It would be much simpler, and much more satisfying besides, to sit back and watch at this point.;
+animations=none;
+animations=stern;
+animations=stern;
+animations=stern;
+animations=stern;
+animations=sigh;
+animations=happy;
+nodeToConnectTo=previous;
+
+
+[DialogNode] ID=shana_gravekeeper_magnus_intro_plans;
+animations=none;
+animations=none;
+animations=meh;
+animations=none;
+statements=Simply a woman who was wronged by this cruel world, and wishes to even the scales. I don't blame her.;
+statements=As for her plans...;
+statements=I'm afraid I can't comment further, as I don't want to introduce any more risk this far down the line.;
+statements=I owe her that much, at least.;
+nodeToConnectTo=previous;
+
+
+[DialogNode] ID=shana_gravekeeper_magnus_intro_using;
+animations=happy;
+statements=She is. I'm using her as well.;
+nodeToConnectTo=previous;
+
+
+[DialogNode] ID=shana_gravekeeper_magnus_intro_collateral; --cross content with mage hunter
+statements=Frankly, I don't see why I should care. My family was also uninvolved, and look what it got them.;
+statements=In fact, I'd consider it a bonus, as it minimizes the chance that the guilty escape their fate.;
+statements=As they say, the strong do what they will and the weak suffer what they must.;
+animations=angry;
+animations=angry;
+animations=angry;
+nextNodeID_fReq=party:reeve;
+nextNodeID=shana_gravekeeper_magnus_intro_collateral_a_reeve;
+nextNodeID_fReq=party:mh_livia;
+nextNodeID=shana_gravekeeper_magnus_intro_collateral_b_livia;
+nextNodeID=shana_gravekeeper_magnus_intro_normal;
+
+[DialogNode] ID=shana_gravekeeper_magnus_intro_collateral_a_reeve; --pity
+speakerOverride=reeve;
+animations=sad;
+statements=...;
+nextNodeID_fReq=party:mh_livia;
+nextNodeID=shana_gravekeeper_magnus_intro_collateral_b_livia;
+nextNodeID=shana_gravekeeper_magnus_intro_collateral_pity;
+
+[DialogNode] ID=shana_gravekeeper_magnus_intro_collateral_b_livia; --pity
+speakerOverride=mh_livia;
+animations=concern;
+statements=...;
+nextNodeID=shana_gravekeeper_magnus_intro_collateral_pity;
+
+[DialogNode] ID=shana_gravekeeper_magnus_intro_collateral_pity;
+speakerOverride=shana_gatemaster_boss_ari_gravekeeper_city_church_interior_;
+statements=Save your pity for someone who needs it.;
+statements=Others have been wronged as I have, but unlike most of them I am capable of seeking redress on my own terms.;
+statements=Well, mostly. I'll admit my revenge would not have been as wide in scope without the Abbess, but she's been wronged as well.;
+statements=We both agree that a through solution to what ails us is warranted here.;
+statements=One that exterminates every last one of the filthy animals who have wronged us.;
+animations=angry;
+animations=angry;
+animations=angry;
+animations=angry;
+animations=angry;
+nextNodeID_fReq=party:reeve;
+nextNodeID=shana_gravekeeper_magnus_intro_collateral_protests_a_reeve;
+nextNodeID_fReq=party:mh_livia;
+nextNodeID=shana_gravekeeper_magnus_intro_collateral_protests_b_livia;
+nextNodeID=shana_gravekeeper_magnus_intro_normal;
+
+[DialogNode] ID=shana_gravekeeper_magnus_intro_collateral_protests_a_reeve;
+speakerOverride=reeve;
+statements=I'm sorry.;
+statements=The world may have chewed you up and... and done horrible things to you and your family...;
+statements=But I wouldn't be able to live with myself if I didn't stop you here!;
+animations=sad;
+animations=sad;
+animations=stern;
+nextNodeID_fReq=party:mh_livia;
+nextNodeID=shana_gravekeeper_magnus_intro_collateral_protests_b_livia;
+nextNodeID=shana_gravekeeper_magnus_intro_collateral_protests_response_reeveonly;
+
+[DialogNode] ID=shana_gravekeeper_magnus_intro_collateral_protests_b_livia;
+speakerOverride=mh_livia;
+statements=I don't think we'd be able to live very long regardless if we let you and the Abbess unleash what you've been cooking up.;
+statements=It's not going to discriminate, is it?;
+statements=Look, I get it. I really do! Honestly, out of all the corrupt mages I've hunted, you're one of the few that has an actual reason to do...<p> all this.;
+statements=But even then...;
+statements=I'm still a Mage Hunter. And protecting innocents from corrupted mages is what I do.;
+animations=none;
+animations=cringe;
+animations=sigh;
+animations=sigh;
+animations=stern;
+nextNodeID=shana_gravekeeper_magnus_intro_collateral_protests_response_livia;
+
+[DialogNode] ID=shana_gravekeeper_magnus_intro_collateral_protests_response_reeveonly;
+speakerOverride=shana_gatemaster_boss_ari_gravekeeper_city_church_interior_;
+statements=How nostalgic. To have such a simple view of the world, even now...;
+statements=You may try, but you will fail.;
+animations=happy;
+animations=stern;
+nextNodeID=shana_gravekeeper_magnus_intro_normal;
+
+[DialogNode] ID=shana_gravekeeper_magnus_intro_collateral_protests_response_livia;
+speakerOverride=shana_gatemaster_boss_ari_gravekeeper_city_church_interior_;
+statements=Ah, that's where you're wtong.;
+statements=I've come to the conclusion that there are no true innocents on Eral.;
+statements=Even if you kill me, and the Abbess after, you'll reach the same conclusion eventually.;
+animations=sigh;
+animations=angry;
+animations=stern;
+nextNodeID=shana_gravekeeper_magnus_intro_collateral_protests_response_livia2;
+
+[DialogNode] ID=shana_gravekeeper_magnus_intro_collateral_protests_response_livia2;
+speakerOverride=mh_livia;
+animations=stern;
+animations=sad;
+statements=No. No, I don't think I will.;
+statements=I just hope you'll change your mind, even if it's in another life.;
+nextNodeID=shana_gravekeeper_magnus_intro_combat_start;
+
+[DialogNode] ID=shana_gravekeeper_magnus_intro_ask_leave;
+statements=Ah.<p=2> I'm afraid it's nothing personal, but I simply cannot allow you to leave after you've come this far.;
+statements=It would put what I care about most at risk.;
+animations=sly;
+animations=stern;
+nodeToConnectTo=shana_gravekeeper_magnus_intro_combat_start_immediate;
+
+
+[DialogNode] ID=shana_gravekeeper_magnus_intro_start_fight;
+statements=Very well. If you think you can stop us, have at it.;
+animations=stern;
+nodeToConnectTo=shana_gravekeeper_magnus_intro_combat_start;
+
+
+[DialogNode] ID=shana_gravekeeper_magnus_intro_dont_speak;
+animations=meh;
+animations=stern;
+statements=I'm not undead, though. Not exactly...;
+statements=Well, it doesn't matter.;
+nodeToConnectTo=shana_gravekeeper_magnus_intro_combat_start;
+
+
+[DialogNode] ID=shana_gravekeeper_magnus_intro_combat_start;
+animations=stern;
+animations=stern;
+statements=I have had years to transform this cathedral to my liking.;
+statements=Allow me to show you the fruits of my labour.;
+specialEffect=enterCombat,@X26,@Y20,99,shana_gatemaster_boss_ari_gravekeeper_city_church_interior_; --todo change this if it behaves weird
+
+[DialogNode] ID=shana_gravekeeper_magnus_intro_combat_start_immediate;
+specialEffect=enterCombat,@X26,@Y20,99,shana_gatemaster_boss_ari_gravekeeper_city_church_interior_; --todo change this if it behaves weird
+
+
+--------------------------------------------------Blackmail Dialogue todo: arion maybe
 -----------------------------Inject dialogue into Admin Ovarr NPC (Blackmail Searth)
 [DialogOption] ID=royal_questgiver;
 text=I believe this <itemBig_low=shana_blackmail_book>journal may be of concern to you.;
@@ -2003,7 +2349,7 @@ statements=<speed=0.5>Above, a terrible squelching fills the air. The great airs
 nextNodeID=shana_horizonsgrave_badend_18a;
 
 [DialogNode] ID=shana_horizonsgrave_badend_18a;
-statements=<speed=0.5>Inside, faint screams rise and gutter out as cockpits are transformed into birthing pits, the charnel remains of Seartial's finest given new purpose.;
+statements=<speed=0.5>Inside, faint screams rise and gutter out as cockpits are transformed into birthing pits, the remains of Seartial's finest given new purpose.;
 nextNodeID=shana_horizonsgrave_badend_18b;
 
 [DialogNode] ID=shana_horizonsgrave_badend_18b;
