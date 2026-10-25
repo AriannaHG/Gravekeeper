@@ -1562,78 +1562,87 @@ nextNodeID=shana_gravekeeper_magnus_intro_combat_start_immediate;
 
 [DialogNode] ID=shana_gravekeeper_magnus_intro_normal;
 speakerOverride=shana_gatemaster_boss_ari_gravekeeper_city_church_interior_;
-animations=none;
+animations=;
 statements=Greetings. Not many make it this far in.;
 
 [DialogOption] text=Are you being controlled too?;
-animations=sigh;
+animation=sigh;
+formulaReq=1-g:shana_magnus_asked_if_controlled;
 nodeToConnectTo=shana_gravekeeper_magnus_intro_controlled;
+--shana_magnus_asked_if_controlled
 
 [DialogOption] text=Why are you doing this?;
-animations=none;
+animation=;
 newLineOfOptions=true;
-formulaReq=g:shana_magnus_asked_if_controlled;
+formulaReq=g:shana_magnus_asked_if_controlled - g:shana_magnus_asked_why_doing;
 nodeToConnectTo=shana_gravekeeper_magnus_intro_why;
+--shana_magnus_asked_why_doing
 
 [DialogOption] text=How did you end up here?;
-animations=meh;
+animation=meh;
 newLineOfOptions=true;
-formulaReq=g:shana_magnus_asked_why_doing;
+formulaReq=g:shana_magnus_asked_why_doing - g:shana_magnus_asked_how;
 nodeToConnectTo=shana_gravekeeper_magnus_intro_how;
+--shana_magnus_asked_how
 
 [DialogOption] text=Surely there must be another way to get justice?;
-animations=none;
+animation=;
 newLineOfOptions=true;
-formulaReq=g:shana_magnus_asked_how;
+formulaReq=g:shana_magnus_asked_how - g:shana_magnus_asked_anotherway;
 nodeToConnectTo=shana_gravekeeper_magnus_intro_anotherway;
+--shana_magnus_asked_anotherway
 
 [DialogOption] text=If you want revenge so bad, why not do it yourself?;
-animations=sly;
+animation=sly;
 newLineOfOptions=true;
-formulaReq=g:shana_magnus_asked_how;
+formulaReq=g:shana_magnus_asked_how - g:shana_magnus_asked_doyourself;
 nodeToConnectTo=shana_gravekeeper_magnus_intro_doyourself;
+--shana_magnus_asked_doyourself
 
 [DialogOption] text=Who is this Abbess, and what is she plotting?;
-animations=sly;
+animation=sly;
 newLineOfOptions=true;
-formulaReq=g:shana_magnus_asked_how;
+formulaReq=g:shana_magnus_asked_how - g:shana_magnus_asked_plans;
 nodeToConnectTo=shana_gravekeeper_magnus_intro_plans;
+--shana_magnus_asked_plans
 
 [DialogOption] text=The Abbess is using you!;
-animations=stern;
+animation=stern;
 newLineOfOptions=true;
-formulaReq=g:shana_magnus_asked_how;
+formulaReq=g:shana_magnus_asked_plans - g:shana_magnus_asked_using;
 nodeToConnectTo=shana_gravekeeper_magnus_intro_using;
+--shana_magnus_asked_using
 
-[DialogOption] text=Don't you care about collateral damage?;
-animations=concern;
+[DialogOption] text=What about the collateral damage you'll cause?;
+animation=concern;
 newLineOfOptions=true;
-formulaReq=g:shana_magnus_asked_how;
+formulaReq=g:shana_magnus_asked_how - g:shana_magnus_asked_collateral;
 nodeToConnectTo=shana_gravekeeper_magnus_intro_collateral;
+--shana_magnus_asked_collateral
 
-[DialogOption] text=It's been a very nice conversation, but I'd like to leave for now.;
-animations=scared;
+[DialogOption] text=It's been a very nice conversation, but I'd like to leave.;
+animation=scared;
 newLineOfOptions=true;
 formulaReq=g:shana_magnus_asked_if_controlled;
 nodeToConnectTo=shana_gravekeeper_magnus_intro_ask_leave;
 
 [DialogOption] text=I can't let this continue.;
-animations=stern;
+animation=stern;
 newLineOfOptions=true;
 formulaReq=g:shana_magnus_asked_if_controlled;
 nodeToConnectTo=shana_gravekeeper_magnus_intro_start_fight;
 
 [DialogOption] text=I don't speak to the undead.;
-animations=stern;
+animation=stern;
 newLineOfOptions=true;
 formulaReq=1-g:shana_magnus_asked_if_controlled;
 nodeToConnectTo=shana_gravekeeper_magnus_intro_dont_speak;
 
 [DialogNode] ID=shana_gravekeeper_magnus_intro_controlled;
 statements=Perish the thought! Unlike the others, I serve of my own volition.;
-animations=none;
+animations=;
 specialEffect=setGlobalVar,shana_magnus_asked_if_controlled,1;
-nodeToConnectTo=previous;
+nextNodeID=shana_gravekeeper_magnus_intro_normal;
 
 [DialogNode] ID=shana_gravekeeper_magnus_intro_why;
 statements=Curious, aren't you? Very well. I suppose I can take some time out of my day to educate you on recent history.;
@@ -1660,17 +1669,17 @@ statements=I suppose that's true, from a certain point of view.;
 animations=sly;
 animations=sigh;
 animations=meh;
-animations=none;
-animations=none;
+animations=;
+animations=;
 animations=happy;
 animations=happy;
-animations=none;
-animations=none;
-animations=none;
-animations=none;
-animations=none;
+animations=;
+animations=;
+animations=;
+animations=;
+animations=;
 animations=sigh;
-animations=none;
+animations=;
 animations=angry;
 animations=angry;
 animations=angry;
@@ -1679,7 +1688,7 @@ animations=sad;
 animations=sad;
 animations=sad;
 specialEffect=setGlobalVar,shana_magnus_asked_why_doing,1;
-nodeToConnectTo=previous;
+nextNodeID=shana_gravekeeper_magnus_intro_normal;
 
 
 [DialogNode] ID=shana_gravekeeper_magnus_intro_how;
@@ -1698,32 +1707,35 @@ statements=To her, and her companions.;
 statements=No, I will not elaborate. Suffice it to say, I found the act profoundly unpleasant.;
 statements=I'd say I came out ahead, regardless. Notes on impossibly advanced applications of Gate magic, generations ahead of what I had back in Searth.;
 statements=All hidden behind a thin veil of metaphor even a neophyte like myself could pierce.;
-statements=Once I'd ensured everything was in order, I planned to wring every secret I could from my bounty before launching an assault on the halls of power, one I knew I wasn't coming back from. It was then I met Abbess Sophia, the mistress of these lands.;
+statements=Once I'd ensured everything was in order, I planned to wring every secret I could from my bounty before launching an assault on the halls of power, one I knew I wasn't coming back from.;
+statements=It was then I met Abbess Sophia, the mistress of these lands.;
 statements=I'm sure you can piece the rest together.;
-animations=none;
-animations=none;
+animations=;
+animations=;
 animations=sigh;
 animations=sigh;
-animations=none;
-animations=none;
+animations=;
+animations=;
 animations=meh;
-animations=none;
-animations=none;
+animations=;
+animations=;
 animations=stern;
 animations=angry;
 animations=angry;
-animations=none;
+animations=;
 animations=happy;
-animations=none;
-animations=none;
+animations=;
+animations=;
+animations=;
 specialEffect=setGlobalVar,shana_magnus_asked_how,1;
-nodeToConnectTo=previous;
+nextNodeID=shana_gravekeeper_magnus_intro_normal;
 
 
 [DialogNode] ID=shana_gravekeeper_magnus_intro_anotherway;
 statements=I doubt it. Trying to obtain justice from within their system would have been a fool's errand at best, and likely to have gotten me killed.;
 animations=meh;
-nodeToConnectTo=previous;
+specialEffect=setGlobalVar,shana_magnus_asked_anotherway,1;
+nextNodeID=shana_gravekeeper_magnus_intro_normal;
 
 
 [DialogNode] ID=shana_gravekeeper_magnus_intro_doyourself;
@@ -1734,41 +1746,45 @@ statements=Even if you assumed I knew the name and appearance of every man and w
 statements=There would be the matter of the guilty, and those dearest to them fleeing.;
 statements=I've spent my life advancing the Abbess's plans to this end, and I dare say they wouldn't have been practical in the slightest without my contribution.;
 statements=It would be much simpler, and much more satisfying besides, to sit back and watch at this point.;
-animations=none;
+animations=;
 animations=stern;
 animations=stern;
 animations=stern;
 animations=stern;
 animations=sigh;
 animations=happy;
-nodeToConnectTo=previous;
+specialEffect=setGlobalVar,shana_magnus_asked_doyourself,1;
+nextNodeID=shana_gravekeeper_magnus_intro_normal;
 
 
 [DialogNode] ID=shana_gravekeeper_magnus_intro_plans;
-animations=none;
-animations=none;
+animations=;
+animations=;
 animations=meh;
-animations=none;
+animations=;
 statements=Simply a woman who was wronged by this cruel world, and wishes to even the scales. I don't blame her.;
 statements=As for her plans...;
 statements=I'm afraid I can't comment further, as I don't want to introduce any more risk this far down the line.;
 statements=I owe her that much, at least.;
-nodeToConnectTo=previous;
+specialEffect=setGlobalVar,shana_magnus_asked_plans,1;
+nextNodeID=shana_gravekeeper_magnus_intro_normal;
 
 
 [DialogNode] ID=shana_gravekeeper_magnus_intro_using;
 animations=happy;
 statements=She is. I'm using her as well.;
-nodeToConnectTo=previous;
+specialEffect=setGlobalVar,shana_magnus_asked_using,1;
+nextNodeID=shana_gravekeeper_magnus_intro_normal;
 
 
 [DialogNode] ID=shana_gravekeeper_magnus_intro_collateral; --cross content with mage hunter
-statements=Frankly, I don't see why I should care. My family was also uninvolved, and look what it got them.;
+statements=What about it? My family was uninvolved, and look what it got them.;
 statements=In fact, I'd consider it a bonus, as it minimizes the chance that the guilty escape their fate.;
 statements=As they say, the strong do what they will and the weak suffer what they must.;
 animations=angry;
 animations=angry;
 animations=angry;
+specialEffect=setGlobalVar,shana_magnus_asked_collateral,1;
 nextNodeID_fReq=party:reeve;
 nextNodeID=shana_gravekeeper_magnus_intro_collateral_a_reeve;
 nextNodeID_fReq=party:mh_livia;
@@ -1796,6 +1812,8 @@ statements=Others have been wronged as I have, but unlike most of them I am capa
 statements=Well, mostly. I'll admit my revenge would not have been as wide in scope without the Abbess, but she's been wronged as well.;
 statements=We both agree that a through solution to what ails us is warranted here.;
 statements=One that exterminates every last one of the filthy animals who have wronged us.;
+statements=All of them, their children, and even their children's children.;
+animations=angry;
 animations=angry;
 animations=angry;
 animations=angry;
@@ -1821,12 +1839,12 @@ nextNodeID=shana_gravekeeper_magnus_intro_collateral_protests_response_reeveonly
 
 [DialogNode] ID=shana_gravekeeper_magnus_intro_collateral_protests_b_livia;
 speakerOverride=mh_livia;
-statements=I don't think we'd be able to live very long regardless if we let you and the Abbess unleash what you've been cooking up.;
+statements=I don't think we'd be able to live very long regardless if we let you and this...<p> Abbess unleash what you've been cooking up.;
 statements=It's not going to discriminate, is it?;
 statements=Look, I get it. I really do! Honestly, out of all the corrupt mages I've hunted, you're one of the few that has an actual reason to do...<p> all this.;
 statements=But even then...;
 statements=I'm still a Mage Hunter. And protecting innocents from corrupted mages is what I do.;
-animations=none;
+animations=;
 animations=cringe;
 animations=sigh;
 animations=sigh;
@@ -1843,7 +1861,7 @@ nextNodeID=shana_gravekeeper_magnus_intro_normal;
 
 [DialogNode] ID=shana_gravekeeper_magnus_intro_collateral_protests_response_livia;
 speakerOverride=shana_gatemaster_boss_ari_gravekeeper_city_church_interior_;
-statements=Ah, that's where you're wtong.;
+statements=Ah, that's where you're wrong.;
 statements=I've come to the conclusion that there are no true innocents on Eral.;
 statements=Even if you kill me, and the Abbess after, you'll reach the same conclusion eventually.;
 animations=sigh;
@@ -1864,13 +1882,13 @@ statements=Ah.<p=2> I'm afraid it's nothing personal, but I simply cannot allow 
 statements=It would put what I care about most at risk.;
 animations=sly;
 animations=stern;
-nodeToConnectTo=shana_gravekeeper_magnus_intro_combat_start_immediate;
+nextNodeID=shana_gravekeeper_magnus_intro_combat_start_immediate;
 
 
 [DialogNode] ID=shana_gravekeeper_magnus_intro_start_fight;
 statements=Very well. If you think you can stop us, have at it.;
 animations=stern;
-nodeToConnectTo=shana_gravekeeper_magnus_intro_combat_start;
+nextNodeID=shana_gravekeeper_magnus_intro_combat_start;
 
 
 [DialogNode] ID=shana_gravekeeper_magnus_intro_dont_speak;
@@ -1878,7 +1896,7 @@ animations=meh;
 animations=stern;
 statements=I'm not undead, though. Not exactly...;
 statements=Well, it doesn't matter.;
-nodeToConnectTo=shana_gravekeeper_magnus_intro_combat_start;
+nextNodeID=shana_gravekeeper_magnus_intro_combat_start;
 
 
 [DialogNode] ID=shana_gravekeeper_magnus_intro_combat_start;
