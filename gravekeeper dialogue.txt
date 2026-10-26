@@ -1620,7 +1620,7 @@ formulaReq=g:shana_magnus_asked_how - g:shana_magnus_asked_collateral;
 nodeToConnectTo=shana_gravekeeper_magnus_intro_collateral;
 --shana_magnus_asked_collateral
 
-[DialogOption] text=It's been a very nice conversation, but I'd like to leave.;
+[DialogOption] text=It's been a nice conversation, but I'd like to go now.;
 animation=scared;
 newLineOfOptions=true;
 formulaReq=g:shana_magnus_asked_if_controlled;
@@ -1711,19 +1711,19 @@ statements=Once I'd ensured everything was in order, I planned to wring every se
 statements=It was then I met Abbess Sophia, the mistress of these lands.;
 statements=I'm sure you can piece the rest together.;
 animations=;
-animations=;
+animations=angry;
 animations=sigh;
 animations=sigh;
-animations=;
-animations=;
+animations=sigh;
+animations=meh;
 animations=meh;
 animations=;
 animations=;
-animations=stern;
-animations=angry;
-animations=angry;
+animations=meh;
+animations=cringe;
+animations=cringe;
+animations=meh;
 animations=;
-animations=happy;
 animations=;
 animations=;
 animations=;
@@ -1746,7 +1746,7 @@ statements=Even if you assumed I knew the name and appearance of every man and w
 statements=There would be the matter of the guilty, and those dearest to them fleeing.;
 statements=I've spent my life advancing the Abbess's plans to this end, and I dare say they wouldn't have been practical in the slightest without my contribution.;
 statements=It would be much simpler, and much more satisfying besides, to sit back and watch at this point.;
-animations=;
+animations=stern;
 animations=stern;
 animations=stern;
 animations=stern;
@@ -1759,7 +1759,7 @@ nextNodeID=shana_gravekeeper_magnus_intro_normal;
 
 [DialogNode] ID=shana_gravekeeper_magnus_intro_plans;
 animations=;
-animations=;
+animations=sly;
 animations=meh;
 animations=;
 statements=Simply a woman who was wronged by this cruel world, and wishes to even the scales. I don't blame her.;
@@ -1878,7 +1878,7 @@ statements=I just hope you'll change your mind, even if it's in another life.;
 nextNodeID=shana_gravekeeper_magnus_intro_combat_start;
 
 [DialogNode] ID=shana_gravekeeper_magnus_intro_ask_leave;
-statements=Ah.<p=2> I'm afraid it's nothing personal, but I simply cannot allow you to leave after you've come this far.;
+statements=Ah.<p=2> It's nothing personal, but I simply cannot allow you to leave after you've come this far.;
 statements=It would put what I care about most at risk.;
 animations=sly;
 animations=stern;
