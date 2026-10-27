@@ -23,6 +23,8 @@ ID=shana_birthing_coffin_0;
 ID=shana_birthing_coffin_0; element=life; element=dispel; element=combatEnd; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon; fx=shana_gate_dust; newID=X; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
 [ItemReaction]
 ID=shana_birthing_coffin_0; element=combatStart; newID=shana_birthing_coffin_1; --todo fx
+[ItemLight]
+ID=shana_birthing_coffin_0; red=0.17; blue=0.22; green=0.26; alpha=1; size=0.27; flicker=0.005; texture=krypton; Y=-0.35;
 
 [ItemType]  name=Birthing Coffin 1;
 cloneFrom=shana_birthing_coffin_base;
@@ -34,6 +36,8 @@ special=timer; timer=100;
 ID=shana_birthing_coffin_1; element=life; element=dispel; element=combatEnd; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon; fx=shana_gate_dust; newID=X; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
 [ItemReaction]
 ID=shana_birthing_coffin_1; element=timerUp; newID=shana_birthing_coffin_2; fx=shana_gate_dust; action=shana_birthing_coffin_spawn_1;
+[ItemLight]
+ID=shana_birthing_coffin_1; red=0.66; blue=0.06; green=0; alpha=1; size=0.3; flicker=0.01; texture=krypton; Y=-0.35;
 
 [Action] ID=shana_birthing_coffin_spawn_1; --pathetic zombie
 [ActionAoE]
@@ -78,6 +82,7 @@ ID=shana_birthing_coffin_1; element=timerUp; newID=shana_birthing_coffin_2; fx=s
 
 [ItemType]  name=Birthing Coffin 2; --melee skeleton
 cloneFrom=shana_birthing_coffin_base;
+pB=pAsh;
 description=Birthing Coffin 2;
 ID=shana_birthing_coffin_2;
 special=timer; timer=80;
@@ -85,6 +90,8 @@ special=timer; timer=80;
 ID=shana_birthing_coffin_2; element=life; element=dispel; element=combatEnd; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon;  fx=shana_gate_dust; newID=X; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
 [ItemReaction]
 ID=shana_birthing_coffin_2; element=timerUp; newID=shana_birthing_coffin_3; fx=shana_gate_dust; action=shana_birthing_coffin_spawn_2;
+[ItemLight]
+ID=shana_birthing_coffin_2; red=0.66; blue=0.06; green=0; alpha=1; size=0.35; flicker=0.005; texture=krypton; Y=-0.35;
 
 [Action] ID=shana_birthing_coffin_spawn_2;
 [ActionAoE]
@@ -128,6 +135,7 @@ ID=shana_birthing_coffin_2; element=timerUp; newID=shana_birthing_coffin_3; fx=s
 
 [ItemType]  name=Birthing Coffin 3; --Skeleton Archer
 cloneFrom=shana_birthing_coffin_base;
+pB=pAsh;
 description=Birthing Coffin 3;
 ID=shana_birthing_coffin_3;
 special=timer; timer=60;
@@ -135,6 +143,8 @@ special=timer; timer=60;
 ID=shana_birthing_coffin_3; element=life; element=dispel; element=combatEnd; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon;  fx=shana_gate_dust; newID=X; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
 [ItemReaction]
 ID=shana_birthing_coffin_3; element=timerUp; newID=shana_birthing_coffin_4; fx=shana_gate_dust; action=shana_birthing_coffin_spawn_3;
+[ItemLight]
+ID=shana_birthing_coffin_3; red=0.66; blue=0.06; green=0; alpha=1; size=0.4; flicker=0.006; texture=krypton; Y=-0.35;
 
 [Action] ID=shana_birthing_coffin_spawn_3;
 [ActionAoE]
@@ -178,6 +188,7 @@ ID=shana_birthing_coffin_3; element=timerUp; newID=shana_birthing_coffin_4; fx=s
 
 [ItemType]  name=Birthing Coffin 4; --Skeleton Mage
 cloneFrom=shana_birthing_coffin_base;
+pB=pAsh;
 description=Birthing Coffin 4;
 ID=shana_birthing_coffin_4;
 special=timer; timer=40;
@@ -185,6 +196,8 @@ special=timer; timer=40;
 ID=shana_birthing_coffin_4; element=life; element=dispel; element=combatEnd; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon;  fx=shana_gate_dust; newID=X; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
 [ItemReaction]
 ID=shana_birthing_coffin_4; element=timerUp; newID=shana_birthing_coffin_5; fx=shana_gate_dust; action=shana_birthing_coffin_spawn_4;
+[ItemLight]
+ID=shana_birthing_coffin_4; red=0.66; blue=0.06; green=0; alpha=1; size=0.45; flicker=0.007; texture=krypton; Y=-0.35;
 
 [Action] ID=shana_birthing_coffin_spawn_4;
 [ActionAoE]
@@ -228,6 +241,7 @@ ID=shana_birthing_coffin_4; element=timerUp; newID=shana_birthing_coffin_5; fx=s
 
 [ItemType]  name=Birthing Coffin 5; --Abomination
 cloneFrom=shana_birthing_coffin_base;
+pB=pAsh;
 description=Birthing Coffin 5;
 ID=shana_birthing_coffin_5;
 special=timer; timer=35;
@@ -235,6 +249,8 @@ special=timer; timer=35;
 ID=shana_birthing_coffin_5; element=life; element=dispel; element=combatEnd; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon;  fx=shana_gate_dust; newID=X; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
 [ItemReaction]
 ID=shana_birthing_coffin_5; element=timerUp; newID=shana_birthing_coffin_6; fx=shana_gate_dust; action=shana_birthing_coffin_spawn_5;
+[ItemLight]
+ID=shana_birthing_coffin_5; red=0.66; blue=0.06; green=0; alpha=1; size=0.5; flicker=0.008; texture=krypton; Y=-0.35;
 
 [Action] ID=shana_birthing_coffin_spawn_5;
 [ActionAoE]
@@ -286,6 +302,9 @@ special=timer; timer=30;
 ID=shana_birthing_coffin_6; element=life; element=dispel; element=combatEnd; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon;  fx=shana_gate_dust; newID=X; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
 [ItemReaction]
 ID=shana_birthing_coffin_6; element=timerUp; newID=shana_birthing_coffin_7; fx=shana_gate_dust; action=shana_birthing_coffin_spawn_6;
+[ItemLight]
+ID=shana_birthing_coffin_6; red=0.86; blue=0.16; green=0; alpha=1; size=0.6; flicker=0.01; texture=krypton; Y=-0.35;
+
 
 [Action] ID=shana_birthing_coffin_spawn_6;
 [ActionAoE]
@@ -337,6 +356,9 @@ special=timer; timer=25;
 ID=shana_birthing_coffin_7; element=life; element=dispel; element=combatEnd; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon;  fx=shana_gate_dust; newID=X; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
 [ItemReaction]
 ID=shana_birthing_coffin_7; element=timerUp; newID=shana_birthing_coffin_8; fx=shana_gate_dust; action=shana_birthing_coffin_spawn_7;
+[ItemLight]
+ID=shana_birthing_coffin_7; red=0.88; blue=0.16; green=0; alpha=1; size=0.7; flicker=0.012; texture=krypton; Y=-0.35;
+
 
 [Action] ID=shana_birthing_coffin_spawn_7;
 [ActionAoE]
@@ -407,6 +429,9 @@ special=timer; timer=20;
 ID=shana_birthing_coffin_8; element=life; element=dispel; element=combatEnd; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon;  fx=shana_gate_dust; newID=X; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
 [ItemReaction]
 ID=shana_birthing_coffin_8; element=timerUp; newID=shana_birthing_coffin_9; fx=shana_gate_dust; action=shana_birthing_coffin_spawn_8;
+[ItemLight]
+ID=shana_birthing_coffin_8; red=0.9; blue=0.16; green=0; alpha=1; size=0.8; flicker=0.014; texture=krypton; Y=-0.35;
+
 
 [Action] ID=shana_birthing_coffin_spawn_8;
 [ActionAoE]
@@ -477,6 +502,9 @@ special=timer; timer=15;
 ID=shana_birthing_coffin_9; element=life; element=dispel; element=combatEnd; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon;  fx=shana_gate_dust; newID=X; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
 [ItemReaction]
 ID=shana_birthing_coffin_9; element=timerUp; newID=X; fx=shana_gate_dust; action=shana_birthing_coffin_spawn_9;
+[ItemLight]
+ID=shana_birthing_coffin_9; red=0.92; blue=0.16; green=0; alpha=1; size=0.9; flicker=0.02; texture=krypton; Y=-0.35;
+
 
 [Action] ID=shana_birthing_coffin_spawn_9;
 [ActionAoE]
