@@ -1,4 +1,25 @@
-[ItemType]  name=Birthing Coffin Base; --todo Implement descriptions of summoning actions, make the name the same regardless of what stage it starts at, probably replace the 2x abom with 3x skelemage? also implement better spawn and destroy fx (smash with the yelp when destroyed_, also maybe change the palette depending on prog? definitely want to make it go crazy before it spawns 4 blodweavers
+[GlobalTriggerEffect] ID=tEnterCombat; effectID=action; sValue=shana_pulse_41012_transformcoffin; sValue2=; --actually makes coffins transform on combat start
+
+[Action] ID=shana_pulse_41012_transformcoffin;
+    special=usableEvenWhenCantAct;
+    special=usableEvenWhenReacting;
+    special=usableEvenWhenYourTurn;
+    special=dontDelayOtherActions;
+[ActionAoE]
+    ID=shana_pulse_41012_transformcoffin;
+    cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_pulse_41012_transformcoffin;
+    visibleMiss=false; visibleEvaluations=false;
+    element=41012;
+    chance=100;
+[AvAffecterAoE]
+	ID=shana_pulse_41012_transformcoffin;
+	shape=8;
+	needsLoS=false;
+	needsLoE=false;
+
+[ItemType]  name=Birthing Coffin Base; --todo probably replace the 2x abom with 3x skelemage? also implement better spawn and destroy fx (smash with the yelp when destroyed
 itemCategory=hazard;
 special=cantEndCombat;
 description=Do not use, this is a base the actual coffins are cloned from.;
@@ -16,24 +37,24 @@ text=<itemBig=shana_birthing_coffin_2><title=Birthing Coffin><brAdj=>Blasphemous
 
 [ItemType]  name=Birthing Coffin (Inactive);
 cloneFrom=shana_birthing_coffin_base;
-description=Birthing Coffin 0;
+description=This birthing coffin is currently inactive. Get into a fight and you'll see...;
 pB=p1;
 ID=shana_birthing_coffin_0;
 [ItemReaction]
-ID=shana_birthing_coffin_0; element=life; element=dispel; element=combatEnd; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon; fx=shana_gate_dust; newID=X; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
+ID=shana_birthing_coffin_0; element=life; element=dispel; element=combatWon; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon; fx=shana_gate_dust; newID=X; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
 [ItemReaction]
-ID=shana_birthing_coffin_0; element=combatStart; newID=shana_birthing_coffin_1; --todo fx
+ID=shana_birthing_coffin_0; element=41012; newID=shana_birthing_coffin_1; --todo fx
 [ItemLight]
 ID=shana_birthing_coffin_0; red=0.17; blue=0.22; green=0.26; alpha=1; size=0.27; flicker=0.005; texture=krypton; Y=-0.35;
 
-[ItemType]  name=Birthing Coffin 1;
+[ItemType]  name=Birthing Coffin (Active);
 cloneFrom=shana_birthing_coffin_base;
-description=Birthing Coffin 1;
+description=This birthing coffin will spawn a pathetic Zombie and become ever more dangerous...;
 pB=pAsh;
 ID=shana_birthing_coffin_1;
 special=timer; timer=100;
 [ItemReaction]
-ID=shana_birthing_coffin_1; element=life; element=dispel; element=combatEnd; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon; fx=shana_gate_dust; newID=X; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
+ID=shana_birthing_coffin_1; element=life; element=dispel; element=combatWon; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon; fx=shana_gate_dust; newID=X; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
 [ItemReaction]
 ID=shana_birthing_coffin_1; element=timerUp; newID=shana_birthing_coffin_2; fx=shana_gate_dust; action=shana_birthing_coffin_spawn_1;
 [ItemLight]
@@ -80,14 +101,14 @@ ID=shana_birthing_coffin_1; red=0.66; blue=0.06; green=0; alpha=1; size=0.3; fli
 	occupyAll=true;
 
 
-[ItemType]  name=Birthing Coffin 2; --melee skeleton
+[ItemType]  name=Birthing Coffin (Active); --melee skeleton
 cloneFrom=shana_birthing_coffin_base;
 pB=pAsh;
-description=Birthing Coffin 2;
+description=This birthing coffin will spawn a Skeleton Warrior and become ever more dangerous...;
 ID=shana_birthing_coffin_2;
 special=timer; timer=80;
 [ItemReaction]
-ID=shana_birthing_coffin_2; element=life; element=dispel; element=combatEnd; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon;  fx=shana_gate_dust; newID=X; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
+ID=shana_birthing_coffin_2; element=life; element=dispel; element=combatWon; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon;  fx=shana_gate_dust; newID=X; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
 [ItemReaction]
 ID=shana_birthing_coffin_2; element=timerUp; newID=shana_birthing_coffin_3; fx=shana_gate_dust; action=shana_birthing_coffin_spawn_2;
 [ItemLight]
@@ -133,14 +154,14 @@ ID=shana_birthing_coffin_2; red=0.66; blue=0.06; green=0; alpha=1; size=0.35; fl
 	needsLoE=true;
 	occupyAll=true;
 
-[ItemType]  name=Birthing Coffin 3; --Skeleton Archer
+[ItemType]  name=Birthing Coffin (Active); --Skeleton Archer
 cloneFrom=shana_birthing_coffin_base;
 pB=pAsh;
-description=Birthing Coffin 3;
+description=This birthing coffin will spawn a Skeleton Archer and become ever more dangerous...;
 ID=shana_birthing_coffin_3;
 special=timer; timer=60;
 [ItemReaction]
-ID=shana_birthing_coffin_3; element=life; element=dispel; element=combatEnd; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon;  fx=shana_gate_dust; newID=X; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
+ID=shana_birthing_coffin_3; element=life; element=dispel; element=combatWon; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon;  fx=shana_gate_dust; newID=X; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
 [ItemReaction]
 ID=shana_birthing_coffin_3; element=timerUp; newID=shana_birthing_coffin_4; fx=shana_gate_dust; action=shana_birthing_coffin_spawn_3;
 [ItemLight]
@@ -186,14 +207,14 @@ ID=shana_birthing_coffin_3; red=0.66; blue=0.06; green=0; alpha=1; size=0.4; fli
 	needsLoE=true;
 	occupyAll=true;
 
-[ItemType]  name=Birthing Coffin 4; --Skeleton Mage
+[ItemType]  name=Birthing Coffin (Active); --Skeleton Mage
 cloneFrom=shana_birthing_coffin_base;
 pB=pAsh;
-description=Birthing Coffin 4;
+description=This birthing coffin will spawn a Skeleton Mage and become ever more dangerous...;
 ID=shana_birthing_coffin_4;
 special=timer; timer=40;
 [ItemReaction]
-ID=shana_birthing_coffin_4; element=life; element=dispel; element=combatEnd; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon;  fx=shana_gate_dust; newID=X; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
+ID=shana_birthing_coffin_4; element=life; element=dispel; element=combatWon; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon;  fx=shana_gate_dust; newID=X; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
 [ItemReaction]
 ID=shana_birthing_coffin_4; element=timerUp; newID=shana_birthing_coffin_5; fx=shana_gate_dust; action=shana_birthing_coffin_spawn_4;
 [ItemLight]
@@ -239,18 +260,19 @@ ID=shana_birthing_coffin_4; red=0.66; blue=0.06; green=0; alpha=1; size=0.45; fl
 	needsLoE=true;
 	occupyAll=true;
 
-[ItemType]  name=Birthing Coffin 5; --Abomination
+[ItemType]  name=Birthing Coffin (Unstable); --Abomination
 cloneFrom=shana_birthing_coffin_base;
-pB=pAsh;
-description=Birthing Coffin 5;
+pR=pLaser_fast;
+pB=pBloodyMess;
+description=This birthing coffin will spawn a Hulking Abomination and become ever more dangerous...;
 ID=shana_birthing_coffin_5;
 special=timer; timer=35;
 [ItemReaction]
-ID=shana_birthing_coffin_5; element=life; element=dispel; element=combatEnd; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon;  fx=shana_gate_dust; newID=X; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
+ID=shana_birthing_coffin_5; element=life; element=dispel; element=combatWon; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon;  fx=shana_gate_dust; newID=X; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
 [ItemReaction]
 ID=shana_birthing_coffin_5; element=timerUp; newID=shana_birthing_coffin_6; fx=shana_gate_dust; action=shana_birthing_coffin_spawn_5;
 [ItemLight]
-ID=shana_birthing_coffin_5; red=0.66; blue=0.06; green=0; alpha=1; size=0.5; flicker=0.008; texture=krypton; Y=-0.35;
+ID=shana_birthing_coffin_5; red=0.66; blue=0.06; green=0; alpha=1; size=0.525; flicker=0.008; texture=krypton; Y=-0.35;
 
 [Action] ID=shana_birthing_coffin_spawn_5;
 [ActionAoE]
@@ -292,14 +314,15 @@ ID=shana_birthing_coffin_5; red=0.66; blue=0.06; green=0; alpha=1; size=0.5; fli
 	needsLoE=true;
 	occupyAll=true;
 
-[ItemType]  name=Birthing Coffin 6; -- Undead bloodweaver
+[ItemType]  name=Birthing Coffin (Unstable); -- Undead bloodweaver
 cloneFrom=shana_birthing_coffin_base;
-description=Birthing Coffin 6;
+description=This birthing coffin will spawn an Undead Bloodweaver and become ever more dangerous...;
+pR=pLaser_fast;
 pB=pBloodyMess;
 ID=shana_birthing_coffin_6;
 special=timer; timer=30;
 [ItemReaction]
-ID=shana_birthing_coffin_6; element=life; element=dispel; element=combatEnd; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon;  fx=shana_gate_dust; newID=X; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
+ID=shana_birthing_coffin_6; element=life; element=dispel; element=combatWon; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon;  fx=shana_gate_dust; newID=X; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
 [ItemReaction]
 ID=shana_birthing_coffin_6; element=timerUp; newID=shana_birthing_coffin_7; fx=shana_gate_dust; action=shana_birthing_coffin_spawn_6;
 [ItemLight]
@@ -346,14 +369,15 @@ ID=shana_birthing_coffin_6; red=0.86; blue=0.16; green=0; alpha=1; size=0.6; fli
 	needsLoE=true;
 	occupyAll=true;
 
-[ItemType]  name=Birthing Coffin 7; --Two Abominations
+[ItemType]  name=Birthing Coffin (Unstable); --Two Abominations
 cloneFrom=shana_birthing_coffin_base;
-description=Birthing Coffin 7;
+description=This birthing coffin will spawn TWO Hulking Abominations and become ever more dangerous...;
+pR=pLaser_fast;
 pB=pBloodyMess;
 ID=shana_birthing_coffin_7;
 special=timer; timer=25;
 [ItemReaction]
-ID=shana_birthing_coffin_7; element=life; element=dispel; element=combatEnd; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon;  fx=shana_gate_dust; newID=X; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
+ID=shana_birthing_coffin_7; element=life; element=dispel; element=combatWon; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon;  fx=shana_gate_dust; newID=X; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
 [ItemReaction]
 ID=shana_birthing_coffin_7; element=timerUp; newID=shana_birthing_coffin_8; fx=shana_gate_dust; action=shana_birthing_coffin_spawn_7;
 [ItemLight]
@@ -419,18 +443,19 @@ ID=shana_birthing_coffin_7; red=0.88; blue=0.16; green=0; alpha=1; size=0.7; fli
 	needsLoE=true;
 	occupyAll=true;
 
-[ItemType]  name=Birthing Coffin 8; --two undead amalgams
+[ItemType]  name=Birthing Coffin (Very Unstable); --two undead amalgams
 cloneFrom=shana_birthing_coffin_base;
-description=Birthing Coffin 8;
-pB=pBloodyMess;
+description=This birthing coffin will spawn TWO Undead Amalgams and become ever more dangerous...;
+pR=pBloodyMess_slow;
+pB=pBFlash;
 ID=shana_birthing_coffin_8;
 special=timer; timer=20;
 [ItemReaction]
-ID=shana_birthing_coffin_8; element=life; element=dispel; element=combatEnd; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon;  fx=shana_gate_dust; newID=X; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
+ID=shana_birthing_coffin_8; element=life; element=dispel; element=combatWon; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon;  fx=shana_gate_dust; newID=X; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
 [ItemReaction]
 ID=shana_birthing_coffin_8; element=timerUp; newID=shana_birthing_coffin_9; fx=shana_gate_dust; action=shana_birthing_coffin_spawn_8;
 [ItemLight]
-ID=shana_birthing_coffin_8; red=0.9; blue=0.16; green=0; alpha=1; size=0.8; flicker=0.014; texture=krypton; Y=-0.35;
+ID=shana_birthing_coffin_8; red=0.9; blue=0.16; green=0; alpha=1; size=0.9; flicker=0.1; texture=krypton; Y=-0.35;
 
 
 [Action] ID=shana_birthing_coffin_spawn_8;
@@ -492,18 +517,19 @@ ID=shana_birthing_coffin_8; red=0.9; blue=0.16; green=0; alpha=1; size=0.8; flic
 	needsLoE=true;
 	occupyAll=true;
 
-[ItemType]  name=Birthing Coffin 9; --4 undead bloodweavers
+[ItemType]  name=Birthing Coffin (Very Unstable); --4 undead bloodweavers
 cloneFrom=shana_birthing_coffin_base;
-description=Birthing Coffin 9;
-pB=pBloodyMess;
+description=This birthing coffin will spawn FOUR Undead Bloodweavers and explode into a shower of harmless gore.; --todo vfx, reuse gate death?
+pR=pBloodyMess_slow;
+pB=pBFlash;
 ID=shana_birthing_coffin_9;
 special=timer; timer=15;
 [ItemReaction]
-ID=shana_birthing_coffin_9; element=life; element=dispel; element=combatEnd; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon;  fx=shana_gate_dust; newID=X; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
+ID=shana_birthing_coffin_9; element=life; element=dispel; element=combatWon; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon;  fx=shana_gate_dust; newID=X; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
 [ItemReaction]
 ID=shana_birthing_coffin_9; element=timerUp; newID=X; fx=shana_gate_dust; action=shana_birthing_coffin_spawn_9;
 [ItemLight]
-ID=shana_birthing_coffin_9; red=0.92; blue=0.16; green=0; alpha=1; size=0.9; flicker=0.02; texture=krypton; Y=-0.35;
+ID=shana_birthing_coffin_9; red=1; blue=0.2; green=0; alpha=1; size=1.1; flicker=0.1; texture=krypton; Y=-0.35;
 
 
 [Action] ID=shana_birthing_coffin_spawn_9;
@@ -609,7 +635,7 @@ description=Unused;
 ID=shana_birthing_coffin_10;
 special=timer; timer=25;
 [ItemReaction]
-ID=shana_birthing_coffin_10; element=life; element=dispel; element=combatEnd; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon;  fx=shana_gate_dust; newID=X; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
+ID=shana_birthing_coffin_10; element=life; element=dispel; element=combatWon; element=smash; element=heavySlash; element=heavySmash; element=explode; element=gateCannon;  fx=shana_gate_dust; newID=X; --considering trigger on element=41011 i.e boss kill but decided against it. todo fx is placeholder
 [ItemReaction]
 ID=shana_birthing_coffin_10; element=timerUp; newID=X; fx=shana_gate_dust; action=shana_birthing_coffin_spawn_10;
 
