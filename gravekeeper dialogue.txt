@@ -473,6 +473,7 @@ animations=stern;
 statements=<rand=Hey, did you notice anything sticking out of the ground near Arianna's house?/Be careful at night around here./Don't stray too close to the graveyard up north./We don't normally get visitors here...>;
 nodeToConnectTo=;
 
+-----------Arianna dialogue--------------------------------------
 
 [DialogNode] ID=ari_gravekeeper_arianna_greeting;
 animations=;
@@ -857,7 +858,69 @@ bottomOption=true;
 specialEffect=setGlobalVar,arianna_gravekeeper_phylactery_quest,1;
 nextNodeID=;
 
+-----------Arianna dialogue for giving player Magnus's stuff if he drowned--------------------------------------
+[DialogNode] ID=shana_arianna_magnus_drowned_giveloot;
+animations=happy;
+animations=happy;
+animations=happy;
+animations=sly;
+animations=sly;
+animations=happy;
+statements=Hey <pname=>!;
+statements=A dead body washed up on the shore, one with some seriously powerful gear on it!;
+statements=It was infected with a dormant form of the Creeping Death, too! I had to burn it and perform some emergency cleansing before it could infect anyone else!;
+statements=You wouldn't know anything about that, would you?;
+statements=Anyway, since you've been risking your neck poking around in Old Barrow, you should probably take it all.;
+statements=Don't worry, I made sure it's all safe to use.;
+specialEffect=setGlobalVar,shana_magnus_drowned_loot_received,1;
+[DialogOption] text=Don't mind if I do!;
+nodeToConnectTo=shana_arianna_magnus_drowned_giveloot_1;
 
+[DialogNode] ID=shana_arianna_magnus_drowned_giveloot_1;
+animations=happy;
+statements=You have received a <itemBig_low=trigger_wind_light> Gale Lamp!;
+specialEffect=fx,briefAuraSound;
+specialEffect=giveItem,trigger_wind_light,1;
+nextNodeID=shana_arianna_magnus_drowned_giveloot_2;
+
+[DialogNode] ID=shana_arianna_magnus_drowned_giveloot_2;
+animations=happy;
+statements=You have received a <itemBig_low=necklace_spellcatcher> Spellcatcher Amulet!;
+specialEffect=fx,briefAuraSound;
+specialEffect=giveItem,necklace_spellcatcher,1;
+nextNodeID=shana_arianna_magnus_drowned_giveloot_3;
+
+[DialogNode] ID=shana_arianna_magnus_drowned_giveloot_3;
+animations=happy;
+statements=You have received a set of <itemBig_low=armor_purp> Mystic Maille!;
+specialEffect=fx,goodAuraSound;
+specialEffect=giveItem,armor_purp,1;
+nextNodeID=shana_arianna_magnus_drowned_giveloot_4;
+
+[DialogNode] ID=shana_arianna_magnus_drowned_giveloot_4;
+animations=happy;
+statements=You have received a <itemBig_low=shield_barrier> Barrier Shield!;
+specialEffect=fx,goodAuraSound;
+specialEffect=giveItem,shield_barrier,1;
+nextNodeID=shana_arianna_magnus_drowned_giveloot_5;
+
+[DialogNode] ID=shana_arianna_magnus_drowned_giveloot_5;
+animations=happy;
+statements=You have received a <itemBig_low=cloak_hood_blood> Blood Mantle!;
+specialEffect=fx,longGoodAuraSound;
+specialEffect=giveItem,cloak_hood_blood,1;
+nextNodeID=shana_arianna_magnus_drowned_giveloot_6;
+
+[DialogNode] ID=shana_arianna_magnus_drowned_giveloot_6;
+animations=happy;
+statements=You have received the <itemBig_low=shana_fakecannontablet> Replica 'Gate:Cannon' Tablet!;
+specialEffect=fx,longGoodAuraSound;
+specialEffect=giveItem,shana_fakecannontablet,1;
+nextNodeID=shana_arianna_magnus_drowned_giveloot_7;
+
+[DialogNode] ID=shana_arianna_magnus_drowned_giveloot_7;
+animations=happy;
+statements=Enjoy!;
 -----------------------------Inject dialogue into NPC in a town
 [DialogOption] ID=pastor;
 --fReq=loc:port8;	--Want to eliminate the actual fReq so that this can occur at any pastor dialogue. Not sure if this has ramifications or not lol.
@@ -1546,7 +1609,7 @@ animations=;
 statements=Don't hold back. I'd rather lose than win...<p> but I can't just roll over for you.;
 nextNodeID=nextNodeID=shana_gravekeeper_yokaze_intro_startfightb;
 
---------------------------------------------------Gatemaster Magnus intro --todo this is unimplemented. Implement and test this ingame
+--------------------------------------------------Gatemaster Magnus intro
 [DialogNode] ID=shana_gravekeeper_magnus_intro_handler;
 nextNodeID_fReq=gIs:playerFaction:seartial;
 nextNodeID=shana_magnus_playerIsSearth;

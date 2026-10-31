@@ -391,7 +391,7 @@ text=<itemBig=ari_gk_foul_remnant><title=Foul Remnant><brAdj=>An overwhelming re
 [ItemType] ID=shana_fakecannontablet;
 texture=shana_fake_icon_gate_cannon;
 name = Replica <color=Gold> 'Gate: Cannon' <color=><adjX=2>Tablet;
-weight=0; volume=0; value=20;
+weight=0; volume=0; value=9999;
 itemCategory=4;
 description = Inexplicable replica of an Ability Tablet. Cannot be socketed into gear, but can be used to cast  <color=Gold>Gate: Cannon<color=>  when worn as an accessory.;
 journalID=journal_actionTablet;
@@ -425,7 +425,7 @@ formula=-1 + g:shana_blackmail_flag + d:shana_blackmail_months_0;
 [FormulaGlobal] ID=shana_blackmail_active_but_months_0;
 formula=is:1:d:shana_calc_blackmail_active_but_months_0;
 
-[ItemType]  name=Perpetual Pension; --todo implement dialogue and ovarr giving you this item, also have it set g:shana_blackmail_flag to 1 to activate item.
+[ItemType]  name=Perpetual Pension;
 description=A sack that stores the dues you are owed. <textIf= It is currently inactive. (If you're seeing this in normal gameplay, please send a bug report!) =d:shana_blackmail_not_active><textIf= It is currently empty, but will not remain so.=d:shana_blackmail_active_but_months_0> Use to disgorge the <math=5000 * g:shana_blackmail_months_counter><icon=gp> within.;
 
 --<math=5000 * g:shana_blackmail_months_counter><icon=gp>

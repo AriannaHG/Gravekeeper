@@ -7303,7 +7303,9 @@ text=<icon=classIcon_ari_gravekeeper><title=Snowball><brAdj=>    "There is no wa
 --todo: Change icon to Snowball once everything is done
 --todo: put the following into a book or something. The domesticated Bun is a distant cousin of the common Jefri, having taken a different evolutionary path without the selection pressure inherent to Eral's wilderness. They are gentle and intelligent creatures, yet lacking in self-preservation.<n>
 
-----------------Gatemaster Magnus boss. todo: all
+----------------Gatemaster Magnus boss.
+
+
 
 [ActorType] ID=shana_gatemaster_boss;
 cloneFrom=human;
@@ -7321,7 +7323,7 @@ ID=shana_gatemaster_boss;
 element=HPbased;
 damageMultiplier=0.7; healMultiplier=1;
 
-[ActorTypeReaction] --- Spawns the boss loot, dispels barriers and sets completion flag.
+[ActorTypeReaction] --- Spawns the boss loot, dispels barriers and sets completion flag when hp to 0.
 ID=shana_gatemaster_boss;
 element=incapacitated;
 action=shana_spawn_faketablet;
@@ -7379,6 +7381,46 @@ action=shana_spawn_faketablet;
 	shape=8;
 	needsLoS=false;
 	needsLoE=false;
+
+[ActorTypeReaction]
+ID=shana_gatemaster_boss;
+element=HPbased;
+damageMultiplier=0.7; healMultiplier=1;
+
+[AvAffecter] -- Please let me know if you are reading this and can think of a better way to do this. I dislike putting so many things into the vanilla drown action that is called way more often than the boss will drown and am afraid of performance issues but this seems to be the only way I can detect magnus drowning. Dispels barriers, sets completion flag and sets the flag for Arianna to pass you Magnus's loot after he drowns.
+	ID=drown;
+    visibleMiss=false; visibleEvaluations=false;
+    fReq=tIsActorType:shana_gatemaster_boss;
+    actorValue=task;
+    magnitude=setGlobalVar,shana_barrow_3_clear,1;
+    duration=1;
+    chance=100;
+[AvAffecterAoE]
+	ID=drown;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=drown;
+    visibleMiss=false; visibleEvaluations=false;
+    fReq=tIsActorType:shana_gatemaster_boss;
+    actorValue=task;
+    magnitude=setGlobalVar,shana_magnus_was_drowned,1;
+    duration=1;
+    chance=100;
+[AvAffecterAoE]
+	ID=drown;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=drown;
+    visibleMiss=false; visibleEvaluations=false;
+    fReq=tIsActorType:shana_gatemaster_boss;
+    element=41011;
+    chance=100;
+[AvAffecterAoE]
+	ID=drown;
+	shape=8;
+	needsLoS=false;
+	needsLoE=false;
+
 --todo:
 --Classes: Gatemaster, Balancer, Tactician, Gatewarder
 --Passives: Gate: Reckoning (uses gate:cannon every 13 or 7 player actions depending on if allied to searth), Pure Mind, Multiscale
@@ -7388,10 +7430,6 @@ action=shana_spawn_faketablet;
 --like the final battle vs takumi in fire emblem, but upside down and with pews as barriers
 --Skeletal geologist?
 
---todo: fix shana_fakecannontablet not spawning
---todo: dialogue
---todo: inifnite reinforcements (coffin)
---todo: change arena
 --todo: Change icon to Magnus once everything is done
 
 ----------------Abbess Sophia final boss. todo: actually implement and consider a custom sprite

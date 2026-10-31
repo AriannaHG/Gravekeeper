@@ -1154,4 +1154,7 @@ triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=F
 [TriggerEffect] numID=4; effectID=removeExcessLandingPartyActors; sValue=; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
 
 
-
+[Trigger] numID=5; aliasID=shana_givemagnusloot;
+topX=7;topY=0;btmX=7;btmY=0;
+triggerImmediatelyOnEnteringZone=True; triggeredByElement=none; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=False; triggerForEveryStepInArea=False; disableOnZoneEntry=False; fReq=g:shana_magnus_was_drowned - g:shana_magnus_drowned_loot_received;
+[TriggerEffect] numID=5; effectID=talk; sValue=human_ari_gravekeeper_port_; sValue2=shana_arianna_magnus_drowned_giveloot; bValue1=True; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=-1; yValue=-1;
