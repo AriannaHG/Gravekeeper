@@ -205,14 +205,14 @@ text=<itemBig=shana_susies_diary><title=Soiled Diary><brAdj=>...supposed to stay
   special=animated; special=cannotBePickedUp; special=transparent; special=canHangOnWalls;
   blockLoE=true; blockLoS=true; blockWalking=true; blockJumping=true; journalID=shana_unliving_barrier_item_journal;
 [ItemLight] 
-ID=shana_unliving_barrier_item; red=0; blue=0; green=0; alpha=0.6; size=0.4; flicker=0.05;
+ID=shana_unliving_barrier_item; red=20; blue=24; green=0; alpha=0.6; size=0.4; flicker=0.02;
 [ItemReaction] 
 ID=shana_unliving_barrier_item; element=41011; element=leavingZone; newID=X; fx=shana_unliving_barrier_remove; --element 41011 will be pulsed on every boss kill, leavingZone to stop softlocks
 [JournalEntry]
 ID=shana_unliving_barrier_item_journal;
 category=item; halfPage=true; rarity=2;
 title=Unliving Barrier;
-text=<itemBig=shana_unliving_barrier_item><title=Unliving Barrier><brAdj=>Potent Ruin magic forms this unassailable barrier, the presence of a nearby, powerful Undead keeping it everlastingly stable.;
+text=<itemBig=shana_unliving_barrier_item><title=Unliving Barrier><brAdj=>Potent Ruin magic forms this unassailable barrier, the presence of a nearby, powerful Undead (or Undead-adjacent creature) keeping it everlastingly stable.;
 
 
 [ItemType]  name=Tally Mark Base 4;

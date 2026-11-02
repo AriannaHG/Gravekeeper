@@ -864,16 +864,17 @@ animations=happy;
 animations=happy;
 animations=happy;
 animations=sly;
-animations=sly;
+animations=happy;
 animations=happy;
 statements=Hey <pname=>!;
 statements=A dead body washed up on the shore, one with some seriously powerful gear on it!;
 statements=It was infected with a dormant form of the Creeping Death, too! I had to burn it and perform some emergency cleansing before it could infect anyone else!;
 statements=You wouldn't know anything about that, would you?;
 statements=Anyway, since you've been risking your neck poking around in Old Barrow, you should probably take it all.;
-statements=Don't worry, I made sure it's all safe to use.;
+statements=Don't worry, I made sure it's safe to use.;
 specialEffect=setGlobalVar,shana_magnus_drowned_loot_received,1;
 [DialogOption] text=Don't mind if I do!;
+animation=happy;
 nodeToConnectTo=shana_arianna_magnus_drowned_giveloot_1;
 
 [DialogNode] ID=shana_arianna_magnus_drowned_giveloot_1;
@@ -1611,10 +1612,17 @@ nextNodeID=nextNodeID=shana_gravekeeper_yokaze_intro_startfightb;
 
 --------------------------------------------------Gatemaster Magnus intro
 [DialogNode] ID=shana_gravekeeper_magnus_intro_handler;
-nextNodeID_fReq=gIs:playerFaction:seartial;
+nextNodeID=shana_gravekeeper_magnus_introb;
+nextNodeID_fReq=g:shana_gravekeeper_magnus_already_triggered;
 nextNodeID=shana_magnus_playerIsSearth;
-nextNodeID_fReq=gIsNot:playerFaction:seartial;
+nextNodeID_fReq=gIs:playerFaction:seartial;
 nextNodeID=shana_gravekeeper_magnus_intro_normal;
+nextNodeID_fReq=gIsNot:playerFaction:seartial;
+
+[DialogNode] ID=shana_gravekeeper_magnus_intro_playerIsSearth;
+animations=stern;
+statements=You're rather persistent, aren't you?;
+nextNodeID=shana_gravekeeper_magnus_intro_combat_start_immediate;
 
 [DialogNode] ID=shana_gravekeeper_magnus_intro_playerIsSearth;
 animations=stern;
@@ -1967,9 +1975,11 @@ animations=stern;
 animations=stern;
 statements=I have had years to transform this cathedral to my liking.;
 statements=Allow me to show you the fruits of my labour.;
+specialEffect=setGlobalVar,shana_gravekeeper_magnus_already_triggered,1;
 specialEffect=enterCombat,@X26,@Y20,99,shana_gatemaster_boss_ari_gravekeeper_city_church_interior_; --todo change this if it behaves weird
 
 [DialogNode] ID=shana_gravekeeper_magnus_intro_combat_start_immediate;
+specialEffect=setGlobalVar,shana_gravekeeper_magnus_already_triggered,1;
 specialEffect=enterCombat,@X26,@Y20,99,shana_gatemaster_boss_ari_gravekeeper_city_church_interior_; --todo change this if it behaves weird
 
 
