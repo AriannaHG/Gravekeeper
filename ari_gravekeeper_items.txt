@@ -215,6 +215,19 @@ title=Unliving Barrier;
 text=<itemBig=shana_unliving_barrier_item><title=Unliving Barrier><brAdj=>Potent Ruin magic forms this unassailable barrier, the presence of a nearby, powerful Undead (or Undead-adjacent creature) keeping it everlastingly stable.;
 
 
+[ItemType]  name=Unlight;
+ID=barrier_unlight; texture=gkart; sprite=60; weight=0;  itemCategory=hazard;
+special=animated; special=cannotBePickedUp; special=transparent; special=canHangOnWalls;
+blockLoE=true;
+[ItemLight]
+ID=barrier_unlight; red=0.6; blue=0.6; green=0.6; alpha=0.6; size=0.4; flicker=0.05;
+[JournalEntry]
+ID=barrier_unlight;
+category=item; halfPage=true; rarity=2;
+title=Unlight;
+text=<itemBig=barrier_unlight><title=Unlight><brAdj=>A strange barrier-that-is-not. Perhaps you should enter the flickering void their formation has created, hm?;
+
+
 [ItemType]  name=Tally Mark Base 4;
 ID=shana_four_tally_marks; texture=gkart; sprite=88;
 special=cannotBePickedUp; value=4; power=5;
