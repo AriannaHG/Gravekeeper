@@ -157,6 +157,7 @@ combatMode=False;
 [Item] ID=rocks1; q=2; r=360; x=17; y=56;
 [Item] ID=rocks1; q=4; r=360; x=17; y=58;
 [Item] ID=sunbeam_circle_big_dull; q=1; r=-360; x=17; y=60;
+[Item] ID=shana_birthing_coffin_dummy; q=1; x=18; y=20;
 [Item] ID=shana_prayer_bench; q=1; x=18; y=32;
 [Item] ID=shana_prayer_bench; q=1; x=18; y=34;
 [Item] ID=shana_prayer_bench; q=1; x=18; y=36;
@@ -1640,6 +1641,13 @@ triggerImmediatelyOnEnteringZone=False; triggeredByElement=combatStart; travelMo
 [TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=26; yValue=68;
 [TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=27; yValue=68;
 [TriggerEffect] numID=25; effectID=addItem; sValue=shana_unliving_barrier_item; sValue2=; bValue1=False; bValue2=False; fValue=0; delay=0; fReq=1; taskString=; xValue=28; yValue=68;
+
+
+
+[Trigger] numID=26; aliasID=shana_area_destroy_dummy_item_to_end_combat;
+topX=0;topY=0;btmX=88;btmY=71;
+triggerImmediatelyOnEnteringZone=False; triggeredByElement=startTurn; travelModeOnly=False; triggerOnPlayerActorOnly=False; onlyExecuteOnce=False; triggerForEveryStepInArea=True; disableOnZoneEntry=False; fReq=d:shana_coffin_endcombat_requirement;
+[TriggerEffect] numID=26; effectID=consolecommand; sValue=removeitems shana_birthing_coffin_dummy; sValue2=; bValue1=False; bValue2=False; fValue=1; delay=0; fReq=1; taskString=; xValue=0; yValue=0;
 
 
 

@@ -1,5 +1,11 @@
 [GlobalTriggerEffect] ID=tEnterCombat; effectID=action; sValue=shana_pulse_41012_transformcoffin; sValue2=; --actually makes coffins transform on combat start
 
+[FormulaGlobal] ID=shana_coffin_count;
+formula=itemsZone:shana_birthing_coffin_0 + itemsZone:shana_birthing_coffin_1 + itemsZone:shana_birthing_coffin_2 + itemsZone:shana_birthing_coffin_3 + itemsZone:shana_birthing_coffin_4 + itemsZone:shana_birthing_coffin_5 + itemsZone:shana_birthing_coffin_6 + itemsZone:shana_birthing_coffin_7 + itemsZone:shana_birthing_coffin_8 + itemsZone:shana_birthing_coffin_9;
+
+[FormulaGlobal] ID=shana_coffin_endcombat_requirement; --this is true if either party wipe or no coffins remain, used in trigger to kill dummy item
+formula=is:0:allParty:HP + is:0:d:shana_coffin_count;
+
 [Action] ID=shana_pulse_41012_transformcoffin;
     special=usableEvenWhenCantAct;
     special=usableEvenWhenReacting;
@@ -19,10 +25,22 @@
 	needsLoS=false;
 	needsLoE=false;
 
-[ItemType]  name=Birthing Coffin Base; --todo probably replace the 2x abom with 3x skelemage? also implement better spawn and destroy fx (smash with the yelp when destroyed
+
+[ItemType]  name=Birthing Coffin Dummy Item;
 itemCategory=hazard;
 special=cantEndCombat;
-description=Do not use, this is a base the actual coffins are cloned from.;
+description=If any birthing coffins are in the zone, it's a requirement to put one of these down and clone the dummy item destroying trigger used in magnus arena (ari_gravekeeper_city_church_interior).;
+ID=shana_birthing_coffin_dummy; sprite=29;
+special=ignoreDarkness;
+special=cannotBePickedUp; special=canHangOnWalls; special=cannotEverBePushed;
+special=raiseTileDepth1050; special=canBeInsideWalls; special=canFloatOnWater;
+special=invisible; special=noTooltip; special=noPlayerPlacedItems;
+[ItemReaction]
+ID=shana_birthing_coffin_dummy; element=42003; newID=X;
+
+[ItemType]  name=Birthing Coffin Base; --todo probably replace the 2x abom with 3x skelemage? also implement better spawn and destroy fx (smash with the yelp when destroyed
+itemCategory=hazard;
+description=Do not use, this is a base the actual coffins are cloned from. If you use any coffins in a boss fight with Unliving Barriers, remember to clone the dummy item destroying trigger used in magnus arena (ari_gravekeeper_city_church_interior) in the zone and put a coffin dummy item in the zone too, as you'd just be able to kill the boss and run otherwise.;
 ID=shana_birthing_coffin_base; sprite=28; texture=gkart;
 journalID=shana_journal_birthing_coffin;
 weight=500; volume=10000000; pR=pDead; pB=pBloodyMess_slow;
