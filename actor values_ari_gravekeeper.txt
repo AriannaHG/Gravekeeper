@@ -89,7 +89,7 @@ action=ari_rot_damage;
 	special=usableEvenWhenCantAct;
 	special=usableEvenWhenReacting;
 	special=usableEvenWhenYourTurn;
-	special=dontDelayOtherActions;
+--	special=dontDelayOtherActions; commented out due to delirious AV race condition
 
 [ActionAoE] 
 	ID=ari_rot_damage; 
@@ -4520,7 +4520,7 @@ action=ari_rot_damage_enemy;
 	special=usableEvenWhenCantAct;
 	special=usableEvenWhenReacting;
 	special=usableEvenWhenYourTurn;
-	special=dontDelayOtherActions;
+--	special=dontDelayOtherActions; commented out due to delirious AV race condition
 	
 [ActionAoE] 
 	ID=ari_rot_damage_enemy; 

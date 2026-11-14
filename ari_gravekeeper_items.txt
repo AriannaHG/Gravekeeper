@@ -620,3 +620,28 @@ formula=d:ruinDmg(3) * 0.34 - sa:stoneSavant - sa:empowerAugment*2;
 [AvAffecterAoE]
 	ID=shana_rotTriggerInWeapon;
 	cloneFrom=oneTile;
+
+[ItemType]  name=AI does not prefer this tile; --all credit to quo
+ID=shana_modAttackPorts_item_AIbonus; sprite=28; pR=pWhite;
+itemCategory=hazard;
+special=ignoreDarkness; special=canAlwaysFitInTileWhenSpawned;
+special=cannotBePickedUp; special=cannotEverBePushed;
+special=invisible; special=noTooltip;
+[ItemReaction] --but in reaction it does get valued
+ID=shana_modAttackPorts_item_AIbonus; element=endTurn; aiRatingModForHostilesOnly=true; action=shana_modAttackPorts_act_AIbonus;
+
+[Action] ID=shana_modAttackPorts_act_AIbonus;
+	harmful=false;
+[ActionAoE]
+	ID=shana_modAttackPorts_act_AIbonus;
+	cloneFrom=oneTile;
+[AvAffecter]
+	ID=shana_modAttackPorts_act_AIbonus;
+	harmful=false;
+	actorValue=AIBonus;
+	magnitude=c:rank;	--in an item action this should mean the amount of item
+	duration=-2;
+	chance=100;
+[AvAffecterAoE]
+	ID=shana_modAttackPorts_act_AIbonus;
+	cloneFrom=oneTile;

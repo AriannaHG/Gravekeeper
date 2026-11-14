@@ -798,6 +798,7 @@ ID=shana_delay_sync0; element=41005; action=shana_expurgate3;
 	arc=true;
 	minRange=1;
 	maxRange=10;
+	canSelectAllies=false;
 
 -- Massively incentivize the AI to try and eat a party member if {incapacitated or have less hp than the damage subsume would do}, AND do NOT have subsume queued up on them.
 [AvAffecter]
@@ -1127,7 +1128,7 @@ element=combatEnd; newID=X;
 	arc=true;
 	minRange=1;
 	maxRange=10;
-
+    canSelectAllies=false;
 
 -- Calculate which AV is getting used as our ID and apply it to both the target and the caster.
 [AvAffecter]
@@ -1372,7 +1373,7 @@ element=combatEnd; newID=X;
 [AvAffecter] --do big damage and have explosion vfx on unoccupiable tiles
 	ID=shana_rotting_prison3;
 	actorValue=HP;
-	magnitude=-5 * g:shana_rotting_prison_casterruinskill;
+	magnitude=-10 * g:shana_rotting_prison_casterruinskill;
 	duration=-2;
 	chance=100;
 	element=magic;

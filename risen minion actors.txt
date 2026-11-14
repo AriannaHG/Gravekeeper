@@ -7181,7 +7181,7 @@ ID=shana_journal_undead_bweaver;
 name=Bloodweaver?;
 category=creature; halfPage=true; rarity=4;
 title=Bloodweaver?;
-text=<actorBig=shana_undead_bweaver><title=Bloodweaver?><brAdj=>         A compressed, reanimated slurry of damaged flesh, spilled blood and fused bone forced into the approximate size and shape of a Bloodweaver. Much like the other denizens of Old Barrow, it is not allowed to menace nearby civilization, instead keeping a low profile within. Rather tellingly, it doesn't seem to mind the chill.;
+text=<actorBig=shana_undead_bweaver><title=Bloodweaver?><brAdj=>         A compressed, reanimated slurry of damaged flesh, spilled blood and fused bone forced into the approximate size and shape of a Bloodweaver. Much like the other denizens of Old Barrow, it is not allowed to menace nearby civilization, instead keeping a low profile within.;
 
 
 [ActorTypeReaction]
@@ -7699,6 +7699,7 @@ defaultValues=moveDistance = 0;
 defaultValues=jumpDistance = 0;
 defaultValues=actTime = 32;
 defaultValues=skill_Ruin = 5;
+defaultFaction = enemy;
 
 defaultAI=none;
 
